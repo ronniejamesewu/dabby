@@ -1,7 +1,117 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dabby the House Rig — Session Log</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark:  #2D5A3D;
+  --green-mid:   #4A7C59;
+  --green-light: #F0F7F2;
+  --amber:       #B8860B;
+  --amber-light: #FFF8E7;
+  --grey-text:   #555555;
+  --grey-light:  #888888;
+  --grey-bg:     #F5F5F5;
+  --text:        #1A1A1A;
+  --border:      #CCCCCC;
+  --radius:      6px;
+  --font:        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --max-width:   780px;
+  --page-pad:    2rem;
+}
+
+html { font-size: 16px; }
+body { font-family: var(--font); color: var(--text); background: #FAFAFA; line-height: 1.6; padding: 1rem; }
+.doc { max-width: var(--max-width); margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+.cover { background: var(--green-dark); color: #fff; padding: 3rem var(--page-pad) 2.5rem; text-align: center; }
+.cover h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: #fff; }
+.cover .subtitle { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 0.4rem; }
+.cover .tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; text-transform: uppercase; }
+.section { padding: 2rem var(--page-pad); border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.section-header { background: var(--green-light); margin: 0 calc(-1 * var(--page-pad)) 1.5rem; padding: 1rem var(--page-pad); border-bottom: 3px solid var(--green-mid); }
+.section-header.grey { background: var(--grey-bg); border-bottom-color: var(--border); }
+.section-header h2 { font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 700; color: var(--green-dark); margin-bottom: 0.3rem; }
+.section-header.grey h2 { color: var(--grey-text); }
+.badge { display: inline-block; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.03em; }
+.badge.dialed { background: var(--green-dark); color: #fff; }
+.badge.calib { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber); }
+.badge.pending { background: var(--grey-bg); color: var(--grey-text); border: 1px solid var(--border); }
+.badge.hot { background: var(--amber-light); color: #8B4513; border: 1px solid var(--amber); }
+.info-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+.info-table tr { border-bottom: 1px solid var(--border); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td { padding: 0.55rem 0.75rem; vertical-align: top; }
+.info-table td:first-child { font-weight: 600; color: var(--green-dark); width: 28%; white-space: nowrap; }
+.curve-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.curve-table th { background: var(--green-dark); color: #fff; padding: 0.55rem 0.75rem; text-align: left; font-weight: 600; }
+.curve-table th.amber-header { background: var(--amber); }
+.curve-table td { padding: 0.5rem 0.75rem; vertical-align: top; border-bottom: 1px solid var(--border); }
+.curve-table tr:nth-child(even) td { background: var(--green-light); }
+.curve-table tr:last-child td { border-bottom: none; }
+.curve-table td:first-child { font-weight: 700; white-space: nowrap; }
+.curve-table td:nth-child(2) { white-space: nowrap; }
+.terpene-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.terpene-table th { background: var(--green-mid); color: #fff; padding: 0.55rem 0.75rem; text-align: left; font-weight: 600; }
+.terpene-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+.terpene-table tr:nth-child(even) td { background: var(--green-light); }
+.terpene-table tr:last-child td { border-bottom: none; }
+.swab-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+.swab-table tr { border-bottom: 1px solid var(--border); }
+.swab-table tr:last-child { border-bottom: none; }
+.swab-table td { padding: 0.55rem 0.75rem; vertical-align: top; }
+.swab-table td:first-child { font-weight: 700; width: 30%; }
+.swab-key.target { color: var(--green-dark); }
+.swab-key.hot { color: #B85C00; }
+.swab-key.severe { color: #8B0000; }
+.swab-key.cool { color: #2255AA; }
+.result-row { margin: 0.5rem 0; font-size: 0.92rem; }
+.result-row .label { font-weight: 700; color: var(--green-dark); }
+.result-row.amber .label { color: var(--amber); }
+h3 { font-size: 1rem; font-weight: 700; color: var(--green-mid); margin: 1.2rem 0 0.5rem; }
+h3.amber { color: var(--amber); }
+h3.grey { color: var(--grey-text); }
+p { font-size: 0.92rem; color: var(--text); margin: 0.5rem 0; line-height: 1.65; }
+.note { font-size: 0.85rem; color: var(--grey-text); line-height: 1.6; margin: 0.75rem 0; padding: 0.5rem 0.75rem; border-left: 3px solid var(--green-mid); background: var(--green-light); border-radius: 0 var(--radius) var(--radius) 0; }
+.divider { border: none; border-top: 2px solid var(--green-light); margin: 1.2rem 0; }
+.divider.amber { border-top-color: var(--amber-light); }
+.toc { padding: 1.5rem var(--page-pad); background: var(--green-light); border-bottom: 1px solid var(--border); }
+.toc h2 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-mid); margin-bottom: 0.75rem; }
+.toc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc a { display: inline-block; padding: 0.3rem 0.7rem; background: #fff; border: 1px solid var(--green-mid); border-radius: 20px; font-size: 0.8rem; color: var(--green-dark); text-decoration: none; font-weight: 500; }
+.toc a:hover { background: var(--green-dark); color: #fff; }
+.footer { padding: 1.2rem var(--page-pad); background: var(--grey-bg); font-size: 0.8rem; color: var(--grey-light); font-style: italic; text-align: center; border-top: 1px solid var(--border); }
+@media (max-width: 600px) {
+  :root { --page-pad: 1rem; }
+  body { padding: 0.5rem; }
+  .info-table td:first-child { width: 35%; white-space: normal; }
+  .toc ul { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="doc">
+<div class="cover">
+  <h1>Dabby the House Rig</h1>
+  <p class="subtitle">Session Profile &amp; Calibration Log</p>
+  <p class="tagline">Hash Rosin &nbsp;·&nbsp; Solventless &nbsp;·&nbsp; Cold Start Protocol</p>
+</div>
+<div class="toc"><h2>Contents</h2><ul><li><a href="#constants">Constants</a></li><li><a href="#swab">Swab Reference</a></li><li><a href="#baseline">Baseline Curve</a></li><li><a href="#wwz-profile">WW Z</a></li><li><a href="#wwz-run1">WW Z Run 1</a></li><li><a href="#cag-profile">Caramel Apple Gelato</a></li><li><a href="#cag-run1">CAG Run 1</a></li><li><a href="#cag-run2">CAG Run 2</a></li><li><a href="#oc-profile">Orange Candy</a></li><li><a href="#oc-runs12">OC Runs 1–2</a></li></ul></div>
+<div class="section" id="constants"><div class="section-header"><h2>Device &amp; Session Constants</h2></div><p class="note">These parameters apply to every session in this log unless explicitly noted otherwise.</p><table class="info-table"><tr><td>Device</td><td>Switch² (Dabby the House Rig)</td></tr><tr><td>All Material</td><td>Hash Rosin — ice water extracted, solventless. Consistency varies by jar — noted in each strain profile.</td></tr><tr><td>Insert</td><td>20mm (quartz current; sapphire profiles to be added when acquired)</td></tr><tr><td>Technique</td><td>Cold start — pre-load into cold insert before every session</td></tr><tr><td>Load Size</td><td>Rice grain (small)</td></tr><tr><td>Offset Est.</td><td>~15–35°F below titanium setpoint at material contact surface. Not constant — larger during steep ascent, smaller during flat holds.</td></tr><tr><td>Draw Style</td><td>Long, slow draws throughout session</td></tr><tr><td>Session End</td><td>Stop when vapor production drops — do not ride timer on small loads</td></tr></table><p class="note">The IR sensor reads titanium cup temperature, not insert surface temperature. The gradient across the air gap interface means material contact temperature is below setpoint by an estimated 15–35°F. This estimate varies with ascent rate and is not constant across the curve. All setpoints calibrated empirically via swab results.</p></div>
+<div class="section" id="swab"><div class="section-header"><h2>Swab Color Reference</h2></div><p class="note">Swab color is a qualitative directional signal within a strain. Do not compare across strains — starting material color, oxidation state, and terpene-to-cannabinoid ratio all affect residue color independently of temperature.</p><table class="swab-table"><tr><td class="swab-key target">Target</td><td>Light golden / amber, slightly fluid. Clean vaporization, no significant degradation.</td></tr><tr><td class="swab-key hot">Too hot</td><td>Amber shading toward brown. Possible degradation at session tail, or darker starting material. Reduce endpoint cautiously.</td></tr><tr><td class="swab-key severe">Too hot (severe)</td><td>Dark brown or black. Likely overheated. Reduce setpoint significantly.</td></tr><tr><td class="swab-key cool">Too cool</td><td>Cloudy or white crystalline residue. Possibly THCA not fully vaporizing — interpretation uncertain. Raise setpoint cautiously.</td></tr></table></div>
+<div class="section" id="baseline"><div class="section-header"><h2>Baseline Curve</h2></div><p class="note">Single starting curve for all hash rosin sessions with cold start technique. Strain profiles document empirical deviations from this baseline via swab results and session observations. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.</p><h3>Parameters</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open — lowest temperature point</td></tr><tr><td>15s</td><td>378°F</td><td>Flat phase — most volatile terpenes</td></tr><tr><td>40s</td><td>395°F</td><td>Mid ascent — mid-range terpenes</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint — THC completion</td></tr></tbody></table><p class="note">Terpene zone annotations in individual run curves are approximate orientation points based on inferred terpene profiles — not measured targets. The same common cannabis terpenes appear across most strains. Annotations reflect boiling point ranges, not confirmed strain-specific terpene data.</p><h3>Rationale</h3><p>375°F opening accounts for the estimated 15–35°F offset, targeting material contact temperature in the lower terpene vaporization range. The flat opening phase preserves the most volatile terpene fraction before temperature climbs. The 440°F endpoint targets more complete THC vaporization while staying below the range where consistent degradation is observed. All waypoints are starting points — swab results drive adjustment.</p></div>
+<div class="section" id="wwz-profile"><div class="section-header"><h2>WW Z — Strain Profile</h2><span class="badge dialed">✓ DIALED — Run 1. No further calibration required.</span></div><table class="info-table"><tr><td>Strain</td><td>WW Z (White Widow × Zkittlez lineage — inferred)</td></tr><tr><td>Consistency</td><td>Cold cure</td></tr><tr><td>Producer</td><td>Trusted grower/washer — no further info</td></tr><tr><td>Nose</td><td>Piney with sweet undertone (weak secondary signal only)</td></tr><tr><td>Status</td><td>DIALED — Run 1</td></tr></table><h3>Inferred Terpene Profile</h3><p class="note">Inferred from genetics (White Widow × Zkittlez — assumed) and weakly supported by nose observation (piney / sweet undertone). Terpene profiles are not measured. The compounds listed are the common cannabis palette — what is inferred here is that pinene may be relatively prominent based on nose, not that the profile is meaningfully distinct from other strains at this level of analysis.</p><table class="terpene-table"><thead><tr><th>Terpene</th><th>Boiling Point</th><th>Character</th></tr></thead><tbody><tr><td>Caryophyllene</td><td>266°F / 130°C</td><td>Spicy — minor, inferred</td></tr><tr><td>Alpha-Pinene</td><td>311°F / 155°C</td><td>Pine — inferred dominant; weakly supported by nose observation</td></tr><tr><td>Myrcene</td><td>334°F / 168°C</td><td>Earthy, sweet — inferred</td></tr><tr><td>Terpinolene</td><td>367°F / 186°C</td><td>Sweet, floral — inferred (Z lineage)</td></tr><tr><td>Linalool</td><td>388°F / 198°C</td><td>Floral — inferred, minor</td></tr></tbody></table></div>
+<div class="section" id="wwz-run1"><div class="section-header"><h2>WW Z — Run 1 — May 2026</h2><span class="badge dialed">✓ DIALED — Profile locked.</span></div><h3>Curve</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p><p class="note">Terpene zone annotations are approximate orientation points based on inferred profile, not measured targets.</p><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>15s</td><td>378°F</td><td>Extended flat — low-boiling terpene zone (~311°F pinene region)</td></tr><tr><td>40s</td><td>395°F</td><td>Mid ascent — mid-range terpene zone (~334°F myrcene region)</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint — upper terpene zone + THC completion</td></tr></tbody></table><h3>Results</h3><p class="result-row"><span class="label">Swab:</span> Light golden/amber. Clean. No dark coloration.</p><p class="result-row"><span class="label">Vapor:</span> Spectacular. Full session expressed well across the arc.</p><p class="result-row"><span class="label">Verdict:</span> Dialed on first run. Profile locked. Baseline curve confirmed appropriate for this material.</p></div>
+<div class="section" id="cag-profile"><div class="section-header"><h2>Caramel Apple Gelato — Strain Profile</h2><span class="badge calib">⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.</span></div><table class="info-table"><tr><td>Strain</td><td>Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)</td></tr><tr><td>Consistency</td><td>Cold cure</td></tr><tr><td>Producer</td><td>Trusted grower/washer — no further info</td></tr><tr><td>Nose</td><td>Muted — no distinct notes (weak secondary signal, consistent with heavier terpene profile)</td></tr><tr><td>Status</td><td>IN CALIBRATION — Run 1 complete, Run 2 pending</td></tr></table><h3 class="amber">Inferred Terpene Profile</h3><p class="note">Inferred from Gelato lineage (Sunset Sherbet × Thin Mint GSC — assumed). Nose is muted — consistent with heavier terpene profile where dominant compounds have low room-temperature volatility. Terpene profiles are not measured. Compounds listed are the common cannabis palette with ordering based on Gelato lineage documentation, not strain-specific analysis.</p><table class="terpene-table"><thead><tr><th>Terpene</th><th>Boiling Point</th><th>Character</th></tr></thead><tbody><tr><td>Caryophyllene</td><td>266°F / 130°C</td><td>Spicy — inferred, low room-temp volatility explains muted nose</td></tr><tr><td>Myrcene</td><td>334°F / 168°C</td><td>Earthy — inferred</td></tr><tr><td>Limonene</td><td>349°F / 176°C</td><td>Citrus — inferred from Gelato lineage</td></tr><tr><td>Terpinolene</td><td>367°F / 186°C</td><td>Sweet — inferred</td></tr><tr><td>Linalool</td><td>388°F / 198°C</td><td>Floral — inferred, minor</td></tr></tbody></table></div>
+<div class="section" id="cag-run1"><div class="section-header"><h2>Caramel Apple Gelato — Run 1 — May 2026</h2><span class="badge hot">⚠ TOO HOT — Endpoint reduced for Run 2.</span></div><h3 class="amber">Curve Used</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p><table class="curve-table"><thead><tr><th class="amber-header">Time</th><th class="amber-header">Setpoint</th><th class="amber-header">Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>10s</td><td>380°F</td><td>Short flat phase</td></tr><tr><td>30s</td><td>395°F</td><td>Mid ascent</td></tr><tr><td>50s</td><td>420°F</td><td>Upper terpene zone</td></tr><tr><td>65s</td><td>450°F</td><td>ENDPOINT TOO HOT — see diagnosis</td></tr></tbody></table><h3 class="amber">Results</h3><p class="result-row amber"><span class="label">Swab:</span> Amber shading toward light brown. Darker than WW Z Run 1 — note: cross-strain swab comparison is unreliable; this observation is directional only.</p><p class="result-row amber"><span class="label">Vapor:</span> Limited flavor. Session did not express distinct character.</p><p class="result-row amber"><span class="label">Diagnosis:</span> Endpoint of 450°F likely too aggressive — supported by swab darkening. Limited flavor may reflect endpoint temperature degrading terpene fraction at session tail, or may reflect moderate terpene content in this material independent of temperature. Both explanations are plausible; endpoint reduction will help distinguish them.</p><p class="result-row amber"><span class="label">Adjustment:</span> Pull endpoint back to 430°F. Shorten hold to 55 seconds to reduce risk of outlasting small load.</p></div>
+<div class="section" id="cag-run2"><div class="section-header grey"><h2>Caramel Apple Gelato — Run 2 — Pending</h2><span class="badge pending">PENDING — Not yet completed.</span></div><h3>Proposed Curve</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 55 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>10s</td><td>380°F</td><td>Short flat phase</td></tr><tr><td>30s</td><td>395°F</td><td>Mid ascent</td></tr><tr><td>50s</td><td>415°F</td><td>Upper terpene zone</td></tr><tr><td>55s</td><td>430°F</td><td>Conservative endpoint</td></tr></tbody></table><h3>Results</h3><p>Run 2 not yet completed. Record swab color, vapor character, and any session observations. If swab is still darker than target, reduce endpoint further. If flavor remains limited with clean swab, this may be a lower terpene content material — note accordingly and lock curve.</p></div>
+<div class="section" id="oc-profile"><div class="section-header"><h2>Orange Candy — Strain Profile</h2><span class="badge calib">⚠ IN CALIBRATION — Runs 1–2 complete. Revised curve pending Run 3.</span></div><table class="info-table"><tr><td>Strain</td><td>Orange Candy (Philosopher Seeds lineage: Naran J × Tropimango — unconfirmed)</td></tr><tr><td>Producer</td><td>Nikka T</td></tr><tr><td>Input</td><td>90 micron full melt bubble hash</td></tr><tr><td>Consistency</td><td>Cold cure</td></tr><tr><td>Nose</td><td>Not yet recorded</td></tr><tr><td>Status</td><td>IN CALIBRATION — Runs 1–2 complete, revised curve pending Run 3</td></tr></table><h3 class="amber">Inferred Terpene Profile</h3><p class="note">Inferred from likely Philosopher Seeds lineage (Naran J × Tropimango — unconfirmed). Strain name not found in documented databases — may be a producer-specific phenotype selection. Terpene profiles are not measured. Limonene inferred as dominant based on orange character of strain name; all other compounds are the generic cannabis palette.</p><table class="terpene-table"><thead><tr><th>Terpene</th><th>Boiling Point</th><th>Character</th></tr></thead><tbody><tr><td>Caryophyllene</td><td>266°F / 130°C</td><td>Spicy — inferred, low room-temp volatility</td></tr><tr><td>Myrcene</td><td>334°F / 168°C</td><td>Earthy — inferred</td></tr><tr><td>Limonene</td><td>349°F / 176°C</td><td>Citrus — inferred dominant, orange character</td></tr><tr><td>Terpinolene</td><td>367°F / 186°C</td><td>Sweet — inferred secondary</td></tr><tr><td>Linalool</td><td>388°F / 198°C</td><td>Floral — inferred, minor</td></tr></tbody></table></div>
+<div class="section" id="oc-runs12"><div class="section-header"><h2>Orange Candy — Runs 1 &amp; 2 — May 2026</h2><span class="badge calib">⚠ IN CALIBRATION — Curve revised after two sessions. Run 3 pending.</span></div><h3 class="amber">Curve Used — Runs 1 &amp; 2</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p><p class="note">450°F endpoint chosen to compensate for estimated 15–35°F thermal offset, targeting ~420°F at insert surface.</p><table class="curve-table"><thead><tr><th class="amber-header">Time</th><th class="amber-header">Setpoint</th><th class="amber-header">Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>15s</td><td>378°F</td><td>Flat phase</td></tr><tr><td>40s</td><td>395°F</td><td>Mid ascent</td></tr><tr><td>65s</td><td>450°F</td><td>Endpoint — raised to compensate for estimated thermal offset</td></tr></tbody></table><h3 class="amber">Observations</h3><p class="result-row amber"><span class="label">Result:</span> Working well but first 40 seconds felt too flat and slow. Insufficient progression through mid terpene zones in the opening phase.</p><p class="result-row amber"><span class="label">Swab:</span> Not yet recorded. Record on next session.</p><p class="result-row amber"><span class="label">Diagnosis:</span> Curve shape revised to steepen mid-session climb and lower endpoint. Faster ascent between 15–35s moves through terpene zones more actively. Flatter tail from 35–65s allows insert surface temperature to approach titanium setpoint, reducing effective offset at endpoint. Lower endpoint of 440°F estimated to deliver similar insert surface temperature to previous 450°F steep-end curve.</p><hr class="divider amber"><h3>Revised Curve — Run 3 Pending</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>15s</td><td>378°F</td><td>Flat phase</td></tr><tr><td>35s</td><td>410°F</td><td>Steeper climb — faster progression through mid terpene zones</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint — reduced; flatter tail allows insert surface to approach equilibrium</td></tr></tbody></table><p>Run 3 not yet completed. Record swab color, vapor character, and whether mid-session progression feels more active than Runs 1–2.</p></div>
+<div class="footer">Document last updated: May 04, 2026 at 22:56 &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>
+</div>
+</body>
+</html>
