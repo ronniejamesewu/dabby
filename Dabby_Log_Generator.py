@@ -608,6 +608,22 @@ OC_RUN5 = [
     ("65s", "460°F", "Endpoint"),
 ]
 
+HIVE1_INFO = [
+    ("Strain",      "The Hive #1 (Honey Banana × Papaya — Bloom Seed Co)"),
+    ("Consistency", "Cold cure"),
+    ("Producer",    "Myxed Up (washed and pressed)"),
+    ("Input",       "159–73 micron ice water hash"),
+    ("Nose",        "Not yet recorded"),
+    ("Status",      "PENDING — No runs completed"),
+]
+HIVE1_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred secondary (both parents)"),
+    ("Myrcene",       "334°F / 168°C", "Earthy, tropical — inferred dominant (both parents' fruit character)"),
+    ("Limonene",      "349°F / 176°C", "Citrus — inferred (tropical fruit character consistent with lineage)"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet, floral — inferred (Papaya lineage)"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
+]
+
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
 def build_html():
@@ -628,6 +644,7 @@ def build_html():
         ("#oc-run3", "OC Run 3"),
         ("#oc-run4", "OC Run 4"),
         ("#oc-run5", "OC Run 5"),
+        ("#hive1-profile", "The Hive #1"),
     ]
     toc = '<div class="toc"><h2>Contents</h2><ul>'
     for href, label in toc_links:
@@ -795,6 +812,16 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    # ── The Hive #1 Strain Profile
+    s = f'<div class="section" id="hive1-profile">'
+    s += section_header("The Hive #1 — Strain Profile", "PENDING — No runs completed.", "pending", "grey")
+    s += info_table(HIVE1_INFO)
+    s += '<h3 class="grey">Inferred Terpene Profile</h3>'
+    s += '<p class="note">Profile inferred from Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios and minor terpenes are not inferable from genetics alone — these are orientation points drawn from the generic cannabis palette, not strain-specific measurements. Start from baseline curve; swab results drive all adjustments.</p>'
+    s += terpene_table(HIVE1_TERPS)
+    s += '</div>'
+    sections.append(s)
+
     # ── Assemble
     body = toc + ''.join(sections)
     body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>'
@@ -829,7 +856,7 @@ def build_html():
 
 if __name__ == "__main__":
     html = build_html()
-    out = "/mnt/user-data/outputs/Dabby_Profile_Log.html"
+    out = "index.html"
     with open(out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"Written: {out}")
