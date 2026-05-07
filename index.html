@@ -34,6 +34,7 @@ body {
   padding: 1rem;
 }
 
+/* ── Layout ── */
 .doc {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -43,6 +44,7 @@ body {
   overflow: hidden;
 }
 
+/* ── Cover ── */
 .cover {
   background: var(--green-dark);
   color: #fff;
@@ -68,12 +70,14 @@ body {
   text-transform: uppercase;
 }
 
+/* ── Sections ── */
 .section {
   padding: 2rem var(--page-pad);
   border-bottom: 1px solid var(--border);
 }
 .section:last-child { border-bottom: none; }
 
+/* ── Section header strip ── */
 .section-header {
   background: var(--green-light);
   margin: 0 calc(-1 * var(--page-pad)) 1.5rem;
@@ -92,6 +96,7 @@ body {
 }
 .section-header.grey h2 { color: var(--grey-text); }
 
+/* ── Status badge ── */
 .badge {
   display: inline-block;
   padding: 0.4rem 0.9rem;
@@ -105,6 +110,7 @@ body {
 .badge.pending  { background: var(--grey-bg); color: var(--grey-text); border: 1px solid var(--border); }
 .badge.hot      { background: var(--amber-light); color: #8B4513; border: 1px solid var(--amber); }
 
+/* ── Info table ── */
 .info-table {
   width: 100%;
   border-collapse: collapse;
@@ -123,8 +129,11 @@ body {
   width: 28%;
   white-space: nowrap;
 }
-.info-table td:last-child { color: var(--text); }
+.info-table td:last-child {
+  color: var(--text);
+}
 
+/* ── Curve table ── */
 .curve-table {
   width: 100%;
   border-collapse: collapse;
@@ -138,7 +147,9 @@ body {
   text-align: left;
   font-weight: 600;
 }
-.curve-table th.amber-header { background: var(--amber); }
+.curve-table th.amber-header {
+  background: var(--amber);
+}
 .curve-table td {
   padding: 0.5rem 0.75rem;
   vertical-align: top;
@@ -149,6 +160,7 @@ body {
 .curve-table td:first-child { font-weight: 700; white-space: nowrap; }
 .curve-table td:nth-child(2) { white-space: nowrap; }
 
+/* ── Terpene table ── */
 .terpene-table {
   width: 100%;
   border-collapse: collapse;
@@ -169,6 +181,7 @@ body {
 .terpene-table tr:nth-child(even) td { background: var(--green-light); }
 .terpene-table tr:last-child td { border-bottom: none; }
 
+/* ── Swab table ── */
 .swab-table {
   width: 100%;
   border-collapse: collapse;
@@ -184,10 +197,12 @@ body {
 .swab-key.severe  { color: #8B0000; }
 .swab-key.cool    { color: #2255AA; }
 
+/* ── Result rows ── */
 .result-row { margin: 0.5rem 0; font-size: 0.92rem; }
 .result-row .label { font-weight: 700; color: var(--green-dark); }
 .result-row.amber .label { color: var(--amber); }
 
+/* ── Typography ── */
 h3 {
   font-size: 1rem;
   font-weight: 700;
@@ -212,10 +227,19 @@ p {
   background: var(--green-light);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
-.meta { font-size: 0.82rem; color: var(--grey-light); margin-top: 0.3rem; }
-.divider { border: none; border-top: 2px solid var(--green-light); margin: 1.2rem 0; }
+.meta {
+  font-size: 0.82rem;
+  color: var(--grey-light);
+  margin-top: 0.3rem;
+}
+.divider {
+  border: none;
+  border-top: 2px solid var(--green-light);
+  margin: 1.2rem 0;
+}
 .divider.amber { border-top-color: var(--amber-light); }
 
+/* ── Nav / TOC ── */
 .toc {
   padding: 1.5rem var(--page-pad);
   background: var(--green-light);
@@ -248,6 +272,7 @@ p {
 }
 .toc a:hover { background: var(--green-dark); color: #fff; }
 
+/* ── Footer ── */
 .footer {
   padding: 1.2rem var(--page-pad);
   background: var(--grey-bg);
@@ -258,6 +283,8 @@ p {
   border-top: 1px solid var(--border);
 }
 
+
+/* ── Curve chart ── */
 .curve-chart-wrap {
   background: #fff;
   border: 1px solid var(--border);
@@ -276,10 +303,24 @@ p {
   letter-spacing: 0.03em;
   color: var(--grey-text);
 }
-.curve-chart-legend span { display: flex; align-items: center; gap: 6px; }
-.legend-line { width: 22px; height: 2.5px; display: inline-block; border-radius: 2px; }
-.legend-box { width: 12px; height: 12px; display: inline-block; border-radius: 2px; }
-
+.curve-chart-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-line {
+  width: 22px;
+  height: 2.5px;
+  display: inline-block;
+  border-radius: 2px;
+}
+.legend-box {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 2px;
+}
+/* ── Mobile ── */
 @media (max-width: 600px) {
   :root { --page-pad: 1rem; }
   body { padding: 0.5rem; }
@@ -297,12 +338,109 @@ p {
         <p class="subtitle">Session Profile &amp; Calibration Log</p>
         <p class="tagline">Hash Rosin · Solventless · Cold Start Protocol</p>
     </div>
-<div class="toc"><h2>Contents</h2><ul><li><a href="#constants">Constants</a></li><li><a href="#swab">Swab Reference</a></li><li><a href="#baseline">Baseline Curve</a></li><li><a href="#wwz-profile">WW Z</a></li><li><a href="#wwz-run1">WW Z Run 1</a></li><li><a href="#cag-profile">Caramel Apple Gelato</a></li><li><a href="#cag-run1">CAG Run 1</a></li><li><a href="#cag-run2">CAG Run 2</a></li><li><a href="#oc-profile">Orange Candy</a></li><li><a href="#oc-runs12">OC Runs 1–2</a></li><li><a href="#oc-run3">OC Run 3</a></li><li><a href="#oc-run4">OC Run 4</a></li><li><a href="#oc-run5">OC Run 5</a></li></ul></div>
+<div class="toc"><h2>Contents</h2><ul><li><a href="#constants">Constants</a></li><li><a href="#swab">Swab Reference</a></li><li><a href="#baseline">Baseline Curve</a></li><li><a href="#wwz-profile">WW Z</a></li><li><a href="#wwz-run1">WW Z Run 1</a></li><li><a href="#cag-profile">Caramel Apple Gelato</a></li><li><a href="#cag-run1">CAG Run 1</a></li><li><a href="#cag-run2">CAG Run 2</a></li><li><a href="#oc-profile">Orange Candy</a></li><li><a href="#oc-runs12">OC Runs 1–2</a></li><li><a href="#oc-run3">OC Run 3</a></li><li><a href="#oc-run4">OC Run 4</a></li><li><a href="#oc-run5">OC Run 5</a></li></ul></div><div class="section" id="constants"><div class="section-header "><h2>Device &amp; Session Constants</h2></div><p class="note">These parameters apply to every session in this log unless explicitly noted otherwise.</p><table class="info-table"><tr><td>Device</td><td>Switch² (Dabby the House Rig)</td></tr><tr><td>All Material</td><td>Hash Rosin — ice water extracted, solventless. Consistency varies by jar — noted in each strain profile.</td></tr><tr><td>Insert</td><td>20mm (quartz current; sapphire profiles to be added when acquired)</td></tr><tr><td>Technique</td><td>Cold start — pre-load into cold insert before every session</td></tr><tr><td>Load Size</td><td>Rice grain (small)</td></tr><tr><td>Offset Est.</td><td>Probably small under most operating conditions. Dominant uncertainties are vaporization cooling and dynamic lag during steep ascent. At flat or slowly-ascending phases the system approaches equilibrium. Setpoints are reasonable proxies for material contact temperature.</td></tr><tr><td>Draw Style</td><td>Long, slow draws throughout session</td></tr><tr><td>Session End</td><td>Stop when vapor production drops — do not ride timer on small loads</td></tr></table><p class="note">IR reads titanium, not insert surface.</p></div><div class="section" id="swab"><div class="section-header "><h2>Swab Color Reference</h2></div><p class="note">Swab color is a qualitative directional signal within a strain. Do not compare across strains — starting material color, oxidation state, and terpene-to-cannabinoid ratio all affect residue color independently of temperature.</p><table class="swab-table">
+        <tr><td class="swab-key target">Target</td><td>Light golden / amber, slightly fluid. Clean vaporization, no significant degradation.</td></tr>
+        <tr><td class="swab-key hot">Too hot</td><td>Amber shading toward brown. Possible degradation at session tail, or darker starting material. Reduce endpoint cautiously.</td></tr>
+        <tr><td class="swab-key severe">Too hot (severe)</td><td>Dark brown or black. Likely overheated. Reduce setpoint significantly.</td></tr>
+        <tr><td class="swab-key cool">Too cool</td><td>Cloudy or white crystalline residue. Possibly THCA not fully vaporizing — interpretation uncertain. Raise setpoint cautiously.</td></tr>
+    </table></div><div class="section" id="baseline"><div class="section-header "><h2>Baseline Curve</h2></div><p class="note">Single starting curve for all hash rosin sessions with cold start technique. Strain profiles document empirical deviations from this baseline via swab results and session observations. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.</p><h3>Parameters</h3><p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p><div class="curve-chart-wrap">
+<div class="curve-chart-legend">
+  <span><span class="legend-line" style="background:#1DB954;"></span>Setpoint (°F)</span>
+  <span><span class="legend-line" style="height:0;border-top:2px dashed #4A7D9A;"></span>Terpene BPs</span>
+  <span><span class="legend-box" style="background:rgba(210,90,80,0.12);border:1px solid rgba(210,90,80,0.35);"></span>THC range</span>
+</div>
+<div style="position:relative;width:100%;height:200px;">
+<canvas id="curve_1" role="img" aria-label="Temperature curve chart">Curve from 375°F at 0s to 440°F at 65s.</canvas>
+</div>
+</div>
+<script>
+(function(){
+  var mono="'DM Mono', monospace";
+  var terps=[{y:311,l:"Pinene"},{y:334,l:"Myrcene"},{y:349,l:"Limonene"},{y:367,l:"Terpinolene"},{y:388,l:"Linalool"}];
+  new Chart(document.getElementById("curve_1"),{
+    type:"line",
+    data:{datasets:[{
+      label:"Setpoint",data:[{x:0,y:375.0},{x:15,y:378.0},{x:40,y:395.0},{x:65,y:440.0}],
+      borderColor:"#1DB954",backgroundColor:"transparent",
+      borderWidth:2,
+      pointRadius:2.7,pointStyle:"circle",
+      pointBackgroundColor:"#1DB954",pointBorderColor:"#1DB954",pointBorderWidth:0,
+      pointHoverRadius:5,pointHoverBackgroundColor:"#1DB954",pointHoverBorderColor:"#fff",pointHoverBorderWidth:1.5,
+      fill:false,tension:0,parsing:false,clip:false
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,parsing:false,
+      layout:{padding:{left:4,right:4,top:4,bottom:0}},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:"#111",borderColor:"#1DB954",borderWidth:1,
+          titleColor:"#888",bodyColor:"#1DB954",
+          titleFont:{family:mono,size:10,weight:"300"},
+          bodyFont:{family:mono,size:13,weight:"500"},
+          padding:10,cornerRadius:4,
+          callbacks:{title:function(i){return i[0].raw.x+"s"},label:function(i){return i.raw.y+"°F"}}
+        }
+      },
+      scales:{
+        x:{type:"linear",min:0,max:65,
+          title:{display:true,text:"seconds",color:"#aaa",font:{family:mono,size:10,weight:"300"}},
+          ticks:{stepSize:10,color:"#aaa",font:{family:mono,size:10}},
+          grid:{color:"rgba(0,0,0,0.05)"},border:{color:"rgba(0,0,0,0.08)"}},
+        y:{min:300,max:455.0,
+          title:{display:true,text:"°F",color:"#aaa",font:{family:mono,size:10,weight:"300"}},
+          ticks:{stepSize:25,color:"#aaa",font:{family:mono,size:10}},
+          grid:{color:"rgba(0,0,0,0.05)"},border:{color:"rgba(0,0,0,0.08)"}}
+      }
+    },
+    plugins:[{id:"ann",beforeDraw:function(c){
+      var ctx=c.ctx,ca=c.chartArea,ys=c.scales.y;
+      if(!ca)return;
+      ctx.save();
+      ctx.fillStyle="rgba(210,90,80,0.09)";
+      ctx.fillRect(ca.left,ys.getPixelForValue(428),ca.right-ca.left,ys.getPixelForValue(315)-ys.getPixelForValue(428));
+      ctx.font="400 11px "+mono;
+      var pt="THC",pp={x:6,y:3};
+      var pw=ctx.measureText(pt).width+pp.x*2,ph=17;
+      var px=ca.right-pw-6,py=ys.getPixelForValue(428)+5;
+      ctx.fillStyle="rgba(210,90,80,0.18)";
+      ctx.beginPath();ctx.roundRect(px,py,pw,ph,3);ctx.fill();
+      ctx.fillStyle="rgba(170,50,40,0.9)";
+      ctx.fillText(pt,px+pp.x,py+ph-pp.y-1);
+      [{y:311,l:"Pinene"},{y:334,l:"Myrcene"},{y:349,l:"Limonene"},{y:367,l:"Terpinolene"},{y:388,l:"Linalool"}].forEach(function(t){
+        var yp=ys.getPixelForValue(t.y);
+        if(yp<ca.top||yp>ca.bottom)return;
+        ctx.strokeStyle="#4A7D9A";ctx.lineWidth=1;ctx.setLineDash([4,4]);
+        ctx.beginPath();ctx.moveTo(ca.left,yp);ctx.lineTo(ca.right-110,yp);ctx.stroke();
+        ctx.setLineDash([]);ctx.font="400 11px "+mono;ctx.fillStyle="#555555";
+        ctx.fillText(t.l+" "+t.y+"°F",ca.right-108,yp+4);
+      });
+      ctx.restore();
+    }}]
+  });
+})();
+</script><table class="curve-table"><thead><tr><th class="">Time</th><th class="">Setpoint</th><th class="">Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open — lowest temperature point</td></tr><tr><td>15s</td><td>378°F</td><td>Flat phase — most volatile terpenes</td></tr><tr><td>40s</td><td>395°F</td><td>Mid ascent — mid-range terpenes</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint — THC completion</td></tr></tbody></table><p class="note">Terpene zone annotations are approximate orientation points based on inferred profiles — not measured targets.</p><h3>Rationale</h3><p>440°F endpoint targets complete THC vaporization — all waypoints are starting points, swab results drive adjustment.</p></div>
 
-<!-- All section content generated from Dabby_Log_Generator.py -->
-<!-- Re-run the generator to regenerate this file -->
+<div class="section" id="wwz-profile"><div class="section-header "><h2>WW Z — Strain Profile</h2><span class="badge dialed">✓ DIALED — Run 1. No further calibration required.</span></div><table class="info-table"><tr><td>Strain</td><td>WW Z (White Widow × Zkittlez lineage — inferred)</td></tr><tr><td>Consistency</td><td>Cold cure</td></tr><tr><td>Producer</td><td>Trusted grower/washer — no further info</td></tr><tr><td>Nose</td><td>Piney with sweet undertone (weak secondary signal only)</td></tr><tr><td>Status</td><td>DIALED — Run 1</td></tr></table><h3>Inferred Terpene Profile</h3><table class="terpene-table"><thead><tr><th>Terpene</th><th>Boiling Point</th><th>Character</th></tr></thead><tbody><tr><td>Caryophyllene</td><td>266°F / 130°C</td><td>Spicy — minor, inferred</td></tr><tr><td>Alpha-Pinene</td><td>311°F / 155°C</td><td>Pine — inferred dominant; weakly supported by nose</td></tr><tr><td>Myrcene</td><td>334°F / 168°C</td><td>Earthy, sweet — inferred</td></tr><tr><td>Terpinolene</td><td>367°F / 186°C</td><td>Sweet, floral — inferred (Z lineage)</td></tr><tr><td>Linalool</td><td>388°F / 198°C</td><td>Floral — inferred, minor</td></tr></tbody></table></div>
 
-<div class="footer">See GitHub repo for full rendered log — this is a placeholder for the push. Run Dabby_Log_Generator.py to regenerate.</div>
+<div class="section" id="wwz-run1"><div class="section-header "><h2>WW Z — Run 1 — May 2026</h2><span class="badge dialed">✓ DIALED — Profile locked.</span></div><h3>Curve</h3><p><strong>Mode:</strong> Custom Ascent | <strong>Hold:</strong> 65s | <strong>Rate:</strong> ~0.6°F/sec</p><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>15s</td><td>378°F</td><td>Extended flat — pinene region</td></tr><tr><td>40s</td><td>395°F</td><td>Mid ascent — myrcene region</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint</td></tr></tbody></table><h3>Results</h3><p class="result-row"><span class="label">Swab:</span> Light golden/amber. Clean.</p><p class="result-row"><span class="label">Vapor:</span> Spectacular. Full session expressed well.</p><p class="result-row"><span class="label">Verdict:</span> Dialed on first run. Profile locked. Baseline curve confirmed.</p></div>
+
+<div class="section" id="cag-profile"><div class="section-header "><h2>Caramel Apple Gelato — Strain Profile</h2><span class="badge calib">⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.</span></div><table class="info-table"><tr><td>Strain</td><td>Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)</td></tr><tr><td>Consistency</td><td>Cold cure</td></tr><tr><td>Producer</td><td>Trusted grower/washer — no further info</td></tr><tr><td>Nose</td><td>Muted — no distinct notes</td></tr><tr><td>Status</td><td>IN CALIBRATION — Run 1 complete, Run 2 pending</td></tr></table></div>
+
+<div class="section" id="cag-run1"><div class="section-header "><h2>Caramel Apple Gelato — Run 1 — May 2026</h2><span class="badge hot">⚠ TOO HOT — Endpoint reduced for Run 2.</span></div><table class="curve-table"><thead><tr><th class="amber-header">Time</th><th class="amber-header">Setpoint</th><th class="amber-header">Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>10s</td><td>380°F</td><td>Short flat</td></tr><tr><td>30s</td><td>395°F</td><td>Mid ascent</td></tr><tr><td>50s</td><td>420°F</td><td>Upper zone</td></tr><tr><td>65s</td><td>450°F</td><td>ENDPOINT TOO HOT</td></tr></tbody></table><p class="result-row amber"><span class="label">Swab:</span> Amber toward light brown.</p><p class="result-row amber"><span class="label">Diagnosis:</span> 450°F endpoint too aggressive. Reduce to 430°F, shorten hold to 55s.</p></div>
+
+<div class="section" id="cag-run2"><div class="section-header grey"><h2>Caramel Apple Gelato — Run 2 — Pending</h2><span class="badge pending">PENDING</span></div><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>10s</td><td>380°F</td><td>Short flat</td></tr><tr><td>30s</td><td>395°F</td><td>Mid ascent</td></tr><tr><td>50s</td><td>415°F</td><td>Upper zone</td></tr><tr><td>55s</td><td>430°F</td><td>Conservative endpoint</td></tr></tbody></table><p>Run 2 not yet completed. Record swab, vapor character, session observations.</p></div>
+
+<div class="section" id="oc-profile"><div class="section-header "><h2>Orange Candy — Strain Profile</h2><span class="badge calib">⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.</span></div><table class="info-table"><tr><td>Strain</td><td>Orange Candy (Philosopher Seeds: Naran J × Tropimango — unconfirmed)</td></tr><tr><td>Producer</td><td>Nikka T</td></tr><tr><td>Input</td><td>90 micron full melt bubble hash</td></tr><tr><td>Consistency</td><td>Cold cure</td></tr><tr><td>Nose</td><td>Not yet recorded</td></tr><tr><td>Status</td><td>IN CALIBRATION — Runs 1–4 complete, Run 5 complete, Run 6 pending</td></tr></table></div>
+
+<div class="section" id="oc-runs12"><div class="section-header "><h2>Orange Candy — Runs 1 &amp; 2 — May 2026</h2><span class="badge hot">⚠ TOO FLAT — Curve revised for Run 3.</span></div><p class="result-row amber"><span class="label">Result:</span> First 40s too flat. Low opening vapor density.</p><p class="result-row amber"><span class="label">Swab:</span> Not recorded.</p></div>
+
+<div class="section" id="oc-run3"><div class="section-header "><h2>Orange Candy — Run 3 — May 2026</h2><span class="badge calib">⚠ IN CALIBRATION — Close to dialed.</span></div><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>375°F</td><td>Session open</td></tr><tr><td>15s</td><td>378°F</td><td>Flat phase</td></tr><tr><td>35s</td><td>410°F</td><td>Steeper climb</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint</td></tr></tbody></table><p class="result-row"><span class="label">Swab:</span> Light golden/tan. Clean.</p><p class="result-row"><span class="label">Session:</span> Very nice. Strong effects. Opening draws wispy but flavorful.</p></div>
+
+<div class="section" id="oc-run4"><div class="section-header "><h2>Orange Candy — Run 4 — May 5, 2026</h2><span class="badge calib">⚠ IN CALIBRATION — Close to dialed.</span></div><table class="curve-table"><thead><tr><th>Time</th><th>Setpoint</th><th>Notes</th></tr></thead><tbody><tr><td>0s</td><td>380°F</td><td>Session open — raised 5°F</td></tr><tr><td>15s</td><td>390°F</td><td>Mid waypoint</td></tr><tr><td>35s</td><td>410°F</td><td>Upper mid</td></tr><tr><td>65s</td><td>440°F</td><td>Endpoint</td></tr></tbody></table><p class="result-row"><span class="label">Swab:</span> Light golden. Clean both times.</p><p class="result-row"><span class="label">Session:</span> Fine. Not noticeably different from Run 3. Run repeated twice May 5, 2026.</p><p class="result-row"><span class="label">Verdict:</span> Clean swab confirmed. Results stable.</p></div>
+
+<div class="section" id="oc-run5"><div class="section-header "><h2>Orange Candy — Run 5 — May 6, 2026</h2><span class="badge calib">⚠ IN CALIBRATION — Mixed result. Curve to be repeated as Run 6.</span></div><h3>Curve</h3><p><strong>Mode:</strong> Custom Ascent | <strong>Hold:</strong> 65s | <strong>Open:</strong> 350°F | <strong>Endpoint:</strong> 460°F</p><table class="curve-table"><thead><tr><th class="amber-header">Time</th><th class="amber-header">Setpoint</th><th class="amber-header">Notes</th></tr></thead><tbody><tr><td>0s</td><td>350°F</td><td>Session open — lower opening setpoint under exploration</td></tr><tr><td>30s</td><td>410°F</td><td>Mid ascent</td></tr><tr><td>50s</td><td>440°F</td><td>Upper zone</td></tr><tr><td>65s</td><td>460°F</td><td>Endpoint</td></tr></tbody></table><h3 class="amber">Results</h3><p class="result-row amber"><span class="label">Swab:</span> Darker than target — direction consistent with endpoint too hot.</p><p class="result-row amber"><span class="label">Session:</span> Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.</p><p class="result-row amber"><span class="label">Observation:</span> User’s hypothesis: higher temperature produced stronger effect. Logged as stated — one data point, not a confirmed finding. Confounders include session-to-session variability in tolerance, load size, and conditions.</p><p class="result-row amber"><span class="label">Next:</span> Repeat same curve as Run 6 before drawing conclusions.</p></div>
+
+<div class="footer">Document last updated: May 07, 2026 · Dabby the House Rig · Hash Rosin — Solventless — Cold Start Protocol</div>
 </div>
 </body>
 </html>
