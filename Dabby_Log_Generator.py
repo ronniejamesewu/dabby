@@ -6,7 +6,7 @@ Produces Dabby_Profile_Log.html — a mobile-responsive, screen-optimized web do
 To update: edit DATA and SECTIONS sections, then run with python3.
 """
 
-# ── PALETTE ────────────────────────────────────────────────────────────────────
+# ── PALETTE ────────────────────────────────────────────────────────────────
 
 GREEN_DARK  = "#2D5A3D"
 GREEN_MID   = "#4A7C59"
@@ -17,7 +17,7 @@ GREY_TEXT   = "#555555"
 GREY_LIGHT  = "#888888"
 GREY_BG     = "#F5F5F5"
 
-# ── CSS ────────────────────────────────────────────────────────────────────
+# ── CSS ──────────────────────────────────────────────────────────────────
 
 CSS = f"""
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -344,7 +344,7 @@ p {{
 }}
 """
 
-# ── HELPERS ──────────────────────────────────────────────────────────────────
+# ── HELPERS ────────────────────────────────────────────────────────────────
 
 def info_table(rows):
     html = '<table class="info-table">'
@@ -521,7 +521,7 @@ BASELINE_CURVE = [
 WWZ_INFO = [
     ("Strain",      "WW Z (White Widow × Zkittlez lineage — inferred)"),
     ("Consistency", "Cold cure"),
-    ("Producer",    "Quasi Farms (Michigan)"),
+    ("Producer",    "Trusted grower/washer — no further info"),
     ("Nose",        "Piney with sweet undertone (weak secondary signal only)"),
     ("Status",      "DIALED — Run 1"),
 ]
@@ -542,7 +542,7 @@ WWZ_RUN1 = [
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
     ("Consistency", "Cold cure"),
-    ("Producer",    "Quasi Farms (Michigan)"),
+    ("Producer",    "Trusted grower/washer — no further info"),
     ("Nose",        "Muted — no distinct notes (weak secondary signal, consistent with heavier terpene profile)"),
     ("Status",      "IN CALIBRATION — Run 1 complete, Run 2 pending"),
 ]
@@ -574,7 +574,7 @@ OC_INFO = [
     ("Input",       "90 micron full melt bubble hash"),
     ("Consistency", "Cold cure"),
     ("Nose",        "Not yet recorded"),
-    ("Status",      "IN CALIBRATION — Runs 1–3 complete, Run 4 pending"),
+    ("Status",      "IN CALIBRATION — Runs 1–4 complete, Run 5 complete, Run 6 pending"),
 ]
 OC_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility"),
@@ -601,6 +601,10 @@ OC_RUN4 = [
     ("35s", "410°F", "Halfway between open and endpoint"),
     ("65s", "440°F", "Endpoint — unchanged"),
 ]
+OC_RUN5 = [
+    ("0s",  "350°F", "Session open — lower opening setpoint under exploration"),
+    ("65s", "460°F", "Endpoint — intermediate waypoints not recorded; to be captured before Run 6"),
+]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
@@ -621,6 +625,7 @@ def build_html():
         ("#oc-runs12", "OC Runs 1–2"),
         ("#oc-run3", "OC Run 3"),
         ("#oc-run4", "OC Run 4"),
+        ("#oc-run5", "OC Run 5"),
     ]
     toc = '<div class="toc"><h2>Contents</h2><ul>'
     for href, label in toc_links:
@@ -724,7 +729,7 @@ def build_html():
 
     # ── Orange Candy Strain Profile
     s = f'<div class="section" id="oc-profile">'
-    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–3 complete. Run 4 pending.", "calib", "")
+    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.", "calib", "")
     s += info_table(OC_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(OC_TERPS)
@@ -759,15 +764,33 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    # ── OC Run 4 Pending
+    # ── OC Run 4
     s = f'<div class="section" id="oc-run4">'
-    s += section_header("Orange Candy — Run 4 — Pending", "PENDING — Not yet completed.", "pending", "grey")
-    s += '<h3>Proposed Curve</h3>'
+    s += section_header("Orange Candy — Run 4 — May 5, 2026", "⚠ IN CALIBRATION — Close to dialed.", "calib", "")
+    s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
-    s += '<p class="note">Opening raised 5°F to 380°F to address wispy vapor density at session open. Endpoint unchanged at 440°F. Intermediate waypoints split proportionally across the new range.</p>'
     s += curve_chart_html(OC_RUN4)
     s += curve_table(OC_RUN4)
-    s += '<p>Run 4 not yet completed. Record swab color and whether opening draws feel more substantial than Run 3. If swab remains clean and opening improves, lock profile.</p>'
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Light golden. Clean both times.")
+    s += result_row("Session:", "Fine. Not noticeably different from Run 3. Run repeated twice on May 5, 2026 — consistent results across both.")
+    s += result_row("Verdict:", "Clean swab confirmed. Results stable. Lower opening setpoint (350°F) under exploration for Run 5 as next variable to test.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── OC Run 5
+    s = f'<div class="section" id="oc-run5">'
+    s += section_header("Orange Candy — Run 5 — May 6, 2026", "⚠ IN CALIBRATION — Mixed result. Curve to be repeated as Run 6.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F</p>'
+    s += curve_chart_html(OC_RUN5)
+    s += curve_table(OC_RUN5, amber=True)
+    s += '<p class="note">⚠ Reminder: record intermediate waypoints before Run 6. Only open and endpoint are logged here.</p>'
+    s += '<h3 class="amber">Results</h3>'
+    s += result_row("Swab:", "Darker than target — direction consistent with endpoint too hot.", amber=True)
+    s += result_row("Session:", "Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.", amber=True)
+    s += result_row("Observation:", "User's hypothesis: higher temperature produced stronger effect. Logged as stated — one data point, not a confirmed finding. Confounders include session-to-session variability in tolerance, load size, and conditions.", amber=True)
+    s += result_row("Next:", "Repeat same curve as Run 6 before drawing conclusions. Record full intermediate waypoints first.", amber=True)
     s += '</div>'
     sections.append(s)
 
