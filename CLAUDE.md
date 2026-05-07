@@ -1,6 +1,6 @@
 # Dabby — Session Instructions
 
-At the start of every session, read these files from the local folder:
+At the start of every session, read these files (all are in the repo):
 - `Dabby_Handoff_Notes.md` — source of truth, read first
 - `Dabby_Methodology.md` — thermal model and calibration reasoning
 - `Dabby_Log_Generator.py` — understand current log structure before touching it
