@@ -603,7 +603,9 @@ OC_RUN4 = [
 ]
 OC_RUN5 = [
     ("0s",  "350°F", "Session open — lower opening setpoint under exploration"),
-    ("65s", "460°F", "Endpoint — intermediate waypoints not recorded; to be captured before Run 6"),
+    ("30s", "410°F", "Mid ascent"),
+    ("50s", "440°F", "Upper zone"),
+    ("65s", "460°F", "Endpoint"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -785,12 +787,11 @@ def build_html():
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F</p>'
     s += curve_chart_html(OC_RUN5)
     s += curve_table(OC_RUN5, amber=True)
-    s += '<p class="note">⚠ Reminder: record intermediate waypoints before Run 6. Only open and endpoint are logged here.</p>'
     s += '<h3 class="amber">Results</h3>'
     s += result_row("Swab:", "Darker than target — direction consistent with endpoint too hot.", amber=True)
     s += result_row("Session:", "Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.", amber=True)
     s += result_row("Observation:", "User's hypothesis: higher temperature produced stronger effect. Logged as stated — one data point, not a confirmed finding. Confounders include session-to-session variability in tolerance, load size, and conditions.", amber=True)
-    s += result_row("Next:", "Repeat same curve as Run 6 before drawing conclusions. Record full intermediate waypoints first.", amber=True)
+    s += result_row("Next:", "Repeat same curve as Run 6 before drawing conclusions.", amber=True)
     s += '</div>'
     sections.append(s)
 
