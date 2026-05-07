@@ -521,7 +521,7 @@ BASELINE_CURVE = [
 WWZ_INFO = [
     ("Strain",      "WW Z (White Widow × Zkittlez lineage — inferred)"),
     ("Consistency", "Cold cure"),
-    ("Producer",    "Trusted grower/washer — no further info"),
+    ("Producer",    "Quasi Farms (Michigan)"),
     ("Nose",        "Piney with sweet undertone (weak secondary signal only)"),
     ("Status",      "DIALED — Run 1"),
 ]
@@ -542,7 +542,7 @@ WWZ_RUN1 = [
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
     ("Consistency", "Cold cure"),
-    ("Producer",    "Trusted grower/washer — no further info"),
+    ("Producer",    "Quasi Farms (Michigan)"),
     ("Nose",        "Muted — no distinct notes (weak secondary signal, consistent with heavier terpene profile)"),
     ("Status",      "IN CALIBRATION — Run 1 complete, Run 2 pending"),
 ]
