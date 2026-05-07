@@ -613,7 +613,7 @@ HIVE1_INFO = [
     ("Consistency", "Cold cure"),
     ("Producer",    "Myxed Up (washed and pressed)"),
     ("Input",       "159–73 micron ice water hash"),
-    ("Nose",        "Not yet recorded"),
+    ("Nose",        "Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only)."),
     ("Status",      "PENDING — No runs completed"),
 ]
 HIVE1_TERPS = [
