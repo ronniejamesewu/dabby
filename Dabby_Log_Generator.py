@@ -751,7 +751,7 @@ HIVE1_RUN3 = [
     ("0s",  "380°F", "Session open — unchanged"),
     ("15s", "390°F", "Low ascent — unchanged"),
     ("35s", "410°F", "Mid ascent — unchanged"),
-    ("65s", "420°F", "Endpoint — reduced from 440°F"),
+    ("65s", "430°F", "Endpoint — reduced from 440°F"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -775,7 +775,7 @@ STRAIN_STATUS = [
     ("WW Z",                 "#wwz-profile",   "dialed", "Dialed",      "—"),
     ("Caramel Apple Gelato", "#cag-profile",   "calib",  "Calibrating", "Try 430°F endpoint"),
     ("Orange Candy",         "#oc-profile",    "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
-    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 420–425°F endpoint"),
+    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 430°F endpoint"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1015,11 +1015,11 @@ def build_html():
     s = f'<div class="section" id="hive1-run3">'
     s += section_header("The Hive #1 — Run 3 — Pending", "PENDING — Not yet completed.", "pending", "grey")
     s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 420°F (target range 420–425°F)</p>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(HIVE1_RUN3)
     s += curve_table(HIVE1_RUN3)
     s += '<h3>Results</h3>'
-    s += '<p>Run 3 not yet completed. Keep opening (380°F) and mid-climb (390°F at 15s, 410°F at 35s) unchanged. If swab is still very light and session is clean, endpoint is in range — lock curve. If swab darkens, endpoint is appropriate; assess flavor and vapor quality.</p>'
+    s += '<p>Run 3 not yet completed. Keep opening (380°F) and mid-climb (390°F at 15s, 410°F at 35s) unchanged. If swab is still very light and session is clean, endpoint is in range — lock curve. If swab darkens, endpoint is appropriate; assess flavor and effect.</p>'
     s += '</div>'
     sections.append(s)
 
