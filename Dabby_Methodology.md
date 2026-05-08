@@ -76,14 +76,15 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 **Terpene density ≠ heat sensitivity.** Terpene-dense material has more to lose from overheating but degradation physics are properties of the compounds, not their concentration. Do not conflate these.
 
 **Swab color — limits:**
-- Qualitative directional signal only. Darker = likely hotter or more degraded, but also affected by starting material color, oxidation state, terpene-to-cannabinoid ratio, and insert residue buildup.
+- Floor indicator within the normal operating range. Dark or burnt residue (amber-toward-brown or darker) is a reliable signal to reduce temperature. Within the light-golden-to-amber range, swab has too many uncontrolled variables — load size, material starting color, oxidation state, swab timing, pressure — to reliably distinguish between curve shapes or small endpoint differences.
 - Do not compare swab color across strains. Use as within-strain calibration signal only.
+- Do not over-interpret clean swabs as fine-grained efficiency data.
 
 | Swab | Interpretation |
 |---|---|
 | Light golden/amber, fluid | Target — clean vaporization |
-| Amber toward light brown | Possibly too hot at tail, or darker starting material |
-| Dark brown/black | Likely overheated |
+| Amber toward light brown | Too hot — reduce endpoint. Reliable floor signal. |
+| Dark brown/black | Severely overheated — reduce setpoint significantly. |
 | Cloudy/white crystalline | Possibly too cool (uncertain) |
 
 ---
