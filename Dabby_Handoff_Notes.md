@@ -194,6 +194,8 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Dressing up the generic cannabis terpene palette as strain-specific knowledge.** The same five or six terpenes appear across nearly all strains. Do not present inferred profiles as if they reflect meaningful strain differentiation.
 - **Proposing changes without showing them first.** For chart styling and methodology edits, always propose the change with before/after context before executing. Do not edit and present without the proposal step.
 - **Using `push_files` for routine file updates.** `push_files` passes full file content as string literals and has caused silent content loss (stripped charts, lost sections) in past sessions. In Claude Code, use git for all routine commits. `push_files` is acceptable only for temporary files on non-main branches when git checkout is impractical, and never for `index.html`.
+- **Narrating instead of proposing.** Presenting an interpretation or plan and then immediately executing is not confirmation — it is narration with extra steps. This applies to all actions: editing files, running the generator, committing, updating methodology or collaboration notes. The correct behavior is always: present the plan, ask for approval or corrections, wait for a response, then act.
+
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
 
@@ -207,7 +209,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 ## What a Good Session Looks Like
 
-- Propose before executing — especially for edits to methodology, curve data, or chart styling
+- Propose before executing — for any action (file edits, generator runs, commits, methodology updates, handoff changes), state what you are about to do and wait for explicit user confirmation before proceeding. Stating the plan and immediately acting is narrating, not proposing. Stop and wait.
 - Show before coding — render chart changes in mockup before touching the generator
 - Audit before presenting — check output against the current conversation before presenting files
 - Flag epistemic uncertainty explicitly — especially on terpene profile inferences
