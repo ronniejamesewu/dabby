@@ -255,20 +255,6 @@ p {{
 .divider.amber {{ border-top-color: var(--amber-light); }}
 
 /* ── Nav / TOC ── */
-.toc {{
-  padding: 1.5rem var(--page-pad);
-  background: var(--grey-bg);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}}
-.toc h2 {{
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--green-mid);
-  margin-bottom: 0.75rem;
-}}
 .toc ul {{
   list-style: none;
   display: flex;
@@ -798,6 +784,7 @@ def build_html():
     # ── TOC
     toc_links = [
         ("#dashboard", "Dashboard"),
+        ("#toc", "Contents"),
         ("#constants", "Constants"),
         ("#swab", "Swab Reference"),
         ("#baseline", "Baseline Curve"),
@@ -816,10 +803,11 @@ def build_html():
         ("#hive1-run2", "Hive #1 Run 2"),
         ("#hive1-run3", "Hive #1 Run 3"),
     ]
-    toc = '<div class="toc"><h2>Contents</h2><ul>'
+    toc_links_html = '<ul>'
     for href, label in toc_links:
-        toc += f'<li><a href="{href}">{label}</a></li>'
-    toc += '</ul></div>'
+        toc_links_html += f'<li><a href="{href}">{label}</a></li>'
+    toc_links_html += '</ul>'
+    toc = f'<div class="section" id="toc">{section_header("Contents")}<div class="toc">{toc_links_html}</div></div>'
 
     dash = dashboard_html()
 
