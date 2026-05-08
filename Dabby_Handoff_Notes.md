@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 7, 2026 — Session 4
+## Last updated: May 8, 2026 — Session 6
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log fetched from GitHub.
 
@@ -25,7 +25,7 @@ Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber 
 
 **Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, TOC entries, and section build code. Footer auto-timestamps on each run.
 
-**Environment note:** The user has raised the question of whether Claude Code would be a better environment for this project, given that every log update requires editing the generator and pushing both files. The main friction in the current setup is the push step — passing full file content as string literals in tool calls is error-prone at scale. Claude Code would allow direct file editing and native git operations. This is a considered option, not yet a decision.
+**Environment note:** Claude Code is the active environment as of Session 5. Direct file editing and native git operations are available.
 
 ---
 
@@ -86,9 +86,24 @@ Current spec:
 
 ## Harm Reduction Context
 
-Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein are documented degradation products of terpene thermolysis. Benzene formation begins in small amounts around 400°F and increases significantly with temperature. Studies showing alarming toxicant levels used 500–550°C (932–1022°F) — far above typical practice. At conservative setpoints (375–440°F) benzene formation is at the low end of the documented range. Benzene is a Group 1 carcinogen (IARC) linked to aplastic anemia and acute myeloid leukemia. Lower temperatures are meaningfully safer as well as more flavorful. This is a genuine harm reduction argument, not just a flavor argument.
+Primary source: Meehan-Atrash, Luo, and Strongin (2017), "Toxicant Formation in Dabbing: The Terpene Story," ACS Omega. Full text read in Session 6.
 
-**Open harm reduction question:** The user wants a future discussion on the specific harm reduction implications of 440°F vs 460°F endpoints — i.e., whether the difference is meaningful given what the ACS Omega study shows about benzene formation in that range. Flag this at the start of the next session if not yet addressed.
+**What the paper actually found.** The study measured terpene degradation products (methacrolein/MC and benzene) at four nail surface temperature ranges using a ceramic nail and BHO extract. Nail temperature was measured by IR thermography. Median nail temps (Tm) and results:
+
+| Tm | Methacrolein | Benzene |
+|---|---|---|
+| 322°C / 612°F | undetectable | undetectable |
+| 403°C / 757°F | 131 ppb | undetectable |
+| 455°C / 851°F | 157 ppb | undetectable |
+| 526°C / 979°F | 185 ppb | 15 ppb |
+
+Benzene (a Group 1 carcinogen) was only detected at the highest temperature range tested (~979°F nail surface). MC appeared at moderate temperatures but not below 612°F.
+
+**Applicability to this project.** The study used BHO (solvent-extracted), not hash rosin (solventless). The terpene degradation mechanism — terpenes → isoprene intermediate → MC and benzene — applies to any terpene-containing extract, so the finding is directionally relevant. Terpene concentrations in hash rosin differ from BHO and were not studied.
+
+**440°F vs 460°F question: resolved.** Both endpoints (~237°C) are well below the 322°C (612°F) floor of what the study tested, where nothing was detected. The distinction between these endpoints is not meaningful from a toxicant formation standpoint based on available data. The harm reduction concern at this temperature range is not terpene pyrolysis.
+
+**Actual risk profile at conservative setpoints.** The meaningful residual risks are: (1) cumulative respiratory irritation from vapor volume over time, and (2) tolerance creep. These are more relevant than thermal degradation byproducts for sessions running below 500°F.
 
 ---
 
@@ -111,7 +126,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - Caramel Apple Gelato Run 2 not yet completed.
 - Sapphire insert not yet acquired. When acquired, requires fresh calibration from scratch — do not scale from quartz curves.
 - Whether fresh press consistency justifies a different baseline curve remains an open question. Not settled.
-- Harm reduction question: what do the documented benzene formation data say specifically about the 440°F vs 460°F range? User wants this discussed in a future session.
+- Harm reduction question (440°F vs 460°F): resolved in Session 6 — see Harm Reduction Context section.
 
 **Potential log enhancements — not yet implemented, user interested:**
 - **Session date precision.** Existing run entries dated to month only. New runs should be logged with exact date. Full backfill of existing entries not yet done.
@@ -147,6 +162,7 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Pushing the handoff to the repo — no longer a failure mode.** This was reversed in Session 5. All MD files are now tracked in the repo. Push them when relevant changes are made.
 - **Passing placeholder content to `push_files`.** The `push_files` tool requires full file content passed directly as string parameters in the tool call. Do not use placeholder strings, shell variable references, or stub content. Read the file content and pass it literally.
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and push its output. Writing `index.html` content by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
+- **Fabricating specific temperature thresholds.** In Session 6, an AI instance cited "230°C / 446°F" as a benzene formation threshold from the Meehan-Atrash 2017 paper. This number does not appear in the paper. The paper's lowest tested temperature was 322°C (612°F), at which both MC and benzene were undetectable. Do not cite specific thresholds from this or any source without verifying against the source text. The harm reduction section now reflects the actual paper findings.
 
 ---
 
@@ -171,5 +187,6 @@ Specific errors made in past sessions that a new instance should avoid:
 - **May 6, 2026 — Session 1:** Initial structured handoff created. Thermal model revised (offset estimate walked back). Methodology doc updated. Chart styling overhauled (DM Mono, vivid green curve, steel blue terpene lines, THC pill label). Generator moved from project files to GitHub repo. Known failure modes, unresolved issues, and behavioral notes added.
 - **May 6, 2026 — Session 2:** Producer updated to Quasi Farms (Michigan) for WW Z and Caramel Apple Gelato in generator and log. Enhancements list: nose notes marked resolved (already on strain profiles); confidence rating (4) and load consistency note (5) removed at user request. New failure modes added: pushing handoff to repo; passing placeholder content to push_files.
 - **May 6, 2026 — Session 3:** OC Run 4 status updated (run twice May 5, light golden swabs, close to dialed). Curve design section corrected — flat tail rationale clarified, offset-closure framing removed as it overstates the timescale concern. Session logging protocol added. New failure mode added: re-applying offset reasoning to short flat tails. Opening setpoint exploration noted as active direction for OC.
-- **May 7, 2026 — Session 5:** The Hive #1 added (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron). Nose noted (very fragrant, spice consistent with caryophyllene). WW Z and CAG producer corrected to Quasi Farms (Michigan) — lost in a prior botched push recovery. All MD files pushed to repo to enable full context in mobile/cloud sessions. Prior decision against pushing handoff reversed. Output path in generator fixed from cloud path to `index.html`. Claude Code confirmed as active environment.
 - **May 7, 2026 — Session 4:** OC Run 5 logged (May 6, 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint; darker swab; harsh tail; notably stronger effect; user's hypothesis logged; curve to repeat as Run 6). OC strain status updated. Open Questions updated — stale OC curve candidate removed, Run 6 and 440°F vs 460°F harm reduction question added. Infrastructure section: critical note added on always pushing generator output, never hand-written HTML. Environment note added re Claude Code as a considered option. New failure mode added: pushing manually written index.html that stripped charts. Decisions Made: user's effect hypothesis noted as logged-not-confirmed. Harm reduction section: 440°F vs 460°F open question flagged.
+- **May 7, 2026 — Session 5:** The Hive #1 added (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron). Nose noted (very fragrant, spice consistent with caryophyllene). WW Z and CAG producer corrected to Quasi Farms (Michigan) — lost in a prior botched push recovery. All MD files pushed to repo to enable full context in mobile/cloud sessions. Prior decision against pushing handoff reversed. Output path in generator fixed from cloud path to `index.html`. Claude Code confirmed as active environment.
+- **May 8, 2026 — Session 6:** Harm reduction conversation. Read Meehan-Atrash et al. 2017 in full (pasted by user). Corrected harm reduction section — prior version stated benzene formation begins around 400°F, which is wrong; the paper found nothing detectable below 612°F nail surface temp and benzene only at ~979°F. Added failure mode: fabricating specific temperature thresholds. Closed the 440°F vs 460°F open question — both temps are well below any detected threshold, distinction is moot. Corrected header session number (was showing Session 4, should be Session 6). Corrected environment note (Claude Code is active, not a "considered option"). Changelog ordering fixed (Sessions 4 and 5 were swapped).
