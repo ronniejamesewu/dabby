@@ -67,6 +67,12 @@ This was substantially revised. The old estimate of a 15–35°F titanium-to-ins
 
 The rationale for a flat tail at endpoint is simply spending time at the target temperature, not closing a significant offset. Steeper mid-climbs move through terpene zones faster. The shape of the climb matters for when vaporization begins, not for offset concerns.
 
+**Curve shape vs. single setpoint:** Whether a multi-stage ramp provides meaningfully better results than a single sustained setpoint is an open empirical question. The Hive #1 Run 3 (steady 430°F flat hold) is the first direct test of this. The main theoretical justification for a ramp is staging volatile terpene fractions — lower opening temps may preserve more terpene vapor before degradation. The counterargument is that the window between terpene vaporization and degradation is narrow enough that the ramp may not accomplish much in practice. Swab is not a sensitive enough signal to distinguish between curve shapes within the normal operating range — subjective session character is the primary readout for this experiment.
+
+**Temperature and effect strength:** Higher temperatures vaporize a larger fraction of material in a shorter window, producing a larger bolus inhaled and a faster peak blood concentration. This is the most parsimonious explanation for the stronger effects observed at higher endpoints (OC Run 5, 460°F). CBN hypothesis rejected: CBN has ~1/10th CB1 binding affinity of THC, in-session CBN formation is limited by oxygen availability, and a higher CBN fraction would dilute rather than amplify the effect. Rate of delivery matters, not just total dose — the same material at lower temps over a longer curve could deliver similar total cannabinoids but with a slower, smoother absorption profile.
+
+**Swab as floor indicator:** Swab color is a floor indicator within the normal operating range, not a fine-grained calibration metric. Dark or burnt residue (amber-toward-brown or darker) is a reliable signal to reduce temperature. Within the light-golden-to-amber range, swab has too many uncontrolled variables — load size, material starting color, oxidation state, swab timing, pressure — to reliably distinguish between curve shapes or small endpoint differences. Do not over-interpret swab color within the clean range.
+
 **Baseline philosophy:** Single baseline curve for all hash rosin with cold start. Strain-specific calibration happens empirically via swab results, not terpene-profile reasoning. Do not design different starting curves based on strain name, consistency, or inferred terpene profile without empirical justification.
 
 **Mode:** Custom Ascent preferred over Valley. Valley's initial dip is redundant with cold start — material is already at its lowest temperature at session open.
@@ -111,7 +117,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Orange Candy** (Nikka T, 90 micron full melt) — In calibration. Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs, not noticeably different from Run 3. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint. Darker swab, last portion harsh. Effect notably stronger than prior runs — user's hypothesis is that higher temperature produced stronger effect; logged as one data point, not a confirmed finding, confounders acknowledged. Curve to be repeated as Run 6 before drawing conclusions.
 
-**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 complete (both May 8, 2026): 380°F open curve (380→390→410→440°F, 65s hold). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Both runs clean — endpoint may be higher than needed. Run 3 pending: 430°F endpoint, opening and mid-climb unchanged.
+**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 complete (both May 8, 2026): 380°F open curve (380→390→410→440°F, 65s hold). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Both runs clean — endpoint may be higher than needed. Run 3 pending: steady 430°F flat hold (no ramp) — testing whether curve shape meaningfully affects result vs. a single sustained setpoint.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -119,7 +125,8 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Open Questions
 
-- The Hive #1 Run 3 pending — 430°F endpoint, keep 380°F open and mid-climb unchanged.
+- The Hive #1 Run 3 pending — steady 430°F flat hold (no ramp). Experiment: does curve shape affect the result, or does a single sustained setpoint achieve similar outcome?
+- The Hive #1 Run 4 (or Run 3 follow-up) — repeat the Run 1–2 ramp (380→390→410°F) but with 430°F endpoint instead of 440°F. This is a separate variable from the steady-hold experiment and should also be run before drawing conclusions.
 - Blueberry 36 first sessions not yet run.
 - Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
 - Caramel Apple Gelato Run 2 not yet completed.
@@ -162,7 +169,7 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 
 - 1D thermal resistance model is a dead end. Do not rebuild.
 - The 15–35°F offset estimate is retired. Current position: offset probably small.
-- Swab is the calibration ground truth, not terpene profile reasoning.
+- Swab is the calibration ground truth in the sense that it flags overheating — dark/burnt residue means too hot. Within the light-golden-to-amber range, swab has too many uncontrolled variables to distinguish between curve shapes or small endpoint differences. Do not over-interpret clean swabs as fine-grained efficiency data.
 - Quartz-to-sapphire curve scaling does not work.
 - Valley mode is not appropriate for cold start sessions.
 - Consistency type alone does not justify a different baseline curve.
@@ -211,6 +218,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 8, 2026 — Session 8:** The Hive #1 Run 3 redesigned as steady 430°F flat hold (no ramp) — testing whether curve shape meaningfully affects result vs. single sustained setpoint. Swab floor indicator framing added to Decisions Made and Curve Design Key Insights: swab flags overheating reliably, but within the clean range it has too many uncontrolled variables to distinguish curve shapes. Temperature-effect bolus hypothesis added as working model: higher temps → larger bolus → faster peak blood concentration → stronger effect; CBN hypothesis rejected. Methodology and generator updated to reflect Run 3 curve change.
 
 - **May 8, 2026 — Session 7:** Dashboard designed (mockup iterations 1–10 on gh-pages) and implemented in generator (PR #4, merged). Design decisions locked: no gold border, 🥇 medal emoji right of strain name, strain names as green profile links, compact badge-sm in table, Contents section as full section, "Contents" pill removed from Contents TOC. Stats computed at runtime. Hive #1 Run 3 endpoint set to 430°F (revised from 420°F during session). Terpene reference section still pending. New failure mode added: not checking main before rebase. dashboard_mockup.html on gh-pages is now a historical artifact.
 - **May 8, 2026 — Session 6:** The Hive #1 Runs 1–2 logged (May 8, 2026). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Run 3 direction: try 430°F endpoint, keep opening and mid-climb unchanged. WW Z Run 1 date confirmed as May 2, 2026. PR preview workflow set up — `.github/workflows/deploy.yml` and `preview.yml` added; each PR now gets a live preview URL; merging to main auto-deploys. Harm reduction open question closed. Infrastructure section rewritten to reflect Claude Code as active environment and git as correct publish path. `push_files` for routine commits deprecated; failure mode added. Dashboard in active mockup iteration — design decisions captured. Visual overhaul of log flagged as future agenda item. Swab protocol clarified. Blueberry 36 phenotypes confirmed as separate log entries.

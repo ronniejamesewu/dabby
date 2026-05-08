@@ -749,10 +749,8 @@ HIVE1_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
 ]
 HIVE1_RUN3 = [
-    ("0s",  "380°F", "Session open — unchanged"),
-    ("15s", "390°F", "Low ascent — unchanged"),
-    ("35s", "410°F", "Mid ascent — unchanged"),
-    ("65s", "430°F", "Endpoint — reduced from 440°F"),
+    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
+    ("65s", "430°F", "Endpoint"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -776,7 +774,7 @@ STRAIN_STATUS = [
     ("WW Z",                 "#wwz-profile",   "dialed", "Dialed",      "—"),
     ("Caramel Apple Gelato", "#cag-profile",   "calib",  "Calibrating", "Try 430°F endpoint"),
     ("Orange Candy",         "#oc-profile",    "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
-    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 430°F endpoint"),
+    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Run 3: steady 430°F flat hold"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1008,7 +1006,7 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Very light — cleaner than Run 1.")
     s += result_row("Session:", "Really nice. Consistent with Run 1.")
-    s += result_row("Verdict:", "Two clean runs, consistent character, swab lighter on repeat. 440°F endpoint may be higher than needed — material is fully expressing before the endpoint. Try a lower endpoint on Run 3 (e.g., 420–425°F), keeping opening and mid-climb unchanged.")
+    s += result_row("Verdict:", "Two clean runs, consistent character, swab lighter on repeat. 440°F endpoint may be higher than needed — material is fully expressing before the endpoint. Run 3: trying steady 430°F flat hold (no ramp) to test whether curve shape affects the result.")
     s += '</div>'
     sections.append(s)
 
@@ -1016,11 +1014,13 @@ def build_html():
     s = f'<div class="section" id="hive1-run3">'
     s += section_header("The Hive #1 — Run 3 — Pending", "PENDING — Not yet completed.", "pending", "grey")
     s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
+    s += '<p class="note">Curve shape experiment: steady flat hold at 430°F from session open, rather than the ramped curve used in Runs 1–2. Testing whether a multi-stage ramp produces meaningfully different results from a single sustained setpoint. Swab is a floor indicator only within the normal range — session character is the primary readout.</p>'
     s += curve_chart_html(HIVE1_RUN3)
     s += curve_table(HIVE1_RUN3)
     s += '<h3>Results</h3>'
-    s += '<p>Run 3 not yet completed. Keep opening (380°F) and mid-climb (390°F at 15s, 410°F at 35s) unchanged. If swab is still very light and session is clean, endpoint is in range — lock curve. If swab darkens, endpoint is appropriate; assess flavor and effect.</p>'
+    s += '<p>Run 3 not yet completed. Record swab color and session character. Compare subjective experience and any harshness against Runs 1–2.</p>'
+    s += '<p class="note">Also planned: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint — a separate variable from this steady-hold experiment. Both runs are needed before drawing conclusions about curve shape vs. endpoint temperature.</p>'
     s += '</div>'
     sections.append(s)
 
