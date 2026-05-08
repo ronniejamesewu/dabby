@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from datetime import datetime
+from datetime import datetime, date
 """
 Dabby the House Rig — Session Profile & Calibration Log Generator
 Produces Dabby_Profile_Log.html — a mobile-responsive, screen-optimized web document.
@@ -124,6 +124,7 @@ body {{
 .badge.calib    {{ background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber); }}
 .badge.pending  {{ background: var(--grey-bg); color: var(--grey-text); border: 1px solid var(--border); }}
 .badge.hot      {{ background: var(--amber-light); color: #8B4513; border: 1px solid var(--amber); }}
+.badge-sm {{ padding: 0.2rem 0.6rem; font-size: 0.75rem; letter-spacing: 0; }}
 
 /* ── Info table ── */
 .info-table {{
@@ -255,19 +256,6 @@ p {{
 .divider.amber {{ border-top-color: var(--amber-light); }}
 
 /* ── Nav / TOC ── */
-.toc {{
-  padding: 1.5rem var(--page-pad);
-  background: var(--green-light);
-  border-bottom: 1px solid var(--border);
-}}
-.toc h2 {{
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--green-mid);
-  margin-bottom: 0.75rem;
-}}
 .toc ul {{
   list-style: none;
   display: flex;
@@ -335,12 +323,74 @@ p {{
   display: inline-block;
   border-radius: 2px;
 }}
+/* ── Dashboard ── */
+.stats-grid {{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}}
+.stat-card {{
+  background: var(--green-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-top: 3px solid #ccc;
+  padding: 0.9rem 0.75rem 0.75rem;
+  text-align: center;
+}}
+.stat-card.c1 {{ border-top-color: #1DB954; }}
+.stat-card.c2 {{ border-top-color: #4A7D9A; }}
+.stat-card.c3 {{ border-top-color: {AMBER}; }}
+.stat-card.c4 {{ border-top-color: {GREEN_MID}; }}
+.stat-value {{
+  font-family: 'DM Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--green-dark);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}}
+.stat-label {{
+  font-size: 0.78rem;
+  color: var(--grey-text);
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}}
+.dash-strain-table {{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}}
+.dash-strain-table th {{
+  background: var(--green-dark);
+  color: #fff;
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+}}
+.dash-strain-table th.center {{ text-align: center; }}
+.dash-strain-table td {{
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}}
+.dash-strain-table tr:last-child td {{ border-bottom: none; }}
+.dash-strain-table tr:nth-child(even) td {{ background: var(--green-light); }}
+.dash-strain-table td:first-child {{ font-weight: 600; }}
+.dash-strain-table td.center {{ text-align: center; }}
+.next-text {{ color: var(--grey-text); font-size: 0.85rem; }}
+.strain-link {{ color: var(--green-dark); text-decoration: none; }}
+.strain-link:hover {{ text-decoration: underline; }}
+
 /* ── Mobile ── */
 @media (max-width: 600px) {{
   :root {{ --page-pad: 1rem; }}
   body {{ padding: 0.5rem; }}
   .info-table td:first-child {{ width: 35%; white-space: normal; }}
   .toc ul {{ flex-direction: column; }}
+  .stats-grid {{ grid-template-columns: repeat(2, 1fr); }}
 }}
 """
 
@@ -381,6 +431,68 @@ def section_header(title, status=None, badge_class=None, header_class=""):
 def result_row(label, value, amber=False):
     cls = "result-row amber" if amber else "result-row"
     return f'<p class="{cls}"><span class="label">{label}</span> {value}</p>'
+
+def dashboard_html():
+    today = date.today()
+    days = (today - FIRST_RUN_DATE).days + 1
+
+    opens, endpoints, temp_sec, run_counts = [], [], {}, {}
+    for strain, wps in COMPLETED_RUNS:
+        pts = [(int(t.replace('s', '')), float(v.replace('°F', ''))) for t, v, _ in wps]
+        opens.append(pts[0][1])
+        endpoints.append(pts[-1][1])
+        run_counts[strain] = run_counts.get(strain, 0) + 1
+        for i in range(len(pts) - 1):
+            t1, v1 = pts[i]; t2, v2 = pts[i + 1]
+            dt = t2 - t1
+            for s in range(dt):
+                bucket = round((v1 + (v2 - v1) * s / dt) / 5) * 5
+                temp_sec[bucket] = temp_sec.get(bucket, 0) + 1
+
+    total    = len(COMPLETED_RUNS)
+    avg_open = round(sum(opens) / total)
+    avg_end  = round(sum(endpoints) / total)
+    hot_temp = max(temp_sec, key=temp_sec.get)
+
+    sorted_strains = sorted(
+        [(s, a, bc, bt, nt) for s, a, bc, bt, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
+        key=lambda x: run_counts[x[0]], reverse=True
+    )
+
+    cards = (
+        f'<div class="stats-grid">'
+        f'<div class="stat-card c1"><div class="stat-value">{total}</div><div class="stat-label">runs over {days} days</div></div>'
+        f'<div class="stat-card c2"><div class="stat-value">{avg_open}°</div><div class="stat-label">avg open</div></div>'
+        f'<div class="stat-card c3"><div class="stat-value">{avg_end}°</div><div class="stat-label">avg endpoint</div></div>'
+        f'<div class="stat-card c4"><div class="stat-value">{hot_temp}°</div><div class="stat-label">most time spent</div></div>'
+        f'</div>'
+    )
+
+    rows = ''
+    for i, (strain, anchor, bc, bt, nt) in enumerate(sorted_strains):
+        medal = ' 🥇' if i == 0 else ''
+        rows += (
+            f'<tr>'
+            f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
+            f'<td class="center">{run_counts[strain]}</td>'
+            f'<td class="center"><span class="badge badge-sm {bc}">{bt}</span></td>'
+            f'<td class="next-text">{nt}</td>'
+            f'</tr>'
+        )
+
+    table = (
+        f'<table class="dash-strain-table">'
+        f'<thead><tr><th>Strain</th><th class="center">Runs</th><th class="center">Status</th><th>Next</th></tr></thead>'
+        f'<tbody>{rows}</tbody>'
+        f'</table>'
+    )
+
+    s = '<div class="section" id="dashboard">'
+    s += section_header("Dashboard")
+    s += cards
+    s += table
+    s += '</div>'
+    return s
 
 
 # ── CHART ────────────────────────────────────────────────────────────────────
@@ -636,6 +748,36 @@ HIVE1_TERPS = [
     ("Terpinolene",   "367°F / 186°C", "Sweet, floral — inferred (Papaya lineage)"),
     ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
 ]
+HIVE1_RUN3 = [
+    ("0s",  "380°F", "Session open — unchanged"),
+    ("15s", "390°F", "Low ascent — unchanged"),
+    ("35s", "410°F", "Mid ascent — unchanged"),
+    ("65s", "430°F", "Endpoint — reduced from 440°F"),
+]
+
+# ── DASHBOARD DATA ────────────────────────────────────────────────────────────
+
+FIRST_RUN_DATE = date(2026, 5, 2)
+
+COMPLETED_RUNS = [
+    ("WW Z",                 WWZ_RUN1),
+    ("Caramel Apple Gelato", CAG_RUN1),
+    ("Orange Candy",         OC_RUNS12),
+    ("Orange Candy",         OC_RUNS12),
+    ("Orange Candy",         OC_RUN3),
+    ("Orange Candy",         OC_RUN4),
+    ("Orange Candy",         OC_RUN5),
+    ("The Hive #1",          HIVE1_RUN1),
+    ("The Hive #1",          HIVE1_RUN2),
+]
+
+STRAIN_STATUS = [
+    # (name, profile_anchor, badge_class, badge_text, next_text)
+    ("WW Z",                 "#wwz-profile",   "dialed", "Dialed",      "—"),
+    ("Caramel Apple Gelato", "#cag-profile",   "calib",  "Calibrating", "Try 430°F endpoint"),
+    ("Orange Candy",         "#oc-profile",    "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
+    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 430°F endpoint"),
+]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
@@ -644,6 +786,7 @@ def build_html():
 
     # ── TOC
     toc_links = [
+        ("#dashboard", "Dashboard"),
         ("#constants", "Constants"),
         ("#swab", "Swab Reference"),
         ("#baseline", "Baseline Curve"),
@@ -660,11 +803,15 @@ def build_html():
         ("#hive1-profile", "The Hive #1"),
         ("#hive1-run1", "Hive #1 Run 1"),
         ("#hive1-run2", "Hive #1 Run 2"),
+        ("#hive1-run3", "Hive #1 Run 3"),
     ]
-    toc = '<div class="toc"><h2>Contents</h2><ul>'
+    toc_links_html = '<ul>'
     for href, label in toc_links:
-        toc += f'<li><a href="{href}">{label}</a></li>'
-    toc += '</ul></div>'
+        toc_links_html += f'<li><a href="{href}">{label}</a></li>'
+    toc_links_html += '</ul>'
+    toc = f'<div class="section" id="toc">{section_header("Contents")}<div class="toc">{toc_links_html}</div></div>'
+
+    dash = dashboard_html()
 
     # ── Device & Session Constants
     s = f'<div class="section" id="constants">'
@@ -865,8 +1012,20 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    # ── The Hive #1 Run 3 Pending
+    s = f'<div class="section" id="hive1-run3">'
+    s += section_header("The Hive #1 — Run 3 — Pending", "PENDING — Not yet completed.", "pending", "grey")
+    s += '<h3>Proposed Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    s += curve_chart_html(HIVE1_RUN3)
+    s += curve_table(HIVE1_RUN3)
+    s += '<h3>Results</h3>'
+    s += '<p>Run 3 not yet completed. Keep opening (380°F) and mid-climb (390°F at 15s, 410°F at 35s) unchanged. If swab is still very light and session is clean, endpoint is in range — lock curve. If swab darkens, endpoint is appropriate; assess flavor and effect.</p>'
+    s += '</div>'
+    sections.append(s)
+
     # ── Assemble
-    body = toc + ''.join(sections)
+    body = dash + toc + ''.join(sections)
     body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>'
 
     cover = '''<div class="cover">
