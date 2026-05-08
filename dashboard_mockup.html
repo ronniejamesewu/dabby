@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Mockup 3</title>
+<title>Dashboard Mockup 4</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,6 +98,14 @@ body {
 .strain-table tr:nth-child(even) td { background: #F0F7F2; }
 .strain-table td:first-child { font-weight: 600; }
 
+.strain-table tr.leader td {
+  background: #F0F7F2;
+  border-left: 3px solid #1DB954;
+}
+.strain-table tr.leader td:first-child {
+  padding-left: calc(0.75rem - 3px);
+}
+
 .badge {
   display: inline-block;
   padding: 0.2rem 0.6rem;
@@ -156,6 +164,16 @@ body {
         <tr><th>Strain</th><th>Runs</th><th>Status</th><th>Next</th></tr>
       </thead>
       <tbody>
+        <tr class="leader">
+          <td>Orange Candy</td><td>5</td>
+          <td><span class="badge calib">Calibrating</span></td>
+          <td class="next-text">Repeat Run 5 curve to confirm</td>
+        </tr>
+        <tr>
+          <td>The Hive #1</td><td>2</td>
+          <td><span class="badge calib">Calibrating</span></td>
+          <td class="next-text">Try 420–425°F endpoint</td>
+        </tr>
         <tr>
           <td>WW Z</td><td>1</td>
           <td><span class="badge dialed">Dialed</span></td>
@@ -164,17 +182,7 @@ body {
         <tr>
           <td>Caramel Apple Gelato</td><td>1</td>
           <td><span class="badge calib">Calibrating</span></td>
-          <td class="next-text">Run 2 — try 430°F endpoint</td>
-        </tr>
-        <tr>
-          <td>Orange Candy</td><td>5</td>
-          <td><span class="badge calib">Calibrating</span></td>
-          <td class="next-text">Run 6 — repeat Run 5 curve to confirm</td>
-        </tr>
-        <tr>
-          <td>The Hive #1</td><td>2</td>
-          <td><span class="badge calib">Calibrating</span></td>
-          <td class="next-text">Run 3 — try 420–425°F endpoint</td>
+          <td class="next-text">Try 430°F endpoint</td>
         </tr>
       </tbody>
     </table>
