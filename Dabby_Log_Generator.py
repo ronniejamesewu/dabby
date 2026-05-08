@@ -1020,6 +1020,7 @@ def build_html():
     s += curve_table(HIVE1_RUN3)
     s += '<h3>Results</h3>'
     s += '<p>Run 3 not yet completed. Record swab color and session character. Compare subjective experience and any harshness against Runs 1–2.</p>'
+    s += '<p class="note">Also planned: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint — a separate variable from this steady-hold experiment. Both runs are needed before drawing conclusions about curve shape vs. endpoint temperature.</p>'
     s += '</div>'
     sections.append(s)
 

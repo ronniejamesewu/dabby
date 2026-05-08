@@ -126,6 +126,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 ## Open Questions
 
 - The Hive #1 Run 3 pending — steady 430°F flat hold (no ramp). Experiment: does curve shape affect the result, or does a single sustained setpoint achieve similar outcome?
+- The Hive #1 Run 4 (or Run 3 follow-up) — repeat the Run 1–2 ramp (380→390→410°F) but with 430°F endpoint instead of 440°F. This is a separate variable from the steady-hold experiment and should also be run before drawing conclusions.
 - Blueberry 36 first sessions not yet run.
 - Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
 - Caramel Apple Gelato Run 2 not yet completed.
