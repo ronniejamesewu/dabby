@@ -205,6 +205,7 @@ Specific errors made in past sessions that a new instance should avoid:
 - Flag epistemic uncertainty explicitly — especially on terpene profile inferences
 - Update the handoff at session end when meaningful changes were made
 - Use git for all commits and pushes — not push_files
+- After merging any PR, run `git pull origin main` before ending the session — ensures the working directory is current before the next session opens
 
 ---
 
