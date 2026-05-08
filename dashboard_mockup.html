@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Mockup</title>
+<title>Dashboard Mockup 2</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,7 +22,6 @@ body {
   overflow: hidden;
 }
 
-/* Cover */
 .cover {
   background: #2D5A3D;
   color: #fff;
@@ -33,7 +32,6 @@ body {
 .cover .subtitle { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 0.4rem; }
 .cover .tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.05em; }
 
-/* Dashboard section */
 .section { padding: 2rem 2rem; border-bottom: 1px solid #CCCCCC; }
 .section-header {
   background: #F0F7F2;
@@ -41,9 +39,9 @@ body {
   padding: 1rem 2rem;
   border-bottom: 3px solid #4A7C59;
 }
-.section-header h2 { font-size: clamp(1.1rem,3vw,1.4rem); font-weight: 700; color: #2D5A3D; }
+.section-header h2 { font-size: clamp(1.1rem,3vw,1.4rem); font-weight: 700; color: #2D5A3D; margin-bottom: 0.2rem; }
+.section-header .since { font-size: 0.78rem; color: #4A7C59; font-family: 'DM Mono', monospace; font-weight: 400; letter-spacing: 0.03em; }
 
-/* Stats row */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -54,9 +52,15 @@ body {
   background: #F0F7F2;
   border: 1px solid #CCCCCC;
   border-radius: 6px;
+  border-top: 3px solid #ccc;
   padding: 0.9rem 0.75rem 0.75rem;
   text-align: center;
 }
+.stat-card.c1 { border-top-color: #1DB954; }
+.stat-card.c2 { border-top-color: #4A7D9A; }
+.stat-card.c3 { border-top-color: #B8860B; }
+.stat-card.c4 { border-top-color: #4A7C59; }
+
 .stat-value {
   font-family: 'DM Mono', monospace;
   font-size: 1.6rem;
@@ -66,15 +70,14 @@ body {
   margin-bottom: 0.35rem;
 }
 .stat-label {
-  font-size: 0.72rem;
-  color: #888888;
+  font-size: 0.78rem;
+  color: #555555;
   font-family: 'DM Mono', monospace;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.03em;
   line-height: 1.3;
 }
 
-/* Strain table */
 .strain-table {
   width: 100%;
   border-collapse: collapse;
@@ -104,8 +107,8 @@ body {
   font-weight: 600;
   white-space: nowrap;
 }
-.badge.dialed   { background: #2D5A3D; color: #fff; }
-.badge.calib    { background: #FFF8E7; color: #B8860B; border: 1px solid #B8860B; }
+.badge.dialed { background: #2D5A3D; color: #fff; }
+.badge.calib  { background: #FFF8E7; color: #B8860B; border: 1px solid #B8860B; }
 
 .next-text { color: #555555; font-size: 0.85rem; }
 
@@ -126,22 +129,25 @@ body {
   </div>
 
   <div class="section">
-    <div class="section-header"><h2>Dashboard</h2></div>
+    <div class="section-header">
+      <h2>Dashboard</h2>
+      <span class="since">since May 2, 2026</span>
+    </div>
 
     <div class="stats-grid">
-      <div class="stat-card">
+      <div class="stat-card c1">
         <div class="stat-value">9</div>
         <div class="stat-label">total runs</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card c2">
         <div class="stat-value">374°</div>
         <div class="stat-label">avg open</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card c3">
         <div class="stat-value">446°</div>
         <div class="stat-label">avg endpoint</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card c4">
         <div class="stat-value">410°</div>
         <div class="stat-label">most time spent</div>
       </div>
@@ -149,35 +155,26 @@ body {
 
     <table class="strain-table">
       <thead>
-        <tr>
-          <th>Strain</th>
-          <th>Runs</th>
-          <th>Status</th>
-          <th>Next</th>
-        </tr>
+        <tr><th>Strain</th><th>Runs</th><th>Status</th><th>Next</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>WW Z</td>
-          <td>1</td>
+          <td>WW Z</td><td>1</td>
           <td><span class="badge dialed">Dialed</span></td>
           <td class="next-text">—</td>
         </tr>
         <tr>
-          <td>Caramel Apple Gelato</td>
-          <td>1</td>
+          <td>Caramel Apple Gelato</td><td>1</td>
           <td><span class="badge calib">Calibrating</span></td>
           <td class="next-text">Run 2 — try 430°F endpoint</td>
         </tr>
         <tr>
-          <td>Orange Candy</td>
-          <td>5</td>
+          <td>Orange Candy</td><td>5</td>
           <td><span class="badge calib">Calibrating</span></td>
           <td class="next-text">Run 6 — repeat Run 5 curve to confirm</td>
         </tr>
         <tr>
-          <td>The Hive #1</td>
-          <td>2</td>
+          <td>The Hive #1</td><td>2</td>
           <td><span class="badge calib">Calibrating</span></td>
           <td class="next-text">Run 3 — try 420–425°F endpoint</td>
         </tr>
