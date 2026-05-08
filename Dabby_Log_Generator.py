@@ -257,7 +257,8 @@ p {{
 /* ── Nav / TOC ── */
 .toc {{
   padding: 1.5rem var(--page-pad);
-  background: var(--green-light);
+  background: var(--grey-bg);
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }}
 .toc h2 {{
