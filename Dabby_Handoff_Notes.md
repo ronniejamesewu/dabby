@@ -102,7 +102,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Orange Candy** (Nikka T, 90 micron full melt) — In calibration. Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs, not noticeably different from Run 3. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint. Darker swab, last portion harsh. Effect notably stronger than prior runs — user's hypothesis is that higher temperature produced stronger effect; logged as one data point, not a confirmed finding, confounders acknowledged. Curve to be repeated as Run 6 before drawing conclusions.
 
-**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Run 1 complete (May 8, 2026): 380°F open curve (380→390→410→440°F, 65s hold), light golden swab, nice flavors on the way up, heavy indica effect. Repeat as Run 2 to confirm before locking.
+**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 complete (both May 8, 2026): 380°F open curve (380→390→410→440°F, 65s hold). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Both runs clean — endpoint may be higher than needed. Run 3: try lower endpoint (420–425°F), keep opening and mid-climb unchanged.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -110,7 +110,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Open Questions
 
-- The Hive #1 Run 2 pending — repeat Run 1 curve to confirm before locking.
+- The Hive #1 Run 3 pending — try lower endpoint (420–425°F), keep 380°F open and mid-climb unchanged.
 - Blueberry 36 first sessions not yet run.
 - Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
 - Caramel Apple Gelato Run 2 not yet completed.
@@ -173,7 +173,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 ## Changelog
 
-- **May 8, 2026 — Session 6:** The Hive #1 Run 1 logged (May 8, 2026 — 380°F open curve, light golden swab, nice flavors, heavy indica effect; repeat as Run 2 before locking). Strain status updated from Pending to In Calibration. Swab protocol clarified in Session Logging Protocol: swab is always taken as part of insert cleaning; "not recorded" means color not noted, not that no swab was taken.
+- **May 8, 2026 — Session 6:** The Hive #1 Runs 1–2 logged (both May 8, 2026). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Both clean — endpoint likely higher than needed. Run 3 direction: try 420–425°F endpoint, keep opening and mid-climb unchanged. Swab protocol clarified: swab is always taken as insert-cleaning step; "not recorded" means color not noted.
 - **May 6, 2026 — Session 1:** Initial structured handoff created. Thermal model revised (offset estimate walked back). Methodology doc updated. Chart styling overhauled (DM Mono, vivid green curve, steel blue terpene lines, THC pill label). Generator moved from project files to GitHub repo. Known failure modes, unresolved issues, and behavioral notes added.
 - **May 6, 2026 — Session 2:** Producer updated to Quasi Farms (Michigan) for WW Z and Caramel Apple Gelato in generator and log. Enhancements list: nose notes marked resolved (already on strain profiles); confidence rating (4) and load consistency note (5) removed at user request. New failure modes added: pushing handoff to repo; passing placeholder content to push_files.
 - **May 6, 2026 — Session 3:** OC Run 4 status updated (run twice May 5, light golden swabs, close to dialed). Curve design section corrected — flat tail rationale clarified, offset-closure framing removed as it overstates the timescale concern. Session logging protocol added. New failure mode added: re-applying offset reasoning to short flat tails. Opening setpoint exploration noted as active direction for OC.

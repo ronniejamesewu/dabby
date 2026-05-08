@@ -614,7 +614,7 @@ HIVE1_INFO = [
     ("Producer",    "Myxed Up (washed and pressed)"),
     ("Input",       "159–73 micron ice water hash"),
     ("Nose",        "Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only)."),
-    ("Status",      "IN CALIBRATION — Run 1 complete, Run 2 pending"),
+    ("Status",      "IN CALIBRATION — Runs 1–2 complete, Run 3 pending"),
 ]
 
 HIVE1_RUN1 = [
@@ -622,6 +622,12 @@ HIVE1_RUN1 = [
     ("15s", "390°F", "Early ascent"),
     ("35s", "410°F", "Mid ascent"),
     ("65s", "440°F", "Endpoint"),
+]
+HIVE1_RUN2 = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("35s", "410°F", "Mid ascent"),
+    ("65s", "440°F", "Endpoint — repeated from Run 1"),
 ]
 HIVE1_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred secondary (both parents)"),
@@ -653,6 +659,7 @@ def build_html():
         ("#oc-run5", "OC Run 5"),
         ("#hive1-profile", "The Hive #1"),
         ("#hive1-run1", "Hive #1 Run 1"),
+        ("#hive1-run2", "Hive #1 Run 2"),
     ]
     toc = '<div class="toc"><h2>Contents</h2><ul>'
     for href, label in toc_links:
@@ -822,7 +829,7 @@ def build_html():
 
     # ── The Hive #1 Strain Profile
     s = f'<div class="section" id="hive1-profile">'
-    s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
+    s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–2 complete. Run 3 pending.", "calib", "")
     s += info_table(HIVE1_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios and minor terpenes are not inferable from genetics alone — these are orientation points drawn from the generic cannabis palette, not strain-specific measurements. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -840,7 +847,21 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Light golden — clean. No darkening.")
     s += result_row("Session:", "Nice flavors on the way up through the arc. Heavy indica effect.")
-    s += result_row("Verdict:", "Clean swab on first run — curve appears well-matched to this material. Repeat as Run 2 before locking.")
+    s += result_row("Verdict:", "Clean swab on first run — curve appears well-matched to this material. Repeated as Run 2 to confirm.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── The Hive #1 Run 2
+    s = f'<div class="section" id="hive1-run2">'
+    s += section_header("The Hive #1 — Run 2 — May 8, 2026", "⚠ IN CALIBRATION — Consistent result. Lower endpoint to explore.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F &nbsp;|&nbsp; Identical to Run 1.</p>'
+    s += curve_chart_html(HIVE1_RUN2)
+    s += curve_table(HIVE1_RUN2)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Very light — cleaner than Run 1.")
+    s += result_row("Session:", "Really nice. Consistent with Run 1.")
+    s += result_row("Verdict:", "Two clean runs, consistent character, swab lighter on repeat. 440°F endpoint may be higher than needed — material is fully expressing before the endpoint. Try a lower endpoint on Run 3 (e.g., 420–425°F), keeping opening and mid-climb unchanged.")
     s += '</div>'
     sections.append(s)
 
