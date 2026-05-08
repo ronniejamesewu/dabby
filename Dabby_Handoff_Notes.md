@@ -209,7 +209,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 ## What a Good Session Looks Like
 
-- Propose before executing — for any action (file edits, generator runs, commits, methodology updates, handoff changes), state what you are about to do and wait for explicit user confirmation before proceeding. Stating the plan and immediately acting is narrating, not proposing. Stop and wait.
+- Propose before executing — for any substantive action (file edits, curve changes, methodology updates, log restructuring), state what you are about to do and wait for explicit user confirmation before proceeding. Stating the plan and immediately acting is narrating, not proposing. Stop and wait. Mechanical steps that follow from an already-approved decision — running the generator, committing, pushing, opening PRs — do not need a separate confirmation.
 - Show before coding — render chart changes in mockup before touching the generator
 - Audit before presenting — check output against the current conversation before presenting files
 - Flag epistemic uncertainty explicitly — especially on terpene profile inferences

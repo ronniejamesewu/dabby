@@ -18,10 +18,15 @@ Never write `index.html` by hand — always run the generator and push its outpu
 
 ## Confirm Before Acting
 
-Before taking any action — editing files, running the generator, committing, 
-updating methodology or handoff notes — present what you are about to do and 
-wait for explicit confirmation. Do not proceed until the user approves. Stating 
-the plan and immediately executing is not proposing — it is narrating. Stop and wait.
+Before taking any substantive action — editing files, updating methodology, 
+proposing curve changes, restructuring the log — present what you are about to 
+do and wait for explicit confirmation. Do not proceed until the user approves. 
+Stating the plan and immediately executing is not proposing — it is narrating. 
+Stop and wait.
+
+Mechanical steps that follow from an already-approved decision do not need a 
+separate confirmation: running the generator after changes are agreed, committing, 
+pushing, and opening PRs can all be done without asking.
 
 ## PR Workflow
 
