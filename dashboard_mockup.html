@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Mockup 6</title>
+<title>Dashboard Mockup 7</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,7 +100,19 @@ body {
 .strain-table td:first-child { font-weight: 600; }
 .strain-table td.center { text-align: center; }
 
-.star { color: #C9A800; font-size: 0.8rem; }
+.star { color: #C9A800; font-size: 1.05rem; line-height: 1; }
+
+.leader-first {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.leader-last {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
 
 .badge {
   display: inline-block;
@@ -166,10 +178,10 @@ body {
       </thead>
       <tbody>
         <tr>
-          <td><span class="star">★</span> Orange Candy</td>
+          <td><div class="leader-first"><span class="star">★</span>Orange Candy</div></td>
           <td class="center">5</td>
           <td class="center"><span class="badge calib">Calibrating</span></td>
-          <td class="next-text">Repeat Run 5 curve to confirm <span class="star">★</span></td>
+          <td><div class="leader-last next-text"><span>Repeat Run 5 curve to confirm</span><span class="star">★</span></div></td>
         </tr>
         <tr>
           <td>The Hive #1</td>
