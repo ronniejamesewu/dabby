@@ -124,6 +124,7 @@ body {{
 .badge.calib    {{ background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber); }}
 .badge.pending  {{ background: var(--grey-bg); color: var(--grey-text); border: 1px solid var(--border); }}
 .badge.hot      {{ background: var(--amber-light); color: #8B4513; border: 1px solid var(--amber); }}
+.badge-sm {{ padding: 0.2rem 0.6rem; font-size: 0.75rem; letter-spacing: 0; }}
 
 /* ── Info table ── */
 .info-table {{
@@ -474,7 +475,7 @@ def dashboard_html():
             f'<tr>'
             f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
             f'<td class="center">{run_counts[strain]}</td>'
-            f'<td class="center"><span class="badge {bc}">{bt}</span></td>'
+            f'<td class="center"><span class="badge badge-sm {bc}">{bt}</span></td>'
             f'<td class="next-text">{nt}</td>'
             f'</tr>'
         )
