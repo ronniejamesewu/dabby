@@ -1021,9 +1021,9 @@ def build_html():
     s += curve_table(HIVE1_RUN3)
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Light golden — clean.")
-    s += result_row("Session:", "First half: good flavor, low throat irritation. Second half: irritation increased, flavor faded to generic dab vapor — never harsh or burnt, just less distinct.")
-    s += result_row("Read:", "Flat hold front-loaded the terpene-forward phase. Material ran through its flavor window early; second half was residual vapor without terpene character. Clean swab confirms no degradation — the fade is a character shift, not overheating.")
-    s += result_row("Verdict:", "One data point. Directionally suggests the ramp spreads flavor more evenly across the arc. Next: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint to compare directly on the same endpoint temperature.")
+    s += result_row("Session:", "First half: lots of flavor, low throat irritation. Second half: irritation increased, flavor faded to generic dab vapor — never harsh or burnt, just less distinct. Effect notably strong.")
+    s += result_row("Read:", "At a flat 430°F from the open, all terpene fractions (pinene through linalool, all below 430°F) are available simultaneously — first hit may be the full palette combining at once rather than staged. The ramp climbs through each fraction sequentially, which may be what gives those runs more distinct flavor progression across the arc. 45 seconds was too short — vapor was still producing at session end. Not a temperature issue, just cut off early.")
+    s += result_row("Verdict:", "One data point. Directionally supports the ramp producing more distinct staged flavor vs. the flat hold combining everything at once. If revisiting the flat hold, extend to 60 seconds. Next planned: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint to compare directly on the same endpoint.")
     s += '</div>'
     sections.append(s)
 
