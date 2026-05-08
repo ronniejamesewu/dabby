@@ -452,7 +452,7 @@ def dashboard_html():
     hot_temp = max(temp_sec, key=temp_sec.get)
 
     sorted_strains = sorted(
-        [(s, bc, bt, nt) for s, bc, bt, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
+        [(s, a, bc, bt, nt) for s, a, bc, bt, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
         key=lambda x: run_counts[x[0]], reverse=True
     )
 
@@ -466,11 +466,11 @@ def dashboard_html():
     )
 
     rows = ''
-    for i, (strain, bc, bt, nt) in enumerate(sorted_strains):
+    for i, (strain, anchor, bc, bt, nt) in enumerate(sorted_strains):
         medal = ' 🥇' if i == 0 else ''
         rows += (
             f'<tr>'
-            f'<td>{strain}{medal}</td>'
+            f'<td><a href="{anchor}" style="color:inherit;text-decoration:none;">{strain}</a>{medal}</td>'
             f'<td class="center">{run_counts[strain]}</td>'
             f'<td class="center"><span class="badge {bc}">{bt}</span></td>'
             f'<td class="next-text">{nt}</td>'
@@ -769,11 +769,11 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    # (name, badge_class, badge_text, next_text)
-    ("WW Z",                 "dialed", "Dialed",      "—"),
-    ("Caramel Apple Gelato", "calib",  "Calibrating", "Try 430°F endpoint"),
-    ("Orange Candy",         "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
-    ("The Hive #1",          "calib",  "Calibrating", "Try 420–425°F endpoint"),
+    # (name, profile_anchor, badge_class, badge_text, next_text)
+    ("WW Z",                 "#wwz-profile",   "dialed", "Dialed",      "—"),
+    ("Caramel Apple Gelato", "#cag-profile",   "calib",  "Calibrating", "Try 430°F endpoint"),
+    ("Orange Candy",         "#oc-profile",    "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
+    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 420–425°F endpoint"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -784,7 +784,6 @@ def build_html():
     # ── TOC
     toc_links = [
         ("#dashboard", "Dashboard"),
-        ("#toc", "Contents"),
         ("#constants", "Constants"),
         ("#swab", "Swab Reference"),
         ("#baseline", "Baseline Curve"),
