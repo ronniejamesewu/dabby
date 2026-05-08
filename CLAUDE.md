@@ -12,9 +12,23 @@ rosin (ice water extracted, solventless) unless explicitly stated otherwise.
 ## Updating the Log
 
 Edit `Dabby_Log_Generator.py` directly. Run with `python3 Dabby_Log_Generator.py` 
-to produce `index.html`. Commit and push both files to main.
+to produce `index.html`. Commit both files to a feature branch, then open a PR.
 
 Never write `index.html` by hand — always run the generator and push its output.
+
+## PR Workflow
+
+Changes go to a feature branch, then a PR to merge into `main`. Every PR 
+automatically gets a preview URL posted as a comment so the rendered log can be 
+reviewed before merging.
+
+PR descriptions should be plain English, not code diffs. Example format:
+
+> Logged The Hive #1 Run 2 (May 8, 2026). Same curve as Run 1 — very light swab,  
+> really nice session. Added note to try a lower endpoint (420–425°F) on Run 3.
+
+One sentence per meaningful change. No technical details unless they affect 
+interpretation of the results.
 
 ## Epistemic Flags
 
