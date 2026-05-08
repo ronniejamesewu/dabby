@@ -15,27 +15,34 @@ Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber 
 
 **Live log:** https://ronniejamesewu.github.io/dabby
 **Repo:** ronniejamesewu/dabby (branch: main)
-**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and calibration reasoning)
+**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and calibration reasoning), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
 
-**Session start protocol:** Fetch `index.html` and `Dabby_Log_Generator.py` from raw.githubusercontent.com. Read `Dabby_Methodology.md` from project files. Copy generator to `/home/claude/Dabby_Log_Generator.py` before editing.
+**Environment:** Claude Code. Files are in `/home/user/dabby/`. Read them directly — do not fetch from raw.githubusercontent.com or copy files to a separate path.
 
-**Publishing:** After regenerating the log, push both `index.html` and `Dabby_Log_Generator.py` to the repo using `push_files`. Never use `create_or_update_file` — it requires SHA lookup. `push_files` does not.
+**Publishing workflow:**
+1. Edit `Dabby_Log_Generator.py`
+2. Run `python3 Dabby_Log_Generator.py` to produce `index.html`
+3. Commit both files to a feature branch
+4. Push the branch and open a PR
+5. GitHub automatically posts a preview URL as a PR comment
+6. User reviews the preview, merges the PR
+7. `deploy.yml` automatically publishes to gh-pages — live site updates
 
-**CRITICAL — push index.html correctly:** The `index.html` pushed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory — this will silently strip charts and other content. The correct sequence is always: edit generator → run generator → push both output files. Do not attempt to recover from a failed push by writing HTML manually.
+**CRITICAL — never use `push_files` for `index.html` or routine commits.** `push_files` passes full file content as string literals and has caused silent content loss in past sessions (stripped charts, lost sections). Git is the correct path for all routine work. `push_files` is acceptable only for temporary files on non-main branches (e.g., mockups on gh-pages) when git checkout of that branch is impractical — and only when the file is not `index.html`.
+
+**CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit generator → run generator → commit both files. Do not attempt to recover from a failed push by writing HTML manually.
 
 **Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, TOC entries, and section build code. Footer auto-timestamps on each run.
-
-**Environment note:** The user has raised the question of whether Claude Code would be a better environment for this project, given that every log update requires editing the generator and pushing both files. The main friction in the current setup is the push step — passing full file content as string literals in tool calls is error-prone at scale. Claude Code would allow direct file editing and native git operations. This is a considered option, not yet a decision.
 
 ---
 
 ## Session Logging Protocol
 
-When the user reports a completed run, parse the natural language description into log fields and confirm the interpretation before touching the generator. If the date is missing, ask. If swab result is missing, ask — or note "not recorded" if the user confirms none was taken. Do not prompt with a structured form unless the user gives no information at all.
+When the user reports a completed run, parse the natural language description into log fields and confirm the interpretation before touching the generator. If the date is missing, ask. If swab result is missing, ask — do not log without it.
 
 Runs are logged with exact date (not month only) when known.
 
-**Swab protocol clarification:** A swab is always taken — it is the standard insert-cleaning step after every session, not an optional measurement. "Not recorded" means the color wasn't noted, not that no swab was taken. Always ask for swab color if not reported; do not log "not recorded" without confirming.
+**Swab protocol clarification:** A swab is always taken — it is the standard insert-cleaning step after every session, not an optional measurement. "Not recorded" means the color wasn't noted, not that no swab was taken. Always ask for swab color if not reported.
 
 ---
 
@@ -84,6 +91,8 @@ Current spec:
 - **No area fill** under curve (removed — was visual noise)
 - **Layout padding:** `{left:4, right:4, top:4, bottom:0}` to prevent edge dot clipping
 
+**Visual overhaul pending:** The user has flagged the overall forest green styling of the log as feeling heavyweight. A visual identity review is on the open items list for a future session. Do not make styling changes without raising this first.
+
 ---
 
 ## Harm Reduction Context
@@ -96,7 +105,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Current Strain Status
 
-**WW Z** (Quasi Farms, Michigan) — Dialed. Run 1 complete. Profile locked. Baseline curve confirmed appropriate.
+**WW Z** (Quasi Farms, Michigan) — Dialed. Run 1 complete (May 2, 2026). Profile locked. Baseline curve confirmed appropriate.
 
 **Caramel Apple Gelato** (Quasi Farms, Michigan) — In calibration. Run 1 too hot (450°F endpoint, swab amber toward brown). Run 2 pending: endpoint reduced to 430°F, hold shortened to 55 seconds.
 
@@ -104,7 +113,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 complete (both May 8, 2026): 380°F open curve (380→390→410→440°F, 65s hold). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Both runs clean — endpoint may be higher than needed. Run 3: try lower endpoint (420–425°F), keep opening and mid-climb unchanged.
 
-**Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
+**Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
 ---
 
@@ -116,12 +125,37 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - Caramel Apple Gelato Run 2 not yet completed.
 - Sapphire insert not yet acquired. When acquired, requires fresh calibration from scratch — do not scale from quartz curves.
 - Whether fresh press consistency justifies a different baseline curve remains an open question. Not settled.
+- **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
+- **Session date backfill** — most pre-Session 6 run entries are dated to month only. WW Z Run 1 is now confirmed May 2, 2026. Other entries (CAG Run 1, OC Runs 1–5) still need exact dates if the user can recall them.
 
-**Potential log enhancements — not yet implemented, user interested:**
-- **Session date precision.** Existing run entries dated to month only. New runs should be logged with exact date. Full backfill of existing entries not yet done.
-- **Nose notes field.** ~~Resolved~~ — Nose is already a row on each strain profile. No per-run nose field needed.
-- **Summary dashboard.** A table at the top of the log showing all strains, current status, and current curve endpoint at a glance.
-- **Terpene boiling point reference section.** A clean standalone table in the log with all terpenes, BPs, and character notes — readable without hovering over chart annotations.
+**Log enhancements in active development:**
+- **Dashboard** — in mockup iteration (see Dashboard Design section below). Not yet in generator.
+- **Terpene boiling point reference section** — standalone table in the log. Not yet implemented.
+
+---
+
+## Dashboard Design — In Progress
+
+The dashboard is being designed and iterated in mockup form before being built into the generator. Current mockup is at `dashboard_mockup.html` on the `gh-pages` branch, viewable at `https://ronniejamesewu.github.io/dabby/dashboard_mockup.html`.
+
+**Design decisions locked:**
+- **Stats block** — four cards across the top: total runs over X days / avg open / avg endpoint / most time spent temp
+- **"Runs over X days"** — the total runs card label includes the day count since first run (May 2, 2026), not a separate date line
+- **Stat card styling** — colored top border per card (green / steel blue / amber / mid-green), DM Mono labels at 0.78rem, `#555555`
+- **Per-strain table** — sorted descending by run count (most-run strain at top)
+- **Leader row** — top strain gets gold stars (★) flanking the full row (left edge of strain column, right edge of next column) and a thin gold border (1.5px, `#C9A800`) around the row
+- **Runs and Status columns** — horizontally centered
+- **Next column** — plain action text, no "Run N —" prefix
+- **Exclusions** — strains with zero runs do not appear in the table; pending/proposed runs excluded from stats
+
+**Design decisions still open:**
+- Whether the thin gold border on the leader row works visually — currently in mockup iteration
+- Stats card color assignment finalized but "most time spent" value is a placeholder pending real computation
+
+**Implementation notes:**
+- Stats will be computed in Python from run data at generator runtime (not hardcoded)
+- "Most time spent" requires linear interpolation between waypoints — sum seconds per temperature bucket across all runs
+- "Days" is computed from first run date (May 2, 2026) to generator run date
 
 ---
 
@@ -133,8 +167,12 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - Quartz-to-sapphire curve scaling does not work.
 - Valley mode is not appropriate for cold start sessions.
 - Consistency type alone does not justify a different baseline curve.
-- All MD files (`CLAUDE.md`, `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`) are now in the repo. This was reversed in Session 5 to enable full context in mobile and cloud sessions. Push all five files when relevant changes are made.
+- All MD files (`CLAUDE.md`, `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`) are in the repo. Push them when relevant changes are made.
 - The user's hypothesis that higher temperature (460°F endpoint) produced a notably stronger effect in OC Run 5 is logged as stated — one data point, not a confirmed finding. Do not dismiss it or over-assert it.
+- Claude Code is the active environment. The old cloud/API session protocol (fetch from raw.githubusercontent.com, push_files for publishing) is retired.
+- PR preview workflow is established and active. Changes go to a feature branch → PR → preview URL → merge → auto-deploy.
+- `push_files` is not to be used for `index.html` or routine commits. Git is the correct path.
+- Blueberry 36 phenotypes are logged as separate strains, not grouped.
 
 ---
 
@@ -148,9 +186,8 @@ Specific errors made in past sessions that a new instance should avoid:
 - **`globalAlpha` for terpene line opacity not rendering correctly.** Using `ctx.globalAlpha` to lighten the terpene BP lines produced inconsistent results. Use baked hex colors instead.
 - **Dressing up the generic cannabis terpene palette as strain-specific knowledge.** The same five or six terpenes appear across nearly all strains. Do not present inferred profiles as if they reflect meaningful strain differentiation.
 - **Proposing changes without showing them first.** For chart styling and methodology edits, always propose the change with before/after context before executing. Do not edit and present without the proposal step.
-- **Pushing the handoff to the repo — no longer a failure mode.** This was reversed in Session 5. All MD files are now tracked in the repo. Push them when relevant changes are made.
-- **Passing placeholder content to `push_files`.** The `push_files` tool requires full file content passed directly as string parameters in the tool call. Do not use placeholder strings, shell variable references, or stub content. Read the file content and pass it literally.
-- **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and push its output. Writing `index.html` content by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
+- **Using `push_files` for routine file updates.** `push_files` passes full file content as string literals and has caused silent content loss (stripped charts, lost sections) in past sessions. In Claude Code, use git for all routine commits. `push_files` is acceptable only for temporary files on non-main branches when git checkout is impractical, and never for `index.html`.
+- **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 
 ---
 
@@ -163,18 +200,19 @@ Specific errors made in past sessions that a new instance should avoid:
 ## What a Good Session Looks Like
 
 - Propose before executing — especially for edits to methodology, curve data, or chart styling
-- Show before coding — render chart changes in the widget before touching the generator
+- Show before coding — render chart changes in mockup before touching the generator
 - Audit before presenting — check output against the current conversation before presenting files
 - Flag epistemic uncertainty explicitly — especially on terpene profile inferences
 - Update the handoff at session end when meaningful changes were made
+- Use git for all commits and pushes — not push_files
 
 ---
 
 ## Changelog
 
-- **May 8, 2026 — Session 6:** The Hive #1 Runs 1–2 logged (both May 8, 2026). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Both clean — endpoint likely higher than needed. Run 3 direction: try 420–425°F endpoint, keep opening and mid-climb unchanged. Swab protocol clarified: swab is always taken as insert-cleaning step; "not recorded" means color not noted. PR preview workflow set up — each PR now gets a live preview URL. Harm reduction open question closed: 440°F vs 460°F falls well below the temperature range where documented risk is meaningful.
-- **May 6, 2026 — Session 1:** Initial structured handoff created. Thermal model revised (offset estimate walked back). Methodology doc updated. Chart styling overhauled (DM Mono, vivid green curve, steel blue terpene lines, THC pill label). Generator moved from project files to GitHub repo. Known failure modes, unresolved issues, and behavioral notes added.
-- **May 6, 2026 — Session 2:** Producer updated to Quasi Farms (Michigan) for WW Z and Caramel Apple Gelato in generator and log. Enhancements list: nose notes marked resolved (already on strain profiles); confidence rating (4) and load consistency note (5) removed at user request. New failure modes added: pushing handoff to repo; passing placeholder content to push_files.
-- **May 6, 2026 — Session 3:** OC Run 4 status updated (run twice May 5, light golden swabs, close to dialed). Curve design section corrected — flat tail rationale clarified, offset-closure framing removed as it overstates the timescale concern. Session logging protocol added. New failure mode added: re-applying offset reasoning to short flat tails. Opening setpoint exploration noted as active direction for OC.
+- **May 8, 2026 — Session 6:** The Hive #1 Runs 1–2 logged (May 8, 2026). Run 1: light golden swab, nice flavors, heavy indica effect. Run 2: very light swab, really nice, consistent. Run 3 direction: try 420–425°F endpoint, keep opening and mid-climb unchanged. WW Z Run 1 date confirmed as May 2, 2026. PR preview workflow set up — `.github/workflows/deploy.yml` and `preview.yml` added; each PR now gets a live preview URL; merging to main auto-deploys. Harm reduction open question closed. Infrastructure section rewritten to reflect Claude Code as active environment and git as correct publish path. `push_files` for routine commits deprecated; failure mode added. Dashboard in active mockup iteration — design decisions captured in Dashboard Design section. Visual overhaul of log flagged as future agenda item. Swab protocol clarified. Blueberry 36 phenotypes confirmed as separate log entries.
 - **May 7, 2026 — Session 5:** The Hive #1 added (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron). Nose noted (very fragrant, spice consistent with caryophyllene). WW Z and CAG producer corrected to Quasi Farms (Michigan) — lost in a prior botched push recovery. All MD files pushed to repo to enable full context in mobile/cloud sessions. Prior decision against pushing handoff reversed. Output path in generator fixed from cloud path to `index.html`. Claude Code confirmed as active environment.
-- **May 7, 2026 — Session 4:** OC Run 5 logged (May 6, 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint; darker swab; harsh tail; notably stronger effect; user's hypothesis logged; curve to repeat as Run 6). OC strain status updated. Open Questions updated — stale OC curve candidate removed, Run 6 and 440°F vs 460°F harm reduction question added. Infrastructure section: critical note added on always pushing generator output, never hand-written HTML. Environment note added re Claude Code as a considered option. New failure mode added: pushing manually written index.html that stripped charts. Decisions Made: user's effect hypothesis noted as logged-not-confirmed. Harm reduction section: 440°F vs 460°F open question flagged.
+- **May 7, 2026 — Session 4:** OC Run 5 logged (May 6, 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint; darker swab; harsh tail; notably stronger effect; user's hypothesis logged; curve to repeat as Run 6). OC strain status updated. Infrastructure section: critical note added on always pushing generator output, never hand-written HTML. New failure mode added: pushing manually written index.html that stripped charts. Decisions Made: user's effect hypothesis noted as logged-not-confirmed. Harm reduction section: 440°F vs 460°F open question flagged.
+- **May 6, 2026 — Session 3:** OC Run 4 status updated (run twice May 5, light golden swabs, close to dialed). Curve design section corrected — flat tail rationale clarified, offset-closure framing removed as it overstates the timescale concern. Session logging protocol added. New failure mode added: re-applying offset reasoning to short flat tails. Opening setpoint exploration noted as active direction for OC.
+- **May 6, 2026 — Session 2:** Producer updated to Quasi Farms (Michigan) for WW Z and Caramel Apple Gelato in generator and log. Enhancements list: nose notes marked resolved (already on strain profiles); confidence rating (4) and load consistency note (5) removed at user request. New failure modes added: pushing handoff to repo; passing placeholder content to push_files.
+- **May 6, 2026 — Session 1:** Initial structured handoff created. Thermal model revised (offset estimate walked back). Methodology doc updated. Chart styling overhauled (DM Mono, vivid green curve, steel blue terpene lines, THC pill label). Generator moved from project files to GitHub repo. Known failure modes, unresolved issues, and behavioral notes added.
