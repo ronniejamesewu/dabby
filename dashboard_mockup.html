@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Mockup 9</title>
+<title>Dashboard Mockup 10</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,22 +100,6 @@ body {
 .strain-table td:first-child { font-weight: 600; }
 .strain-table td.center { text-align: center; }
 
-.star { color: #C9A800; font-size: 1.05rem; line-height: 1; }
-
-.leader-first {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: -0.45rem;
-}
-.leader-last {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-right: -0.45rem;
-}
-
 .badge {
   display: inline-block;
   padding: 0.2rem 0.6rem;
@@ -126,10 +110,6 @@ body {
 }
 .badge.dialed { background: #2D5A3D; color: #fff; }
 .badge.calib  { background: #FFF8E7; color: #B8860B; border: 1px solid #B8860B; }
-
-.strain-table tr.leader {
-  outline: 3px solid #C9A800;
-}
 
 .next-text { color: #555555; font-size: 0.85rem; }
 
@@ -183,11 +163,11 @@ body {
         </tr>
       </thead>
       <tbody>
-        <tr class="leader">
-          <td><div class="leader-first"><span class="star">★</span>Orange Candy</div></td>
+        <tr>
+          <td>Orange Candy 🥇</td>
           <td class="center">5</td>
           <td class="center"><span class="badge calib">Calibrating</span></td>
-          <td><div class="leader-last next-text"><span>Repeat Run 5 curve to confirm</span><span class="star">★</span></div></td>
+          <td class="next-text">Repeat Run 5 curve to confirm</td>
         </tr>
         <tr>
           <td>The Hive #1</td>
