@@ -620,6 +620,7 @@ GLOBAL_INFO = [
     ("Load Size",    "Rice grain (small)"),
     ("Offset Est.",  "Probably small under most operating conditions. Dominant uncertainties are vaporization cooling and dynamic lag during steep ascent. At flat or slowly-ascending phases the system approaches equilibrium. Setpoints are reasonable proxies for material contact temperature."),
     ("Draw Style",   "Long, slow draws throughout session"),
+    ("Terp Tools",   "Cloud Vortex auto spinner cap + 6mm quartz pearl in insert — present in all sessions to date"),
     ("Session End",  "Stop when vapor production drops — do not ride timer on small loads"),
 ]
 
