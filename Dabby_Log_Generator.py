@@ -380,6 +380,8 @@ p {{
 .dash-strain-table td:first-child {{ font-weight: 600; }}
 .dash-strain-table td.center {{ text-align: center; }}
 .next-text {{ color: var(--grey-text); font-size: 0.85rem; }}
+.strain-link {{ color: var(--green-dark); text-decoration: none; }}
+.strain-link:hover {{ text-decoration: underline; }}
 
 /* ── Mobile ── */
 @media (max-width: 600px) {{
@@ -470,7 +472,7 @@ def dashboard_html():
         medal = ' 🥇' if i == 0 else ''
         rows += (
             f'<tr>'
-            f'<td><a href="{anchor}" style="color:inherit;text-decoration:none;">{strain}</a>{medal}</td>'
+            f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
             f'<td class="center">{run_counts[strain]}</td>'
             f'<td class="center"><span class="badge {bc}">{bt}</span></td>'
             f'<td class="next-text">{nt}</td>'
