@@ -770,7 +770,7 @@ FEMBOT3_INFO = [
     ("Producer",    "Riptide (CO)"),
     ("Input",       "169–73 micron ice water hash"),
     ("Character",   "Sativa-dominant — uplifting, energetic character inferred from lineage. Phenotype and wash quality drive actual experience."),
-    ("Nose",        "Not yet recorded"),
+    ("Nose",        "Subtle garlic note at cold nose; strong overall fragrance, less distinct individual character"),
     ("Status",      "PENDING — Run 1 not yet completed"),
 ]
 FEMBOT3_TERPS = [
@@ -788,7 +788,7 @@ MS23_INFO = [
     ("Jar",           "14 of 23"),
     ("Base genetics", "SB36 line — Starburst OG × '97 KC36"),
     ("Character",     "Sativa-dominant — upbeat, euphoric, flavor-forward character inferred from SB36 lineage. KC36 influence leans energetic rather than sedating. Phenotype and wash quality drive actual experience."),
-    ("Nose",          "Not yet recorded"),
+    ("Nose",          "Diesel note pronounced at cold nose; sweetness underneath"),
     ("Status",        "PENDING — Run 1 not yet completed"),
 ]
 MS23_TERPS = [
