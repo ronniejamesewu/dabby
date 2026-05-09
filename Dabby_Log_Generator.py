@@ -727,7 +727,7 @@ HIVE1_INFO = [
     ("Producer",    "Myxed Up (washed and pressed)"),
     ("Input",       "159–73 micron ice water hash"),
     ("Nose",        "Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only)."),
-    ("Status",      "IN CALIBRATION — Runs 1–4 complete, Run 5 pending"),
+    ("Status",      "IN CALIBRATION — Runs 1–5 complete, Run 6 pending"),
 ]
 
 HIVE1_RUN1 = [
@@ -757,6 +757,12 @@ HIVE1_RUN4 = [
     ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
     ("60s", "430°F", "Endpoint — extended from Run 3's 45s"),
 ]
+HIVE1_RUN5 = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("35s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint — 430°F with ramp (down from 440°F in Runs 1–2)"),
+]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -774,6 +780,7 @@ COMPLETED_RUNS = [
     ("The Hive #1",          HIVE1_RUN2),
     ("The Hive #1",          HIVE1_RUN3),
     ("The Hive #1",          HIVE1_RUN4),
+    ("The Hive #1",          HIVE1_RUN5),
 ]
 
 STRAIN_STATUS = [
@@ -781,7 +788,7 @@ STRAIN_STATUS = [
     ("WW Z",                 "#wwz-profile",   "dialed", "Dialed",      "—"),
     ("Caramel Apple Gelato", "#cag-profile",   "calib",  "Calibrating", "Try 430°F endpoint"),
     ("Orange Candy",         "#oc-profile",    "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
-    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Ramp to 430°F endpoint (380→390→410°F)"),
+    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 420–425°F endpoint on Run 6"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -810,6 +817,7 @@ def build_html():
         ("#hive1-run2", "Hive #1 Run 2"),
         ("#hive1-run3", "Hive #1 Run 3"),
         ("#hive1-run4", "Hive #1 Run 4"),
+        ("#hive1-run5", "Hive #1 Run 5"),
     ]
     toc_links_html = '<ul>'
     for href, label in toc_links:
@@ -982,7 +990,7 @@ def build_html():
 
     # ── The Hive #1 Strain Profile
     s = f'<div class="section" id="hive1-profile">'
-    s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–4 complete. Run 5 pending.", "calib", "")
+    s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.", "calib", "")
     s += info_table(HIVE1_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios and minor terpenes are not inferable from genetics alone — these are orientation points drawn from the generic cannabis palette, not strain-specific measurements. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1045,6 +1053,21 @@ def build_html():
     s += result_row("Swab:", "Light golden — clean. Consistent with Run 3.")
     s += result_row("Session:", "Similar to Run 3. Extended hold confirmed vapor was still producing at 45s in Run 3 — 60s felt more complete.")
     s += result_row("Verdict:", "Two flat-hold data points, both clean swabs, consistent character. Next: ramp to 430°F endpoint (380→390→410→430°F) — the original planned experiment — to compare curve shape on the same endpoint.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── The Hive #1 Run 5
+    s = f'<div class="section" id="hive1-run5">'
+    s += section_header("The Hive #1 — Run 5 — May 9, 2026", "⚠ IN CALIBRATION — Ramp to 430°F. Slight harshness at tail.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)</p>'
+    s += curve_chart_html(HIVE1_RUN5)
+    s += curve_table(HIVE1_RUN5)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Light golden — a tad lighter than the flat-hold 430°F runs (Runs 3–4). Clean.")
+    s += result_row("Session:", "Nice distinct flavors through the first two-thirds. Harsh in the last ~10 seconds. Effects quite potent.")
+    s += result_row("Read:", "Distinct staged flavor character is consistent with the ramp — each terpene fraction vaporizes as the curve climbs through it, rather than all at once as in the flat hold. Swab difference vs. Runs 3–4 is within noise (too many uncontrolled variables). Harshness at session tail is a directional signal that 430°F may still be slightly above ideal for this material on the ramp.")
+    s += result_row("Next:", "Try 420–425°F endpoint on Run 6. Keep ramp shape unchanged.")
     s += '</div>'
     sections.append(s)
 

@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 9, 2026 — Session 9
+## Last updated: May 9, 2026 — Session 10
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log fetched from GitHub.
 
@@ -117,7 +117,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Orange Candy** (Nikka T, 90 micron full melt) — In calibration. Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs, not noticeably different from Run 3. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint. Darker swab, last portion harsh. Effect notably stronger than prior runs — user's hypothesis is that higher temperature produced stronger effect; logged as one data point, not a confirmed finding, confounders acknowledged. Curve to be repeated as Run 6 before drawing conclusions.
 
-**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 (May 8, 2026): 380°F open ramp (380→390→410→440°F, 65s). Both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same steady 430°F hold extended to 60s — clean swab again, consistent with Run 3. Two flat-hold data points logged. Run 5 pending: ramp to 430°F endpoint (380→390→410→430°F) — the original curve-shape comparison experiment.
+**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 (May 8, 2026): 380°F open ramp (380→390→410→440°F, 65s). Both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same steady 430°F hold extended to 60s — clean swab again, consistent with Run 3. Two flat-hold data points logged. Run 5 (May 9, 2026): ramp to 430°F endpoint (380→390→410→430°F) — swab light golden (tad lighter than Runs 3–4, within noise), nice distinct staged flavors through first two-thirds, harsh in last ~10 seconds, effects quite potent. Harshness at tail suggests 430°F may be slightly high even on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -125,7 +125,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Open Questions
 
-- The Hive #1 Run 5 pending — ramp to 430°F endpoint (380→390→410→430°F). Two flat-hold runs (Runs 3–4) both clean; now need the ramp on the same endpoint for the curve-shape comparison.
+- The Hive #1 Run 6 pending — try 420–425°F endpoint (same ramp shape). Run 5 had slight harshness at tail, directional signal that 430°F may be a touch high.
 - Blueberry 36 first sessions not yet run.
 - Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
 - Caramel Apple Gelato Run 2 not yet completed.
@@ -219,6 +219,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 9, 2026 — Session 10:** The Hive #1 Run 5 logged (May 9, 2026). Ramp to 430°F endpoint (380→390→410→430°F). Light golden swab, distinct staged flavors through first two-thirds, harsh at tail (~last 10s), effects quite potent. Harshness is a directional signal that 430°F may be slightly high on the ramp. Run 6 direction: try 420–425°F endpoint.
 
 - **May 9, 2026 — Session 9:** The Hive #1 Run 4 logged (May 9, 2026). Same 430°F steady flat hold as Run 3, extended to 60 seconds. Clean swab, session consistent with Run 3. Two flat-hold data points now complete. Run 5 planned: ramp to 430°F endpoint (380→390→410→430°F) for the curve-shape comparison.
 
