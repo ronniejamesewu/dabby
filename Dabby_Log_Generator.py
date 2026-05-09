@@ -772,7 +772,7 @@ FEMBOT3_INFO = [
     ("Input",       "169–73 micron ice water hash"),
     ("Character",   "Sativa-dominant — uplifting, energetic character inferred from lineage. Phenotype and wash quality drive actual experience."),
     ("Nose",        "Subtle garlic note at cold nose; strong overall fragrance, less distinct individual character"),
-    ("Status",      "IN CALIBRATION — Run 1 complete. Run 2 pending."),
+    ("Status",      "IN CALIBRATION — Runs 1–2 complete. Run 3 pending."),
 ]
 
 FEMBOT3_RUN1 = [
@@ -782,6 +782,10 @@ FEMBOT3_RUN1 = [
     ("65s", "430°F", "Endpoint"),
 ]
 FEMBOT3_RUN2 = [
+    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
+    ("60s", "430°F", "Endpoint"),
+]
+FEMBOT3_RUN3 = [
     ("0s",  "420°F", "Steady hold — flat 420°F from session open"),
     ("60s", "420°F", "Endpoint"),
 ]
@@ -835,6 +839,7 @@ COMPLETED_RUNS = [
     ("The Hive #1",          HIVE1_RUN4),
     ("The Hive #1",          HIVE1_RUN5),
     ("Fembot #3",            FEMBOT3_RUN1),
+    ("Fembot #3",            FEMBOT3_RUN2),
     ("Mango Starburst #23",  MS23_RUN1),
 ]
 
@@ -844,7 +849,7 @@ STRAIN_STATUS = [
     ("Caramel Apple Gelato", "#cag-profile",     "calib",   "Calibrating", "Try 430°F endpoint"),
     ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Repeat Run 5 curve to confirm"),
     ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
-    ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 2"),
+    ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 3"),
     ("Mango Starburst #23",  "#ms23-profile",    "calib",   "Calibrating", "Repeat Run 1 curve to confirm"),
 ]
 
@@ -878,6 +883,7 @@ def build_html():
         ("#fembot3-profile", "Fembot #3"),
         ("#fembot3-run1", "Fembot #3 Run 1"),
         ("#fembot3-run2", "Fembot #3 Run 2"),
+        ("#fembot3-run3", "Fembot #3 Run 3"),
         ("#ms23-profile", "Mango Starburst #23"),
         ("#ms23-run1", "MS23 Run 1"),
     ]
@@ -1135,9 +1141,9 @@ def build_html():
 
     # ── Fembot #3 Strain Profile
     s = f'<div class="section" id="fembot3-profile">'
-    s += section_header("Fembot #3 — Strain Profile", "PENDING — Run 1 not yet completed.", "pending", "grey")
+    s += section_header("Fembot #3 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–2 complete. Run 3 pending.", "calib", "")
     s += info_table(FEMBOT3_INFO)
-    s += '<h3 class="grey">Inferred Terpene Profile</h3>'
+    s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Fuzzy Melon × Rambutan lineage. Terpinolene-forward character is consistent with the sativa-dominant, uplifting profile typical of this lineage direction — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
     s += terpene_table(FEMBOT3_TERPS)
     s += '</div>'
@@ -1157,15 +1163,30 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    # ── Fembot #3 Run 2 Pending
+    # ── Fembot #3 Run 2
     s = f'<div class="section" id="fembot3-run2">'
-    s += section_header("Fembot #3 — Run 2 — Pending", "PENDING — Not yet completed.", "pending", "grey")
-    s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 420°F steady (no ramp)</p>'
+    s += section_header("Fembot #3 — Run 2 — May 9, 2026", "⚠ IN CALIBRATION — Harshness at tail. Drop endpoint for Run 3.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(FEMBOT3_RUN2)
     s += curve_table(FEMBOT3_RUN2)
     s += '<h3>Results</h3>'
-    s += '<p>Run 2 not yet completed. Record swab color, vapor character, and session observations.</p>'
+    s += result_row("Swab:", "Light golden — clean. Consistent with Run 1.")
+    s += result_row("Session:", "Very tasty, great effects. Harshness in the last third.")
+    s += result_row("Read:", "Harshness at the tail is consistent with Run 1 (ramp to 430°F endpoint) — two data points now pointing at 430°F as slightly above ideal for this material, regardless of curve shape. Swab is clean, so this is a session character signal rather than a floor indicator.")
+    s += result_row("Next:", "Try 420°F steady flat hold on Run 3.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── Fembot #3 Run 3 Pending
+    s = f'<div class="section" id="fembot3-run3">'
+    s += section_header("Fembot #3 — Run 3 — Pending", "PENDING — Not yet completed.", "pending", "grey")
+    s += '<h3>Proposed Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 420°F steady (no ramp)</p>'
+    s += curve_chart_html(FEMBOT3_RUN3)
+    s += curve_table(FEMBOT3_RUN3)
+    s += '<h3>Results</h3>'
+    s += '<p>Run 3 not yet completed. Record swab color, vapor character, and session observations. If harshness resolves at 420°F, note whether flavor and effects character holds.</p>'
     s += '</div>'
     sections.append(s)
 
