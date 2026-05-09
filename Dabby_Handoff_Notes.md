@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 9, 2026 — Session 11
+## Last updated: May 9, 2026 — Session 12
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log fetched from GitHub.
 
@@ -119,7 +119,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 (May 8, 2026): 380°F open ramp (380→390→410→440°F, 65s). Both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same steady 430°F hold extended to 60s — clean swab again, consistent with Run 3. Two flat-hold data points logged. Run 5 (May 9, 2026): ramp to 430°F endpoint (380→390→410→430°F) — swab light golden (tad lighter than Runs 3–4, within noise), nice distinct staged flavors through first two-thirds, harsh in last ~10 seconds, effects quite potent. Harshness at tail suggests 430°F may be slightly high even on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
 
-**Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — Profile added. No runs yet. Sativa-dominant lineage, terpinolene-forward inferred. Cold nose: subtle garlic note, strong overall fragrance, less distinct individual character. Baseline curve recommended for Run 1.
+**Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — In calibration. Run 1 (May 9, 2026): ramp to 430°F endpoint — light golden swab, tasty, slight harshness at tail. Run 2 (May 9, 2026): 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Two data points at 430°F (ramp and flat hold) both showing tail harshness — consistent signal that 430°F is slightly above ideal regardless of curve shape. Run 3 pending: 420°F steady flat hold, 60 seconds.
 
 **Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — Profile added. No runs yet. SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Baseline curve recommended for Run 1.
 
@@ -130,7 +130,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 ## Open Questions
 
 - The Hive #1 Run 6 pending — try 420–425°F endpoint (same ramp shape). Run 5 had slight harshness at tail, directional signal that 430°F may be a touch high.
-- Fembot #3 Run 1 pending — baseline curve, no prior data.
+- Fembot #3 Run 3 pending — try 420°F steady flat hold (60s). Two data points at 430°F (Run 1 ramp, Run 2 flat hold) both showed harshness at the tail. If harshness resolves at 420°F, note whether flavor and effects hold.
 - Mango Starburst #23 Run 1 pending — baseline curve, no prior data.
 - Blueberry 36 first sessions not yet run.
 - Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
@@ -225,6 +225,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 9, 2026 — Session 12:** Fembot #3 Run 2 logged (May 9, 2026). 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Two data points now at 430°F (Run 1 ramp to 430°F, Run 2 flat hold at 430°F) both showing tail harshness — consistent signal that 430°F is slightly above ideal for this material regardless of curve shape. Run 3 pending: 420°F steady flat hold, 60 seconds.
 
 - **May 9, 2026 — Session 11:** Fembot #3 and Mango Starburst #23 added to log as pending profiles. Fembot #3: Riptide (CO), Fuzzy Melon × Rambutan, cold cure, 169–73 micron, sativa-dominant character inferred, terpinolene-forward. Cold nose: subtle garlic note, strong fragrance, less distinct character. Mango Starburst #23: Terps Over Yields (CO), Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23, SB36 line (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. No runs on either. Leaderboard calculation confirmed correct — new strains excluded from dashboard until first run logged.
 
