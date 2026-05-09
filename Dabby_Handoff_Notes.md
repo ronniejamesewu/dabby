@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 9, 2026 — Session 11
+## Last updated: May 9, 2026 — Session 12
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log fetched from GitHub.
 
@@ -121,7 +121,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — Profile added. No runs yet. Sativa-dominant lineage, terpinolene-forward inferred. Cold nose: subtle garlic note, strong overall fragrance, less distinct individual character. Baseline curve recommended for Run 1.
 
-**Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — Profile added. No runs yet. SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Baseline curve recommended for Run 1.
+**Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — In calibration. Run 1 complete (May 9, 2026). Same curve as Fembot #3 Run 1 (380→390→410→430°F, 65s). Very clean swab. Very piney character — almost pine sol — tasty but not to user's taste preference. Heady effects, no harshness. Repeat curve on Run 2 to confirm.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -131,7 +131,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 - The Hive #1 Run 6 pending — try 420–425°F endpoint (same ramp shape). Run 5 had slight harshness at tail, directional signal that 430°F may be a touch high.
 - Fembot #3 Run 1 pending — baseline curve, no prior data.
-- Mango Starburst #23 Run 1 pending — baseline curve, no prior data.
+- Mango Starburst #23 Run 2 pending — repeat Run 1 curve to confirm.
 - Blueberry 36 first sessions not yet run.
 - Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
 - Caramel Apple Gelato Run 2 not yet completed.
@@ -225,6 +225,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 9, 2026 — Session 12:** Mango Starburst #23 Run 1 logged (May 9, 2026). Same curve as Fembot #3 Run 1 — 380→390→410→430°F, 65s. Very clean swab. Very piney character (almost pine sol), tasty but not to user's preference. Heady effects, no harshness. Status updated to in calibration. Run 2 pending — repeat same curve to confirm.
 
 - **May 9, 2026 — Session 11:** Fembot #3 and Mango Starburst #23 added to log as pending profiles. Fembot #3: Riptide (CO), Fuzzy Melon × Rambutan, cold cure, 169–73 micron, sativa-dominant character inferred, terpinolene-forward. Cold nose: subtle garlic note, strong fragrance, less distinct character. Mango Starburst #23: Terps Over Yields (CO), Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23, SB36 line (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. No runs on either. Leaderboard calculation confirmed correct — new strains excluded from dashboard until first run logged.
 
