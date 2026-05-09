@@ -764,6 +764,41 @@ HIVE1_RUN5 = [
     ("65s", "430°F", "Endpoint — 430°F with ramp (down from 440°F in Runs 1–2)"),
 ]
 
+FEMBOT3_INFO = [
+    ("Strain",      "Fembot #3 (Fuzzy Melon × Rambutan — inferred)"),
+    ("Consistency", "Cold cure"),
+    ("Producer",    "Riptide (CO)"),
+    ("Input",       "169–73 micron ice water hash"),
+    ("Character",   "Sativa-dominant — uplifting, energetic character inferred from lineage. Phenotype and wash quality drive actual experience."),
+    ("Nose",        "Not yet recorded"),
+    ("Status",      "PENDING — Run 1 not yet completed"),
+]
+FEMBOT3_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
+    ("Myrcene",       "334°F / 168°C", "Earthy, tropical — inferred secondary"),
+    ("Limonene",      "349°F / 176°C", "Citrus-candy — inferred, consistent with melon/tropical lineage"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet, fruity, floral — inferred likely dominant (Fuzzy Melon character)"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
+]
+
+MS23_INFO = [
+    ("Strain",        "Mango Starburst #23 (Starburst 36 #217 × Starburst 36 #1)"),
+    ("Consistency",   "Cold cure"),
+    ("Producer",      "Terps Over Yields (CO)"),
+    ("Jar",           "14 of 23"),
+    ("Base genetics", "SB36 line — Starburst OG × '97 KC36"),
+    ("Character",     "Sativa-dominant — upbeat, euphoric, flavor-forward character inferred from SB36 lineage. KC36 influence leans energetic rather than sedating. Phenotype and wash quality drive actual experience."),
+    ("Nose",          "Not yet recorded"),
+    ("Status",        "PENDING — Run 1 not yet completed"),
+]
+MS23_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
+    ("Myrcene",       "334°F / 168°C", "Earthy, tropical — inferred secondary"),
+    ("Limonene",      "349°F / 176°C", "Citrus, orange peel — inferred likely dominant (SB36 tangie-like front end)"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet, candy-tropical — inferred prominent (SB36 candy-forward character)"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
+]
+
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
 FIRST_RUN_DATE = date(2026, 5, 2)
@@ -785,10 +820,12 @@ COMPLETED_RUNS = [
 
 STRAIN_STATUS = [
     # (name, profile_anchor, badge_class, badge_text, next_text)
-    ("WW Z",                 "#wwz-profile",   "dialed", "Dialed",      "—"),
-    ("Caramel Apple Gelato", "#cag-profile",   "calib",  "Calibrating", "Try 430°F endpoint"),
-    ("Orange Candy",         "#oc-profile",    "calib",  "Calibrating", "Repeat Run 5 curve to confirm"),
-    ("The Hive #1",          "#hive1-profile", "calib",  "Calibrating", "Try 420–425°F endpoint on Run 6"),
+    ("WW Z",                 "#wwz-profile",     "dialed",  "Dialed",      "—"),
+    ("Caramel Apple Gelato", "#cag-profile",     "calib",   "Calibrating", "Try 430°F endpoint"),
+    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Repeat Run 5 curve to confirm"),
+    ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
+    ("Fembot #3",            "#fembot3-profile", "pending", "Pending",     "Run 1 pending"),
+    ("Mango Starburst #23",  "#ms23-profile",    "pending", "Pending",     "Run 1 pending"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -818,6 +855,8 @@ def build_html():
         ("#hive1-run3", "Hive #1 Run 3"),
         ("#hive1-run4", "Hive #1 Run 4"),
         ("#hive1-run5", "Hive #1 Run 5"),
+        ("#fembot3-profile", "Fembot #3"),
+        ("#ms23-profile", "Mango Starburst #23"),
     ]
     toc_links_html = '<ul>'
     for href, label in toc_links:
@@ -1068,6 +1107,26 @@ def build_html():
     s += result_row("Session:", "Nice distinct flavors through the first two-thirds. Harsh in the last ~10 seconds. Effects quite potent.")
     s += result_row("Read:", "Distinct staged flavor character is consistent with the ramp — each terpene fraction vaporizes as the curve climbs through it, rather than all at once as in the flat hold. Swab difference vs. Runs 3–4 is within noise (too many uncontrolled variables). Harshness at session tail is a directional signal that 430°F may still be slightly above ideal for this material on the ramp.")
     s += result_row("Next:", "Try 420–425°F endpoint on Run 6. Keep ramp shape unchanged.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── Fembot #3 Strain Profile
+    s = f'<div class="section" id="fembot3-profile">'
+    s += section_header("Fembot #3 — Strain Profile", "PENDING — Run 1 not yet completed.", "pending", "grey")
+    s += info_table(FEMBOT3_INFO)
+    s += '<h3 class="grey">Inferred Terpene Profile</h3>'
+    s += '<p class="note">Profile inferred from Fuzzy Melon × Rambutan lineage. Terpinolene-forward character is consistent with the sativa-dominant, uplifting profile typical of this lineage direction — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
+    s += terpene_table(FEMBOT3_TERPS)
+    s += '</div>'
+    sections.append(s)
+
+    # ── Mango Starburst #23 Strain Profile
+    s = f'<div class="section" id="ms23-profile">'
+    s += section_header("Mango Starburst #23 — Strain Profile", "PENDING — Run 1 not yet completed.", "pending", "grey")
+    s += info_table(MS23_INFO)
+    s += '<h3 class="grey">Inferred Terpene Profile</h3>'
+    s += '<p class="note">Profile inferred from SB36 lineage (Starburst OG × \'97 KC36). Limonene and terpinolene weighted toward prominent based on the line\'s documented citrus-candy, flavor-forward character — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
+    s += terpene_table(MS23_TERPS)
     s += '</div>'
     sections.append(s)
 
