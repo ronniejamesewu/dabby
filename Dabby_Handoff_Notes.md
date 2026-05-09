@@ -25,8 +25,10 @@ Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber 
 3. Commit both files to a feature branch
 4. Push the branch and open a PR
 5. GitHub automatically posts a preview URL as a PR comment
-6. User reviews the preview, merges the PR
+6. User confirms in conversation — say "merge it" and Claude merges the PR directly via GitHub MCP tools. If the user wants to review the preview first, they do so, then confirm. Either way, Claude handles the merge — user does not need to go to GitHub.
 7. `deploy.yml` automatically publishes to gh-pages — live site updates
+
+**PR merge:** Claude can merge PRs directly using `mcp__github__merge_pull_request`. Always merge the PR as soon as the user confirms — do not leave it for the user to merge manually. If the handoff notes are updated after the PR is opened, push them to the same branch before merging, or open a follow-up PR immediately and merge that too.
 
 **CRITICAL — never use `push_files` for `index.html` or routine commits.** `push_files` passes full file content as string literals and has caused silent content loss in past sessions (stripped charts, lost sections). Git is the correct path for all routine work. `push_files` is acceptable only for temporary files on non-main branches (e.g., mockups on gh-pages) when git checkout of that branch is impractical — and only when the file is not `index.html`.
 
@@ -199,6 +201,8 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Dressing up the generic cannabis terpene palette as strain-specific knowledge.** The same five or six terpenes appear across nearly all strains. Do not present inferred profiles as if they reflect meaningful strain differentiation.
 - **Proposing changes without showing them first.** For chart styling and methodology edits, always propose the change with before/after context before executing. Do not edit and present without the proposal step.
 - **Using `push_files` for routine file updates.** `push_files` passes full file content as string literals and has caused silent content loss (stripped charts, lost sections) in past sessions. In Claude Code, use git for all routine commits. `push_files` is acceptable only for temporary files on non-main branches when git checkout is impractical, and never for `index.html`.
+- **Using ambiguous abbreviations in branch names.** "fb" reads as "Facebook" in some UIs. Use full strain abbreviations — "fembot", "hive1", "ms23", etc.
+
 - **Narrating instead of proposing.** Presenting an interpretation or plan and then immediately executing is not confirmation — it is narration with extra steps. This applies to all actions: editing files, running the generator, committing, updating methodology or collaboration notes. The correct behavior is always: present the plan, ask for approval or corrections, wait for a response, then act.
 
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
