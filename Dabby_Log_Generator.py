@@ -801,7 +801,13 @@ MS23_INFO = [
     ("Base genetics", "SB36 line — Starburst OG × '97 KC36"),
     ("Character",     "Sativa-dominant — upbeat, euphoric, flavor-forward character inferred from SB36 lineage. KC36 influence leans energetic rather than sedating. Phenotype and wash quality drive actual experience."),
     ("Nose",          "Diesel note pronounced at cold nose; sweetness underneath"),
-    ("Status",        "PENDING — Run 1 not yet completed"),
+    ("Status",        "IN CALIBRATION — Run 1 complete. Run 2 pending."),
+]
+MS23_RUN1 = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
 ]
 MS23_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
@@ -829,6 +835,7 @@ COMPLETED_RUNS = [
     ("The Hive #1",          HIVE1_RUN4),
     ("The Hive #1",          HIVE1_RUN5),
     ("Fembot #3",            FEMBOT3_RUN1),
+    ("Mango Starburst #23",  MS23_RUN1),
 ]
 
 STRAIN_STATUS = [
@@ -838,7 +845,7 @@ STRAIN_STATUS = [
     ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Repeat Run 5 curve to confirm"),
     ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
     ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 2"),
-    ("Mango Starburst #23",  "#ms23-profile",    "pending", "Pending",     "Run 1 pending"),
+    ("Mango Starburst #23",  "#ms23-profile",    "calib",   "Calibrating", "Repeat Run 1 curve to confirm"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -872,6 +879,7 @@ def build_html():
         ("#fembot3-run1", "Fembot #3 Run 1"),
         ("#fembot3-run2", "Fembot #3 Run 2"),
         ("#ms23-profile", "Mango Starburst #23"),
+        ("#ms23-run1", "MS23 Run 1"),
     ]
     toc_links_html = '<ul>'
     for href, label in toc_links:
@@ -1163,11 +1171,26 @@ def build_html():
 
     # ── Mango Starburst #23 Strain Profile
     s = f'<div class="section" id="ms23-profile">'
-    s += section_header("Mango Starburst #23 — Strain Profile", "PENDING — Run 1 not yet completed.", "pending", "grey")
+    s += section_header("Mango Starburst #23 — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
     s += info_table(MS23_INFO)
-    s += '<h3 class="grey">Inferred Terpene Profile</h3>'
+    s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from SB36 lineage (Starburst OG × \'97 KC36). Limonene and terpinolene weighted toward prominent based on the line\'s documented citrus-candy, flavor-forward character — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
     s += terpene_table(MS23_TERPS)
+    s += '</div>'
+    sections.append(s)
+
+    # ── Mango Starburst #23 Run 1
+    s = f'<div class="section" id="ms23-run1">'
+    s += section_header("Mango Starburst #23 — Run 1 — May 9, 2026", "⚠ IN CALIBRATION — Clean swab. Repeat to confirm.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    s += curve_chart_html(MS23_RUN1)
+    s += curve_table(MS23_RUN1)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Very clean — no darkening.")
+    s += result_row("Session:", "Very piney character throughout — almost pine sol. Tasty, though not to user's taste preference. Heady effects. No harshness.")
+    s += result_row("Note:", "Strong pine-forward character noted on first run. The SB36 lineage inference weighted limonene and terpinolene as prominent — the pronounced pine character is consistent with pinene playing a larger role than the inference anticipated. Logged as one data point; flavor character is a weak signal and single-session observations carry high uncertainty.")
+    s += result_row("Verdict:", "Clean swab on first run. Curve well-matched to this material. Repeat on Run 2 to confirm.")
     s += '</div>'
     sections.append(s)
 
