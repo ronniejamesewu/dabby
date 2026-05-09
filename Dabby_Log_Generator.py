@@ -468,9 +468,10 @@ def dashboard_html():
         f'</div>'
     )
 
+    max_runs = run_counts[sorted_strains[0][0]] if sorted_strains else 0
     rows = ''
     for i, (strain, anchor, bc, bt, nt) in enumerate(sorted_strains):
-        medal = ' 🥇' if i == 0 else ''
+        medal = ' 🥇' if run_counts[strain] == max_runs else ''
         rows += (
             f'<tr>'
             f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
