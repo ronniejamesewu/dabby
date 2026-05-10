@@ -729,7 +729,7 @@ OC_RUN6 = [
 ]
 OC_RUN7 = [
     ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
-    ("69s", "430°F", "Endpoint"),
+    ("60s", "430°F", "Endpoint"),
 ]
 
 HIVE1_INFO = [
