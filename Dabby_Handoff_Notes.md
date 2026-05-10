@@ -71,7 +71,7 @@ This was substantially revised. The old estimate of a 15–35°F titanium-to-ins
 
 Steeper mid-climbs move through terpene zones faster. The shape of the climb matters for when vaporization begins, not for offset concerns.
 
-**Curve shape vs. single setpoint:** Whether a multi-stage ramp provides meaningfully better results than a single sustained setpoint is an open empirical question. The Hive #1 Run 3 (steady 430°F flat hold) is the first direct test of this. The main theoretical justification for a ramp is staging volatile terpene fractions — lower opening temps may preserve more terpene vapor before degradation. The counterargument is that the window between terpene vaporization and degradation is narrow enough that the ramp may not accomplish much in practice. Swab is not a sensitive enough signal to distinguish between curve shapes within the normal operating range — subjective session character is the primary readout for this experiment.
+**Curve shape vs. single setpoint:** Multiple strains now have ramp vs. flat hold data. Emerging pattern: ramp produces better session character (more distinct staged flavors, tastier) than flat hold at equivalent endpoints — most clearly demonstrated in OC Run 6 (ramp) vs Run 7 (flat hold) at 430°F, and consistent with Hive #1 Run 5 (ramp, distinct staged flavors). Endpoint temperature appears to be the larger variable for harshness — both ramp and flat hold show tail harshness at 430°F+ across multiple strains. Swab is not a sensitive enough signal to distinguish between curve shapes within the normal operating range — subjective session character is the primary readout.
 
 **Temperature and effect strength:** Higher temperatures vaporize a larger fraction of material in a shorter window, producing a larger bolus inhaled and a faster peak blood concentration. This is the most parsimonious explanation for the stronger effects observed at higher endpoints (OC Run 5, 460°F). CBN hypothesis rejected: CBN has ~1/10th CB1 binding affinity of THC, in-session CBN formation is limited by oxygen availability, and a higher CBN fraction would dilute rather than amplify the effect. Rate of delivery matters, not just total dose — the same material at lower temps over a longer curve could deliver similar total cannabinoids but with a slower, smoother absorption profile.
 
@@ -81,7 +81,7 @@ Steeper mid-climbs move through terpene zones faster. The shape of the climb mat
 
 **Mode:** Custom Ascent preferred over Valley. Valley's initial dip is redundant with cold start — material is already at its lowest temperature at session open.
 
-**Opening setpoint exploration:** Lower opening setpoints (below the baseline 375°F) are under active exploration for OC. Run 5 tested 350°F open — see Current Strain Status.
+**Opening setpoint exploration:** OC Run 5 tested a 350°F open — darker swab, stronger effect, not a clean calibration signal. Runs 6 and 7 reverted to 380°F baseline open. Lower opening setpoints are not under active exploration at this time.
 
 ---
 
@@ -168,7 +168,6 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 - `STRAIN_STATUS` drives the table rows — add entry with `(name, profile_anchor, badge_class, badge_text, next_text)`
 - `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes
 - "Most dabs in a day" excludes runs with `run_date = None`; the stat grows more accurate as dates are confirmed
-
 
 ---
 
