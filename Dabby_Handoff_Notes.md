@@ -46,7 +46,7 @@ Runs are logged with exact date (not month only) when known.
 
 **Swab protocol clarification:** A swab is always taken — it is the standard insert-cleaning step after every session, not an optional measurement. "Not recorded" means the color wasn't noted, not that no swab was taken. Always ask for swab color if not reported.
 
-**Duration typo:** If the user reports a session time of 69 seconds, treat it as almost certainly a typo for 60 seconds and confirm before logging.
+**Duration typo:** If the user reports a session time of 69 seconds, assume it is a typo for 60 seconds, log it as 60, and note the assumption in your output — tell the user to complain if you assumed wrong. Do not stop to ask for confirmation.
 
 ---
 
