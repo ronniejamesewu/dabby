@@ -729,7 +729,7 @@ OC_RUN6 = [
 ]
 OC_RUN7 = [
     ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
-    ("69s", "430°F", "Endpoint"),
+    ("60s", "430°F", "Endpoint"),
 ]
 
 HIVE1_INFO = [
@@ -1088,7 +1088,7 @@ def build_html():
     s = f'<div class="section" id="oc-run7">'
     s += section_header("Orange Candy — Run 7 — May 10, 2026", "⚠ IN CALIBRATION — Flat hold at 430°F. Harshness at tail.", "calib", "")
     s += '<h3>Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 69 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(OC_RUN7)
     s += curve_table(OC_RUN7)
     s += '<h3>Results</h3>'
