@@ -1,7 +1,7 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 9, 2026 — Session 12
+## Last updated: May 10, 2026 — Session 13
 
-This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log fetched from GitHub.
+This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
 ---
 
@@ -67,7 +67,7 @@ This was substantially revised. The old estimate of a 15–35°F titanium-to-ins
 
 **Ascent rate and offset:** During steep ascent, titanium is ahead of insert temperature; during flat or slow phases the system approaches equilibrium. However, because the insert equilibrates in under a second, even a short flat tail (10 seconds) is sufficient for the insert to reach the setpoint. Do not flag short flat tails as inadequate for offset closure — the equilibration time is too fast for this to be a meaningful concern at any reasonable tail length.
 
-The rationale for a flat tail at endpoint is simply spending time at the target temperature, not closing a significant offset. Steeper mid-climbs move through terpene zones faster. The shape of the climb matters for when vaporization begins, not for offset concerns.
+Steeper mid-climbs move through terpene zones faster. The shape of the climb matters for when vaporization begins, not for offset concerns.
 
 **Curve shape vs. single setpoint:** Whether a multi-stage ramp provides meaningfully better results than a single sustained setpoint is an open empirical question. The Hive #1 Run 3 (steady 430°F flat hold) is the first direct test of this. The main theoretical justification for a ramp is staging volatile terpene fractions — lower opening temps may preserve more terpene vapor before degradation. The counterargument is that the window between terpene vaporization and degradation is narrow enough that the ramp may not accomplish much in practice. Swab is not a sensitive enough signal to distinguish between curve shapes within the normal operating range — subjective session character is the primary readout for this experiment.
 
@@ -117,7 +117,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Caramel Apple Gelato** (Quasi Farms, Michigan) — In calibration. Run 1 too hot (450°F endpoint, swab amber toward brown). Run 2 pending: endpoint reduced to 430°F, hold shortened to 55 seconds.
 
-**Orange Candy** (Nikka T, 90 micron full melt) — In calibration. Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs, not noticeably different from Run 3. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint. Darker swab, last portion harsh. Effect notably stronger than prior runs — user's hypothesis is that higher temperature produced stronger effect; logged as one data point, not a confirmed finding, confounders acknowledged. Curve to be repeated as Run 6 before drawing conclusions.
+**Orange Candy** (Nikka T, 90 micron full melt) — In calibration. Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs, not noticeably different from Run 3. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint. Darker swab, last portion harsh. Effect notably stronger than prior runs — user's hypothesis is that higher temperature produced stronger effect; logged as one data point, not a confirmed finding, confounders acknowledged. Run 6 (May 10, 2026): 380→390→410→430°F ramp — light golden swab, very nice. Next: repeat to confirm, or test 350°F open / 460°F curve when ready.
 
 **The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 (May 8, 2026): 380°F open ramp (380→390→410→440°F, 65s). Both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same steady 430°F hold extended to 60s — clean swab again, consistent with Run 3. Two flat-hold data points logged. Run 5 (May 9, 2026): ramp to 430°F endpoint (380→390→410→430°F) — swab light golden (tad lighter than Runs 3–4, within noise), nice distinct staged flavors through first two-thirds, harsh in last ~10 seconds, effects quite potent. Harshness at tail suggests 430°F may be slightly high even on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
 
@@ -131,12 +131,6 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Open Questions
 
-- The Hive #1 Run 6 pending — try 420–425°F endpoint (same ramp shape). Run 5 had slight harshness at tail, directional signal that 430°F may be a touch high.
-- Fembot #3 Run 3 pending — try 420°F steady flat hold (60s). Two data points at 430°F (Run 1 ramp, Run 2 flat hold) both showed harshness at the tail. If harshness resolves at 420°F, note whether flavor and effects hold.
-- Mango Starburst #23 Run 1 pending — baseline curve, no prior data.
-- Blueberry 36 first sessions not yet run.
-- Orange Candy Run 6 pending — repeat of Run 5 curve (350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint) to see if results replicate before drawing conclusions.
-- Caramel Apple Gelato Run 2 not yet completed.
 - Sapphire insert not yet acquired. When acquired, requires fresh calibration from scratch — do not scale from quartz curves.
 - Whether fresh press consistency justifies a different baseline curve remains an open question. Not settled.
 - **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
@@ -168,7 +162,7 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 - `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged
 - `STRAIN_STATUS` drives the table rows — add entry with `(name, profile_anchor, badge_class, badge_text, next_text)`
 - `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes
-- `dashboard_mockup.html` on gh-pages branch is a historical design artifact, now superseded by the generator
+
 
 ---
 
@@ -176,7 +170,6 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 
 - 1D thermal resistance model is a dead end. Do not rebuild.
 - The 15–35°F offset estimate is retired. Current position: offset probably small.
-- Swab is the calibration ground truth in the sense that it flags overheating — dark/burnt residue means too hot. Within the light-golden-to-amber range, swab has too many uncontrolled variables to distinguish between curve shapes or small endpoint differences. Do not over-interpret clean swabs as fine-grained efficiency data.
 - Quartz-to-sapphire curve scaling does not work.
 - Valley mode is not appropriate for cold start sessions.
 - Consistency type alone does not justify a different baseline curve.
@@ -184,7 +177,6 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 - The user's hypothesis that higher temperature (460°F endpoint) produced a notably stronger effect in OC Run 5 is logged as stated — one data point, not a confirmed finding. Do not dismiss it or over-assert it.
 - Claude Code is the active environment. The old cloud/API session protocol (fetch from raw.githubusercontent.com, push_files for publishing) is retired.
 - PR preview workflow is established and active. Changes go to a feature branch → PR → preview URL → merge → auto-deploy.
-- `push_files` is not to be used for `index.html` or routine commits. Git is the correct path.
 - Blueberry 36 phenotypes are logged as separate strains, not grouped.
 - Dashboard is implemented. Do not redesign from scratch — iterate from the current generator code.
 
@@ -202,7 +194,6 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Proposing changes without showing them first.** For chart styling and methodology edits, always propose the change with before/after context before executing. Do not edit and present without the proposal step.
 - **Using `push_files` for routine file updates.** `push_files` passes full file content as string literals and has caused silent content loss (stripped charts, lost sections) in past sessions. In Claude Code, use git for all routine commits. `push_files` is acceptable only for temporary files on non-main branches when git checkout is impractical, and never for `index.html`.
 - **Using ambiguous abbreviations in branch names.** "fb" reads as "Facebook" in some UIs. Use full strain abbreviations — "fembot", "hive1", "ms23", etc.
-
 - **Narrating instead of proposing.** Presenting an interpretation or plan and then immediately executing is not confirmation — it is narration with extra steps. This applies to all actions: editing files, running the generator, committing, updating methodology or collaboration notes. The correct behavior is always: present the plan, ask for approval or corrections, wait for a response, then act.
 
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
@@ -230,7 +221,9 @@ Specific errors made in past sessions that a new instance should avoid:
 
 ## Changelog
 
-- **May 9, 2026 — Session 12:** Fembot #3 Run 2 logged (May 9, 2026). 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Two data points now at 430°F (Run 1 ramp to 430°F, Run 2 flat hold at 430°F) both showing tail harshness — consistent signal that 430°F is slightly above ideal for this material regardless of curve shape. Run 3 pending: 420°F steady flat hold, 60 seconds.
+- **May 10, 2026 — Session 13:** Orange Candy Run 6 logged (May 10, 2026). 380→390→410→430°F ramp — light golden swab, very nice. First run at 430°F endpoint for OC; clean result. Next: repeat to confirm, or test 350°F open / 460°F curve. Handoff doc cleaned up: fixed stale "fetched from GitHub" reference, backfilled Fembot #3 Run 1 into Session 12 changelog, trimmed Open Questions to project-level items, removed redundant bullets from Decisions Made, tightened Curve Design paragraph, fixed Narrating failure mode list formatting.
+
+- **May 9, 2026 — Session 12:** Fembot #3 Runs 1–2 logged (May 9, 2026). Run 1: ramp to 430°F endpoint — light golden swab, tasty, slight harshness at tail. Run 2: 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Two data points at 430°F (Run 1 ramp, Run 2 flat hold) both showing tail harshness — consistent signal that 430°F is slightly above ideal regardless of curve shape. Run 3 pending: 420°F steady flat hold, 60 seconds.
 
 - **May 9, 2026 — Session 11:** Fembot #3 and Mango Starburst #23 added to log as pending profiles. Fembot #3: Riptide (CO), Fuzzy Melon × Rambutan, cold cure, 169–73 micron, sativa-dominant character inferred, terpinolene-forward. Cold nose: subtle garlic note, strong fragrance, less distinct character. Mango Starburst #23: Terps Over Yields (CO), Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23, SB36 line (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. No runs on either. Leaderboard calculation confirmed correct — new strains excluded from dashboard until first run logged.
 
