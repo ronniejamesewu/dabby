@@ -433,6 +433,18 @@ def result_row(label, value, amber=False):
     cls = "result-row amber" if amber else "result-row"
     return f'<p class="{cls}"><span class="label">{label}</span> {value}</p>'
 
+def what_to_try_next_html(section_id, your_read, my_read, proposed_waypoints=None):
+    s = f'<div class="section" id="{section_id}">'
+    s += section_header("What to Try Next", header_class="grey")
+    s += result_row("Your read:", your_read)
+    s += result_row("My read:", my_read)
+    if proposed_waypoints:
+        s += '<h3>Proposed Curve</h3>'
+        s += curve_chart_html(proposed_waypoints)
+        s += curve_table(proposed_waypoints)
+    s += '</div>'
+    return s
+
 def dashboard_html():
     today = date.today()
     days = (today - FIRST_RUN_DATE).days + 1
@@ -806,6 +818,13 @@ FEMBOT3_RUN3 = [
     ("0s",  "420°F", "Steady hold — flat 420°F from session open"),
     ("60s", "420°F", "Endpoint"),
 ]
+HIVE1_NEXT = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("35s", "410°F", "Mid ascent"),
+    ("65s", "425°F", "Endpoint — down 5°F from Run 5"),
+]
+
 FEMBOT3_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
     ("Myrcene",       "334°F / 168°C", "Earthy, tropical — inferred secondary"),
@@ -885,9 +904,10 @@ def build_html():
         ("#baseline", "Baseline Curve"),
         ("#wwz-profile", "WW Z"),
         ("#wwz-run1", "WW Z Run 1"),
+        ("#wwz-next", "WW Z — Next"),
         ("#cag-profile", "Caramel Apple Gelato"),
         ("#cag-run1", "CAG Run 1"),
-        ("#cag-run2", "CAG Run 2"),
+        ("#cag-next", "CAG — Next"),
         ("#oc-profile", "Orange Candy"),
         ("#oc-runs12", "OC Runs 1–2"),
         ("#oc-run3", "OC Run 3"),
@@ -895,18 +915,21 @@ def build_html():
         ("#oc-run5", "OC Run 5"),
         ("#oc-run6", "OC Run 6"),
         ("#oc-run7", "OC Run 7"),
+        ("#oc-next", "OC — Next"),
         ("#hive1-profile", "The Hive #1"),
         ("#hive1-run1", "Hive #1 Run 1"),
         ("#hive1-run2", "Hive #1 Run 2"),
         ("#hive1-run3", "Hive #1 Run 3"),
         ("#hive1-run4", "Hive #1 Run 4"),
         ("#hive1-run5", "Hive #1 Run 5"),
+        ("#hive1-next", "Hive #1 — Next"),
         ("#fembot3-profile", "Fembot #3"),
         ("#fembot3-run1", "Fembot #3 Run 1"),
         ("#fembot3-run2", "Fembot #3 Run 2"),
-        ("#fembot3-run3", "Fembot #3 Run 3"),
+        ("#fembot3-next", "Fembot #3 — Next"),
         ("#ms23-profile", "Mango Starburst #23"),
         ("#ms23-run1", "MS23 Run 1"),
+        ("#ms23-next", "MS23 — Next"),
     ]
     toc_links_html = '<ul>'
     for href, label in toc_links:
@@ -975,6 +998,13 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "wwz-next",
+        your_read="Nothing recorded",
+        my_read="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
+        proposed_waypoints=None,
+    ))
+
     # ── Caramel Apple Gelato Strain Profile
     s = f'<div class="section" id="cag-profile">'
     s += section_header("Caramel Apple Gelato — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
@@ -999,17 +1029,12 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    # ── CAG Run 2 Pending
-    s = f'<div class="section" id="cag-run2">'
-    s += section_header("Caramel Apple Gelato — Run 2 — Pending", "PENDING — Not yet completed.", "pending", "grey")
-    s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 55 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
-    s += curve_chart_html(CAG_RUN2)
-    s += curve_table(CAG_RUN2)
-    s += '<h3>Results</h3>'
-    s += '<p>Run 2 not yet completed. Record swab color, vapor character, and any session observations. If swab is still darker than target, reduce endpoint further. If flavor remains limited with clean swab, this may be a lower terpene content material — note accordingly and lock curve.</p>'
-    s += '</div>'
-    sections.append(s)
+    sections.append(what_to_try_next_html(
+        "cag-next",
+        your_read="Nothing recorded",
+        my_read="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
+        proposed_waypoints=CAG_RUN2,
+    ))
 
     # ── Orange Candy Strain Profile
     s = f'<div class="section" id="oc-profile">'
@@ -1106,6 +1131,13 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "oc-next",
+        your_read="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
+        my_read="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
+        proposed_waypoints=OC_RUN6,
+    ))
+
     # ── The Hive #1 Strain Profile
     s = f'<div class="section" id="hive1-profile">'
     s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.", "calib", "")
@@ -1189,6 +1221,13 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "hive1-next",
+        your_read="Try 420–425°F endpoint, keep ramp shape.",
+        my_read="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
+        proposed_waypoints=HIVE1_NEXT,
+    ))
+
     # ── Fembot #3 Strain Profile
     s = f'<div class="section" id="fembot3-profile">'
     s += section_header("Fembot #3 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–2 complete. Run 3 pending.", "calib", "")
@@ -1228,17 +1267,12 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    # ── Fembot #3 Run 3 Pending
-    s = f'<div class="section" id="fembot3-run3">'
-    s += section_header("Fembot #3 — Run 3 — Pending", "PENDING — Not yet completed.", "pending", "grey")
-    s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 420°F steady (no ramp)</p>'
-    s += curve_chart_html(FEMBOT3_RUN3)
-    s += curve_table(FEMBOT3_RUN3)
-    s += '<h3>Results</h3>'
-    s += '<p>Run 3 not yet completed. Record swab color, vapor character, and session observations. If harshness resolves at 420°F, note whether flavor and effects character holds.</p>'
-    s += '</div>'
-    sections.append(s)
+    sections.append(what_to_try_next_html(
+        "fembot3-next",
+        your_read="Nothing recorded",
+        my_read="Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.",
+        proposed_waypoints=FEMBOT3_RUN3,
+    ))
 
     # ── Mango Starburst #23 Strain Profile
     s = f'<div class="section" id="ms23-profile">'
@@ -1264,6 +1298,13 @@ def build_html():
     s += result_row("Verdict:", "Clean swab on first run. Curve well-matched to this material. Repeat on Run 2 to confirm.")
     s += '</div>'
     sections.append(s)
+
+    sections.append(what_to_try_next_html(
+        "ms23-next",
+        your_read="Nothing recorded",
+        my_read="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
+        proposed_waypoints=MS23_RUN1,
+    ))
 
     # ── Assemble
     body = dash + toc + ''.join(sections)
