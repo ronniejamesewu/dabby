@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 10, 2026 — Session 14
+## Last updated: May 10, 2026 — Session 15
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -34,7 +34,7 @@ Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber 
 
 **CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit generator → run generator → commit both files.
 
-**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, TOC entries, STRAIN_STATUS entry, COMPLETED_RUNS entries, and section build code. Footer auto-timestamps on each run.
+**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, TOC entries, STRAIN_STATUS entry, COMPLETED_RUNS entries, and section build code. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, waypoints)` — `run_date` is a `date` object or `None` if the exact date is not confirmed.
 
 ---
 
@@ -136,7 +136,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - Sapphire insert not yet acquired. When acquired, requires fresh calibration from scratch — do not scale from quartz curves.
 - Whether fresh press consistency justifies a different baseline curve remains an open question. Not settled.
 - **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
-- **Session date backfill** — most pre-Session 6 run entries are dated to month only. WW Z Run 1 is confirmed May 2, 2026. Other entries (CAG Run 1, OC Runs 1–5) still need exact dates if the user can recall them.
+- **Session date backfill** — `run_date` is now a field in each `COMPLETED_RUNS` tuple. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those tuples and re-run the generator.
 
 **Log enhancements pending:**
 - **Terpene boiling point reference section** — standalone table in the log. Not yet implemented.
@@ -148,7 +148,10 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 The dashboard is live in the generator and deployed. It sits between the cover and the Contents section.
 
 **Structure:**
-- Four stat cards computed at generator runtime: total runs / avg open / avg endpoint / most time spent (linear interpolation across all runs, 5°F buckets)
+- Six stat cards in two rows of three, computed at generator runtime
+  - Row 1 (volume/frequency): total runs over N days / most dabs in a day / unique strains
+  - Row 2 (temperature): avg open / avg endpoint / most time spent (linear interpolation across all runs, 5°F buckets)
+- Grid: `repeat(3, 1fr)` desktop, `repeat(2, 1fr)` mobile
 - Strain table sorted by run count desc; strains with zero runs excluded
 - Leader row (most runs) gets 🥇 medal emoji to the right of the strain name
 - Strain names are green links (`var(--green-dark)`, underline on hover) to their profile section
@@ -161,9 +164,10 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 - "Contents" pill removed from the Contents section (self-referential)
 
 **Implementation notes:**
-- `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged
+- `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged. Tuple form: `(strain, run_date, waypoints)`. Use `None` for `run_date` if the exact date is not confirmed.
 - `STRAIN_STATUS` drives the table rows — add entry with `(name, profile_anchor, badge_class, badge_text, next_text)`
 - `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes
+- "Most dabs in a day" excludes runs with `run_date = None`; the stat grows more accurate as dates are confirmed
 
 
 ---
@@ -201,6 +205,7 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
 - **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it — it wastes time. Do not amend already-pushed commits either (same problem). When a branch needs correction after being pushed, cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
+- **Not reading handoff and methodology at session start.** CLAUDE.md explicitly requires reading `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`, and `Dabby_Log_Generator.py` before taking any action. This was skipped in Session 15, leading to suggestions made without full context. Read all three files before responding to any request, every session.
 
 ---
 
@@ -223,6 +228,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 10, 2026 — Session 15:** Dashboard expanded from 4 to 6 stat cards. Added "most dabs in a day" (currently 5, on May 9 — Hive #1 Runs 4–5, Fembot #3 Runs 1–2, MS23 Run 1) and "unique strains" (currently 6). Cards reorganized into two rows of three: row 1 is volume/frequency (total runs, most dabs in a day, unique strains), row 2 is temperature (avg open, avg endpoint, most time spent). Grid changed from 4-column to 3-column desktop; mobile stays 2-column. `COMPLETED_RUNS` tuples extended to `(strain, run_date, waypoints)` — dates backfilled for all confirmed runs; CAG Run 1 and OC Runs 1–3 remain `None`. Fixed TOC mobile layout — removed `flex-direction:column` override that was stacking pills vertically on narrow screens. New failure mode added: skipping handoff and methodology read at session start.
 
 - **May 10, 2026 — Session 14:** Orange Candy Run 7 logged (May 10, 2026). 430°F steady flat hold, 60s — plain amber swab, pleasant, not as tasty as ramp, harsh in last 20 seconds. Ramp (Run 6) outperforming flat hold at same 430°F endpoint — consistent with Fembot #3 pattern. Next: repeat Run 6 ramp to confirm, or try 420°F flat hold.
 
