@@ -200,6 +200,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
+- **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it. When a branch needs correction after being pushed, skip the rebase-then-force-push sequence entirely — cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
 
 ---
 
