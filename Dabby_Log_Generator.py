@@ -688,7 +688,7 @@ OC_INFO = [
     ("Input",       "90 micron full melt bubble hash"),
     ("Consistency", "Cold cure"),
     ("Nose",        "Not yet recorded"),
-    ("Status",      "IN CALIBRATION — Runs 1–6 complete"),
+    ("Status",      "IN CALIBRATION — Runs 1–7 complete"),
 ]
 OC_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility"),
@@ -726,6 +726,10 @@ OC_RUN6 = [
     ("15s", "390°F", "Early ascent"),
     ("35s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint — down 10°F from Runs 3–4"),
+]
+OC_RUN7 = [
+    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
+    ("69s", "430°F", "Endpoint"),
 ]
 
 HIVE1_INFO = [
@@ -840,6 +844,7 @@ COMPLETED_RUNS = [
     ("Orange Candy",         OC_RUN4),
     ("Orange Candy",         OC_RUN5),
     ("Orange Candy",         OC_RUN6),
+    ("Orange Candy",         OC_RUN7),
     ("The Hive #1",          HIVE1_RUN1),
     ("The Hive #1",          HIVE1_RUN2),
     ("The Hive #1",          HIVE1_RUN3),
@@ -854,7 +859,7 @@ STRAIN_STATUS = [
     # (name, profile_anchor, badge_class, badge_text, next_text)
     ("WW Z",                 "#wwz-profile",     "dialed",  "Dialed",      "—"),
     ("Caramel Apple Gelato", "#cag-profile",     "calib",   "Calibrating", "Try 430°F endpoint"),
-    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Repeat Run 6 to confirm; 350°F open / 460°F curve on table"),
+    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold"),
     ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
     ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 3"),
     ("Mango Starburst #23",  "#ms23-profile",    "calib",   "Calibrating", "Repeat Run 1 curve to confirm"),
@@ -882,6 +887,7 @@ def build_html():
         ("#oc-run4", "OC Run 4"),
         ("#oc-run5", "OC Run 5"),
         ("#oc-run6", "OC Run 6"),
+        ("#oc-run7", "OC Run 7"),
         ("#hive1-profile", "The Hive #1"),
         ("#hive1-run1", "Hive #1 Run 1"),
         ("#hive1-run2", "Hive #1 Run 2"),
@@ -1000,7 +1006,7 @@ def build_html():
 
     # ── Orange Candy Strain Profile
     s = f'<div class="section" id="oc-profile">'
-    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–6 complete.", "calib", "")
+    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–7 complete.", "calib", "")
     s += info_table(OC_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(OC_TERPS)
@@ -1075,6 +1081,21 @@ def build_html():
     s += result_row("Swab:", "Light golden. Clean.")
     s += result_row("Session:", "Very nice.")
     s += result_row("Next:", "Repeat to confirm, or test 350°F open / 460°F endpoint curve when ready.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── OC Run 7
+    s = f'<div class="section" id="oc-run7">'
+    s += section_header("Orange Candy — Run 7 — May 10, 2026", "⚠ IN CALIBRATION — Flat hold at 430°F. Harshness at tail.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 69 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
+    s += curve_chart_html(OC_RUN7)
+    s += curve_table(OC_RUN7)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Plain amber — clean.")
+    s += result_row("Session:", "Pleasant overall. Not as tasty as the ramp from lower temp. Harsh in the last 20 seconds.")
+    s += result_row("Read:", "Swab is clean, so harshness is a session character signal, not a floor indicator. Comparing to Run 6 (ramp to 430°F, light golden, very nice) — the flat hold at the same endpoint produces clearly more harshness and less flavor character. Consistent with the pattern seen on Fembot #3: flat holds at 430°F track hotter in session feel than ramps to the same endpoint, even with a clean swab.")
+    s += result_row("Next:", "Ramp curve (Run 6 shape) is outperforming the flat hold at 430°F. Repeat Run 6 ramp to confirm, or try 420°F flat hold to find the flat-hold ceiling.")
     s += '</div>'
     sections.append(s)
 
