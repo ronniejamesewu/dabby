@@ -326,7 +326,7 @@ p {{
 /* ── Dashboard ── */
 .stats-grid {{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 1.75rem;
 }}
@@ -342,6 +342,8 @@ p {{
 .stat-card.c2 {{ border-top-color: #4A7D9A; }}
 .stat-card.c3 {{ border-top-color: {AMBER}; }}
 .stat-card.c4 {{ border-top-color: {GREEN_MID}; }}
+.stat-card.c5 {{ border-top-color: #7A9EBB; }}
+.stat-card.c6 {{ border-top-color: #9B7A3A; }}
 .stat-value {{
   font-family: 'DM Mono', monospace;
   font-size: 1.6rem;
@@ -389,7 +391,6 @@ p {{
   :root {{ --page-pad: 1rem; }}
   body {{ padding: 0.5rem; }}
   .info-table td:first-child {{ width: 35%; white-space: normal; }}
-  .toc ul {{ flex-direction: column; }}
   .stats-grid {{ grid-template-columns: repeat(2, 1fr); }}
 }}
 """
@@ -436,12 +437,14 @@ def dashboard_html():
     today = date.today()
     days = (today - FIRST_RUN_DATE).days + 1
 
-    opens, endpoints, temp_sec, run_counts = [], [], {}, {}
-    for strain, wps in COMPLETED_RUNS:
+    opens, endpoints, temp_sec, run_counts, date_counts = [], [], {}, {}, {}
+    for strain, run_date, wps in COMPLETED_RUNS:
         pts = [(int(t.replace('s', '')), float(v.replace('°F', ''))) for t, v, _ in wps]
         opens.append(pts[0][1])
         endpoints.append(pts[-1][1])
         run_counts[strain] = run_counts.get(strain, 0) + 1
+        if run_date is not None:
+            date_counts[run_date] = date_counts.get(run_date, 0) + 1
         for i in range(len(pts) - 1):
             t1, v1 = pts[i]; t2, v2 = pts[i + 1]
             dt = t2 - t1
@@ -449,10 +452,12 @@ def dashboard_html():
                 bucket = round((v1 + (v2 - v1) * s / dt) / 5) * 5
                 temp_sec[bucket] = temp_sec.get(bucket, 0) + 1
 
-    total    = len(COMPLETED_RUNS)
-    avg_open = round(sum(opens) / total)
-    avg_end  = round(sum(endpoints) / total)
-    hot_temp = max(temp_sec, key=temp_sec.get)
+    total          = len(COMPLETED_RUNS)
+    avg_open       = round(sum(opens) / total)
+    avg_end        = round(sum(endpoints) / total)
+    hot_temp       = max(temp_sec, key=temp_sec.get)
+    max_dabs_day   = max(date_counts.values()) if date_counts else 0
+    unique_strains = len(run_counts)
 
     sorted_strains = sorted(
         [(s, a, bc, bt, nt) for s, a, bc, bt, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
@@ -462,6 +467,8 @@ def dashboard_html():
     cards = (
         f'<div class="stats-grid">'
         f'<div class="stat-card c1"><div class="stat-value">{total}</div><div class="stat-label">runs over {days} days</div></div>'
+        f'<div class="stat-card c5"><div class="stat-value">{max_dabs_day}</div><div class="stat-label">most dabs in a day</div></div>'
+        f'<div class="stat-card c6"><div class="stat-value">{unique_strains}</div><div class="stat-label">unique strains</div></div>'
         f'<div class="stat-card c2"><div class="stat-value">{avg_open}°</div><div class="stat-label">avg open</div></div>'
         f'<div class="stat-card c3"><div class="stat-value">{avg_end}°</div><div class="stat-label">avg endpoint</div></div>'
         f'<div class="stat-card c4"><div class="stat-value">{hot_temp}°</div><div class="stat-label">most time spent</div></div>'
@@ -836,23 +843,23 @@ MS23_TERPS = [
 FIRST_RUN_DATE = date(2026, 5, 2)
 
 COMPLETED_RUNS = [
-    ("WW Z",                 WWZ_RUN1),
-    ("Caramel Apple Gelato", CAG_RUN1),
-    ("Orange Candy",         OC_RUNS12),
-    ("Orange Candy",         OC_RUNS12),
-    ("Orange Candy",         OC_RUN3),
-    ("Orange Candy",         OC_RUN4),
-    ("Orange Candy",         OC_RUN5),
-    ("Orange Candy",         OC_RUN6),
-    ("Orange Candy",         OC_RUN7),
-    ("The Hive #1",          HIVE1_RUN1),
-    ("The Hive #1",          HIVE1_RUN2),
-    ("The Hive #1",          HIVE1_RUN3),
-    ("The Hive #1",          HIVE1_RUN4),
-    ("The Hive #1",          HIVE1_RUN5),
-    ("Fembot #3",            FEMBOT3_RUN1),
-    ("Fembot #3",            FEMBOT3_RUN2),
-    ("Mango Starburst #23",  MS23_RUN1),
+    ("WW Z",                 date(2026, 5, 2),  WWZ_RUN1),
+    ("Caramel Apple Gelato", None,              CAG_RUN1),
+    ("Orange Candy",         None,              OC_RUNS12),
+    ("Orange Candy",         None,              OC_RUNS12),
+    ("Orange Candy",         None,              OC_RUN3),
+    ("Orange Candy",         date(2026, 5, 5),  OC_RUN4),
+    ("Orange Candy",         date(2026, 5, 6),  OC_RUN5),
+    ("Orange Candy",         date(2026, 5, 10), OC_RUN6),
+    ("Orange Candy",         date(2026, 5, 10), OC_RUN7),
+    ("The Hive #1",          date(2026, 5, 8),  HIVE1_RUN1),
+    ("The Hive #1",          date(2026, 5, 8),  HIVE1_RUN2),
+    ("The Hive #1",          date(2026, 5, 8),  HIVE1_RUN3),
+    ("The Hive #1",          date(2026, 5, 9),  HIVE1_RUN4),
+    ("The Hive #1",          date(2026, 5, 9),  HIVE1_RUN5),
+    ("Fembot #3",            date(2026, 5, 9),  FEMBOT3_RUN1),
+    ("Fembot #3",            date(2026, 5, 9),  FEMBOT3_RUN2),
+    ("Mango Starburst #23",  date(2026, 5, 9),  MS23_RUN1),
 ]
 
 STRAIN_STATUS = [
