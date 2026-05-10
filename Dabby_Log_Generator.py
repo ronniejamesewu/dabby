@@ -688,7 +688,7 @@ OC_INFO = [
     ("Input",       "90 micron full melt bubble hash"),
     ("Consistency", "Cold cure"),
     ("Nose",        "Not yet recorded"),
-    ("Status",      "IN CALIBRATION — Runs 1–4 complete, Run 5 complete, Run 6 pending"),
+    ("Status",      "IN CALIBRATION — Runs 1–6 complete"),
 ]
 OC_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility"),
@@ -720,6 +720,12 @@ OC_RUN5 = [
     ("30s", "410°F", "Mid ascent"),
     ("50s", "440°F", "Upper zone"),
     ("65s", "460°F", "Endpoint"),
+]
+OC_RUN6 = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("35s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint — down 10°F from Runs 3–4"),
 ]
 
 HIVE1_INFO = [
@@ -833,6 +839,7 @@ COMPLETED_RUNS = [
     ("Orange Candy",         OC_RUN3),
     ("Orange Candy",         OC_RUN4),
     ("Orange Candy",         OC_RUN5),
+    ("Orange Candy",         OC_RUN6),
     ("The Hive #1",          HIVE1_RUN1),
     ("The Hive #1",          HIVE1_RUN2),
     ("The Hive #1",          HIVE1_RUN3),
@@ -847,7 +854,7 @@ STRAIN_STATUS = [
     # (name, profile_anchor, badge_class, badge_text, next_text)
     ("WW Z",                 "#wwz-profile",     "dialed",  "Dialed",      "—"),
     ("Caramel Apple Gelato", "#cag-profile",     "calib",   "Calibrating", "Try 430°F endpoint"),
-    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Repeat Run 5 curve to confirm"),
+    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Repeat Run 6 to confirm; 350°F open / 460°F curve on table"),
     ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
     ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 3"),
     ("Mango Starburst #23",  "#ms23-profile",    "calib",   "Calibrating", "Repeat Run 1 curve to confirm"),
@@ -874,6 +881,7 @@ def build_html():
         ("#oc-run3", "OC Run 3"),
         ("#oc-run4", "OC Run 4"),
         ("#oc-run5", "OC Run 5"),
+        ("#oc-run6", "OC Run 6"),
         ("#hive1-profile", "The Hive #1"),
         ("#hive1-run1", "Hive #1 Run 1"),
         ("#hive1-run2", "Hive #1 Run 2"),
@@ -992,7 +1000,7 @@ def build_html():
 
     # ── Orange Candy Strain Profile
     s = f'<div class="section" id="oc-profile">'
-    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.", "calib", "")
+    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–6 complete.", "calib", "")
     s += info_table(OC_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(OC_TERPS)
@@ -1043,7 +1051,7 @@ def build_html():
 
     # ── OC Run 5
     s = f'<div class="section" id="oc-run5">'
-    s += section_header("Orange Candy — Run 5 — May 6, 2026", "⚠ IN CALIBRATION — Mixed result. Curve to be repeated as Run 6.", "calib", "")
+    s += section_header("Orange Candy — Run 5 — May 6, 2026", "⚠ IN CALIBRATION — Mixed result.", "calib", "")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F</p>'
     s += curve_chart_html(OC_RUN5)
@@ -1053,6 +1061,20 @@ def build_html():
     s += result_row("Session:", "Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.", amber=True)
     s += result_row("Observation:", "User's hypothesis: higher temperature produced stronger effect. Logged as stated — one data point, not a confirmed finding. Confounders include session-to-session variability in tolerance, load size, and conditions.", amber=True)
     s += result_row("Next:", "Repeat same curve as Run 6 before drawing conclusions.", amber=True)
+    s += '</div>'
+    sections.append(s)
+
+    # ── OC Run 6
+    s = f'<div class="section" id="oc-run6">'
+    s += section_header("Orange Candy — Run 6 — May 10, 2026", "⚠ IN CALIBRATION — Clean result. Repeat to confirm.", "calib", "")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    s += curve_chart_html(OC_RUN6)
+    s += curve_table(OC_RUN6)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Light golden. Clean.")
+    s += result_row("Session:", "Very nice.")
+    s += result_row("Next:", "Repeat to confirm, or test 350°F open / 460°F endpoint curve when ready.")
     s += '</div>'
     sections.append(s)
 
