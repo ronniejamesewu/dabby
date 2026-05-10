@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 from datetime import datetime, date
 """
-Dabby the House Rig — Session Profile & Calibration Log Generator
-Produces Dabby_Profile_Log.html — a mobile-responsive, screen-optimized web document.
+Dabby the House Rig — Session Log Generator
+Produces index.html — a mobile-responsive, screen-optimized web document.
 To update: edit DATA and SECTIONS sections, then run with python3.
 """
 
@@ -111,20 +111,6 @@ body {{
 }}
 .section-header.grey h2 {{ color: var(--grey-text); }}
 
-/* ── Status badge ── */
-.badge {{
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}}
-.badge.dialed   {{ background: var(--green-dark); color: #fff; }}
-.badge.calib    {{ background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber); }}
-.badge.pending  {{ background: var(--grey-bg); color: var(--grey-text); border: 1px solid var(--border); }}
-.badge.hot      {{ background: var(--amber-light); color: #8B4513; border: 1px solid var(--amber); }}
-.badge-sm {{ padding: 0.2rem 0.6rem; font-size: 0.75rem; letter-spacing: 0; }}
 
 /* ── Info table ── */
 .info-table {{
@@ -472,7 +458,7 @@ def dashboard_html():
     unique_strains = len(run_counts)
 
     sorted_strains = sorted(
-        [(s, a, bc, bt, nt) for s, a, bc, bt, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
+        [(s, a, nt) for s, a, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
         key=lambda x: run_counts[x[0]], reverse=True
     )
 
@@ -489,20 +475,19 @@ def dashboard_html():
 
     max_runs = run_counts[sorted_strains[0][0]] if sorted_strains else 0
     rows = ''
-    for i, (strain, anchor, bc, bt, nt) in enumerate(sorted_strains):
+    for i, (strain, anchor, nt) in enumerate(sorted_strains):
         medal = ' 🥇' if run_counts[strain] == max_runs else ''
         rows += (
             f'<tr>'
             f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
             f'<td class="center">{run_counts[strain]}</td>'
-            f'<td class="center"><span class="badge badge-sm {bc}">{bt}</span></td>'
             f'<td class="next-text">{nt}</td>'
             f'</tr>'
         )
 
     table = (
         f'<table class="dash-strain-table">'
-        f'<thead><tr><th>Strain</th><th class="center">Runs</th><th class="center">Status</th><th>Next</th></tr></thead>'
+        f'<thead><tr><th>Strain</th><th class="center">Runs</th><th>Next</th></tr></thead>'
         f'<tbody>{rows}</tbody>'
         f'</table>'
     )
@@ -656,7 +641,6 @@ WWZ_INFO = [
     ("Consistency", "Cold cure"),
     ("Producer",    "Quasi Farms (Michigan)"),
     ("Nose",        "Piney with sweet undertone (weak secondary signal only)"),
-    ("Status",      "DIALED — Run 1"),
 ]
 WWZ_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — minor, inferred"),
@@ -677,7 +661,6 @@ CAG_INFO = [
     ("Consistency", "Cold cure"),
     ("Producer",    "Quasi Farms (Michigan)"),
     ("Nose",        "Muted — no distinct notes (weak secondary signal, consistent with heavier terpene profile)"),
-    ("Status",      "IN CALIBRATION — Run 1 complete, Run 2 pending"),
 ]
 CAG_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility explains muted nose"),
@@ -707,7 +690,6 @@ OC_INFO = [
     ("Input",       "90 micron full melt bubble hash"),
     ("Consistency", "Cold cure"),
     ("Nose",        "Not yet recorded"),
-    ("Status",      "IN CALIBRATION — Runs 1–7 complete"),
 ]
 OC_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility"),
@@ -757,7 +739,6 @@ HIVE1_INFO = [
     ("Producer",    "Myxed Up (washed and pressed)"),
     ("Input",       "159–73 micron ice water hash"),
     ("Nose",        "Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only)."),
-    ("Status",      "IN CALIBRATION — Runs 1–5 complete, Run 6 pending"),
 ]
 
 HIVE1_RUN1 = [
@@ -801,7 +782,6 @@ FEMBOT3_INFO = [
     ("Input",       "169–73 micron ice water hash"),
     ("Character",   "Sativa-dominant — uplifting, energetic character inferred from lineage. Phenotype and wash quality drive actual experience."),
     ("Nose",        "Subtle garlic note at cold nose; strong overall fragrance, less distinct individual character"),
-    ("Status",      "IN CALIBRATION — Runs 1–2 complete. Run 3 pending."),
 ]
 
 FEMBOT3_RUN1 = [
@@ -841,7 +821,6 @@ MS23_INFO = [
     ("Base genetics", "SB36 line — Starburst OG × '97 KC36"),
     ("Character",     "Sativa-dominant — upbeat, euphoric, flavor-forward character inferred from SB36 lineage. KC36 influence leans energetic rather than sedating. Phenotype and wash quality drive actual experience."),
     ("Nose",          "Diesel note pronounced at cold nose; sweetness underneath"),
-    ("Status",        "IN CALIBRATION — Run 1 complete. Run 2 pending."),
 ]
 MS23_RUN1 = [
     ("0s",  "380°F", "Session open"),
@@ -882,13 +861,13 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    # (name, profile_anchor, badge_class, badge_text, next_text)
-    ("WW Z",                 "#wwz-profile",     "dialed",  "Dialed",      "—"),
-    ("Caramel Apple Gelato", "#cag-profile",     "calib",   "Calibrating", "Try 430°F endpoint"),
-    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold"),
-    ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
-    ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 3"),
-    ("Mango Starburst #23",  "#ms23-profile",    "calib",   "Calibrating", "Repeat Run 1 curve to confirm"),
+    # (name, profile_anchor, next_text)
+    ("WW Z",                 "#wwz-profile",     "—"),
+    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint"),
+    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold"),
+    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6"),
+    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3"),
+    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -977,7 +956,7 @@ def build_html():
 
     # ── WW Z Strain Profile
     s = f'<div class="section" id="wwz-profile">'
-    s += section_header("WW Z — Strain Profile", "✓ DIALED — Run 1. No further calibration required.", "dialed")
+    s += section_header("WW Z — Strain Profile")
     s += info_table(WWZ_INFO)
     s += '<h3>Inferred Terpene Profile</h3>'
     s += terpene_table(WWZ_TERPS)
@@ -986,7 +965,7 @@ def build_html():
 
     # ── WW Z Run 1
     s = f'<div class="section" id="wwz-run1">'
-    s += section_header("WW Z — Run 1 — May 2026", "✓ DIALED — Profile locked.", "dialed")
+    s += section_header("WW Z — Run 1 — May 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p>'
     s += curve_chart_html(WWZ_RUN1)
@@ -1007,7 +986,7 @@ def build_html():
 
     # ── Caramel Apple Gelato Strain Profile
     s = f'<div class="section" id="cag-profile">'
-    s += section_header("Caramel Apple Gelato — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
+    s += section_header("Caramel Apple Gelato — Strain Profile")
     s += info_table(CAG_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(CAG_TERPS)
@@ -1016,7 +995,7 @@ def build_html():
 
     # ── CAG Run 1
     s = f'<div class="section" id="cag-run1">'
-    s += section_header("Caramel Apple Gelato — Run 1 — May 2026", "⚠ TOO HOT — Endpoint reduced for Run 2.", "hot", "")
+    s += section_header("Caramel Apple Gelato — Run 1 — May 2026")
     s += '<h3 class="amber">Curve Used</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p>'
     s += curve_chart_html(CAG_RUN1)
@@ -1038,7 +1017,7 @@ def build_html():
 
     # ── Orange Candy Strain Profile
     s = f'<div class="section" id="oc-profile">'
-    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–7 complete.", "calib", "")
+    s += section_header("Orange Candy — Strain Profile")
     s += info_table(OC_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(OC_TERPS)
@@ -1047,7 +1026,7 @@ def build_html():
 
     # ── OC Runs 1 & 2
     s = f'<div class="section" id="oc-runs12">'
-    s += section_header("Orange Candy — Runs 1 &amp; 2 — May 2026", "⚠ TOO FLAT — Curve revised for Run 3.", "hot", "")
+    s += section_header("Orange Candy — Runs 1 &amp; 2 — May 2026")
     s += '<h3 class="amber">Curve Used — Runs 1 &amp; 2</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p>'
     s += curve_chart_html(OC_RUNS12)
@@ -1061,7 +1040,7 @@ def build_html():
 
     # ── OC Run 3
     s = f'<div class="section" id="oc-run3">'
-    s += section_header("Orange Candy — Run 3 — May 2026", "⚠ IN CALIBRATION — Close to dialed. Run 4 pending.", "calib", "")
+    s += section_header("Orange Candy — Run 3 — May 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(OC_RUN3)
@@ -1075,7 +1054,7 @@ def build_html():
 
     # ── OC Run 4
     s = f'<div class="section" id="oc-run4">'
-    s += section_header("Orange Candy — Run 4 — May 5, 2026", "⚠ IN CALIBRATION — Close to dialed.", "calib", "")
+    s += section_header("Orange Candy — Run 4 — May 5, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(OC_RUN4)
@@ -1089,7 +1068,7 @@ def build_html():
 
     # ── OC Run 5
     s = f'<div class="section" id="oc-run5">'
-    s += section_header("Orange Candy — Run 5 — May 6, 2026", "⚠ IN CALIBRATION — Mixed result.", "calib", "")
+    s += section_header("Orange Candy — Run 5 — May 6, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F</p>'
     s += curve_chart_html(OC_RUN5)
@@ -1104,7 +1083,7 @@ def build_html():
 
     # ── OC Run 6
     s = f'<div class="section" id="oc-run6">'
-    s += section_header("Orange Candy — Run 6 — May 10, 2026", "⚠ IN CALIBRATION — Clean result. Repeat to confirm.", "calib", "")
+    s += section_header("Orange Candy — Run 6 — May 10, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(OC_RUN6)
@@ -1118,7 +1097,7 @@ def build_html():
 
     # ── OC Run 7
     s = f'<div class="section" id="oc-run7">'
-    s += section_header("Orange Candy — Run 7 — May 10, 2026", "⚠ IN CALIBRATION — Flat hold at 430°F. Harshness at tail.", "calib", "")
+    s += section_header("Orange Candy — Run 7 — May 10, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 69 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(OC_RUN7)
@@ -1140,7 +1119,7 @@ def build_html():
 
     # ── The Hive #1 Strain Profile
     s = f'<div class="section" id="hive1-profile">'
-    s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.", "calib", "")
+    s += section_header("The Hive #1 — Strain Profile")
     s += info_table(HIVE1_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios and minor terpenes are not inferable from genetics alone — these are orientation points drawn from the generic cannabis palette, not strain-specific measurements. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1150,7 +1129,7 @@ def build_html():
 
     # ── The Hive #1 Run 1
     s = f'<div class="section" id="hive1-run1">'
-    s += section_header("The Hive #1 — Run 1 — May 8, 2026", "⚠ IN CALIBRATION — Clean swab. Repeat to confirm.", "calib", "")
+    s += section_header("The Hive #1 — Run 1 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(HIVE1_RUN1)
@@ -1164,7 +1143,7 @@ def build_html():
 
     # ── The Hive #1 Run 2
     s = f'<div class="section" id="hive1-run2">'
-    s += section_header("The Hive #1 — Run 2 — May 8, 2026", "⚠ IN CALIBRATION — Consistent result. Lower endpoint to explore.", "calib", "")
+    s += section_header("The Hive #1 — Run 2 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F &nbsp;|&nbsp; Identical to Run 1.</p>'
     s += curve_chart_html(HIVE1_RUN2)
@@ -1178,7 +1157,7 @@ def build_html():
 
     # ── The Hive #1 Run 3
     s = f'<div class="section" id="hive1-run3">'
-    s += section_header("The Hive #1 — Run 3 — May 8, 2026", "⚠ IN CALIBRATION — Curve shape experiment. One data point.", "calib", "")
+    s += section_header("The Hive #1 — Run 3 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 45 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += '<p class="note">Curve shape experiment: steady flat hold at 430°F from session open, rather than the ramped curve used in Runs 1–2. Testing whether a multi-stage ramp produces meaningfully different results from a single sustained setpoint. Swab is a floor indicator only — session character is the primary readout.</p>'
@@ -1194,7 +1173,7 @@ def build_html():
 
     # ── The Hive #1 Run 4
     s = f'<div class="section" id="hive1-run4">'
-    s += section_header("The Hive #1 — Run 4 — May 9, 2026", "⚠ IN CALIBRATION — Second flat-hold data point. Ramp next.", "calib", "")
+    s += section_header("The Hive #1 — Run 4 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3\'s 45s</p>'
     s += curve_chart_html(HIVE1_RUN4)
@@ -1208,7 +1187,7 @@ def build_html():
 
     # ── The Hive #1 Run 5
     s = f'<div class="section" id="hive1-run5">'
-    s += section_header("The Hive #1 — Run 5 — May 9, 2026", "⚠ IN CALIBRATION — Ramp to 430°F. Slight harshness at tail.", "calib", "")
+    s += section_header("The Hive #1 — Run 5 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)</p>'
     s += curve_chart_html(HIVE1_RUN5)
@@ -1230,7 +1209,7 @@ def build_html():
 
     # ── Fembot #3 Strain Profile
     s = f'<div class="section" id="fembot3-profile">'
-    s += section_header("Fembot #3 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–2 complete. Run 3 pending.", "calib", "")
+    s += section_header("Fembot #3 — Strain Profile")
     s += info_table(FEMBOT3_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Fuzzy Melon × Rambutan lineage. Terpinolene-forward character is consistent with the sativa-dominant, uplifting profile typical of this lineage direction — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1240,7 +1219,7 @@ def build_html():
 
     # ── Fembot #3 Run 1
     s = f'<div class="section" id="fembot3-run1">'
-    s += section_header("Fembot #3 — Run 1 — May 9, 2026", "⚠ IN CALIBRATION — Slight harshness at tail. Drop endpoint for Run 2.", "calib", "")
+    s += section_header("Fembot #3 — Run 1 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(FEMBOT3_RUN1)
@@ -1254,7 +1233,7 @@ def build_html():
 
     # ── Fembot #3 Run 2
     s = f'<div class="section" id="fembot3-run2">'
-    s += section_header("Fembot #3 — Run 2 — May 9, 2026", "⚠ IN CALIBRATION — Harshness at tail. Drop endpoint for Run 3.", "calib", "")
+    s += section_header("Fembot #3 — Run 2 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(FEMBOT3_RUN2)
@@ -1276,7 +1255,7 @@ def build_html():
 
     # ── Mango Starburst #23 Strain Profile
     s = f'<div class="section" id="ms23-profile">'
-    s += section_header("Mango Starburst #23 — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
+    s += section_header("Mango Starburst #23 — Strain Profile")
     s += info_table(MS23_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from SB36 lineage (Starburst OG × \'97 KC36). Limonene and terpinolene weighted toward prominent based on the line\'s documented citrus-candy, flavor-forward character — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1286,7 +1265,7 @@ def build_html():
 
     # ── Mango Starburst #23 Run 1
     s = f'<div class="section" id="ms23-run1">'
-    s += section_header("Mango Starburst #23 — Run 1 — May 9, 2026", "⚠ IN CALIBRATION — Clean swab. Repeat to confirm.", "calib", "")
+    s += section_header("Mango Starburst #23 — Run 1 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(MS23_RUN1)
@@ -1312,7 +1291,7 @@ def build_html():
 
     cover = '''<div class="cover">
         <h1>Dabby the House Rig</h1>
-        <p class="subtitle">Session Profile &amp; Calibration Log</p>
+        <p class="subtitle">Session Log</p>
         <p class="tagline">Hash Rosin &nbsp;·&nbsp; Solventless &nbsp;·&nbsp; Cold Start Protocol</p>
     </div>'''
 
