@@ -391,7 +391,6 @@ p {{
   :root {{ --page-pad: 1rem; }}
   body {{ padding: 0.5rem; }}
   .info-table td:first-child {{ width: 35%; white-space: normal; }}
-  .toc ul {{ flex-direction: column; }}
   .stats-grid {{ grid-template-columns: repeat(2, 1fr); }}
 }}
 """
@@ -468,7 +467,7 @@ def dashboard_html():
     cards = (
         f'<div class="stats-grid">'
         f'<div class="stat-card c1"><div class="stat-value">{total}</div><div class="stat-label">runs over {days} days</div></div>'
-        f'<div class="stat-card c5"><div class="stat-value">{max_dabs_day}</div><div class="stat-label">dabs in a day</div></div>'
+        f'<div class="stat-card c5"><div class="stat-value">{max_dabs_day}</div><div class="stat-label">most dabs in a day</div></div>'
         f'<div class="stat-card c6"><div class="stat-value">{unique_strains}</div><div class="stat-label">unique strains</div></div>'
         f'<div class="stat-card c2"><div class="stat-value">{avg_open}°</div><div class="stat-label">avg open</div></div>'
         f'<div class="stat-card c3"><div class="stat-value">{avg_end}°</div><div class="stat-label">avg endpoint</div></div>'
