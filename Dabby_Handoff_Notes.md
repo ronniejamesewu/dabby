@@ -46,7 +46,7 @@ Runs are logged with exact date (not month only) when known.
 
 **Swab protocol clarification:** A swab is always taken — it is the standard insert-cleaning step after every session, not an optional measurement. "Not recorded" means the color wasn't noted, not that no swab was taken. Always ask for swab color if not reported.
 
-**Duration typo:** If the user reports a session time of 69 seconds, treat it as almost certainly a typo for 60 seconds and confirm before logging.
+**Duration typo:** If the user reports a session time of 69 seconds, assume it is a typo for 60 seconds, log it as 60, and note the assumption in your output — tell the user to complain if you assumed wrong. Do not stop to ask for confirmation.
 
 ---
 
@@ -200,6 +200,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
+- **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it — it wastes time. Do not amend already-pushed commits either (same problem). When a branch needs correction after being pushed, cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
 
 ---
 
