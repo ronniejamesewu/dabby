@@ -1210,6 +1210,11 @@ COMPLETED_RUNS = [
     ("Rain Fruit",           date(2026, 5, 11), 2,    None, RF_RUN1),
 ]
 
+# Color assignment rules for new strains:
+#   - No greens (hue ~90–165°) — clashes with the log page's green UI chrome
+#   - No high-saturation brights (miami vice) — keep HSL saturation under ~50%
+#   - At least 30° hue separation from every existing accent, or clear lightness difference
+#   - Add new entries here rather than letting the palette cycle and repeat
 ACCENT_PALETTE = [
     "#6875A8", "#C4956A", "#D4784A", "#C9A84C",
     "#8B7BC4", "#A45A9A", "#7A9EBB", "#C47A7A",
