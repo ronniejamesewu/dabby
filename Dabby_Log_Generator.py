@@ -1016,6 +1016,12 @@ RF_TERPS = [
     ("Terpinolene",   "367°F / 186°C", "Sweet — inferred"),
     ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
 ]
+RF_RUN1 = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
 RF_NEXT = [
     ("0s",  "380°F", "Session open"),
     ("15s", "390°F", "Early ascent"),
@@ -1047,6 +1053,7 @@ COMPLETED_RUNS = [
     ("Mango Starburst #23",  date(2026, 5, 9),  MS23_RUN1),
     ("Maple Bacon Donut",   date(2026, 5, 11), MBD_RUN1),
     ("Maple Bacon Donut",   date(2026, 5, 11), MBD_RUN2),
+    ("Rain Fruit",          date(2026, 5, 11), RF_RUN1),
 ]
 
 ACCENT_PALETTE = [
@@ -1064,7 +1071,7 @@ STRAIN_STATUS = [
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4"),
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#D4A44C"),
     ("Maple Bacon Donut",   "#mbd-profile",     "Repeat same curve — watch swab trend",                                                    "#7A9EBB"),
-    ("Rain Fruit",          "#rainfruit-profile","No sessions yet — start from baseline ramp",                                             "#C47A7A"),
+    ("Rain Fruit",          "#rainfruit-profile","Repeat Run 1 — clean, distinct fruit, strong effects",                               "#C47A7A"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1495,11 +1502,25 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    # ── Rain Fruit Run 1
+    s = f'<div class="section" id="rainfruit-run1">'
+    s += section_header("Rain Fruit — Run 1 — May 11, 2026")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline ramp</p>'
+    s += curve_chart_html(RF_RUN1)
+    s += curve_table(RF_RUN1)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Notably clean — lighter than target. No darkening.")
+    s += result_row("Session:", "Really clear fruit notes throughout. Strong effects — pressure up and behind the eyes. No harshness.")
+    s += result_row("Verdict:", "Clean first run. Distinct fruit character, strong effect. No floor signal, no harshness. Repeat the same curve on Run 2 to confirm.")
+    s += '</div>'
+    sections.append(s)
+
     sections.append(what_to_try_next_html(
         "rainfruit-next",
         your_read="Nothing recorded",
-        my_read="No sessions logged yet. Start from the standard ramp baseline — same opening and endpoint as most other strains in the log.",
-        proposed_waypoints=RF_NEXT,
+        my_read="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
+        proposed_waypoints=RF_RUN1,
     ))
 
     # ── Assemble
