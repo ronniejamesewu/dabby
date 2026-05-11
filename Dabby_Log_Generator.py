@@ -101,7 +101,7 @@ body {{
 }}
 .section-header.grey {{
   background: var(--grey-bg);
-  border-bottom-color: var(--border);
+  border-bottom-color: #4A7D9A;
 }}
 .section-header h2 {{
   font-size: clamp(1.1rem, 3vw, 1.4rem);
@@ -109,7 +109,7 @@ body {{
   color: var(--green-dark);
   margin-bottom: 0.3rem;
 }}
-.section-header.grey h2 {{ color: var(--grey-text); }}
+.section-header.grey h2 {{ color: #4A7D9A; }}
 
 
 /* ── Info table ── */
@@ -467,7 +467,7 @@ details.collapsible > summary {{
 }}
 details.collapsible.grey > summary {{
   background: var(--grey-bg);
-  border-bottom-color: var(--border);
+  border-bottom-color: #4A7D9A;
 }}
 details.collapsible > summary::-webkit-details-marker {{ display: none; }}
 details.collapsible > summary h2 {{
@@ -477,7 +477,7 @@ details.collapsible > summary h2 {{
   flex: 1;
   margin: 0;
 }}
-details.collapsible.grey > summary h2 {{ color: var(--grey-text); }}
+details.collapsible.grey > summary h2 {{ color: #4A7D9A; }}
 details.collapsible > summary::after {{
   content: '›';
   font-size: 1.3rem;
