@@ -310,6 +310,15 @@ p {{
   font-family: var(--font-mono);
   margin-top: 0.1rem;
 }}
+.strain-next {{
+  font-size: 0.7rem;
+  color: var(--grey-text);
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}}
 .next-pill {{
   display: inline-block;
   padding: 0.28rem 0.75rem;
@@ -567,6 +576,7 @@ def dashboard_html():
             f'<div class="strain-info">'
             f'<a href="{anchor}" class="strain-name">{strain}{medal}</a>'
             f'<span class="strain-meta">{meta}</span>'
+            f'<span class="strain-next">{nt}</span>'
             f'</div>'
             f'<a href="{next_anchor}" class="next-pill">&rarr; Next</a>'
             f'</div>'
