@@ -519,7 +519,7 @@ details.collapsible > .collapsible-body {{ padding: 2rem var(--page-pad); }}
 }}
 .terp-ref-table {{
   width: 100%;
-  min-width: 540px;
+  min-width: 680px;
   border-collapse: collapse;
   font-size: 0.85rem;
 }}
@@ -618,6 +618,19 @@ def result_row(label, value, amber=False):
     cls = "result-row amber" if amber else "result-row"
     return f'<p class="{cls}"><span class="label">{label}</span> {value}</p>'
 
+def accent_header(title, accent):
+    return (f'<div class="section-header" style="border-bottom-color:{accent};">'
+            f'<h2 style="color:{accent};">{title}</h2></div>')
+
+def ordinal(n):
+    suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10 if n % 100 not in (11, 12, 13) else 0, "th")
+    return f"{n}{suffix}"
+
+def session_order_note(sessions_prior):
+    if not sessions_prior:
+        return ''
+    return f'<p class="meta">{ordinal(sessions_prior + 1)} session of the day &mdash; {sessions_prior} prior</p>'
+
 def collapsible_section(section_id, title, content_html, header_class=""):
     grey = "grey" if header_class == "grey" else ""
     cls  = f"collapsible {grey}".strip()
@@ -627,9 +640,13 @@ def collapsible_section(section_id, title, content_html, header_class=""):
     s += '</details>'
     return s
 
-def what_to_try_next_html(section_id, dab_notes, ai_analysis, proposed_waypoints=None):
+def what_to_try_next_html(section_id, dab_notes, ai_analysis, proposed_waypoints=None, accent=None):
     s = f'<div class="section" id="{section_id}">'
-    s += section_header("What to Try Next", header_class="grey")
+    if accent:
+        s += (f'<div class="section-header grey" style="border-bottom-color:{accent};">'
+              f'<h2 style="color:{accent};">What to Try Next</h2></div>')
+    else:
+        s += section_header("What to Try Next", header_class="grey")
     s += result_row("Dab Notes:", dab_notes)
     s += result_row("AI Analysis:", ai_analysis)
     if proposed_waypoints:
@@ -728,16 +745,6 @@ def dashboard_html():
         f'</div>'
     )
 
-    ref = (
-        f'<div class="ref-row">'
-        f'<span class="ref-label">Reference</span>'
-        f'<a href="#constants">Constants</a>'
-        f'<a href="#swab">Swab Reference</a>'
-        f'<a href="#baseline">Baseline Curve</a>'
-        f'<a href="#terpene-ref">Terpene Reference</a>'
-        f'</div>'
-    )
-
     js = (
         '<script>'
         '(function(){'
@@ -778,7 +785,6 @@ def dashboard_html():
     s += section_header("Dashboard")
     s += cards
     s += browser
-    s += ref
     s += js
     s += '</div>'
     return s
@@ -1224,45 +1230,46 @@ STRAIN_STATUS = [
 ]
 
 TERPENE_REFERENCE = [
-    # (name, alias, bp_f, bp_c, band, aroma, qualities)
+    # (name, alias, bp_f, bp_c, band, aroma, qualities, found_in)
     # Low band — below 356°F / 180°C
-    ("Humulene",          "alpha-humulene",              225, 107, "Low",  "Woody, spicy-clove",                   "Calming; appetite-suppressing character"),
-    ("Alpha-Pinene",      "alpha-pinene",                313, 156, "Low",  "Pine forest",                          "Alerting; opens airways"),
-    ("Camphene",          "camphene",                    318, 159, "Low",  "Cool camphor, musky earth",             "Limited evidence"),
-    ("Beta-Pinene",       "beta-pinene",                 331, 166, "Low",  "Pine forest, fresh",                   "Alerting; focus-associated"),
-    ("Myrcene",           "beta-myrcene",                333, 167, "Low",  "Musky, earthy, sweet herbal",           "Relaxing, sedating"),
-    ("Carene",            "delta-3-carene",              340, 171, "Low",  "Musky citrus, sweet pine",              "Uplifting; focus-associated"),
-    ("Phellandrene",      "alpha/beta-phellandrene",     342, 172, "Low",  "Citrusy, peppermint",                  "Uplifting character"),
-    ("Terpinene",         "alpha-terpinene",             343, 173, "Low",  "Piney, smokey, herbaceous",             "Supporting"),
-    ("Limonene",          "limonene",                    349, 176, "Low",  "Citrus",                                "Uplifting; stress-easing"),
-    ("Eucalyptol",        "cineole",                     349, 176, "Low",  "Cool camphor, minty",                  "Alerting; opens airways"),
-    ("Cymene",            "p-cymene",                    351, 177, "Low",  "Mild sweet aged wood, lemon",           "Supporting"),
-    ("Ocimene",           "beta/trans-beta-ocimene",     352, 178, "Low",  "Tropical fruit, woody green citrus",   "Uplifting character"),
+    ("Humulene",          "alpha-humulene",              225, 107, "Low",  "Woody, spicy-clove",                   "Calming; appetite-suppressing character",   "Hops, allspice, cloves, coriander"),
+    ("Alpha-Pinene",      "alpha-pinene",                313, 156, "Low",  "Pine forest",                          "Alerting; opens airways",                  "Pine, rosemary, dill, basil, sage"),
+    ("Camphene",          "camphene",                    318, 159, "Low",  "Cool camphor, musky earth",             "Limited evidence",                         "Fir, nutmeg, rosemary, sage"),
+    ("Beta-Pinene",       "beta-pinene",                 331, 166, "Low",  "Pine forest, fresh",                   "Alerting; focus-associated",               "Pine, dill, basil, rosemary"),
+    ("Myrcene",           "beta-myrcene",                333, 167, "Low",  "Musky, earthy, sweet herbal",           "Relaxing, sedating",                       "Mangoes, hops, lemongrass, thyme"),
+    ("Carene",            "delta-3-carene",              340, 171, "Low",  "Musky citrus, sweet pine",              "Uplifting; focus-associated",              "Rosemary, cedar, basil, pepper"),
+    ("Phellandrene",      "alpha/beta-phellandrene",     342, 172, "Low",  "Citrusy, peppermint",                  "Uplifting character",                      "Eucalyptus, dill, water fennel"),
+    ("Terpinene",         "alpha-terpinene",             343, 173, "Low",  "Piney, smokey, herbaceous",             "Supporting",                               "Tea tree, eucalyptus, marjoram"),
+    ("Limonene",          "limonene",                    349, 176, "Low",  "Citrus",                                "Uplifting; stress-easing",                 "Citrus rinds, juniper, peppermint"),
+    ("Eucalyptol",        "cineole",                     349, 176, "Low",  "Cool camphor, minty",                  "Alerting; opens airways",                  "Eucalyptus, tea tree, mugwort"),
+    ("Cymene",            "p-cymene",                    351, 177, "Low",  "Mild sweet aged wood, lemon",           "Supporting",                               "Thyme, oregano, cumin, cilantro"),
+    ("Ocimene",           "beta/trans-beta-ocimene",     352, 178, "Low",  "Tropical fruit, woody green citrus",   "Uplifting character",                      "Basil, orchids, kumquats, parsley"),
     # Mid band — 356–446°F / 180–230°C
-    ("Terpinolene",       "alpha-terpinolene",           369, 187, "Mid",  "Fresh, herbal, sweet, floral, piney",  "Uplifting; sedating in isolation"),
-    ("Sabinene",          "sabinene hydrate / thujanol", 396, 202, "Mid",  "Woodsy, spicy",                        "Supporting"),
-    ("Fenchol",           "fenchyl alcohol",             397, 203, "Mid",  "Lemon-lime, piney, camphor",           "Supporting"),
-    ("Borneol",           "bornyl alcohol",              414, 212, "Mid",  "Cool minty, camphor",                  "Calming, sedating"),
-    ("Isoborneol",        "exo-borneol",                 414, 212, "Mid",  "Woody-sweet, spicy",                   "Calming, sedating"),
-    ("Terpineol",         "alpha-terpineol",             430, 221, "Mid",  "Lilac, floral blossom",                "Calming, sedating"),
-    ("Citronellol",       "beta-citronellol",            435, 224, "Mid",  "Rose, citrus",                         "Relaxing; variable"),
-    ("Pulegone",          "pulegone",                    435, 224, "Mid",  "Minty-camphor, resinous",              "Calming, sedating"),
-    ("Geraniol",          "geraniol",                    446, 230, "Mid",  "Sweet floral, fruity",                 "Supporting"),
+    ("Terpinolene",       "alpha-terpinolene",           369, 187, "Mid",  "Fresh, herbal, sweet, floral, piney",  "Uplifting; sedating in isolation",         "Limes, cumin, lilac, nutmeg"),
+    ("Linalool",          "linalool",                    388, 198, "Mid",  "Floral, citrusy-sweet",                "Calming, sedating",                        "Lavender, citrus, rosemary, basil"),
+    ("Sabinene",          "sabinene hydrate / thujanol", 396, 202, "Mid",  "Woodsy, spicy",                        "Supporting",                               "Norway Spruce, nutmeg, holm oak"),
+    ("Fenchol",           "fenchyl alcohol",             397, 203, "Mid",  "Lemon-lime, piney, camphor",           "Supporting",                               "Basil, aster flowers"),
+    ("Borneol",           "bornyl alcohol",              414, 212, "Mid",  "Cool minty, camphor",                  "Calming, sedating",                        "Rosemary, mint, ginger, camphor"),
+    ("Isoborneol",        "exo-borneol",                 414, 212, "Mid",  "Woody-sweet, spicy",                   "Calming, sedating",                        "Valerian, sage, thyme"),
+    ("Terpineol",         "alpha-terpineol",             430, 221, "Mid",  "Lilac, floral blossom",                "Calming, sedating",                        "Pine oil, petitgrain, cajuput"),
+    ("Citronellol",       "beta-citronellol",            435, 224, "Mid",  "Rose, citrus",                         "Relaxing; variable",                       "Citronella, roses, geraniums"),
+    ("Pulegone",          "pulegone",                    435, 224, "Mid",  "Minty-camphor, resinous",              "Calming, sedating",                        "Catnip, pennyroyal, rosemary"),
+    ("Geraniol",          "geraniol",                    446, 230, "Mid",  "Sweet floral, fruity",                 "Supporting",                               "Roses, lemongrass, citronella"),
     # High band — above 446°F / 230°C
-    ("Anethole",              "anethole",                       454, 234, "High", "Licorice, sweet",                      "Sedating character"),
-    ("Guaiene",               "alpha/beta-guaiene",             455, 235, "High", "Sweet, woody, earthy, spicy",          "Supporting"),
-    ("Geranyl Acetate",       "geranyl acetate",                468, 242, "High", "Sweet floral, pear-like",              "Supporting"),
-    ("Elemene",               "alpha/beta/delta/gamma-elemene", 487, 253, "High", "Waxy, herbal",                         "Limited research"),
-    ("Caryophyllene",         "beta/trans-caryophyllene",       493, 256, "High", "Spicy, peppery",                       "Calming; CB2 receptor binding"),
-    ("Cedrene",               "alpha/beta-cedrene",             505, 263, "High", "Light woodsy",                         "Supporting"),
-    ("Valencene",             "valencene",                      520, 271, "High", "Sweet fresh citrus",                   "Alerting, uplifting"),
-    ("Farnesene",             "alpha/beta-farnesene",           523, 273, "High", "Green apple",                          "Calming, sedating"),
-    ("Nerolidol",             "cis/trans-nerolidol",            529, 276, "High", "Woody bark, waxy, floral",             "Calming, sedating"),
-    ("Caryophyllene Oxide",   "beta-caryophyllene oxide",       536, 280, "High", "Dry, fresh, spicy-sweet",              "Calming; CB2 receptor binding"),
-    ("Guaiol",                "guaiol",                         550, 288, "High", "Piney, woody, rose-like",              "Supporting"),
-    ("Eudesmol",              "gamma/alpha/beta-eudesmol",      574, 301, "High", "Woody-sweet",                          "Mildly sedating"),
-    ("Bisabolol",             "alpha-bisabolol / levomenol",    599, 315, "High", "Sweet floral, honey, mild coconut",    "Calming, soothing"),
-    ("Phytol",                "phytol",                         637, 336, "High", "Grassy",                               "Mildly sedating"),
+    ("Anethole",              "anethole",                       454, 234, "High", "Licorice, sweet",                      "Sedating character",                   "Anise, fennel, star anise"),
+    ("Guaiene",               "alpha/beta-guaiene",             455, 235, "High", "Sweet, woody, earthy, spicy",          "Supporting",                           "Palo Santo"),
+    ("Geranyl Acetate",       "geranyl acetate",                468, 242, "High", "Sweet floral, pear-like",              "Supporting",                           "Lemongrass, coriander, geraniums"),
+    ("Elemene",               "alpha/beta/delta/gamma-elemene", 487, 253, "High", "Waxy, herbal",                         "Limited research",                     "Ginseng, Chinese Yu Jin"),
+    ("Caryophyllene",         "beta/trans-caryophyllene",       493, 256, "High", "Spicy, peppery",                       "Calming; CB2 receptor binding",        "Black pepper, cloves, hops, oregano"),
+    ("Cedrene",               "alpha/beta-cedrene",             505, 263, "High", "Light woodsy",                         "Supporting",                           "Cedarwood, juniper, cypress"),
+    ("Valencene",             "valencene",                      520, 271, "High", "Sweet fresh citrus",                   "Alerting, uplifting",                  "Valencia oranges"),
+    ("Farnesene",             "alpha/beta-farnesene",           523, 273, "High", "Green apple",                          "Calming, sedating",                    "Apple skins, pears"),
+    ("Nerolidol",             "cis/trans-nerolidol",            529, 276, "High", "Woody bark, waxy, floral",             "Calming, sedating",                    "Neroli, jasmine, ginger, lavender"),
+    ("Caryophyllene Oxide",   "beta-caryophyllene oxide",       536, 280, "High", "Dry, fresh, spicy-sweet",              "Calming; CB2 receptor binding",        "Black pepper, caraway, cloves"),
+    ("Guaiol",                "guaiol",                         550, 288, "High", "Piney, woody, rose-like",              "Supporting",                           "Cypress pines, guaiacum plant"),
+    ("Eudesmol",              "gamma/alpha/beta-eudesmol",      574, 301, "High", "Woody-sweet",                          "Mildly sedating",                      "Cypress, valerian, eucalyptus"),
+    ("Bisabolol",             "alpha-bisabolol / levomenol",    599, 315, "High", "Sweet floral, honey, mild coconut",    "Calming, soothing",                    "Chamomile"),
+    ("Phytol",                "phytol",                         637, 336, "High", "Grassy",                               "Mildly sedating",                      "Green tea"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1275,10 +1282,10 @@ def terpene_reference_html():
     }
     rows = ""
     current_band = None
-    for name, alias, bp_f, bp_c, band, aroma, qualities in TERPENE_REFERENCE:
+    for name, alias, bp_f, bp_c, band, aroma, qualities, found_in in TERPENE_REFERENCE:
         if band != current_band:
             current_band = band
-            rows += f'<tr class="band-row"><td colspan="5">{BAND_LABELS.get(band, band)}</td></tr>'
+            rows += f'<tr class="band-row"><td colspan="6">{BAND_LABELS.get(band, band)}</td></tr>'
         rows += (
             f'<tr>'
             f'<td><strong>{name}</strong><span class="terp-alias">{alias}</span></td>'
@@ -1286,20 +1293,28 @@ def terpene_reference_html():
             f'<td><span class="band-badge band-{band.lower()}">{band}</span></td>'
             f'<td>{aroma}</td>'
             f'<td>{qualities}</td>'
+            f'<td style="font-size:0.78rem;color:var(--grey-text);">{found_in}</td>'
             f'</tr>'
         )
     table = (
         '<div class="terp-ref-wrap">'
         '<table class="terp-ref-table"><thead><tr>'
-        '<th>Terpene</th><th>Boiling Point</th><th>Band</th><th>Aroma / Flavor</th><th>Reported Qualities</th>'
+        '<th>Terpene</th><th>Boiling Point</th><th>Band</th><th>Aroma / Flavor</th><th>Reported Qualities</th><th>Found In</th>'
         f'</tr></thead><tbody>{rows}</tbody></table></div>'
     )
-    note = '<p class="note">Boiling points are approximate. Volatility band is a persistence heuristic — lower band evaporates earlier. Terpenes are not psychoactive in the THC sense; qualities reflect common descriptive associations, not medical claims. Sources: The Amazing Flower terpene dictionary; Finest Labs boiling-point chart; The Press Club.</p>'
+    note = '<p class="note">Boiling points are approximate. Volatility band is a persistence heuristic — lower band evaporates earlier. Terpenes are not psychoactive in the THC sense; qualities reflect common descriptive associations, not medical claims. Sources: <a href="https://theamazingflower.com/pages/terpenes" target="_blank" rel="noopener">The Amazing Flower</a>; <a href="https://finestlabs.com/terpene-boiling-points/" target="_blank" rel="noopener">Finest Labs</a>; <a href="https://thepressclub.co/blogs/tips-tricks/boiling-points-of-common-terpenes-in-cannabis" target="_blank" rel="noopener">The Press Club</a>.</p>'
     content = note + table
     return collapsible_section("terpene-ref", "Terpene Reference", content, header_class="grey")
 
 
 def build_html():
+    # sessions_prior lookup keyed by (strain, 1-indexed run number)
+    _cnt = {}
+    _spr = {}
+    for _s, _rd, _sp, _ul, _wp in COMPLETED_RUNS:
+        _cnt[_s] = _cnt.get(_s, 0) + 1
+        _spr[(_s, _cnt[_s])] = _sp
+
     sections = []
 
     dash = dashboard_html()
@@ -1339,7 +1354,7 @@ def build_html():
     # ── WW Z ──────────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="wwz-profile">'
-    s += section_header("WW Z — Strain Profile")
+    s += accent_header("WW Z — Strain Profile", "#6B9E78")
     s += info_table(WWZ_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1359,12 +1374,13 @@ def build_html():
         "wwz-next",
         dab_notes="Nothing recorded",
         ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
+        accent="#6B9E78",
     ))
 
     # ── Caramel Apple Gelato ──────────────────────────────────────────────────
 
     s  = f'<div class="section" id="cag-profile">'
-    s += section_header("Caramel Apple Gelato — Strain Profile")
+    s += accent_header("Caramel Apple Gelato — Strain Profile", "#C4956A")
     s += info_table(CAG_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Limonene and myrcene inferred from Gelato lineage. Muted nose consistent with heavier, less-volatile terpene profile. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1386,12 +1402,13 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         proposed_waypoints=CAG_RUN2,
+        accent="#C4956A",
     ))
 
     # ── Orange Candy ──────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="oc-profile">'
-    s += section_header("Orange Candy — Strain Profile")
+    s += accent_header("Orange Candy — Strain Profile", "#D4784A")
     s += info_table(OC_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Limonene inferred dominant from orange character (Naran J × Tropimango lineage — unconfirmed). See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1427,7 +1444,8 @@ def build_html():
     c += result_row("Verdict:", "Clean swab, strong result. Wispy opening draws suggest opportunity to raise opening setpoint slightly to improve vapor density at session start without affecting the clean tail.")
     sections.append(collapsible_section("oc-run3", "Orange Candy — Run 3 — May 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 4)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     c += curve_chart_html(OC_RUN4)
     c += curve_table(OC_RUN4)
@@ -1448,7 +1466,8 @@ def build_html():
     c += result_row("Next:", "Returned to ramp curve for Run 6 — see results below.", amber=True)
     sections.append(collapsible_section("oc-run5", "Orange Candy — Run 5 — May 6, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 6)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     c += curve_chart_html(OC_RUN6)
     c += curve_table(OC_RUN6)
@@ -1458,7 +1477,8 @@ def build_html():
     c += result_row("Next:", "Repeat to confirm, or test 350°F open / 460°F endpoint curve when ready.")
     sections.append(collapsible_section("oc-run6", "Orange Candy — Run 6 — May 9, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 7)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     c += curve_chart_html(OC_RUN7)
     c += curve_table(OC_RUN7)
@@ -1474,12 +1494,13 @@ def build_html():
         dab_notes="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
         ai_analysis="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
         proposed_waypoints=OC_RUN6,
+        accent="#D4784A",
     ))
 
     # ── The Hive #1 ───────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="hive1-profile">'
-    s += section_header("The Hive #1 — Strain Profile")
+    s += accent_header("The Hive #1 — Strain Profile", "#C9A84C")
     s += info_table(HIVE1_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Myrcene and terpinolene inferred from tropical fruit character; Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios not inferable from genetics — standard palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1495,7 +1516,8 @@ def build_html():
     c += result_row("Verdict:", "Clean swab on first run — curve appears well-matched to this material. Repeated as Run 2 to confirm.")
     sections.append(collapsible_section("hive1-run1", "The Hive #1 — Run 1 — May 7, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("The Hive #1", 2)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F — identical to Run 1</p>'
     c += curve_chart_html(HIVE1_RUN2)
     c += curve_table(HIVE1_RUN2)
@@ -1517,7 +1539,8 @@ def build_html():
     c += result_row("Verdict:", "One data point. Directionally supports the ramp producing more distinct staged flavor vs. the flat hold combining everything at once. If revisiting the flat hold, extend to 60 seconds. Next planned: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint to compare directly on the same endpoint.")
     sections.append(collapsible_section("hive1-run3", "The Hive #1 — Run 3 — May 8, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("The Hive #1", 4)))
+    c += '<h3>Curve</h3>'
     c += "<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3's 45s</p>"
     c += curve_chart_html(HIVE1_RUN4)
     c += curve_table(HIVE1_RUN4)
@@ -1527,7 +1550,8 @@ def build_html():
     c += result_row("Verdict:", "Two flat-hold data points, both clean swabs, consistent character. Next: ramp to 430°F endpoint (380→390→410→430°F) — the original planned experiment — to compare curve shape on the same endpoint.")
     sections.append(collapsible_section("hive1-run4", "The Hive #1 — Run 4 — May 8, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("The Hive #1", 5)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)</p>'
     c += curve_chart_html(HIVE1_RUN5)
     c += curve_table(HIVE1_RUN5)
@@ -1543,12 +1567,13 @@ def build_html():
         dab_notes="Try 420–425°F endpoint, keep ramp shape.",
         ai_analysis="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
         proposed_waypoints=HIVE1_NEXT,
+        accent="#C9A84C",
     ))
 
     # ── Fembot #3 ─────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="fembot3-profile">'
-    s += section_header("Fembot #3 — Strain Profile")
+    s += accent_header("Fembot #3 — Strain Profile", "#8B7BC4")
     s += info_table(FEMBOT3_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Terpinolene inferred likely dominant from Fuzzy Melon character; Fuzzy Melon × Rambutan lineage. Standard cannabis palette otherwise — not measured. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1564,7 +1589,8 @@ def build_html():
     c += result_row("Next:", "Try steady 420°F flat hold (60s) on Run 2 — drop endpoint and change curve shape to test both variables.")
     sections.append(collapsible_section("fembot3-run1", "Fembot #3 — Run 1 — May 9, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Fembot #3", 2)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     c += curve_chart_html(FEMBOT3_RUN2)
     c += curve_table(FEMBOT3_RUN2)
@@ -1580,18 +1606,20 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.",
         proposed_waypoints=FEMBOT3_RUN3,
+        accent="#8B7BC4",
     ))
 
     # ── Mango Starburst #23 ───────────────────────────────────────────────────
 
     s  = f'<div class="section" id="ms23-profile">'
-    s += section_header("Mango Starburst #23 — Strain Profile")
+    s += accent_header("Mango Starburst #23 — Strain Profile", "#D4A44C")
     s += info_table(MS23_INFO)
     s += "<p class=\"note\"><strong>Terpene inference:</strong> Limonene and terpinolene weighted from SB36 line's citrus-candy character; pronounced pine on Run 1 suggests pinene may be more prominent than inferred. Not measured. See <a href=\"#terpene-ref\">Terpene Reference</a>.</p>"
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Mango Starburst #23", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     c += curve_chart_html(MS23_RUN1)
     c += curve_table(MS23_RUN1)
@@ -1607,12 +1635,13 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
         proposed_waypoints=MS23_RUN1,
+        accent="#D4A44C",
     ))
 
     # ── Maple Bacon Donut ─────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="mbd-profile">'
-    s += section_header("Maple Bacon Donut — Strain Profile")
+    s += accent_header("Maple Bacon Donut — Strain Profile", "#7A9EBB")
     s += info_table(MBD_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Genetics not documented — no strain-specific inference available. Standard cannabis palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1628,7 +1657,8 @@ def build_html():
     c += result_row("Intensity:", "Mild — tolerance confound (5 sessions prior day)")
     sections.append(collapsible_section("mbd-run1", "Maple Bacon Donut — Run 1 — May 11, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Maple Bacon Donut", 2)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — same as Run 1</p>'
     c += curve_chart_html(MBD_RUN2)
     c += curve_table(MBD_RUN2)
@@ -1644,18 +1674,20 @@ def build_html():
         dab_notes="Watch the swab — darker golden on Run 1, lighter on Run 2. Repeat same curve.",
         ai_analysis="Two runs, swab trending cleaner, distinct flavor on Run 2, no harshness. Repeat the same curve on Run 3 to confirm the trend before adjusting anything. If darker golden persists across more runs, consider dropping endpoint to 420°F.",
         proposed_waypoints=MBD_NEXT,
+        accent="#7A9EBB",
     ))
 
     # ── Rain Fruit ────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="rainfruit-profile">'
-    s += section_header("Rain Fruit — Strain Profile")
+    s += accent_header("Rain Fruit — Strain Profile", "#C47A7A")
     s += info_table(RF_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Genetics not documented — no strain-specific inference available. Standard cannabis palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Rain Fruit", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline ramp</p>'
     c += curve_chart_html(RF_RUN1)
     c += curve_table(RF_RUN1)
@@ -1671,6 +1703,7 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
         proposed_waypoints=RF_RUN1,
+        accent="#C47A7A",
     ))
 
     # ── Assemble ──────────────────────────────────────────────────────────────
