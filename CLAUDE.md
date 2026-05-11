@@ -63,13 +63,8 @@ current description first, then rewrite it to cover all changes to date.
 ## Reference Sections
 
 The four reference sections (Device & Session Constants, Swab Color Reference, Baseline
-Curve, Terpene Reference) are collapsible blocks on the main index page with steel blue
-(#4A7D9A) headers. Keep them that way:
-
-- Steel blue headers distinguish reference material from run sections (green) and strain
-  profiles/next sections (per-strain accent). Do not change to grey, green, or accent.
-- Do not move them to a separate page. They live on index alongside the strain content
-  and collapse when not needed.
+Curve, Terpene Reference) live on the main index page as collapsible blocks. Do not
+move them to a separate page — they collapse when not needed and are rarely accessed.
 
 ## Accent Color Rules
 
