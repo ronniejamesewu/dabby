@@ -99,10 +99,10 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 
 | Parameter | Guidance |
 |---|---|
-| Opening setpoint | 375°F baseline |
+| Opening setpoint | 380°F baseline |
 | Opening flat phase | 10–15s for low-boiling dominant terpenes; shorter otherwise |
 | Ascent rate | 0.6–1.2°F/sec. Gentleness is the goal |
-| Endpoint | 430–440°F conservative starting point |
+| Endpoint | 430°F baseline starting point |
 | Hold time | 55–65 seconds. End when vapor drops — do not ride timer |
 | Max ascent rate | 10°F/sec (Switch² Custom mode limit) — never approach this |
 
