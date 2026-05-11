@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOC Mockup</title>
+<title>Dashboard Mockup</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -11,6 +11,7 @@
   --green-dark:  #2D5A3D;
   --green-mid:   #4A7C59;
   --green-light: #F0F7F2;
+  --amber:       #B8860B;
   --grey-text:   #555555;
   --grey-light:  #888888;
   --grey-bg:     #F5F5F5;
@@ -45,43 +46,51 @@ body {
   color: var(--green-dark);
 }
 
-/* Reference row */
-.ref-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.1rem;
-  flex-wrap: wrap;
+/* Stat cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
-.ref-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--grey-light);
+.stat-card {
+  background: var(--green-light);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  border-top: 3px solid #ccc;
+  padding: 0.8rem 0.65rem 0.65rem;
+  text-align: center;
 }
-.ref-row a {
-  font-size: 0.8rem;
+.stat-card.c1 { border-top-color: #1DB954; }
+.stat-card.c2 { border-top-color: #4A7D9A; }
+.stat-card.c3 { border-top-color: var(--amber); }
+.stat-card.c4 { border-top-color: var(--green-mid); }
+.stat-card.c5 { border-top-color: #7A9EBB; }
+.stat-card.c6 { border-top-color: #9B7A3A; }
+.stat-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--green-dark);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+.stat-label {
+  font-size: 0.7rem;
   color: var(--grey-text);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1px;
-  transition: color 0.15s, border-color 0.15s;
+  font-family: 'DM Mono', monospace;
+  line-height: 1.3;
 }
-.ref-row a:hover { color: var(--green-dark); border-bottom-color: var(--green-dark); }
 
-/* Strain browser container */
+/* Strain browser */
 .strain-browser {
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  max-height: 400px;
-  box-shadow: inset 0 -8px 8px -8px rgba(0,0,0,0.04);
+  max-height: 380px;
 }
-
-/* Search */
 .search-wrap {
   flex-shrink: 0;
   padding: 0.6rem;
@@ -97,8 +106,8 @@ body {
   font-family: inherit;
   background: #fff;
   color: var(--grey-text);
-  transition: border-color 0.15s, box-shadow 0.15s;
   -webkit-appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 .search-input::placeholder { color: var(--grey-light); }
 .search-input:focus {
@@ -106,15 +115,11 @@ body {
   border-color: var(--green-mid);
   box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
 }
-
-/* Scrollable list */
 .strain-list {
   overflow-y: auto;
   flex: 1;
   -webkit-overflow-scrolling: touch;
 }
-
-/* Each strain row */
 .strain-row {
   display: flex;
   align-items: center;
@@ -123,12 +128,10 @@ body {
   border-bottom: 1px solid #f2f2f2;
   border-left: 4px solid var(--accent, var(--green-mid));
   transition: background 0.12s;
-  text-decoration: none;
 }
 .strain-row:last-child { border-bottom: none; }
 .strain-row:hover { background: var(--green-light); }
 .strain-row.hidden { display: none; }
-
 .strain-info { flex: 1; min-width: 0; }
 .strain-name {
   display: block;
@@ -140,17 +143,15 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.strain-name:hover { text-decoration: underline; }
 .strain-meta {
   font-size: 0.7rem;
   color: var(--grey-light);
   font-family: 'DM Mono', monospace;
   margin-top: 0.1rem;
 }
-
 .next-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
+  display: inline-block;
   padding: 0.28rem 0.75rem;
   background: var(--green-dark);
   border-radius: 20px;
@@ -163,7 +164,6 @@ body {
   transition: background 0.15s, transform 0.1s;
 }
 .next-pill:hover { background: var(--green-mid); transform: translateX(2px); }
-
 .no-results {
   padding: 1.5rem;
   text-align: center;
@@ -173,31 +173,60 @@ body {
   display: none;
 }
 
+/* Reference footer */
+.ref-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.ref-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}
+.ref-row a {
+  font-size: 0.78rem;
+  color: var(--grey-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+}
+.ref-row a:hover { color: var(--green-dark); border-bottom-color: var(--green-dark); }
+
 @media (min-width: 600px) {
   :root { --page-pad: 2rem; }
   body { padding: 1rem; }
-  .strain-browser { max-height: 380px; }
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 <div class="doc">
 <div class="section">
-  <div class="section-header"><h2>Contents</h2></div>
+  <div class="section-header"><h2>Dashboard</h2></div>
 
-  <div class="ref-row">
-    <span class="ref-label">Reference</span>
-    <a href="#constants">Constants</a>
-    <a href="#swab">Swab Reference</a>
-    <a href="#baseline">Baseline Curve</a>
+  <!-- Stat cards -->
+  <div class="stats-grid">
+    <div class="stat-card c1"><div class="stat-value">17</div><div class="stat-label">runs over 9 days</div></div>
+    <div class="stat-card c5"><div class="stat-value">5</div><div class="stat-label">most dabs in a day</div></div>
+    <div class="stat-card c6"><div class="stat-value">6</div><div class="stat-label">unique strains</div></div>
+    <div class="stat-card c2"><div class="stat-value">389&deg;</div><div class="stat-label">avg open</div></div>
+    <div class="stat-card c3"><div class="stat-value">438&deg;</div><div class="stat-label">avg endpoint</div></div>
+    <div class="stat-card c4"><div class="stat-value">430&deg;</div><div class="stat-label">most time spent</div></div>
   </div>
 
+  <!-- Searchable strain browser -->
   <div class="strain-browser">
     <div class="search-wrap">
       <input class="search-input" type="search" placeholder="Search strains..." id="strainSearch" autocomplete="off">
     </div>
     <div class="strain-list" id="strainList">
-
       <div class="strain-row" data-strain="ww z" style="--accent:#6B9E78">
         <div class="strain-info">
           <a href="#wwz-profile" class="strain-name">WW Z</a>
@@ -205,7 +234,6 @@ body {
         </div>
         <a href="#wwz-next" class="next-pill">&rarr; Next</a>
       </div>
-
       <div class="strain-row" data-strain="caramel apple gelato" style="--accent:#C4956A">
         <div class="strain-info">
           <a href="#cag-profile" class="strain-name">Caramel Apple Gelato</a>
@@ -213,7 +241,6 @@ body {
         </div>
         <a href="#cag-next" class="next-pill">&rarr; Next</a>
       </div>
-
       <div class="strain-row" data-strain="orange candy" style="--accent:#D4784A">
         <div class="strain-info">
           <a href="#oc-profile" class="strain-name">Orange Candy</a>
@@ -221,7 +248,6 @@ body {
         </div>
         <a href="#oc-next" class="next-pill">&rarr; Next</a>
       </div>
-
       <div class="strain-row" data-strain="the hive #1" style="--accent:#C9A84C">
         <div class="strain-info">
           <a href="#hive1-profile" class="strain-name">The Hive #1</a>
@@ -229,7 +255,6 @@ body {
         </div>
         <a href="#hive1-next" class="next-pill">&rarr; Next</a>
       </div>
-
       <div class="strain-row" data-strain="fembot #3" style="--accent:#8B7BC4">
         <div class="strain-info">
           <a href="#fembot3-profile" class="strain-name">Fembot #3</a>
@@ -237,7 +262,6 @@ body {
         </div>
         <a href="#fembot3-next" class="next-pill">&rarr; Next</a>
       </div>
-
       <div class="strain-row" data-strain="mango starburst #23" style="--accent:#D4A44C">
         <div class="strain-info">
           <a href="#ms23-profile" class="strain-name">Mango Starburst #23</a>
@@ -245,9 +269,16 @@ body {
         </div>
         <a href="#ms23-next" class="next-pill">&rarr; Next</a>
       </div>
-
       <div class="no-results" id="noResults">No strains match</div>
     </div>
+  </div>
+
+  <!-- Reference links -->
+  <div class="ref-row">
+    <span class="ref-label">Reference</span>
+    <a href="#constants">Constants</a>
+    <a href="#swab">Swab Reference</a>
+    <a href="#baseline">Baseline Curve</a>
   </div>
 
 </div>
