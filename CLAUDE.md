@@ -2,12 +2,13 @@
 
 At the start of every session, read these files (all are in the repo):
 - `Dabby_Handoff_Notes.md` — source of truth, read first
-- `Dabby_Methodology.md` — thermal model and calibration reasoning
+- `Dabby_Methodology.md` — thermal model and session process reasoning
 - `Dabby_Log_Generator.py` — understand current log structure before touching it
 
-This project documents temperature curve calibration for live rosin sessions 
-on a Dr. Dabber Switch² nicknamed "Dabby the House Rig." All material is hash 
-rosin (ice water extracted, solventless) unless explicitly stated otherwise.
+This project logs sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig."
+All material is hash rosin (ice water extracted, solventless) unless explicitly 
+stated otherwise. The log records what happened, swab results, and current thinking 
+on what to try next — not a formal calibration program.
 
 ## Updating the Log
 

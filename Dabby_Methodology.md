@@ -118,7 +118,7 @@ Practical implications: flat opening phases deliver the most accurate temperatur
 
 ---
 
-## 6. Calibration Process
+## 6. Session Process
 
 1. Start from baseline curve
 2. Run session, end when vapor production drops naturally

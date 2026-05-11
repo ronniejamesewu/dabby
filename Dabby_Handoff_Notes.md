@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 10, 2026 — Session 15
+## Last updated: May 11, 2026 — Session 16
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -7,7 +7,7 @@ This document provides full context for a new AI assistant picking up this proje
 
 ## Project Goal
 
-Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig." All material is hash rosin (ice water extracted, solventless) using cold start technique. The log documents strain-specific calibration runs, swab results, and curve adjustments. The methodology document captures the physical reasoning behind curve design decisions.
+A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig." All material is hash rosin (ice water extracted, solventless) using cold start technique. The log records what happened, swab results, and current thinking on what to try next — not a formal calibration program. The methodology document captures the physical reasoning behind curve design.
 
 ---
 
@@ -15,7 +15,7 @@ Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber 
 
 **Live log:** https://ronniejamesewu.github.io/dabby
 **Repo:** ronniejamesewu/dabby (branch: main)
-**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and calibration reasoning), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
+**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and session process reasoning), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
 
 **Environment:** Claude Code. Files are in the repo working directory. Read them directly — do not fetch from raw.githubusercontent.com or copy files to a separate path.
 
@@ -34,7 +34,7 @@ Empirical temperature curve calibration for live rosin sessions on a Dr. Dabber 
 
 **CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit generator → run generator → commit both files.
 
-**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, TOC entries, STRAIN_STATUS entry, COMPLETED_RUNS entries, and section build code. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, waypoints)` — `run_date` is a `date` object or `None` if the exact date is not confirmed.
+**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, `STRAIN_STATUS` entry, `COMPLETED_RUNS` entries, and section build code. No TOC entries — the dashboard browser is the navigation. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, waypoints)` — `run_date` is a `date` object or `None` if the exact date is not confirmed. `STRAIN_STATUS` is a 4-tuple `(name, profile_anchor, next_text, accent)` — pick accent from `ACCENT_PALETTE` in order. `what_to_try_next_html()` helper generates the What to Try Next block at the bottom of each strain section; call it with `(section_id, your_read, my_read, proposed_waypoints=None)`.
 
 ---
 
@@ -115,17 +115,17 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Current Strain Status
 
-**WW Z** (Quasi Farms, Michigan) — Dialed. Run 1 complete (May 2, 2026). Profile locked. Baseline curve confirmed appropriate.
+**WW Z** (Quasi Farms, Michigan) — Run 1 complete (May 2, 2026). Baseline curve confirmed appropriate. Nothing specific to try next.
 
-**Caramel Apple Gelato** (Quasi Farms, Michigan) — In calibration. Run 1 too hot (450°F endpoint, swab amber toward brown). Run 2 pending: endpoint reduced to 430°F, hold shortened to 55 seconds.
+**Caramel Apple Gelato** (Quasi Farms, Michigan) — Run 1 logged (450°F endpoint, swab amber toward brown — too hot). Run 2 pending: endpoint reduced to 430°F, hold shortened to 55 seconds.
 
-**Orange Candy** (Nikka T, 90 micron full melt) — In calibration. Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs, not noticeably different from Run 3. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint. Darker swab, last portion harsh. Effect notably stronger than prior runs — user's hypothesis is that higher temperature produced stronger effect; logged as one data point, not a confirmed finding, confounders acknowledged. Run 6 (May 10, 2026): 380→390→410→430°F ramp — light golden swab, very nice. Run 7 (May 10, 2026): 430°F steady flat hold, 60s — plain amber swab, pleasant but not as tasty as ramp, harsh in last 20s. Ramp (Run 6) outperforming flat hold at same endpoint. Next: repeat Run 6 ramp to confirm, or try 420°F flat hold.
+**Orange Candy** (Nikka T, 90 micron full melt) — Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint — darker swab, last portion harsh, notably stronger effect (one data point, not confirmed). Run 6 (May 10, 2026): 380→390→410→430°F ramp — light golden swab, very nice. Run 7 (May 10, 2026): 430°F steady flat hold, 60s — plain amber swab, pleasant but not as tasty as ramp, harsh in last 20s. Ramp (Run 6) outperforming flat hold at same endpoint. Next: repeat Run 6 ramp to confirm, or try 420°F flat hold.
 
-**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — In calibration. Runs 1–2 (May 8, 2026): 380°F open ramp (380→390→410→440°F, 65s). Both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same steady 430°F hold extended to 60s — clean swab again, consistent with Run 3. Two flat-hold data points logged. Run 5 (May 9, 2026): ramp to 430°F endpoint (380→390→410→430°F) — swab light golden (tad lighter than Runs 3–4, within noise), nice distinct staged flavors through first two-thirds, harsh in last ~10 seconds, effects quite potent. Harshness at tail suggests 430°F may be slightly high even on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
+**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — Runs 1–2 (May 8, 2026): 380→390→410→440°F ramp, 65s — both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same 430°F hold, 60s — clean swab, consistent. Run 5 (May 9, 2026): ramp to 430°F — light golden swab, distinct staged flavors, harsh in last ~10 seconds. Consistent tail harshness suggests 430°F slightly high on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
 
-**Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — In calibration. Run 1 (May 9, 2026): ramp to 430°F endpoint — light golden swab, tasty, slight harshness at tail. Run 2 (May 9, 2026): 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Two data points at 430°F (ramp and flat hold) both showing tail harshness — consistent signal that 430°F is slightly above ideal regardless of curve shape. Run 3 pending: 420°F steady flat hold, 60 seconds.
+**Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — Run 1 (May 9, 2026): ramp to 430°F — light golden swab, tasty, slight tail harshness. Run 2 (May 9, 2026): 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Consistent tail harshness at 430°F across both curve shapes. Run 3 pending: 420°F steady flat hold, 60 seconds.
 
-**Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — In calibration. SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Run 1 (May 9, 2026): baseline curve (380→390→410→430°F) — very clean swab, pine-forward character throughout (more pinene than lineage inference anticipated), heady effects, no harshness. Tasty but not to user's preference. Run 2 pending: repeat to confirm.
+**Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Run 1 (May 9, 2026): baseline curve (380→390→410→430°F) — very clean swab, pine-forward character (more pinene than lineage inference anticipated), heady effects, no harshness. Tasty but not to user's preference. Run 2 pending: repeat to confirm.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -145,29 +145,31 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 ## Dashboard — Implemented
 
-The dashboard is live in the generator and deployed. It sits between the cover and the Contents section.
+The dashboard is live in the generator and deployed. It sits above the strain profiles. There is no separate Contents or TOC section — the strain browser serves as navigation.
 
 **Structure:**
 - Six stat cards in two rows of three, computed at generator runtime
   - Row 1 (volume/frequency): total runs over N days / most dabs in a day / unique strains
   - Row 2 (temperature): avg open / avg endpoint / most time spent (linear interpolation across all runs, 5°F buckets)
 - Grid: `repeat(3, 1fr)` desktop, `repeat(2, 1fr)` mobile
-- Strain table sorted by run count desc; strains with zero runs excluded
-- Leader row (most runs) gets 🥇 medal emoji to the right of the strain name
-- Strain names are green links (`var(--green-dark)`, underline on hover) to their profile section
+- Searchable strain browser below the stat cards — replaces the old strain table and the old Contents section
+  - Fixed-height scrollable container with sticky search input; live JS filter on `data-strain` attribute
+  - Each row: colored left accent bar (per-strain hex from `ACCENT_PALETTE`), strain name linking to profile (🥇 if leader), → Next pill linking to What to Try Next section, session count, last date
+  - Reference footer below the browser list: one line per strain with run count and date range
 
 **Design decisions locked:**
-- No gold border or gold stars — dropped after mockup iteration
-- Medal emoji placed to the right of strain name, column left-justified
-- Compact `.badge-sm` used in dashboard table (smaller than global `.badge` used in section headers)
-- Contents section uses full `.section` treatment with `section_header()` — same as every other section in the log
-- "Contents" pill removed from the Contents section (self-referential)
+- No calibration badges, no status column, no calibration language anywhere in the log or dashboard
+- No separate Contents section — the strain browser is navigation
+- Medal emoji preserved: appended to strain name in the browser row
+- → Next pill always present; links to `#<anchor>-next` within each strain's What to Try Next block
 
 **Implementation notes:**
 - `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged. Tuple form: `(strain, run_date, waypoints)`. Use `None` for `run_date` if the exact date is not confirmed.
-- `STRAIN_STATUS` drives the table rows — add entry with `(name, profile_anchor, badge_class, badge_text, next_text)`
-- `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes
-- "Most dabs in a day" excludes runs with `run_date = None`; the stat grows more accurate as dates are confirmed
+- `STRAIN_STATUS` drives the browser rows — 4-tuple `(name, profile_anchor, next_text, accent)`. Pick accent from `ACCENT_PALETTE` in order; add a new hex if the palette runs out.
+- `ACCENT_PALETTE` is a module-level list of 10 hex colors — one per strain in order.
+- `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes.
+- "Most dabs in a day" excludes runs with `run_date = None`; the stat grows more accurate as dates are confirmed.
+- What to Try Next sections: each strain has a `what_to_try_next_html()` block at the bottom of its section. Helper signature: `(section_id, your_read, my_read, proposed_waypoints=None)`. If a proposed curve exists, pass waypoints and the helper will render both chart and table.
 
 ---
 
@@ -184,6 +186,10 @@ The dashboard is live in the generator and deployed. It sits between the cover a
 - PR preview workflow is established and active. Changes go to a feature branch → PR → preview URL → merge → auto-deploy.
 - Blueberry 36 phenotypes are logged as separate strains, not grouped.
 - Dashboard is implemented. Do not redesign from scratch — iterate from the current generator code.
+- Calibration framing retired. This is a session log, not a calibration program. Do not re-introduce "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard.
+- Contents/TOC section removed. The searchable strain browser on the dashboard serves as navigation. Do not re-add a separate Contents section.
+- Strain browser with live search implemented. Fixed-height scrollable container, sticky search input, JS filter on `data-strain` attribute, per-strain accent color left bars, → Next pills linking to What to Try Next sections.
+- `STRAIN_STATUS` is now a 4-tuple `(name, profile_anchor, next_text, accent)`. The old 5-tuple with badge fields is gone. Do not add badge fields back.
 
 ---
 
@@ -205,6 +211,8 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
 - **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it — it wastes time. Do not amend already-pushed commits either (same problem). When a branch needs correction after being pushed, cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
 - **Not reading handoff and methodology at session start.** CLAUDE.md explicitly requires reading `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`, and `Dabby_Log_Generator.py` before taking any action. This was skipped in Session 15, leading to suggestions made without full context. Read all three files before responding to any request, every session.
+- **Re-introducing calibration framing.** The project has been reframed as a session log. Do not use "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard. `STRAIN_STATUS` no longer contains badge fields.
+- **Re-adding a Contents/TOC section.** The Contents section was deliberately removed. The searchable strain browser on the dashboard provides navigation. Do not add a separate Contents or TOC section.
 
 ---
 
@@ -227,6 +235,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 11, 2026 — Session 16:** Reframed project from calibration log to session log. Removed all calibration badges, status columns, and calibration language throughout the generator. Cover subtitle changed to "Session Log." `STRAIN_STATUS` simplified from 5-tuple `(name, anchor, badge_class, badge_text, next_text)` to 4-tuple `(name, anchor, next_text, accent)`. `ACCENT_PALETTE` added — per-strain hex accent colors. Contents/TOC section removed entirely. Dashboard strain table replaced with searchable strain browser (fixed-height scrollable, sticky search, live JS filter, per-strain accent left bars, → Next pills). `what_to_try_next_html()` helper added — each strain now has a What to Try Next block at the bottom of its section with your read, my read, and optional proposed curve. CLAUDE.md, Handoff Notes, and Methodology updated to reflect new framing.
 
 - **May 10, 2026 — Session 15:** Dashboard expanded from 4 to 6 stat cards. Added "most dabs in a day" (currently 5, on May 9 — Hive #1 Runs 4–5, Fembot #3 Runs 1–2, MS23 Run 1) and "unique strains" (currently 6). Cards reorganized into two rows of three: row 1 is volume/frequency (total runs, most dabs in a day, unique strains), row 2 is temperature (avg open, avg endpoint, most time spent). Grid changed from 4-column to 3-column desktop; mobile stays 2-column. `COMPLETED_RUNS` tuples extended to `(strain, run_date, waypoints)` — dates backfilled for all confirmed runs; CAG Run 1 and OC Runs 1–3 remain `None`. Fixed TOC mobile layout — removed `flex-direction:column` override that was stacking pills vertically on narrow screens. New failure mode added: skipping handoff and methodology read at session start.
 
