@@ -15,12 +15,12 @@
   --grey-light: #888888;
   --grey-bg: #F5F5F5;
   --border: #CCCCCC;
-  --page-pad: 1rem;
+  --page-pad: 1.25rem;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #FAFAFA;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 .doc {
   max-width: 780px;
@@ -35,7 +35,7 @@ body {
 }
 .section-header {
   background: var(--green-light);
-  margin: 0 calc(-1 * var(--page-pad)) 1.25rem;
+  margin: 0 calc(-1 * var(--page-pad)) 1.5rem;
   padding: 0.85rem var(--page-pad);
   border-bottom: 3px solid var(--green-mid);
 }
@@ -45,94 +45,72 @@ body {
   color: var(--green-dark);
 }
 
-/* Reference row */
+/* Reference */
 .toc-ref {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.85rem;
+  gap: 1rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 0.25rem;
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
 .toc-ref-label {
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--grey-light);
-  margin-right: 0.1rem;
 }
 .toc-ref a {
-  display: inline-block;
-  padding: 0.18rem 0.55rem;
-  background: var(--grey-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--grey-text);
   text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
 }
-.toc-ref a:hover { background: var(--grey-text); color: #fff; }
+.toc-ref a:hover { color: var(--green-dark); border-bottom-color: var(--green-dark); }
 
 /* Strain rows */
 .toc-strain-row {
-  padding: 0.55rem 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-.toc-strain-row:last-child { border-bottom: none; }
-
-.toc-strain-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.35rem;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  min-height: 52px;
 }
+.toc-strain-row:last-child { border-bottom: none; }
+
 .toc-strain-name {
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--green-dark);
   text-decoration: none;
+  flex: 1;
   line-height: 1.3;
 }
 .toc-strain-name:hover { text-decoration: underline; }
 
 .toc-next {
   display: inline-block;
-  padding: 0.2rem 0.65rem;
+  padding: 0.3rem 0.85rem;
   background: var(--green-dark);
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
+  letter-spacing: 0.01em;
 }
 .toc-next:hover { background: var(--green-mid); }
-
-.toc-runs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-.toc-run {
-  display: inline-block;
-  padding: 0.12rem 0.45rem;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  font-size: 0.7rem;
-  color: var(--grey-text);
-  text-decoration: none;
-}
-.toc-run:hover { background: var(--grey-bg); }
 
 @media (min-width: 600px) {
   :root { --page-pad: 2rem; }
   body { padding: 1rem; }
-  .toc-strain-name { font-size: 0.92rem; }
 }
 </style>
 </head>
@@ -149,78 +127,32 @@ body {
   </div>
 
   <div class="toc-strains">
-
     <div class="toc-strain-row">
-      <div class="toc-strain-top">
-        <a href="#wwz-profile" class="toc-strain-name">WW Z</a>
-        <a href="#wwz-next" class="toc-next">&rarr; Next</a>
-      </div>
-      <div class="toc-runs">
-        <a href="#wwz-run1" class="toc-run">Run 1</a>
-      </div>
+      <a href="#wwz-profile" class="toc-strain-name">WW Z</a>
+      <a href="#wwz-next" class="toc-next">&rarr; Next</a>
     </div>
-
     <div class="toc-strain-row">
-      <div class="toc-strain-top">
-        <a href="#cag-profile" class="toc-strain-name">Caramel Apple Gelato</a>
-        <a href="#cag-next" class="toc-next">&rarr; Next</a>
-      </div>
-      <div class="toc-runs">
-        <a href="#cag-run1" class="toc-run">Run 1</a>
-      </div>
+      <a href="#cag-profile" class="toc-strain-name">Caramel Apple Gelato</a>
+      <a href="#cag-next" class="toc-next">&rarr; Next</a>
     </div>
-
     <div class="toc-strain-row">
-      <div class="toc-strain-top">
-        <a href="#oc-profile" class="toc-strain-name">Orange Candy</a>
-        <a href="#oc-next" class="toc-next">&rarr; Next</a>
-      </div>
-      <div class="toc-runs">
-        <a href="#oc-runs12" class="toc-run">Runs 1–2</a>
-        <a href="#oc-run3" class="toc-run">Run 3</a>
-        <a href="#oc-run4" class="toc-run">Run 4</a>
-        <a href="#oc-run5" class="toc-run">Run 5</a>
-        <a href="#oc-run6" class="toc-run">Run 6</a>
-        <a href="#oc-run7" class="toc-run">Run 7</a>
-      </div>
+      <a href="#oc-profile" class="toc-strain-name">Orange Candy</a>
+      <a href="#oc-next" class="toc-next">&rarr; Next</a>
     </div>
-
     <div class="toc-strain-row">
-      <div class="toc-strain-top">
-        <a href="#hive1-profile" class="toc-strain-name">The Hive #1</a>
-        <a href="#hive1-next" class="toc-next">&rarr; Next</a>
-      </div>
-      <div class="toc-runs">
-        <a href="#hive1-run1" class="toc-run">Run 1</a>
-        <a href="#hive1-run2" class="toc-run">Run 2</a>
-        <a href="#hive1-run3" class="toc-run">Run 3</a>
-        <a href="#hive1-run4" class="toc-run">Run 4</a>
-        <a href="#hive1-run5" class="toc-run">Run 5</a>
-      </div>
+      <a href="#hive1-profile" class="toc-strain-name">The Hive #1</a>
+      <a href="#hive1-next" class="toc-next">&rarr; Next</a>
     </div>
-
     <div class="toc-strain-row">
-      <div class="toc-strain-top">
-        <a href="#fembot3-profile" class="toc-strain-name">Fembot #3</a>
-        <a href="#fembot3-next" class="toc-next">&rarr; Next</a>
-      </div>
-      <div class="toc-runs">
-        <a href="#fembot3-run1" class="toc-run">Run 1</a>
-        <a href="#fembot3-run2" class="toc-run">Run 2</a>
-      </div>
+      <a href="#fembot3-profile" class="toc-strain-name">Fembot #3</a>
+      <a href="#fembot3-next" class="toc-next">&rarr; Next</a>
     </div>
-
     <div class="toc-strain-row">
-      <div class="toc-strain-top">
-        <a href="#ms23-profile" class="toc-strain-name">Mango Starburst #23</a>
-        <a href="#ms23-next" class="toc-next">&rarr; Next</a>
-      </div>
-      <div class="toc-runs">
-        <a href="#ms23-run1" class="toc-run">Run 1</a>
-      </div>
+      <a href="#ms23-profile" class="toc-strain-name">Mango Starburst #23</a>
+      <a href="#ms23-next" class="toc-next">&rarr; Next</a>
     </div>
-
   </div>
+
 </div>
 </div>
 </body>
