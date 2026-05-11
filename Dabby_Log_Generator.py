@@ -568,9 +568,9 @@ details.collapsible > .collapsible-body {{ padding: 2rem var(--page-pad); }}
   letter-spacing: 0.04em;
   white-space: nowrap;
 }}
-.band-low  {{ background: #d4e8d4; color: #2D5A3D; }}
-.band-mid  {{ background: #f5e6c8; color: #7a5a1a; }}
-.band-high {{ background: #e8d4d4; color: #6B2020; }}
+.band-low  {{ background: #D6EAF8; color: #1A4A6B; }}
+.band-mid  {{ background: #FFF0CC; color: #8A6000; }}
+.band-high {{ background: #FFE5CC; color: #7A3000; }}
 
 /* ── Mobile ── */
 @media (max-width: 600px) {{
