@@ -707,7 +707,7 @@ def dashboard_html():
     max_runs = run_counts[sorted_strains[0][0]] if sorted_strains else 0
     rows = ''
     for i, (strain, anchor, nt, accent, slug) in enumerate(sorted_strains):
-        color        = accent if accent else ACCENT_PALETTE[i % len(ACCENT_PALETTE)]
+        color        = _ACCENT_RESOLVED.get(strain, "#888888")
         medal        = ' 🥇' if run_counts[strain] == max_runs else ''
         n            = run_counts[strain]
         session_word = 'session' if n == 1 else 'sessions'
@@ -1210,28 +1210,18 @@ COMPLETED_RUNS = [
     ("Rain Fruit",           date(2026, 5, 11), 2,    None, RF_RUN1),
 ]
 
-# Color assignment rules for new strains:
-#   - No greens (hue ~90–165°) — clashes with the log page's green UI chrome
-#   - No high-saturation brights (miami vice) — keep HSL saturation under ~50%
-#   - At least 30° hue separation from every existing accent, or clear lightness difference
-#   - Add new entries here rather than letting the palette cycle and repeat
-ACCENT_PALETTE = [
-    "#6875A8", "#C4956A", "#D4784A", "#C9A84C",
-    "#8B7BC4", "#A45A9A", "#7A9EBB", "#C47A7A",
-    "#7AB5C4", "#A4C47A",
-]
-
 STRAIN_STATUS = [
     # (name, profile_anchor, next_text, accent, slug)
+    # accent: hex string override, or None to auto-assign from the distributed palette
     # slug drives last-run anchor: #{slug}-run{n} where n = run count from COMPLETED_RUNS
-    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#6875A8", "wwz"),
-    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   "#C4956A", "cag"),
-    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", "#D4784A", "oc"),
-    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      "#C9A84C", "hive1"),
-    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4", "fembot3"),
-    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#A45A9A", "ms23"),
-    ("Maple Bacon Donut",    "#mbd-profile",     "Repeat same curve — watch swab trend",                                                  "#7A9EBB", "mbd"),
-    ("Rain Fruit",           "#rainfruit-profile","Repeat Run 1 — clean, distinct fruit, strong effects",                               "#C47A7A", "rainfruit"),
+    ("WW Z",                 "#wwz-profile",     "—",                                                                                    None, "wwz"),
+    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   None, "cag"),
+    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", None, "oc"),
+    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      None, "hive1"),
+    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       None, "fembot3"),
+    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
+    ("Maple Bacon Donut",    "#mbd-profile",     "Repeat same curve — watch swab trend",                                                  None, "mbd"),
+    ("Rain Fruit",           "#rainfruit-profile","Repeat Run 1 — clean, distinct fruit, strong effects",                               None, "rainfruit"),
 ]
 
 TERPENE_REFERENCE = [
@@ -1279,6 +1269,80 @@ TERPENE_REFERENCE = [
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
+def _hex_to_hsl(hex_color):
+    r, g, b = [int(hex_color.lstrip('#')[i:i+2], 16) / 255 for i in (0, 2, 4)]
+    max_c, min_c = max(r, g, b), min(r, g, b)
+    l = (max_c + min_c) / 2
+    if max_c == min_c:
+        return 0, 0, l * 100
+    d = max_c - min_c
+    s = d / (2 - max_c - min_c) if l > 0.5 else d / (max_c + min_c)
+    if max_c == r:   h = (g - b) / d + (6 if g < b else 0)
+    elif max_c == g: h = (b - r) / d + 2
+    else:            h = (r - g) / d + 4
+    return (h / 6) * 360, s * 100, l * 100
+
+def _hsl_to_hex(h, s, l):
+    s /= 100; l /= 100
+    c = (1 - abs(2 * l - 1)) * s
+    x = c * (1 - abs((h / 60) % 2 - 1))
+    m = l - c / 2
+    if   0   <= h < 60:  r, g, b = c, x, 0
+    elif 60  <= h < 120: r, g, b = x, c, 0
+    elif 120 <= h < 180: r, g, b = 0, c, x
+    elif 180 <= h < 240: r, g, b = 0, x, c
+    elif 240 <= h < 300: r, g, b = x, 0, c
+    else:                r, g, b = c, 0, x
+    return '#{:02X}{:02X}{:02X}'.format(int((r+m)*255), int((g+m)*255), int((b+m)*255))
+
+def _resolve_accent_colors():
+    # Distribute hues evenly across non-green space (0–89° and 166–359°, avoiding 90–165°).
+    # Strains with an explicit accent hex in STRAIN_STATUS use that color instead.
+    NON_GREEN = [(0, 90), (166, 360)]
+    total = sum(e - s for s, e in NON_GREEN)
+    n = len(STRAIN_STATUS)
+    step = total / n
+    SAT, LGT = 38, 58
+    auto_hues = []
+    for i in range(n):
+        pos = i * step
+        for start, end in NON_GREEN:
+            span = end - start
+            if pos < span:
+                auto_hues.append(start + pos)
+                break
+            pos -= span
+    resolved = {}
+    for i, (name, _, _, accent, _) in enumerate(STRAIN_STATUS):
+        resolved[name] = accent if accent is not None else _hsl_to_hex(auto_hues[i], SAT, LGT)
+    return resolved
+
+_ACCENT_RESOLVED = _resolve_accent_colors()
+
+def validate_accent_colors():
+    # Only check manually-overridden colors — auto-assigned ones are valid by construction.
+    overrides = [(name, color) for name, _, _, color, _ in STRAIN_STATUS if color is not None]
+    if not overrides:
+        return
+    all_resolved = [(name, _ACCENT_RESOLVED[name]) for name, *_ in STRAIN_STATUS]
+    warnings = []
+    for strain, color in overrides:
+        h, s, l = _hex_to_hsl(color)
+        if 90 <= h <= 165:
+            warnings.append(f"{strain} override {color}: hue {h:.0f}° in green range (90–165°) — clashes with UI chrome")
+        if s > 50 and 35 <= l <= 70:
+            warnings.append(f"{strain} override {color}: saturation {s:.0f}% too high — avoid miami vice brights")
+        for other_strain, other_color in all_resolved:
+            if other_strain == strain:
+                continue
+            oh, _, ol = _hex_to_hsl(other_color)
+            hue_diff = min(abs(h - oh), 360 - abs(h - oh))
+            if hue_diff < 30 and abs(l - ol) < 20:
+                warnings.append(f"{strain} override {color} too close to {other_strain} {other_color}: {hue_diff:.0f}° apart")
+    if warnings:
+        print("ACCENT COLOR WARNINGS:")
+        for w in warnings: print(f"  {w}")
+
 def terpene_reference_html():
     BAND_LABELS = {
         "Low":  "Low — below 356°F / 180°C",
@@ -1313,6 +1377,9 @@ def terpene_reference_html():
 
 
 def build_html():
+    validate_accent_colors()
+    _ac = _ACCENT_RESOLVED
+
     # sessions_prior lookup keyed by (strain, 1-indexed run number)
     _cnt = {}
     _spr = {}
@@ -1359,7 +1426,7 @@ def build_html():
     # ── WW Z ──────────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="wwz-profile">'
-    s += accent_header("WW Z — Strain Profile", "#6875A8")
+    s += accent_header("WW Z — Strain Profile", _ac["WW Z"])
     s += info_table(WWZ_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1379,13 +1446,13 @@ def build_html():
         "wwz-next",
         dab_notes="Nothing recorded",
         ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
-        accent="#6875A8",
+        accent=_ac["WW Z"],
     ))
 
     # ── Caramel Apple Gelato ──────────────────────────────────────────────────
 
     s  = f'<div class="section" id="cag-profile">'
-    s += accent_header("Caramel Apple Gelato — Strain Profile", "#C4956A")
+    s += accent_header("Caramel Apple Gelato — Strain Profile", _ac["Caramel Apple Gelato"])
     s += info_table(CAG_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Limonene and myrcene inferred from Gelato lineage. Muted nose consistent with heavier, less-volatile terpene profile. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1407,13 +1474,13 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         proposed_waypoints=CAG_RUN2,
-        accent="#C4956A",
+        accent=_ac["Caramel Apple Gelato"],
     ))
 
     # ── Orange Candy ──────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="oc-profile">'
-    s += accent_header("Orange Candy — Strain Profile", "#D4784A")
+    s += accent_header("Orange Candy — Strain Profile", _ac["Orange Candy"])
     s += info_table(OC_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Limonene inferred dominant from orange character (Naran J × Tropimango lineage — unconfirmed). See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1499,13 +1566,13 @@ def build_html():
         dab_notes="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
         ai_analysis="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
         proposed_waypoints=OC_RUN6,
-        accent="#D4784A",
+        accent=_ac["Orange Candy"],
     ))
 
     # ── The Hive #1 ───────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="hive1-profile">'
-    s += accent_header("The Hive #1 — Strain Profile", "#C9A84C")
+    s += accent_header("The Hive #1 — Strain Profile", _ac["The Hive #1"])
     s += info_table(HIVE1_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Myrcene and terpinolene inferred from tropical fruit character; Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios not inferable from genetics — standard palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1572,13 +1639,13 @@ def build_html():
         dab_notes="Try 420–425°F endpoint, keep ramp shape.",
         ai_analysis="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
         proposed_waypoints=HIVE1_NEXT,
-        accent="#C9A84C",
+        accent=_ac["The Hive #1"],
     ))
 
     # ── Fembot #3 ─────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="fembot3-profile">'
-    s += accent_header("Fembot #3 — Strain Profile", "#8B7BC4")
+    s += accent_header("Fembot #3 — Strain Profile", _ac["Fembot #3"])
     s += info_table(FEMBOT3_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Terpinolene inferred likely dominant from Fuzzy Melon character; Fuzzy Melon × Rambutan lineage. Standard cannabis palette otherwise — not measured. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1611,13 +1678,13 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.",
         proposed_waypoints=FEMBOT3_RUN3,
-        accent="#8B7BC4",
+        accent=_ac["Fembot #3"],
     ))
 
     # ── Mango Starburst #23 ───────────────────────────────────────────────────
 
     s  = f'<div class="section" id="ms23-profile">'
-    s += accent_header("Mango Starburst #23 — Strain Profile", "#A45A9A")
+    s += accent_header("Mango Starburst #23 — Strain Profile", _ac["Mango Starburst #23"])
     s += info_table(MS23_INFO)
     s += "<p class=\"note\"><strong>Terpene inference:</strong> Limonene and terpinolene weighted from SB36 line's citrus-candy character; pronounced pine on Run 1 suggests pinene may be more prominent than inferred. Not measured. See <a href=\"#terpene-ref\">Terpene Reference</a>.</p>"
     s += '</div>'
@@ -1640,13 +1707,13 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
         proposed_waypoints=MS23_RUN1,
-        accent="#A45A9A",
+        accent=_ac["Mango Starburst #23"],
     ))
 
     # ── Maple Bacon Donut ─────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="mbd-profile">'
-    s += accent_header("Maple Bacon Donut — Strain Profile", "#7A9EBB")
+    s += accent_header("Maple Bacon Donut — Strain Profile", _ac["Maple Bacon Donut"])
     s += info_table(MBD_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Genetics not documented — no strain-specific inference available. Standard cannabis palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1679,13 +1746,13 @@ def build_html():
         dab_notes="Watch the swab — darker golden on Run 1, lighter on Run 2. Repeat same curve.",
         ai_analysis="Two runs, swab trending cleaner, distinct flavor on Run 2, no harshness. Repeat the same curve on Run 3 to confirm the trend before adjusting anything. If darker golden persists across more runs, consider dropping endpoint to 420°F.",
         proposed_waypoints=MBD_NEXT,
-        accent="#7A9EBB",
+        accent=_ac["Maple Bacon Donut"],
     ))
 
     # ── Rain Fruit ────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="rainfruit-profile">'
-    s += accent_header("Rain Fruit — Strain Profile", "#C47A7A")
+    s += accent_header("Rain Fruit — Strain Profile", _ac["Rain Fruit"])
     s += info_table(RF_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Genetics not documented — no strain-specific inference available. Standard cannabis palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1708,7 +1775,7 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
         proposed_waypoints=RF_RUN1,
-        accent="#C47A7A",
+        accent=_ac["Rain Fruit"],
     ))
 
     # ── Assemble ──────────────────────────────────────────────────────────────
