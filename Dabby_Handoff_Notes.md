@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 11, 2026 — Session 16
+## Last updated: May 11, 2026 — Session 18
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -34,7 +34,7 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 **CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit generator → run generator → commit both files.
 
-**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, `STRAIN_STATUS` entry, `COMPLETED_RUNS` entries, and section build code. No TOC entries — the dashboard browser is the navigation. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, waypoints)` — `run_date` is a `date` object or `None` if the exact date is not confirmed. `STRAIN_STATUS` is a 4-tuple `(name, profile_anchor, next_text, accent)` — pick accent from `ACCENT_PALETTE` in order. `what_to_try_next_html()` helper generates the What to Try Next block at the bottom of each strain section; call it with `(section_id, your_read, my_read, proposed_waypoints=None)`.
+**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, `STRAIN_STATUS` entry, `COMPLETED_RUNS` entries, and section build code. No TOC entries — the dashboard browser is the navigation. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)` — `run_date` is a `date` object or `None` if not confirmed; `sessions_prior_today` is an int (sessions run before this one on the same day) or `None` if unknown; `utc_logged_at` is a `datetime` object with UTC timezone (e.g. `datetime(2026, 5, 12, 3, 15, tzinfo=timezone.utc)`) or `None` for entries predating this field. `STRAIN_STATUS` is a 4-tuple `(name, profile_anchor, next_text, accent)` — pick accent from `ACCENT_PALETTE` in order. `what_to_try_next_html()` helper generates the What to Try Next block at the bottom of each strain section; call it with `(section_id, dab_notes, ai_analysis, proposed_waypoints=None)`.
 
 ---
 
@@ -47,6 +47,16 @@ Runs are logged with exact date (not month only) when known.
 **Swab protocol clarification:** A swab is always taken — it is the standard insert-cleaning step after every session, not an optional measurement. "Not recorded" means the color wasn't noted, not that no swab was taken. Always ask for swab color if not reported.
 
 **Duration typo:** If the user reports a session time of 69 seconds, assume it is a typo for 60 seconds, log it as 60, and note the assumption in your output — tell the user to complain if you assumed wrong. Do not stop to ask for confirmation.
+
+**Timestamp and date confirmation:** When logging a run, always capture `utc_logged_at = datetime.now(timezone.utc)` and derive local time using the user's timezone (US/Mountain, America/Denver — MDT in summer UTC-6, MST in winter UTC-7). Confirm with the user before writing: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off." Only surface the UTC/local date discrepancy in the message if the dates differ (i.e. it's late evening local time and UTC has rolled over). `run_date` should reflect the confirmed local date.
+
+**sessions_prior_today:** When logging a run on the same day it was run, compute `sessions_prior_today` automatically from `COMPLETED_RUNS` (count entries with the same `run_date`) and tell the user what you filled in — no confirmation needed, they can correct if wrong. If logging post-date, ask casually: "Do you happen to know how many dabs you had before this one on [DATE]?" — use `None` if they don't know.
+
+**Optional field register:** When prompting for optional or hard-to-recall fields (sessions prior today when post-date, load size, anything that may not be fresh in memory), use a casual register: "Do you happen to remember X?" This signals that the field is genuinely optional without making it feel like a required checkbox.
+
+**Intensity:** When logging a run, ask for effect intensity if not reported: "How hard did it hit?" — anchor options are light / moderate / strong, freeform notes welcome. Keep in mind that effects unfold over hours and logging usually happens minutes post-dab, so this captures the immediate read only.
+
+**AI Analysis:** The "AI Analysis" field in each strain's What to Try Next section is not a summary of what happened — that belongs in the run results. It should state a concrete recommendation with the reasoning behind it. Before writing AI Analysis, draw on all four artifacts: the handoff (cross-strain patterns, methodology constraints), the methodology doc, the full run history for the strain, and the user's Dab Notes just added. Cross-strain patterns are often the most valuable input — flag them when relevant. Name confounders where they affect the recommendation. Flag clearly when a recommendation is based on a single data point.
 
 ---
 
@@ -119,9 +129,9 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Caramel Apple Gelato** (Quasi Farms, Michigan) — Run 1 logged (450°F endpoint, swab amber toward brown — too hot). Run 2 pending: endpoint reduced to 430°F, hold shortened to 55 seconds.
 
-**Orange Candy** (Nikka T, 90 micron full melt) — Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint — darker swab, last portion harsh, notably stronger effect (one data point, not confirmed). Run 6 (May 10, 2026): 380→390→410→430°F ramp — light golden swab, very nice. Run 7 (May 10, 2026): 430°F steady flat hold, 60s — plain amber swab, pleasant but not as tasty as ramp, harsh in last 20s. Ramp (Run 6) outperforming flat hold at same endpoint. Next: repeat Run 6 ramp to confirm, or try 420°F flat hold.
+**Orange Candy** (Nikka T, 90 micron full melt) — Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint — darker swab, last portion harsh, notably stronger effect (one data point, not confirmed). Run 6 (May 9, 2026): 380→390→410→430°F ramp — light golden swab, very nice. Run 7 (May 9, 2026): 430°F steady flat hold, 60s — plain amber swab, pleasant but not as tasty as ramp, harsh in last 20s. Ramp (Run 6) outperforming flat hold at same endpoint. Next: repeat Run 6 ramp to confirm, or try 420°F flat hold.
 
-**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — Runs 1–2 (May 8, 2026): 380→390→410→440°F ramp, 65s — both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 9, 2026): same 430°F hold, 60s — clean swab, consistent. Run 5 (May 9, 2026): ramp to 430°F — light golden swab, distinct staged flavors, harsh in last ~10 seconds. Consistent tail harshness suggests 430°F slightly high on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
+**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — Runs 1–2 (May 7, 2026): 380→390→410→440°F ramp, 65s — both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 8, 2026): same 430°F hold, 60s — clean swab, consistent. Run 5 (May 8, 2026): ramp to 430°F — light golden swab, distinct staged flavors, harsh in last ~10 seconds. Consistent tail harshness suggests 430°F slightly high on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
 
 **Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — Run 1 (May 9, 2026): ramp to 430°F — light golden swab, tasty, slight tail harshness. Run 2 (May 9, 2026): 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Consistent tail harshness at 430°F across both curve shapes. Run 3 pending: 420°F steady flat hold, 60 seconds.
 
@@ -129,7 +139,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — In calibration. Genetics not documented. Run 1 (May 11, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 11, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 pending: repeat same curve to confirm trend.
 
-**Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — No runs yet. Genetics not documented. Start from baseline ramp (380→390→410→430°F).
+**Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — Run 1 complete (May 11, 2026): baseline ramp — notably clean swab, clear fruit notes, strong effects, no harshness. Repeat same curve on Run 2.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -142,8 +152,12 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
 - **Session date backfill** — `run_date` is now a field in each `COMPLETED_RUNS` tuple. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those tuples and re-run the generator.
 
-**Log enhancements pending:**
-- **Terpene boiling point reference section** — standalone table in the log. Not yet implemented.
+**Open ideas (not yet built):**
+- **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
+- **Terpene boiling point reference section** — standalone table in the log with source citation. Not yet implemented.
+- **Collapsible reference sections** — swab guide, baseline curve, device constants, terpene BP table could be collapsible to reduce visual weight. Consider `<details>`/`<summary>` or a second page.
+- **Collapsible or relocated historical run sections** — historical run data is critical but rarely referenced. Consider collapsing individual run sections or moving them out of the main document.
+- **Control water temperature and change frequency as variables** — standardize practice and log it. Revisit when calibration work matures.
 
 ---
 
@@ -168,12 +182,12 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - → Next pill always present; links to `#<anchor>-next` within each strain's What to Try Next block
 
 **Implementation notes:**
-- `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged. Tuple form: `(strain, run_date, waypoints)`. Use `None` for `run_date` if the exact date is not confirmed.
+- `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged. Tuple form: `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)`. Use `None` for `run_date` if not confirmed; `None` for `sessions_prior_today` if unknown; `None` for `utc_logged_at` for pre-existing entries. New entries should always populate `utc_logged_at` using `datetime.now(timezone.utc)` at logging time.
 - `STRAIN_STATUS` drives the browser rows — 4-tuple `(name, profile_anchor, next_text, accent)`. Pick accent from `ACCENT_PALETTE` in order; add a new hex if the palette runs out.
 - `ACCENT_PALETTE` is a module-level list of 10 hex colors — one per strain in order.
 - `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes.
 - "Most dabs in a day" excludes runs with `run_date = None`; the stat grows more accurate as dates are confirmed.
-- What to Try Next sections: each strain has a `what_to_try_next_html()` block at the bottom of its section. Helper signature: `(section_id, your_read, my_read, proposed_waypoints=None)`. If a proposed curve exists, pass waypoints and the helper will render both chart and table.
+- What to Try Next sections: each strain has a `what_to_try_next_html()` block at the bottom of its section. Helper signature: `(section_id, dab_notes, ai_analysis, proposed_waypoints=None)`. "Dab Notes" is the user's raw observation; "AI Analysis" is Claude's concrete recommendation. If a proposed curve exists, pass waypoints and the helper will render both chart and table.
 
 ---
 
@@ -213,6 +227,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
+- **Using UTC date when logging runs.** Cloud environments run in UTC. A session run at 8pm US time is already the next calendar day in UTC. When logging a run, always capture `utc_logged_at = datetime.now(timezone.utc)`, derive local time (subtract 6 hours MDT / 7 hours MST), and confirm with the user: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off." Use the confirmed local date as `run_date`. OC Runs 6 and 7 were incorrectly logged as May 10 when they were run on May 9 local time; Hive #1 Runs 4–5 similarly logged a day late.
 - **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it — it wastes time. Do not amend already-pushed commits either (same problem). When a branch needs correction after being pushed, cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
 - **Not reading handoff and methodology at session start.** CLAUDE.md explicitly requires reading `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`, and `Dabby_Log_Generator.py` before taking any action. This was skipped in Session 15, leading to suggestions made without full context. Read all three files before responding to any request, every session.
 - **Re-introducing calibration framing.** The project has been reframed as a session log. Do not use "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard. `STRAIN_STATUS` no longer contains badge fields.
@@ -239,6 +254,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 11, 2026 — Session 18:** Generator: `COMPLETED_RUNS` extended to 5-tuple `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)` — `sessions_prior_today` is int or None; `utc_logged_at` is a UTC datetime or None for pre-existing entries. `what_to_try_next_html()` params renamed `your_read`→`dab_notes`, `my_read`→`ai_analysis`; rendered labels updated to "Dab Notes" and "AI Analysis." Intensity field added to four runs (OC Run 3, MBD Runs 1–2, Rain Fruit Run 1). Section header date corrections: Hive #1 Runs 1–2 moved from May 8 to May 7; Runs 4–5 from May 9 to May 8; OC Runs 6–7 from May 10 to May 9. Sessions_prior_today backfilled for all multi-run days. Session logging protocol updated: sessions_prior_today auto-computed when logging same-day; UTC timestamp confirmation protocol added; casual register guidance added for optional fields; AI Analysis guidance added (read all four artifacts, cross-strain patterns, concrete recommendation, not a summary). Open ideas section added to handoff. CLAUDE.md updated: session must start with `git checkout main && git pull origin main` before reading any files. Rain Fruit current status corrected (Run 1 was already logged).
 
 - **May 11, 2026 — Session 17:** Maple Bacon Donut and Rain Fruit added (both Quasi Farms, Michigan, cold cure, micron unknown, genetics not documented). MBD Run 1 (May 11): darker golden swab, tasty first half, faded second half, milder effect (tolerance confound). MBD Run 2 (May 11): lighter swab, distinct bacon character first half, effects came on noticeably. Swab trending cleaner — repeat same curve on Run 3. Rain Fruit: profile only, no runs. Baseline curve updated to reflect effective operating baseline: 380→390→410→430°F (open raised from 375°F, endpoint locked at 430°F). Methodology construction parameters table updated to match.
 

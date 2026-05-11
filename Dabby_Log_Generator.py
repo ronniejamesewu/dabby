@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 """
 Dabby the House Rig — Session Log Generator
 Produces index.html — a mobile-responsive, screen-optimized web document.
@@ -486,22 +486,20 @@ def terpene_table(rows):
         html += f'<tr><td>{terpene}</td><td>{bp}</td><td>{char}</td></tr>'
     return html + '</tbody></table>'
 
-def section_header(title, status=None, badge_class=None, header_class=""):
+def section_header(title, header_class=""):
     html = f'<div class="section-header {header_class}">'
     html += f'<h2>{title}</h2>'
-    if status and badge_class:
-        html += f'<span class="badge {badge_class}">{status}</span>'
     return html + '</div>'
 
 def result_row(label, value, amber=False):
     cls = "result-row amber" if amber else "result-row"
     return f'<p class="{cls}"><span class="label">{label}</span> {value}</p>'
 
-def what_to_try_next_html(section_id, your_read, my_read, proposed_waypoints=None):
+def what_to_try_next_html(section_id, dab_notes, ai_analysis, proposed_waypoints=None):
     s = f'<div class="section" id="{section_id}">'
     s += section_header("What to Try Next", header_class="grey")
-    s += result_row("Your read:", your_read)
-    s += result_row("My read:", my_read)
+    s += result_row("Dab Notes:", dab_notes)
+    s += result_row("AI Analysis:", ai_analysis)
     if proposed_waypoints:
         s += '<h3>Proposed Curve</h3>'
         s += curve_chart_html(proposed_waypoints)
@@ -514,7 +512,7 @@ def dashboard_html():
     days = (today - FIRST_RUN_DATE).days + 1
 
     opens, endpoints, temp_sec, run_counts, date_counts = [], [], {}, {}, {}
-    for strain, run_date, wps in COMPLETED_RUNS:
+    for strain, run_date, sessions_prior, utc_logged_at, wps in COMPLETED_RUNS:
         pts = [(int(t.replace('s', '')), float(v.replace('°F', ''))) for t, v, _ in wps]
         opens.append(pts[0][1])
         endpoints.append(pts[-1][1])
@@ -536,7 +534,7 @@ def dashboard_html():
     unique_strains = len(run_counts)
 
     last_dates = {}
-    for strain, run_date, wps in COMPLETED_RUNS:
+    for strain, run_date, sessions_prior, utc_logged_at, wps in COMPLETED_RUNS:
         if run_date is not None:
             if strain not in last_dates or run_date > last_dates[strain]:
                 last_dates[strain] = run_date
@@ -566,7 +564,7 @@ def dashboard_html():
         session_word = 'session' if n == 1 else 'sessions'
         ld           = last_dates.get(strain)
         if ld:
-            date_str = ld.strftime('%b %-d')
+            date_str = ld.strftime('%b %d').replace(' 0', ' ')
             meta = f'{n} {session_word} &middot; {"" if n == 1 else "last "}{date_str}'
         else:
             meta = f'{n} {session_word}'
@@ -875,7 +873,7 @@ HIVE1_INFO = [
 ]
 
 HIVE1_RUN1 = [
-    ("0s",  "380°F", "Session open — 5°F above baseline; increases opening vapor density"),
+    ("0s",  "380°F", "Session open"),
     ("15s", "390°F", "Early ascent"),
     ("35s", "410°F", "Mid ascent"),
     ("65s", "440°F", "Endpoint"),
@@ -1022,38 +1020,35 @@ RF_RUN1 = [
     ("40s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint"),
 ]
-RF_NEXT = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint — baseline starting point"),
-]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
 FIRST_RUN_DATE = date(2026, 5, 2)
 
 COMPLETED_RUNS = [
-    ("WW Z",                 date(2026, 5, 2),  WWZ_RUN1),
-    ("Caramel Apple Gelato", None,              CAG_RUN1),
-    ("Orange Candy",         None,              OC_RUNS12),
-    ("Orange Candy",         None,              OC_RUNS12),
-    ("Orange Candy",         None,              OC_RUN3),
-    ("Orange Candy",         date(2026, 5, 5),  OC_RUN4),
-    ("Orange Candy",         date(2026, 5, 6),  OC_RUN5),
-    ("Orange Candy",         date(2026, 5, 10), OC_RUN6),
-    ("Orange Candy",         date(2026, 5, 10), OC_RUN7),
-    ("The Hive #1",          date(2026, 5, 8),  HIVE1_RUN1),
-    ("The Hive #1",          date(2026, 5, 8),  HIVE1_RUN2),
-    ("The Hive #1",          date(2026, 5, 8),  HIVE1_RUN3),
-    ("The Hive #1",          date(2026, 5, 9),  HIVE1_RUN4),
-    ("The Hive #1",          date(2026, 5, 9),  HIVE1_RUN5),
-    ("Fembot #3",            date(2026, 5, 9),  FEMBOT3_RUN1),
-    ("Fembot #3",            date(2026, 5, 9),  FEMBOT3_RUN2),
-    ("Mango Starburst #23",  date(2026, 5, 9),  MS23_RUN1),
-    ("Maple Bacon Donut",   date(2026, 5, 11), MBD_RUN1),
-    ("Maple Bacon Donut",   date(2026, 5, 11), MBD_RUN2),
-    ("Rain Fruit",          date(2026, 5, 11), RF_RUN1),
+    # (strain, date, sessions_prior_today, utc_logged_at, waypoints)
+    # sessions_prior_today: int = sessions run before this one on the same day; None if unknown
+    # utc_logged_at: datetime (UTC) when the run was logged; None for entries predating this field
+    ("WW Z",                 date(2026, 5, 2),  0,    None, WWZ_RUN1),
+    ("Caramel Apple Gelato", None,              None, None, CAG_RUN1),
+    ("Orange Candy",         None,              None, None, OC_RUNS12),
+    ("Orange Candy",         None,              None, None, OC_RUNS12),
+    ("Orange Candy",         None,              None, None, OC_RUN3),
+    ("Orange Candy",         date(2026, 5, 5),  1,    None, OC_RUN4),
+    ("Orange Candy",         date(2026, 5, 6),  0,    None, OC_RUN5),
+    ("Orange Candy",         date(2026, 5, 9),  3,    None, OC_RUN6),
+    ("Orange Candy",         date(2026, 5, 9),  4,    None, OC_RUN7),
+    ("The Hive #1",          date(2026, 5, 7),  0,    None, HIVE1_RUN1),
+    ("The Hive #1",          date(2026, 5, 7),  1,    None, HIVE1_RUN2),
+    ("The Hive #1",          date(2026, 5, 8),  0,    None, HIVE1_RUN3),
+    ("The Hive #1",          date(2026, 5, 8),  1,    None, HIVE1_RUN4),
+    ("The Hive #1",          date(2026, 5, 8),  2,    None, HIVE1_RUN5),
+    ("Fembot #3",            date(2026, 5, 9),  0,    None, FEMBOT3_RUN1),
+    ("Fembot #3",            date(2026, 5, 9),  1,    None, FEMBOT3_RUN2),
+    ("Mango Starburst #23",  date(2026, 5, 9),  2,    None, MS23_RUN1),
+    ("Maple Bacon Donut",    date(2026, 5, 11), 0,    None, MBD_RUN1),
+    ("Maple Bacon Donut",    date(2026, 5, 11), 1,    None, MBD_RUN2),
+    ("Rain Fruit",           date(2026, 5, 11), 2,    None, RF_RUN1),
 ]
 
 ACCENT_PALETTE = [
@@ -1128,7 +1123,7 @@ def build_html():
 
     # ── WW Z Run 1
     s = f'<div class="section" id="wwz-run1">'
-    s += section_header("WW Z — Run 1 — May 2026")
+    s += section_header("WW Z — Run 1 — May 2, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p>'
     s += curve_chart_html(WWZ_RUN1)
@@ -1142,8 +1137,8 @@ def build_html():
 
     sections.append(what_to_try_next_html(
         "wwz-next",
-        your_read="Nothing recorded",
-        my_read="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
+        dab_notes="Nothing recorded",
+        ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
         proposed_waypoints=None,
     ))
 
@@ -1173,8 +1168,8 @@ def build_html():
 
     sections.append(what_to_try_next_html(
         "cag-next",
-        your_read="Nothing recorded",
-        my_read="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
+        dab_notes="Nothing recorded",
+        ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         proposed_waypoints=CAG_RUN2,
     ))
 
@@ -1211,6 +1206,7 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Light golden/tan. Clean. Minimal peripheral darkening at tip edge — consistent with insert wall cooling, not degradation.")
     s += result_row("Session:", "Very nice. Strong effects. Opening draws wispy but flavorful. Good progression through session.")
+    s += result_row("Intensity:", "Strong")
     s += result_row("Verdict:", "Clean swab, strong result. Wispy opening draws suggest opportunity to raise opening setpoint slightly to improve vapor density at session start without affecting the clean tail.")
     s += '</div>'
     sections.append(s)
@@ -1246,7 +1242,7 @@ def build_html():
 
     # ── OC Run 6
     s = f'<div class="section" id="oc-run6">'
-    s += section_header("Orange Candy — Run 6 — May 10, 2026")
+    s += section_header("Orange Candy — Run 6 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(OC_RUN6)
@@ -1260,7 +1256,7 @@ def build_html():
 
     # ── OC Run 7
     s = f'<div class="section" id="oc-run7">'
-    s += section_header("Orange Candy — Run 7 — May 10, 2026")
+    s += section_header("Orange Candy — Run 7 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(OC_RUN7)
@@ -1275,8 +1271,8 @@ def build_html():
 
     sections.append(what_to_try_next_html(
         "oc-next",
-        your_read="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
-        my_read="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
+        dab_notes="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
+        ai_analysis="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
         proposed_waypoints=OC_RUN6,
     ))
 
@@ -1292,7 +1288,7 @@ def build_html():
 
     # ── The Hive #1 Run 1
     s = f'<div class="section" id="hive1-run1">'
-    s += section_header("The Hive #1 — Run 1 — May 8, 2026")
+    s += section_header("The Hive #1 — Run 1 — May 7, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(HIVE1_RUN1)
@@ -1306,7 +1302,7 @@ def build_html():
 
     # ── The Hive #1 Run 2
     s = f'<div class="section" id="hive1-run2">'
-    s += section_header("The Hive #1 — Run 2 — May 8, 2026")
+    s += section_header("The Hive #1 — Run 2 — May 7, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F &nbsp;|&nbsp; Identical to Run 1.</p>'
     s += curve_chart_html(HIVE1_RUN2)
@@ -1336,7 +1332,7 @@ def build_html():
 
     # ── The Hive #1 Run 4
     s = f'<div class="section" id="hive1-run4">'
-    s += section_header("The Hive #1 — Run 4 — May 9, 2026")
+    s += section_header("The Hive #1 — Run 4 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3\'s 45s</p>'
     s += curve_chart_html(HIVE1_RUN4)
@@ -1350,7 +1346,7 @@ def build_html():
 
     # ── The Hive #1 Run 5
     s = f'<div class="section" id="hive1-run5">'
-    s += section_header("The Hive #1 — Run 5 — May 9, 2026")
+    s += section_header("The Hive #1 — Run 5 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)</p>'
     s += curve_chart_html(HIVE1_RUN5)
@@ -1365,8 +1361,8 @@ def build_html():
 
     sections.append(what_to_try_next_html(
         "hive1-next",
-        your_read="Try 420–425°F endpoint, keep ramp shape.",
-        my_read="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
+        dab_notes="Try 420–425°F endpoint, keep ramp shape.",
+        ai_analysis="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
         proposed_waypoints=HIVE1_NEXT,
     ))
 
@@ -1411,8 +1407,8 @@ def build_html():
 
     sections.append(what_to_try_next_html(
         "fembot3-next",
-        your_read="Nothing recorded",
-        my_read="Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.",
+        dab_notes="Nothing recorded",
+        ai_analysis="Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.",
         proposed_waypoints=FEMBOT3_RUN3,
     ))
 
@@ -1443,8 +1439,8 @@ def build_html():
 
     sections.append(what_to_try_next_html(
         "ms23-next",
-        your_read="Nothing recorded",
-        my_read="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
+        dab_notes="Nothing recorded",
+        ai_analysis="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
         proposed_waypoints=MS23_RUN1,
     ))
 
@@ -1468,6 +1464,7 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Darker golden — between light golden target and amber. Nothing tasted burnt. Flagged as something to watch on subsequent runs.")
     s += result_row("Session:", "Tasty first half, second half faded to generic. Milder effect — likely tolerance after 5 sessions the prior day.")
+    s += result_row("Intensity:", "Mild — tolerance confound (5 sessions prior day)")
     s += '</div>'
     sections.append(s)
 
@@ -1481,14 +1478,15 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Lighter than Run 1 — closer to the light golden target.")
     s += result_row("Session:", "Distinct bacon character on the first half. Effects came on noticeably after this session.")
+    s += result_row("Intensity:", "Moderate")
     s += result_row("Read:", "Swab trending cleaner on repeat. Flavor expressed distinctly on the first half. No harshness on either run. The Run 1 milder effect reads as a tolerance confound — effects landed clearly on Run 2.")
     s += '</div>'
     sections.append(s)
 
     sections.append(what_to_try_next_html(
         "mbd-next",
-        your_read="Watch the swab — darker golden on Run 1, lighter on Run 2. Repeat same curve.",
-        my_read="Two runs, swab trending cleaner, distinct flavor on Run 2, no harshness. Repeat the same curve on Run 3 to confirm the trend before adjusting anything. If darker golden persists across more runs, consider dropping endpoint to 420°F.",
+        dab_notes="Watch the swab — darker golden on Run 1, lighter on Run 2. Repeat same curve.",
+        ai_analysis="Two runs, swab trending cleaner, distinct flavor on Run 2, no harshness. Repeat the same curve on Run 3 to confirm the trend before adjusting anything. If darker golden persists across more runs, consider dropping endpoint to 420°F.",
         proposed_waypoints=MBD_NEXT,
     ))
 
@@ -1512,14 +1510,15 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Notably clean — lighter than target. No darkening.")
     s += result_row("Session:", "Really clear fruit notes throughout. Strong effects — pressure up and behind the eyes. No harshness.")
+    s += result_row("Intensity:", "Strong")
     s += result_row("Verdict:", "Clean first run. Distinct fruit character, strong effect. No floor signal, no harshness. Repeat the same curve on Run 2 to confirm.")
     s += '</div>'
     sections.append(s)
 
     sections.append(what_to_try_next_html(
         "rainfruit-next",
-        your_read="Nothing recorded",
-        my_read="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
+        dab_notes="Nothing recorded",
+        ai_analysis="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
         proposed_waypoints=RF_RUN1,
     ))
 
