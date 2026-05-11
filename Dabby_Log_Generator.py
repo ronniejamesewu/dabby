@@ -241,25 +241,119 @@ p {{
 }}
 .divider.amber {{ border-top-color: var(--amber-light); }}
 
-/* ── Nav / TOC ── */
-.toc ul {{
-  list-style: none;
+/* ── Strain browser ── */
+.strain-browser {{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  max-height: 380px;
+  margin-bottom: 1rem;
 }}
-.toc a {{
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
+.search-wrap {{
+  flex-shrink: 0;
+  padding: 0.6rem;
+  background: var(--grey-bg);
+  border-bottom: 1px solid var(--border);
+}}
+.search-input {{
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.88rem;
+  font-family: var(--font);
   background: #fff;
-  border: 1px solid var(--green-mid);
-  border-radius: 20px;
-  font-size: 0.8rem;
+  color: var(--text);
+  -webkit-appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}}
+.search-input::placeholder {{ color: var(--grey-light); }}
+.search-input:focus {{
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
+}}
+.strain-list {{
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}}
+.strain-row {{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: 4px solid var(--accent, var(--green-mid));
+  transition: background 0.12s;
+}}
+.strain-row:last-child {{ border-bottom: none; }}
+.strain-row:hover {{ background: var(--green-light); }}
+.strain-row.hidden {{ display: none; }}
+.strain-info {{ flex: 1; min-width: 0; }}
+.strain-name {{
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--green-dark);
   text-decoration: none;
-  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }}
-.toc a:hover {{ background: var(--green-dark); color: #fff; }}
+.strain-name:hover {{ text-decoration: underline; }}
+.strain-meta {{
+  font-size: 0.7rem;
+  color: var(--grey-light);
+  font-family: var(--font-mono);
+  margin-top: 0.1rem;
+}}
+.next-pill {{
+  display: inline-block;
+  padding: 0.28rem 0.75rem;
+  background: var(--green-dark);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+}}
+.next-pill:hover {{ background: var(--green-mid); transform: translateX(2px); }}
+.no-results {{
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--grey-light);
+  font-family: var(--font-mono);
+  display: none;
+}}
+.ref-row {{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}}
+.ref-label {{
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}}
+.ref-row a {{
+  font-size: 0.8rem;
+  color: var(--grey-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}}
+.ref-row a:hover {{ color: var(--green-dark); border-bottom-color: var(--green-dark); }}
 
 /* ── Footer ── */
 .footer {{
@@ -346,31 +440,6 @@ p {{
   letter-spacing: 0.03em;
   line-height: 1.3;
 }}
-.dash-strain-table {{
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}}
-.dash-strain-table th {{
-  background: var(--green-dark);
-  color: #fff;
-  padding: 0.55rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-}}
-.dash-strain-table th.center {{ text-align: center; }}
-.dash-strain-table td {{
-  padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}}
-.dash-strain-table tr:last-child td {{ border-bottom: none; }}
-.dash-strain-table tr:nth-child(even) td {{ background: var(--green-light); }}
-.dash-strain-table td:first-child {{ font-weight: 600; }}
-.dash-strain-table td.center {{ text-align: center; }}
-.next-text {{ color: var(--grey-text); font-size: 0.85rem; }}
-.strain-link {{ color: var(--green-dark); text-decoration: none; }}
-.strain-link:hover {{ text-decoration: underline; }}
 
 /* ── Mobile ── */
 @media (max-width: 600px) {{
@@ -457,8 +526,14 @@ def dashboard_html():
     max_dabs_day   = max(date_counts.values()) if date_counts else 0
     unique_strains = len(run_counts)
 
+    last_dates = {}
+    for strain, run_date, wps in COMPLETED_RUNS:
+        if run_date is not None:
+            if strain not in last_dates or run_date > last_dates[strain]:
+                last_dates[strain] = run_date
+
     sorted_strains = sorted(
-        [(s, a, nt) for s, a, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
+        [(s, a, nt, ac) for s, a, nt, ac in STRAIN_STATUS if run_counts.get(s, 0) > 0],
         key=lambda x: run_counts[x[0]], reverse=True
     )
 
@@ -475,27 +550,75 @@ def dashboard_html():
 
     max_runs = run_counts[sorted_strains[0][0]] if sorted_strains else 0
     rows = ''
-    for i, (strain, anchor, nt) in enumerate(sorted_strains):
-        medal = ' 🥇' if run_counts[strain] == max_runs else ''
+    for i, (strain, anchor, nt, accent) in enumerate(sorted_strains):
+        color        = accent if accent else ACCENT_PALETTE[i % len(ACCENT_PALETTE)]
+        medal        = ' 🥇' if run_counts[strain] == max_runs else ''
+        n            = run_counts[strain]
+        session_word = 'session' if n == 1 else 'sessions'
+        ld           = last_dates.get(strain)
+        if ld:
+            date_str = ld.strftime('%b %-d')
+            meta = f'{n} {session_word} &middot; {"" if n == 1 else "last "}{date_str}'
+        else:
+            meta = f'{n} {session_word}'
+        next_anchor = anchor.replace('-profile', '-next')
         rows += (
-            f'<tr>'
-            f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
-            f'<td class="center">{run_counts[strain]}</td>'
-            f'<td class="next-text">{nt}</td>'
-            f'</tr>'
+            f'<div class="strain-row" data-strain="{strain.lower()}" style="--accent:{color}">'
+            f'<div class="strain-info">'
+            f'<a href="{anchor}" class="strain-name">{strain}{medal}</a>'
+            f'<span class="strain-meta">{meta}</span>'
+            f'</div>'
+            f'<a href="{next_anchor}" class="next-pill">&rarr; Next</a>'
+            f'</div>'
         )
 
-    table = (
-        f'<table class="dash-strain-table">'
-        f'<thead><tr><th>Strain</th><th class="center">Runs</th><th>Next</th></tr></thead>'
-        f'<tbody>{rows}</tbody>'
-        f'</table>'
+    browser = (
+        f'<div class="strain-browser">'
+        f'<div class="search-wrap">'
+        f'<input class="search-input" type="search" placeholder="Search strains…" id="strainSearch" autocomplete="off">'
+        f'</div>'
+        f'<div class="strain-list">'
+        f'{rows}'
+        f'<div class="no-results" id="noResults">No strains match</div>'
+        f'</div>'
+        f'</div>'
+    )
+
+    ref = (
+        f'<div class="ref-row">'
+        f'<span class="ref-label">Reference</span>'
+        f'<a href="#constants">Constants</a>'
+        f'<a href="#swab">Swab Reference</a>'
+        f'<a href="#baseline">Baseline Curve</a>'
+        f'</div>'
+    )
+
+    js = (
+        '<script>'
+        '(function(){'
+        'var inp=document.getElementById("strainSearch");'
+        'var rows=document.querySelectorAll(".strain-row");'
+        'var none=document.getElementById("noResults");'
+        'inp.addEventListener("input",function(){'
+        'var q=this.value.toLowerCase().trim();'
+        'var v=0;'
+        'rows.forEach(function(r){'
+        'var m=!q||r.dataset.strain.includes(q);'
+        'r.classList.toggle("hidden",!m);'
+        'if(m)v++;'
+        '});'
+        'none.style.display=v===0?"block":"none";'
+        '});'
+        '})();'
+        '</script>'
     )
 
     s = '<div class="section" id="dashboard">'
     s += section_header("Dashboard")
     s += cards
-    s += table
+    s += browser
+    s += ref
+    s += js
     s += '</div>'
     return s
 
@@ -860,61 +983,26 @@ COMPLETED_RUNS = [
     ("Mango Starburst #23",  date(2026, 5, 9),  MS23_RUN1),
 ]
 
+ACCENT_PALETTE = [
+    "#6B9E78", "#C4956A", "#D4784A", "#C9A84C",
+    "#8B7BC4", "#D4A44C", "#7A9EBB", "#C47A7A",
+    "#7AB5C4", "#A4C47A",
+]
+
 STRAIN_STATUS = [
-    # (name, profile_anchor, next_text)
-    ("WW Z",                 "#wwz-profile",     "—"),
-    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint"),
-    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold"),
-    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6"),
-    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3"),
-    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm"),
+    # (name, profile_anchor, next_text, accent)
+    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#6B9E78"),
+    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   "#C4956A"),
+    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", "#D4784A"),
+    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      "#C9A84C"),
+    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4"),
+    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#D4A44C"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
 def build_html():
     sections = []
-
-    # ── TOC
-    toc_links = [
-        ("#dashboard", "Dashboard"),
-        ("#constants", "Constants"),
-        ("#swab", "Swab Reference"),
-        ("#baseline", "Baseline Curve"),
-        ("#wwz-profile", "WW Z"),
-        ("#wwz-run1", "WW Z Run 1"),
-        ("#wwz-next", "WW Z — Next"),
-        ("#cag-profile", "Caramel Apple Gelato"),
-        ("#cag-run1", "CAG Run 1"),
-        ("#cag-next", "CAG — Next"),
-        ("#oc-profile", "Orange Candy"),
-        ("#oc-runs12", "OC Runs 1–2"),
-        ("#oc-run3", "OC Run 3"),
-        ("#oc-run4", "OC Run 4"),
-        ("#oc-run5", "OC Run 5"),
-        ("#oc-run6", "OC Run 6"),
-        ("#oc-run7", "OC Run 7"),
-        ("#oc-next", "OC — Next"),
-        ("#hive1-profile", "The Hive #1"),
-        ("#hive1-run1", "Hive #1 Run 1"),
-        ("#hive1-run2", "Hive #1 Run 2"),
-        ("#hive1-run3", "Hive #1 Run 3"),
-        ("#hive1-run4", "Hive #1 Run 4"),
-        ("#hive1-run5", "Hive #1 Run 5"),
-        ("#hive1-next", "Hive #1 — Next"),
-        ("#fembot3-profile", "Fembot #3"),
-        ("#fembot3-run1", "Fembot #3 Run 1"),
-        ("#fembot3-run2", "Fembot #3 Run 2"),
-        ("#fembot3-next", "Fembot #3 — Next"),
-        ("#ms23-profile", "Mango Starburst #23"),
-        ("#ms23-run1", "MS23 Run 1"),
-        ("#ms23-next", "MS23 — Next"),
-    ]
-    toc_links_html = '<ul>'
-    for href, label in toc_links:
-        toc_links_html += f'<li><a href="{href}">{label}</a></li>'
-    toc_links_html += '</ul>'
-    toc = f'<div class="section" id="toc">{section_header("Contents")}<div class="toc">{toc_links_html}</div></div>'
 
     dash = dashboard_html()
 
@@ -1286,7 +1374,7 @@ def build_html():
     ))
 
     # ── Assemble
-    body = dash + toc + ''.join(sections)
+    body = dash + ''.join(sections)
     body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>'
 
     cover = '''<div class="cover">

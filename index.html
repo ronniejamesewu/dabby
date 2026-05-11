@@ -226,25 +226,119 @@ p {
 }
 .divider.amber { border-top-color: var(--amber-light); }
 
-/* ── Nav / TOC ── */
-.toc ul {
-  list-style: none;
+/* ── Strain browser ── */
+.strain-browser {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  max-height: 380px;
+  margin-bottom: 1rem;
 }
-.toc a {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
+.search-wrap {
+  flex-shrink: 0;
+  padding: 0.6rem;
+  background: var(--grey-bg);
+  border-bottom: 1px solid var(--border);
+}
+.search-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.88rem;
+  font-family: var(--font);
   background: #fff;
-  border: 1px solid var(--green-mid);
-  border-radius: 20px;
-  font-size: 0.8rem;
+  color: var(--text);
+  -webkit-appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.search-input::placeholder { color: var(--grey-light); }
+.search-input:focus {
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
+}
+.strain-list {
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+.strain-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: 4px solid var(--accent, var(--green-mid));
+  transition: background 0.12s;
+}
+.strain-row:last-child { border-bottom: none; }
+.strain-row:hover { background: var(--green-light); }
+.strain-row.hidden { display: none; }
+.strain-info { flex: 1; min-width: 0; }
+.strain-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--green-dark);
   text-decoration: none;
-  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.toc a:hover { background: var(--green-dark); color: #fff; }
+.strain-name:hover { text-decoration: underline; }
+.strain-meta {
+  font-size: 0.7rem;
+  color: var(--grey-light);
+  font-family: var(--font-mono);
+  margin-top: 0.1rem;
+}
+.next-pill {
+  display: inline-block;
+  padding: 0.28rem 0.75rem;
+  background: var(--green-dark);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+}
+.next-pill:hover { background: var(--green-mid); transform: translateX(2px); }
+.no-results {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--grey-light);
+  font-family: var(--font-mono);
+  display: none;
+}
+.ref-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.ref-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}
+.ref-row a {
+  font-size: 0.8rem;
+  color: var(--grey-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.ref-row a:hover { color: var(--green-dark); border-bottom-color: var(--green-dark); }
 
 /* ── Footer ── */
 .footer {
@@ -331,31 +425,6 @@ p {
   letter-spacing: 0.03em;
   line-height: 1.3;
 }
-.dash-strain-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}
-.dash-strain-table th {
-  background: var(--green-dark);
-  color: #fff;
-  padding: 0.55rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-}
-.dash-strain-table th.center { text-align: center; }
-.dash-strain-table td {
-  padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-.dash-strain-table tr:last-child td { border-bottom: none; }
-.dash-strain-table tr:nth-child(even) td { background: var(--green-light); }
-.dash-strain-table td:first-child { font-weight: 600; }
-.dash-strain-table td.center { text-align: center; }
-.next-text { color: var(--grey-text); font-size: 0.85rem; }
-.strain-link { color: var(--green-dark); text-decoration: none; }
-.strain-link:hover { text-decoration: underline; }
 
 /* ── Mobile ── */
 @media (max-width: 600px) {
@@ -375,7 +444,7 @@ p {
         <p class="subtitle">Session Log</p>
         <p class="tagline">Hash Rosin &nbsp;·&nbsp; Solventless &nbsp;·&nbsp; Cold Start Protocol</p>
     </div>
-<div class="section" id="dashboard"><div class="section-header "><h2>Dashboard</h2></div><div class="stats-grid"><div class="stat-card c1"><div class="stat-value">17</div><div class="stat-label">runs over 9 days</div></div><div class="stat-card c5"><div class="stat-value">5</div><div class="stat-label">most dabs in a day</div></div><div class="stat-card c6"><div class="stat-value">6</div><div class="stat-label">unique strains</div></div><div class="stat-card c2"><div class="stat-value">389°</div><div class="stat-label">avg open</div></div><div class="stat-card c3"><div class="stat-value">438°</div><div class="stat-label">avg endpoint</div></div><div class="stat-card c4"><div class="stat-value">430°</div><div class="stat-label">most time spent</div></div></div><table class="dash-strain-table"><thead><tr><th>Strain</th><th class="center">Runs</th><th>Next</th></tr></thead><tbody><tr><td><a href="#oc-profile" class="strain-link">Orange Candy</a> 🥇</td><td class="center">7</td><td class="next-text">Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold</td></tr><tr><td><a href="#hive1-profile" class="strain-link">The Hive #1</a></td><td class="center">5</td><td class="next-text">Try 420–425°F endpoint on Run 6</td></tr><tr><td><a href="#fembot3-profile" class="strain-link">Fembot #3</a></td><td class="center">2</td><td class="next-text">Try 420°F steady hold on Run 3</td></tr><tr><td><a href="#wwz-profile" class="strain-link">WW Z</a></td><td class="center">1</td><td class="next-text">—</td></tr><tr><td><a href="#cag-profile" class="strain-link">Caramel Apple Gelato</a></td><td class="center">1</td><td class="next-text">Try 430°F endpoint</td></tr><tr><td><a href="#ms23-profile" class="strain-link">Mango Starburst #23</a></td><td class="center">1</td><td class="next-text">Repeat Run 1 curve to confirm</td></tr></tbody></table></div><div class="section" id="toc"><div class="section-header "><h2>Contents</h2></div><div class="toc"><ul><li><a href="#dashboard">Dashboard</a></li><li><a href="#constants">Constants</a></li><li><a href="#swab">Swab Reference</a></li><li><a href="#baseline">Baseline Curve</a></li><li><a href="#wwz-profile">WW Z</a></li><li><a href="#wwz-run1">WW Z Run 1</a></li><li><a href="#wwz-next">WW Z — Next</a></li><li><a href="#cag-profile">Caramel Apple Gelato</a></li><li><a href="#cag-run1">CAG Run 1</a></li><li><a href="#cag-next">CAG — Next</a></li><li><a href="#oc-profile">Orange Candy</a></li><li><a href="#oc-runs12">OC Runs 1–2</a></li><li><a href="#oc-run3">OC Run 3</a></li><li><a href="#oc-run4">OC Run 4</a></li><li><a href="#oc-run5">OC Run 5</a></li><li><a href="#oc-run6">OC Run 6</a></li><li><a href="#oc-run7">OC Run 7</a></li><li><a href="#oc-next">OC — Next</a></li><li><a href="#hive1-profile">The Hive #1</a></li><li><a href="#hive1-run1">Hive #1 Run 1</a></li><li><a href="#hive1-run2">Hive #1 Run 2</a></li><li><a href="#hive1-run3">Hive #1 Run 3</a></li><li><a href="#hive1-run4">Hive #1 Run 4</a></li><li><a href="#hive1-run5">Hive #1 Run 5</a></li><li><a href="#hive1-next">Hive #1 — Next</a></li><li><a href="#fembot3-profile">Fembot #3</a></li><li><a href="#fembot3-run1">Fembot #3 Run 1</a></li><li><a href="#fembot3-run2">Fembot #3 Run 2</a></li><li><a href="#fembot3-next">Fembot #3 — Next</a></li><li><a href="#ms23-profile">Mango Starburst #23</a></li><li><a href="#ms23-run1">MS23 Run 1</a></li><li><a href="#ms23-next">MS23 — Next</a></li></ul></div></div><div class="section" id="constants"><div class="section-header "><h2>Device &amp; Session Constants</h2></div><p class="note">These parameters apply to every session in this log unless explicitly noted otherwise.</p><table class="info-table"><tr><td>Device</td><td>Switch² (Dabby the House Rig)</td></tr><tr><td>All Material</td><td>Hash Rosin — ice water extracted, solventless. Consistency varies by jar — noted in each strain profile.</td></tr><tr><td>Insert</td><td>20mm (quartz current; sapphire profiles to be added when acquired)</td></tr><tr><td>Technique</td><td>Cold start — pre-load into cold insert before every session</td></tr><tr><td>Load Size</td><td>Rice grain (small)</td></tr><tr><td>Offset Est.</td><td>Probably small under most operating conditions. Dominant uncertainties are vaporization cooling and dynamic lag during steep ascent. At flat or slowly-ascending phases the system approaches equilibrium. Setpoints are reasonable proxies for material contact temperature.</td></tr><tr><td>Draw Style</td><td>Long, slow draws throughout session</td></tr><tr><td>Terp Tools</td><td>Cloud Vortex auto spinner cap + 6mm quartz pearl in insert — present in all sessions to date</td></tr><tr><td>Session End</td><td>Stop when vapor production drops — do not ride timer on small loads</td></tr></table><p class="note">IR reads titanium, not insert surface.</p></div><div class="section" id="swab"><div class="section-header "><h2>Swab Color Reference</h2></div><p class="note">Swab color is a qualitative directional signal within a strain. Do not compare across strains — starting material color, oxidation state, and terpene-to-cannabinoid ratio all affect residue color independently of temperature.</p><table class="swab-table">
+<div class="section" id="dashboard"><div class="section-header "><h2>Dashboard</h2></div><div class="stats-grid"><div class="stat-card c1"><div class="stat-value">17</div><div class="stat-label">runs over 10 days</div></div><div class="stat-card c5"><div class="stat-value">5</div><div class="stat-label">most dabs in a day</div></div><div class="stat-card c6"><div class="stat-value">6</div><div class="stat-label">unique strains</div></div><div class="stat-card c2"><div class="stat-value">389°</div><div class="stat-label">avg open</div></div><div class="stat-card c3"><div class="stat-value">438°</div><div class="stat-label">avg endpoint</div></div><div class="stat-card c4"><div class="stat-value">430°</div><div class="stat-label">most time spent</div></div></div><div class="strain-browser"><div class="search-wrap"><input class="search-input" type="search" placeholder="Search strains…" id="strainSearch" autocomplete="off"></div><div class="strain-list"><div class="strain-row" data-strain="orange candy" style="--accent:#D4784A"><div class="strain-info"><a href="#oc-profile" class="strain-name">Orange Candy 🥇</a><span class="strain-meta">7 sessions &middot; last May 10</span></div><a href="#oc-next" class="next-pill">&rarr; Next</a></div><div class="strain-row" data-strain="the hive #1" style="--accent:#C9A84C"><div class="strain-info"><a href="#hive1-profile" class="strain-name">The Hive #1</a><span class="strain-meta">5 sessions &middot; last May 9</span></div><a href="#hive1-next" class="next-pill">&rarr; Next</a></div><div class="strain-row" data-strain="fembot #3" style="--accent:#8B7BC4"><div class="strain-info"><a href="#fembot3-profile" class="strain-name">Fembot #3</a><span class="strain-meta">2 sessions &middot; last May 9</span></div><a href="#fembot3-next" class="next-pill">&rarr; Next</a></div><div class="strain-row" data-strain="ww z" style="--accent:#6B9E78"><div class="strain-info"><a href="#wwz-profile" class="strain-name">WW Z</a><span class="strain-meta">1 session &middot; May 2</span></div><a href="#wwz-next" class="next-pill">&rarr; Next</a></div><div class="strain-row" data-strain="caramel apple gelato" style="--accent:#C4956A"><div class="strain-info"><a href="#cag-profile" class="strain-name">Caramel Apple Gelato</a><span class="strain-meta">1 session</span></div><a href="#cag-next" class="next-pill">&rarr; Next</a></div><div class="strain-row" data-strain="mango starburst #23" style="--accent:#D4A44C"><div class="strain-info"><a href="#ms23-profile" class="strain-name">Mango Starburst #23</a><span class="strain-meta">1 session &middot; May 9</span></div><a href="#ms23-next" class="next-pill">&rarr; Next</a></div><div class="no-results" id="noResults">No strains match</div></div></div><div class="ref-row"><span class="ref-label">Reference</span><a href="#constants">Constants</a><a href="#swab">Swab Reference</a><a href="#baseline">Baseline Curve</a></div><script>(function(){var inp=document.getElementById("strainSearch");var rows=document.querySelectorAll(".strain-row");var none=document.getElementById("noResults");inp.addEventListener("input",function(){var q=this.value.toLowerCase().trim();var v=0;rows.forEach(function(r){var m=!q||r.dataset.strain.includes(q);r.classList.toggle("hidden",!m);if(m)v++;});none.style.display=v===0?"block":"none";});})();</script></div><div class="section" id="constants"><div class="section-header "><h2>Device &amp; Session Constants</h2></div><p class="note">These parameters apply to every session in this log unless explicitly noted otherwise.</p><table class="info-table"><tr><td>Device</td><td>Switch² (Dabby the House Rig)</td></tr><tr><td>All Material</td><td>Hash Rosin — ice water extracted, solventless. Consistency varies by jar — noted in each strain profile.</td></tr><tr><td>Insert</td><td>20mm (quartz current; sapphire profiles to be added when acquired)</td></tr><tr><td>Technique</td><td>Cold start — pre-load into cold insert before every session</td></tr><tr><td>Load Size</td><td>Rice grain (small)</td></tr><tr><td>Offset Est.</td><td>Probably small under most operating conditions. Dominant uncertainties are vaporization cooling and dynamic lag during steep ascent. At flat or slowly-ascending phases the system approaches equilibrium. Setpoints are reasonable proxies for material contact temperature.</td></tr><tr><td>Draw Style</td><td>Long, slow draws throughout session</td></tr><tr><td>Terp Tools</td><td>Cloud Vortex auto spinner cap + 6mm quartz pearl in insert — present in all sessions to date</td></tr><tr><td>Session End</td><td>Stop when vapor production drops — do not ride timer on small loads</td></tr></table><p class="note">IR reads titanium, not insert surface.</p></div><div class="section" id="swab"><div class="section-header "><h2>Swab Color Reference</h2></div><p class="note">Swab color is a qualitative directional signal within a strain. Do not compare across strains — starting material color, oxidation state, and terpene-to-cannabinoid ratio all affect residue color independently of temperature.</p><table class="swab-table">
         <tr><td class="swab-key target">Target</td><td>Light golden / amber, slightly fluid. Clean vaporization, no significant degradation.</td></tr>
         <tr><td class="swab-key hot">Too hot</td><td>Amber shading toward brown. Possible degradation at session tail, or darker starting material. Reduce endpoint cautiously.</td></tr>
         <tr><td class="swab-key severe">Too hot (severe)</td><td>Dark brown or black. Likely overheated. Reduce setpoint significantly.</td></tr>
@@ -2250,7 +2319,7 @@ p {
     }}]
   });
 })();
-</script><table class="curve-table"><thead><tr><th class="">Time</th><th class="">Setpoint</th><th class="">Notes</th></tr></thead><tbody><tr><td>0s</td><td>380°F</td><td>Session open</td></tr><tr><td>15s</td><td>390°F</td><td>Early ascent</td></tr><tr><td>40s</td><td>410°F</td><td>Mid ascent</td></tr><tr><td>65s</td><td>430°F</td><td>Endpoint</td></tr></tbody></table></div><div class="footer">Document last updated: May 10, 2026 &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>
+</script><table class="curve-table"><thead><tr><th class="">Time</th><th class="">Setpoint</th><th class="">Notes</th></tr></thead><tbody><tr><td>0s</td><td>380°F</td><td>Session open</td></tr><tr><td>15s</td><td>390°F</td><td>Early ascent</td></tr><tr><td>40s</td><td>410°F</td><td>Mid ascent</td></tr><tr><td>65s</td><td>430°F</td><td>Endpoint</td></tr></tbody></table></div><div class="footer">Document last updated: May 11, 2026 &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>
 </div>
 </body>
 </html>
