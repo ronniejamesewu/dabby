@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 from datetime import datetime, date
 """
-Dabby the House Rig — Session Profile & Calibration Log Generator
-Produces Dabby_Profile_Log.html — a mobile-responsive, screen-optimized web document.
+Dabby the House Rig — Session Log Generator
+Produces index.html — a mobile-responsive, screen-optimized web document.
 To update: edit DATA and SECTIONS sections, then run with python3.
 """
 
@@ -111,20 +111,6 @@ body {{
 }}
 .section-header.grey h2 {{ color: var(--grey-text); }}
 
-/* ── Status badge ── */
-.badge {{
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}}
-.badge.dialed   {{ background: var(--green-dark); color: #fff; }}
-.badge.calib    {{ background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber); }}
-.badge.pending  {{ background: var(--grey-bg); color: var(--grey-text); border: 1px solid var(--border); }}
-.badge.hot      {{ background: var(--amber-light); color: #8B4513; border: 1px solid var(--amber); }}
-.badge-sm {{ padding: 0.2rem 0.6rem; font-size: 0.75rem; letter-spacing: 0; }}
 
 /* ── Info table ── */
 .info-table {{
@@ -255,25 +241,128 @@ p {{
 }}
 .divider.amber {{ border-top-color: var(--amber-light); }}
 
-/* ── Nav / TOC ── */
-.toc ul {{
-  list-style: none;
+/* ── Strain browser ── */
+.strain-browser {{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  max-height: 380px;
+  margin-bottom: 1rem;
 }}
-.toc a {{
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
+.search-wrap {{
+  flex-shrink: 0;
+  padding: 0.6rem;
+  background: var(--grey-bg);
+  border-bottom: 1px solid var(--border);
+}}
+.search-input {{
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.88rem;
+  font-family: var(--font);
   background: #fff;
-  border: 1px solid var(--green-mid);
-  border-radius: 20px;
-  font-size: 0.8rem;
+  color: var(--text);
+  -webkit-appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}}
+.search-input::placeholder {{ color: var(--grey-light); }}
+.search-input:focus {{
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
+}}
+.strain-list {{
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}}
+.strain-row {{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: 4px solid var(--accent, var(--green-mid));
+  transition: background 0.12s;
+}}
+.strain-row:last-child {{ border-bottom: none; }}
+.strain-row:hover {{ background: var(--green-light); }}
+.strain-row.hidden {{ display: none; }}
+.strain-info {{ flex: 1; min-width: 0; }}
+.strain-name {{
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--green-dark);
   text-decoration: none;
-  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }}
-.toc a:hover {{ background: var(--green-dark); color: #fff; }}
+.strain-name:hover {{ text-decoration: underline; }}
+.strain-meta {{
+  font-size: 0.7rem;
+  color: var(--grey-light);
+  font-family: var(--font-mono);
+  margin-top: 0.1rem;
+}}
+.strain-next {{
+  font-size: 0.7rem;
+  color: var(--grey-text);
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}}
+.next-pill {{
+  display: inline-block;
+  padding: 0.28rem 0.75rem;
+  background: var(--green-dark);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+}}
+.next-pill:hover {{ background: var(--green-mid); transform: translateX(2px); }}
+.no-results {{
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--grey-light);
+  font-family: var(--font-mono);
+  display: none;
+}}
+.ref-row {{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}}
+.ref-label {{
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}}
+.ref-row a {{
+  font-size: 0.8rem;
+  color: var(--grey-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}}
+.ref-row a:hover {{ color: var(--green-dark); border-bottom-color: var(--green-dark); }}
 
 /* ── Footer ── */
 .footer {{
@@ -360,31 +449,6 @@ p {{
   letter-spacing: 0.03em;
   line-height: 1.3;
 }}
-.dash-strain-table {{
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}}
-.dash-strain-table th {{
-  background: var(--green-dark);
-  color: #fff;
-  padding: 0.55rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-}}
-.dash-strain-table th.center {{ text-align: center; }}
-.dash-strain-table td {{
-  padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}}
-.dash-strain-table tr:last-child td {{ border-bottom: none; }}
-.dash-strain-table tr:nth-child(even) td {{ background: var(--green-light); }}
-.dash-strain-table td:first-child {{ font-weight: 600; }}
-.dash-strain-table td.center {{ text-align: center; }}
-.next-text {{ color: var(--grey-text); font-size: 0.85rem; }}
-.strain-link {{ color: var(--green-dark); text-decoration: none; }}
-.strain-link:hover {{ text-decoration: underline; }}
 
 /* ── Mobile ── */
 @media (max-width: 600px) {{
@@ -433,6 +497,18 @@ def result_row(label, value, amber=False):
     cls = "result-row amber" if amber else "result-row"
     return f'<p class="{cls}"><span class="label">{label}</span> {value}</p>'
 
+def what_to_try_next_html(section_id, your_read, my_read, proposed_waypoints=None):
+    s = f'<div class="section" id="{section_id}">'
+    s += section_header("What to Try Next", header_class="grey")
+    s += result_row("Your read:", your_read)
+    s += result_row("My read:", my_read)
+    if proposed_waypoints:
+        s += '<h3>Proposed Curve</h3>'
+        s += curve_chart_html(proposed_waypoints)
+        s += curve_table(proposed_waypoints)
+    s += '</div>'
+    return s
+
 def dashboard_html():
     today = date.today()
     days = (today - FIRST_RUN_DATE).days + 1
@@ -459,8 +535,14 @@ def dashboard_html():
     max_dabs_day   = max(date_counts.values()) if date_counts else 0
     unique_strains = len(run_counts)
 
+    last_dates = {}
+    for strain, run_date, wps in COMPLETED_RUNS:
+        if run_date is not None:
+            if strain not in last_dates or run_date > last_dates[strain]:
+                last_dates[strain] = run_date
+
     sorted_strains = sorted(
-        [(s, a, bc, bt, nt) for s, a, bc, bt, nt in STRAIN_STATUS if run_counts.get(s, 0) > 0],
+        [(s, a, nt, ac) for s, a, nt, ac in STRAIN_STATUS if run_counts.get(s, 0) > 0],
         key=lambda x: run_counts[x[0]], reverse=True
     )
 
@@ -477,28 +559,76 @@ def dashboard_html():
 
     max_runs = run_counts[sorted_strains[0][0]] if sorted_strains else 0
     rows = ''
-    for i, (strain, anchor, bc, bt, nt) in enumerate(sorted_strains):
-        medal = ' 🥇' if run_counts[strain] == max_runs else ''
+    for i, (strain, anchor, nt, accent) in enumerate(sorted_strains):
+        color        = accent if accent else ACCENT_PALETTE[i % len(ACCENT_PALETTE)]
+        medal        = ' 🥇' if run_counts[strain] == max_runs else ''
+        n            = run_counts[strain]
+        session_word = 'session' if n == 1 else 'sessions'
+        ld           = last_dates.get(strain)
+        if ld:
+            date_str = ld.strftime('%b %-d')
+            meta = f'{n} {session_word} &middot; {"" if n == 1 else "last "}{date_str}'
+        else:
+            meta = f'{n} {session_word}'
+        next_anchor = anchor.replace('-profile', '-next')
         rows += (
-            f'<tr>'
-            f'<td><a href="{anchor}" class="strain-link">{strain}</a>{medal}</td>'
-            f'<td class="center">{run_counts[strain]}</td>'
-            f'<td class="center"><span class="badge badge-sm {bc}">{bt}</span></td>'
-            f'<td class="next-text">{nt}</td>'
-            f'</tr>'
+            f'<div class="strain-row" data-strain="{strain.lower()}" style="--accent:{color}">'
+            f'<div class="strain-info">'
+            f'<a href="{anchor}" class="strain-name">{strain}{medal}</a>'
+            f'<span class="strain-meta">{meta}</span>'
+            f'<span class="strain-next">{nt}</span>'
+            f'</div>'
+            f'<a href="{next_anchor}" class="next-pill">&rarr; Next</a>'
+            f'</div>'
         )
 
-    table = (
-        f'<table class="dash-strain-table">'
-        f'<thead><tr><th>Strain</th><th class="center">Runs</th><th class="center">Status</th><th>Next</th></tr></thead>'
-        f'<tbody>{rows}</tbody>'
-        f'</table>'
+    browser = (
+        f'<div class="strain-browser">'
+        f'<div class="search-wrap">'
+        f'<input class="search-input" type="search" placeholder="Search strains…" id="strainSearch" autocomplete="off">'
+        f'</div>'
+        f'<div class="strain-list">'
+        f'{rows}'
+        f'<div class="no-results" id="noResults">No strains match</div>'
+        f'</div>'
+        f'</div>'
+    )
+
+    ref = (
+        f'<div class="ref-row">'
+        f'<span class="ref-label">Reference</span>'
+        f'<a href="#constants">Constants</a>'
+        f'<a href="#swab">Swab Reference</a>'
+        f'<a href="#baseline">Baseline Curve</a>'
+        f'</div>'
+    )
+
+    js = (
+        '<script>'
+        '(function(){'
+        'var inp=document.getElementById("strainSearch");'
+        'var rows=document.querySelectorAll(".strain-row");'
+        'var none=document.getElementById("noResults");'
+        'inp.addEventListener("input",function(){'
+        'var q=this.value.toLowerCase().trim();'
+        'var v=0;'
+        'rows.forEach(function(r){'
+        'var m=!q||r.dataset.strain.includes(q);'
+        'r.classList.toggle("hidden",!m);'
+        'if(m)v++;'
+        '});'
+        'none.style.display=v===0?"block":"none";'
+        '});'
+        '})();'
+        '</script>'
     )
 
     s = '<div class="section" id="dashboard">'
     s += section_header("Dashboard")
     s += cards
-    s += table
+    s += browser
+    s += ref
+    s += js
     s += '</div>'
     return s
 
@@ -644,7 +774,6 @@ WWZ_INFO = [
     ("Consistency", "Cold cure"),
     ("Producer",    "Quasi Farms (Michigan)"),
     ("Nose",        "Piney with sweet undertone (weak secondary signal only)"),
-    ("Status",      "DIALED — Run 1"),
 ]
 WWZ_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — minor, inferred"),
@@ -665,7 +794,6 @@ CAG_INFO = [
     ("Consistency", "Cold cure"),
     ("Producer",    "Quasi Farms (Michigan)"),
     ("Nose",        "Muted — no distinct notes (weak secondary signal, consistent with heavier terpene profile)"),
-    ("Status",      "IN CALIBRATION — Run 1 complete, Run 2 pending"),
 ]
 CAG_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility explains muted nose"),
@@ -695,7 +823,6 @@ OC_INFO = [
     ("Input",       "90 micron full melt bubble hash"),
     ("Consistency", "Cold cure"),
     ("Nose",        "Not yet recorded"),
-    ("Status",      "IN CALIBRATION — Runs 1–7 complete"),
 ]
 OC_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility"),
@@ -745,7 +872,6 @@ HIVE1_INFO = [
     ("Producer",    "Myxed Up (washed and pressed)"),
     ("Input",       "159–73 micron ice water hash"),
     ("Nose",        "Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only)."),
-    ("Status",      "IN CALIBRATION — Runs 1–5 complete, Run 6 pending"),
 ]
 
 HIVE1_RUN1 = [
@@ -789,7 +915,6 @@ FEMBOT3_INFO = [
     ("Input",       "169–73 micron ice water hash"),
     ("Character",   "Sativa-dominant — uplifting, energetic character inferred from lineage. Phenotype and wash quality drive actual experience."),
     ("Nose",        "Subtle garlic note at cold nose; strong overall fragrance, less distinct individual character"),
-    ("Status",      "IN CALIBRATION — Runs 1–2 complete. Run 3 pending."),
 ]
 
 FEMBOT3_RUN1 = [
@@ -806,6 +931,13 @@ FEMBOT3_RUN3 = [
     ("0s",  "420°F", "Steady hold — flat 420°F from session open"),
     ("60s", "420°F", "Endpoint"),
 ]
+HIVE1_NEXT = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("35s", "410°F", "Mid ascent"),
+    ("65s", "425°F", "Endpoint — down 5°F from Run 5"),
+]
+
 FEMBOT3_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
     ("Myrcene",       "334°F / 168°C", "Earthy, tropical — inferred secondary"),
@@ -822,7 +954,6 @@ MS23_INFO = [
     ("Base genetics", "SB36 line — Starburst OG × '97 KC36"),
     ("Character",     "Sativa-dominant — upbeat, euphoric, flavor-forward character inferred from SB36 lineage. KC36 influence leans energetic rather than sedating. Phenotype and wash quality drive actual experience."),
     ("Nose",          "Diesel note pronounced at cold nose; sweetness underneath"),
-    ("Status",        "IN CALIBRATION — Run 1 complete. Run 2 pending."),
 ]
 MS23_RUN1 = [
     ("0s",  "380°F", "Session open"),
@@ -862,57 +993,26 @@ COMPLETED_RUNS = [
     ("Mango Starburst #23",  date(2026, 5, 9),  MS23_RUN1),
 ]
 
+ACCENT_PALETTE = [
+    "#6B9E78", "#C4956A", "#D4784A", "#C9A84C",
+    "#8B7BC4", "#D4A44C", "#7A9EBB", "#C47A7A",
+    "#7AB5C4", "#A4C47A",
+]
+
 STRAIN_STATUS = [
-    # (name, profile_anchor, badge_class, badge_text, next_text)
-    ("WW Z",                 "#wwz-profile",     "dialed",  "Dialed",      "—"),
-    ("Caramel Apple Gelato", "#cag-profile",     "calib",   "Calibrating", "Try 430°F endpoint"),
-    ("Orange Candy",         "#oc-profile",      "calib",   "Calibrating", "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold"),
-    ("The Hive #1",          "#hive1-profile",   "calib",   "Calibrating", "Try 420–425°F endpoint on Run 6"),
-    ("Fembot #3",            "#fembot3-profile", "calib",   "Calibrating", "Try 420°F steady hold on Run 3"),
-    ("Mango Starburst #23",  "#ms23-profile",    "calib",   "Calibrating", "Repeat Run 1 curve to confirm"),
+    # (name, profile_anchor, next_text, accent)
+    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#6B9E78"),
+    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   "#C4956A"),
+    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", "#D4784A"),
+    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      "#C9A84C"),
+    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4"),
+    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#D4A44C"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
 def build_html():
     sections = []
-
-    # ── TOC
-    toc_links = [
-        ("#dashboard", "Dashboard"),
-        ("#constants", "Constants"),
-        ("#swab", "Swab Reference"),
-        ("#baseline", "Baseline Curve"),
-        ("#wwz-profile", "WW Z"),
-        ("#wwz-run1", "WW Z Run 1"),
-        ("#cag-profile", "Caramel Apple Gelato"),
-        ("#cag-run1", "CAG Run 1"),
-        ("#cag-run2", "CAG Run 2"),
-        ("#oc-profile", "Orange Candy"),
-        ("#oc-runs12", "OC Runs 1–2"),
-        ("#oc-run3", "OC Run 3"),
-        ("#oc-run4", "OC Run 4"),
-        ("#oc-run5", "OC Run 5"),
-        ("#oc-run6", "OC Run 6"),
-        ("#oc-run7", "OC Run 7"),
-        ("#hive1-profile", "The Hive #1"),
-        ("#hive1-run1", "Hive #1 Run 1"),
-        ("#hive1-run2", "Hive #1 Run 2"),
-        ("#hive1-run3", "Hive #1 Run 3"),
-        ("#hive1-run4", "Hive #1 Run 4"),
-        ("#hive1-run5", "Hive #1 Run 5"),
-        ("#fembot3-profile", "Fembot #3"),
-        ("#fembot3-run1", "Fembot #3 Run 1"),
-        ("#fembot3-run2", "Fembot #3 Run 2"),
-        ("#fembot3-run3", "Fembot #3 Run 3"),
-        ("#ms23-profile", "Mango Starburst #23"),
-        ("#ms23-run1", "MS23 Run 1"),
-    ]
-    toc_links_html = '<ul>'
-    for href, label in toc_links:
-        toc_links_html += f'<li><a href="{href}">{label}</a></li>'
-    toc_links_html += '</ul>'
-    toc = f'<div class="section" id="toc">{section_header("Contents")}<div class="toc">{toc_links_html}</div></div>'
 
     dash = dashboard_html()
 
@@ -954,7 +1054,7 @@ def build_html():
 
     # ── WW Z Strain Profile
     s = f'<div class="section" id="wwz-profile">'
-    s += section_header("WW Z — Strain Profile", "✓ DIALED — Run 1. No further calibration required.", "dialed")
+    s += section_header("WW Z — Strain Profile")
     s += info_table(WWZ_INFO)
     s += '<h3>Inferred Terpene Profile</h3>'
     s += terpene_table(WWZ_TERPS)
@@ -963,7 +1063,7 @@ def build_html():
 
     # ── WW Z Run 1
     s = f'<div class="section" id="wwz-run1">'
-    s += section_header("WW Z — Run 1 — May 2026", "✓ DIALED — Profile locked.", "dialed")
+    s += section_header("WW Z — Run 1 — May 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p>'
     s += curve_chart_html(WWZ_RUN1)
@@ -971,13 +1071,20 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Light golden/amber. Clean. No dark coloration.")
     s += result_row("Vapor:", "Spectacular. Full session expressed well across the arc.")
-    s += result_row("Verdict:", "Dialed on first run. Profile locked. Baseline curve confirmed appropriate for this material.")
+    s += result_row("Verdict:", "Clean on first run. Baseline curve well-matched to this material.")
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "wwz-next",
+        your_read="Nothing recorded",
+        my_read="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
+        proposed_waypoints=None,
+    ))
+
     # ── Caramel Apple Gelato Strain Profile
     s = f'<div class="section" id="cag-profile">'
-    s += section_header("Caramel Apple Gelato — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
+    s += section_header("Caramel Apple Gelato — Strain Profile")
     s += info_table(CAG_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(CAG_TERPS)
@@ -986,7 +1093,7 @@ def build_html():
 
     # ── CAG Run 1
     s = f'<div class="section" id="cag-run1">'
-    s += section_header("Caramel Apple Gelato — Run 1 — May 2026", "⚠ TOO HOT — Endpoint reduced for Run 2.", "hot", "")
+    s += section_header("Caramel Apple Gelato — Run 1 — May 2026")
     s += '<h3 class="amber">Curve Used</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p>'
     s += curve_chart_html(CAG_RUN1)
@@ -999,21 +1106,16 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    # ── CAG Run 2 Pending
-    s = f'<div class="section" id="cag-run2">'
-    s += section_header("Caramel Apple Gelato — Run 2 — Pending", "PENDING — Not yet completed.", "pending", "grey")
-    s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 55 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
-    s += curve_chart_html(CAG_RUN2)
-    s += curve_table(CAG_RUN2)
-    s += '<h3>Results</h3>'
-    s += '<p>Run 2 not yet completed. Record swab color, vapor character, and any session observations. If swab is still darker than target, reduce endpoint further. If flavor remains limited with clean swab, this may be a lower terpene content material — note accordingly and lock curve.</p>'
-    s += '</div>'
-    sections.append(s)
+    sections.append(what_to_try_next_html(
+        "cag-next",
+        your_read="Nothing recorded",
+        my_read="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
+        proposed_waypoints=CAG_RUN2,
+    ))
 
     # ── Orange Candy Strain Profile
     s = f'<div class="section" id="oc-profile">'
-    s += section_header("Orange Candy — Strain Profile", "⚠ IN CALIBRATION — Runs 1–7 complete.", "calib", "")
+    s += section_header("Orange Candy — Strain Profile")
     s += info_table(OC_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += terpene_table(OC_TERPS)
@@ -1022,7 +1124,7 @@ def build_html():
 
     # ── OC Runs 1 & 2
     s = f'<div class="section" id="oc-runs12">'
-    s += section_header("Orange Candy — Runs 1 &amp; 2 — May 2026", "⚠ TOO FLAT — Curve revised for Run 3.", "hot", "")
+    s += section_header("Orange Candy — Runs 1 &amp; 2 — May 2026")
     s += '<h3 class="amber">Curve Used — Runs 1 &amp; 2</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p>'
     s += curve_chart_html(OC_RUNS12)
@@ -1036,7 +1138,7 @@ def build_html():
 
     # ── OC Run 3
     s = f'<div class="section" id="oc-run3">'
-    s += section_header("Orange Candy — Run 3 — May 2026", "⚠ IN CALIBRATION — Close to dialed. Run 4 pending.", "calib", "")
+    s += section_header("Orange Candy — Run 3 — May 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(OC_RUN3)
@@ -1050,7 +1152,7 @@ def build_html():
 
     # ── OC Run 4
     s = f'<div class="section" id="oc-run4">'
-    s += section_header("Orange Candy — Run 4 — May 5, 2026", "⚠ IN CALIBRATION — Close to dialed.", "calib", "")
+    s += section_header("Orange Candy — Run 4 — May 5, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(OC_RUN4)
@@ -1064,7 +1166,7 @@ def build_html():
 
     # ── OC Run 5
     s = f'<div class="section" id="oc-run5">'
-    s += section_header("Orange Candy — Run 5 — May 6, 2026", "⚠ IN CALIBRATION — Mixed result.", "calib", "")
+    s += section_header("Orange Candy — Run 5 — May 6, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F</p>'
     s += curve_chart_html(OC_RUN5)
@@ -1073,13 +1175,13 @@ def build_html():
     s += result_row("Swab:", "Darker than target — direction consistent with endpoint too hot.", amber=True)
     s += result_row("Session:", "Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.", amber=True)
     s += result_row("Observation:", "User's hypothesis: higher temperature produced stronger effect. Logged as stated — one data point, not a confirmed finding. Confounders include session-to-session variability in tolerance, load size, and conditions.", amber=True)
-    s += result_row("Next:", "Repeat same curve as Run 6 before drawing conclusions.", amber=True)
+    s += result_row("Next:", "Returned to ramp curve for Run 6 — see results below.", amber=True)
     s += '</div>'
     sections.append(s)
 
     # ── OC Run 6
     s = f'<div class="section" id="oc-run6">'
-    s += section_header("Orange Candy — Run 6 — May 10, 2026", "⚠ IN CALIBRATION — Clean result. Repeat to confirm.", "calib", "")
+    s += section_header("Orange Candy — Run 6 — May 10, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(OC_RUN6)
@@ -1093,9 +1195,9 @@ def build_html():
 
     # ── OC Run 7
     s = f'<div class="section" id="oc-run7">'
-    s += section_header("Orange Candy — Run 7 — May 10, 2026", "⚠ IN CALIBRATION — Flat hold at 430°F. Harshness at tail.", "calib", "")
+    s += section_header("Orange Candy — Run 7 — May 10, 2026")
     s += '<h3>Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 69 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(OC_RUN7)
     s += curve_table(OC_RUN7)
     s += '<h3>Results</h3>'
@@ -1106,9 +1208,16 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "oc-next",
+        your_read="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
+        my_read="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
+        proposed_waypoints=OC_RUN6,
+    ))
+
     # ── The Hive #1 Strain Profile
     s = f'<div class="section" id="hive1-profile">'
-    s += section_header("The Hive #1 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–5 complete. Run 6 pending.", "calib", "")
+    s += section_header("The Hive #1 — Strain Profile")
     s += info_table(HIVE1_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios and minor terpenes are not inferable from genetics alone — these are orientation points drawn from the generic cannabis palette, not strain-specific measurements. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1118,7 +1227,7 @@ def build_html():
 
     # ── The Hive #1 Run 1
     s = f'<div class="section" id="hive1-run1">'
-    s += section_header("The Hive #1 — Run 1 — May 8, 2026", "⚠ IN CALIBRATION — Clean swab. Repeat to confirm.", "calib", "")
+    s += section_header("The Hive #1 — Run 1 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     s += curve_chart_html(HIVE1_RUN1)
@@ -1132,7 +1241,7 @@ def build_html():
 
     # ── The Hive #1 Run 2
     s = f'<div class="section" id="hive1-run2">'
-    s += section_header("The Hive #1 — Run 2 — May 8, 2026", "⚠ IN CALIBRATION — Consistent result. Lower endpoint to explore.", "calib", "")
+    s += section_header("The Hive #1 — Run 2 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F &nbsp;|&nbsp; Identical to Run 1.</p>'
     s += curve_chart_html(HIVE1_RUN2)
@@ -1146,7 +1255,7 @@ def build_html():
 
     # ── The Hive #1 Run 3
     s = f'<div class="section" id="hive1-run3">'
-    s += section_header("The Hive #1 — Run 3 — May 8, 2026", "⚠ IN CALIBRATION — Curve shape experiment. One data point.", "calib", "")
+    s += section_header("The Hive #1 — Run 3 — May 8, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 45 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += '<p class="note">Curve shape experiment: steady flat hold at 430°F from session open, rather than the ramped curve used in Runs 1–2. Testing whether a multi-stage ramp produces meaningfully different results from a single sustained setpoint. Swab is a floor indicator only — session character is the primary readout.</p>'
@@ -1162,7 +1271,7 @@ def build_html():
 
     # ── The Hive #1 Run 4
     s = f'<div class="section" id="hive1-run4">'
-    s += section_header("The Hive #1 — Run 4 — May 9, 2026", "⚠ IN CALIBRATION — Second flat-hold data point. Ramp next.", "calib", "")
+    s += section_header("The Hive #1 — Run 4 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3\'s 45s</p>'
     s += curve_chart_html(HIVE1_RUN4)
@@ -1176,7 +1285,7 @@ def build_html():
 
     # ── The Hive #1 Run 5
     s = f'<div class="section" id="hive1-run5">'
-    s += section_header("The Hive #1 — Run 5 — May 9, 2026", "⚠ IN CALIBRATION — Ramp to 430°F. Slight harshness at tail.", "calib", "")
+    s += section_header("The Hive #1 — Run 5 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)</p>'
     s += curve_chart_html(HIVE1_RUN5)
@@ -1189,9 +1298,16 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "hive1-next",
+        your_read="Try 420–425°F endpoint, keep ramp shape.",
+        my_read="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
+        proposed_waypoints=HIVE1_NEXT,
+    ))
+
     # ── Fembot #3 Strain Profile
     s = f'<div class="section" id="fembot3-profile">'
-    s += section_header("Fembot #3 — Strain Profile", "⚠ IN CALIBRATION — Runs 1–2 complete. Run 3 pending.", "calib", "")
+    s += section_header("Fembot #3 — Strain Profile")
     s += info_table(FEMBOT3_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from Fuzzy Melon × Rambutan lineage. Terpinolene-forward character is consistent with the sativa-dominant, uplifting profile typical of this lineage direction — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1201,7 +1317,7 @@ def build_html():
 
     # ── Fembot #3 Run 1
     s = f'<div class="section" id="fembot3-run1">'
-    s += section_header("Fembot #3 — Run 1 — May 9, 2026", "⚠ IN CALIBRATION — Slight harshness at tail. Drop endpoint for Run 2.", "calib", "")
+    s += section_header("Fembot #3 — Run 1 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(FEMBOT3_RUN1)
@@ -1215,7 +1331,7 @@ def build_html():
 
     # ── Fembot #3 Run 2
     s = f'<div class="section" id="fembot3-run2">'
-    s += section_header("Fembot #3 — Run 2 — May 9, 2026", "⚠ IN CALIBRATION — Harshness at tail. Drop endpoint for Run 3.", "calib", "")
+    s += section_header("Fembot #3 — Run 2 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(FEMBOT3_RUN2)
@@ -1228,21 +1344,16 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    # ── Fembot #3 Run 3 Pending
-    s = f'<div class="section" id="fembot3-run3">'
-    s += section_header("Fembot #3 — Run 3 — Pending", "PENDING — Not yet completed.", "pending", "grey")
-    s += '<h3>Proposed Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 420°F steady (no ramp)</p>'
-    s += curve_chart_html(FEMBOT3_RUN3)
-    s += curve_table(FEMBOT3_RUN3)
-    s += '<h3>Results</h3>'
-    s += '<p>Run 3 not yet completed. Record swab color, vapor character, and session observations. If harshness resolves at 420°F, note whether flavor and effects character holds.</p>'
-    s += '</div>'
-    sections.append(s)
+    sections.append(what_to_try_next_html(
+        "fembot3-next",
+        your_read="Nothing recorded",
+        my_read="Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.",
+        proposed_waypoints=FEMBOT3_RUN3,
+    ))
 
     # ── Mango Starburst #23 Strain Profile
     s = f'<div class="section" id="ms23-profile">'
-    s += section_header("Mango Starburst #23 — Strain Profile", "⚠ IN CALIBRATION — Run 1 complete. Run 2 pending.", "calib", "")
+    s += section_header("Mango Starburst #23 — Strain Profile")
     s += info_table(MS23_INFO)
     s += '<h3 class="amber">Inferred Terpene Profile</h3>'
     s += '<p class="note">Profile inferred from SB36 lineage (Starburst OG × \'97 KC36). Limonene and terpinolene weighted toward prominent based on the line\'s documented citrus-candy, flavor-forward character — not measured. These are orientation points from the generic cannabis palette, not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
@@ -1252,7 +1363,7 @@ def build_html():
 
     # ── Mango Starburst #23 Run 1
     s = f'<div class="section" id="ms23-run1">'
-    s += section_header("Mango Starburst #23 — Run 1 — May 9, 2026", "⚠ IN CALIBRATION — Clean swab. Repeat to confirm.", "calib", "")
+    s += section_header("Mango Starburst #23 — Run 1 — May 9, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(MS23_RUN1)
@@ -1265,13 +1376,20 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    sections.append(what_to_try_next_html(
+        "ms23-next",
+        your_read="Nothing recorded",
+        my_read="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
+        proposed_waypoints=MS23_RUN1,
+    ))
+
     # ── Assemble
-    body = dash + toc + ''.join(sections)
+    body = dash + ''.join(sections)
     body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>'
 
     cover = '''<div class="cover">
         <h1>Dabby the House Rig</h1>
-        <p class="subtitle">Session Profile &amp; Calibration Log</p>
+        <p class="subtitle">Session Log</p>
         <p class="tagline">Hash Rosin &nbsp;·&nbsp; Solventless &nbsp;·&nbsp; Cold Start Protocol</p>
     </div>'''
 
