@@ -1061,7 +1061,7 @@ def build_html():
     s += '<h3>Results</h3>'
     s += result_row("Swab:", "Light golden/amber. Clean. No dark coloration.")
     s += result_row("Vapor:", "Spectacular. Full session expressed well across the arc.")
-    s += result_row("Verdict:", "Dialed on first run. Profile locked. Baseline curve confirmed appropriate for this material.")
+    s += result_row("Verdict:", "Clean on first run. Baseline curve well-matched to this material.")
     s += '</div>'
     sections.append(s)
 
@@ -1165,7 +1165,7 @@ def build_html():
     s += result_row("Swab:", "Darker than target — direction consistent with endpoint too hot.", amber=True)
     s += result_row("Session:", "Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.", amber=True)
     s += result_row("Observation:", "User's hypothesis: higher temperature produced stronger effect. Logged as stated — one data point, not a confirmed finding. Confounders include session-to-session variability in tolerance, load size, and conditions.", amber=True)
-    s += result_row("Next:", "Repeat same curve as Run 6 before drawing conclusions.", amber=True)
+    s += result_row("Next:", "Returned to ramp curve for Run 6 — see results below.", amber=True)
     s += '</div>'
     sections.append(s)
 
@@ -1187,7 +1187,7 @@ def build_html():
     s = f'<div class="section" id="oc-run7">'
     s += section_header("Orange Candy — Run 7 — May 10, 2026")
     s += '<h3>Curve</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 69 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 60 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
     s += curve_chart_html(OC_RUN7)
     s += curve_table(OC_RUN7)
     s += '<h3>Results</h3>'

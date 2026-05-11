@@ -59,7 +59,7 @@ This was substantially revised. The old estimate of a 15–35°F titanium-to-ins
 - The offset is probably small under most operating conditions. Dominant remaining uncertainties are vaporization cooling (phase change draws heat locally during active vaporization) and dynamic lag during steep ascent (titanium is always ahead of insert during fast climbs).
 - Setpoints are reasonable proxies for material contact temperature.
 
-**Do not rebuild the 1D thermal resistance model.** A substantial amount of work went into building and then partially dismantling it. The interface efficiency parameter (η) concept was developed but abandoned — the two dominant parameters were partially redundant and the underlying geometry is unknowable. The swab is the calibration ground truth.
+**Do not rebuild the 1D thermal resistance model.** A substantial amount of work went into building and then partially dismantling it. The interface efficiency parameter (η) concept was developed but abandoned — the two dominant parameters were partially redundant and the underlying geometry is unknowable. Swab result is the ground truth.
 
 **Sapphire advantage** (for when sapphire insert is acquired): not primarily closing a large interface resistance. Two mechanisms: (1) higher volumetric heat capacity — absorbs cold material contact perturbation more stably at session open; (2) better surface temperature uniformity during vaporization — ~20x higher bulk conductivity replenishes heat faster when local vaporization creates cold spots. Reddit consensus of 10–20°F lower setpoints for equivalent results is consistent with this model. Sapphire requires fresh empirical calibration from scratch — do not scale quartz curves.
 
@@ -77,7 +77,7 @@ Steeper mid-climbs move through terpene zones faster. The shape of the climb mat
 
 **Swab as floor indicator:** Swab color is a floor indicator within the normal operating range, not a fine-grained calibration metric. Dark or burnt residue (amber-toward-brown or darker) is a reliable signal to reduce temperature. Within the light-golden-to-amber range, swab has too many uncontrolled variables — load size, material starting color, oxidation state, swab timing, pressure — to reliably distinguish between curve shapes or small endpoint differences. Do not over-interpret swab color within the clean range.
 
-**Baseline philosophy:** Single baseline curve for all hash rosin with cold start. Strain-specific calibration happens empirically via swab results, not terpene-profile reasoning. Do not design different starting curves based on strain name, consistency, or inferred terpene profile without empirical justification.
+**Baseline philosophy:** Single baseline curve for all hash rosin with cold start. Strain-specific adjustment happens empirically via swab results, not terpene-profile reasoning. Do not design different starting curves based on strain name, consistency, or inferred terpene profile without empirical justification.
 
 **Mode:** Custom Ascent preferred over Valley. Valley's initial dip is redundant with cold start — material is already at its lowest temperature at session open.
 
@@ -155,7 +155,7 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - Searchable strain browser below the stat cards — replaces the old strain table and the old Contents section
   - Fixed-height scrollable container with sticky search input; live JS filter on `data-strain` attribute
   - Each row: colored left accent bar (per-strain hex from `ACCENT_PALETTE`), strain name linking to profile (🥇 if leader), → Next pill linking to What to Try Next section, session count, last date
-  - Reference footer below the browser list: one line per strain with run count and date range
+  - Reference footer below the browser: three navigation links — Constants, Swab Reference, Baseline Curve
 
 **Design decisions locked:**
 - No calibration badges, no status column, no calibration language anywhere in the log or dashboard
