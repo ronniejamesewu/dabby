@@ -60,6 +60,17 @@ If work continues on an open PR across multiple commits or sessions, update the 
 description to reflect what's actually in it. Use the GitHub MCP tool to read the 
 current description first, then rewrite it to cover all changes to date.
 
+## Reference Sections
+
+The four reference sections (Device & Session Constants, Swab Color Reference, Baseline
+Curve, Terpene Reference) are collapsible grey-header blocks on the main index page.
+Keep them that way:
+
+- Grey headers are intentional — they signal "reference material, not a run." Do not
+  apply accent colors or green styling to them.
+- Do not move them to a separate page. They live on index alongside the strain content
+  and collapse when not needed.
+
 ## Accent Color Rules
 
 Each strain gets one accent color assigned in STRAIN_STATUS and ACCENT_PALETTE.
