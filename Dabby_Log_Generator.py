@@ -1211,7 +1211,7 @@ COMPLETED_RUNS = [
 ]
 
 ACCENT_PALETTE = [
-    "#5AACBA", "#C4956A", "#D4784A", "#C9A84C",
+    "#6875A8", "#C4956A", "#D4784A", "#C9A84C",
     "#8B7BC4", "#A45A9A", "#7A9EBB", "#C47A7A",
     "#7AB5C4", "#A4C47A",
 ]
@@ -1219,7 +1219,7 @@ ACCENT_PALETTE = [
 STRAIN_STATUS = [
     # (name, profile_anchor, next_text, accent, slug)
     # slug drives last-run anchor: #{slug}-run{n} where n = run count from COMPLETED_RUNS
-    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#5AACBA", "wwz"),
+    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#6875A8", "wwz"),
     ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   "#C4956A", "cag"),
     ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", "#D4784A", "oc"),
     ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      "#C9A84C", "hive1"),
@@ -1354,7 +1354,7 @@ def build_html():
     # ── WW Z ──────────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="wwz-profile">'
-    s += accent_header("WW Z — Strain Profile", "#5AACBA")
+    s += accent_header("WW Z — Strain Profile", "#6875A8")
     s += info_table(WWZ_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1374,7 +1374,7 @@ def build_html():
         "wwz-next",
         dab_notes="Nothing recorded",
         ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
-        accent="#5AACBA",
+        accent="#6875A8",
     ))
 
     # ── Caramel Apple Gelato ──────────────────────────────────────────────────

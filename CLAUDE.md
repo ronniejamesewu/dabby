@@ -73,9 +73,11 @@ When adding or changing a color:
 
 1. No greens. The log page uses a green family (#2D5A3D, #4A7C59, #F0F7F2). Accent 
    colors in the green hue range (~90–165°) will clash with the UI chrome.
-2. Minimum hue separation. Aim for at least 30° HSL hue distance from every existing 
+2. No miami vice. Avoid high-saturation brights — teal, hot pink, neon. Aim for muted,
+   earthy tones (HSL saturation under ~50% for mid-lightness colors).
+3. Minimum hue separation. Aim for at least 30° HSL hue distance from every existing 
    accent, or a clear lightness difference if hues are close.
-3. When ACCENT_PALETTE runs out it cycles — add new entries rather than let colors repeat.
+4. When ACCENT_PALETTE runs out it cycles — add new entries rather than let colors repeat.
 
 ## Epistemic Flags
 
