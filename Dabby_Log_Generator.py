@@ -1211,20 +1211,20 @@ COMPLETED_RUNS = [
 ]
 
 ACCENT_PALETTE = [
-    "#6B9E78", "#C4956A", "#D4784A", "#C9A84C",
-    "#8B7BC4", "#D4A44C", "#7A9EBB", "#C47A7A",
+    "#5AACBA", "#C4956A", "#D4784A", "#C9A84C",
+    "#8B7BC4", "#A45A9A", "#7A9EBB", "#C47A7A",
     "#7AB5C4", "#A4C47A",
 ]
 
 STRAIN_STATUS = [
     # (name, profile_anchor, next_text, accent, slug)
     # slug drives last-run anchor: #{slug}-run{n} where n = run count from COMPLETED_RUNS
-    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#6B9E78", "wwz"),
+    ("WW Z",                 "#wwz-profile",     "—",                                                                                    "#5AACBA", "wwz"),
     ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   "#C4956A", "cag"),
     ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", "#D4784A", "oc"),
     ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      "#C9A84C", "hive1"),
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4", "fembot3"),
-    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#D4A44C", "ms23"),
+    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#A45A9A", "ms23"),
     ("Maple Bacon Donut",    "#mbd-profile",     "Repeat same curve — watch swab trend",                                                  "#7A9EBB", "mbd"),
     ("Rain Fruit",           "#rainfruit-profile","Repeat Run 1 — clean, distinct fruit, strong effects",                               "#C47A7A", "rainfruit"),
 ]
@@ -1354,7 +1354,7 @@ def build_html():
     # ── WW Z ──────────────────────────────────────────────────────────────────
 
     s  = f'<div class="section" id="wwz-profile">'
-    s += accent_header("WW Z — Strain Profile", "#6B9E78")
+    s += accent_header("WW Z — Strain Profile", "#5AACBA")
     s += info_table(WWZ_INFO)
     s += '<p class="note"><strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
     s += '</div>'
@@ -1374,7 +1374,7 @@ def build_html():
         "wwz-next",
         dab_notes="Nothing recorded",
         ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
-        accent="#6B9E78",
+        accent="#5AACBA",
     ))
 
     # ── Caramel Apple Gelato ──────────────────────────────────────────────────
@@ -1612,7 +1612,7 @@ def build_html():
     # ── Mango Starburst #23 ───────────────────────────────────────────────────
 
     s  = f'<div class="section" id="ms23-profile">'
-    s += accent_header("Mango Starburst #23 — Strain Profile", "#D4A44C")
+    s += accent_header("Mango Starburst #23 — Strain Profile", "#A45A9A")
     s += info_table(MS23_INFO)
     s += "<p class=\"note\"><strong>Terpene inference:</strong> Limonene and terpinolene weighted from SB36 line's citrus-candy character; pronounced pine on Run 1 suggests pinene may be more prominent than inferred. Not measured. See <a href=\"#terpene-ref\">Terpene Reference</a>.</p>"
     s += '</div>'
@@ -1635,7 +1635,7 @@ def build_html():
         dab_notes="Nothing recorded",
         ai_analysis="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
         proposed_waypoints=MS23_RUN1,
-        accent="#D4A44C",
+        accent="#A45A9A",
     ))
 
     # ── Maple Bacon Donut ─────────────────────────────────────────────────────

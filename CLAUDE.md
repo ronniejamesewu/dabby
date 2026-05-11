@@ -60,6 +60,17 @@ If work continues on an open PR across multiple commits or sessions, update the 
 description to reflect what's actually in it. Use the GitHub MCP tool to read the 
 current description first, then rewrite it to cover all changes to date.
 
+## Accent Color Rules
+
+Each strain gets one accent color assigned in STRAIN_STATUS and ACCENT_PALETTE.
+When adding or changing a color:
+
+1. No greens. The log page uses a green family (#2D5A3D, #4A7C59, #F0F7F2). Accent 
+   colors in the green hue range (~90–165°) will clash with the UI chrome.
+2. Minimum hue separation. Aim for at least 30° HSL hue distance from every existing 
+   accent, or a clear lightness difference if hues are close.
+3. When ACCENT_PALETTE runs out it cycles — add new entries rather than let colors repeat.
+
 ## Epistemic Flags
 
 - Terpene profiles are inferred from genetics, not measured. The same generic 
