@@ -969,6 +969,60 @@ MS23_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
 ]
 
+MBD_INFO = [
+    ("Strain",      "Maple Bacon Donut"),
+    ("Consistency", "Cold cure"),
+    ("Producer",    "Quasi Farms (Michigan)"),
+    ("Micron",      "Not recorded"),
+    ("Nose",        "Not yet recorded"),
+]
+MBD_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
+    ("Myrcene",       "334°F / 168°C", "Earthy — inferred"),
+    ("Limonene",      "349°F / 176°C", "Citrus — inferred"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet — inferred"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
+]
+MBD_RUN1 = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
+MBD_RUN2 = [
+    ("0s",  "380°F", "Session open — same curve as Run 1"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
+MBD_NEXT = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
+
+RF_INFO = [
+    ("Strain",      "Rain Fruit"),
+    ("Consistency", "Cold cure"),
+    ("Producer",    "Quasi Farms (Michigan)"),
+    ("Micron",      "Not recorded"),
+    ("Nose",        "Not yet recorded"),
+]
+RF_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
+    ("Myrcene",       "334°F / 168°C", "Earthy — inferred"),
+    ("Limonene",      "349°F / 176°C", "Citrus — inferred"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet — inferred"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
+]
+RF_NEXT = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint — baseline starting point"),
+]
+
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
 FIRST_RUN_DATE = date(2026, 5, 2)
@@ -991,6 +1045,8 @@ COMPLETED_RUNS = [
     ("Fembot #3",            date(2026, 5, 9),  FEMBOT3_RUN1),
     ("Fembot #3",            date(2026, 5, 9),  FEMBOT3_RUN2),
     ("Mango Starburst #23",  date(2026, 5, 9),  MS23_RUN1),
+    ("Maple Bacon Donut",   date(2026, 5, 11), MBD_RUN1),
+    ("Maple Bacon Donut",   date(2026, 5, 11), MBD_RUN2),
 ]
 
 ACCENT_PALETTE = [
@@ -1007,6 +1063,8 @@ STRAIN_STATUS = [
     ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      "#C9A84C"),
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4"),
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#D4A44C"),
+    ("Maple Bacon Donut",   "#mbd-profile",     "Repeat same curve — watch swab trend",                                                    "#7A9EBB"),
+    ("Rain Fruit",          "#rainfruit-profile","No sessions yet — start from baseline ramp",                                             "#C47A7A"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1381,6 +1439,67 @@ def build_html():
         your_read="Nothing recorded",
         my_read="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
         proposed_waypoints=MS23_RUN1,
+    ))
+
+    # ── Maple Bacon Donut Strain Profile
+    s = f'<div class="section" id="mbd-profile">'
+    s += section_header("Maple Bacon Donut — Strain Profile")
+    s += info_table(MBD_INFO)
+    s += '<h3 class="amber">Inferred Terpene Profile</h3>'
+    s += '<p class="note">Genetics not documented. Terpene profile uses the standard cannabis palette as orientation points only — not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
+    s += terpene_table(MBD_TERPS)
+    s += '</div>'
+    sections.append(s)
+
+    # ── Maple Bacon Donut Run 1
+    s = f'<div class="section" id="mbd-run1">'
+    s += section_header("Maple Bacon Donut — Run 1 — May 11, 2026")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    s += curve_chart_html(MBD_RUN1)
+    s += curve_table(MBD_RUN1)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Darker golden — between light golden target and amber. Nothing tasted burnt. Flagged as something to watch on subsequent runs.")
+    s += result_row("Session:", "Tasty first half, second half faded to generic. Milder effect — likely tolerance after 5 sessions the prior day.")
+    s += '</div>'
+    sections.append(s)
+
+    # ── Maple Bacon Donut Run 2
+    s = f'<div class="section" id="mbd-run2">'
+    s += section_header("Maple Bacon Donut — Run 2 — May 11, 2026")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — same as Run 1</p>'
+    s += curve_chart_html(MBD_RUN2)
+    s += curve_table(MBD_RUN2)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Lighter than Run 1 — closer to the light golden target.")
+    s += result_row("Session:", "Distinct bacon character on the first half. Effects came on noticeably after this session.")
+    s += result_row("Read:", "Swab trending cleaner on repeat. Flavor expressed distinctly on the first half. No harshness on either run. The Run 1 milder effect reads as a tolerance confound — effects landed clearly on Run 2.")
+    s += '</div>'
+    sections.append(s)
+
+    sections.append(what_to_try_next_html(
+        "mbd-next",
+        your_read="Watch the swab — darker golden on Run 1, lighter on Run 2. Repeat same curve.",
+        my_read="Two runs, swab trending cleaner, distinct flavor on Run 2, no harshness. Repeat the same curve on Run 3 to confirm the trend before adjusting anything. If darker golden persists across more runs, consider dropping endpoint to 420°F.",
+        proposed_waypoints=MBD_NEXT,
+    ))
+
+    # ── Rain Fruit Strain Profile
+    s = f'<div class="section" id="rainfruit-profile">'
+    s += section_header("Rain Fruit — Strain Profile")
+    s += info_table(RF_INFO)
+    s += '<h3 class="amber">Inferred Terpene Profile</h3>'
+    s += '<p class="note">Genetics not documented. Terpene profile uses the standard cannabis palette as orientation points only — not strain-specific data. Start from baseline curve; swab results drive all adjustments.</p>'
+    s += terpene_table(RF_TERPS)
+    s += '</div>'
+    sections.append(s)
+
+    sections.append(what_to_try_next_html(
+        "rainfruit-next",
+        your_read="Nothing recorded",
+        my_read="No sessions logged yet. Start from the standard ramp baseline — same opening and endpoint as most other strains in the log.",
+        proposed_waypoints=RF_NEXT,
     ))
 
     # ── Assemble

@@ -127,6 +127,10 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Run 1 (May 9, 2026): baseline curve (380→390→410→430°F) — very clean swab, pine-forward character (more pinene than lineage inference anticipated), heady effects, no harshness. Tasty but not to user's preference. Run 2 pending: repeat to confirm.
 
+**Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — In calibration. Genetics not documented. Run 1 (May 11, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 11, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 pending: repeat same curve to confirm trend.
+
+**Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — No runs yet. Genetics not documented. Start from baseline ramp (380→390→410→430°F).
+
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
 ---
@@ -235,6 +239,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 11, 2026 — Session 17:** Maple Bacon Donut and Rain Fruit added (both Quasi Farms, Michigan, cold cure, micron unknown, genetics not documented). MBD Run 1 (May 11): darker golden swab, tasty first half, faded second half, milder effect (tolerance confound). MBD Run 2 (May 11): lighter swab, distinct bacon character first half, effects came on noticeably. Swab trending cleaner — repeat same curve on Run 3. Rain Fruit: profile only, no runs. Handoff notes updated.
 
 - **May 11, 2026 — Session 16:** Reframed project from calibration log to session log. Removed all calibration badges, status columns, and calibration language throughout the generator. Cover subtitle changed to "Session Log." `STRAIN_STATUS` simplified from 5-tuple `(name, anchor, badge_class, badge_text, next_text)` to 4-tuple `(name, anchor, next_text, accent)`. `ACCENT_PALETTE` added — per-strain hex accent colors. Contents/TOC section removed entirely. Dashboard strain table replaced with searchable strain browser (fixed-height scrollable, sticky search, live JS filter, per-strain accent left bars, → Next pills). `what_to_try_next_html()` helper added — each strain now has a What to Try Next block at the bottom of its section with your read, my read, and optional proposed curve. CLAUDE.md, Handoff Notes, and Methodology updated to reflect new framing.
 
