@@ -1020,6 +1020,19 @@ RF_RUN1 = [
     ("40s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint"),
 ]
+RF_RUN2 = [
+    ("0s",  "375°F", "Session open — 5°F below baseline, testing lower open"),
+    ("15s", "385°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
+RF_RUN3_NEXT = [
+    ("0s",  "375°F", "Session open"),
+    ("15s", "385°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("55s", "420°F", "Approach endpoint — down 10°F"),
+    ("65s", "420°F", "Hold at 420°F for 10 seconds"),
+]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -1046,9 +1059,10 @@ COMPLETED_RUNS = [
     ("Fembot #3",            date(2026, 5, 9),  0,    None, FEMBOT3_RUN1),
     ("Fembot #3",            date(2026, 5, 9),  1,    None, FEMBOT3_RUN2),
     ("Mango Starburst #23",  date(2026, 5, 9),  2,    None, MS23_RUN1),
-    ("Maple Bacon Donut",    date(2026, 5, 11), 0,    None, MBD_RUN1),
-    ("Maple Bacon Donut",    date(2026, 5, 11), 1,    None, MBD_RUN2),
-    ("Rain Fruit",           date(2026, 5, 11), 2,    None, RF_RUN1),
+    ("Maple Bacon Donut",    date(2026, 5, 10), 0,    None, MBD_RUN1),
+    ("Maple Bacon Donut",    date(2026, 5, 10), 1,    None, MBD_RUN2),
+    ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
+    ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
 ]
 
 ACCENT_PALETTE = [
@@ -1066,7 +1080,7 @@ STRAIN_STATUS = [
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       "#8B7BC4"),
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        "#D4A44C"),
     ("Maple Bacon Donut",   "#mbd-profile",     "Repeat same curve — watch swab trend",                                                    "#7A9EBB"),
-    ("Rain Fruit",          "#rainfruit-profile","Repeat Run 1 — clean, distinct fruit, strong effects",                               "#C47A7A"),
+    ("Rain Fruit",          "#rainfruit-profile","Try 420°F hold at endpoint on Run 3",                                              "#C47A7A"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1456,7 +1470,7 @@ def build_html():
 
     # ── Maple Bacon Donut Run 1
     s = f'<div class="section" id="mbd-run1">'
-    s += section_header("Maple Bacon Donut — Run 1 — May 11, 2026")
+    s += section_header("Maple Bacon Donut — Run 1 — May 10, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(MBD_RUN1)
@@ -1470,7 +1484,7 @@ def build_html():
 
     # ── Maple Bacon Donut Run 2
     s = f'<div class="section" id="mbd-run2">'
-    s += section_header("Maple Bacon Donut — Run 2 — May 11, 2026")
+    s += section_header("Maple Bacon Donut — Run 2 — May 10, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — same as Run 1</p>'
     s += curve_chart_html(MBD_RUN2)
@@ -1502,7 +1516,7 @@ def build_html():
 
     # ── Rain Fruit Run 1
     s = f'<div class="section" id="rainfruit-run1">'
-    s += section_header("Rain Fruit — Run 1 — May 11, 2026")
+    s += section_header("Rain Fruit — Run 1 — May 10, 2026")
     s += '<h3>Curve</h3>'
     s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline ramp</p>'
     s += curve_chart_html(RF_RUN1)
@@ -1515,11 +1529,26 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    # ── Rain Fruit Run 2
+    s = f'<div class="section" id="rainfruit-run2">'
+    s += section_header("Rain Fruit — Run 2 — May 11, 2026")
+    s += '<h3>Curve</h3>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F &nbsp;|&nbsp; Open 5°F below baseline — testing lower open</p>'
+    s += curve_chart_html(RF_RUN2)
+    s += curve_table(RF_RUN2)
+    s += '<h3>Results</h3>'
+    s += result_row("Swab:", "Light golden — clean.")
+    s += result_row("Session:", "Tasty. Got a bit hot in the last 10 seconds.")
+    s += result_row("Intensity:", "Mild")
+    s += result_row("Read:", "Curve felt well-suited to the strain overall. Tail heat in the last 10 seconds is consistent with the cross-strain pattern at 430°F endpoints (Hive #1 Run 5, Fembot #3 Runs 1–2). Swab is clean so this is a session character signal, not a floor indicator. Effects milder than Run 1 — likely session-to-session variability rather than a curve signal.")
+    s += '</div>'
+    sections.append(s)
+
     sections.append(what_to_try_next_html(
         "rainfruit-next",
-        dab_notes="Nothing recorded",
-        ai_analysis="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
-        proposed_waypoints=RF_RUN1,
+        dab_notes="Curve feels well-suited. Try holding at 420 for the last 10 seconds next time.",
+        ai_analysis="Two runs at 430°F endpoint — Run 1 no harshness, Run 2 tail heat. The cross-strain pattern is consistent: 430°F shows harshness at the tail across Hive #1 and Fembot #3 as well. Worth noting a tension here: a higher endpoint boils off a larger fraction of THC but that's where the harshness lives. Dropping to 420°F with a 10-second hold trades some theoretical completeness for a cleaner finish — whether that trade-off is worth it is what Run 3 will tell you.",
+        proposed_waypoints=RF_RUN3_NEXT,
     ))
 
     # ── Assemble

@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 11, 2026 — Session 18
+## Last updated: May 11, 2026 — Session 19
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -137,9 +137,9 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Run 1 (May 9, 2026): baseline curve (380→390→410→430°F) — very clean swab, pine-forward character (more pinene than lineage inference anticipated), heady effects, no harshness. Tasty but not to user's preference. Run 2 pending: repeat to confirm.
 
-**Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — In calibration. Genetics not documented. Run 1 (May 11, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 11, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 pending: repeat same curve to confirm trend.
+**Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — In calibration. Genetics not documented. Run 1 (May 10, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 10, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 pending: repeat same curve to confirm trend.
 
-**Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — Run 1 complete (May 11, 2026): baseline ramp — notably clean swab, clear fruit notes, strong effects, no harshness. Repeat same curve on Run 2.
+**Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — Run 1 (May 10, 2026): baseline ramp — notably clean swab, clear fruit notes, strong effects, no harshness. Run 2 (May 11, 2026): 375→385→410→430°F (lower open than baseline) — light golden swab, tasty, tail heat in last 10 seconds, mild effects. Consistent with cross-strain 430°F tail pattern. Run 3 pending: 420°F endpoint with 10-second hold.
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
@@ -153,6 +153,8 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Session date backfill** — `run_date` is now a field in each `COMPLETED_RUNS` tuple. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those tuples and re-run the generator.
 
 **Open ideas (not yet built):**
+- **Bring some excitement to first dab of the day** — user flagged a desire for this; no specific mechanism discussed yet. Could be curve, ritual, or strain choice.
+- **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Raised in Rain Fruit Run 2 context. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
 - **Terpene boiling point reference section** — standalone table in the log with source citation. Not yet implemented.
 - **Collapsible reference sections** — swab guide, baseline curve, device constants, terpene BP table could be collapsible to reduce visual weight. Consider `<details>`/`<summary>` or a second page.
@@ -254,6 +256,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 11, 2026 — Session 19:** Rain Fruit Run 2 logged (May 11, 2026): 375→385→410→430°F (lower open than baseline, testing curve variation) — light golden swab, tasty, tail heat in last 10 seconds, mild intensity. Tail heat consistent with cross-strain 430°F pattern. MBD Runs 1–2 and RF Run 1 date-corrected from May 11 to May 10. Open ideas added: "bring some excitement to first dab of the day" and THC boil-off vs. harshness trade-off. RF What to Try Next updated with Run 3 proposed curve (420°F endpoint with 10-second hold).
 
 - **May 11, 2026 — Session 18:** Generator: `COMPLETED_RUNS` extended to 5-tuple `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)` — `sessions_prior_today` is int or None; `utc_logged_at` is a UTC datetime or None for pre-existing entries. `what_to_try_next_html()` params renamed `your_read`→`dab_notes`, `my_read`→`ai_analysis`; rendered labels updated to "Dab Notes" and "AI Analysis." Intensity field added to four runs (OC Run 3, MBD Runs 1–2, Rain Fruit Run 1). Section header date corrections: Hive #1 Runs 1–2 moved from May 8 to May 7; Runs 4–5 from May 9 to May 8; OC Runs 6–7 from May 10 to May 9. Sessions_prior_today backfilled for all multi-run days. Session logging protocol updated: sessions_prior_today auto-computed when logging same-day; UTC timestamp confirmation protocol added; casual register guidance added for optional fields; AI Analysis guidance added (read all four artifacts, cross-strain patterns, concrete recommendation, not a summary). Open ideas section added to handoff. CLAUDE.md updated: session must start with `git checkout main && git pull origin main` before reading any files. Rain Fruit current status corrected (Run 1 was already logged).
 
