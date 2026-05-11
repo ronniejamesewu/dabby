@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 11, 2026 — Session 18
+## Last updated: May 11, 2026 — Session 19
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -34,7 +34,7 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 **CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit generator → run generator → commit both files.
 
-**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, `STRAIN_STATUS` entry, `COMPLETED_RUNS` entries, and section build code. No TOC entries — the dashboard browser is the navigation. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)` — `run_date` is a `date` object or `None` if not confirmed; `sessions_prior_today` is an int (sessions run before this one on the same day) or `None` if unknown; `utc_logged_at` is a `datetime` object with UTC timezone (e.g. `datetime(2026, 5, 12, 3, 15, tzinfo=timezone.utc)`) or `None` for entries predating this field. `STRAIN_STATUS` is a 4-tuple `(name, profile_anchor, next_text, accent)` — pick accent from `ACCENT_PALETTE` in order. `what_to_try_next_html()` helper generates the What to Try Next block at the bottom of each strain section; call it with `(section_id, dab_notes, ai_analysis, proposed_waypoints=None)`.
+**Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. Adding a new strain requires: data constants, `STRAIN_STATUS` entry, `COMPLETED_RUNS` entries, and section build code. No TOC entries — the dashboard browser is the navigation. Footer auto-timestamps on each run. `COMPLETED_RUNS` tuples take the form `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)` — `run_date` is a `date` object or `None` if not confirmed; `sessions_prior_today` is an int (sessions run before this one on the same day) or `None` if unknown; `utc_logged_at` is a `datetime` object with UTC timezone (e.g. `datetime(2026, 5, 12, 3, 15, tzinfo=timezone.utc)`) or `None` for entries predating this field. `STRAIN_STATUS` is a 5-tuple `(name, profile_anchor, next_text, accent, slug)` — `accent` is `None` for auto-assignment or a hex string override; `slug` drives the last-run anchor (`#{slug}-run{n}`). Accent colors are resolved at module load time into `_ACCENT_RESOLVED` dict by distributing hues evenly across the non-green hue space (0–89° and 166–359°). There is no `ACCENT_PALETTE` — do not add one back. `TERPENE_REFERENCE` is an 8-tuple `(name, alias, bp_f, bp_c, band, aroma, qualities, found_in)`. `what_to_try_next_html()` helper generates the What to Try Next block; signature: `(section_id, dab_notes, ai_analysis, proposed_waypoints=None, accent=None)` — pass `accent` to apply the strain's color to the section header. `accent_header(title, accent)` returns a colored section header div for use on profile sections. `session_order_note(sessions_prior)` returns a "Nth session of the day — N prior" meta note string when sessions_prior > 0, empty string otherwise.
 
 ---
 
@@ -154,9 +154,6 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Open ideas (not yet built):**
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
-- **Terpene boiling point reference section** — standalone table in the log with source citation. Not yet implemented.
-- **Collapsible reference sections** — swab guide, baseline curve, device constants, terpene BP table could be collapsible to reduce visual weight. Consider `<details>`/`<summary>` or a second page.
-- **Collapsible or relocated historical run sections** — historical run data is critical but rarely referenced. Consider collapsing individual run sections or moving them out of the main document.
 - **Control water temperature and change frequency as variables** — standardize practice and log it. Revisit when calibration work matures.
 
 ---
@@ -172,8 +169,7 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - Grid: `repeat(3, 1fr)` desktop, `repeat(2, 1fr)` mobile
 - Searchable strain browser below the stat cards — replaces the old strain table and the old Contents section
   - Fixed-height scrollable container with sticky search input; live JS filter on `data-strain` attribute
-  - Each row: colored left accent bar (per-strain hex from `ACCENT_PALETTE`), strain name linking to profile (🥇 if leader), → Next pill linking to What to Try Next section, session count, last date
-  - Reference footer below the browser: three navigation links — Constants, Swab Reference, Baseline Curve
+  - Each row: colored left accent bar (per-strain hex from `_ACCENT_RESOLVED`), strain name linking to profile (🥇 if leader), → Next pill linking to What to Try Next section, → Last pill linking to most recent run, session count, last date
 
 **Design decisions locked:**
 - No calibration badges, no status column, no calibration language anywhere in the log or dashboard
@@ -183,8 +179,7 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 
 **Implementation notes:**
 - `COMPLETED_RUNS` list drives all stat computation — add an entry here whenever a run is logged. Tuple form: `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)`. Use `None` for `run_date` if not confirmed; `None` for `sessions_prior_today` if unknown; `None` for `utc_logged_at` for pre-existing entries. New entries should always populate `utc_logged_at` using `datetime.now(timezone.utc)` at logging time.
-- `STRAIN_STATUS` drives the browser rows — 4-tuple `(name, profile_anchor, next_text, accent)`. Pick accent from `ACCENT_PALETTE` in order; add a new hex if the palette runs out.
-- `ACCENT_PALETTE` is a module-level list of 10 hex colors — one per strain in order.
+- `STRAIN_STATUS` drives the browser rows — 5-tuple `(name, profile_anchor, next_text, accent, slug)`. Set `accent` to `None` for auto-assignment or a hex string to override. `slug` drives the last-run anchor. Colors are resolved from `_ACCENT_RESOLVED` — there is no `ACCENT_PALETTE`.
 - `FIRST_RUN_DATE` is hardcoded to `date(2026, 5, 2)` — do not change unless the first-ever run date changes.
 - "Most dabs in a day" excludes runs with `run_date = None`; the stat grows more accurate as dates are confirmed.
 - What to Try Next sections: each strain has a `what_to_try_next_html()` block at the bottom of its section. Helper signature: `(section_id, dab_notes, ai_analysis, proposed_waypoints=None)`. "Dab Notes" is the user's raw observation; "AI Analysis" is Claude's concrete recommendation. If a proposed curve exists, pass waypoints and the helper will render both chart and table.
@@ -207,7 +202,13 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - Calibration framing retired. This is a session log, not a calibration program. Do not re-introduce "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard.
 - Contents/TOC section removed. The searchable strain browser on the dashboard serves as navigation. Do not re-add a separate Contents section.
 - Strain browser with live search implemented. Fixed-height scrollable container, sticky search input, JS filter on `data-strain` attribute, per-strain accent color left bars, → Next pills linking to What to Try Next sections.
-- `STRAIN_STATUS` is now a 4-tuple `(name, profile_anchor, next_text, accent)`. The old 5-tuple with badge fields is gone. Do not add badge fields back.
+- `STRAIN_STATUS` is now a 5-tuple `(name, profile_anchor, next_text, accent, slug)`. The accent field uses `None` for auto-assignment or a hex string to override. The slug field drives last-run anchors. The old calibration badge fields (badge_class, badge_text) are gone — do not add them back.
+- Reference sections (Device Constants, Swab Color Reference, Baseline Curve, Terpene Reference) are collapsible blocks on the main index page. Do not move them to a separate page.
+- Accent colors are auto-assigned from a hue distribution across the non-green hue space. `ACCENT_PALETTE` has been removed. To override a strain's color, set the accent field in `STRAIN_STATUS` to a hex string. `validate_accent_colors()` checks only manual overrides — auto-assigned colors are valid by construction.
+- Band badge colors for terpene reference are cool-to-warm: Low = `#D6EAF8`/`#1A4A6B` (blue), Mid = `#FFF0CC`/`#8A6000` (amber), High = `#FFE5CC`/`#7A3000` (orange). Do not change.
+- Reference section headers: steel blue (`#4A7D9A`), not the generic grey of run sections.
+- Visual hierarchy on the page: accent color = strain profile headers + What to Try Next headers; green = run section headers; steel blue = reference section headers.
+- Sessions_prior_today is surfaced in run sections via `session_order_note()` as "Nth session of the day — N prior." Runs with sessions_prior = 0 or None show nothing.
 
 ---
 
@@ -232,6 +233,7 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Not reading handoff and methodology at session start.** CLAUDE.md explicitly requires reading `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`, and `Dabby_Log_Generator.py` before taking any action. This was skipped in Session 15, leading to suggestions made without full context. Read all three files before responding to any request, every session.
 - **Re-introducing calibration framing.** The project has been reframed as a session log. Do not use "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard. `STRAIN_STATUS` no longer contains badge fields.
 - **Re-adding a Contents/TOC section.** The Contents section was deliberately removed. The searchable strain browser on the dashboard provides navigation. Do not add a separate Contents or TOC section.
+- **Putting color and design decisions in CLAUDE.md.** Color rules (no greens, minimum hue separation, no miami-vice saturation) belong as validation code in the generator, not as prose in CLAUDE.md. CLAUDE.md is for session-to-session behavioral instructions. When a rule is mechanical and checkable, write it as code.
 
 ---
 
@@ -254,6 +256,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 11, 2026 — Session 19 (two-part):** Log design overhaul (PR #32). Collapsible sections: all four reference blocks and all run sections now use native `<details>`/`<summary>`. Terpene Reference added as a fourth reference block — 36 entries in Low/Mid/High bands, cool-to-warm band badges, Found In botanical source column, three linked sources (The Amazing Flower, Finest Labs, The Press Club); Linalool added; `TERPENE_REFERENCE` is now an 8-tuple. Reference section headers changed from grey to steel blue (#4A7D9A). Per-strain accent colors added to profile section headers (`accent_header()`) and What to Try Next headers — run sections remain green. `STRAIN_STATUS` extended from 4-tuple to 5-tuple adding `slug` field. Sessions_prior_today surfaced in relevant run sections as "Nth session of the day — N prior" via `session_order_note()` / `ordinal()` helpers. Dashboard gains a Last pill linking to the most recent run for each strain; ref-row removed. OC Runs 1–2 split into separate sections. Accent color system replaced: `ACCENT_PALETTE` removed; colors now auto-assigned via `_resolve_accent_colors()` / `_ACCENT_RESOLVED` by distributing hues evenly across non-green hue space (0–89° and 166–359°) at fixed saturation and lightness. Manual overrides validated by `validate_accent_colors()` (only checks overrides — auto-assigned colors are valid by construction). Added `_hsl_to_hex()` helper. Band badge colors locked: Low=cool blue, Mid=warm amber, High=deep orange. New failure mode: putting color rules in CLAUDE.md. Open ideas: terpene reference, collapsible sections (both now done and removed from list).
 
 - **May 11, 2026 — Session 18:** Generator: `COMPLETED_RUNS` extended to 5-tuple `(strain, run_date, sessions_prior_today, utc_logged_at, waypoints)` — `sessions_prior_today` is int or None; `utc_logged_at` is a UTC datetime or None for pre-existing entries. `what_to_try_next_html()` params renamed `your_read`→`dab_notes`, `my_read`→`ai_analysis`; rendered labels updated to "Dab Notes" and "AI Analysis." Intensity field added to four runs (OC Run 3, MBD Runs 1–2, Rain Fruit Run 1). Section header date corrections: Hive #1 Runs 1–2 moved from May 8 to May 7; Runs 4–5 from May 9 to May 8; OC Runs 6–7 from May 10 to May 9. Sessions_prior_today backfilled for all multi-run days. Session logging protocol updated: sessions_prior_today auto-computed when logging same-day; UTC timestamp confirmation protocol added; casual register guidance added for optional fields; AI Analysis guidance added (read all four artifacts, cross-strain patterns, concrete recommendation, not a summary). Open ideas section added to handoff. CLAUDE.md updated: session must start with `git checkout main && git pull origin main` before reading any files. Rain Fruit current status corrected (Run 1 was already logged).
 
