@@ -1,9 +1,11 @@
 # Dabby — Session Instructions
 
-At the start of every session, read these files (all are in the repo):
-- `Dabby_Handoff_Notes.md` — source of truth, read first
-- `Dabby_Methodology.md` — thermal model and session process reasoning
-- `Dabby_Log_Generator.py` — understand current log structure before touching it
+At the start of every session:
+1. Run `git checkout main && git pull origin main` — do this before reading any files. The working directory may be on a stale branch.
+2. Read these files (all are in the repo):
+   - `Dabby_Handoff_Notes.md` — source of truth, read first
+   - `Dabby_Methodology.md` — thermal model and session process reasoning
+   - `Dabby_Log_Generator.py` — understand current log structure before touching it
 
 This project logs sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig."
 All material is hash rosin (ice water extracted, solventless) unless explicitly 
@@ -16,6 +18,17 @@ Edit `Dabby_Log_Generator.py` directly. Run with `python3 Dabby_Log_Generator.py
 to produce `index.html`. Commit both files to a feature branch, then open a PR.
 
 Never write `index.html` by hand — always run the generator and push its output.
+
+## Date and Time Logging
+
+User timezone: **America/Denver (MDT, UTC-6)**
+
+When logging a run:
+1. Capture `utc_logged_at = datetime.now(timezone.utc)` at logging time.
+2. Derive local time by subtracting 6 hours (MDT) from UTC.
+3. Confirm with the user before writing: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off."
+4. Only surface the date discrepancy if UTC and local dates differ (i.e. after ~6pm MDT when UTC has rolled over).
+5. Use the confirmed local date as `run_date` in the COMPLETED_RUNS tuple.
 
 ## Confirm Before Acting
 
