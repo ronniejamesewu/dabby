@@ -763,10 +763,10 @@ GLOBAL_INFO = [
 ]
 
 BASELINE_CURVE = [
-    ("0s",  "375°F", "Session open — lowest temperature point"),
-    ("15s", "378°F", "Flat phase — most volatile terpenes"),
-    ("40s", "395°F", "Mid ascent — mid-range terpenes"),
-    ("65s", "440°F", "Endpoint — THC completion"),
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
 ]
 
 WWZ_INFO = [
@@ -1101,12 +1101,12 @@ def build_html():
     s += section_header("Baseline Curve")
     s += '<p class="note">Single starting curve for all hash rosin sessions with cold start technique. Strain profiles document empirical deviations from this baseline via swab results and session observations. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.</p>'
     s += '<h3>Parameters</h3>'
-    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p>'
+    s += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 380°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     s += curve_chart_html(BASELINE_CURVE)
     s += curve_table(BASELINE_CURVE)
     s += '<p class="note">Terpene zone annotations in individual run curves are approximate orientation points based on inferred terpene profiles — not measured targets. The same common cannabis terpenes appear across most strains. Annotations reflect boiling point ranges, not confirmed strain-specific terpene data.</p>'
     s += '<h3>Rationale</h3>'
-    s += '<p>Opening setpoint compensates for the estimated insert offset. 440°F endpoint targets more complete THC vaporization — all waypoints are starting points, swab results drive adjustment.</p>'
+    s += '<p>380°F opening reflects the effective starting point used across most strains in the log — a small bump above the original 375°F baseline that improves opening vapor density without affecting the rest of the curve. 430°F endpoint is where calibration has converged across multiple strains; all waypoints are starting points, swab results drive adjustment.</p>'
     s += '</div>'
     sections.append(s)
 
