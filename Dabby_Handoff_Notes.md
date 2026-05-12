@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 11, 2026 — Session 19
+## Last updated: May 12, 2026 — Session 21
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -137,7 +137,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Run 1 (May 9, 2026): baseline curve (380→390→410→430°F) — very clean swab, pine-forward character (more pinene than lineage inference anticipated), heady effects, no harshness. Tasty but not to user's preference. Run 2 pending: repeat to confirm.
 
-**Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — Genetics not documented. Run 1 (May 10, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 10, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 pending: repeat same curve to confirm trend.
+**Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — Genetics not documented. Run 1 (May 10, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 10, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 (May 11, 2026): 375→385→410→420°F ramp with 10-second hold at endpoint (same curve as RF Run 3) — clean golden swab, little bit harsh in last 5 seconds, medium-hard effect. Run 4 pending: repeat 420°F curve to confirm whether tail harshness is consistent.
 
 **Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — Run 1 (May 10, 2026): baseline ramp — notably clean swab, clear fruit notes, strong effects, no harshness. Run 2 (May 11, 2026): 375→385→410→430°F (lower open than baseline) — light golden swab, tasty, tail heat in last 10 seconds, mild effects. Consistent with cross-strain 430°F tail pattern. Run 3 (May 11, 2026): 420°F endpoint hold — clean golden swab, notably less harshness, slow build to intensity, mild-moderate effect. Run 4 pending: walk endpoint up incrementally to ~423°F.
 
@@ -263,6 +263,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 12, 2026 — Session 21:** MBD Run 3 logged (May 11): 375→385→410→420°F ramp with 10-second hold at endpoint — clean golden swab, little bit harsh in last 5 seconds, medium-hard effect. Run 4 direction: repeat 420°F curve to confirm tail harshness pattern before adjusting.
 
 - **May 11, 2026 — Session 20:** Rain Fruit Run 3 logged (May 11): 420°F endpoint hold — clean golden swab, notably less harshness, slow build to intensity, mild-moderate effect. RF strain status updated; Run 4 direction: walk endpoint up incrementally to ~423°F. Two open ideas added to handoff: cut Last pill from dashboard (keep only Next, consider accent color pill); strengthen visual distinction between What to Try Next and new-strain onboarding. Session logging protocol updated: derive run time from relative user offset ("about 10 minutes ago") rather than asking. Two failure modes added: asking for sessions_prior_today when COMPLETED_RUNS can answer it; asking for clock time when a relative offset was given.
 
