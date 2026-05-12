@@ -1179,6 +1179,19 @@ RF_RUN1 = [
     ("40s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint"),
 ]
+RF_RUN2 = [
+    ("0s",  "375°F", "Session open — 5°F below baseline, testing lower open"),
+    ("15s", "385°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
+RF_RUN3_NEXT = [
+    ("0s",  "375°F", "Session open"),
+    ("15s", "385°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("55s", "420°F", "Approach endpoint — down 10°F"),
+    ("65s", "420°F", "Hold at 420°F for 10 seconds"),
+]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -1205,9 +1218,10 @@ COMPLETED_RUNS = [
     ("Fembot #3",            date(2026, 5, 9),  0,    None, FEMBOT3_RUN1),
     ("Fembot #3",            date(2026, 5, 9),  1,    None, FEMBOT3_RUN2),
     ("Mango Starburst #23",  date(2026, 5, 9),  2,    None, MS23_RUN1),
-    ("Maple Bacon Donut",    date(2026, 5, 11), 0,    None, MBD_RUN1),
-    ("Maple Bacon Donut",    date(2026, 5, 11), 1,    None, MBD_RUN2),
-    ("Rain Fruit",           date(2026, 5, 11), 2,    None, RF_RUN1),
+    ("Maple Bacon Donut",    date(2026, 5, 10), 0,    None, MBD_RUN1),
+    ("Maple Bacon Donut",    date(2026, 5, 10), 1,    None, MBD_RUN2),
+    ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
+    ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
 ]
 
 STRAIN_STATUS = [
@@ -1221,7 +1235,7 @@ STRAIN_STATUS = [
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       None, "fembot3"),
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
     ("Maple Bacon Donut",    "#mbd-profile",     "Repeat same curve — watch swab trend",                                                  None, "mbd"),
-    ("Rain Fruit",           "#rainfruit-profile","Repeat Run 1 — clean, distinct fruit, strong effects",                               None, "rainfruit"),
+    ("Rain Fruit",           "#rainfruit-profile","Try 420°F hold at endpoint on Run 3",                                              None, "rainfruit"),
 ]
 
 TERPENE_REFERENCE = [
@@ -1727,7 +1741,7 @@ def build_html():
     c += result_row("Swab:", "Darker golden — between light golden target and amber. Nothing tasted burnt. Flagged as something to watch on subsequent runs.")
     c += result_row("Session:", "Tasty first half, second half faded to generic. Milder effect — likely tolerance after 5 sessions the prior day.")
     c += result_row("Intensity:", "Mild — tolerance confound (5 sessions prior day)")
-    sections.append(collapsible_section("mbd-run1", "Maple Bacon Donut — Run 1 — May 11, 2026", c))
+    sections.append(collapsible_section("mbd-run1", "Maple Bacon Donut — Run 1 — May 10, 2026", c))
 
     c  = session_order_note(_spr.get(("Maple Bacon Donut", 2)))
     c += '<h3>Curve</h3>'
@@ -1739,7 +1753,7 @@ def build_html():
     c += result_row("Session:", "Distinct bacon character on the first half. Effects came on noticeably after this session.")
     c += result_row("Intensity:", "Moderate")
     c += result_row("Read:", "Swab trending cleaner on repeat. Flavor expressed distinctly on the first half. No harshness on either run. The Run 1 milder effect reads as a tolerance confound — effects landed clearly on Run 2.")
-    sections.append(collapsible_section("mbd-run2", "Maple Bacon Donut — Run 2 — May 11, 2026", c))
+    sections.append(collapsible_section("mbd-run2", "Maple Bacon Donut — Run 2 — May 10, 2026", c))
 
     sections.append(what_to_try_next_html(
         "mbd-next",
@@ -1768,13 +1782,24 @@ def build_html():
     c += result_row("Session:", "Really clear fruit notes throughout. Strong effects — pressure up and behind the eyes. No harshness.")
     c += result_row("Intensity:", "Strong")
     c += result_row("Verdict:", "Clean first run. Distinct fruit character, strong effect. No floor signal, no harshness. Repeat the same curve on Run 2 to confirm.")
-    sections.append(collapsible_section("rainfruit-run1", "Rain Fruit — Run 1 — May 11, 2026", c))
+    sections.append(collapsible_section("rainfruit-run1", "Rain Fruit — Run 1 — May 10, 2026", c))
+
+    c  = '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F &nbsp;|&nbsp; Open 5°F below baseline — testing lower open</p>'
+    c += curve_chart_html(RF_RUN2)
+    c += curve_table(RF_RUN2)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Light golden — clean.")
+    c += result_row("Session:", "Tasty. Got a bit hot in the last 10 seconds.")
+    c += result_row("Intensity:", "Mild")
+    c += result_row("Read:", "Curve felt well-suited to the strain overall. Tail heat in the last 10 seconds is consistent with the cross-strain pattern at 430°F endpoints (Hive #1 Run 5, Fembot #3 Runs 1–2). Swab is clean so this is a session character signal, not a floor indicator. Effects milder than Run 1 — likely session-to-session variability rather than a curve signal.")
+    sections.append(collapsible_section("rainfruit-run2", "Rain Fruit — Run 2 — May 11, 2026", c))
 
     sections.append(what_to_try_next_html(
         "rainfruit-next",
-        dab_notes="Nothing recorded",
-        ai_analysis="One run, notably clean swab, distinct fruit character, strong effects, no harshness. Nothing to adjust — repeat the same curve before changing anything.",
-        proposed_waypoints=RF_RUN1,
+        dab_notes="Curve feels well-suited. Try holding at 420 for the last 10 seconds next time.",
+        ai_analysis="Two runs at 430°F endpoint — Run 1 no harshness, Run 2 tail heat. The cross-strain pattern is consistent: 430°F shows harshness at the tail across Hive #1 and Fembot #3 as well. Worth noting a tension here: a higher endpoint boils off a larger fraction of THC but that's where the harshness lives. Dropping to 420°F with a 10-second hold trades some theoretical completeness for a cleaner finish — whether that trade-off is worth it is what Run 3 will tell you.",
+        proposed_waypoints=RF_RUN3_NEXT,
         accent=_ac["Rain Fruit"],
     ))
 
