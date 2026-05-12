@@ -1152,11 +1152,19 @@ MBD_RUN2 = [
     ("40s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint"),
 ]
-MBD_NEXT = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
+MBD_RUN3 = [
+    ("0s",  "375°F", "Session open"),
+    ("15s", "385°F", "Early ascent"),
     ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    ("55s", "420°F", "Approach endpoint — down 10°F from prior runs"),
+    ("65s", "420°F", "Hold at 420°F for 10 seconds"),
+]
+MBD_NEXT = [
+    ("0s",  "375°F", "Session open"),
+    ("15s", "385°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("55s", "420°F", "Approach endpoint"),
+    ("65s", "420°F", "Hold at 420°F for 10 seconds — repeat to confirm"),
 ]
 
 RF_INFO = [
@@ -1227,6 +1235,7 @@ COMPLETED_RUNS = [
     ("Mango Starburst #23",  date(2026, 5, 9),  2,    None, MS23_RUN1),
     ("Maple Bacon Donut",    date(2026, 5, 10), 0,    None, MBD_RUN1),
     ("Maple Bacon Donut",    date(2026, 5, 10), 1,    None, MBD_RUN2),
+    ("Maple Bacon Donut",    date(2026, 5, 11), 2,    datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), MBD_RUN3),
     ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
     ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
     ("Rain Fruit",           date(2026, 5, 11), 1,    datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), RF_RUN3),
@@ -1242,7 +1251,7 @@ STRAIN_STATUS = [
     ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      None, "hive1"),
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       None, "fembot3"),
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
-    ("Maple Bacon Donut",    "#mbd-profile",     "Repeat same curve — watch swab trend",                                                  None, "mbd"),
+    ("Maple Bacon Donut",    "#mbd-profile",     "Repeat 420°F curve on Run 4 — slight tail harshness to confirm",                        None, "mbd"),
     ("Rain Fruit",           "#rainfruit-profile","Walk endpoint up incrementally — try 423°F on Run 4",                              None, "rainfruit"),
 ]
 
@@ -1763,10 +1772,21 @@ def build_html():
     c += result_row("Read:", "Swab trending cleaner on repeat. Flavor expressed distinctly on the first half. No harshness on either run. The Run 1 milder effect reads as a tolerance confound — effects landed clearly on Run 2.")
     sections.append(collapsible_section("mbd-run2", "Maple Bacon Donut — Run 2 — May 10, 2026", c))
 
+    c  = session_order_note(_spr.get(("Maple Bacon Donut", 3)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 420°F (10-second hold) — down 10°F, ramp from 375°F open</p>'
+    c += curve_chart_html(MBD_RUN3)
+    c += curve_table(MBD_RUN3)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Clean golden.")
+    c += result_row("Session:", "Little bit harsh in the last 5 seconds. No harshness earlier in the session.")
+    c += result_row("Intensity:", "Medium-hard")
+    sections.append(collapsible_section("mbd-run3", "Maple Bacon Donut — Run 3 — May 11, 2026", c))
+
     sections.append(what_to_try_next_html(
         "mbd-next",
-        dab_notes="Watch the swab — darker golden on Run 1, lighter on Run 2. Repeat same curve.",
-        ai_analysis="Two runs, swab trending cleaner, distinct flavor on Run 2, no harshness. Repeat the same curve on Run 3 to confirm the trend before adjusting anything. If darker golden persists across more runs, consider dropping endpoint to 420°F.",
+        dab_notes="Clean golden swabs. Little bit harsh in the last 5 seconds. Medium-hard hit.",
+        ai_analysis="First run at 420°F endpoint for MBD — one data point. Clean swab and solid effect. Slight tail harshness in the last 5 seconds is consistent with the cross-strain pattern at this temperature range. Two paths for Run 4: repeat at 420°F to confirm the harshness is consistent (rather than noise from load size or other variables), or drop to 415°F to see if it clears. Given the clean swab and medium-hard effect, 420°F is a viable working endpoint — confirming on Run 4 before adjusting is the lower-variance choice.",
         proposed_waypoints=MBD_NEXT,
         accent=_ac["Maple Bacon Donut"],
     ))
