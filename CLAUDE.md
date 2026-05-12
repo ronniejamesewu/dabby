@@ -6,6 +6,7 @@ At the start of every session:
    - `Dabby_Handoff_Notes.md` — source of truth, read first
    - `Dabby_Methodology.md` — thermal model and session process reasoning
    - `Dabby_Log_Generator.py` — understand current log structure before touching it
+   - `Dabby_UI_Principles.md` - source of truth for UI implementation
 
 This project logs sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig."
 All material is hash rosin (ice water extracted, solventless) unless explicitly 
