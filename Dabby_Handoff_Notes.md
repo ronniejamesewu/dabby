@@ -157,6 +157,8 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Raised in Rain Fruit Run 2 context. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
 - **Control water temperature and change frequency as variables** — standardize practice and log it. Revisit when calibration work matures.
+- **Dashboard: cut Last pill, keep only Next** — Last and Next links in the strain browser are redundant because the run sections sit immediately adjacent to each other on the page. Remove the Last pill; consider styling the Next pill in the strain's accent color to give it more visual weight.
+- **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent. Increase the visual or structural separation so it's clear which state a section is in.
 
 ---
 
