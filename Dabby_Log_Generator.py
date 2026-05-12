@@ -1784,7 +1784,8 @@ def build_html():
     c += result_row("Verdict:", "Clean first run. Distinct fruit character, strong effect. No floor signal, no harshness. Repeat the same curve on Run 2 to confirm.")
     sections.append(collapsible_section("rainfruit-run1", "Rain Fruit — Run 1 — May 10, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Rain Fruit", 2)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F &nbsp;|&nbsp; Open 5°F below baseline — testing lower open</p>'
     c += curve_chart_html(RF_RUN2)
     c += curve_table(RF_RUN2)
