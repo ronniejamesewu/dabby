@@ -56,6 +56,16 @@ PR descriptions should be plain English, not code diffs. Example format:
 One sentence per meaningful change. No technical details unless they affect 
 interpretation of the results.
 
+If work continues on an open PR across multiple commits or sessions, update the PR 
+description to reflect what's actually in it. Use the GitHub MCP tool to read the 
+current description first, then rewrite it to cover all changes to date.
+
+## Reference Sections
+
+The four reference sections (Device & Session Constants, Swab Color Reference, Baseline
+Curve, Terpene Reference) live on the main index page as collapsible blocks. Do not
+move them to a separate page — they collapse when not needed and are rarely accessed.
+
 ## Epistemic Flags
 
 - Terpene profiles are inferred from genetics, not measured. The same generic 
