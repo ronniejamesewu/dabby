@@ -1185,12 +1185,19 @@ RF_RUN2 = [
     ("40s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint"),
 ]
-RF_RUN3_NEXT = [
+RF_RUN3 = [
     ("0s",  "375°F", "Session open"),
     ("15s", "385°F", "Early ascent"),
     ("40s", "410°F", "Mid ascent"),
     ("55s", "420°F", "Approach endpoint — down 10°F"),
     ("65s", "420°F", "Hold at 420°F for 10 seconds"),
+]
+RF_RUN4_NEXT = [
+    ("0s",  "375°F", "Session open"),
+    ("15s", "385°F", "Early ascent"),
+    ("40s", "412°F", "Mid ascent — up 2°F"),
+    ("55s", "422°F", "Approach endpoint — up 2°F"),
+    ("65s", "423°F", "Endpoint — up 3°F from Run 3"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -1222,6 +1229,7 @@ COMPLETED_RUNS = [
     ("Maple Bacon Donut",    date(2026, 5, 10), 1,    None, MBD_RUN2),
     ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
     ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
+    ("Rain Fruit",           date(2026, 5, 11), 1,    datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), RF_RUN3),
 ]
 
 STRAIN_STATUS = [
@@ -1235,7 +1243,7 @@ STRAIN_STATUS = [
     ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       None, "fembot3"),
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
     ("Maple Bacon Donut",    "#mbd-profile",     "Repeat same curve — watch swab trend",                                                  None, "mbd"),
-    ("Rain Fruit",           "#rainfruit-profile","Try 420°F hold at endpoint on Run 3",                                              None, "rainfruit"),
+    ("Rain Fruit",           "#rainfruit-profile","Walk endpoint up incrementally — try 423°F on Run 4",                              None, "rainfruit"),
 ]
 
 TERPENE_REFERENCE = [
@@ -1796,11 +1804,23 @@ def build_html():
     c += result_row("Read:", "Curve felt well-suited to the strain overall. Tail heat in the last 10 seconds is consistent with the cross-strain pattern at 430°F endpoints (Hive #1 Run 5, Fembot #3 Runs 1–2). Swab is clean so this is a session character signal, not a floor indicator. Effects milder than Run 1 — likely session-to-session variability rather than a curve signal.")
     sections.append(collapsible_section("rainfruit-run2", "Rain Fruit — Run 2 — May 11, 2026", c))
 
+    c  = session_order_note(_spr.get(("Rain Fruit", 3)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 420°F (10-second hold) — down 10°F from prior runs</p>'
+    c += curve_chart_html(RF_RUN3)
+    c += curve_table(RF_RUN3)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Clean golden.")
+    c += result_row("Session:", "Notably less harshness. Slow build to intensity — not hard hitting.")
+    c += result_row("Intensity:", "Mild-moderate")
+    c += result_row("Read:", "420°F endpoint resolved the tail harshness that appeared at 430°F on Run 2 — consistent with the cross-strain pattern. Clean swab means no floor signal. The slower, gentler build suggests some intensity lives in the higher-temperature band. The path forward is to walk the endpoint back up incrementally to find where harshness re-enters.")
+    sections.append(collapsible_section("rainfruit-run3", "Rain Fruit — Run 3 — May 11, 2026", c))
+
     sections.append(what_to_try_next_html(
         "rainfruit-next",
-        dab_notes="Curve feels well-suited. Try holding at 420 for the last 10 seconds next time.",
-        ai_analysis="Two runs at 430°F endpoint — Run 1 no harshness, Run 2 tail heat. The cross-strain pattern is consistent: 430°F shows harshness at the tail across Hive #1 and Fembot #3 as well. Worth noting a tension here: a higher endpoint boils off a larger fraction of THC but that's where the harshness lives. Dropping to 420°F with a 10-second hold trades some theoretical completeness for a cleaner finish — whether that trade-off is worth it is what Run 3 will tell you.",
-        proposed_waypoints=RF_RUN3_NEXT,
+        dab_notes="420 hold worked — notably less harshness, clean golden swabs. Not hard hitting but slow build to intensity. Want to slowly walk up the curve.",
+        ai_analysis="The 420°F endpoint confirmed the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.",
+        proposed_waypoints=RF_RUN4_NEXT,
         accent=_ac["Rain Fruit"],
     ))
 
