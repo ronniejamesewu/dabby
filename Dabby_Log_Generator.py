@@ -1236,6 +1236,7 @@ MB9ZST_BASELINE = [
     ("40s", "410°F", "Mid ascent"),
     ("65s", "430°F", "Endpoint"),
 ]
+MB9ZST_RUN1 = MB9ZST_BASELINE
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -1269,6 +1270,7 @@ COMPLETED_RUNS = [
     ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
     ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
     ("Rain Fruit",           date(2026, 5, 11), 1,    datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), RF_RUN3),
+    ("Mango Banana #9 + Z + Sour Tangie", date(2026, 5, 13), 0, datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), MB9ZST_RUN1),
 ]
 
 STRAIN_STATUS = [
@@ -1283,7 +1285,7 @@ STRAIN_STATUS = [
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
     ("Maple Bacon Donut",    "#mbd-profile",     "Try faster ramp to 460°F on Run 5",                                                     None, "mbd"),
     ("Rain Fruit",           "#rainfruit-profile","Walk endpoint up incrementally — try 423°F on Run 4",                              None, "rainfruit"),
-    ("Mango Banana #9 + Z + Sour Tangie", "#mb9zst-profile", "No runs yet — start from baseline curve",                                   None, "mb9zst"),
+    ("Mango Banana #9 + Z + Sour Tangie", "#mb9zst-profile", "Repeat baseline on Run 2 — establish this strain+Gemlock as the new normal before adjusting curve", None, "mb9zst"),
 ]
 
 TERPENE_REFERENCE = [
@@ -1896,10 +1898,22 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    c  = session_order_note(_spr.get(("Mango Banana #9 + Z + Sour Tangie", 1)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline ramp &nbsp;|&nbsp; <strong>Equipment:</strong> First session with Gemlock joystick, no pearl</p>'
+    c += curve_chart_html(MB9ZST_RUN1)
+    c += curve_table(MB9ZST_RUN1)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Very light golden.")
+    c += result_row("Session:", "Pronounced flavors up front. Bitter citrus note with a distinct tangerine quality — consistent with Sour Tangie lineage (limonene-forward). Slight harshness at the end. Also appeared as a bitter/citrus rind note in Maple Bacon Donut Run 4 (May 12) — cross-strain parallel, genetics connection unclear, worth watching.")
+    c += result_row("Intensity:", "Strong — face tingling.")
+    c += result_row("Equipment note:", "First run with Gemlock joystick, no pearl. Swab lighter than typical for a first run. Hypothesis: joystick may be more efficient — cleaner swab and/or more material vaporized in the same window. Single data point; something to watch.")
+    sections.append(collapsible_section("mb9zst-run1", "Mango Banana #9 + Z + Sour Tangie — Run 1 — May 13, 2026", c))
+
     sections.append(what_to_try_next_html(
         "mb9zst-next",
-        dab_notes="First jar — no runs yet.",
-        ai_analysis="No empirical data yet. Start from the baseline curve (380→390→410→430°F, 65 seconds). The three-component Neapolitan format is worth noting: the jar has three distinct layers, and the session character may shift as you work through it. Treat each run independently and note which portion of the jar you pulled from if that's observable. The blend's sativa-leaning genetics suggest the generic starting point is appropriate — don't design a different curve from the strain name.",
+        dab_notes="Run 1 with new Gemlock joystick (no pearl): very light golden swab, strong effect (face tingling), pronounced front-end flavors, bitter tangerine/citrus note, slight tail harshness. Gemlock may be more efficient — cleaner swab and/or more material vaporized in same window. Something to watch.",
+        ai_analysis="Repeat the baseline curve on Run 2 before moving anything. The case for repeating is stronger than it might look: this is a first run on a new strain with new equipment introduced simultaneously. The swab was very light and the effect was strong — that's a compelling combination, and it's worth knowing whether it holds. The tail harshness was mild ('a tad harsh at the end') — softer than what pushed curve adjustments on other strains. The cross-strain 430°F harshness prior is real, but every other strain had multiple runs at 430°F before the curve moved. Moving to 420°F now would conflate a strain signal with an equipment signal. Gemlock becomes the new normal — establish what normal looks like before tuning against it.",
         proposed_waypoints=MB9ZST_BASELINE,
         accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
