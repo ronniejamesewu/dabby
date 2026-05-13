@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 12, 2026 — Session 21
+## Last updated: May 13, 2026 — Session 23
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -141,6 +141,8 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — Run 1 (May 10, 2026): baseline ramp — notably clean swab, clear fruit notes, strong effects, no harshness. Run 2 (May 11, 2026): 375→385→410→430°F (lower open than baseline) — light golden swab, tasty, tail heat in last 10 seconds, mild effects. Consistent with cross-strain 430°F tail pattern. Run 3 (May 11, 2026): 420°F endpoint hold — clean golden swab, notably less harshness, slow build to intensity, mild-moderate effect. Run 4 pending: walk endpoint up incrementally to ~423°F.
 
+**Mango Banana #9 + Z + Sour Tangie** (710 Labs, Persy Neapolitan format — cold-cure, 2g jar, 90μ full-melt bubble hash; component strains: Mango Banana #9 (SB 36 × Forbidden Banana), Z (Zkittlez lineage), Sour Tangie (Sour Diesel × Tangie)) — No runs yet. Start from baseline curve. Neapolitan jar means three distinct layers; note which portion is loaded on first run.
+
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. No curves designed. Recommended approach: nose all three jars before first sessions to establish relative comparison across phenotypes, then start all three from baseline curve and log each separately. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
 ---
@@ -232,6 +234,8 @@ Specific errors made in past sessions that a new instance should avoid:
 
 - **Pushing a manually written `index.html` instead of the generator output.** When recovering from a failed or incorrect push, the correct fix is always to run the generator and commit its output. Writing `index.html` by hand will silently strip charts, simplify sections, and produce a degraded log. This happened in Session 4. Always run the generator first.
 - **Not checking main before rebasing.** In Session 7, a feature branch conflicted with main because Hive #1 Runs 1–2 had already been committed to main separately. Always run `git log origin/main` after fetching to understand what's on main before rebasing.
+- **Treating product format names as strain names.** "Persy Neapolitan" is a 710 Labs product type (three-strain cold-cure jar). The strain name is the component strains listed on the jar. When a user hands you a product description, check whether the product name and the strain name are the same thing before logging.
+
 - **Using UTC date when logging runs.** Cloud environments run in UTC. A session run at 8pm US time is already the next calendar day in UTC. When logging a run, always capture `utc_logged_at = datetime.now(timezone.utc)`, derive local time (subtract 6 hours MDT / 7 hours MST), and confirm with the user: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off." Use the confirmed local date as `run_date`. OC Runs 6 and 7 were incorrectly logged as May 10 when they were run on May 9 local time; Hive #1 Runs 4–5 similarly logged a day late.
 - **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it — it wastes time. Do not amend already-pushed commits either (same problem). When a branch needs correction after being pushed, cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
 - **Not reading handoff and methodology at session start.** CLAUDE.md explicitly requires reading `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`, and `Dabby_Log_Generator.py` before taking any action. This was skipped in Session 15, leading to suggestions made without full context. Read all three files before responding to any request, every session.
@@ -264,6 +268,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 13, 2026 — Session 23:** Mango Banana #9 + Z + Sour Tangie (710 Labs Persy Neapolitan) added as a new strain profile. Taxonomy clarification during session: "Persy Neapolitan" is a 710 Labs product format, not a strain name — logged under the component strains. No runs yet; PR #38 opened.
 
 - **May 12, 2026 — Session 22:** MBD Run 4 logged (May 12): back to 380→430°F baseline ramp — light golden swab, tail harshness consistent with prior 430°F pattern, citrus rind note throughout, big effect, seemingly short duration. Run 5 direction: faster ramp to 460°F (380→405→440→460°F, 60 seconds). Bug fixed mid-session: utc_logged_at initially committed with logging time (04:29 UTC) instead of run time (8:30 PM MDT / 02:30 UTC). Failure mode added to handoff. CLAUDE.md session logging protocol updated to cover absolute run times.
 
