@@ -1213,6 +1213,30 @@ RF_RUN4_NEXT = [
     ("65s", "423°F", "Endpoint — up 3°F from Run 3"),
 ]
 
+MB9ZST_INFO = [
+    ("Strain",      "Mango Banana #9 + Z + Sour Tangie"),
+    ("Product",     "Persy Neapolitan — three-strain cold-cure blend, 2g jar"),
+    ("Consistency", "Cold cure"),
+    ("Producer",    "710 Labs"),
+    ("Extraction",  "90μ full-melt bubble hash, hand-pressed"),
+    ("Blend",       "Mango Banana #9 (SB 36 × Forbidden Banana) · Z (Zkittlez lineage) · Sour Tangie (Sour Diesel × Tangie)"),
+    ("Character",   "Sativa-leaning hybrid — uplifting from Sour Tangie, tropical melon from Mango Banana, sweet/gas balance from Z. Neapolitan format means three separate layers in one jar; actual session character driven by which portion you pull from."),
+    ("Nose",        "Not yet recorded"),
+]
+MB9ZST_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor across all three components"),
+    ("Myrcene",       "334°F / 168°C", "Earthy, tropical — inferred, Mango Banana lineage contribution"),
+    ("Limonene",      "349°F / 176°C", "Citrus — inferred likely prominent (Sour Tangie + Mango Banana shared contribution)"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet, fruity — inferred, Sour Tangie and Z character"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
+]
+MB9ZST_BASELINE = [
+    ("0s",  "380°F", "Session open"),
+    ("15s", "390°F", "Early ascent"),
+    ("40s", "410°F", "Mid ascent"),
+    ("65s", "430°F", "Endpoint"),
+]
+
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
 FIRST_RUN_DATE = date(2026, 5, 2)
@@ -1259,6 +1283,7 @@ STRAIN_STATUS = [
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
     ("Maple Bacon Donut",    "#mbd-profile",     "Try faster ramp to 460°F on Run 5",                                                     None, "mbd"),
     ("Rain Fruit",           "#rainfruit-profile","Walk endpoint up incrementally — try 423°F on Run 4",                              None, "rainfruit"),
+    ("Mango Banana #9 + Z + Sour Tangie", "#mb9zst-profile", "No runs yet — start from baseline curve",                                   None, "mb9zst"),
 ]
 
 TERPENE_REFERENCE = [
@@ -1859,6 +1884,24 @@ def build_html():
         ai_analysis="The 420°F endpoint confirmed the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.",
         proposed_waypoints=RF_RUN4_NEXT,
         accent=_ac["Rain Fruit"],
+    ))
+
+    # ── Mango Banana #9 + Z + Sour Tangie ────────────────────────────────────
+    s = f'<div class="section" id="mb9zst-profile">'
+    s += accent_header("Mango Banana #9 + Z + Sour Tangie — Strain Profile", _ac["Mango Banana #9 + Z + Sour Tangie"])
+    s += info_table(MB9ZST_INFO)
+    s += '<h3>Terpene Profile — Inferred</h3>'
+    s += '<p class="note">Terpene profile inferred from component strain genetics — not measured. This is the generic cannabis palette. Neapolitan format adds a further caveat: each layer may have a different terpene balance, and the session will vary depending on which portion is loaded.</p>'
+    s += terpene_table(MB9ZST_TERPS)
+    s += '</div>'
+    sections.append(s)
+
+    sections.append(what_to_try_next_html(
+        "mb9zst-next",
+        dab_notes="First jar — no runs yet.",
+        ai_analysis="No empirical data yet. Start from the baseline curve (380→390→410→430°F, 65 seconds). The three-component Neapolitan format is worth noting: the jar has three distinct layers, and the session character may shift as you work through it. Treat each run independently and note which portion of the jar you pulled from if that's observable. The blend's sativa-leaning genetics suggest the generic starting point is appropriate — don't design a different curve from the strain name.",
+        proposed_waypoints=MB9ZST_BASELINE,
+        accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
 
     # ── Assemble ──────────────────────────────────────────────────────────────
