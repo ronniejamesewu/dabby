@@ -1241,7 +1241,7 @@ COMPLETED_RUNS = [
     ("Maple Bacon Donut",    date(2026, 5, 10), 0,    None, MBD_RUN1),
     ("Maple Bacon Donut",    date(2026, 5, 10), 1,    None, MBD_RUN2),
     ("Maple Bacon Donut",    date(2026, 5, 11), 2,    datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), MBD_RUN3),
-    ("Maple Bacon Donut",    date(2026, 5, 12), 0,    datetime(2026, 5, 13,  4, 29, tzinfo=timezone.utc), MBD_RUN4),
+    ("Maple Bacon Donut",    date(2026, 5, 12), 0,    datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), MBD_RUN4),
     ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
     ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
     ("Rain Fruit",           date(2026, 5, 11), 1,    datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), RF_RUN3),
