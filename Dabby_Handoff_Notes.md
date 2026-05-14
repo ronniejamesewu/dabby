@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 14, 2026 — Session 28
+## Last updated: May 14, 2026 — Session 29
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -165,7 +165,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Control water temperature and change frequency as variables** — standardize practice and log it. Revisit when calibration work matures.
 - **Dashboard: cut Last pill, keep only Next** — Last and Next links in the strain browser are redundant because the run sections sit immediately adjacent to each other on the page. Remove the Last pill; consider styling the Next pill in the strain's accent color to give it more visual weight.
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent. Increase the visual or structural separation so it's clear which state a section is in.
-- **Data/code separation** — the next structural step is splitting data definitions (strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS) into a separate file from generator logic (CSS, helpers, build_html). This permanently solves the context limit problem and makes Claude edits safer — Claude can load just the data file when logging a run, never touching the generator. Prerequisite (dataclasses refactor) is complete as of Session 28.
+- **Data/code separation** — the next structural step is splitting data definitions (strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS) into a separate file (`Dabby_Data.py`) from generator logic (CSS, helpers, build_html). This permanently solves the context limit problem and makes Claude edits safer — Claude can load just the data file when logging a run, never touching the generator. Prerequisite (dataclasses refactor) is complete as of Session 28. Planning complete as of Session 29: use `from Dabby_Data import *` in the generator; extract inline MB9ZST proposed waypoints to a named constant `MB9ZST_NEXT`; `validate()` stays as an explicit call from `build_html()`, not auto-invoked on import. A local planning doc (`REFACTOR_DATA_SPLIT.md`, untracked) has full execution steps, pros/cons, and preemptive Q&A. After the split, logging a run still requires touching `build_html()` for the new run's HTML section — eliminating that is the subsequent step (template-driven build), out of scope for this refactor.
 
 ---
 
@@ -220,7 +220,7 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - Reference section headers: steel blue (`#4A7D9A`), not the generic grey of run sections.
 - Visual hierarchy on the page: accent color = strain profile headers + What to Try Next headers; green = run section headers; steel blue = reference section headers.
 - Sessions_prior_today is surfaced in run sections via `session_order_note()` as "Nth session of the day — N prior." Runs with sessions_prior = 0 or None show nothing.
-- The generator currently exceeds 35,000 tokens. Claude cannot read it in a single pass — use offset/limit parameters when reading. The dataclasses refactor (Session 28) was the first structural fix; data/code separation is the next step.
+- The generator currently exceeds 35,000 tokens. Claude cannot read it in a single pass — use offset/limit parameters when reading. The dataclasses refactor (Session 28) was the first structural fix; data/code separation (`Dabby_Data.py` split) is the next step and is fully planned — see the data/code separation entry in Open Ideas.
 - One remaining known technical issue: some color values are Python constants, others are raw hex strings scattered in CSS and chart JS — no single source of truth. The two issues resolved by the dataclasses refactor: terpene BP line hardcoding (now derived from TERPENE_REFERENCE) and unvalidated strain name join (now caught by `validate()` at build time).
 - Slug/anchor consistency check in `validate()` rejected — a mismatch is immediately visible in rendered output as a broken anchor link, so build-time validation doesn't justify the added complexity.
 
@@ -278,6 +278,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 14, 2026 — Session 29:** Data/code separation refactor planned. Key decisions: split generator into `Dabby_Data.py` (all data constants, dataclasses, color helpers, validation) and `Dabby_Log_Generator.py` (palette, CSS, helpers, build_html); generator imports via `from Dabby_Data import *`; `validate()` stays as explicit call from `build_html()`, not auto-invoked on import; inline MB9ZST proposed waypoints to be extracted to `MB9ZST_NEXT` constant. Local planning doc written (`REFACTOR_DATA_SPLIT.md`, untracked — throwaway). Post-split both files will be under 25,000 tokens and readable in one pass. No runs logged.
 
 - **May 14, 2026 — Session 28:** Dataclasses refactor executed and merged (PR #48). All positional tuples replaced with named dataclasses: `Waypoint`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`. `Waypoint` stores bare `int` fields — string parsing (`replace('s','')`, `replace('°F','')`) removed from `curve_chart_html()` and `dashboard_html()`. Terpene BP lines in chart JS now derived from `TERPENE_REFERENCE` filtered to the five common cannabis terpenes — latent hardcoding duplication resolved. `validate()` added and called from `build_html()` — catches strain name mismatches and waypoint sanity errors at build time. `REFACTOR_DATACLASSES.md` deleted. Handoff updated to reflect dataclass constructors throughout. No runs logged.
 
