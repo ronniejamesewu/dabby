@@ -62,6 +62,8 @@ If work continues on an open PR across multiple commits or sessions, update the 
 description to reflect what's actually in it. Use the GitHub MCP tool to read the 
 current description first, then rewrite it to cover all changes to date.
 
+When the user asks for the handoff to be updated, treat it as a session-close signal. Before writing, scan for open items in the handoff that can be resolved now, known issues in the generator or log files, and inconsistencies between what was done and what the handoff says. Propose these alongside the handoff update so they can be bundled into the same PR.
+
 ## Reference Sections
 
 The four reference sections (Device & Session Constants, Swab Color Reference, Baseline
