@@ -1,10 +1,47 @@
 #!/usr/bin/env python3
 from datetime import datetime, date, timezone
+from dataclasses import dataclass
+from typing import Literal
 """
 Dabby the House Rig — Session Log Generator
 Produces index.html — a mobile-responsive, screen-optimized web document.
 To update: edit DATA and SECTIONS sections, then run with python3.
 """
+
+# ── DATACLASSES ────────────────────────────────────────────────────────────
+
+@dataclass
+class Waypoint:
+    time_s: int
+    temp_f: int
+    note: str
+
+@dataclass
+class CompletedRun:
+    strain: str
+    run_date: date | None
+    sessions_prior_today: int | None
+    utc_logged_at: datetime | None
+    waypoints: list
+
+@dataclass
+class StrainStatus:
+    name: str
+    profile_anchor: str
+    next_text: str
+    accent: str | None
+    slug: str
+
+@dataclass
+class TerpeneEntry:
+    name: str
+    alias: str
+    bp_f: int
+    bp_c: int
+    band: Literal["Low", "Mid", "High"]
+    aroma: str
+    qualities: str
+    found_in: str
 
 # ── PALETTE ────────────────────────────────────────────────────────────────
 
@@ -596,8 +633,8 @@ def curve_table(rows, amber=False):
     for col in ["Time", "Setpoint", "Notes"]:
         html += f'<th class="{hdr}">{col}</th>'
     html += '</tr></thead><tbody>'
-    for time, temp, note in rows:
-        html += f'<tr><td>{time}</td><td>{temp}</td><td>{note}</td></tr>'
+    for wp in rows:
+        html += f'<tr><td>{wp.time_s}s</td><td>{wp.temp_f}°F</td><td>{wp.note}</td></tr>'
     return html + '</tbody></table>'
 
 def terpene_table(rows):
@@ -661,13 +698,13 @@ def dashboard_html():
     days = (today - FIRST_RUN_DATE).days + 1
 
     opens, endpoints, temp_sec, run_counts, date_counts = [], [], {}, {}, {}
-    for strain, run_date, sessions_prior, utc_logged_at, wps in COMPLETED_RUNS:
-        pts = [(int(t.replace('s', '')), float(v.replace('°F', ''))) for t, v, _ in wps]
+    for run in COMPLETED_RUNS:
+        pts = [(wp.time_s, wp.temp_f) for wp in run.waypoints]
         opens.append(pts[0][1])
         endpoints.append(pts[-1][1])
-        run_counts[strain] = run_counts.get(strain, 0) + 1
-        if run_date is not None:
-            date_counts[run_date] = date_counts.get(run_date, 0) + 1
+        run_counts[run.strain] = run_counts.get(run.strain, 0) + 1
+        if run.run_date is not None:
+            date_counts[run.run_date] = date_counts.get(run.run_date, 0) + 1
         for i in range(len(pts) - 1):
             t1, v1 = pts[i]; t2, v2 = pts[i + 1]
             dt = t2 - t1
@@ -683,14 +720,14 @@ def dashboard_html():
     unique_strains = len(run_counts)
 
     last_dates = {}
-    for strain, run_date, sessions_prior, utc_logged_at, wps in COMPLETED_RUNS:
-        if run_date is not None:
-            if strain not in last_dates or run_date > last_dates[strain]:
-                last_dates[strain] = run_date
+    for run in COMPLETED_RUNS:
+        if run.run_date is not None:
+            if run.strain not in last_dates or run.run_date > last_dates[run.strain]:
+                last_dates[run.strain] = run.run_date
 
     sorted_strains = sorted(
-        [(s, a, nt, ac, slug) for s, a, nt, ac, slug in STRAIN_STATUS if run_counts.get(s, 0) > 0],
-        key=lambda x: run_counts[x[0]], reverse=True
+        [s for s in STRAIN_STATUS if run_counts.get(s.name, 0) > 0],
+        key=lambda s: run_counts[s.name], reverse=True
     )
 
     cards = (
@@ -704,9 +741,12 @@ def dashboard_html():
         f'</div>'
     )
 
-    max_runs = run_counts[sorted_strains[0][0]] if sorted_strains else 0
+    max_runs = run_counts[sorted_strains[0].name] if sorted_strains else 0
     rows = ''
-    for i, (strain, anchor, nt, accent, slug) in enumerate(sorted_strains):
+    for i, ss in enumerate(sorted_strains):
+        strain       = ss.name
+        anchor       = ss.profile_anchor
+        slug         = ss.slug
         color        = _ACCENT_RESOLVED.get(strain, "#888888")
         medal        = ' 🥇' if run_counts[strain] == max_runs else ''
         n            = run_counts[strain]
@@ -724,7 +764,7 @@ def dashboard_html():
             f'<div class="strain-info">'
             f'<a href="{anchor}" class="strain-name">{strain}{medal}</a>'
             f'<span class="strain-meta">{meta}</span>'
-            f'<span class="strain-next">{nt}</span>'
+            f'<span class="strain-next">{ss.next_text}</span>'
             f'</div>'
             f'<div class="pill-group">'
             f'<a href="{last_anchor}" class="last-pill">&uarr; Last</a>'
@@ -795,24 +835,26 @@ def dashboard_html():
 _chart_counter = [0]
 
 def curve_chart_html(waypoints, chart_id=None):
-    """
-    waypoints: list of (time_str, temp_str, note_str)
-    e.g. [("0s","375°F","Session open"), ("65s","440°F","Endpoint")]
-    Returns HTML string with canvas + inline script.
-    """
+    """waypoints: list[Waypoint]. Returns HTML string with canvas + inline script."""
     _chart_counter[0] += 1
     cid = chart_id or f"curve_{_chart_counter[0]}"
 
-    # Parse waypoints into JS arrays
+    # Build JS arrays from Waypoint objects
     pts = []
-    for time_str, temp_str, _ in waypoints:
-        t = int(time_str.replace('s',''))
-        temp = float(temp_str.replace('°F','').replace('°f',''))
-        pts.append(f"{{x:{t},y:{temp}}}")
+    for wp in waypoints:
+        pts.append(f"{{x:{wp.time_s},y:{wp.temp_f}}}")
     pts_js = '[' + ','.join(pts) + ']'
 
+    # Build terpene BP line array from TERPENE_REFERENCE
+    _CHART_TERPS = ["Alpha-Pinene", "Myrcene", "Limonene", "Terpinolene", "Linalool"]
+    _chart_terp_entries = [t for t in TERPENE_REFERENCE if t.name in _CHART_TERPS]
+    terps_js = '[' + ','.join(
+        f'{{y:{t.bp_f},l:"{t.name.replace("Alpha-", "")}"}}'
+        for t in _chart_terp_entries
+    ) + ']'
+
     # Determine y axis range
-    all_temps = [float(w[1].replace('°F','')) for w in waypoints]
+    all_temps = [wp.temp_f for wp in waypoints]
     y_max = max(max(all_temps) + 15, 455)
     y_min = 300
     mono = "'DM Mono', monospace"
@@ -824,13 +866,13 @@ def curve_chart_html(waypoints, chart_id=None):
   <span><span class="legend-box" style="background:rgba(210,90,80,0.12);border:1px solid rgba(210,90,80,0.35);"></span>THC range</span>
 </div>
 <div style="position:relative;width:100%;height:200px;">
-<canvas id="{cid}" role="img" aria-label="Temperature curve chart">Curve from {waypoints[0][1]} at {waypoints[0][0]} to {waypoints[-1][1]} at {waypoints[-1][0]}.</canvas>
+<canvas id="{cid}" role="img" aria-label="Temperature curve chart">Curve from {waypoints[0].temp_f}°F at {waypoints[0].time_s}s to {waypoints[-1].temp_f}°F at {waypoints[-1].time_s}s.</canvas>
 </div>
 </div>
 <script>
 (function(){{
   var mono="{mono}";
-  var terps=[{{y:311,l:"Pinene"}},{{y:334,l:"Myrcene"}},{{y:349,l:"Limonene"}},{{y:367,l:"Terpinolene"}},{{y:388,l:"Linalool"}}];
+  var terps={terps_js};
   new Chart(document.getElementById("{cid}"),{{
     type:"line",
     data:{{datasets:[{{
@@ -856,7 +898,7 @@ def curve_chart_html(waypoints, chart_id=None):
         }}
       }},
       scales:{{
-        x:{{type:"linear",min:0,max:{waypoints[-1][0].replace('s','')},
+        x:{{type:"linear",min:0,max:{waypoints[-1].time_s},
           title:{{display:true,text:"seconds",color:"#aaa",font:{{family:mono,size:10,weight:"300"}}}},
           ticks:{{stepSize:10,color:"#aaa",font:{{family:mono,size:10}}}},
           grid:{{color:"rgba(0,0,0,0.05)"}},border:{{color:"rgba(0,0,0,0.08)"}}}},
@@ -920,10 +962,10 @@ GLOBAL_INFO = [
 ]
 
 BASELINE_CURVE = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 
 WWZ_INFO = [
@@ -940,10 +982,10 @@ WWZ_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
 ]
 WWZ_RUN1 = [
-    ("0s",  "375°F", "Session open"),
-    ("15s", "378°F", "Extended flat — low-boiling terpene zone (~311°F pinene region)"),
-    ("40s", "395°F", "Mid ascent — mid-range terpene zone (~334°F myrcene region)"),
-    ("65s", "440°F", "Endpoint — upper terpene zone + THC completion"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=378, note="Extended flat — low-boiling terpene zone (~311°F pinene region)"),
+    Waypoint(time_s=40, temp_f=395, note="Mid ascent — mid-range terpene zone (~334°F myrcene region)"),
+    Waypoint(time_s=65, temp_f=440, note="Endpoint — upper terpene zone + THC completion"),
 ]
 
 CAG_INFO = [
@@ -960,18 +1002,18 @@ CAG_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
 ]
 CAG_RUN1 = [
-    ("0s",  "375°F", "Session open"),
-    ("10s", "380°F", "Short flat phase"),
-    ("30s", "395°F", "Mid ascent"),
-    ("50s", "420°F", "Upper terpene zone"),
-    ("65s", "450°F", "ENDPOINT TOO HOT — see diagnosis"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=10, temp_f=380, note="Short flat phase"),
+    Waypoint(time_s=30, temp_f=395, note="Mid ascent"),
+    Waypoint(time_s=50, temp_f=420, note="Upper terpene zone"),
+    Waypoint(time_s=65, temp_f=450, note="ENDPOINT TOO HOT — see diagnosis"),
 ]
 CAG_RUN2 = [
-    ("0s",  "375°F", "Session open"),
-    ("10s", "380°F", "Short flat phase"),
-    ("30s", "395°F", "Mid ascent"),
-    ("50s", "415°F", "Upper terpene zone"),
-    ("55s", "430°F", "Conservative endpoint"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=10, temp_f=380, note="Short flat phase"),
+    Waypoint(time_s=30, temp_f=395, note="Mid ascent"),
+    Waypoint(time_s=50, temp_f=415, note="Upper terpene zone"),
+    Waypoint(time_s=55, temp_f=430, note="Conservative endpoint"),
 ]
 
 OC_INFO = [
@@ -989,38 +1031,38 @@ OC_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
 ]
 OC_RUNS12 = [
-    ("0s",  "375°F", "Session open"),
-    ("15s", "378°F", "Flat phase"),
-    ("40s", "395°F", "Mid ascent"),
-    ("65s", "450°F", "Endpoint — raised to compensate for estimated thermal offset"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=378, note="Flat phase"),
+    Waypoint(time_s=40, temp_f=395, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=450, note="Endpoint — raised to compensate for estimated thermal offset"),
 ]
 OC_RUN3 = [
-    ("0s",  "375°F", "Session open"),
-    ("15s", "378°F", "Flat phase"),
-    ("35s", "410°F", "Steeper climb — faster progression through mid terpene zones"),
-    ("65s", "440°F", "Endpoint — reduced; flatter tail allows insert surface to approach equilibrium"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=378, note="Flat phase"),
+    Waypoint(time_s=35, temp_f=410, note="Steeper climb — faster progression through mid terpene zones"),
+    Waypoint(time_s=65, temp_f=440, note="Endpoint — reduced; flatter tail allows insert surface to approach equilibrium"),
 ]
 OC_RUN4 = [
-    ("0s",  "380°F", "Session open — raised 5°F to increase opening vapor density"),
-    ("15s", "390°F", "Halfway between open and mid waypoint"),
-    ("35s", "410°F", "Halfway between open and endpoint"),
-    ("65s", "440°F", "Endpoint — unchanged"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open — raised 5°F to increase opening vapor density"),
+    Waypoint(time_s=15, temp_f=390, note="Halfway between open and mid waypoint"),
+    Waypoint(time_s=35, temp_f=410, note="Halfway between open and endpoint"),
+    Waypoint(time_s=65, temp_f=440, note="Endpoint — unchanged"),
 ]
 OC_RUN5 = [
-    ("0s",  "350°F", "Session open — lower opening setpoint under exploration"),
-    ("30s", "410°F", "Mid ascent"),
-    ("50s", "440°F", "Upper zone"),
-    ("65s", "460°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=350, note="Session open — lower opening setpoint under exploration"),
+    Waypoint(time_s=30, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=50, temp_f=440, note="Upper zone"),
+    Waypoint(time_s=65, temp_f=460, note="Endpoint"),
 ]
 OC_RUN6 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("35s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint — down 10°F from Runs 3–4"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=35, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint — down 10°F from Runs 3–4"),
 ]
 OC_RUN7 = [
-    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
-    ("60s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=430, note="Steady hold — flat 430°F from session open"),
+    Waypoint(time_s=60, temp_f=430, note="Endpoint"),
 ]
 
 HIVE1_INFO = [
@@ -1032,16 +1074,16 @@ HIVE1_INFO = [
 ]
 
 HIVE1_RUN1 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("35s", "410°F", "Mid ascent"),
-    ("65s", "440°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=35, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=440, note="Endpoint"),
 ]
 HIVE1_RUN2 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("35s", "410°F", "Mid ascent"),
-    ("65s", "440°F", "Endpoint — repeated from Run 1"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=35, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=440, note="Endpoint — repeated from Run 1"),
 ]
 HIVE1_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred secondary (both parents)"),
@@ -1051,18 +1093,18 @@ HIVE1_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred, minor"),
 ]
 HIVE1_RUN3 = [
-    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
-    ("45s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=430, note="Steady hold — flat 430°F from session open"),
+    Waypoint(time_s=45, temp_f=430, note="Endpoint"),
 ]
 HIVE1_RUN4 = [
-    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
-    ("60s", "430°F", "Endpoint — extended from Run 3's 45s"),
+    Waypoint(time_s=0,  temp_f=430, note="Steady hold — flat 430°F from session open"),
+    Waypoint(time_s=60, temp_f=430, note="Endpoint — extended from Run 3's 45s"),
 ]
 HIVE1_RUN5 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("35s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint — 430°F with ramp (down from 440°F in Runs 1–2)"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=35, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint — 430°F with ramp (down from 440°F in Runs 1–2)"),
 ]
 
 FEMBOT3_INFO = [
@@ -1075,24 +1117,24 @@ FEMBOT3_INFO = [
 ]
 
 FEMBOT3_RUN1 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 FEMBOT3_RUN2 = [
-    ("0s",  "430°F", "Steady hold — flat 430°F from session open"),
-    ("60s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=430, note="Steady hold — flat 430°F from session open"),
+    Waypoint(time_s=60, temp_f=430, note="Endpoint"),
 ]
 FEMBOT3_RUN3 = [
-    ("0s",  "420°F", "Steady hold — flat 420°F from session open"),
-    ("60s", "420°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=420, note="Steady hold — flat 420°F from session open"),
+    Waypoint(time_s=60, temp_f=420, note="Endpoint"),
 ]
 HIVE1_NEXT = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("35s", "410°F", "Mid ascent"),
-    ("65s", "425°F", "Endpoint — down 5°F from Run 5"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=35, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=425, note="Endpoint — down 5°F from Run 5"),
 ]
 
 FEMBOT3_TERPS = [
@@ -1113,10 +1155,10 @@ MS23_INFO = [
     ("Nose",          "Diesel note pronounced at cold nose; sweetness underneath"),
 ]
 MS23_RUN1 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 MS23_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred minor"),
@@ -1141,35 +1183,35 @@ MBD_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
 ]
 MBD_RUN1 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 MBD_RUN2 = [
-    ("0s",  "380°F", "Session open — same curve as Run 1"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open — same curve as Run 1"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 MBD_RUN3 = [
-    ("0s",  "375°F", "Session open"),
-    ("15s", "385°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("55s", "420°F", "Approach endpoint — down 10°F from prior runs"),
-    ("65s", "420°F", "Hold at 420°F for 10 seconds"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=385, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=55, temp_f=420, note="Approach endpoint — down 10°F from prior runs"),
+    Waypoint(time_s=65, temp_f=420, note="Hold at 420°F for 10 seconds"),
 ]
 MBD_RUN4 = [
-    ("0s",  "380°F", "Session open — same as Runs 1 and 2"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open — same as Runs 1 and 2"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 MBD_NEXT = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "405°F", "Steeper early ascent"),
-    ("35s", "440°F", "Mid climb"),
-    ("60s", "460°F", "Endpoint — up 30°F, faster ramp"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=405, note="Steeper early ascent"),
+    Waypoint(time_s=35, temp_f=440, note="Mid climb"),
+    Waypoint(time_s=60, temp_f=460, note="Endpoint — up 30°F, faster ramp"),
 ]
 
 RF_INFO = [
@@ -1187,30 +1229,30 @@ RF_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
 ]
 RF_RUN1 = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 RF_RUN2 = [
-    ("0s",  "375°F", "Session open — 5°F below baseline, testing lower open"),
-    ("15s", "385°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open — 5°F below baseline, testing lower open"),
+    Waypoint(time_s=15, temp_f=385, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 RF_RUN3 = [
-    ("0s",  "375°F", "Session open"),
-    ("15s", "385°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("55s", "420°F", "Approach endpoint — down 10°F"),
-    ("65s", "420°F", "Hold at 420°F for 10 seconds"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=385, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=55, temp_f=420, note="Approach endpoint — down 10°F"),
+    Waypoint(time_s=65, temp_f=420, note="Hold at 420°F for 10 seconds"),
 ]
 RF_RUN4_NEXT = [
-    ("0s",  "375°F", "Session open"),
-    ("15s", "385°F", "Early ascent"),
-    ("40s", "412°F", "Mid ascent — up 2°F"),
-    ("55s", "422°F", "Approach endpoint — up 2°F"),
-    ("65s", "423°F", "Endpoint — up 3°F from Run 3"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=385, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=412, note="Mid ascent — up 2°F"),
+    Waypoint(time_s=55, temp_f=422, note="Approach endpoint — up 2°F"),
+    Waypoint(time_s=65, temp_f=423, note="Endpoint — up 3°F from Run 3"),
 ]
 
 MB9ZST_INFO = [
@@ -1231,10 +1273,10 @@ MB9ZST_TERPS = [
     ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
 ]
 MB9ZST_BASELINE = [
-    ("0s",  "380°F", "Session open"),
-    ("15s", "390°F", "Early ascent"),
-    ("40s", "410°F", "Mid ascent"),
-    ("65s", "430°F", "Endpoint"),
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
 ]
 MB9ZST_RUN1 = MB9ZST_BASELINE
 MB9ZST_RUN2 = MB9ZST_BASELINE
@@ -1244,93 +1286,86 @@ MB9ZST_RUN2 = MB9ZST_BASELINE
 FIRST_RUN_DATE = date(2026, 5, 2)
 
 COMPLETED_RUNS = [
-    # (strain, date, sessions_prior_today, utc_logged_at, waypoints)
-    # sessions_prior_today: int = sessions run before this one on the same day; None if unknown
-    # utc_logged_at: datetime (UTC) when the run was logged; None for entries predating this field
-    ("WW Z",                 date(2026, 5, 2),  0,    None, WWZ_RUN1),
-    ("Caramel Apple Gelato", None,              None, None, CAG_RUN1),
-    ("Orange Candy",         None,              None, None, OC_RUNS12),
-    ("Orange Candy",         None,              None, None, OC_RUNS12),
-    ("Orange Candy",         None,              None, None, OC_RUN3),
-    ("Orange Candy",         date(2026, 5, 5),  1,    None, OC_RUN4),
-    ("Orange Candy",         date(2026, 5, 6),  0,    None, OC_RUN5),
-    ("Orange Candy",         date(2026, 5, 9),  3,    None, OC_RUN6),
-    ("Orange Candy",         date(2026, 5, 9),  4,    None, OC_RUN7),
-    ("The Hive #1",          date(2026, 5, 7),  0,    None, HIVE1_RUN1),
-    ("The Hive #1",          date(2026, 5, 7),  1,    None, HIVE1_RUN2),
-    ("The Hive #1",          date(2026, 5, 8),  0,    None, HIVE1_RUN3),
-    ("The Hive #1",          date(2026, 5, 8),  1,    None, HIVE1_RUN4),
-    ("The Hive #1",          date(2026, 5, 8),  2,    None, HIVE1_RUN5),
-    ("Fembot #3",            date(2026, 5, 9),  0,    None, FEMBOT3_RUN1),
-    ("Fembot #3",            date(2026, 5, 9),  1,    None, FEMBOT3_RUN2),
-    ("Mango Starburst #23",  date(2026, 5, 9),  2,    None, MS23_RUN1),
-    ("Maple Bacon Donut",    date(2026, 5, 10), 0,    None, MBD_RUN1),
-    ("Maple Bacon Donut",    date(2026, 5, 10), 1,    None, MBD_RUN2),
-    ("Maple Bacon Donut",    date(2026, 5, 11), 2,    datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), MBD_RUN3),
-    ("Maple Bacon Donut",    date(2026, 5, 12), 0,    datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), MBD_RUN4),
-    ("Rain Fruit",           date(2026, 5, 10), 2,    None, RF_RUN1),
-    ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
-    ("Rain Fruit",           date(2026, 5, 11), 1,    datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), RF_RUN3),
-    ("Mango Banana #9 + Z + Sour Tangie", date(2026, 5, 13), 0, datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), MB9ZST_RUN1),
-    ("Mango Banana #9 + Z + Sour Tangie", date(2026, 5, 13), 1, datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), MB9ZST_RUN2),
+    CompletedRun(strain="WW Z",                              run_date=date(2026, 5, 2),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=WWZ_RUN1),
+    CompletedRun(strain="Caramel Apple Gelato",              run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=CAG_RUN1),
+    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=OC_RUNS12),
+    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=OC_RUNS12),
+    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=OC_RUN3),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 5),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=OC_RUN4),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 6),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=OC_RUN5),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 9),  sessions_prior_today=3,    utc_logged_at=None,                                              waypoints=OC_RUN6),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 9),  sessions_prior_today=4,    utc_logged_at=None,                                              waypoints=OC_RUN7),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 7),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=HIVE1_RUN1),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 7),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=HIVE1_RUN2),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=HIVE1_RUN3),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=HIVE1_RUN4),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=2,    utc_logged_at=None,                                              waypoints=HIVE1_RUN5),
+    CompletedRun(strain="Fembot #3",                         run_date=date(2026, 5, 9),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=FEMBOT3_RUN1),
+    CompletedRun(strain="Fembot #3",                         run_date=date(2026, 5, 9),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=FEMBOT3_RUN2),
+    CompletedRun(strain="Mango Starburst #23",               run_date=date(2026, 5, 9),  sessions_prior_today=2,    utc_logged_at=None,                                              waypoints=MS23_RUN1),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=MBD_RUN1),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=MBD_RUN2),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 11), sessions_prior_today=2,    utc_logged_at=datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), waypoints=MBD_RUN3),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 12), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), waypoints=MBD_RUN4),
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 10), sessions_prior_today=2,    utc_logged_at=None,                                              waypoints=RF_RUN1),
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), waypoints=RF_RUN2),
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), waypoints=RF_RUN3),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), waypoints=MB9ZST_RUN1),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), waypoints=MB9ZST_RUN2),
 ]
 
 STRAIN_STATUS = [
-    # (name, profile_anchor, next_text, accent, slug)
-    # accent: hex string override, or None to auto-assign from the distributed palette
-    # slug drives last-run anchor: #{slug}-run{n} where n = run count from COMPLETED_RUNS
-    ("WW Z",                 "#wwz-profile",     "—",                                                                                    None, "wwz"),
-    ("Caramel Apple Gelato", "#cag-profile",     "Try 430°F endpoint",                                                                   None, "cag"),
-    ("Orange Candy",         "#oc-profile",      "Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", None, "oc"),
-    ("The Hive #1",          "#hive1-profile",   "Try 420–425°F endpoint on Run 6",                                                      None, "hive1"),
-    ("Fembot #3",            "#fembot3-profile", "Try 420°F steady hold on Run 3",                                                       None, "fembot3"),
-    ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
-    ("Maple Bacon Donut",    "#mbd-profile",     "Try faster ramp to 460°F on Run 5",                                                     None, "mbd"),
-    ("Rain Fruit",           "#rainfruit-profile","Walk endpoint up incrementally — try 423°F on Run 4",                              None, "rainfruit"),
-    ("Mango Banana #9 + Z + Sour Tangie", "#mb9zst-profile", "Try 420°F endpoint on Run 3 — two runs of tail harshness at 430°F", None, "mb9zst"),
+    StrainStatus(name="WW Z",                              profile_anchor="#wwz-profile",      next_text="—",                                                                                    accent=None, slug="wwz"),
+    StrainStatus(name="Caramel Apple Gelato",              profile_anchor="#cag-profile",      next_text="Try 430°F endpoint",                                                                   accent=None, slug="cag"),
+    StrainStatus(name="Orange Candy",                      profile_anchor="#oc-profile",       next_text="Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", accent=None, slug="oc"),
+    StrainStatus(name="The Hive #1",                       profile_anchor="#hive1-profile",    next_text="Try 420–425°F endpoint on Run 6",                                                      accent=None, slug="hive1"),
+    StrainStatus(name="Fembot #3",                         profile_anchor="#fembot3-profile",  next_text="Try 420°F steady hold on Run 3",                                                       accent=None, slug="fembot3"),
+    StrainStatus(name="Mango Starburst #23",               profile_anchor="#ms23-profile",     next_text="Repeat Run 1 curve to confirm",                                                        accent=None, slug="ms23"),
+    StrainStatus(name="Maple Bacon Donut",                 profile_anchor="#mbd-profile",      next_text="Try faster ramp to 460°F on Run 5",                                                    accent=None, slug="mbd"),
+    StrainStatus(name="Rain Fruit",                        profile_anchor="#rainfruit-profile",next_text="Walk endpoint up incrementally — try 423°F on Run 4",                                  accent=None, slug="rainfruit"),
+    StrainStatus(name="Mango Banana #9 + Z + Sour Tangie", profile_anchor="#mb9zst-profile",  next_text="Try 420°F endpoint on Run 3 — two runs of tail harshness at 430°F",                   accent=None, slug="mb9zst"),
 ]
 
 TERPENE_REFERENCE = [
-    # (name, alias, bp_f, bp_c, band, aroma, qualities, found_in)
     # Low band — below 356°F / 180°C
-    ("Humulene",          "alpha-humulene",              225, 107, "Low",  "Woody, spicy-clove",                   "Calming; appetite-suppressing character",   "Hops, allspice, cloves, coriander"),
-    ("Alpha-Pinene",      "alpha-pinene",                313, 156, "Low",  "Pine forest",                          "Alerting; opens airways",                  "Pine, rosemary, dill, basil, sage"),
-    ("Camphene",          "camphene",                    318, 159, "Low",  "Cool camphor, musky earth",             "Limited evidence",                         "Fir, nutmeg, rosemary, sage"),
-    ("Beta-Pinene",       "beta-pinene",                 331, 166, "Low",  "Pine forest, fresh",                   "Alerting; focus-associated",               "Pine, dill, basil, rosemary"),
-    ("Myrcene",           "beta-myrcene",                333, 167, "Low",  "Musky, earthy, sweet herbal",           "Relaxing, sedating",                       "Mangoes, hops, lemongrass, thyme"),
-    ("Carene",            "delta-3-carene",              340, 171, "Low",  "Musky citrus, sweet pine",              "Uplifting; focus-associated",              "Rosemary, cedar, basil, pepper"),
-    ("Phellandrene",      "alpha/beta-phellandrene",     342, 172, "Low",  "Citrusy, peppermint",                  "Uplifting character",                      "Eucalyptus, dill, water fennel"),
-    ("Terpinene",         "alpha-terpinene",             343, 173, "Low",  "Piney, smokey, herbaceous",             "Supporting",                               "Tea tree, eucalyptus, marjoram"),
-    ("Limonene",          "limonene",                    349, 176, "Low",  "Citrus",                                "Uplifting; stress-easing",                 "Citrus rinds, juniper, peppermint"),
-    ("Eucalyptol",        "cineole",                     349, 176, "Low",  "Cool camphor, minty",                  "Alerting; opens airways",                  "Eucalyptus, tea tree, mugwort"),
-    ("Cymene",            "p-cymene",                    351, 177, "Low",  "Mild sweet aged wood, lemon",           "Supporting",                               "Thyme, oregano, cumin, cilantro"),
-    ("Ocimene",           "beta/trans-beta-ocimene",     352, 178, "Low",  "Tropical fruit, woody green citrus",   "Uplifting character",                      "Basil, orchids, kumquats, parsley"),
+    TerpeneEntry(name="Humulene",          alias="alpha-humulene",              bp_f=225, bp_c=107, band="Low",  aroma="Woody, spicy-clove",                   qualities="Calming; appetite-suppressing character",   found_in="Hops, allspice, cloves, coriander"),
+    TerpeneEntry(name="Alpha-Pinene",      alias="alpha-pinene",                bp_f=313, bp_c=156, band="Low",  aroma="Pine forest",                          qualities="Alerting; opens airways",                  found_in="Pine, rosemary, dill, basil, sage"),
+    TerpeneEntry(name="Camphene",          alias="camphene",                    bp_f=318, bp_c=159, band="Low",  aroma="Cool camphor, musky earth",             qualities="Limited evidence",                         found_in="Fir, nutmeg, rosemary, sage"),
+    TerpeneEntry(name="Beta-Pinene",       alias="beta-pinene",                 bp_f=331, bp_c=166, band="Low",  aroma="Pine forest, fresh",                   qualities="Alerting; focus-associated",               found_in="Pine, dill, basil, rosemary"),
+    TerpeneEntry(name="Myrcene",           alias="beta-myrcene",                bp_f=333, bp_c=167, band="Low",  aroma="Musky, earthy, sweet herbal",           qualities="Relaxing, sedating",                       found_in="Mangoes, hops, lemongrass, thyme"),
+    TerpeneEntry(name="Carene",            alias="delta-3-carene",              bp_f=340, bp_c=171, band="Low",  aroma="Musky citrus, sweet pine",              qualities="Uplifting; focus-associated",              found_in="Rosemary, cedar, basil, pepper"),
+    TerpeneEntry(name="Phellandrene",      alias="alpha/beta-phellandrene",     bp_f=342, bp_c=172, band="Low",  aroma="Citrusy, peppermint",                  qualities="Uplifting character",                      found_in="Eucalyptus, dill, water fennel"),
+    TerpeneEntry(name="Terpinene",         alias="alpha-terpinene",             bp_f=343, bp_c=173, band="Low",  aroma="Piney, smokey, herbaceous",             qualities="Supporting",                               found_in="Tea tree, eucalyptus, marjoram"),
+    TerpeneEntry(name="Limonene",          alias="limonene",                    bp_f=349, bp_c=176, band="Low",  aroma="Citrus",                                qualities="Uplifting; stress-easing",                 found_in="Citrus rinds, juniper, peppermint"),
+    TerpeneEntry(name="Eucalyptol",        alias="cineole",                     bp_f=349, bp_c=176, band="Low",  aroma="Cool camphor, minty",                  qualities="Alerting; opens airways",                  found_in="Eucalyptus, tea tree, mugwort"),
+    TerpeneEntry(name="Cymene",            alias="p-cymene",                    bp_f=351, bp_c=177, band="Low",  aroma="Mild sweet aged wood, lemon",           qualities="Supporting",                               found_in="Thyme, oregano, cumin, cilantro"),
+    TerpeneEntry(name="Ocimene",           alias="beta/trans-beta-ocimene",     bp_f=352, bp_c=178, band="Low",  aroma="Tropical fruit, woody green citrus",   qualities="Uplifting character",                      found_in="Basil, orchids, kumquats, parsley"),
     # Mid band — 356–446°F / 180–230°C
-    ("Terpinolene",       "alpha-terpinolene",           369, 187, "Mid",  "Fresh, herbal, sweet, floral, piney",  "Uplifting; sedating in isolation",         "Limes, cumin, lilac, nutmeg"),
-    ("Linalool",          "linalool",                    388, 198, "Mid",  "Floral, citrusy-sweet",                "Calming, sedating",                        "Lavender, citrus, rosemary, basil"),
-    ("Sabinene",          "sabinene hydrate / thujanol", 396, 202, "Mid",  "Woodsy, spicy",                        "Supporting",                               "Norway Spruce, nutmeg, holm oak"),
-    ("Fenchol",           "fenchyl alcohol",             397, 203, "Mid",  "Lemon-lime, piney, camphor",           "Supporting",                               "Basil, aster flowers"),
-    ("Borneol",           "bornyl alcohol",              414, 212, "Mid",  "Cool minty, camphor",                  "Calming, sedating",                        "Rosemary, mint, ginger, camphor"),
-    ("Isoborneol",        "exo-borneol",                 414, 212, "Mid",  "Woody-sweet, spicy",                   "Calming, sedating",                        "Valerian, sage, thyme"),
-    ("Terpineol",         "alpha-terpineol",             430, 221, "Mid",  "Lilac, floral blossom",                "Calming, sedating",                        "Pine oil, petitgrain, cajuput"),
-    ("Citronellol",       "beta-citronellol",            435, 224, "Mid",  "Rose, citrus",                         "Relaxing; variable",                       "Citronella, roses, geraniums"),
-    ("Pulegone",          "pulegone",                    435, 224, "Mid",  "Minty-camphor, resinous",              "Calming, sedating",                        "Catnip, pennyroyal, rosemary"),
-    ("Geraniol",          "geraniol",                    446, 230, "Mid",  "Sweet floral, fruity",                 "Supporting",                               "Roses, lemongrass, citronella"),
+    TerpeneEntry(name="Terpinolene",       alias="alpha-terpinolene",           bp_f=369, bp_c=187, band="Mid",  aroma="Fresh, herbal, sweet, floral, piney",  qualities="Uplifting; sedating in isolation",         found_in="Limes, cumin, lilac, nutmeg"),
+    TerpeneEntry(name="Linalool",          alias="linalool",                    bp_f=388, bp_c=198, band="Mid",  aroma="Floral, citrusy-sweet",                qualities="Calming, sedating",                        found_in="Lavender, citrus, rosemary, basil"),
+    TerpeneEntry(name="Sabinene",          alias="sabinene hydrate / thujanol", bp_f=396, bp_c=202, band="Mid",  aroma="Woodsy, spicy",                        qualities="Supporting",                               found_in="Norway Spruce, nutmeg, holm oak"),
+    TerpeneEntry(name="Fenchol",           alias="fenchyl alcohol",             bp_f=397, bp_c=203, band="Mid",  aroma="Lemon-lime, piney, camphor",           qualities="Supporting",                               found_in="Basil, aster flowers"),
+    TerpeneEntry(name="Borneol",           alias="bornyl alcohol",              bp_f=414, bp_c=212, band="Mid",  aroma="Cool minty, camphor",                  qualities="Calming, sedating",                        found_in="Rosemary, mint, ginger, camphor"),
+    TerpeneEntry(name="Isoborneol",        alias="exo-borneol",                 bp_f=414, bp_c=212, band="Mid",  aroma="Woody-sweet, spicy",                   qualities="Calming, sedating",                        found_in="Valerian, sage, thyme"),
+    TerpeneEntry(name="Terpineol",         alias="alpha-terpineol",             bp_f=430, bp_c=221, band="Mid",  aroma="Lilac, floral blossom",                qualities="Calming, sedating",                        found_in="Pine oil, petitgrain, cajuput"),
+    TerpeneEntry(name="Citronellol",       alias="beta-citronellol",            bp_f=435, bp_c=224, band="Mid",  aroma="Rose, citrus",                         qualities="Relaxing; variable",                       found_in="Citronella, roses, geraniums"),
+    TerpeneEntry(name="Pulegone",          alias="pulegone",                    bp_f=435, bp_c=224, band="Mid",  aroma="Minty-camphor, resinous",              qualities="Calming, sedating",                        found_in="Catnip, pennyroyal, rosemary"),
+    TerpeneEntry(name="Geraniol",          alias="geraniol",                    bp_f=446, bp_c=230, band="Mid",  aroma="Sweet floral, fruity",                 qualities="Supporting",                               found_in="Roses, lemongrass, citronella"),
     # High band — above 446°F / 230°C
-    ("Anethole",              "anethole",                       454, 234, "High", "Licorice, sweet",                      "Sedating character",                   "Anise, fennel, star anise"),
-    ("Guaiene",               "alpha/beta-guaiene",             455, 235, "High", "Sweet, woody, earthy, spicy",          "Supporting",                           "Palo Santo"),
-    ("Geranyl Acetate",       "geranyl acetate",                468, 242, "High", "Sweet floral, pear-like",              "Supporting",                           "Lemongrass, coriander, geraniums"),
-    ("Elemene",               "alpha/beta/delta/gamma-elemene", 487, 253, "High", "Waxy, herbal",                         "Limited research",                     "Ginseng, Chinese Yu Jin"),
-    ("Caryophyllene",         "beta/trans-caryophyllene",       493, 256, "High", "Spicy, peppery",                       "Calming; CB2 receptor binding",        "Black pepper, cloves, hops, oregano"),
-    ("Cedrene",               "alpha/beta-cedrene",             505, 263, "High", "Light woodsy",                         "Supporting",                           "Cedarwood, juniper, cypress"),
-    ("Valencene",             "valencene",                      520, 271, "High", "Sweet fresh citrus",                   "Alerting, uplifting",                  "Valencia oranges"),
-    ("Farnesene",             "alpha/beta-farnesene",           523, 273, "High", "Green apple",                          "Calming, sedating",                    "Apple skins, pears"),
-    ("Nerolidol",             "cis/trans-nerolidol",            529, 276, "High", "Woody bark, waxy, floral",             "Calming, sedating",                    "Neroli, jasmine, ginger, lavender"),
-    ("Caryophyllene Oxide",   "beta-caryophyllene oxide",       536, 280, "High", "Dry, fresh, spicy-sweet",              "Calming; CB2 receptor binding",        "Black pepper, caraway, cloves"),
-    ("Guaiol",                "guaiol",                         550, 288, "High", "Piney, woody, rose-like",              "Supporting",                           "Cypress pines, guaiacum plant"),
-    ("Eudesmol",              "gamma/alpha/beta-eudesmol",      574, 301, "High", "Woody-sweet",                          "Mildly sedating",                      "Cypress, valerian, eucalyptus"),
-    ("Bisabolol",             "alpha-bisabolol / levomenol",    599, 315, "High", "Sweet floral, honey, mild coconut",    "Calming, soothing",                    "Chamomile"),
-    ("Phytol",                "phytol",                         637, 336, "High", "Grassy",                               "Mildly sedating",                      "Green tea"),
+    TerpeneEntry(name="Anethole",          alias="anethole",                       bp_f=454, bp_c=234, band="High", aroma="Licorice, sweet",                      qualities="Sedating character",                   found_in="Anise, fennel, star anise"),
+    TerpeneEntry(name="Guaiene",           alias="alpha/beta-guaiene",             bp_f=455, bp_c=235, band="High", aroma="Sweet, woody, earthy, spicy",          qualities="Supporting",                           found_in="Palo Santo"),
+    TerpeneEntry(name="Geranyl Acetate",   alias="geranyl acetate",                bp_f=468, bp_c=242, band="High", aroma="Sweet floral, pear-like",              qualities="Supporting",                           found_in="Lemongrass, coriander, geraniums"),
+    TerpeneEntry(name="Elemene",           alias="alpha/beta/delta/gamma-elemene", bp_f=487, bp_c=253, band="High", aroma="Waxy, herbal",                         qualities="Limited research",                     found_in="Ginseng, Chinese Yu Jin"),
+    TerpeneEntry(name="Caryophyllene",     alias="beta/trans-caryophyllene",       bp_f=493, bp_c=256, band="High", aroma="Spicy, peppery",                       qualities="Calming; CB2 receptor binding",        found_in="Black pepper, cloves, hops, oregano"),
+    TerpeneEntry(name="Cedrene",           alias="alpha/beta-cedrene",             bp_f=505, bp_c=263, band="High", aroma="Light woodsy",                         qualities="Supporting",                           found_in="Cedarwood, juniper, cypress"),
+    TerpeneEntry(name="Valencene",         alias="valencene",                      bp_f=520, bp_c=271, band="High", aroma="Sweet fresh citrus",                   qualities="Alerting, uplifting",                  found_in="Valencia oranges"),
+    TerpeneEntry(name="Farnesene",         alias="alpha/beta-farnesene",           bp_f=523, bp_c=273, band="High", aroma="Green apple",                          qualities="Calming, sedating",                    found_in="Apple skins, pears"),
+    TerpeneEntry(name="Nerolidol",         alias="cis/trans-nerolidol",            bp_f=529, bp_c=276, band="High", aroma="Woody bark, waxy, floral",             qualities="Calming, sedating",                    found_in="Neroli, jasmine, ginger, lavender"),
+    TerpeneEntry(name="Caryophyllene Oxide", alias="beta-caryophyllene oxide",     bp_f=536, bp_c=280, band="High", aroma="Dry, fresh, spicy-sweet",              qualities="Calming; CB2 receptor binding",        found_in="Black pepper, caraway, cloves"),
+    TerpeneEntry(name="Guaiol",            alias="guaiol",                         bp_f=550, bp_c=288, band="High", aroma="Piney, woody, rose-like",              qualities="Supporting",                           found_in="Cypress pines, guaiacum plant"),
+    TerpeneEntry(name="Eudesmol",          alias="gamma/alpha/beta-eudesmol",      bp_f=574, bp_c=301, band="High", aroma="Woody-sweet",                          qualities="Mildly sedating",                      found_in="Cypress, valerian, eucalyptus"),
+    TerpeneEntry(name="Bisabolol",         alias="alpha-bisabolol / levomenol",    bp_f=599, bp_c=315, band="High", aroma="Sweet floral, honey, mild coconut",    qualities="Calming, soothing",                    found_in="Chamomile"),
+    TerpeneEntry(name="Phytol",            alias="phytol",                         bp_f=637, bp_c=336, band="High", aroma="Grassy",                               qualities="Mildly sedating",                      found_in="Green tea"),
 ]
 
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
@@ -1379,18 +1414,45 @@ def _resolve_accent_colors():
                 break
             pos -= span
     resolved = {}
-    for i, (name, _, _, accent, _) in enumerate(STRAIN_STATUS):
-        resolved[name] = accent if accent is not None else _hsl_to_hex(auto_hues[i], SAT, LGT)
+    for i, s in enumerate(STRAIN_STATUS):
+        resolved[s.name] = s.accent if s.accent is not None else _hsl_to_hex(auto_hues[i], SAT, LGT)
     return resolved
 
 _ACCENT_RESOLVED = _resolve_accent_colors()
 
+def validate():
+    strain_names = {s.name for s in STRAIN_STATUS}
+    errors = []
+
+    for i, run in enumerate(COMPLETED_RUNS):
+        if run.strain not in strain_names:
+            errors.append(f"COMPLETED_RUNS[{i}] strain '{run.strain}' not found in STRAIN_STATUS")
+
+    for i, run in enumerate(COMPLETED_RUNS):
+        wps = run.waypoints
+        if not wps:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): empty waypoints list")
+            continue
+        for j, wp in enumerate(wps):
+            if not (200 <= wp.temp_f <= 650):
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}) waypoint {j}: "
+                               f"temp_f={wp.temp_f} outside expected range 200–650°F")
+        times = [wp.time_s for wp in wps]
+        if times != sorted(times):
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): waypoint times not monotonically increasing: {times}")
+
+    if errors:
+        print("VALIDATION ERRORS:")
+        for e in errors:
+            print(f"  {e}")
+        raise SystemExit(1)
+
 def validate_accent_colors():
     # Only check manually-overridden colors — auto-assigned ones are valid by construction.
-    overrides = [(name, color) for name, _, _, color, _ in STRAIN_STATUS if color is not None]
+    overrides = [(s.name, s.accent) for s in STRAIN_STATUS if s.accent is not None]
     if not overrides:
         return
-    all_resolved = [(name, _ACCENT_RESOLVED[name]) for name, *_ in STRAIN_STATUS]
+    all_resolved = [(s.name, _ACCENT_RESOLVED[s.name]) for s in STRAIN_STATUS]
     warnings = []
     for strain, color in overrides:
         h, s, l = _hex_to_hsl(color)
@@ -1417,18 +1479,18 @@ def terpene_reference_html():
     }
     rows = ""
     current_band = None
-    for name, alias, bp_f, bp_c, band, aroma, qualities, found_in in TERPENE_REFERENCE:
-        if band != current_band:
-            current_band = band
-            rows += f'<tr class="band-row"><td colspan="6">{BAND_LABELS.get(band, band)}</td></tr>'
+    for t in TERPENE_REFERENCE:
+        if t.band != current_band:
+            current_band = t.band
+            rows += f'<tr class="band-row"><td colspan="6">{BAND_LABELS.get(t.band, t.band)}</td></tr>'
         rows += (
             f'<tr>'
-            f'<td><strong>{name}</strong><span class="terp-alias">{alias}</span></td>'
-            f'<td class="bp-cell">{bp_f}°F / {bp_c}°C</td>'
-            f'<td><span class="band-badge band-{band.lower()}">{band}</span></td>'
-            f'<td>{aroma}</td>'
-            f'<td>{qualities}</td>'
-            f'<td style="font-size:0.78rem;color:var(--grey-text);">{found_in}</td>'
+            f'<td><strong>{t.name}</strong><span class="terp-alias">{t.alias}</span></td>'
+            f'<td class="bp-cell">{t.bp_f}°F / {t.bp_c}°C</td>'
+            f'<td><span class="band-badge band-{t.band.lower()}">{t.band}</span></td>'
+            f'<td>{t.aroma}</td>'
+            f'<td>{t.qualities}</td>'
+            f'<td style="font-size:0.78rem;color:var(--grey-text);">{t.found_in}</td>'
             f'</tr>'
         )
     table = (
@@ -1443,15 +1505,16 @@ def terpene_reference_html():
 
 
 def build_html():
+    validate()
     validate_accent_colors()
     _ac = _ACCENT_RESOLVED
 
     # sessions_prior lookup keyed by (strain, 1-indexed run number)
     _cnt = {}
     _spr = {}
-    for _s, _rd, _sp, _ul, _wp in COMPLETED_RUNS:
-        _cnt[_s] = _cnt.get(_s, 0) + 1
-        _spr[(_s, _cnt[_s])] = _sp
+    for _run in COMPLETED_RUNS:
+        _cnt[_run.strain] = _cnt.get(_run.strain, 0) + 1
+        _spr[(_run.strain, _cnt[_run.strain])] = _run.sessions_prior_today
 
     sections = []
 
@@ -1928,10 +1991,10 @@ def build_html():
         dab_notes="Run 1 and Run 2 both at baseline (430°F ramp, 65s): light golden swab both times, big effect both times, big flavors up front both times. Slight tail harshness both runs. Visible vapor at lower temps than expected on Run 2. Not too cloudy mentally, lazy physically — consistent across both sessions.",
         ai_analysis="Baseline is established — two clean runs, consistent results. The slight tail harshness at 430°F appeared in both sessions, which is the same cross-strain pattern: every strain run multiple times at 430°F has shown tail harshness regardless of curve shape. With two data points here that's a clear enough signal to act on. Try 420°F endpoint on Run 3, same ramp shape. The visible vapor at lower temps is worth watching — it may mean this material has an efficient early vaporization onset, which would be consistent with the Gemlock efficiency signal (both runs light golden swab, strong effect). Moving to 420°F doesn't conflict with that hypothesis; if anything, a lower endpoint preserves the front-end flavor window rather than burning through it.",
         proposed_waypoints=[
-            ("0s",  "380°F", "Session open"),
-            ("15s", "390°F", "Early ascent"),
-            ("40s", "410°F", "Mid ascent"),
-            ("65s", "420°F", "Endpoint"),
+            Waypoint(time_s=0,  temp_f=380, note="Session open"),
+            Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+            Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+            Waypoint(time_s=65, temp_f=420, note="Endpoint"),
         ],
         accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
