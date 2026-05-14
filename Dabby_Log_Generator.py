@@ -1237,6 +1237,7 @@ MB9ZST_BASELINE = [
     ("65s", "430°F", "Endpoint"),
 ]
 MB9ZST_RUN1 = MB9ZST_BASELINE
+MB9ZST_RUN2 = MB9ZST_BASELINE
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -1271,6 +1272,7 @@ COMPLETED_RUNS = [
     ("Rain Fruit",           date(2026, 5, 11), 0,    datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), RF_RUN2),
     ("Rain Fruit",           date(2026, 5, 11), 1,    datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), RF_RUN3),
     ("Mango Banana #9 + Z + Sour Tangie", date(2026, 5, 13), 0, datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), MB9ZST_RUN1),
+    ("Mango Banana #9 + Z + Sour Tangie", date(2026, 5, 13), 1, datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), MB9ZST_RUN2),
 ]
 
 STRAIN_STATUS = [
@@ -1285,7 +1287,7 @@ STRAIN_STATUS = [
     ("Mango Starburst #23",  "#ms23-profile",    "Repeat Run 1 curve to confirm",                                                        None, "ms23"),
     ("Maple Bacon Donut",    "#mbd-profile",     "Try faster ramp to 460°F on Run 5",                                                     None, "mbd"),
     ("Rain Fruit",           "#rainfruit-profile","Walk endpoint up incrementally — try 423°F on Run 4",                              None, "rainfruit"),
-    ("Mango Banana #9 + Z + Sour Tangie", "#mb9zst-profile", "Repeat baseline on Run 2 — establish this strain+Gemlock as the new normal before adjusting curve", None, "mb9zst"),
+    ("Mango Banana #9 + Z + Sour Tangie", "#mb9zst-profile", "Try 420°F endpoint on Run 3 — two runs of tail harshness at 430°F", None, "mb9zst"),
 ]
 
 TERPENE_REFERENCE = [
@@ -1910,11 +1912,27 @@ def build_html():
     c += result_row("Equipment note:", "First run with Gemlock joystick, no pearl. Swab lighter than typical for a first run. Hypothesis: joystick may be more efficient — cleaner swab and/or more material vaporized in the same window. Single data point; something to watch.")
     sections.append(collapsible_section("mb9zst-run1", "Mango Banana #9 + Z + Sour Tangie — Run 1 — May 13, 2026", c))
 
+    c  = session_order_note(_spr.get(("Mango Banana #9 + Z + Sour Tangie", 2)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline ramp repeated</p>'
+    c += curve_chart_html(MB9ZST_RUN2)
+    c += curve_table(MB9ZST_RUN2)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Light golden — same as Run 1.")
+    c += result_row("Session:", "Big flavors up front. Visible vapor at lower temps than expected. Slight harshness at the end.")
+    c += result_row("Intensity:", "Strong — not too cloudy mentally, noticeably lazy physically.")
+    sections.append(collapsible_section("mb9zst-run2", "Mango Banana #9 + Z + Sour Tangie — Run 2 — May 13, 2026", c))
+
     sections.append(what_to_try_next_html(
         "mb9zst-next",
-        dab_notes="Run 1 with new Gemlock joystick (no pearl): very light golden swab, strong effect (face tingling), pronounced front-end flavors, bitter tangerine/citrus note, slight tail harshness. Gemlock may be more efficient — cleaner swab and/or more material vaporized in same window. Something to watch.",
-        ai_analysis="Repeat the baseline curve on Run 2 before moving anything. The case for repeating is stronger than it might look: this is a first run on a new strain with new equipment introduced simultaneously. The swab was very light and the effect was strong — that's a compelling combination, and it's worth knowing whether it holds. The tail harshness was mild ('a tad harsh at the end') — softer than what pushed curve adjustments on other strains. The cross-strain 430°F harshness prior is real, but every other strain had multiple runs at 430°F before the curve moved. Moving to 420°F now would conflate a strain signal with an equipment signal. Gemlock becomes the new normal — establish what normal looks like before tuning against it.",
-        proposed_waypoints=MB9ZST_BASELINE,
+        dab_notes="Run 1 and Run 2 both at baseline (430°F ramp, 65s): light golden swab both times, big effect both times, big flavors up front both times. Slight tail harshness both runs. Visible vapor at lower temps than expected on Run 2. Not too cloudy mentally, lazy physically — consistent across both sessions.",
+        ai_analysis="Baseline is established — two clean runs, consistent results. The slight tail harshness at 430°F appeared in both sessions, which is the same cross-strain pattern: every strain run multiple times at 430°F has shown tail harshness regardless of curve shape. With two data points here that's a clear enough signal to act on. Try 420°F endpoint on Run 3, same ramp shape. The visible vapor at lower temps is worth watching — it may mean this material has an efficient early vaporization onset, which would be consistent with the Gemlock efficiency signal (both runs light golden swab, strong effect). Moving to 420°F doesn't conflict with that hypothesis; if anything, a lower endpoint preserves the front-end flavor window rather than burning through it.",
+        proposed_waypoints=[
+            ("0s",  "380°F", "Session open"),
+            ("15s", "390°F", "Early ascent"),
+            ("40s", "410°F", "Mid ascent"),
+            ("65s", "420°F", "Endpoint"),
+        ],
         accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
 
