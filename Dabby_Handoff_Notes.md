@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 13, 2026 — Session 25
+## Last updated: May 14, 2026 — Session 26
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -156,6 +156,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
 - **Session date backfill** — `run_date` is now a field in each `COMPLETED_RUNS` tuple. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those tuples and re-run the generator.
 - **Gemlock joystick introduced May 13** — now the standard rig configuration; pearl no longer in use. All prior cross-strain data was collected with the previous setup. The efficiency hypothesis (lighter swab, stronger effect from more complete vaporization) now has two data points (MB9ZST Runs 1–2) — both light golden swab, both strong effect, both slight tail harshness at 430°F. Also noted on Run 2: visible vapor at lower temps than expected, possibly indicating efficient early vaporization onset. Treat Gemlock as a persistent confound when interpreting new data relative to prior runs. Device Constants updated (PR #42).
+- **Community release direction** — discussed potential to genericize this project as a Switch² community template: cleaned-up generator + CLAUDE.md template + handoff structure as a public GitHub repo. Three pieces of value identified: the generator, the CLAUDE.md session protocol (real IP from months of iteration on Claude behavior in this domain), and the handoff pattern itself. No action taken. Data/code separation identified as a prerequisite. Not a full-stack rewrite — static generator, GitHub Pages, same paradigm.
 
 **Open ideas (not yet built):**
 - **Bring some excitement to first dab of the day** — user flagged a desire for this; no specific mechanism discussed yet. Could be curve, ritual, or strain choice.
@@ -164,6 +165,8 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Control water temperature and change frequency as variables** — standardize practice and log it. Revisit when calibration work matures.
 - **Dashboard: cut Last pill, keep only Next** — Last and Next links in the strain browser are redundant because the run sections sit immediately adjacent to each other on the page. Remove the Last pill; consider styling the Next pill in the strain's accent color to give it more visual weight.
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent. Increase the visual or structural separation so it's clear which state a section is in.
+- **Dataclasses refactor** — planned and documented. `REFACTOR_DATACLASSES.md` exists in the repo root as a throwaway task handoff for a future Claude instance to execute. **Read that file before starting.** Key decisions: four dataclasses (Waypoint, CompletedRun, StrainStatus, TerpeneEntry); Waypoint stores typed int/float instead of strings, eliminating downstream string parsing; terpene BP line hardcoding in chart JS fixed as a side effect (derived from TERPENE_REFERENCE instead); validate() function added to catch strain name mismatches at build time. The generator currently exceeds 35,000 tokens and cannot be read by Claude in a single pass — this refactor is a prerequisite for safe ongoing editing as the log grows. When complete: delete REFACTOR_DATACLASSES.md, update this handoff to reflect that COMPLETED_RUNS and STRAIN_STATUS use dataclass constructors not tuples.
+- **Data/code separation** — after the dataclasses refactor, the next structural step is splitting data definitions (strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS) into a separate file from generator logic (CSS, helpers, build_html). This permanently solves the context limit problem and makes Claude edits safer — Claude can load just the data file when logging a run, never touching the generator. Deferred until after dataclasses refactor is complete.
 
 ---
 
@@ -218,6 +221,8 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - Reference section headers: steel blue (`#4A7D9A`), not the generic grey of run sections.
 - Visual hierarchy on the page: accent color = strain profile headers + What to Try Next headers; green = run section headers; steel blue = reference section headers.
 - Sessions_prior_today is surfaced in run sections via `session_order_note()` as "Nth session of the day — N prior." Runs with sessions_prior = 0 or None show nothing.
+- The generator currently exceeds 35,000 tokens. Claude cannot read it in a single pass — use offset/limit parameters when reading. The dataclasses refactor (see Open Ideas) is the planned fix.
+- Three known technical issues to be addressed during the dataclasses refactor: (1) terpene BP lines in chart JS are hardcoded separately from TERPENE_REFERENCE — latent duplication; (2) some color values are Python constants, others are raw hex strings scattered in CSS and chart JS — no single source of truth; (3) strain name is a bare string join key between COMPLETED_RUNS and STRAIN_STATUS with no validation — a typo silently breaks dashboard counts and navigation.
 
 ---
 
@@ -273,6 +278,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 14, 2026 — Session 26:** Architecture and code review. ChatGPT review shared — structural diagnosis correct (monolith, god function, mixed concerns, no schema enforcement); prescriptions wrong for this use case (React/FastAPI/SQLite overkill for a personal log). Additional issues identified independently: generator exceeds 35,000 tokens and cannot be read by Claude in a single pass; terpene BP lines hardcoded in chart JS separately from TERPENE_REFERENCE; color tokens split between Python constants and raw hex strings in CSS/JS; strain name is an unvalidated bare string join key between COMPLETED_RUNS and STRAIN_STATUS. Dataclasses refactor planned: four dataclasses (Waypoint, CompletedRun, StrainStatus, TerpeneEntry), Waypoint stores typed numerics eliminating downstream string parsing, validate() function added, terpene line hardcoding fixed as side effect. REFACTOR_DATACLASSES.md written as throwaway task handoff doc — do not delete until refactor is complete and merged. Future community release direction discussed: genericized generator + CLAUDE.md template for Switch² community — no action taken, data/code separation identified as prerequisite. No runs logged this session.
 
 - **May 13, 2026 — Session 25:** MB9ZST Run 2 logged (May 13): baseline repeated — light golden swab (same as Run 1), big flavors up front, visible vapor at lower temps than expected, strong effect (not too cloudy mentally, lazy physically), slight tail harshness. Cross-strain 430°F tail pattern now confirmed for this strain across both runs. Gemlock efficiency hypothesis has two data points. Run 3 direction: 420°F endpoint, same ramp shape. Handoff updated. PR #45.
 
