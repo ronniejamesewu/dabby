@@ -155,8 +155,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - Whether fresh press consistency justifies a different baseline curve remains an open question. Not settled.
 - **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
 - **Session date backfill** — `run_date` is now a field in each `COMPLETED_RUNS` tuple. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those tuples and re-run the generator.
-- **Gemlock joystick introduced May 13** — now the standard rig configuration; pearl no longer in use. All prior cross-strain data was collected with the previous setup. The efficiency hypothesis (lighter swab, stronger effect from more complete vaporization) is unconfirmed — one data point on MB9ZST Run 1. Treat Gemlock as a persistent confound when interpreting new data relative to prior runs.
-- **Device Constants — Terp Tools row needs updating:** Still says "Cloud Vortex auto spinner cap + 6mm quartz pearl in insert — present in all sessions to date." Needs to reflect the Gemlock joystick replacing the Cloud Vortex cap and pearl as of May 13, 2026 (MB9ZST Run 1).
+- **Gemlock joystick introduced May 13** — now the standard rig configuration; pearl no longer in use. All prior cross-strain data was collected with the previous setup. The efficiency hypothesis (lighter swab, stronger effect from more complete vaporization) is unconfirmed — one data point on MB9ZST Run 1. Treat Gemlock as a persistent confound when interpreting new data relative to prior runs. Device Constants updated (PR #42).
 
 **Open ideas (not yet built):**
 - **Bring some excitement to first dab of the day** — user flagged a desire for this; no specific mechanism discussed yet. Could be curve, ritual, or strain choice.
