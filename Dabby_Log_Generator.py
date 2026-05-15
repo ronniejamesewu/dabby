@@ -1443,10 +1443,21 @@ def build_html():
     c += result_row("Intensity:", "High")
     sections.append(collapsible_section("mb9zst-run3", "Mango Banana #9 + Z + Sour Tangie — Run 3 — May 14, 2026", c))
 
+    c  = session_order_note(_spr.get(("Mango Banana #9 + Z + Sour Tangie", 4)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 415°F with 20-second hold — down 5°F from Run 3</p>'
+    c += curve_chart_html(MB9ZST_RUN4)
+    c += curve_table(MB9ZST_RUN4)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Golden — slightly darker than Run 3. Still in the clean range.")
+    c += result_row("Session:", "Less harsh at the tail than prior runs — still present but attenuating. More material in swabs at the end.")
+    c += result_row("Intensity:", "Decent — second dab of the evening, tolerance factor in play.")
+    sections.append(collapsible_section("mb9zst-run4", "Mango Banana #9 + Z + Sour Tangie — Run 4 — May 14, 2026", c))
+
     sections.append(what_to_try_next_html(
         "mb9zst-next",
-        dab_notes='Run 3 at 420°F endpoint (375→400→420, 20s hold): light golden swab — "lightly toasted marshmallow." Nice. Climb rate felt right, hold felt right. Still a bit harsh at the end. High intensity. Want sapphire soon.',
-        ai_analysis="Tail harshness is persisting below 430°F — this run at 420°F still showed it. That's different from Rain Fruit, which resolved cleanly at 420°F. Two possible reads: (1) this material just wants a lower ceiling, or (2) the steeper approach on Run 3 is moving through the end zone faster than the baseline ramp, reading as hotter at the tail even at the same endpoint. Climb rate and hold both felt right, so the shape is working — a 5°F drop to 415°F is the cleanest next step. Worth watching: Rain Fruit showed milder, slower-building effects when dropped to 420°F. If 415°F tracks the same way here, that's a real trade-off to weigh — not just a harshness dial.",
+        dab_notes="Run 4 at 415°F (375→400→415, 20s hold): golden swab, slightly darker than Run 3. Less harsh at the tail — still present but attenuating. More material in swabs at the end. Decent effect, second dab of the evening.",
+        ai_analysis="Harshness is continuing to attenuate as the endpoint steps down — consistent signal across three runs now (420°F harsh, 415°F less so). The slightly darker swab at 415°F is worth noting in the direction the user suggested: if it reflects more material left behind rather than a cleaner burn, lower endpoints may be leaving more rosin unvaporized within the session window. That's a genuine tension — lower endpoint eases the tail but potentially at a yield cost. One data point, and swab noise is real, but it's a reasonable thing to keep an eye on as the endpoint continues to move. Continuing down to 410°F should say more about where the harshness resolves.",
         proposed_waypoints=MB9ZST_NEXT,
         accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
