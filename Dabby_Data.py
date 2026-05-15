@@ -372,11 +372,17 @@ MB9ZST_BASELINE = [
 ]
 MB9ZST_RUN1 = MB9ZST_BASELINE
 MB9ZST_RUN2 = MB9ZST_BASELINE
+MB9ZST_RUN3 = [
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=25, temp_f=400, note="Mid climb"),
+    Waypoint(time_s=45, temp_f=420, note="Endpoint"),
+    Waypoint(time_s=65, temp_f=420, note="Hold at 420°F"),
+]
 MB9ZST_NEXT = [
-    Waypoint(time_s=0,  temp_f=380, note="Session open"),
-    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
-    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
-    Waypoint(time_s=65, temp_f=420, note="Endpoint"),
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=25, temp_f=400, note="Mid climb"),
+    Waypoint(time_s=45, temp_f=415, note="Endpoint — down 5°F from Run 3"),
+    Waypoint(time_s=65, temp_f=415, note="Hold at 415°F"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -410,6 +416,7 @@ COMPLETED_RUNS = [
     CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), waypoints=RF_RUN3),
     CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), waypoints=MB9ZST_RUN1),
     CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), waypoints=MB9ZST_RUN2),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 15,  2,  0, tzinfo=timezone.utc), waypoints=MB9ZST_RUN3),
 ]
 
 STRAIN_STATUS = [
@@ -421,7 +428,7 @@ STRAIN_STATUS = [
     StrainStatus(name="Mango Starburst #23",               profile_anchor="#ms23-profile",     next_text="Repeat Run 1 curve to confirm",                                                        accent=None, slug="ms23"),
     StrainStatus(name="Maple Bacon Donut",                 profile_anchor="#mbd-profile",      next_text="Try faster ramp to 460°F on Run 5",                                                    accent=None, slug="mbd"),
     StrainStatus(name="Rain Fruit",                        profile_anchor="#rainfruit-profile",next_text="Walk endpoint up incrementally — try 423°F on Run 4",                                  accent=None, slug="rainfruit"),
-    StrainStatus(name="Mango Banana #9 + Z + Sour Tangie", profile_anchor="#mb9zst-profile",  next_text="Try 420°F endpoint on Run 3 — two runs of tail harshness at 430°F",                   accent=None, slug="mb9zst"),
+    StrainStatus(name="Mango Banana #9 + Z + Sour Tangie", profile_anchor="#mb9zst-profile",  next_text="Try 415°F endpoint on Run 4 — tail harshness persisting at 420°F",                    accent=None, slug="mb9zst"),
 ]
 
 TERPENE_REFERENCE = [

@@ -1432,10 +1432,21 @@ def build_html():
     c += result_row("Intensity:", "Strong — not too cloudy mentally, noticeably lazy physically.")
     sections.append(collapsible_section("mb9zst-run2", "Mango Banana #9 + Z + Sour Tangie — Run 2 — May 13, 2026", c))
 
+    c  = session_order_note(_spr.get(("Mango Banana #9 + Z + Sour Tangie", 3)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 420°F with 20-second hold — ramp 375→400→420°F</p>'
+    c += curve_chart_html(MB9ZST_RUN3)
+    c += curve_table(MB9ZST_RUN3)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", 'Light golden — "lightly toasted marshmallow." Clean.')
+    c += result_row("Session:", "Nice. Climb rate felt right, hold felt right. Still a bit harsh at the end.")
+    c += result_row("Intensity:", "High")
+    sections.append(collapsible_section("mb9zst-run3", "Mango Banana #9 + Z + Sour Tangie — Run 3 — May 14, 2026", c))
+
     sections.append(what_to_try_next_html(
         "mb9zst-next",
-        dab_notes="Run 1 and Run 2 both at baseline (430°F ramp, 65s): light golden swab both times, big effect both times, big flavors up front both times. Slight tail harshness both runs. Visible vapor at lower temps than expected on Run 2. Not too cloudy mentally, lazy physically — consistent across both sessions.",
-        ai_analysis="Baseline is established — two clean runs, consistent results. The slight tail harshness at 430°F appeared in both sessions, which is the same cross-strain pattern: every strain run multiple times at 430°F has shown tail harshness regardless of curve shape. With two data points here that's a clear enough signal to act on. Try 420°F endpoint on Run 3, same ramp shape. The visible vapor at lower temps is worth watching — it may mean this material has an efficient early vaporization onset, which would be consistent with the Gemlock efficiency signal (both runs light golden swab, strong effect). Moving to 420°F doesn't conflict with that hypothesis; if anything, a lower endpoint preserves the front-end flavor window rather than burning through it.",
+        dab_notes='Run 3 at 420°F endpoint (375→400→420, 20s hold): light golden swab — "lightly toasted marshmallow." Nice. Climb rate felt right, hold felt right. Still a bit harsh at the end. High intensity. Want sapphire soon.',
+        ai_analysis="Tail harshness is persisting below 430°F — this run at 420°F still showed it. That's different from Rain Fruit, which resolved cleanly at 420°F. Two possible reads: (1) this material just wants a lower ceiling, or (2) the steeper approach on Run 3 is moving through the end zone faster than the baseline ramp, reading as hotter at the tail even at the same endpoint. Climb rate and hold both felt right, so the shape is working — a 5°F drop to 415°F is the cleanest next step. Worth watching: Rain Fruit showed milder, slower-building effects when dropped to 420°F. If 415°F tracks the same way here, that's a real trade-off to weigh — not just a harshness dial.",
         proposed_waypoints=MB9ZST_NEXT,
         accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
