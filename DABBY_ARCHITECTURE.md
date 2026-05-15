@@ -24,6 +24,20 @@ accruing faster than its verification. It is **not** "do not re-litigate" and it
 "non-deletable source of truth" framing is downgraded accordingly — it earns
 durable status only as steps execute and confirm it.
 
+**Session 36 — Step 1 executed; token estimate refuted by execution.** CSS
+extraction shipped. The structural change is verified: `style.css` is
+byte-identical to the previously-inline CSS, `index.html`'s only change is the
+`<style>`→`<link>` head swap (body byte-identical), and both workflows were
+patched to copy `style.css`. But the token claim was **refuted by measurement**:
+post-extraction the generator is **25,479 tokens — still ~480 over the 25K
+single-pass limit**, not the "~22K, under the limit" the Step 1 Why and B2
+asserted. CSS extraction alone does not achieve single-pass readability at the
+current run count; the ~460-line per-strain inline-HTML region is now the
+dominant mass. Step 1's completion condition was corrected from "reads in a
+single pass" to a structural condition, and the single-pass guarantee now rests
+entirely on Step 3. This is the document being corrected by execution exactly as
+its Status framing anticipated.
+
 The following are explicitly re-opened. Each carries a *recommended direction*,
 not a settled decision — recording a recommendation as settled architecture is
 exactly the failure this audit corrects.
@@ -333,10 +347,14 @@ Adding a strain: add entries to `Dabby_Data.py`. Zero generator edits.
 Adding a run: add an entry to `COMPLETED_RUNS` in `Dabby_Data.py`. Zero generator edits.
 
 The CSS block moves to `style.css`, referenced via `<link>` in the HTML head.
-Generator drops from ~32K tokens to ~22K (the CSS block is ~10K) — under the 25K
-single-pass limit, but not by much. The margin also decays: every run logged
-before Step 3 adds inline HTML to `build_html()`. Step 1 is a real but temporary
-reprieve; Step 3 is the durable fix that keeps the generator small structurally.
+This removes ~13K characters of CSS, but **measured at the current run count (28
+runs, Session 36) the generator is still 25,479 tokens — over the 25K single-pass
+limit.** Every prior estimate ("~22K", "under the limit, decays until Step 3")
+was optimistic; CSS extraction alone never brought it under the limit at this run
+count. Only Step 3 — replacing the ~460-line per-strain inline-HTML region with a
+data-driven loop — brings the generator durably under the limit. Step 1 is a
+prerequisite that shrinks the file and separates concerns; it is not itself the
+single-pass fix.
 
 ---
 
@@ -512,16 +530,22 @@ Step 4's generated state layer reads Step 3's `analysis` field and Step 2's
 `style.css` file. Update the generator to emit `<link rel="stylesheet"
 href="style.css">` in the HTML head.
 
-**Why:** Brings the generator from ~32K tokens to ~22K — under the 25K single-pass
-limit but not *well* under, and the margin decays until Step 3 (see the note in
-Target Generator Architecture). Clean separation of presentation from logic. CSS
-becomes independently editable without opening a Python file.
+**Why:** Cleanly separates presentation from logic; CSS becomes independently
+editable without opening a Python file; removes ~13K characters of CSS from the
+generator, shrinking the Step 3 surface. **It does not, on its own, bring the
+generator under the 25K single-pass limit at the current run count** — measured
+post-extraction (Session 36): 25,479 tokens, still ~480 over. Single-pass
+readability is deferred entirely to Step 3.
 
-**Completion condition:** Generator reads in a single pass. `style.css` exists and
-is copied into `_site/` by both workflows. The **deployed** `gh-pages` page — not
-just a local file open — renders identically (Chart.js, fonts, layout unchanged).
-A local open would still be styled even with the workflow gap, so checking only
-locally would miss the failure entirely.
+**Completion condition (structural — single-pass is NOT a Step 1 condition):**
+`style.css` exists and is byte-identical to the previously-inline CSS;
+`index.html`'s only change is the `<style>`→`<link>` head swap with the body
+byte-identical; `style.css` is copied into `_site/` by **both** workflows. The
+**deployed** `gh-pages` page — not just a local file open — renders identically
+(Chart.js, fonts, layout unchanged); a local open would still be styled even with
+the workflow gap, so checking only locally would miss the failure entirely.
+Single-pass readability was measured unmet post-extraction (25,479 tokens) and
+moves to Step 3.
 
 **Notes:** For GitHub Pages, `style.css` must be committed alongside `index.html`,
 both in the repo root. **The deploy workflow does require changes — verified

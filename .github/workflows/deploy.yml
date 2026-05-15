@@ -21,7 +21,7 @@ jobs:
       - name: Generate log
         run: python3 Dabby_Log_Generator.py
       - name: Prepare
-        run: mkdir -p _site && cp index.html _site/
+        run: mkdir -p _site && cp index.html style.css _site/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
