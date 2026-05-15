@@ -13,12 +13,25 @@ class Waypoint:
     note: str
 
 @dataclass
+class EquipmentConfig:
+    insert: str                    # "quartz", "sapphire"
+    carb_cap: str                  # specific model, e.g. "Cloud Vortex 21.0",
+                                   # "Gemlock joystick" — NOT a category; string
+                                   # equality drives run comparability (Guardrail 3)
+    pearl_diameter_mm: int | None  # None = no pearl (explicit); 6, etc.
+    # No field defaults: a default would let an unspecified run silently validate
+    # as some config. Every run states its config explicitly (see _SPINNER/_GEMLOCK).
+
+@dataclass
 class CompletedRun:
     strain: str
     run_date: date | None
     sessions_prior_today: int | None
     utc_logged_at: datetime | None
     waypoints: list
+    # Python-level optional only; validate() rejects None so every shipped run
+    # carries explicit equipment — None never means "inherit a session default".
+    equipment: EquipmentConfig = None
 
 @dataclass
 class StrainStatus:
@@ -395,35 +408,45 @@ MB9ZST_NEXT = [
 
 FIRST_RUN_DATE = date(2026, 5, 2)
 
+# ── EQUIPMENT ─────────────────────────────────────────────────────────────────
+# Two regimes in the log so far. The cutover is MB9ZST Run 1 (May 13, 2026):
+# the Gemlock joystick replaced the Cloud Vortex spinner cap and the 6mm pearl
+# was retired. Insert has been quartz throughout (sapphire not yet acquired).
+# Named constants, not per-call literals: the 24 pre-cutover runs were genuinely
+# one physical config, so one definition to verify beats 24 transcriptions.
+
+_SPINNER = EquipmentConfig(insert="quartz", carb_cap="Cloud Vortex 21.0", pearl_diameter_mm=6)
+_GEMLOCK = EquipmentConfig(insert="quartz", carb_cap="Gemlock joystick",  pearl_diameter_mm=None)
+
 COMPLETED_RUNS = [
-    CompletedRun(strain="WW Z",                              run_date=date(2026, 5, 2),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=WWZ_RUN1),
-    CompletedRun(strain="Caramel Apple Gelato",              run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=CAG_RUN1),
-    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=OC_RUNS12),
-    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=OC_RUNS12),
-    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              waypoints=OC_RUN3),
-    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 5),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=OC_RUN4),
-    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 6),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=OC_RUN5),
-    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 9),  sessions_prior_today=3,    utc_logged_at=None,                                              waypoints=OC_RUN6),
-    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 9),  sessions_prior_today=4,    utc_logged_at=None,                                              waypoints=OC_RUN7),
-    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 7),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=HIVE1_RUN1),
-    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 7),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=HIVE1_RUN2),
-    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=HIVE1_RUN3),
-    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=HIVE1_RUN4),
-    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=2,    utc_logged_at=None,                                              waypoints=HIVE1_RUN5),
-    CompletedRun(strain="Fembot #3",                         run_date=date(2026, 5, 9),  sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=FEMBOT3_RUN1),
-    CompletedRun(strain="Fembot #3",                         run_date=date(2026, 5, 9),  sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=FEMBOT3_RUN2),
-    CompletedRun(strain="Mango Starburst #23",               run_date=date(2026, 5, 9),  sessions_prior_today=2,    utc_logged_at=None,                                              waypoints=MS23_RUN1),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=0,    utc_logged_at=None,                                              waypoints=MBD_RUN1),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=1,    utc_logged_at=None,                                              waypoints=MBD_RUN2),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 11), sessions_prior_today=2,    utc_logged_at=datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), waypoints=MBD_RUN3),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 12), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), waypoints=MBD_RUN4),
-    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 10), sessions_prior_today=2,    utc_logged_at=None,                                              waypoints=RF_RUN1),
-    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), waypoints=RF_RUN2),
-    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), waypoints=RF_RUN3),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), waypoints=MB9ZST_RUN1),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), waypoints=MB9ZST_RUN2),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 15,  2,  0, tzinfo=timezone.utc), waypoints=MB9ZST_RUN3),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 15,  4, 34, tzinfo=timezone.utc), waypoints=MB9ZST_RUN4),
+    CompletedRun(strain="WW Z",                              run_date=date(2026, 5, 2),  sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=WWZ_RUN1),
+    CompletedRun(strain="Caramel Apple Gelato",              run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=CAG_RUN1),
+    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUNS12),
+    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUNS12),
+    CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUN3),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 5),  sessions_prior_today=1,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUN4),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 6),  sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUN5),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 9),  sessions_prior_today=3,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUN6),
+    CompletedRun(strain="Orange Candy",                      run_date=date(2026, 5, 9),  sessions_prior_today=4,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUN7),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 7),  sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=HIVE1_RUN1),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 7),  sessions_prior_today=1,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=HIVE1_RUN2),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=HIVE1_RUN3),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=1,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=HIVE1_RUN4),
+    CompletedRun(strain="The Hive #1",                       run_date=date(2026, 5, 8),  sessions_prior_today=2,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=HIVE1_RUN5),
+    CompletedRun(strain="Fembot #3",                         run_date=date(2026, 5, 9),  sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=FEMBOT3_RUN1),
+    CompletedRun(strain="Fembot #3",                         run_date=date(2026, 5, 9),  sessions_prior_today=1,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=FEMBOT3_RUN2),
+    CompletedRun(strain="Mango Starburst #23",               run_date=date(2026, 5, 9),  sessions_prior_today=2,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=MS23_RUN1),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=MBD_RUN1),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=1,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=MBD_RUN2),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 11), sessions_prior_today=2,    utc_logged_at=datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=MBD_RUN3),
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 12), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=MBD_RUN4),
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 10), sessions_prior_today=2,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=RF_RUN1),
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=RF_RUN2),
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=RF_RUN3),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN1),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN2),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 15,  2,  0, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN3),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 15,  4, 34, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN4),
 ]
 
 STRAIN_STATUS = [
@@ -554,6 +577,12 @@ def validate():
         times = [wp.time_s for wp in wps]
         if times != sorted(times):
             errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): waypoint times not monotonically increasing: {times}")
+
+    for i, run in enumerate(COMPLETED_RUNS):
+        if run.equipment is None:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment is None — "
+                           f"every run must carry an explicit EquipmentConfig "
+                           f"(None never means 'inherit a session default')")
 
     if errors:
         print("VALIDATION ERRORS:")
