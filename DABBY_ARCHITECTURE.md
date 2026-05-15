@@ -8,8 +8,8 @@ behind it, and a step-wise implementation plan. Each step is independently merge
 and leaves the system in a better state than it was.
 
 This document supersedes `REFACTOR_TEMPLATE_DRIVEN.md`. Do not execute that plan —
-the schema design is wrong in ways documented below. Delete it after this doc is
-committed.
+the schema design is wrong in ways documented below. (`REFACTOR_TEMPLATE_DRIVEN.md`
+was deleted in Session 34.)
 
 ---
 
@@ -20,7 +20,7 @@ committed.
 - Dataclasses: `Waypoint`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`
 - Dashboard, strain browser, collapsible run sections, Chart.js curves
 - GitHub Actions: deploy on push to main, preview URL on PR
-- 26 logged runs across 9 strains
+- 28 logged runs across 9 strains
 
 **Structural debt:**
 
@@ -127,10 +127,17 @@ UI work) where preview and audit trail are valuable.
 ```python
 @dataclass
 class EquipmentConfig:
-    insert: str = "quartz"              # "quartz", "sapphire"
-    carb_cap: str = "gemlock"           # "gemlock", "spinner", "directional"
-    pearl_diameter_mm: int | None = None  # None = no pearl; 3, 4, 6, etc.
+    insert: str                    # "quartz", "sapphire"
+    carb_cap: str                  # "gemlock", "spinner", "directional"
+    pearl_diameter_mm: int | None  # None = no pearl (explicit); 3, 4, 6, etc.
 ```
+
+**Note on `EquipmentConfig` defaults:** No field has a default. Every call site
+must pass all three explicitly. This is deliberate: a default like
+`carb_cap="gemlock"` would let a spinner-era run constructed as `EquipmentConfig()`
+silently validate as Gemlock — equal to a real Gemlock config and undetectable by
+`validate()`. Removing defaults forces the configuration to be stated per run,
+which is the entire point of per-run equipment state.
 
 ### `CompletedRun` (extended)
 
@@ -145,7 +152,9 @@ class CompletedRun:
     waypoints: list[Waypoint]
 
     # Equipment (new)
-    equipment: EquipmentConfig = None   # None = use session default at time of run
+    equipment: EquipmentConfig = None   # Python-level optional only; validate()
+                                        # rejects None post-backfill — every
+                                        # shipped run carries explicit equipment
 
     # Semantic status (new — replaces amber flag in REFACTOR_TEMPLATE_DRIVEN.md)
     too_hot: bool = False               # drives amber styling; amber is presentation,
@@ -171,21 +180,47 @@ class CompletedRun:
 ```
 
 **Note on field boundaries:** The exact field set is validated during Step 3
-(content migration). The 26 existing runs are the test suite. Expect minor revisions
+(content migration). The 28 existing runs are the test suite. Expect minor revisions
 as fields meet real data. `extra_rows` is the escape hatch for genuinely one-off
 content that doesn't fit structured fields.
+
+**Open schema question (decide in Step 3, not pre-decided here):** Several proposed
+fields are in tension with Principle 1 (data carries semantic content, not rendering
+metadata). `endpoint_note="same as Run 1"` and `section_note` are comparison/
+presentation prose, not facts — and "same as Run 1" is *derivable* from waypoint
+equality rather than stored. `extra_rows` is an unconstrained escape hatch that
+tends to absorb content the schema should capture. Step 3b must decide, per field,
+whether to derive or store, and constrain `extra_rows` to genuinely non-recurring
+content. This document does not pre-settle it.
 
 **Note on `too_hot`:** Replaces `amber: bool` from `REFACTOR_TEMPLATE_DRIVEN.md`.
 Semantically the same fact but named for what it means, not how it renders. The
 generator maps `too_hot=True` → amber styling. If styling changes, the data is
 unaffected.
 
+**Note on the `equipment` default:** `= None` is the only permitted default. A
+concrete default (`equipment: EquipmentConfig = EquipmentConfig(...)`) raises
+`ValueError` — a non-frozen dataclass instance is unhashable and trips dataclasses'
+mutable-default guard. `field(default_factory=...)` would *not* raise, but it
+silently hands unspecified runs a default config — reintroducing the exact defect
+Step 2 eliminates. So: keep `= None`, let `validate()` reject `None`, never give
+this field a value-producing default by any mechanism.
+
 **Note on `analysis` placement:** The analysis for a strain lives on the
 `CompletedRun` that generated it, not on `StrainStatus`. The generator renders
 the last run's analysis as the current "What to Try Next" section. This produces
 a permanent history of how understanding evolved — each run carries the state of
-thought at that moment. `StrainStatus` no longer carries
-`next_dab_notes`/`next_ai_analysis`/`next_waypoints`.
+thought at that moment. Note that `next_dab_notes`/`next_ai_analysis`/
+`next_waypoints` are not being *removed* from `StrainStatus` — they were never
+`StrainStatus` fields. They are currently inline arguments to
+`what_to_try_next_html()` in `build_html()`; post-refactor they are sourced from
+the last `CompletedRun` for the strain.
+
+**Open schema question (#6, decide in Step 3):** `next_text` — the dashboard
+strain-browser one-liner — *is* a hand-maintained `StrainStatus` field and is
+unaddressed by this migration. Step 3 must decide whether it is derived from the
+last run's `analysis` (consistent with the "derive from last run" principle) or
+remains hand-maintained.
 
 ### `StrainStatus` (extended)
 
@@ -205,8 +240,11 @@ class StrainStatus:
     terpene_table_rows: list = None     # only MB9ZST currently
     terpene_table_note: str = ""        # note above terpene table (MB9ZST only)
 
-    # next_dab_notes, next_ai_analysis, next_waypoints removed —
-    # these now live on the last CompletedRun for this strain
+    # NOTE: next_dab_notes/next_ai_analysis/next_waypoints are NOT removed here —
+    # they were never StrainStatus fields (currently inline args to
+    # what_to_try_next_html()). Post-refactor they are sourced from the last
+    # CompletedRun. Open (#6): next_text above is hand-maintained — derive from
+    # last run's analysis or keep manual? Decide in Step 3.
 ```
 
 ---
@@ -393,8 +431,12 @@ setup doc. The CLAUDE.md protocol and wisdom layer start empty for a new user.
 
 ## Step-Wise Implementation Plan
 
-Each step is independently mergeable. Each has a clear completion condition.
-Steps build on each other but can be paused between any two.
+Each step is independently mergeable to main and has a clear completion
+condition. Work can be paused between any two steps. "Independent" means *in the
+forward order below* — it does not mean the steps can be reordered. The dependency
+chain is real: Step 3's data-driven generator must subsume Step 2's equipment
+rendering, and Step 4's generated state layer reads Step 3's `analysis` field and
+Step 2's `equipment`. Execute 1 → 2 → 3 → 4 → 5 → 6.
 
 ---
 
@@ -419,22 +461,37 @@ Both files go in the repo root. The deploy workflow requires no changes.
 
 ### Step 2 — Equipment State on `CompletedRun`
 
-**What:** Add `EquipmentConfig` dataclass and an `equipment` field to
-`CompletedRun`. Backfill all 26 existing runs with their configuration at the
-time they were logged.
+**What:** Add `EquipmentConfig` dataclass (no field defaults — see the data model
+note) and an `equipment` field to `CompletedRun`. Backfill all 28 existing runs
+with their configuration at the time they were logged.
 
 **Why:** Equipment can change and revert. Without per-run equipment state, runs
 using different configurations are silently compared as if equivalent. Backfilling
 establishes the baseline before new runs accumulate.
 
-**Backfill guide:**
-- Runs 1 through MB9ZST Run 1 (May 13): quartz insert, spinner cap (or directional
-  — confirm with user), no pearl
-- MB9ZST Run 1 onward: quartz insert, gemlock, no pearl
+**`equipment=None` semantics:** `None` is *not* a meaningful value — it does not
+mean "inherit the session default." That reading would silently reintroduce the
+exact global-static-equipment defect this step exists to eliminate (structural
+debt #4): a May spinner run, read back after the default moved to Gemlock, would
+report the wrong rig. `None` is Python-level optionality only — a transitional
+tripwire that `validate()` rejects at build time so the backfill is forced to
+completion. Post-Step-2, no committed run has `equipment=None`.
 
-**Completion condition:** Every `CompletedRun` has an `equipment` field populated.
-Generator renders equipment config in run section headers. `validate()` catches
-runs with `equipment=None`.
+**Prerequisite (blocker):** The pre-May-13 carb cap is currently unresolved
+(spinner vs. directional). Confirm the actual configuration with the user *before*
+executing the backfill — it cannot be reconstructed from the data.
+
+**Backfill guide:**
+- Runs 1 through the run *before* MB9ZST Run 1: quartz insert, **[confirm:
+  spinner or directional]** cap, no pearl
+- MB9ZST Run 1 (May 13) onward: quartz insert, gemlock, no pearl
+
+**Completion condition:** Every `CompletedRun` has an explicitly-constructed
+`equipment` (all three `EquipmentConfig` fields named at the call site). Generator
+renders equipment config in run section headers. `validate()` rejects any run with
+`equipment=None`. Note: `validate()` can only catch `None` — it cannot detect a
+wrong-but-valid config (e.g. a spinner run mislabeled Gemlock), which is why
+`EquipmentConfig` has no defaults and the pre-May-13 cap must be confirmed first.
 
 ---
 
@@ -450,20 +507,34 @@ a data-driven iteration loop.
 above. Extend `StrainStatus` with profile content fields. Remove
 `next_dab_notes`, `next_ai_analysis`, `next_waypoints` from `StrainStatus`.
 
-**3b.** Populate all 26 runs. For each run, read the corresponding block in
+**3b.** Populate all 28 runs. For each run, read the corresponding block in
 `build_html()` and map the content to structured fields. This is the schema
-validation step — the 26 runs are the test suite. Expect minor field adjustments
-as the schema meets real data. `extra_rows` handles genuinely one-off content.
+validation step — the 28 runs are the test suite. Expect minor field adjustments
+as the schema meets real data. `extra_rows` handles genuinely one-off content,
+constrained per the open schema question in the data model section.
 
-**3c.** Replace lines 1001–1441 in `Dabby_Log_Generator.py` (the per-strain
-blocks) with the data-driven iteration loop. Update `what_to_try_next_html()`
-to pull from the last run's `dab_notes`, `analysis`, and `proposed_waypoints`.
+**3c.** Replace the per-strain blocks in `Dabby_Log_Generator.py` — everything
+between the `# ── WW Z` divider and the `# ── Assemble` divider (≈1001–1464
+today, but treat the dividers as authoritative; line numbers drift every time a
+run is logged before this step runs) — with the data-driven iteration loop.
+Update `what_to_try_next_html()` to pull from the last run's `dab_notes`,
+`analysis`, and `proposed_waypoints`.
 
-**3d.** Verify byte-identical output against the pre-refactor `index.html`.
+**3d.** Diff the rendered `index.html` against the pre-refactor version. The goal
+is *not* byte-identical output. The current `build_html()` contains accidental
+inconsistencies — `<h3>Curve</h3>` vs `<h3 class="amber">Curve Used</h3>`,
+`Results` vs `Observations`, `session_order_note()` called on some first runs but
+not others, bespoke per-run Mode lines. Byte-identical output would force the new
+schema to encode every one of those accidents as data — precisely the anti-pattern
+this document was written to eliminate (the same charge it levels at
+`REFACTOR_TEMPLATE_DRIVEN.md`'s `results_header`). Instead, review the diff line by
+line: every change must be either (a) an intentional normalization of an accidental
+inconsistency or (b) confirmed zero. No content loss, no unreviewed change.
 
 **Completion condition:** `build_html()` contains no strain names. Adding a run
-requires editing only `Dabby_Data.py`. Output is byte-identical. Generator
-remains under 25K tokens.
+requires editing only `Dabby_Data.py`. The `index.html` diff against the
+pre-refactor version is fully reviewed — every line is an intentional normalization
+or unchanged, with no accidental content loss. Generator remains under 25K tokens.
 
 **Note:** Steps 3b and 3c must be done together in one pass — a partially
 populated data file with the old generator will produce a working page; the
@@ -551,8 +622,8 @@ the template by editing one section.
 
 ## What This Document Replaces
 
-`REFACTOR_TEMPLATE_DRIVEN.md` — superseded. The goal (data-driven generator) is
-correct; the schema design (rendering metadata in data, HTML strings in dataclass
-fields, `results_header` preserving an accidental inconsistency) is wrong. Step 3
-of this plan achieves the same goal with a semantically correct schema. Delete
-`REFACTOR_TEMPLATE_DRIVEN.md` when this document is committed.
+`REFACTOR_TEMPLATE_DRIVEN.md` — superseded and deleted in Session 34. The goal
+(data-driven generator) was correct; the schema design (rendering metadata in
+data, HTML strings in dataclass fields, `results_header` preserving an accidental
+inconsistency) was wrong. Step 3 of this plan achieves the same goal with a
+semantically correct schema.
