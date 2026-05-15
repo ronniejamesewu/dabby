@@ -38,6 +38,21 @@ single pass" to a structural condition, and the single-pass guarantee now rests
 entirely on Step 3. This is the document being corrected by execution exactly as
 its Status framing anticipated.
 
+**Session 36 — Step 2 executed (PR #61).** `EquipmentConfig` (no field defaults)
+and the `equipment` field added; all 28 runs backfilled and verified by a
+mechanical oracle (date rule cross-checked against an independent positional
+rule — zero mismatches, zero `None`); `validate()` rejects `None` (negative-tested);
+`index.html` byte-identical (data-only, B1 held). Two execution-driven
+refinements to this doc: (a) **`carb_cap` is model-level, not category-level** —
+user supplied ground truth ("Cloud Vortex 21.0"; "Gemlock joystick"); the doc's
+`"spinner"/"gemlock"` examples were placeholders, and model strings better serve
+the field's purpose (a future *different* spinner would be silently equated under
+`"spinner"`). (b) **Two named constants (`_SPINNER`/`_GEMLOCK`) instead of 28
+inline literals** — the 24 pre-cutover runs were genuinely one physical config;
+one definition to verify beats 24 transcriptions, and the no-default/explicit-
+per-run/`validate()`-rejects-`None` intent is fully met. Step 2's completion
+condition is reworded below to match.
+
 The following are explicitly re-opened. Each carries a *recommended direction*,
 not a settled decision — recording a recommendation as settled architecture is
 exactly the failure this audit corrects.
@@ -202,7 +217,9 @@ UI work) where preview and audit trail are valuable.
 @dataclass
 class EquipmentConfig:
     insert: str                    # "quartz", "sapphire"
-    carb_cap: str                  # "gemlock", "spinner", "directional"
+    carb_cap: str                  # specific model, e.g. "Cloud Vortex 21.0",
+                                   # "Gemlock joystick" — NOT a category; string
+                                   # equality drives run comparability
     pearl_diameter_mm: int | None  # None = no pearl (explicit); 3, 4, 6, etc.
 ```
 
@@ -597,10 +614,13 @@ solve) right before Step 3 shrinks it. So Step 2 ships `EquipmentConfig`, the
 backfill, and `validate()`; Step 3's iteration loop is where equipment first
 renders.
 
-**Completion condition:** Every `CompletedRun` has an explicitly-constructed
-`equipment` (all three `EquipmentConfig` fields named at the call site).
-`validate()` rejects any run with `equipment=None`. Rendering is intentionally
-**not** in scope (see B1 above). Note: `validate()` can only catch `None` — it
+**Completion condition:** Every `CompletedRun` carries an explicit `equipment`
+value — either an inline `EquipmentConfig(...)` or a named module constant whose
+three fields are fully specified at its single definition (the chosen form:
+`_SPINNER`/`_GEMLOCK`, since the log has exactly two real-world regimes and
+fewer definitions means fewer transcription chances). No reliance on a field
+default. `validate()` rejects any run with `equipment=None` (negative-tested,
+not just asserted). Rendering is intentionally **not** in scope (see B1 above). Note: `validate()` can only catch `None` — it
 cannot detect a
 wrong-but-valid config (e.g. a spinner run mislabeled Gemlock), which is why
 `EquipmentConfig` has no defaults and the pre-May-13 config (spinner + 6mm pearl
