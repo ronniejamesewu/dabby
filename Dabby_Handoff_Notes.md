@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 14, 2026 — Session 33
+## Last updated: May 15, 2026 — Session 34
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -15,7 +15,7 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 **Live log:** https://ronniejamesewu.github.io/dabby
 **Repo:** ronniejamesewu/dabby (branch: main)
-**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator — rendering logic only), `Dabby_Data.py` (all session data: strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS, TERPENE_REFERENCE, color resolution, validation), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and session process reasoning), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
+**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator — rendering logic only), `Dabby_Data.py` (all session data: strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS, TERPENE_REFERENCE, color resolution, validation), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and session process reasoning), `DABBY_ARCHITECTURE.md` (target architecture, schema design, and six-step implementation plan — living document, update as steps complete), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
 
 **Environment:** Claude Code. Files are in the repo working directory. Read them directly — do not fetch from raw.githubusercontent.com or copy files to a separate path.
 
@@ -38,7 +38,7 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 **Generator notes:** Python, not Node.js. Produces HTML. Charts rendered via Chart.js from CDN — requires internet to render. Each curve section has a chart auto-generated from the same waypoint data that feeds the waypoint table. Chart IDs are auto-incremented. The `curve_chart_html()` helper accepts a waypoints list and returns self-contained HTML+JS. No TOC entries — the dashboard browser is the navigation. Footer auto-timestamps on each run.
 
-**Two-file structure (Session 31):** All session data lives in `Dabby_Data.py`; `Dabby_Log_Generator.py` is rendering logic only. The generator imports via `from Dabby_Data import *` plus an explicit second line `from Dabby_Data import _ACCENT_RESOLVED` because wildcard imports skip underscore-prefixed names by default. Post-split token counts: data ~9.6K, generator ~17.4K — both files read in a single Claude pass.
+**Two-file structure (Session 31):** All session data lives in `Dabby_Data.py`; `Dabby_Log_Generator.py` is rendering logic only. The generator imports via `from Dabby_Data import *` plus an explicit second line `from Dabby_Data import _ACCENT_RESOLVED` because wildcard imports skip underscore-prefixed names by default. Post-split token counts: data ~9.6K, generator ~32K (the original ~17.4K estimate was wrong — the CSS block alone is ~10K tokens). Generator exceeds the 25K single-read limit and requires chunked reads. CSS extraction (Step 1 of DABBY_ARCHITECTURE.md) will bring it under the limit.
 
 **Adding a new run requires both files:** in `Dabby_Data.py`, add the waypoint constant (e.g. `RF_RUN4 = [Waypoint(...), ...]`), add the `CompletedRun(...)` entry to `COMPLETED_RUNS`, and update the strain's `STRAIN_STATUS` `next_text`. In `Dabby_Log_Generator.py`, add a `collapsible_section(...)` call in `build_html()` for the new run's results section (header, swab, intensity, notes) and update the strain's `what_to_try_next_html()` call. Editing only the data file will silently produce a page where the dashboard counts increment but no run section renders — verify the rendered HTML before committing.
 
@@ -164,7 +164,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Visual overhaul of the log** — user flagged the forest green styling as feeling heavyweight. Raise this as an agenda item at start of a future session.
 - **Session date backfill** — `run_date` is a field in each `CompletedRun` entry. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those constructors and re-run the generator.
 - **Gemlock joystick introduced May 13** — now the standard rig configuration; pearl no longer in use. All prior cross-strain data was collected with the previous setup. The efficiency hypothesis (lighter swab, stronger effect from more complete vaporization) now has two data points (MB9ZST Runs 1–2) — both light golden swab, both strong effect, both slight tail harshness at 430°F. Also noted on Run 2: visible vapor at lower temps than expected, possibly indicating efficient early vaporization onset. Treat Gemlock as a persistent confound when interpreting new data relative to prior runs. Device Constants updated (PR #42).
-- **Community release direction** — discussed potential to genericize this project as a Switch² community template: cleaned-up generator + CLAUDE.md template + handoff structure as a public GitHub repo. Three pieces of value identified: the generator, the CLAUDE.md session protocol (real IP from months of iteration on Claude behavior in this domain), and the handoff pattern itself. No action taken. Data/code separation identified as a prerequisite. Not a full-stack rewrite — static generator, GitHub Pages, same paradigm.
+- **Community release direction** — architecture designed and committed in Session 34 (DABBY_ARCHITECTURE.md). Target: local-first, data-driven generator, zero required external services, CLAUDE.md User Configuration block. GitHub is the development toolchain, not required infrastructure. Community template = this repo minus the data. Six-step implementation plan in DABBY_ARCHITECTURE.md covers everything needed before release without building for it prematurely.
 
 **Open ideas (not yet built):**
 - **Bring some excitement to first dab of the day** — user flagged a desire for this; no specific mechanism discussed yet. Could be curve, ritual, or strain choice.
@@ -173,7 +173,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Control water temperature and change frequency as variables** — standardize practice and log it. Revisit when calibration work matures.
 - **Dashboard: cut Last pill, keep only Next** — Last and Next links in the strain browser are redundant because the run sections sit immediately adjacent to each other on the page. Remove the Last pill; consider styling the Next pill in the strain's accent color to give it more visual weight.
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent. Increase the visual or structural separation so it's clear which state a section is in.
-- **Template-driven run sections** — adding a new run still requires editing `build_html()` to insert a `collapsible_section(...)` call and updating the strain's `what_to_try_next_html()` call. The data/code split (Session 31) made the data side small and safe but did not eliminate this. A fully data-driven approach — `COMPLETED_RUNS` entries that carry their own rendering metadata so the generator iterates them without per-strain inline HTML — would close the loop. Larger refactor; out of scope for the current cadence.
+- **Template-driven run sections** — now Step 3 of DABBY_ARCHITECTURE.md. `REFACTOR_TEMPLATE_DRIVEN.md` was deleted (Session 34) — its schema design was wrong (rendering metadata in data layer, raw HTML strings in dataclass fields). The architecture doc defines the correct schema and approach. Not yet executed.
 
 ---
 
@@ -232,6 +232,13 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - `_ACCENT_RESOLVED` requires an explicit `from Dabby_Data import _ACCENT_RESOLVED` line in the generator alongside the wildcard, because Python's `from x import *` skips underscore-prefixed names by default unless `__all__` is defined. Do not delete the explicit import line "to clean up the duplication" — it is load-bearing.
 - One remaining known technical issue: some color values are Python constants, others are raw hex strings scattered in CSS and chart JS — no single source of truth. The two issues resolved by the dataclasses refactor: terpene BP line hardcoding (now derived from TERPENE_REFERENCE) and unvalidated strain name join (now caught by `validate()` at build time).
 - Slug/anchor consistency check in `validate()` rejected — a mismatch is immediately visible in rendered output as a broken anchor link, so build-time validation doesn't justify the added complexity.
+- `DABBY_ARCHITECTURE.md` is a committed living document, not a throwaway planning doc. Design documents that explain *why* the system is structured as it is have ongoing reference value that survives execution. Update it as steps complete. Do not delete it.
+- Run analysis (`dab_notes`, `analysis`, `proposed_waypoints`) lives on `CompletedRun` (the run that generated it), not on `StrainStatus` and not in a separate structure. The last run's analysis is rendered as the current "What to Try Next." This produces a permanent history of how understanding evolved.
+- Run analysis is **historically stable** — correctable by exception when genuinely wrong, not casually overwritten when thinking changes. Mid-session recommendation revisions not backed by a new run belong in the wisdom layer (future: `HANDOFF_WISDOM.md`), not in a prior run's analysis field.
+- Analysis must synthesize the full strain history (all prior runs and their analyses), cross-strain patterns, and equipment state context. It must not react to the current run in isolation. "What to Try Next" tracks accumulated state of understanding, not prescriptions. A run that doesn't follow the prior suggestion is more data, not a deviation.
+- Equipment state is per-run via `EquipmentConfig(insert, carb_cap, pearl_diameter_mm)`. Equipment can change and revert between runs. `pearl_diameter_mm: int | None = None` — None means no pearl, integer is diameter in mm. Comparisons between runs must account for configuration differences. This is Step 2 of DABBY_ARCHITECTURE.md — not yet implemented.
+- `REFACTOR_TEMPLATE_DRIVEN.md` deleted (Session 34). Schema was architecturally wrong: rendering metadata (`amber`, `curve_label`, `results_header`, `curve_header` as raw HTML) in the data layer. Step 3 of DABBY_ARCHITECTURE.md achieves the same goal (data-driven generator) with a semantically correct schema.
+- PR workflow is optional for routine run logging. Local-first is the target workflow: edit data → run generator → open `index.html` in browser → confirm → commit. PR workflow remains appropriate for refactors, UI changes, and anything where preview URL has value. This is Step 5 of DABBY_ARCHITECTURE.md — not yet implemented; current sessions still use PR workflow.
 
 ---
 
@@ -290,6 +297,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 15, 2026 — Session 34:** Pure architectural ideation session — no runs logged. First-principles analysis of project structure treating current codebase as prototype. Key decisions: run analysis lives on `CompletedRun` (not `StrainStatus`, not a separate structure); analysis is historically stable not immutable; analysis synthesizes full strain history + cross-strain patterns + equipment state; equipment state is per-run via `EquipmentConfig` and can revert; handoff restructures into generated state layer + AI-maintained structured wisdom layer; local-first workflow is the target; PR workflow becomes optional. Wrote and committed `DABBY_ARCHITECTURE.md` (PR #55) — living design document, not throwaway. `REFACTOR_TEMPLATE_DRIVEN.md` deleted — schema was architecturally wrong. Generator token count corrected: ~32K not ~17.4K; CSS extraction (Step 1) will resolve.
 
 - **May 14, 2026 — Session 33:** MB9ZST Run 4 logged (May 14): 375→400→415°F ramp with 20-second hold — golden swab, slightly darker than Run 3's "lightly toasted marshmallow," still in the clean range. Harshness at the tail less than prior runs but still present — attenuating as endpoint steps down. More material in swabs at the end, noted as a possible harshness/yield tension: lower endpoint may be leaving more rosin unvaporized in the session window. Decent effect (second dab of the evening, tolerance factor). Run 5 direction: 410°F endpoint, same ramp and hold shape. Header corrected from Session 31 to Session 33 (Session 32 entry was logged but header was never bumped). PR #54.
 
