@@ -64,11 +64,17 @@ current description first, then rewrite it to cover all changes to date.
 
 When the user asks for the handoff to be updated, treat it as a session-close signal. Before writing, scan for open items in the handoff that can be resolved now, known issues in the generator or log files, and inconsistencies between what was done and what the handoff says. Propose these alongside the handoff update so they can be bundled into the same PR.
 
+If there is already an open PR when the handoff update is written, push the handoff changes to that same branch — do not open a separate PR for the handoff alone.
+
 ## Reference Sections
 
 The four reference sections (Device & Session Constants, Swab Color Reference, Baseline
 Curve, Terpene Reference) live on the main index page as collapsible blocks. Do not
 move them to a separate page — they collapse when not needed and are rarely accessed.
+
+## Reasoning Standard
+
+For methodology, design, and schema decisions, apply first-principles reasoning: decompose every undefined term to its atomic meaning before proceeding.
 
 ## Epistemic Flags
 
