@@ -886,6 +886,22 @@ def build_html():
         accent=_ac["Mango Banana #9 + Z + Sour Tangie"],
     ))
 
+    # ── Blueberry 36 #1 ──────────────────────────────────────────────────────
+
+    s  = f'<div class="section" id="bb361-profile">'
+    s += accent_header("Blueberry 36 #1 — Strain Profile", _ac["Blueberry 36 #1"])
+    s += info_table(BB36_1_INFO)
+    s += '<p class="note"><strong>Terpene inference:</strong> Myrcene inferred dominant from DJ Short\'s Blueberry base genetics; caryophyllene and alpha-pinene as secondaries. LOUD cold nose with no distinct discernible notes — nose is a weak secondary signal only. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
+    s += '</div>'
+    sections.append(s)
+
+    sections.append(what_to_try_next_html(
+        "bb361-next",
+        dab_notes="Cold nose is LOUD — no distinct flavor notes discernible.",
+        ai_analysis="No runs yet. Start from the baseline curve (380→390→410→430°F). Three phenotypes in the collection (#1, #2, #4) — nose all three jars before first sessions to establish a relative comparison point across phenotypes. Each will be logged separately; meaningful differences will come from session character and swab, not from nose or jar appearance.",
+        accent=_ac["Blueberry 36 #1"],
+    ))
+
     # ── Assemble ──────────────────────────────────────────────────────────────
     body = dash + ''.join(sections)
     body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>'
