@@ -913,13 +913,14 @@ def build_html():
     c += '<h3>Results</h3>'
     c += result_row("Swab:", "Very light golden — clean.")
     c += result_row("Session:", "Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice.")
-    c += result_row("Intensity:", "Medium")
+    c += result_row("Intensity:", "Medium and climbing")
+    c += result_row("Effect:", "Waves of anxiety / possible paranoia emerging post-session. User notes Blueberry strains hit harder than they look — this has come up before on this lineage.")
     sections.append(collapsible_section("bb361-run2", "Blueberry 36 #1 — Run 2 — May 15, 2026", c))
 
     sections.append(what_to_try_next_html(
         "bb361-next",
-        dab_notes="Very light golden swab. Medium intensity. Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice.",
-        ai_analysis="Tail harshness persisted stepping down from 430°F (Run 1) to 415°F (Run 2) — consistent with the pattern on MB9ZST, which also showed harshness at both 420°F and 415°F. Rain Fruit resolved cleanly at 420°F, so this material may need a lower ceiling. The spicy/hot note at session end is more likely thermal irritation presenting as peppery than a distinct terpene peak — caryophyllene boils at 266°F and would express early in the session, not late. The very light golden swab on both runs is consistent with the Gemlock efficiency pattern. 'Not a lot of distinct flavor' appeared on Run 1 at 430°F and again here at 415°F — more likely this phenotype's character than a temperature signal. Next: try 410°F endpoint, same ramp shape.",
+        dab_notes="Very light golden swab. Medium and climbing intensity. Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice. Strong effect post-session, anxiety/paranoia waves noted — consistent with prior Blueberry strain experiences.",
+        ai_analysis="Tail harshness persisted stepping down from 430°F (Run 1) to 415°F (Run 2) — consistent with the pattern on MB9ZST, which also showed harshness at both 420°F and 415°F. Rain Fruit resolved cleanly at 420°F, so this material may need a lower ceiling. The spicy/hot note at session end is more likely thermal irritation presenting as peppery than a distinct terpene peak — caryophyllene boils at 266°F and would express early in the session, not late. The very light golden swab on both runs is consistent with the Gemlock efficiency pattern. 'Not a lot of distinct flavor' appeared on Run 1 at 430°F and again here at 415°F — more likely this phenotype's character than a temperature signal. Next: try 410°F endpoint, same ramp shape. Post-session anxiety pattern flagged — user reports this has appeared before on Blueberry strains, suggesting this lineage runs strong. Load less on Run 3 to give more headroom.",
         proposed_waypoints=BB36_1_NEXT,
         accent=_ac["Blueberry 36 #1"],
     ))
