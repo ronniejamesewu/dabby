@@ -905,10 +905,21 @@ def build_html():
     c += result_row("Intensity:", "Medium")
     sections.append(collapsible_section("bb361-run1", "Blueberry 36 #1 — Run 1 — May 15, 2026", c))
 
+    c  = session_order_note(_spr.get(("Blueberry 36 #1", 2)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 415°F with 20-second hold — ramp 375→400→415°F</p>'
+    c += curve_chart_html(BB36_1_RUN2)
+    c += curve_table(BB36_1_RUN2)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Very light golden — clean.")
+    c += result_row("Session:", "Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice.")
+    c += result_row("Intensity:", "Medium")
+    sections.append(collapsible_section("bb361-run2", "Blueberry 36 #1 — Run 2 — May 15, 2026", c))
+
     sections.append(what_to_try_next_html(
         "bb361-next",
-        dab_notes="Super light golden swab, maybe wants more heat. Hard in the tail. Not the most flavorful rosin. Medium intensity.",
-        ai_analysis="Tail harshness at 430°F is the dominant signal — consistent cross-strain pattern regardless of curve shape, and the more reliable indicator here. The super-light swab is consistent with the Gemlock efficiency pattern (MB9ZST Runs 1–2 were also very light golden with strong effects), so the light swab alone doesn't indicate incomplete vaporization. 'Not the most flavorful' may be this material's character rather than a temperature signal. Next: try 420°F endpoint to address tail harshness before moving in the other direction.",
+        dab_notes="Very light golden swab. Medium intensity. Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice.",
+        ai_analysis="Tail harshness persisted stepping down from 430°F (Run 1) to 415°F (Run 2) — consistent with the pattern on MB9ZST, which also showed harshness at both 420°F and 415°F. Rain Fruit resolved cleanly at 420°F, so this material may need a lower ceiling. The spicy/hot note at session end is more likely thermal irritation presenting as peppery than a distinct terpene peak — caryophyllene boils at 266°F and would express early in the session, not late. The very light golden swab on both runs is consistent with the Gemlock efficiency pattern. 'Not a lot of distinct flavor' appeared on Run 1 at 430°F and again here at 415°F — more likely this phenotype's character than a temperature signal. Next: try 410°F endpoint, same ramp shape.",
         proposed_waypoints=BB36_1_NEXT,
         accent=_ac["Blueberry 36 #1"],
     ))
