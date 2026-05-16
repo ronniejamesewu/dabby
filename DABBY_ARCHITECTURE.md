@@ -66,43 +66,75 @@ artifacts distilled here and deleted (Session 35 precedent). No code changes;
 `Dabby_Data.py` / `Dabby_Log_Generator.py` / `index.html` untouched. No runs
 logged.
 
-The following are explicitly re-opened. Each carries a *recommended direction*,
-not a settled decision — recording a recommendation as settled architecture is
-exactly the failure this audit corrects.
+**Session 39 — N2 dissolved, N5 resolved; B4/C1 closed; Step 3 ungated.**
+The two open sub-problems were resolved through this project's audit
+discipline: two parallel memory-disabled subagent auditors (the fast pass),
+then one independent memory-off session given the source plus the fast pass
+but forbidden the author's argued draft. The independent auditor diverged from
+the fast pass on two points and was right both times; those divergences won.
 
-- **B4 — resolved in *shape* only; not "total"; two sub-problems explicitly
-  open (Session 37).** Two independent neutral audits (memory-disabled, given
-  source + the prior critique, forbidden the author's argued draft) converged.
-  Adopted shape: a closed predicate catalog + typed STORE fields routed by
-  authorship/tense + a bounded, deliberate Step-3.0 drop of non-catalogued
-  narrative; `extra_rows` is **not** an escape hatch. But this is a **bounded
-  heuristic, not a decidable/total classifier** — both audits showed the
-  "total" framing over-asserted and falsified on existing data. Two named
-  sub-problems remain **open**, and Step 3 stays gated on them:
-  - **N2 — predicate-selection rule.** Catalog predicates defined "vs prior
-    same-strain run" carry no rule for *which* prior run; the log references
-    non-adjacent priors (`Dabby_Log_Generator.py:626` "reduced from 440°F"
-    while the immediately-prior Hive1 run endpoint is 430; `:756` "same as
-    Runs 1 and 2" skipping R3). Needs an explicit selection rule.
-  - **N5 — C1 coupling.** Rendering the current "What to Try Next" from the
-    frozen last-run `analysis` is the *opposite* of C1's recommended direction
-    (keep the per-run field frozen, decouple the rendered guidance from it).
-    B4 and C1 cannot be settled independently — resolve them together.
-  `section_note` is **dropped** — the user's decision; no basis is recorded or
-  required (a personal log is not a system of record). Mixed author/tense
-  result rows (e.g. OC R5 "Observation:") and the `next_text` dashboard
-  one-liner (open #6) are part of the same unresolved surface. Do not call the
-  schema "resolved" or "total."
+- **N2 — dissolved (premise rejected).** B4's "closed predicate catalog +
+  typed STORE" presumed the curve-relation clause is *derived*; it is
+  *authored*. There is no referent-selection rule because nothing is derived.
+  The full Mode/Hold/Endpoint line and per-run Results literals are **frozen
+  verbatim authored prose** — same authoring/freezing discipline as
+  `analysis`. The "render numerics from structured waypoints" variant was
+  evaluated and **rejected**: it provably fails the bespoke lines (MBD R3 —
+  dual holds + "ramp from 375°F open"), collapsing into verbatim transcription
+  exactly on the hard cases while being redundant on the easy ones, and it
+  makes the Step-3.0 delta enumeration circular (normalizing Mode lines *is*
+  the N2 decision). Machine string↔waypoint consistency is **consciously
+  declined** — the project never had it, its epistemic flags disclaim it, no
+  logged incident is of that class, and the mandatory pre-commit
+  rendered-HTML check at 28-runs / one-author is the proportionate guard
+  (Session-37 "rigor scales with stakes").
+- **N5 / C1 — resolved by decoupling, with `analysis` explicitly rendered.**
+  `CompletedRun.analysis` is frozen (audit trail, Guardrail 1) **and rendered
+  read-only inside each run's own section** as that run's permanent synthesis.
+  The strain-level "What to Try Next" renders from revisable `StrainStatus`
+  fields (`next_dab_notes` / `next_ai_analysis` / `next_waypoints` /
+  `next_text`). This separates "historical record" (frozen, in-run) from
+  "current recommendation" (revisable, strain-level) — realizing Principles
+  4 & 5 and removing the Target-Data-Model contradiction. The "leave
+  `analysis` unrendered / history in git only" option was rejected: it
+  recreates the unstructured-history problem the refactor exists to kill.
+- **B4 — closed.** No predicate catalog; the typed-catalog shape from the
+  Session 37 audits is superseded. The only remaining schema question is
+  *which* named string fields exist — a small fixed set tested against the
+  28 runs at Step 3 (the existing line-299 note), not a slope.
+- **C1 — closed**, subsumed by N5 (per-run field frozen *and* rendered as
+  in-run history; current guidance decoupled to `StrainStatus.next_*`).
+- **C2 and C3 remain open** — they gate Steps 4b and 5, not Step 3.
+- **Step 3 is ungated** under N2-minimal + N5(ii), with the Step-3.0 scope
+  correction recorded in Step 3 below. Docs only this session; no
+  code/`index.html` change.
 
-- **C1 — "run analysis is historically stable" (Principle 4 / Guardrail 1).**
-  Decided in a zero-runs ideation session, never tested against the project's
-  actual core loop, which is *belief revision* (its single most valuable artifact
-  is the wholesale retraction of the 15–35°F thermal offset). *Recommended:* keep
-  the per-run `analysis` frozen as the audit trail — but **decouple** the rendered
-  "current What to Try Next" from it. Render current guidance from the revisable
-  wisdom layer, not from the last run's frozen field. (This decouples "historical
-  record" — correctly frozen — from "current recommendation" — which must stay
-  current. It is a recommended direction, not a new settled decision.)
+---
+
+The items below were re-opened by prior audits. **B4, N2, N5, and C1 are
+resolved as of Session 39** (see the Session 39 note above) — their entries
+are kept as the record of what was decided and when, not as live questions.
+**C2 and C3 remain open.**
+
+- **B4 — RESOLVED Session 39** (was: "resolved in shape only, two sub-problems
+  open" — Session 37). The Session 37 audits converged on a closed predicate
+  catalog + typed STORE; Session 39 superseded that — the catalog presumed
+  *derivation* where the artifact is *authorship*. Final: no catalog, no
+  referent rule; the curve-relation prose and per-run Results literals are
+  frozen verbatim authored fields (**N2 dissolved**). `section_note` stays
+  dropped. Mixed author/tense result rows (e.g. OC R5 "Observation:") are
+  frozen verbatim literals like any other per-run row — no schema needed for
+  them. `next_text` (open #6) is resolved: hand-maintained current state on
+  `StrainStatus` (see N5). See the Session 39 note above.
+
+- **C1 — RESOLVED Session 39 (via N5).** Session 35 recommended keeping the
+  per-run `analysis` frozen but decoupling the rendered "current What to Try
+  Next" from it. Adopted — with the gap the Session 39 independent audit
+  caught: the frozen `analysis` is **also rendered read-only in each run's own
+  section** (its permanent in-run history), and the strain-level "What to Try
+  Next" renders from revisable `StrainStatus.next_*`. Decoupling *without*
+  rendering would have orphaned `analysis` into write-only data — the failure
+  the first-classing was meant to eliminate. See the Session 39 note above.
 
 - **C2 — append-only wisdom tables (Principle 6 / Step 4b).** Append-only leaves a
   15–35°F-offset row and its retraction both standing for the reader to reconcile;
@@ -185,15 +217,18 @@ Equipment can change and revert between runs. Each run happened against a specif
 configuration. That configuration is part of the run's record and is required for
 correct comparison between runs.
 
-**4. Run analysis is historically stable.** *(Re-opened — see C1 in Status &
-Re-opened Questions. Recommended: keep the per-run field frozen as the audit
-trail, but decouple the rendered "current What to Try Next" from it.)*
+**4. Run analysis is historically stable.** *(RESOLVED Session 39 via N5 — see
+the Session 39 note in Status & Re-opened Questions.)*
 
 The analysis field on a `CompletedRun` records the state of understanding at the
-moment it was written. It should not be casually overwritten. Mid-session updates
-that aren't backed by a new run belong in the wisdom layer, not in the run object.
-Historically stable means: correctable by exception when genuinely wrong, not
-silently revisable whenever the AI changes its thinking.
+moment it was written. It is frozen (correctable by exception when genuinely
+wrong, not silently revisable when the AI changes its thinking) **and rendered
+read-only in that run's own section** as permanent in-run history. It is *not*
+the source of the strain's current "What to Try Next" — that renders from the
+revisable `StrainStatus.next_*` fields. Historical record (frozen, in-run) and
+current recommendation (revisable, strain-level) are different things sourced
+from different places. Mid-session guidance changes not backed by a new run go
+to `StrainStatus.next_*`, never into a prior run's frozen `analysis`.
 
 **5. Analysis synthesizes; it does not react.**
 
@@ -296,18 +331,28 @@ class CompletedRun:
     proposed_waypoints: list[Waypoint] | None = None
 ```
 
-**Note on field boundaries:** The exact field set is validated during Step 3
-(content migration). The 28 existing runs are the test suite. Expect minor revisions
-as fields meet real data. `extra_rows` is the escape hatch for genuinely one-off
-content that doesn't fit structured fields.
+**Note on field boundaries:** The exact field set — and its *granularity* (one
+frozen Mode/Results string vs. decomposed `swab`/`session_char`/`read`/`verdict`
+fields) — is settled during Step 3 against the 28 existing runs as the test
+suite. Expect minor revisions as fields meet real data. `extra_rows` holds
+genuinely one-off result rows (e.g. OC R5 "Observation:") as **frozen verbatim
+literals**, not a typed escape hatch.
 
-**Schema question status (see B4 in Status & Re-opened Questions):** The
-derive-vs-store *shape* is decided — closed predicate catalog + typed STORE
-routed by authorship/tense + bounded deliberate drop; `extra_rows` is not the
-escape hatch; `section_note` is dropped. It is a **bounded heuristic, not
-total**: the per-predicate selection rule (N2) and the C1 coupling (N5) remain
-open and gate Step 3. Do not treat this schema block as settled until N2/N5 are
-decided.
+**Schema question status — RESOLVED Session 39** (see the Session 39 note in
+Status & Re-opened Questions). B4's closed-predicate-catalog / typed-STORE
+shape is **superseded**. The interpretive connective tissue — the
+Mode/Hold/Endpoint line, per-run Results rows, `endpoint_note`, `read`,
+`verdict`, `analysis` — is **frozen verbatim authored prose**, the same
+discipline as `analysis`; nothing is derived, so N2's referent-selection rule
+was a pseudo-problem and dissolves. Numerics are *not* re-stored: waypoints
+remain the single source for curve numbers (the chart and curve table already
+read them) and the curve line is not re-rendered from them — the "render
+numerics from structured fields" variant was rejected (it fails the bespoke
+lines, e.g. MBD R3, and makes the Step-3.0 delta enumeration circular). Machine
+string↔waypoint consistency is consciously declined; the pre-commit
+rendered-HTML check is the proportionate guard. `section_note` stays dropped.
+Field *granularity* is the only thing still settled at Step 3, against the
+28 runs.
 
 **Note on `too_hot`:** Replaces `amber: bool` from `REFACTOR_TEMPLATE_DRIVEN.md`.
 Semantically the same fact but named for what it means, not how it renders. The
@@ -323,21 +368,26 @@ default here — it only rejects arbitrary unhashable defaults on Python ≥3.11
 is a version-dependent backstop, not the reason. `validate()` rejecting `None` is
 the enforcement.
 
-**Note on `analysis` placement:** The analysis for a strain lives on the
-`CompletedRun` that generated it, not on `StrainStatus`. The generator renders
-the last run's analysis as the current "What to Try Next" section. This produces
-a permanent history of how understanding evolved — each run carries the state of
-thought at that moment. Note that `next_dab_notes`/`next_ai_analysis`/
-`next_waypoints` are not being *removed* from `StrainStatus` — they were never
-`StrainStatus` fields. They are currently inline arguments to
-`what_to_try_next_html()` in `build_html()`; post-refactor they are sourced from
-the last `CompletedRun` for the strain.
+**Note on `analysis` placement (RESOLVED Session 39 via N5).** The analysis for
+a run lives on the `CompletedRun` that generated it, not on `StrainStatus`. It
+is frozen and **rendered read-only inside that run's own section** — the
+permanent record of how understanding evolved, each run carrying the state of
+thought at that moment. It is **not** the source of the current "What to Try
+Next". The strain-level "What to Try Next" renders from revisable
+`StrainStatus` fields (`next_dab_notes`/`next_ai_analysis`/`next_waypoints`),
+which become **explicit `StrainStatus` fields**. Today these are inline
+arguments to `what_to_try_next_html()` in `build_html()`, already authored
+independently of any run's `analysis` — N5 makes that latent reality explicit
+and *removes* a coupling rather than adding one. Sourcing the rendered guidance
+from the last run's frozen `analysis` is explicitly rejected: it both stales
+the guidance and, once `analysis` is a real field, would orphan it into
+write-only data (the gap the Session 39 independent audit caught).
 
-**Open schema question (#6, decide in Step 3):** `next_text` — the dashboard
-strain-browser one-liner — *is* a hand-maintained `StrainStatus` field and is
-unaddressed by this migration. Step 3 must decide whether it is derived from the
-last run's `analysis` (consistent with the "derive from last run" principle) or
-remains hand-maintained.
+**Schema question #6 — RESOLVED Session 39.** `next_text` — the dashboard
+strain-browser one-liner — stays a **hand-maintained `StrainStatus` field**
+(current revisable state), consistent with the rest of the
+`StrainStatus.next_*` guidance block under N5. It is *not* derived from the
+last run's frozen `analysis`.
 
 ### `StrainStatus` (extended)
 
@@ -347,7 +397,8 @@ class StrainStatus:
     # Existing
     name: str
     profile_anchor: str
-    next_text: str
+    next_text: str                      # #6 RESOLVED: stays hand-maintained
+                                        # current state, not derived
     accent: str | None
     slug: str
 
@@ -357,11 +408,12 @@ class StrainStatus:
     terpene_table_rows: list = None     # only MB9ZST currently
     terpene_table_note: str = ""        # note above terpene table (MB9ZST only)
 
-    # NOTE: next_dab_notes/next_ai_analysis/next_waypoints are NOT removed here —
-    # they were never StrainStatus fields (currently inline args to
-    # what_to_try_next_html()). Post-refactor they are sourced from the last
-    # CompletedRun. Open (#6): next_text above is hand-maintained — derive from
-    # last run's analysis or keep manual? Decide in Step 3.
+    # Current "What to Try Next" — revisable strain-level guidance (N5).
+    # Today these are inline args to what_to_try_next_html(); Step 3 makes
+    # them explicit fields. NOT sourced from any run's frozen analysis.
+    next_dab_notes: str = ""
+    next_ai_analysis: str = ""
+    next_waypoints: list = None
 ```
 
 ---
@@ -381,8 +433,8 @@ def build_html():
             continue
         sections.append(render_strain_profile(ss))
         for i, run in enumerate(runs_for(ss.name), start=1):
-            sections.append(render_run_section(ss, i, run))
-        sections.append(render_what_to_try_next(ss, last_run(ss.name)))
+            sections.append(render_run_section(ss, i, run))   # incl. run.analysis, read-only
+        sections.append(render_what_to_try_next(ss))           # from ss.next_*, NOT last run (N5)
 ```
 
 Adding a strain: add entries to `Dabby_Data.py`. Zero generator edits.
@@ -409,7 +461,8 @@ Contains:
 
 - Current run counts per strain
 - Last run date per strain
-- Current "What to Try Next" per strain (last run's `analysis` and `dab_notes`)
+- Current "What to Try Next" per strain (from `StrainStatus.next_*` — **not**
+  the last run's frozen `analysis`; corrected per N5, Session 39)
 - Current equipment configuration per strain (last run's `equipment`)
 - Dashboard stats
 
@@ -466,16 +519,17 @@ is regenerated automatically by the generator run.
 These are protocol constraints, not schema constraints. They govern AI behavior
 during sessions, not data structure.
 
-**Guardrail 1: Run analysis is historically stable.** *(Re-opened — see C1 in
-Status & Re-opened Questions. The frozen-record intent is sound; what is
-re-opened is coupling it to the rendered "current" guidance.)*
+**Guardrail 1: Run analysis is historically stable.** *(RESOLVED Session 39 via
+N5 — frozen-record intent stands; the rendered "current" guidance is decoupled
+to `StrainStatus.next_*`.)*
 
 Once a run's `analysis` field is written and committed, it is a permanent record
-of the state of understanding at that moment. Mid-session recommendation revisions
-that are not backed by a new run belong in the wisdom layer (as a "Methodology
-State" update), not in a prior run's `analysis` field. Corrections are permitted
-when the original analysis was factually wrong — but require an explicit reason
-and are the exception, not the default flow.
+of the state of understanding at that moment, rendered read-only in that run's
+own section. Mid-session recommendation revisions that are not backed by a new
+run go to the revisable `StrainStatus.next_*` fields (the rendered "What to Try
+Next"), never into a prior run's frozen `analysis`. Corrections to `analysis`
+are permitted when the original was factually wrong — but require an explicit
+reason and are the exception, not the default flow.
 
 **Guardrail 2: Analysis must synthesize, not react.**
 
@@ -498,6 +552,20 @@ explicitly. A lighter swab on a Gemlock run vs. a spinner cap run may reflect
 equipment, not temperature. Runs are only directly comparable when their
 `EquipmentConfig` matches. Cross-configuration comparisons require the equipment
 difference to be acknowledged in the analysis.
+
+**Guardrail 4: Logging is confirmed interpretation, not silent translation.**
+*(Added Session 39. Operational detail — the clarify-vs-thread-pull rule and
+the necessity-class fields — lives once, in the Session Logging Protocol in
+`Dabby_Handoff_Notes.md`.)*
+
+The AI never freezes loose user input into log content without first stating its
+reading back in plain language for correction — unconditionally, regardless of
+how confident it feels (this project's documented failure mode is
+over-confidence, so the readback cannot be gated on the AI noticing its own
+uncertainty). It may ask questions to resolve genuine ambiguity, and at most one
+discretionary "that's curious" question beyond what the user said; the user ends
+the exchange with "just log it" at any time, and unresolved vagueness is
+recorded as vague, never upgraded to a confident claim.
 
 ---
 
@@ -660,6 +728,13 @@ run content out of `build_html()` into `CompletedRun`/`StrainStatus` fields,
 replace the per-strain HTML blocks with a data-driven iteration loop, and (per
 B1) make that loop render each run's `equipment`.
 
+**Gating — RESOLVED Session 39.** N2 and N5 (the two sub-problems that gated
+this step) are closed: N2 dissolved (frozen verbatim authored prose, no
+catalog, no numeric re-derivation); N5 resolved (frozen `analysis` rendered
+read-only in-run; "What to Try Next" from revisable `StrainStatus.next_*`).
+Step 3 is ungated, with the Step-3.0 scope correction below — which is what
+makes the byte-identity oracle non-circular under N2-minimal.
+
 **B3 — this is ~80% of the project's risk; the even-handed "six steps" framing
 underplays it.** It migrates 28 runs into a brand-new schema *and* rewrites a
 ~460-line generator region, in a project whose handoff records two separate
@@ -669,23 +744,33 @@ largest diff in the project's history.
 
 **Sub-steps:**
 
-**3.0 — Normalization commit (separate, on the *old* generator, first).** The
-current `build_html()` has accidental inconsistencies — `<h3>Curve</h3>` vs
+**3.0 — Normalization commit (separate, on the *old* generator, first).
+SCOPE-CORRECTED Session 39.** Resolve only the **trivial non-Mode-line**
+inconsistencies in the existing enumerated generator: `<h3>Curve</h3>` vs
 `<h3 class="amber">Curve Used</h3>`, `Results` vs `Observations`,
-`session_order_note()` on some first runs but not others, bespoke per-run Mode
-lines. Resolve these *in the existing enumerated generator* as one small,
-deliberate, separately-reviewed commit whose `index.html` diff is intentional
-behavior change and nothing else. Bundling deliberate output changes into the
-structural refactor would destroy the only checkable safety property the refactor
-can have. Normalize first, separately; then the refactor can target *true
-byte-identity*.
+`session_order_note()` present on some first runs but not others. **Mode/Hold/
+Endpoint lines and per-run Results rows are explicitly OUT of 3.0 scope — they
+are frozen verbatim, never normalized.** This is the N2-minimal correction:
+normalizing bespoke Mode lines would *be* the N2 decision (a canonical
+Mode-line grammar for cases like MBD R3's dual holds / "ramp from 375°F open"),
+so "freeze the 3.0 deltas first" would be circular if 3.0 touched them. With
+Mode lines frozen, the 3.0 delta set is small, enumerable, and independent of
+the refactor. Do this as one small, deliberate, separately-reviewed commit
+whose `index.html` diff is exactly that enumerated non-Mode delta set and
+nothing else. Enumerate and freeze that delta list *before* the refactor — it
+is the byte-identity oracle's fixed referent (the post-3.0 artifact, not
+today's `index.html`). Then the refactor can target *true byte-identity*.
 
 **3a.** Extend `CompletedRun` with the content fields from the data model above
-(including the `equipment` rendering wiring deferred from Step 2). Extend
-`StrainStatus` with profile content fields. Note: `next_dab_notes`/
-`next_ai_analysis`/`next_waypoints` are *not* removed from `StrainStatus` — they
-were never fields there; they are inline `what_to_try_next_html()` arguments
-today (see the data-model note and the open `next_text` question).
+(including the `equipment` rendering wiring deferred from Step 2). `analysis` is
+a `CompletedRun` field, frozen, **rendered read-only in that run's own section**
+(N5(ii) — the explicit fate the Session 39 audit required: a frozen-but-unrendered
+field would orphan the history into `git log` only). Extend `StrainStatus` with
+profile content fields **and** the explicit `next_dab_notes`/`next_ai_analysis`/
+`next_waypoints` fields (today inline `what_to_try_next_html()` args; now real
+revisable fields — the source of the rendered "What to Try Next"). `next_text`
+stays hand-maintained (#6 resolved). None of the `next_*` fields are sourced
+from any run's frozen `analysis`.
 
 **3b + 3c — strain-by-strain, with a byte-identity oracle.** Do not migrate all
 28 runs and rewrite the whole region in one move. Build the data-driven loop
@@ -696,9 +781,14 @@ post-3.0 enumerated output. Proceed strain by strain — each is an independentl
 checkable unit with a mechanical pass/fail, not a 460-line diff read by eye. Only
 once all 9 strains render byte-identically through the loop is the enumerated
 region (between the `# ── WW Z` and `# ── Assemble` dividers — treat the dividers
-as authoritative; line numbers drift as runs are logged) deleted.
-`what_to_try_next_html()` pulls from the last run's `dab_notes`, `analysis`,
-`proposed_waypoints`; the loop renders `equipment` per B1.
+as authoritative; line numbers drift as runs are logged) deleted. The loop
+renders each run's frozen `analysis` read-only inside its run section;
+`what_to_try_next_html()` pulls from `StrainStatus.next_*` (**not** the last
+run's `analysis` — N5); the loop renders `equipment` per B1. The verbatim-freeze
+discipline covers **every** per-run literal (Mode/Results rows, `amber` flags,
+headers, the Hive1 R3 `section_note` deletion), not just curve strings — that is
+what makes the per-strain byte-identity assertion meaningful against the post-3.0
+referent.
 
 **3d.** Final check: full `index.html` byte-identical to the post-3.0 baseline.
 The normalization commit (3.0) is the *only* intentional-behavior-change
@@ -706,9 +796,13 @@ boundary; the refactor itself changes no output. Any non-zero diff here is a
 refactor bug, not an accepted normalization.
 
 **Completion condition:** `build_html()` contains no strain names. Adding a run
-requires editing only `Dabby_Data.py`. Every strain passed the byte-identity
-oracle individually; final `index.html` is byte-identical to the post-3.0
-baseline. Generator remains under 25K tokens.
+requires editing only `Dabby_Data.py`. The Step-3.0 non-Mode delta set was
+enumerated and frozen *before* the refactor and is the oracle's referent; every
+per-run literal (not just curve strings) was transcribed verbatim; every strain
+passed the byte-identity oracle individually; final `index.html` is
+byte-identical to the post-3.0 baseline. Each run's frozen `analysis` renders
+read-only in its section; "What to Try Next" renders from `StrainStatus.next_*`.
+Generator remains under 25K tokens.
 
 **Note:** There is no safe pause *inside* one strain's migration, but the plan
 now pauses safely *between* strains — that is the point of the decomposition. The
@@ -726,8 +820,9 @@ structured wisdom layer.
 
 **4a.** Write `generate_handoff_state()` — produces `HANDOFF_STATE.md` from
 `Dabby_Data.py`. Covers: run counts per strain, last dates, current
-"What to Try Next" per strain (last run's analysis), current equipment config.
-Call from the generator alongside `build_html()`.
+"What to Try Next" per strain (from `StrainStatus.next_*` — **not** the last
+run's frozen `analysis`; corrected per N5), current equipment config. Call from
+the generator alongside `build_html()`.
 
 **4b.** Restructure `Dabby_Handoff_Notes.md` into `HANDOFF_WISDOM.md`. Migrate
 the cross-strain patterns, equipment observations, failure modes, and methodology
@@ -801,6 +896,8 @@ the template by editing one section.
 (data-driven generator) was correct; the schema design (rendering metadata in
 data, HTML strings in dataclass fields, `results_header` preserving an accidental
 inconsistency) was wrong. Step 3 of this plan targets the same goal with a
-*better* schema — its *shape* is now settled (see B4 in Status & Re-opened
-Questions) but it remains a bounded heuristic with two open sub-problems
-(N2 predicate-selection, N5 C1 coupling) that gate Step 3.
+*better* schema — **resolved Session 39** (see the Session 39 note in Status &
+Re-opened Questions): no rendering metadata and no HTML strings as typed data,
+but also no predicate catalog — the interpretive prose is frozen verbatim
+authored text (N2 dissolved) and the rendered "current" guidance is decoupled
+from the frozen per-run record (N5). No open sub-problems gate Step 3.
