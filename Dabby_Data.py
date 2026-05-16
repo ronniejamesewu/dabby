@@ -360,6 +360,34 @@ RF_RUN4_NEXT = [
     Waypoint(time_s=65, temp_f=423, note="Endpoint — up 3°F from Run 3"),
 ]
 
+BB36_1_INFO = [
+    ("Strain",      "Blueberry 36 #1 (DJ Short's Blueberry base genetics — producer-specific pheno designation)"),
+    ("Consistency", "Badder"),
+    ("Micron",      "90μ"),
+    ("Growers",     "Matt & Oliver"),
+    ("Washer",      "Three Blind Trichs"),
+    ("Nose",        "LOUD at cold nose; no distinct flavor notes discernible"),
+]
+BB36_1_TERPS = [
+    ("Caryophyllene", "266°F / 130°C", "Spicy — inferred secondary (DJ Short's Blueberry lineage)"),
+    ("Alpha-Pinene",  "311°F / 155°C", "Pine — inferred secondary (DJ Short's Blueberry lineage)"),
+    ("Myrcene",       "334°F / 168°C", "Earthy, sweet — inferred dominant (DJ Short's Blueberry lineage)"),
+    ("Terpinolene",   "367°F / 186°C", "Sweet, floral — inferred minor"),
+    ("Linalool",      "388°F / 198°C", "Floral — inferred minor"),
+]
+BB36_1_RUN1 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
+]
+BB36_1_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
+    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
+    Waypoint(time_s=65, temp_f=420, note="Endpoint — down 10°F to address tail harshness"),
+]
+
 MB9ZST_INFO = [
     ("Strain",      "Mango Banana #9 + Z + Sour Tangie"),
     ("Product",     "Persy Neapolitan — three-strain cold-cure blend, 2g jar"),
@@ -447,6 +475,7 @@ COMPLETED_RUNS = [
     CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN2),
     CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 15,  2,  0, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN3),
     CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 15,  4, 34, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN4),
+    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 15), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 16,  1, 53, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=BB36_1_RUN1),
 ]
 
 STRAIN_STATUS = [
@@ -459,6 +488,7 @@ STRAIN_STATUS = [
     StrainStatus(name="Maple Bacon Donut",                 profile_anchor="#mbd-profile",      next_text="Try faster ramp to 460°F on Run 5",                                                    accent=None, slug="mbd"),
     StrainStatus(name="Rain Fruit",                        profile_anchor="#rainfruit-profile",next_text="Walk endpoint up incrementally — try 423°F on Run 4",                                  accent=None, slug="rainfruit"),
     StrainStatus(name="Mango Banana #9 + Z + Sour Tangie", profile_anchor="#mb9zst-profile",  next_text="Try 410°F endpoint on Run 5 — tail harshness still present at 415°F",                 accent=None, slug="mb9zst"),
+    StrainStatus(name="Blueberry 36 #1",                  profile_anchor="#bb361-profile",    next_text="Try 420°F endpoint on Run 2 — tail harshness at 430°F",                                accent=None, slug="bb361"),
 ]
 
 TERPENE_REFERENCE = [
