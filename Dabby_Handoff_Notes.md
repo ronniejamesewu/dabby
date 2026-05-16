@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 16, 2026 — Session 38
+## Last updated: May 15, 2026 — Session 38
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -314,7 +314,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 ## Changelog
 
-- **May 16, 2026 — Session 38:** Blueberry 36 #1 added as new strain profile and Run 1 logged (May 15, 2026). Matt & Oliver / Three Blind Trichs, 90μ badder. Cold nose: LOUD, no distinct flavor notes. Run 1: baseline curve, super light golden swab, hard in the tail, not the most flavorful, medium intensity. Cross-strain 430°F tail harshness pattern confirmed on first run. Run 2 direction: 420°F endpoint, same ramp shape. Equipment bug noted: when Step 3 implements equipment rendering, display must use `equipment.carb_cap` etc., not the Python constant name (_GEMLOCK / _SPINNER). PR #64.
+- **May 15, 2026 — Session 38:** Blueberry 36 #1 added as new strain profile and Run 1 logged (May 15, 2026). Matt & Oliver / Three Blind Trichs, 90μ badder. Cold nose: LOUD, no distinct flavor notes. Run 1: baseline curve, super light golden swab, hard in the tail, not the most flavorful, medium intensity. Cross-strain 430°F tail harshness pattern confirmed on first run. Run 2 direction: 420°F endpoint, same ramp shape. Equipment bug noted: when Step 3 implements equipment rendering, display must use `equipment.carb_cap` etc., not the Python constant name (_GEMLOCK / _SPINNER). PR #64.
 
 - **May 15, 2026 — Session 37:** B4 (schema derive-vs-store) worked as a pure design task — no code, no runs. Drafted a resolution, then ran two independent neutral audits (fresh memory-disabled sessions, given source + the prior critique, forbidden the author's argued draft). Both converged: the resolution *shape* is sound (closed predicate catalog + typed STORE routed by authorship/tense + bounded deliberate Step-3.0 drop; `extra_rows` is not an escape hatch), but the "total classifier" framing was over-asserted and falsified on existing data. B4 reframed in `DABBY_ARCHITECTURE.md` from "derive-vs-store unresolved" to a precise **bounded heuristic with two named open sub-problems** — **N2** (no rule for *which* prior run; falsified at `Dabby_Log_Generator.py:626`/`:756`) and **N5** (rendering current "What to Try Next" from the frozen last-run `analysis` collides with C1's recommended decoupling). **Step 3 remains gated on N2/N5.** `section_note` dropped from the proposed schema (user's decision; no basis recorded — a personal log is not a system of record). Raw audit artifacts distilled into the doc and deleted (Session 35 precedent). Process note: an over-formalized auto-memory entry was created from an offhand rationale then deleted — decision-rigor should scale with stakes; low-stakes personal-log calls don't need audit-grade justification. No code/data change; `index.html` unaffected.
 

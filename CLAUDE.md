@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # Dabby — Session Instructions
 
 At the start of every session:
@@ -13,12 +17,61 @@ All material is hash rosin (ice water extracted, solventless) unless explicitly
 stated otherwise. The log records what happened, swab results, and current thinking 
 on what to try next — not a formal calibration program.
 
+## Commands
+
+- **Generate the log:** `python3 Dabby_Log_Generator.py` (Windows: `python
+  Dabby_Log_Generator.py`) — reads `Dabby_Data.py`, writes `index.html`.
+- `validate()` and `validate_accent_colors()` run automatically at the top of
+  `build_html()`. A data error prints `VALIDATION ERRORS:` and exits 1 — a bad
+  edit fails the generate step instead of producing a broken page.
+- **No test suite, linter, or build system.** The logged runs are the de-facto
+  regression suite; correctness is verified by eyeballing rendered `index.html`
+  (locally or via the PR preview URL).
+- **Deploy is automatic:** push to `main` → `deploy.yml` regenerates and
+  publishes to GitHub Pages. Each PR auto-gets a preview URL via `preview.yml`.
+  Both share a `gh-pages` concurrency group to avoid a merge race.
+
+## Architecture
+
+- **Two-file split (Session 31).** `Dabby_Data.py` = all data + dataclasses
+  (`Waypoint`, `CompletedRun`, `EquipmentConfig`, `StrainStatus`,
+  `TerpeneEntry`), `GLOBAL_INFO`, `COMPLETED_RUNS`, `STRAIN_STATUS`,
+  `TERPENE_REFERENCE`, accent-color resolution, and `validate()`.
+  `Dabby_Log_Generator.py` = rendering only; imports `from Dabby_Data import *`
+  plus an explicit `from Dabby_Data import _ACCENT_RESOLVED` (wildcard skips
+  underscore names). CSS is external in `style.css` (Session 36), linked from
+  the generated `<head>`.
+- **Run content is split across both files (key gotcha).** Structured data
+  (waypoints, dates, equipment) lives in `Dabby_Data.py`; the per-run narrative
+  (swab/vapor/verdict, "What to Try Next") is still string literals inside
+  `build_html()`. `build_html()` enumerates one inline block per strain between
+  `# ── <STRAIN>` and `# ── Assemble` dividers (known structural debt).
+- **Equipment is per-run.** `EquipmentConfig` with two named regimes
+  `_SPINNER`/`_GEMLOCK`; cutover at MB9ZST Run 1 (May 13 2026). `validate()`
+  rejects `equipment=None` — no field defaults by design.
+- **Charts:** Chart.js from CDN, one per curve via `curve_chart_html()`, fed by
+  the same waypoint list as the table; needs internet to render.
+- **`DABBY_ARCHITECTURE.md`** is a living 6-step refactor plan (Steps 1–2 done;
+  Step 3 — the data-driven loop that eliminates the two-file run-content split —
+  gated on open sub-problems N2/N5). Read it before any structural/schema
+  change; it supersedes the deleted `REFACTOR_TEMPLATE_DRIVEN.md`.
+- **Infra hazards:** never use GitHub MCP `push_files` for `index.html` or
+  routine commits (caused silent content loss — use git); never hand-write
+  `index.html`.
+
 ## Updating the Log
 
-Edit `Dabby_Log_Generator.py` directly. Run with `python3 Dabby_Log_Generator.py` 
-to produce `index.html`. Commit both files to a feature branch, then open a PR.
+Adding or changing a run touches **two files** (see Architecture): put
+structured data (waypoints, dates, equipment, `STRAIN_STATUS`) in
+`Dabby_Data.py`, and the run's narrative HTML block plus its
+`what_to_try_next_html()` call in `build_html()` in `Dabby_Log_Generator.py`.
+Then run `python3 Dabby_Log_Generator.py` to regenerate `index.html`. Commit
+all three files to a feature branch, then open a PR.
 
-Never write `index.html` by hand — always run the generator and push its output.
+Never write `index.html` by hand — always run the generator and commit its
+output. Editing only `Dabby_Data.py` silently renders a page where dashboard
+counts increment but the run section is missing — verify the rendered HTML
+before committing.
 
 ## Date and Time Logging
 
@@ -31,6 +84,7 @@ When logging a run:
 4. Only surface the date discrepancy if UTC and local dates differ (i.e. after ~6pm MDT when UTC has rolled over).
 5. Use the confirmed local date as `run_date` in the COMPLETED_RUNS tuple.
 6. If the user corrects the time with a specific clock time ("it was at 8:30pm"), convert that to UTC and use it as `utc_logged_at` — not `datetime.now()`. If the user gives a relative offset ("about 10 minutes ago"), subtract from `datetime.now(timezone.utc)`. Either way, present the derived time in the confirmation prompt.
+7. The handoff's `## Last updated:` header and changelog entry date must be the **local date derived from `utc_logged_at` of the last run logged this session** (UTC−6) — not the UTC date, and not `run_date` (which reflects when the dab happened, not when logging occurred). For sessions with no new runs, apply UTC−6 to the current time.
 
 ## Confirm Before Acting
 
