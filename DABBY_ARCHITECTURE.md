@@ -53,21 +53,46 @@ one definition to verify beats 24 transcriptions, and the no-default/explicit-
 per-run/`validate()`-rejects-`None` intent is fully met. Step 2's completion
 condition is reworded below to match.
 
+**Session 37 — B4 audited twice and reframed (not resolved).** B4's proposed
+resolution was drafted, then independently audited in two memory-disabled fresh
+sessions (each given source + the prior critique, forbidden the author's argued
+draft). Both converged: the resolution *shape* (closed catalog + typed STORE +
+bounded deliberate drop) is sound, but the "total classifier" framing is
+over-asserted and falsified on existing data. Net effect: B4's vague
+"derive-vs-store unresolved" is replaced by a precise bounded heuristic plus two
+named open sub-problems (N2 predicate-selection; N5 C1 coupling) that keep
+Step 3 gated. `section_note` dropped (user's call, no basis). Raw audit
+artifacts distilled here and deleted (Session 35 precedent). No code changes;
+`Dabby_Data.py` / `Dabby_Log_Generator.py` / `index.html` untouched. No runs
+logged.
+
 The following are explicitly re-opened. Each carries a *recommended direction*,
 not a settled decision — recording a recommendation as settled architecture is
 exactly the failure this audit corrects.
 
-- **B4 — the schema is not "solved."** `too_hot` (vs `amber`) is a real fix, but
-  the Principle-1 tension is unresolved, not minor: `endpoint_note="same as Run
-  1"` is *derivable* from waypoint equality; `section_note` is experimental
-  prose; `extra_rows` is unconstrained; the bespoke per-run "Mode:" line and the
-  heterogeneous result-row labels (Swab/Vapor/Verdict/Diagnosis/Read/Note/…) have
-  no structured home; OC Runs 1–2 (both → `OC_RUNS12`, rendered as two
-  cross-referencing sections) can only be represented by storing comparison prose
-  as data — the exact anti-pattern this doc condemns. *Recommended:* resolve
-  derive-vs-store **in this document before Step 3**, using OC Runs 1–2 and the
-  Mode lines as the explicit test cases. Until then do not call the schema
-  "semantically correct."
+- **B4 — resolved in *shape* only; not "total"; two sub-problems explicitly
+  open (Session 37).** Two independent neutral audits (memory-disabled, given
+  source + the prior critique, forbidden the author's argued draft) converged.
+  Adopted shape: a closed predicate catalog + typed STORE fields routed by
+  authorship/tense + a bounded, deliberate Step-3.0 drop of non-catalogued
+  narrative; `extra_rows` is **not** an escape hatch. But this is a **bounded
+  heuristic, not a decidable/total classifier** — both audits showed the
+  "total" framing over-asserted and falsified on existing data. Two named
+  sub-problems remain **open**, and Step 3 stays gated on them:
+  - **N2 — predicate-selection rule.** Catalog predicates defined "vs prior
+    same-strain run" carry no rule for *which* prior run; the log references
+    non-adjacent priors (`Dabby_Log_Generator.py:626` "reduced from 440°F"
+    while the immediately-prior Hive1 run endpoint is 430; `:756` "same as
+    Runs 1 and 2" skipping R3). Needs an explicit selection rule.
+  - **N5 — C1 coupling.** Rendering the current "What to Try Next" from the
+    frozen last-run `analysis` is the *opposite* of C1's recommended direction
+    (keep the per-run field frozen, decouple the rendered guidance from it).
+    B4 and C1 cannot be settled independently — resolve them together.
+  `section_note` is **dropped** — the user's decision; no basis is recorded or
+  required (a personal log is not a system of record). Mixed author/tense
+  result rows (e.g. OC R5 "Observation:") and the `next_text` dashboard
+  one-liner (open #6) are part of the same unresolved surface. Do not call the
+  schema "resolved" or "total."
 
 - **C1 — "run analysis is historically stable" (Principle 4 / Guardrail 1).**
   Decided in a zero-runs ideation session, never tested against the project's
@@ -254,7 +279,8 @@ class CompletedRun:
     # Curve description (new — replaces curve_header HTML string)
     hold_seconds: int = 65
     endpoint_note: str = ""             # "steady (no ramp)", "same as Run 1", etc.
-    section_note: str = ""              # experimental context (e.g. Hive1 Run 3)
+    # section_note REMOVED — dropped Session 37 (user decision, no basis
+    # required). Sole instance (Hive1 R3) deletes at Step 3.0.
 
     # Session content (new — currently string literals in build_html())
     swab: str = ""
@@ -275,14 +301,13 @@ class CompletedRun:
 as fields meet real data. `extra_rows` is the escape hatch for genuinely one-off
 content that doesn't fit structured fields.
 
-**Open schema question (decide in Step 3, not pre-decided here):** Several proposed
-fields are in tension with Principle 1 (data carries semantic content, not rendering
-metadata). `endpoint_note="same as Run 1"` and `section_note` are comparison/
-presentation prose, not facts — and "same as Run 1" is *derivable* from waypoint
-equality rather than stored. `extra_rows` is an unconstrained escape hatch that
-tends to absorb content the schema should capture. Step 3b must decide, per field,
-whether to derive or store, and constrain `extra_rows` to genuinely non-recurring
-content. This document does not pre-settle it.
+**Schema question status (see B4 in Status & Re-opened Questions):** The
+derive-vs-store *shape* is decided — closed predicate catalog + typed STORE
+routed by authorship/tense + bounded deliberate drop; `extra_rows` is not the
+escape hatch; `section_note` is dropped. It is a **bounded heuristic, not
+total**: the per-predicate selection rule (N2) and the C1 coupling (N5) remain
+open and gate Step 3. Do not treat this schema block as settled until N2/N5 are
+decided.
 
 **Note on `too_hot`:** Replaces `amber: bool` from `REFACTOR_TEMPLATE_DRIVEN.md`.
 Semantically the same fact but named for what it means, not how it renders. The
@@ -776,6 +801,6 @@ the template by editing one section.
 (data-driven generator) was correct; the schema design (rendering metadata in
 data, HTML strings in dataclass fields, `results_header` preserving an accidental
 inconsistency) was wrong. Step 3 of this plan targets the same goal with a
-*better* schema — but the schema is not yet settled (see B4 in Status &
-Re-opened Questions); the Principle-1 derive-vs-store decision must be resolved
-before Step 3, not at execution time.
+*better* schema — its *shape* is now settled (see B4 in Status & Re-opened
+Questions) but it remains a bounded heuristic with two open sub-problems
+(N2 predicate-selection, N5 C1 coupling) that gate Step 3.
