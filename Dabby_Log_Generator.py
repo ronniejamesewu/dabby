@@ -895,10 +895,21 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
+    c  = '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline</p>'
+    c += curve_chart_html(BB36_1_RUN1)
+    c += curve_table(BB36_1_RUN1)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Super light golden — very clean.")
+    c += result_row("Session:", "Not the most flavorful. Hard in the tail.")
+    c += result_row("Intensity:", "Medium")
+    sections.append(collapsible_section("bb361-run1", "Blueberry 36 #1 — Run 1 — May 15, 2026", c))
+
     sections.append(what_to_try_next_html(
         "bb361-next",
-        dab_notes="Cold nose is LOUD — no distinct flavor notes discernible.",
-        ai_analysis="No runs yet. Start from the baseline curve (380→390→410→430°F). Three phenotypes in the collection (#1, #2, #4) — nose all three jars before first sessions to establish a relative comparison point across phenotypes. Each will be logged separately; meaningful differences will come from session character and swab, not from nose or jar appearance.",
+        dab_notes="Super light golden swab, maybe wants more heat. Hard in the tail. Not the most flavorful rosin. Medium intensity.",
+        ai_analysis="Tail harshness at 430°F is the dominant signal — consistent cross-strain pattern regardless of curve shape, and the more reliable indicator here. The super-light swab is consistent with the Gemlock efficiency pattern (MB9ZST Runs 1–2 were also very light golden with strong effects), so the light swab alone doesn't indicate incomplete vaporization. 'Not the most flavorful' may be this material's character rather than a temperature signal. Next: try 420°F endpoint to address tail harshness before moving in the other direction.",
+        proposed_waypoints=BB36_1_NEXT,
         accent=_ac["Blueberry 36 #1"],
     ))
 
