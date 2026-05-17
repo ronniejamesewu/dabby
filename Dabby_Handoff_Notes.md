@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 16, 2026 — Session 42
+## Last updated: May 16, 2026 — Session 43
 
 This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
 
@@ -160,7 +160,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 
 **Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
 
-**Blueberry 36 #1** (Matt & Oliver / Three Blind Trichs, 90μ badder) — Run 1 (May 15, 2026): baseline curve — super light golden swab, hard in the tail, not the most flavorful, medium intensity. Run 2 (May 15, 2026): 375→400→415°F ramp with 20-second hold — very light golden swab (clean), not a lot of distinct flavor, throat irritation at the tail, spicy/hot note at the end, medium-and-climbing intensity. Waves of anxiety / possible paranoia post-session — user reports Blueberry lineage runs stronger than it looks, has come up before on this lineage. Tail harshness persisting stepping down from 430°F (Run 1) to 415°F (Run 2) — consistent with MB9ZST (harsh at both 420°F and 415°F); Rain Fruit resolved cleanly at 420°F, so this material may need a lower ceiling. Run 3 pending: 410°F endpoint, same ramp shape, load less for headroom.
+**Blueberry 36 #1** (Matt & Oliver / Three Blind Trichs, 90μ badder) — Run 1 (May 15, 2026): baseline curve — super light golden swab, hard in the tail, not the most flavorful, medium intensity. Run 2 (May 15, 2026): 375→400→415°F ramp with 20-second hold — very light golden swab (clean), not a lot of distinct flavor, throat irritation at the tail, spicy/hot note at the end, medium-and-climbing intensity. Waves of anxiety / possible paranoia post-session — user reports Blueberry lineage runs stronger than it looks, has come up before on this lineage. Run 3 (May 16, 2026): same 415°F curve repeated — golden and light swab, taste still mild, tad of throat harshness at the end, pretty big intensity. Tail harshness confirmed at 415°F across two runs (Runs 2 and 3). Run 4 pending: try 410°F endpoint, same ramp shape.
 
 ---
 
