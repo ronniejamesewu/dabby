@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 17, 2026 — Session 44
+## Last updated: May 17, 2026 — Session 45
 
 This document provides operational context for sessions. Read alongside:
 - `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
@@ -256,6 +256,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 17, 2026 — Session 45:** Step 4 of `DABBY_ARCHITECTURE.md` executed (branch `claude/architecture-step-4-4nI0U`). Handoff restructured into three layers: `HANDOFF_STATE.md` (generated per-strain status — written automatically by `Dabby_Log_Generator.py`), `HANDOFF_WISDOM.md` (AI-maintained Cross-Strain Patterns / Equipment Observations / Failure Modes / Methodology State tables, non-strict append-only per C2 resolution), and trimmed `Dabby_Handoff_Notes.md` (operational notes only). Removed: Current Strain Status, Thermal Model, Curve Design Key Insights, Harm Reduction Context sections (content distributed to wisdom layer). CLAUDE.md startup reads updated to four files; generator dropped from default startup; session-close checklist added. C2 resolved; C3 open (gates Step 5). No runs logged.
 
 - **May 17, 2026 — Session 44:** Step 3 of `DABBY_ARCHITECTURE.md` completed (branch `claude/architecture-planning-0VWIu`). All 9 strains migrated to data-driven rendering. Sub-steps: Step 3.0 normalization commit (fixed `<h3>` labels, missing `session_order_note()` calls, amber class on OC R5, deleted Hive1 R3 orphaned note; `GLOBAL_INFO` Terp Tools "Cloud Vortex auto spinner cap" → "Cloud Vortex 21.0" bundled here); Step 3a extended `CompletedRun` and `StrainStatus` with all content fields; Steps 3b/3c migrated WW Z, CAG, OC, Hive1, Fembot #3, MS23, MBD, Rain Fruit, MB9ZST, BB36 #1 — each verified byte-identical against the post-3.0 oracle; Step 3d confirmed full-page byte-identity; then the 9 per-strain blocks collapsed to a single `for ss in STRAIN_STATUS:` loop and `_ac`/`_spr`/`_cnt` removed. Generator: 926 lines → 524 lines; ~25.5K tokens → ~5.8K tokens. Two commits pushed. No runs logged. Updated handoff and `DABBY_ARCHITECTURE.md` to mark Step 3 done.
 
