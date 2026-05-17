@@ -53,6 +53,7 @@ Operational and data-integrity failures worth tracking across sessions.
 | Decision | Rationale | Session |
 |---|---|---|
 | Curve shape classifier lives in the generator as a rendering utility function, not as a `@property` on `CompletedRun` (supersedes Session 46 decision) | A string label is display logic — it belongs in the rendering layer, not the data model. The label is not queryable: if shape-based querying is needed in future, either query waypoints directly (e.g. `run.waypoints[-1].temp_f`, monotonicity checks) or add structured boolean/int properties to `CompletedRun` at that point. Do not add properties speculatively before a real query exists | Session 47 |
+| `read` and `verdict` on `CompletedRun` are superseded by `analysis` for runs logged from Step 3 (Session 43) onward | Both fields predate the formal `analysis` field and hold interpretive text that `analysis` was designed to replace. For new runs: populate `analysis`, leave `read` and `verdict` empty. Open item: migrate existing `read`/`verdict` content into `analysis` on pre-Step-3 runs, then remove both fields from the schema. `extra_rows` is not affected. | Session 48 |
 
 ---
 
