@@ -126,6 +126,6 @@ Practical implications: flat opening phases deliver the most accurate temperatur
 4. Observe swab color and session character (vapor density, harshness, when production peaked)
 5. Adjust endpoint or ascent rate based on swab result
 6. Log result in session log with swab observation and any adjustments
-7. Repeat until swab is consistently light golden/amber
+7. Each run informs the next — adjust based on swab result and session character, log the outcome.
 
-Empirical calibration via swab is ground truth. Terpene profile reasoning is a starting framework, not a prediction.
+Swab result is the empirical ground truth. Terpene profile reasoning is a starting framework, not a prediction.
