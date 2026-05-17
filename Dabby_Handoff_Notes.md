@@ -154,7 +154,6 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - 1D thermal resistance model is a dead end. Do not rebuild.
 - The 15–35°F offset estimate is retired. Current position: offset probably small.
 - Quartz-to-sapphire curve scaling does not work.
-- Valley mode is not appropriate for cold start sessions.
 - Consistency type alone does not justify a different baseline curve.
 - All MD files (`CLAUDE.md`, `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`) are in the repo. Push them when relevant changes are made.
 - The user's hypothesis that higher temperature (460°F endpoint) produced a notably stronger effect in OC Run 5 is logged as stated — one data point, not a confirmed finding. Do not dismiss it or over-assert it.

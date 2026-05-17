@@ -49,8 +49,6 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 - Offset is a stable calibration constant, not a variable dependent on loading timing.
 - Do not reason about cold-material thermal shock. It does not apply.
 
-**Mode selection:** Ascent preferred over Valley. Valley does an initial dip designed for hot-insert loading. With cold start, material is already at its lowest temperature at session open. Valley's dip is redundant and stalls vaporization at session start.
-
 ---
 
 ## 4. Terpene & Temperature Reference
@@ -91,9 +89,19 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 
 ## 5. Curve Design
 
+**Device curve constraints (Switch² Custom mode):**
+
+| Constraint | Limit |
+|---|---|
+| Max heating rate | +10°F/sec |
+| Max cooling rate | −3°F/sec |
+| Session hold time | 10–90 seconds (user-adjustable) |
+
+Any number of waypoints may be defined within these constraints. The heating rate limit bounds how steeply a curve can ascend per second; the cooling rate limit bounds how quickly it can descend. The session hold time is the total profile window — all waypoints must fit within it.
+
 **Baseline philosophy:** Single baseline curve for all hash rosin with cold start. The log handles strain-specific empirical calibration from that baseline. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.
 
-**Why custom ascent:** Cold start means material is at its lowest temperature at session open. Ascending curve continues that natural trajectory, working through terpene boiling points from most volatile to least volatile. Preserves the most heat-sensitive compounds first.
+**Why ascending curves:** Cold start means material is at its lowest temperature at session open. An ascending curve continues that natural trajectory, working through terpene boiling points from most volatile to least volatile as the temperature climbs. This preserves the most heat-sensitive compounds early in the session.
 
 **Construction parameters:**
 
@@ -104,7 +112,6 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 | Ascent rate | 0.6–1.2°F/sec. Gentleness is the goal |
 | Endpoint | 430°F baseline starting point |
 | Hold time | 55–65 seconds. End when vapor drops — do not ride timer |
-| Max ascent rate | 10°F/sec (Switch² Custom mode limit) — never approach this |
 
 **Hash rosin vs flower rosin:** Hash rosin vaporizes more cleanly at lower temperatures due to lower plant material contamination. This is an efficiency argument. Do not import curve assumptions from flower rosin contexts.
 
@@ -114,7 +121,7 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 
 Practical implications: flat opening phases deliver the most accurate temperature to the material relative to setpoint. Steep mid-session climbs move the titanium through terpene zones faster than the material actually experiences them — the material catches up during subsequent flat or slower phases. A slowly-arrived-at lower endpoint delivers more heat to the material than a steeply-arrived-at higher endpoint, because the flat tail allows the offset to close. This is the rationale for preferring a steeper mid-climb with a flatter tail over a uniformly steep ascent to a higher endpoint.
 
-**Torch comparison:** Traditional torch fired dab has a decaying temperature. Banger is superheated and then cold dab is applied when the decaying temperature reaches a desired start point. Consumption happens on decaying curve. Switch² custom ascent is opposite — controlled rise from lowest point.
+**Torch comparison:** Traditional torch fired dab has a decaying temperature. Banger is superheated and then cold dab is applied when the decaying temperature reaches a desired start point. Consumption happens on decaying curve. Switch² Custom mode is opposite — controlled rise from lowest point.
 
 ---
 

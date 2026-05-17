@@ -80,10 +80,6 @@ parameter (η) concept was developed and abandoned — the two dominant paramete
 were partially redundant and the underlying geometry is unknowable. Swab result
 is the ground truth.
 
-### Mode
-Custom Ascent preferred over Valley. Valley's initial dip is redundant with cold
-start — material is already at its lowest temperature at session open.
-
 ### Baseline Philosophy
 Single baseline curve for all hash rosin with cold start. Strain-specific
 adjustment happens empirically via swab results, not terpene-profile reasoning.

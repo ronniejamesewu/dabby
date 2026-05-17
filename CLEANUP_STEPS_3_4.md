@@ -196,6 +196,31 @@ is a starting framework, not a prediction."
 
 ---
 
+## Category E — Schema rename (item 13)
+
+### 13. Rename `hold_seconds` → `duration_seconds` on `CompletedRun`
+
+**Location:** `Dabby_Data.py` — `CompletedRun` field definition and all explicit
+constructor calls in `COMPLETED_RUNS`. `Dabby_Log_Generator.py` — `render_run_section()`
+uses `run.hold_seconds`.
+
+`hold_seconds` is misleading — it implies a flat hold phase, but it is the total
+session duration. Most runs use the default (65s); a few specify 60s or 45s
+explicitly. The Mode line currently renders it as `Hold: N seconds` which compounds
+the confusion now that `hold_seconds` coexists with `Hold` as a curve shape label.
+
+**What to do:**
+1. Rename field to `duration_seconds` in `CompletedRun` (default stays 65)
+2. Update all explicit `hold_seconds=N` constructor calls in `COMPLETED_RUNS`
+3. Update `render_run_section()` — `run.hold_seconds` → `run.duration_seconds`
+4. Decide whether the Mode line label changes from `Hold:` to `Duration:` — probably
+   yes, since `Hold:` is now ambiguous alongside the `Hold` curve shape label
+
+Straightforward rename — no behavior change. Grep for `hold_seconds` to find all
+call sites before starting.
+
+---
+
 ## Notes for implementation
 
 **Ordering:** Items 8–12 (doc fixes) are independent and low-risk — do them

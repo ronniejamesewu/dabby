@@ -13,6 +13,21 @@ from Dabby_Data import _ACCENT_RESOLVED  # underscore names are skipped by wildc
 
 # ── HELPERS ────────────────────────────────────────────────────────────────
 
+def _classify_curve_shape(waypoints):
+    temps = [wp.temp_f for wp in waypoints]
+    if len(temps) < 2:
+        return "Hold"
+    diffs = [temps[i+1] - temps[i] for i in range(len(temps)-1)]
+    signs = [1 if d > 0 else (-1 if d < 0 else 0) for d in diffs]
+    groups = [signs[0]]
+    for s in signs[1:]:
+        if s != groups[-1]:
+            groups.append(s)
+    if len(groups) > 4:
+        return "Complex"
+    names = {1: "Ramp Up", -1: "Ramp Down", 0: "Hold"}
+    return " + ".join(names[g] for g in groups)
+
 def info_table(rows):
     html = '<table class="info-table">'
     for label, value in rows:
@@ -372,7 +387,7 @@ def render_run_section(ss, i, run):
 
     c  = session_order_note(run.sessions_prior_today)
     c += '<h3 class="amber">Curve</h3>' if run.too_hot else '<h3>Curve</h3>'
-    c += (f'<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp;'
+    c += (f'<p><strong>Mode:</strong> {_classify_curve_shape(run.waypoints)} &nbsp;|&nbsp;'
           f' <strong>Hold:</strong> {run.hold_seconds} seconds &nbsp;|&nbsp;'
           f' {run.endpoint_note}</p>')
     c += curve_chart_html(run.waypoints)
@@ -466,7 +481,7 @@ def build_html():
     # Baseline Curve
     c  = '<p class="note">Single starting curve for all hash rosin sessions with cold start technique. Strain profiles document empirical deviations from this baseline via swab results and session observations. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.</p>'
     c += '<h3>Parameters</h3>'
-    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 380°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    c += f'<p><strong>Mode:</strong> {_classify_curve_shape(BASELINE_CURVE)} &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 380°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     c += curve_chart_html(BASELINE_CURVE)
     c += curve_table(BASELINE_CURVE)
     c += '<p class="note">Terpene zone annotations in individual run curves are approximate orientation points — not measured targets. The same common cannabis terpenes appear across most strains. Annotations reflect boiling point ranges, not confirmed strain-specific data.</p>'
