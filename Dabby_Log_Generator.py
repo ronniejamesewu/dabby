@@ -388,7 +388,7 @@ def render_run_section(ss, i, run):
     c  = session_order_note(run.sessions_prior_today)
     c += '<h3 class="amber">Curve</h3>' if run.too_hot else '<h3>Curve</h3>'
     c += (f'<p><strong>Mode:</strong> {_classify_curve_shape(run.waypoints)} &nbsp;|&nbsp;'
-          f' <strong>Hold:</strong> {run.hold_seconds} seconds &nbsp;|&nbsp;'
+          f' <strong>Duration:</strong> {run.duration_seconds} seconds &nbsp;|&nbsp;'
           f' {run.endpoint_note}</p>')
     c += curve_chart_html(run.waypoints)
     c += curve_table(run.waypoints, amber=run.too_hot)
@@ -481,7 +481,7 @@ def build_html():
     # Baseline Curve
     c  = '<p class="note">Single starting curve for all hash rosin sessions with cold start technique. Strain profiles document empirical deviations from this baseline via swab results and session observations. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.</p>'
     c += '<h3>Parameters</h3>'
-    c += f'<p><strong>Mode:</strong> {_classify_curve_shape(BASELINE_CURVE)} &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 380°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    c += f'<p><strong>Mode:</strong> {_classify_curve_shape(BASELINE_CURVE)} &nbsp;|&nbsp; <strong>Duration:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 380°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     c += curve_chart_html(BASELINE_CURVE)
     c += curve_table(BASELINE_CURVE)
     c += '<p class="note">Terpene zone annotations in individual run curves are approximate orientation points — not measured targets. The same common cannabis terpenes appear across most strains. Annotations reflect boiling point ranges, not confirmed strain-specific data.</p>'

@@ -305,7 +305,7 @@ class CompletedRun:
                                         # too_hot is the fact
 
     # Curve description (new — replaces curve_header HTML string)
-    hold_seconds: int = 65
+    duration_seconds: int = 65
     endpoint_note: str = ""             # "steady (no ramp)", "same as Run 1", etc.
     # section_note REMOVED — dropped Session 37 (user decision, no basis
     # required). Sole instance (Hive1 R3) deletes at Step 3.0.

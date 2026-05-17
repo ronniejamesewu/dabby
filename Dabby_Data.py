@@ -37,7 +37,7 @@ class CompletedRun:
     too_hot: bool = False
 
     # Curve description
-    hold_seconds: int = 65
+    duration_seconds: int = 65
     endpoint_note: str = ""          # "steady (no ramp)", "same as Run 1", etc.
 
     # Session content — all fields live here; generator is rendering-only (Step 3)
@@ -496,7 +496,7 @@ _GEMLOCK = EquipmentConfig(insert="quartz", carb_cap="Gemlock joystick",  pearl_
 
 COMPLETED_RUNS = [
     CompletedRun(strain="WW Z", run_date=date(2026, 5, 2), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=WWZ_RUN1,
-        hold_seconds=65, endpoint_note='<strong>Rate:</strong> ~0.6°F/sec',
+        duration_seconds=65, endpoint_note='<strong>Rate:</strong> ~0.6°F/sec',
         swab='Light golden/amber. Clean. No dark coloration.',
         extra_rows=[
             ("Vapor:",   "Spectacular. Full session expressed well across the arc."),
@@ -505,7 +505,7 @@ COMPLETED_RUNS = [
     ),
     CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=CAG_RUN1,
         date_label="May 2026",
-        too_hot=True, hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
+        too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
         swab="Amber shading toward light brown.",
         extra_rows=[
             ("Vapor:",      "Limited flavor. Session did not express distinct character."),
@@ -515,7 +515,7 @@ COMPLETED_RUNS = [
     ),
     CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUNS12,
         date_label="May 2026",
-        too_hot=True, hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
+        too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
         swab="Not recorded.",
         extra_rows=[
             ("Result:", "Working well but first 40 seconds felt too flat and slow. Low vapor density in opening phase. Same result on Run 2."),
@@ -523,7 +523,7 @@ COMPLETED_RUNS = [
     ),
     CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUNS12,
         date_label="May 2026",
-        too_hot=True, hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F — same as Run 1',
+        too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F — same as Run 1',
         swab="Not recorded.",
         extra_rows=[
             ("Result:",    "Same as Run 1 — opening too flat, low vapor density first 40s."),
@@ -532,20 +532,20 @@ COMPLETED_RUNS = [
     ),
     CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN3,
         date_label="May 2026",
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
         swab="Light golden/tan. Clean. Minimal peripheral darkening at tip edge — consistent with insert wall cooling, not degradation.",
         session_char="Very nice. Strong effects. Opening draws wispy but flavorful. Good progression through session.",
         intensity="Strong",
         verdict="Clean swab, strong result. Wispy opening draws suggest opportunity to raise opening setpoint slightly to improve vapor density at session start without affecting the clean tail.",
     ),
     CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 5), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN4,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
         swab="Light golden. Clean both times.",
         session_char="Fine. Not noticeably different from Run 3. Run repeated twice on May 5, 2026 — consistent results across both.",
         verdict="Clean swab confirmed. Results stable. Lower opening setpoint (350°F) under exploration for Run 5 as next variable to test.",
     ),
     CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 6), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN5,
-        too_hot=True, hold_seconds=65, endpoint_note='<strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F',
+        too_hot=True, duration_seconds=65, endpoint_note='<strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F',
         swab="Darker than target — direction consistent with endpoint too hot.",
         session_char="Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.",
         extra_rows=[
@@ -554,7 +554,7 @@ COMPLETED_RUNS = [
         ],
     ),
     CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 9), sessions_prior_today=3, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN6,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
         swab="Light golden. Clean.",
         session_char="Very nice.",
         extra_rows=[
@@ -562,7 +562,7 @@ COMPLETED_RUNS = [
         ],
     ),
     CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 9), sessions_prior_today=4, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN7,
-        hold_seconds=60, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
+        duration_seconds=60, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
         swab="Plain amber — clean.",
         session_char="Pleasant overall. Not as tasty as the ramp from lower temp. Harsh in the last 20 seconds.",
         read="Swab is clean, so harshness is a session character signal, not a floor indicator. Comparing to Run 6 (ramp to 430°F, light golden, very nice) — the flat hold at the same endpoint produces clearly more harshness and less flavor character. Consistent with the pattern seen on Fembot #3: flat holds at 430°F track hotter in session feel than ramps to the same endpoint, even with a clean swab.",
@@ -571,32 +571,32 @@ COMPLETED_RUNS = [
         ],
     ),
     CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 7), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN1,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
         swab="Light golden — clean. No darkening.",
         session_char="Nice flavors on the way up through the arc. Heavy indica effect.",
         verdict="Clean swab on first run — curve appears well-matched to this material. Repeated as Run 2 to confirm.",
     ),
     CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 7), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN2,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F — identical to Run 1',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F — identical to Run 1',
         swab="Very light — cleaner than Run 1.",
         session_char="Really nice. Consistent with Run 1.",
         verdict="Two clean runs, consistent character, swab lighter on repeat. 440°F endpoint may be higher than needed — material is fully expressing before the endpoint. Run 3: trying steady 430°F flat hold (no ramp) to test whether curve shape affects the result.",
     ),
     CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN3,
-        hold_seconds=45, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
+        duration_seconds=45, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
         swab="Light golden — clean.",
         session_char="First half: lots of flavor, low throat irritation. Second half: irritation increased, flavor faded to generic dab vapor — never harsh or burnt, just less distinct. Effect notably strong.",
         read="At a flat 430°F from the open, all terpene fractions (pinene through linalool, all below 430°F) are available simultaneously — first hit may be the full palette combining at once rather than staged. The ramp climbs through each fraction sequentially, which may be what gives those runs more distinct flavor progression across the arc. 45 seconds was too short — vapor was still producing at session end. Not a temperature issue, just cut off early.",
         verdict="One data point. Directionally supports the ramp producing more distinct staged flavor vs. the flat hold combining everything at once. If revisiting the flat hold, extend to 60 seconds. Next planned: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint to compare directly on the same endpoint.",
     ),
     CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN4,
-        hold_seconds=60, endpoint_note="<strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3's 45s",
+        duration_seconds=60, endpoint_note="<strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3's 45s",
         swab="Light golden — clean. Consistent with Run 3.",
         session_char="Similar to Run 3. Extended hold confirmed vapor was still producing at 45s in Run 3 — 60s felt more complete.",
         verdict="Two flat-hold data points, both clean swabs, consistent character. Next: ramp to 430°F endpoint (380→390→410→430°F) — the original planned experiment — to compare curve shape on the same endpoint.",
     ),
     CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=2, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN5,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)',
         swab="Light golden — a tad lighter than the flat-hold 430°F runs (Runs 3–4). Clean.",
         session_char="Nice distinct flavors through the first two-thirds. Harsh in the last ~10 seconds. Effects quite potent.",
         read="Distinct staged flavor character is consistent with the ramp — each terpene fraction vaporizes as the curve climbs through it, rather than all at once as in the flat hold. Swab difference vs. Runs 3–4 is within noise (too many uncontrolled variables). Harshness at session tail is a directional signal that 430°F may still be slightly above ideal for this material on the ramp.",
@@ -605,7 +605,7 @@ COMPLETED_RUNS = [
         ],
     ),
     CompletedRun(strain="Fembot #3", run_date=date(2026, 5, 9), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=FEMBOT3_RUN1,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
         swab="Light golden — clean. Two heads mostly white, two with light golden coloring. No darkening.",
         session_char="Very tasty on the ascent. No visible vapor until mid-range. Slight harshness at the tail. Effects upbeat, creative, not too body-heavy — consistent with sativa-dominant character.",
         extra_rows=[
@@ -613,7 +613,7 @@ COMPLETED_RUNS = [
         ],
     ),
     CompletedRun(strain="Fembot #3", run_date=date(2026, 5, 9), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=FEMBOT3_RUN2,
-        hold_seconds=60, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
+        duration_seconds=60, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
         swab="Light golden — clean. Consistent with Run 1.",
         session_char="Very tasty, great effects. Harshness in the last third.",
         read="Harshness at the tail is consistent with Run 1 (ramp to 430°F endpoint) — two data points now pointing at 430°F as slightly above ideal for this material, regardless of curve shape. Swab is clean, so this is a session character signal rather than a floor indicator.",
@@ -622,7 +622,7 @@ COMPLETED_RUNS = [
         ],
     ),
     CompletedRun(strain="Mango Starburst #23", run_date=date(2026, 5, 9), sessions_prior_today=2, utc_logged_at=None, equipment=_SPINNER, waypoints=MS23_RUN1,
-        hold_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
+        duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
         swab="Very clean — no darkening.",
         session_char="Very piney character throughout — almost pine sol. Tasty, though not to user's taste preference. Heady effects. No harshness.",
         extra_rows=[
