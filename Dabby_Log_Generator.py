@@ -917,10 +917,21 @@ def build_html():
     c += result_row("Effect:", "Waves of anxiety / possible paranoia emerging post-session. User notes Blueberry strains hit harder than they look — this has come up before on this lineage.")
     sections.append(collapsible_section("bb361-run2", "Blueberry 36 #1 — Run 2 — May 15, 2026", c))
 
+    c  = session_order_note(_spr.get(("Blueberry 36 #1", 3)))
+    c += '<h3>Curve</h3>'
+    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 415°F with 20-second hold — repeated from Run 2</p>'
+    c += curve_chart_html(BB36_1_RUN3)
+    c += curve_table(BB36_1_RUN3)
+    c += '<h3>Results</h3>'
+    c += result_row("Swab:", "Golden and light — clean.")
+    c += result_row("Session:", "Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end.")
+    c += result_row("Intensity:", "Pretty big at the moment.")
+    sections.append(collapsible_section("bb361-run3", "Blueberry 36 #1 — Run 3 — May 16, 2026", c))
+
     sections.append(what_to_try_next_html(
         "bb361-next",
-        dab_notes="Very light golden swab. Medium and climbing intensity. Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice. Strong effect post-session, anxiety/paranoia waves noted — consistent with prior Blueberry strain experiences.",
-        ai_analysis="Tail harshness persisted stepping down from 430°F (Run 1) to 415°F (Run 2) — consistent with the pattern on MB9ZST, which also showed harshness at both 420°F and 415°F. Rain Fruit resolved cleanly at 420°F, so this material may need a lower ceiling. The spicy/hot note at session end is more likely thermal irritation presenting as peppery than a distinct terpene peak — caryophyllene boils at 266°F and would express early in the session, not late. The very light golden swab on both runs is consistent with the Gemlock efficiency pattern. 'Not a lot of distinct flavor' appeared on Run 1 at 430°F and again here at 415°F — more likely this phenotype's character than a temperature signal. Next: try 410°F endpoint, same ramp shape. Post-session anxiety pattern flagged — user reports this has appeared before on Blueberry strains, suggesting this lineage runs strong. Load less on Run 3 to give more headroom.",
+        dab_notes="Run 3 repeated the 415°F curve (375→400→415, 20s hold): golden and light swab. Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end. Pretty big intensity.",
+        ai_analysis="Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.",
         proposed_waypoints=BB36_1_NEXT,
         accent=_ac["Blueberry 36 #1"],
     ))
