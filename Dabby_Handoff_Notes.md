@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 17, 2026 — Session 49
+## Last updated: May 17, 2026 — Session 50
 
 This document provides operational context for sessions. Read alongside:
 - `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
@@ -282,6 +282,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 17, 2026 — Session 50:** No runs logged. Added 🔥 badge to the run section header for the first run of each calendar day — detected at render time by list position in COMPLETED_RUNS, no data changes. Updated logging protocol: `sessions_prior_today` is now computed silently (no narration, no asking); when count is zero the confirmation beat includes a contextual cheer with real celebratory energy; when count is greater than zero, stated matter-of-factly. Post-date runs now ask for approximate time (for `utc_logged_at`) instead of asking the user to count their dabs. Added tone instruction at the top of the logging protocol: dry, smart, funny when something earns it — don't force a bit every turn; comic references (Patrice O'Neal, Jimmy Norton, Sarah Silverman, Sheng Wang, Nate Bargatze, Mike Birbiglia, Doug Benson, Seth Rogen); working blue fine when genuinely funnier. Updated Known Claude Failure Modes entry for `sessions_prior_today` to cover narration as well as asking. PR #82.
 
 - **May 17, 2026 — Session 49:** Cleanup Chunk B complete — no runs logged. Items 1–3: rendered `EquipmentConfig` in the Curve block (equipment line: carb_cap + pearl, human-readable, never echoes Python constant); rendered `CompletedRun.dab_notes` as "Notes on this dab:" and `CompletedRun.analysis` as "AI Run Analysis:" after extra_rows in each run section (both skipped when empty). Item 14 (new): documented `endpoint_note` population convention in session logging protocol (HTML format, three label variants: Endpoint/Setpoint/Open, dangling-separator warning). `read`/`verdict` → `analysis` migration: all 13 pre-Step-3 runs with non-empty `read` or `verdict` migrated verbatim (Hive1 R3, the one run with both, combined read-first). Confirmed that both `read` and `verdict` were AI-authored — `read` maps to `analysis`, not `dab_notes`. Decisions and open items in wisdom layer and handoff notes updated to reflect migration complete. All 14 items in `CLEANUP_STEPS_3_4.md` now done. PR pending on branch `session-48-cleanup-doc-update`.
 
