@@ -1,10 +1,10 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 17, 2026 — Session 45
+## Last updated: May 17, 2026 — Session 46
 
 This document provides operational context for sessions. Read alongside:
 - `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
 - `HANDOFF_WISDOM.md` — accumulated cross-strain patterns, equipment observations, failure modes, and methodology state in structured tables.
-- `Dabby_Methodology.md` — thermal model and session process reasoning.
+- For curve design or methodology questions: also read `Dabby_Methodology.md` — thermal model and session process reasoning.
 
 ---
 
@@ -35,7 +35,7 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 **CRITICAL — never use `push_files` for `index.html` or routine commits.** `push_files` passes full file content as string literals and has caused silent content loss in past sessions (stripped charts, lost sections). Git is the correct path for all routine work. `push_files` is acceptable only for temporary files on non-main branches (e.g., mockups on gh-pages) when git checkout of that branch is impractical — and only when the file is not `index.html`.
 
-**CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit generator → run generator → commit both files.
+**CRITICAL — push index.html correctly:** The `index.html` committed to the repo must be the literal output of running `python3 Dabby_Log_Generator.py`. Never write `index.html` content manually or from memory. The correct sequence is always: edit `Dabby_Data.py` → run generator → commit both files.
 
 **Deploy/preview race condition (fixed in Session 24):** When a PR is merged, the deploy workflow (push-to-main trigger) and the preview cleanup workflow (PR-closed trigger) both write to gh-pages simultaneously. In PR #39, the cleanup job pushed first, causing the deploy's `git push` to be rejected as non-fast-forward — the deploy committed locally but never pushed, leaving the live site on the previous version. Fixed by adding `concurrency: group: gh-pages, cancel-in-progress: false` to both `deploy.yml` and `preview.yml`. Jobs in the same concurrency group queue rather than race. PR #40.
 
@@ -208,7 +208,7 @@ Specific errors made in past sessions that a new instance should avoid:
 
 - **Using UTC date when logging runs.** Cloud environments run in UTC. A session run at 8pm US time is already the next calendar day in UTC. When logging a run, always capture `utc_logged_at = datetime.now(timezone.utc)`, derive local time (subtract 6 hours MDT / 7 hours MST), and confirm with the user: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off." Use the confirmed local date as `run_date`. OC Runs 6 and 7 were incorrectly logged as May 10 when they were run on May 9 local time; Hive #1 Runs 4–5 similarly logged a day late.
 - **Force pushes are blocked in this environment.** `git push --force-with-lease` returns HTTP 403. Do not attempt it — it wastes time. Do not amend already-pushed commits either (same problem). When a branch needs correction after being pushed, cut a fresh branch from `origin/main`, apply the fix there, and push that as a new branch.
-- **Not reading handoff and methodology at session start.** CLAUDE.md explicitly requires reading `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`, `Dabby_Log_Generator.py`, and `Dabby_UI_Principles.md` before taking any action. This was skipped in Session 15 and again in Session 27 — both times because the user's opening message pointed to a specific file and the startup sequence was bypassed to engage with it directly. Read all four files before responding to any request, every session, regardless of what the opening message asks.
+- **Not reading the required files at session start.** CLAUDE.md explicitly requires reading `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`, and `Dabby_Data.py` before taking any action. `Dabby_Log_Generator.py`, `Dabby_Methodology.md`, and `Dabby_UI_Principles.md` are conditional reads (only for sessions doing that specific work). This was skipped in Session 15 and again in Session 27 — both times because the user's opening message pointed to a specific file and the startup sequence was bypassed to engage with it directly. Read all four required files before responding to any request, every session, regardless of what the opening message asks.
 - **Re-introducing calibration framing.** The project has been reframed as a session log. Do not use "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard. `STRAIN_STATUS` no longer contains badge fields.
 - **Re-adding a Contents/TOC section.** The Contents section was deliberately removed. The searchable strain browser on the dashboard provides navigation. Do not add a separate Contents or TOC section.
 - **PR preview going stale after the first commit.** If the preview comment stops updating on subsequent pushes, check whether the PR has merge conflicts (`mergeable_state: dirty`). A dirty PR blocks the `synchronize` workflow trigger — GitHub can't compute the merge commit. Fix by merging main into the feature branch, resolving conflicts, and pushing. The preview workflow will fire again on the next push.
@@ -256,6 +256,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 17, 2026 — Session 46:** Steps 3 & 4 cleanup audit — no runs logged. Identified 12 cleanup items from the Steps 3/4 implementation: 4 generator/data rendering gaps (`analysis`, `dab_notes`, `EquipmentConfig` not rendered; `Mode` hardcoded), 3 session logging instruction gaps (`dab_notes`/`analysis` fields missing from protocol and new-run checklist), 5 doc drift items. Created `CLEANUP_STEPS_3_4.md` for the 7 remaining code/instruction items. Fixed all 5 drift items this session: demoted `Dabby_Methodology.md` to conditional startup read in handoff introduction; corrected "edit generator" → "edit `Dabby_Data.py`" in CRITICAL section; updated Known Claude Failure Modes startup entry to current four required files; fixed Session Process step 7 calibration-endpoint language in methodology doc; fixed "Empirical calibration" → "Swab result is the empirical ground truth." Also established `curve_shape` as a `@property` on `CompletedRun` (derived from waypoints, not stored) as the resolution for the hardcoded Mode row. Docs only — no generator/`index.html`/run data change.
 
 - **May 17, 2026 — Session 45:** Step 4 of `DABBY_ARCHITECTURE.md` executed (branch `claude/architecture-step-4-4nI0U`). Handoff restructured into three layers: `HANDOFF_STATE.md` (generated per-strain status — written automatically by `Dabby_Log_Generator.py`), `HANDOFF_WISDOM.md` (AI-maintained Cross-Strain Patterns / Equipment Observations / Failure Modes / Methodology State tables, non-strict append-only per C2 resolution), and trimmed `Dabby_Handoff_Notes.md` (operational notes only). Removed: Current Strain Status, Thermal Model, Curve Design Key Insights, Harm Reduction Context sections (content distributed to wisdom layer). CLAUDE.md startup reads updated to four files; generator dropped from default startup; session-close checklist added. C2 resolved; C3 open (gates Step 5). No runs logged.
 
