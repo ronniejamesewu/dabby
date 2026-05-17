@@ -47,6 +47,14 @@ Operational and data-integrity failures worth tracking across sessions.
 
 ---
 
+## Decisions — Do Not Re-Litigate
+
+| Decision | Rationale | Session |
+|---|---|---|
+| `curve_shape` as `@property` on `CompletedRun`, derived from waypoints, not stored | Property makes derived-not-authored distinction structurally unambiguous; always consistent with waypoints; queryable identically to a field; no `__post_init__` boilerplate | Session 46 |
+
+---
+
 ## Methodology State
 
 Settled positions on key questions. Update when a position is tested, confirmed, or
