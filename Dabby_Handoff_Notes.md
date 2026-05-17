@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 17, 2026 — Session 47
+## Last updated: May 17, 2026 — Session 48
 
 This document provides operational context for sessions. Read alongside:
 - `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
@@ -270,6 +270,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 17, 2026 — Session 48:** Cleanup Chunk A complete — no runs logged. Item 13: renamed `hold_seconds` → `duration_seconds` on `CompletedRun`; updated field definition, all 17 explicit constructor calls, Mode line label (`Hold:` → `Duration:`), and schema ref in `DABBY_ARCHITECTURE.md`; audit also caught a second hardcoded `Hold:` in the Baseline Curve reference section (fixed in same PR). Items 4, 13 marked done in `CLEANUP_STEPS_3_4.md`. PR #77. Items 5–7: added session logging protocol instructions for `CompletedRun.dab_notes` (verbatim user record) and `CompletedRun.analysis` (frozen AI synthesis); retitled existing AI Analysis paragraph to distinguish it from `StrainStatus.next_ai_analysis`; updated Adding a new run checklist and constructor signature; flagged `read`/`verdict` as superseded by `analysis` from Step 3 onward; added open item to migrate existing `read`/`verdict` content into `analysis` and remove from schema. PR #78. Synthesis guardrails: formalized Beat 1/Beat 2 pre-write readback structure (factual confirmation first; interpretation check at the end for observations that are both ambiguous and consequential); added `analysis` confidence calibration rules (claims trace to user report / prior run history / wisdom layer; equipment config checked as confound before cross-run comparisons; conversational hypotheses are single-data-point observations, not working positions); added failure mode for promoting a conversational hypothesis into a working analysis position. PR #79.
 
 - **May 17, 2026 — Session 47:** Item 4 cleanup (CLEANUP_STEPS_3_4.md) — curve shape classifier + methodology doc updates. No runs logged. Added `_classify_curve_shape()` to the generator as a rendering utility — display logic stays in the generator, no property added to `CompletedRun`. Replaces hardcoded "Custom Ascent" in all Mode rows with compositional labels derived from waypoint temperature diffs. "Complex" fallback for >4 direction groups. Removed Valley preference language from methodology doc, wisdom layer, and handoff decisions. Added Switch² device curve constraints block to methodology (heating/cooling rate limits, 10–90s session window). Rewrote "Why custom ascent" → "Why ascending curves". Corrected device mode name "Custom Ascent" → "Custom" throughout. Added item 13 to cleanup doc (rename `hold_seconds` → `duration_seconds`). PR #76.
 
