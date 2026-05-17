@@ -86,6 +86,12 @@ Runs are logged with exact date (not month only) when known.
 
 Every claim in `analysis` must trace to one of: (a) what the user reported this session, (b) prior run history for this strain, or (c) the wisdom layer — cross-strain patterns and equipment observations. Before drawing on (b) or (c), check per-run `EquipmentConfig`: if equipment differs across compared runs, flag it as a confound rather than asserting the comparison. Match confidence to evidence: "user reported X" for single-session observations; "consistent with Run N" for single corroboration; "pattern across runs X/Y/Z" for confirmed patterns. A hypothesis in `dab_notes` — whether from the initial dump or a conversational aside — is treated as "user suggested X" at single-data-point weight. It does not become a working position in `analysis` until subsequent runs test and support it.
 
+**`endpoint_note` (per-run record, `CompletedRun.endpoint_note`):** AI-authored inline HTML describing the curve's key characteristic — endpoint temperature, shape note, and optionally a cross-run comparison. Rendered on the Mode line as its third segment. Use `<strong>` labels; convention from Step 3 migration:
+- Ramp runs: `'<strong>Endpoint:</strong> 430°F'` + optional note (e.g. `'— same as Run 1'`, `'— down 10°F from prior runs'`)
+- Flat hold runs: `'<strong>Setpoint:</strong> 430°F steady (no ramp)'`
+- Cold start with explicit open point: `'<strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F'`
+Populate at logging time alongside the other content fields. Do not leave blank — the Mode line renders a dangling `|` separator if empty.
+
 **What to Try Next — AI Analysis (`StrainStatus.next_ai_analysis`):** The AI Analysis field in each strain's What to Try Next section is not a summary of what happened — that belongs in the run results. It should state a concrete recommendation with the reasoning behind it. Before writing AI Analysis, draw on all four artifacts: the handoff (cross-strain patterns, methodology constraints), the methodology doc, the full run history for the strain, and the user's Dab Notes just added. Cross-strain patterns are often the most valuable input — flag them when relevant. Name confounders where they affect the recommendation. Flag clearly when a recommendation is based on a single data point.
 
 ---
