@@ -245,7 +245,7 @@ changelog text — intentionally left as-is.
 
 ## Category F — endpoint_note convention (item 14)
 
-### 14. `endpoint_note` population convention undocumented
+### 14. ✓ DONE Session 49 `endpoint_note` population convention undocumented
 
 `endpoint_note` exists in the schema and is fully populated across all runs, but
 there are no AI instructions for how to populate it when logging a new run. The
