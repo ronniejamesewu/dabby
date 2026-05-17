@@ -9,8 +9,9 @@ At the start of every session:
 2. Read these files (all are in the repo):
    - `Dabby_Handoff_Notes.md` — source of truth, read first
    - `Dabby_Methodology.md` — thermal model and session process reasoning
-   - `Dabby_Log_Generator.py` — understand current log structure before touching it
-   - `Dabby_UI_Principles.md` - source of truth for UI implementation
+   - `Dabby_Data.py` — all run data, strain status, waypoints, and schema; the file you edit for run logging
+   - For generator/rendering work: also read `Dabby_Log_Generator.py`
+   - For UI/layout changes: also read `Dabby_UI_Principles.md`
 
 This project logs sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig."
 All material is hash rosin (ice water extracted, solventless) unless explicitly 
@@ -41,11 +42,11 @@ on what to try next — not a formal calibration program.
   plus an explicit `from Dabby_Data import _ACCENT_RESOLVED` (wildcard skips
   underscore names). CSS is external in `style.css` (Session 36), linked from
   the generated `<head>`.
-- **Run content is split across both files (key gotcha).** Structured data
-  (waypoints, dates, equipment) lives in `Dabby_Data.py`; the per-run narrative
-  (swab/vapor/verdict, "What to Try Next") is still string literals inside
-  `build_html()`. `build_html()` enumerates one inline block per strain between
-  `# ── <STRAIN>` and `# ── Assemble` dividers (known structural debt).
+- **Adding a run or strain is data-only (Step 3 complete, Session 43).** All
+  content — waypoints, dates, equipment, swab/session/verdict fields, `next_*`
+  fields — lives in `Dabby_Data.py`. The generator loop in `build_html()`
+  picks up new strains automatically. `Dabby_Log_Generator.py` requires no
+  edits for run logging.
 - **Equipment is per-run.** `EquipmentConfig` with two named regimes
   `_SPINNER`/`_GEMLOCK`; cutover at MB9ZST Run 1 (May 13 2026). `validate()`
   rejects `equipment=None` — no field defaults by design.
@@ -61,17 +62,13 @@ on what to try next — not a formal calibration program.
 
 ## Updating the Log
 
-Adding or changing a run touches **two files** (see Architecture): put
-structured data (waypoints, dates, equipment, `STRAIN_STATUS`) in
-`Dabby_Data.py`, and the run's narrative HTML block plus its
-`what_to_try_next_html()` call in `build_html()` in `Dabby_Log_Generator.py`.
-Then run `python3 Dabby_Log_Generator.py` to regenerate `index.html`. Commit
-all three files to a feature branch, then open a PR.
+Adding or changing a run is data-only: edit `Dabby_Data.py` — add the waypoint
+constant, add a `CompletedRun` entry with all content fields, and update the
+strain's `StrainStatus` `next_*` fields. Then run `python3 Dabby_Log_Generator.py`
+to regenerate `index.html`. Commit both files to a feature branch, then open a PR.
+`Dabby_Log_Generator.py` requires no edits for run logging.
 
-Never write `index.html` by hand — always run the generator and commit its
-output. Editing only `Dabby_Data.py` silently renders a page where dashboard
-counts increment but the run section is missing — verify the rendered HTML
-before committing.
+Never write `index.html` by hand — always run the generator and commit its output.
 
 ## Date and Time Logging
 
