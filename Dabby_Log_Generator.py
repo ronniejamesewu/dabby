@@ -385,11 +385,15 @@ def render_run_section(ss, i, run):
     title      = f"{ss.name} — Run {i} — {date_str}"
     section_id = f"{ss.slug}-run{i}"
 
+    pearl = f"{run.equipment.pearl_diameter_mm}mm pearl" if run.equipment.pearl_diameter_mm else "no pearl"
+    equipment_str = f"{run.equipment.carb_cap}, {pearl}"
+
     c  = session_order_note(run.sessions_prior_today)
     c += '<h3 class="amber">Curve</h3>' if run.too_hot else '<h3>Curve</h3>'
     c += (f'<p><strong>Mode:</strong> {_classify_curve_shape(run.waypoints)} &nbsp;|&nbsp;'
           f' <strong>Duration:</strong> {run.duration_seconds} seconds &nbsp;|&nbsp;'
           f' {run.endpoint_note}</p>')
+    c += f'<p><strong>Equipment:</strong> {equipment_str}</p>'
     c += curve_chart_html(run.waypoints)
     c += curve_table(run.waypoints, amber=run.too_hot)
     c += '<h3 class="amber">Results</h3>' if run.too_hot else '<h3>Results</h3>'
@@ -406,6 +410,10 @@ def render_run_section(ss, i, run):
     if run.extra_rows:
         for label, value in run.extra_rows:
             c += result_row(label, value, amber=run.too_hot)
+    if run.dab_notes:
+        c += result_row("Notes on this dab:", run.dab_notes)
+    if run.analysis:
+        c += result_row("AI Run Analysis:", run.analysis)
     return collapsible_section(section_id, title, c)
 
 def render_what_to_try_next(ss):

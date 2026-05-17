@@ -15,7 +15,7 @@ These require changes to `Dabby_Data.py` and `Dabby_Log_Generator.py`.
 Run `python Dabby_Log_Generator.py` after changes and verify `index.html`
 visually before committing. All four can be done in one PR.
 
-### 1. `CompletedRun.analysis` not rendered
+### 1. ✓ DONE Session 49 `CompletedRun.analysis` not rendered
 
 The field exists in the schema (`Dabby_Data.py` line ~53) and is populated at
 logging time, but `render_run_section()` in `Dabby_Log_Generator.py` (line ~365)
@@ -45,7 +45,7 @@ All existing runs have `analysis = ""` — the renderer should skip empty values
 
 ---
 
-### 2. `CompletedRun.dab_notes` not rendered
+### 2. ✓ DONE Session 49 `CompletedRun.dab_notes` not rendered
 
 Same situation as `analysis`. The field exists, is intended as the verbatim
 user dump captured at logging time, but is never rendered.
@@ -58,7 +58,7 @@ All existing runs have `dab_notes = ""` — skip empty values.
 
 ---
 
-### 3. `EquipmentConfig` not rendered in run sections
+### 3. ✓ DONE Session 49 `EquipmentConfig` not rendered in run sections
 
 `run.equipment` (`EquipmentConfig` with `insert`, `carb_cap`,
 `pearl_diameter_mm`) is captured per-run but never rendered in `index.html`.
@@ -240,6 +240,36 @@ calls), `run.hold_seconds` → `run.duration_seconds` in `Dabby_Log_Generator.py
 `Hold:` → `Duration:` in the Mode line label, schema def updated in
 `DABBY_ARCHITECTURE.md`. `Dabby_Handoff_Notes.md:259` reference is historical
 changelog text — intentionally left as-is.
+
+---
+
+## Category F — endpoint_note convention (item 14)
+
+### 14. ✓ DONE Session 49 `endpoint_note` population convention undocumented
+
+`endpoint_note` exists in the schema and is fully populated across all runs, but
+there are no AI instructions for how to populate it when logging a new run. The
+field definition comment in `Dabby_Data.py` gives only two plain-text examples
+(`"steady (no ramp)"`, `"same as Run 1"`); the actual convention — deduced from
+the Step 3b/3c migration — uses inline HTML with `<strong>` label tags and three
+distinct label variants depending on curve shape.
+
+**Convention deduced from Step 3 migration:**
+- Ramp runs: `<strong>Endpoint:</strong> 430°F` + optional comparison note
+  (e.g. `"— same as Run 1"`, `"— down 10°F from prior runs"`)
+- Flat hold runs: `<strong>Setpoint:</strong> 430°F steady (no ramp)`
+- Cold start with explicit open point: `<strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F`
+- Rate note (one-off, WW Z R1): `<strong>Rate:</strong> ~0.6°F/sec`
+
+The Step 3 values were migrated verbatim from the old `build_html()` blocks —
+not freshly authored. A future session cold-starting from the handoff has no
+basis for the HTML formatting or the `Endpoint:` vs `Setpoint:` vs `Open:`
+label distinctions.
+
+**What to add:** An instruction in `Dabby_Handoff_Notes.md` (Session Logging
+Protocol or the "Adding a new run" block) covering the HTML format, the three
+label variants, and when each applies. The field definition comment in
+`Dabby_Data.py` should be updated to match.
 
 ---
 
