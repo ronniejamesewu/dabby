@@ -1,0 +1,108 @@
+# Dabby — Accumulated Wisdom
+AI-maintained at session close. Structured tables that support superseding entries
+(rows can be updated or marked superseded when understanding evolves — not strict
+append-only). Each entry is traceable to the session and data that produced it.
+
+Session-close checklist:
+1. Did any new cross-strain pattern emerge or get confirmed?
+2. Did equipment configuration change or produce a new observation?
+3. Did a failure mode occur this session (data integrity / process)?
+4. Was any methodology position tested, confirmed, or revised?
+5. Were any decisions made that shouldn't be re-litigated?
+
+Each "yes" produces one update to the relevant table or section below.
+
+---
+
+## Cross-Strain Patterns
+
+| Pattern | Evidence | Confidence | First Observed | Notes |
+|---|---|---|---|---|
+| Tail harshness at endpoints ≥430°F | OC R7, Hive1 R2-5, Fembot3 R1-2, MB9ZST R1-2, RF R2, MBD R1-4, BB36#1 R1 | High — 7 strains, consistent across both ramp and flat-hold curve shapes | Sessions 9–14 | Both curve shapes show harshness at this endpoint; it is the temperature, not the shape |
+| Ramp outperforms flat hold at same endpoint (session character, staged flavors) | OC R6 (ramp) vs R7 (flat) at 430°F; Hive1 R5 (ramp) vs R3-4 (flat) | Moderate — 2 strains, paired same-day comparisons | Session 14 | Swab does not distinguish between curve shapes within the clean range; subjective session character is the primary readout |
+| Swab is a floor indicator, not a fine-grained calibration metric | Multiple strains — load size, material color, oxidation state, swab timing, pressure are uncontrolled variables | High — consistent interpretation across all logged strains | Ongoing | Dark/burnt residue is a reliable signal to reduce endpoint; within the light-golden-to-amber range, swab cannot reliably distinguish curve shapes or small endpoint differences |
+| Higher endpoint → stronger effect (larger bolus, faster peak) | OC R5 at 460°F — stronger effect noted; MB9ZST R1-2 at 430°F Gemlock — strong effects noted but equipment confounded | Low — 1 clean data point; others confounded | Session ~10 | Rate-of-delivery hypothesis: same material at lower temps over a longer curve delivers similar total cannabinoids but with a slower, smoother absorption profile; CBN hypothesis rejected |
+| MB9ZST and BB36#1: tail harshness persisting below 430°F — may need a lower ceiling | MB9ZST R3 (420°F harsh), R4 (415°F still present); BB36#1 R2-3 (415°F harsh) | Moderate — 2 strains, multiple confirming runs each | Sessions 39–44 | Rain Fruit resolved cleanly at 420°F; these two strains appear to require a lower ceiling (~410°F or below). Insufficient data to confirm whether this is strain-specific or equipment-related (both are Gemlock-era) |
+
+---
+
+## Equipment Observations
+
+| Configuration | Observed Effect | Evidence | Confidence | Notes |
+|---|---|---|---|---|
+| Gemlock joystick, no pearl (vs. Cloud Vortex 21.0 + 6mm pearl) | Lighter swabs; visible vapor at lower temps than expected with prior spinner config; possibly more complete vaporization | MB9ZST R1-2 — only 2 direct Gemlock-era runs; cross-config comparison confounded by strain differences | Low — 2 direct points; cross-strain confound cannot be ruled out | Treat as a persistent confound when comparing new Gemlock runs against spinner-era cross-strain data. Do not assume equivalence between configs in analysis |
+
+---
+
+## Failure Modes
+
+Operational and data-integrity failures worth tracking across sessions.
+(AI behavioral failure modes are in `Dabby_Handoff_Notes.md` → Known Claude Failure Modes.)
+
+| Mode | Conditions | When | Notes |
+|---|---|---|---|
+| UTC date used as local run_date | Late-evening logging when UTC has already rolled over (after ~6 PM MDT) | OC R6-7, Hive1 R4-5 | Logged as the next calendar day. Protocol: derive local time (UTC−6 MDT / UTC−7 MST), confirm with user before writing. `run_date` must reflect the confirmed local date |
+| Silent content loss via GitHub MCP push_files | Passing full `index.html` content as a string literal to push_files | Session 4; risk persisted through ~Session 28 | push_files strips charts, simplifies sections. Use git for all routine commits. push_files is acceptable only for temporary files on non-main branches when git checkout is impractical, and never for `index.html` |
+| Deploy race condition — live site not updated after merge | deploy.yml (push-to-main trigger) and preview cleanup (PR-closed trigger) both writing to gh-pages simultaneously | PR #39 | deploy job committed locally but push rejected as non-fast-forward. Fixed: concurrency group `gh-pages` on both `deploy.yml` and `preview.yml` — jobs queue rather than race |
+
+---
+
+## Methodology State
+
+Settled positions on key questions. Update when a position is tested, confirmed, or
+revised. Include the session and data that prompted the revision.
+
+### Thermal Model
+The old 15–35°F titanium-to-insert offset estimate is retired. Current position:
+
+- Quartz insert wall is ~1mm thick at ~1.4 W/m·K conductivity — bulk thermal time
+  constant under one second. The insert equilibrates internally almost instantly.
+- Physical contact points between titanium and quartz transfer heat efficiently;
+  the air gap is not the dominant resistance when contact geometry is intact.
+- Offset is probably small under most operating conditions. Dominant remaining
+  uncertainties: vaporization cooling (phase change draws heat locally during
+  active vaporization) and dynamic lag during steep ascent (titanium ahead of
+  insert during fast climbs).
+- Short flat tails — even 10 seconds — are sufficient for the insert to reach the
+  setpoint. Do not flag short flat tails as inadequate for offset closure.
+- Setpoints are reasonable proxies for material contact temperature.
+
+**Do not rebuild the 1D thermal resistance model.** The interface efficiency
+parameter (η) concept was developed and abandoned — the two dominant parameters
+were partially redundant and the underlying geometry is unknowable. Swab result
+is the ground truth.
+
+### Mode
+Custom Ascent preferred over Valley. Valley's initial dip is redundant with cold
+start — material is already at its lowest temperature at session open.
+
+### Baseline Philosophy
+Single baseline curve for all hash rosin with cold start. Strain-specific
+adjustment happens empirically via swab results, not terpene-profile reasoning.
+Do not design different starting curves from strain name, consistency type, or
+inferred terpene profile without empirical justification.
+
+### Sapphire Insert
+When acquired: fresh empirical calibration from scratch. Do not scale from quartz
+curves. Two mechanisms that differentiate sapphire from quartz: (1) higher
+volumetric heat capacity — absorbs cold-material contact perturbation more stably
+at session open; (2) better surface temperature uniformity during vaporization —
+~20x higher bulk conductivity replenishes heat faster when local vaporization
+creates cold spots. Reddit consensus of 10–20°F lower setpoints for equivalent
+results is consistent with this model.
+
+### Harm Reduction
+Source: ACS Omega 2017 peer-reviewed study.
+
+- Benzene and methacrolein are documented degradation products of terpene
+  thermolysis. Benzene formation begins in small amounts around 400°F and increases
+  significantly with temperature.
+- Alarming toxicant levels in published studies used 500–550°C (932–1022°F) —
+  far above typical practice. At conservative setpoints (375–440°F) benzene
+  formation is at the low end of the documented range.
+- Benzene is a Group 1 carcinogen (IARC), linked to aplastic anemia and acute
+  myeloid leukemia. Lower temperatures are meaningfully safer as well as more
+  flavorful — this is a genuine harm reduction argument, not just a flavor argument.
+
+**Resolved:** The 440°F vs. 460°F question falls well below the temperature range
+where the research documents meaningful risk. No further discussion needed.

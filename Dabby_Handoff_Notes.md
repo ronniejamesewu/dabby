@@ -1,7 +1,10 @@
 # Dabby — Conversation Handoff Notes
 ## Last updated: May 17, 2026 — Session 44
 
-This document provides full context for a new AI assistant picking up this project. Read alongside Dabby_Methodology.md and the live log at `index.html` in the repo working directory.
+This document provides operational context for sessions. Read alongside:
+- `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
+- `HANDOFF_WISDOM.md` — accumulated cross-strain patterns, equipment observations, failure modes, and methodology state in structured tables.
+- `Dabby_Methodology.md` — thermal model and session process reasoning.
 
 ---
 
@@ -15,7 +18,7 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 **Live log:** https://ronniejamesewu.github.io/dabby
 **Repo:** ronniejamesewu/dabby (branch: main)
-**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator — rendering logic only), `Dabby_Data.py` (all session data: strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS, TERPENE_REFERENCE, color resolution, validation), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file), `Dabby_Methodology.md` (thermal model and session process reasoning), `DABBY_ARCHITECTURE.md` (target architecture, schema design, and six-step implementation plan — living document, update as steps complete), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
+**Files in repo:** `index.html` (the rendered log), `Dabby_Log_Generator.py` (Python generator — rendering logic only), `Dabby_Data.py` (all session data: strain info, run curves, COMPLETED_RUNS, STRAIN_STATUS, TERPENE_REFERENCE, color resolution, validation), `CLAUDE.md` (session instructions), `Dabby_Handoff_Notes.md` (this file — operational notes, decisions, failure modes), `HANDOFF_STATE.md` (generated per-strain status — do not edit), `HANDOFF_WISDOM.md` (accumulated wisdom tables — AI-maintained), `Dabby_Methodology.md` (thermal model and session process reasoning), `DABBY_ARCHITECTURE.md` (target architecture, schema design, and six-step implementation plan — living document, update as steps complete), `.github/workflows/deploy.yml` (auto-deploys main to gh-pages on push), `.github/workflows/preview.yml` (posts preview URL on every PR, cleans up on close)
 
 **Environment:** Claude Code. Files are in the repo working directory. Read them directly — do not fetch from raw.githubusercontent.com or copy files to a separate path.
 
@@ -75,41 +78,6 @@ Runs are logged with exact date (not month only) when known.
 
 ---
 
-## Thermal Model — Current Understanding
-
-This was substantially revised. The old estimate of a 15–35°F titanium-to-insert offset has been walked back. Current understanding:
-
-- The quartz insert wall is ~1mm thick. At ~1.4 W/m·K conductivity the bulk thermal time constant is under one second — the insert equilibrates internally almost instantly.
-- Physical contact points between titanium and quartz transfer heat efficiently. The air gap is not the dominant resistance when contact geometry is intact.
-- The offset is probably small under most operating conditions. Dominant remaining uncertainties are vaporization cooling (phase change draws heat locally during active vaporization) and dynamic lag during steep ascent (titanium is always ahead of insert during fast climbs).
-- Setpoints are reasonable proxies for material contact temperature.
-
-**Do not rebuild the 1D thermal resistance model.** A substantial amount of work went into building and then partially dismantling it. The interface efficiency parameter (η) concept was developed but abandoned — the two dominant parameters were partially redundant and the underlying geometry is unknowable. Swab result is the ground truth.
-
-**Sapphire advantage** (for when sapphire insert is acquired): not primarily closing a large interface resistance. Two mechanisms: (1) higher volumetric heat capacity — absorbs cold material contact perturbation more stably at session open; (2) better surface temperature uniformity during vaporization — ~20x higher bulk conductivity replenishes heat faster when local vaporization creates cold spots. Reddit consensus of 10–20°F lower setpoints for equivalent results is consistent with this model. Sapphire requires fresh empirical calibration from scratch — do not scale quartz curves.
-
----
-
-## Curve Design — Key Insights
-
-**Ascent rate and offset:** During steep ascent, titanium is ahead of insert temperature; during flat or slow phases the system approaches equilibrium. However, because the insert equilibrates in under a second, even a short flat tail (10 seconds) is sufficient for the insert to reach the setpoint. Do not flag short flat tails as inadequate for offset closure — the equilibration time is too fast for this to be a meaningful concern at any reasonable tail length.
-
-Steeper mid-climbs move through terpene zones faster. The shape of the climb matters for when vaporization begins, not for offset concerns.
-
-**Curve shape vs. single setpoint:** Multiple strains now have ramp vs. flat hold data. Emerging pattern: ramp produces better session character (more distinct staged flavors, tastier) than flat hold at equivalent endpoints — most clearly demonstrated in OC Run 6 (ramp) vs Run 7 (flat hold) at 430°F, and consistent with Hive #1 Run 5 (ramp, distinct staged flavors). Endpoint temperature appears to be the larger variable for harshness — both ramp and flat hold show tail harshness at 430°F+ across multiple strains. Swab is not a sensitive enough signal to distinguish between curve shapes within the normal operating range — subjective session character is the primary readout.
-
-**Temperature and effect strength:** Higher temperatures vaporize a larger fraction of material in a shorter window, producing a larger bolus inhaled and a faster peak blood concentration. This is the most parsimonious explanation for the stronger effects observed at higher endpoints (OC Run 5, 460°F). CBN hypothesis rejected: CBN has ~1/10th CB1 binding affinity of THC, in-session CBN formation is limited by oxygen availability, and a higher CBN fraction would dilute rather than amplify the effect. Rate of delivery matters, not just total dose — the same material at lower temps over a longer curve could deliver similar total cannabinoids but with a slower, smoother absorption profile.
-
-**Swab as floor indicator:** Swab color is a floor indicator within the normal operating range, not a fine-grained calibration metric. Dark or burnt residue (amber-toward-brown or darker) is a reliable signal to reduce temperature. Within the light-golden-to-amber range, swab has too many uncontrolled variables — load size, material starting color, oxidation state, swab timing, pressure — to reliably distinguish between curve shapes or small endpoint differences. Do not over-interpret swab color within the clean range.
-
-**Baseline philosophy:** Single baseline curve for all hash rosin with cold start. Strain-specific adjustment happens empirically via swab results, not terpene-profile reasoning. Do not design different starting curves based on strain name, consistency, or inferred terpene profile without empirical justification.
-
-**Mode:** Custom Ascent preferred over Valley. Valley's initial dip is redundant with cold start — material is already at its lowest temperature at session open.
-
-**Opening setpoint exploration:** OC Run 5 tested a 350°F open — darker swab, stronger effect, not a clean calibration signal. Runs 6 and 7 reverted to 380°F baseline open. Lower opening setpoints are not under active exploration at this time.
-
----
-
 ## Chart Styling — Current State
 
 Current spec:
@@ -130,40 +98,6 @@ Current spec:
 
 ---
 
-## Harm Reduction Context
-
-Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein are documented degradation products of terpene thermolysis. Benzene formation begins in small amounts around 400°F and increases significantly with temperature. Studies showing alarming toxicant levels used 500–550°C (932–1022°F) — far above typical practice. At conservative setpoints (375–440°F) benzene formation is at the low end of the documented range. Benzene is a Group 1 carcinogen (IARC) linked to aplastic anemia and acute myeloid leukemia. Lower temperatures are meaningfully safer as well as more flavorful. This is a genuine harm reduction argument, not just a flavor argument.
-
-**Resolved:** The 440°F vs 460°F question has been reviewed and determined to fall well below the temperature range where the research documents meaningful risk. No further discussion needed.
-
----
-
-## Current Strain Status
-
-**WW Z** (Quasi Farms, Michigan) — Run 1 complete (May 2, 2026). Baseline curve confirmed appropriate. Nothing specific to try next.
-
-**Caramel Apple Gelato** (Quasi Farms, Michigan) — Run 1 logged (450°F endpoint, swab amber toward brown — too hot). Run 2 pending: endpoint reduced to 430°F, hold shortened to 55 seconds.
-
-**Orange Candy** (Nikka T, 90 micron full melt) — Runs 1–2 too flat. Run 3 redesigned with steeper mid-climb and flatter tail — clean swab, strong result, wispy opening draws. Run 4 (380°F open, 440°F endpoint) run twice on May 5, 2026 — both light golden swabs. Run 5 (May 6, 2026): 350°F open, 410°F at 30s, 440°F at 50s, 460°F endpoint — darker swab, last portion harsh, notably stronger effect (one data point, not confirmed). Run 6 (May 9, 2026): 380→390→410→430°F ramp — light golden swab, very nice. Run 7 (May 9, 2026): 430°F steady flat hold, 60s — plain amber swab, pleasant but not as tasty as ramp, harsh in last 20s. Ramp (Run 6) outperforming flat hold at same endpoint. Next: repeat Run 6 ramp to confirm, or try 420°F flat hold.
-
-**The Hive #1** (Myxed Up, Honey Banana × Papaya, Bloom Seed Co, cold cure, 159–73 micron) — Runs 1–2 (May 7, 2026): 380→390→410→440°F ramp, 65s — both clean. Run 3 (May 8, 2026): 430°F steady flat hold, 45s — clean swab, similar session character, vapor still producing at cutoff. Run 4 (May 8, 2026): same 430°F hold, 60s — clean swab, consistent. Run 5 (May 8, 2026): ramp to 430°F — light golden swab, distinct staged flavors, harsh in last ~10 seconds. Consistent tail harshness suggests 430°F slightly high on ramp. Run 6 pending: try 420–425°F endpoint, keep ramp shape.
-
-**Fembot #3** (Riptide, CO — Fuzzy Melon × Rambutan, cold cure, 169–73 micron) — Run 1 (May 9, 2026): ramp to 430°F — light golden swab, tasty, slight tail harshness. Run 2 (May 9, 2026): 430°F steady flat hold, 60s — light golden swab, very tasty, great effects, harshness in last third. Consistent tail harshness at 430°F across both curve shapes. Run 3 pending: 420°F steady flat hold, 60 seconds.
-
-**Mango Starburst #23** (Terps Over Yields, CO — Starburst 36 #217 × Starburst 36 #1, cold cure, jar 14 of 23) — SB36 base genetics (Starburst OG × '97 KC36), sativa-dominant, limonene/terpinolene-forward inferred. Cold nose: diesel note pronounced, sweetness underneath. Run 1 (May 9, 2026): baseline curve (380→390→410→430°F) — very clean swab, pine-forward character (more pinene than lineage inference anticipated), heady effects, no harshness. Tasty but not to user's preference. Run 2 pending: repeat to confirm.
-
-**Maple Bacon Donut** (Quasi Farms, Michigan, cold cure, micron unknown) — Genetics not documented. Run 1 (May 10, 2026): 380→390→410→430°F ramp — darker golden swab (between target and amber, nothing burnt, flagged to watch), tasty first half, faded to generic second half, milder effect (tolerance confound — 5 sessions prior day). Run 2 (May 10, 2026): same curve — lighter swab (closer to target), distinct bacon character on first half, effects came on noticeably. Swab trending cleaner. Run 3 (May 11, 2026): 375→385→410→420°F ramp with 10-second hold at endpoint (same curve as RF Run 3) — clean golden swab, little bit harsh in last 5 seconds, medium-hard effect. Run 4 (May 12, 2026): 380→390→410→430°F ramp (back to baseline) — light golden swab, tail harshness consistent with prior 430°F pattern, interesting bitter/citrus rind note throughout, big effect, seemingly short duration. Run 5 direction: faster ramp to 460°F (380→405→440→460°F, 60 seconds).
-
-**Rain Fruit** (Quasi Farms, Michigan, cold cure, micron unknown) — Run 1 (May 10, 2026): baseline ramp — notably clean swab, clear fruit notes, strong effects, no harshness. Run 2 (May 11, 2026): 375→385→410→430°F (lower open than baseline) — light golden swab, tasty, tail heat in last 10 seconds, mild effects. Consistent with cross-strain 430°F tail pattern. Run 3 (May 11, 2026): 420°F endpoint hold — clean golden swab, notably less harshness, slow build to intensity, mild-moderate effect. Run 4 pending: walk endpoint up incrementally to ~423°F.
-
-**Mango Banana #9 + Z + Sour Tangie** (710 Labs, Persy Neapolitan format — cold-cure, 2g jar, 90μ full-melt bubble hash; component strains: Mango Banana #9 (SB 36 × Forbidden Banana), Z (Zkittlez lineage), Sour Tangie (Sour Diesel × Tangie)) — Run 1 (May 13, 2026): baseline curve, first session with Gemlock joystick (no pearl) — very light golden swab, strong effect (face tingling), pronounced front-end flavors, bitter tangerine/citrus note (Sour Tangie lineage consistent), slight tail harshness. Run 2 (May 13, 2026): baseline repeated — light golden swab (same as Run 1), big flavors up front, visible vapor at lower temps than expected, strong effect (not too cloudy mentally, lazy physically), slight tail harshness. Cross-strain 430°F tail harshness pattern confirmed across both runs. Gemlock efficiency hypothesis picks up second data point — consistent light golden swab and strong effect. Run 3 (May 14, 2026): 375→400→420°F ramp with 20-second hold — light golden swab ("lightly toasted marshmallow"), nice session, climb rate and hold felt right, still a bit harsh at the end. High intensity. Tail harshness persisting at 420°F — notable because Rain Fruit resolved cleanly at 420°F. Run 4 (May 14, 2026): 375→400→415°F ramp with 20-second hold — golden swab, slightly darker than Run 3, still in the clean range. Harshness at tail less than prior runs but still present — attenuating as endpoint steps down. More material in swabs at the end, noted as a possible harshness/yield tension: lower endpoint may be leaving more rosin unvaporized in the session window. Decent effect (second dab of the evening). Run 5 direction: try 410°F endpoint, same ramp and hold shape.
-
-**Blueberry 36** — Three jars in collection, phenotypes #1, #2, #4 from a trusted grower's pheno hunt. Producer-specific designation, not a documented cultivar. Base genetics: DJ Short's Blueberry — myrcene dominant, caryophyllene and pinene as secondaries. Each phenotype is logged separately. Meaningful differences will emerge from session character and swab, not from nose or jar appearance.
-
-**Blueberry 36 #1** (Matt & Oliver / Three Blind Trichs, 90μ badder) — Run 1 (May 15, 2026): baseline curve — super light golden swab, hard in the tail, not the most flavorful, medium intensity. Run 2 (May 15, 2026): 375→400→415°F ramp with 20-second hold — very light golden swab (clean), not a lot of distinct flavor, throat irritation at the tail, spicy/hot note at the end, medium-and-climbing intensity. Waves of anxiety / possible paranoia post-session — user reports Blueberry lineage runs stronger than it looks, has come up before on this lineage. Run 3 (May 16, 2026): same 415°F curve repeated — golden and light swab, taste still mild, tad of throat harshness at the end, pretty big intensity. Tail harshness confirmed at 415°F across two runs (Runs 2 and 3). Run 4 pending: try 410°F endpoint, same ramp shape.
-
----
-
 ## Open Questions
 
 - Sapphire insert not yet acquired — user flagged wanting one soon (May 14 session). When acquired, requires fresh calibration from scratch — do not scale from quartz curves.
@@ -172,7 +106,7 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Session date backfill** — `run_date` is a field in each `CompletedRun` entry. Most runs from Session 6 onward have confirmed dates. CAG Run 1 and OC Runs 1–3 are still `None` — if the user can recall the exact dates, update those constructors and re-run the generator.
 
 - **Gemlock joystick introduced May 13** — now the standard rig configuration; pearl no longer in use. All prior cross-strain data was collected with the previous setup. The efficiency hypothesis (lighter swab, stronger effect from more complete vaporization) now has two data points (MB9ZST Runs 1–2) — both light golden swab, both strong effect, both slight tail harshness at 430°F. Also noted on Run 2: visible vapor at lower temps than expected, possibly indicating efficient early vaporization onset. Treat Gemlock as a persistent confound when interpreting new data relative to prior runs. Device Constants updated (PR #42). As of Session 36 (PR #61) equipment is structured per-run via `EquipmentConfig` — runs are now queryable and comparable by exact config rather than by date inference (Cloud Vortex 21.0 + 6mm pearl pre-May-13; Gemlock joystick + no pearl from MB9ZST Run 1).
-- **Community release direction** — architecture designed in Session 34, independently critiqued and corrected in Session 35 (DABBY_ARCHITECTURE.md). Target: local-first, data-driven generator, zero required external services, CLAUDE.md User Configuration block. GitHub is the development toolchain, not required infrastructure. Community template = this repo minus the data. The six-step plan stands in shape but is a **proposed plan, not settled**: Session 35 found two factual errors (Step 1 deploy workflow; Step 2 backfill), re-sequenced Steps 2/3 (B1/B3), and re-opened C1–C3. Step 1 (CSS extraction) was executed and merged in Session 36 (PR #60) — its token estimate was refuted by measurement and it is now reframed as a structural step, not the single-pass fix. Step 2 (per-run `EquipmentConfig` + 28-run backfill) was executed in Session 36 (PR #61): `carb_cap` is model-level, two named configs, `index.html` byte-identical. Steps 3–6 not implemented. B4 worked in Session 37 (reframed to a bounded heuristic with two open sub-problems N2/N5); **N2 and N5 resolved Session 41**. **Step 3 executed Session 43** (branch `claude/architecture-planning-0VWIu`, PR pending): data-driven loop live, all 9 strains migrated, oracle passed, generator 524 lines / ~5.8K tokens. **Steps 4–6 not implemented.** C2/C3 remain open (gate Steps 4b/5). Step 4 is next.
+- **Community release direction** — architecture designed in Session 34, independently critiqued and corrected in Session 35 (DABBY_ARCHITECTURE.md). Target: local-first, data-driven generator, zero required external services, CLAUDE.md User Configuration block. GitHub is the development toolchain, not required infrastructure. Community template = this repo minus the data. The six-step plan stands in shape but is a **proposed plan, not settled**: Session 35 found two factual errors (Step 1 deploy workflow; Step 2 backfill), re-sequenced Steps 2/3 (B1/B3), and re-opened C1–C3. Step 1 (CSS extraction) was executed and merged in Session 36 (PR #60) — its token estimate was refuted by measurement and it is now reframed as a structural step, not the single-pass fix. Step 2 (per-run `EquipmentConfig` + 28-run backfill) was executed in Session 36 (PR #61): `carb_cap` is model-level, two named configs, `index.html` byte-identical. Steps 3–6 not implemented. B4 worked in Session 37 (reframed to a bounded heuristic with two open sub-problems N2/N5); **N2 and N5 resolved Session 41**. **Step 3 executed Session 43** (branch `claude/architecture-planning-0VWIu`, PR pending): data-driven loop live, all 9 strains migrated, oracle passed, generator 524 lines / ~5.8K tokens. **Step 4 in progress Session 45** (branch `claude/architecture-step-4-4nI0U`): handoff restructured into generated `HANDOFF_STATE.md` + AI-maintained `HANDOFF_WISDOM.md`. **Steps 5–6 not implemented.** C3 remains open (gates Step 5).
 
 **Open ideas (not yet built):**
 - **Bring some excitement to first dab of the day** — user flagged a desire for this; no specific mechanism discussed yet. Could be curve, ritual, or strain choice.
@@ -184,8 +118,6 @@ Established from ACS Omega 2017 peer-reviewed study: benzene and methacrolein ar
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent. Increase the visual or structural separation so it's clear which state a section is in.
 - ~~**Template-driven run sections**~~ — **done (Session 43).** `build_html()` contains no strain names; adding a run or strain is data-only. See Step 3 of DABBY_ARCHITECTURE.md (completed).
 - **Session startup — revisit whether reading the generator adds value (Session 44).** `CLAUDE.md` currently requires reading `Dabby_Log_Generator.py` at startup. Pre-Step-3 this was justified: the generator contained all run content as HTML string literals, so reading it gave a session the full run history in raw form. Post-Step-3 the generator is rendering-only (~5.8K tokens of Python helper functions) — it carries no run data, no methodology, no content. The content a session needs is in `Dabby_Data.py` (all runs and strain data) and the handoff/methodology docs. Reading the generator at startup now costs context without a corresponding information gain. Candidate revision: replace `Dabby_Log_Generator.py` with `Dabby_Data.py` in the startup read list, or drop the generator read entirely for run-logging sessions and reserve it for sessions doing generator work. Needs a deliberate decision before changing `CLAUDE.md`.
-
-- **Handoff drift prevention** — Problem: when a session logs a run and merges to `main` without updating the handoff, the handoff goes stale silently. Demonstrated in Sessions 39–41 (three sessions merged between Session 38 and Session 42 without handoff updates; recovered this session). The architectural solution is **Step 4 of DABBY_ARCHITECTURE.md**: derives "Current Strain Status" from `COMPLETED_RUNS` data and writes it to a generated `HANDOFF_STATE.md` automatically at generator runtime, making this class of failure structurally impossible — a stale handoff state section means a stale generator output, not a forgotten manual edit. As an interim CI guard, sketched a `handoff-guard.yml` workflow (Session 42): on PR open/sync, count `CompletedRun(` in base vs. head; if head is higher, require a `Dabby_Handoff_Notes.md` diff or a `handoff-deferred` label. Critiqued and found insufficient: guarantees a file diff, not correctness (can add a newline and pass); the `CompletedRun(` heuristic silently self-disables when Step 3 rewrites the data region; the label escape is bypassable by Claude via MCP; the guard covers the PR path only, which Step 5 deprecates entirely. Verdict: smoke alarm, not a lock. Do not ship expecting it solves handoff drift — build Step 4 instead.
 
 ---
 
