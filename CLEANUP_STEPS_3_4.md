@@ -32,6 +32,17 @@ NOT the source of "What to Try Next" — that comes from `StrainStatus.next_*`.
 All existing runs have `analysis = ""` — the renderer should skip empty values
 (consistent with how `swab`, `session_char`, etc. are handled at lines 381–393).
 
+**New info from Session 48:**
+- **Label question open:** "AI Analysis:" is now the label for `StrainStatus.next_ai_analysis`
+  in the What to Try Next section. Using the same label for the per-run frozen `analysis`
+  in the run section risks conflation. Resolve the label before implementing — options
+  include "AI Analysis (this run):", "Analysis:", or a distinct visual treatment.
+- **`read`/`verdict` transition state:** `read` and `verdict` ARE currently rendered
+  in run sections. When items 1–3 ship, the renderer must handle both states without
+  requiring migration to complete first: show `analysis` if non-empty; show `read`/`verdict`
+  if non-empty (pre-migration runs). Both can coexist during the migration period.
+- **Field ordering confirmed:** `dab_notes` before `analysis` in the run section.
+
 ---
 
 ### 2. `CompletedRun.dab_notes` not rendered
@@ -40,8 +51,8 @@ Same situation as `analysis`. The field exists, is intended as the verbatim
 user dump captured at logging time, but is never rendered.
 
 **What to propose to user:** label ("Dab Notes:" — matches the `StrainStatus`
-rendering at line 79) and position in the run section (likely before `analysis`,
-since it's the user's raw read and `analysis` is the AI synthesis).
+rendering at line 79) and position in the run section (before `analysis`,
+confirmed in Session 48 — `dab_notes` is the raw input, `analysis` is built from it).
 
 All existing runs have `dab_notes = ""` — skip empty values.
 
@@ -117,7 +128,7 @@ decision to use a property. See wisdom layer for the rationale.
 
 Doc fixes in `Dabby_Handoff_Notes.md`. No generator changes needed.
 
-### 5. Session logging protocol missing `dab_notes` instruction
+### 5. ✓ DONE Session 48 Session logging protocol missing `dab_notes` instruction
 
 The Session Logging Protocol section does not instruct Claude to populate
 `CompletedRun.dab_notes` when logging a run.
@@ -129,7 +140,7 @@ extraction. It is the primary freeform record. The structured fields (`swab`,
 
 ---
 
-### 6. Session logging protocol missing `analysis` instruction
+### 6. ✓ DONE Session 48 Session logging protocol missing `analysis` instruction
 
 The Session Logging Protocol section does not instruct Claude to write
 `CompletedRun.analysis` when logging a run.
@@ -144,7 +155,7 @@ The Session Logging Protocol section does not instruct Claude to write
 
 ---
 
-### 7. "Adding a new run" checklist omits both fields
+### 7. ✓ DONE Session 48 "Adding a new run" checklist omits both fields
 
 **Location:** `Dabby_Handoff_Notes.md` line ~46 and line ~50.
 
