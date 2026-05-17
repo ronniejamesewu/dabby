@@ -66,6 +66,8 @@ artifacts distilled here and deleted (Session 35 precedent). No code changes;
 `Dabby_Data.py` / `Dabby_Log_Generator.py` / `index.html` untouched. No runs
 logged.
 
+**Session 43/44 — Step 3 executed (branch: claude/architecture-planning-0VWIu, PR pending).** All 9 strains migrated to data-driven rendering. Byte-identity oracle passed strain-by-strain (Step 3b/3c) and on the final full-page check (Step 3d). `build_html()` contains no strain names — the target loop is live. Generator: 926 lines → 524 lines; ~25.5K tokens → ~5.8K tokens — durably under the 25K single-pass limit. `CompletedRun` and `StrainStatus` content fields populated for all runs; unused `_ac`/`_spr`/`_cnt` variables removed. The `analysis` and `dab_notes` fields exist in the schema but are empty for current runs — those runs were authored before the refactor; field granularity was settled against all 28 runs as the test suite (per the Step 3 note). Step-3.0 normalization commit shipped separately and first (the `GLOBAL_INFO` Terp Tools fix — "Cloud Vortex auto spinner cap" → "Cloud Vortex 21.0" — was bundled here). Structural debts 1 and 2 in Current State are resolved. Step 4 is next.
+
 **Session 41 — N2 dissolved, N5 resolved; B4/C1 closed; Step 3 ungated.**
 The two open sub-problems were resolved through this project's audit
 discipline: two parallel memory-disabled subagent auditors (the fast pass),
@@ -164,17 +166,11 @@ are kept as the record of what was decided and when, not as live questions.
 
 **Structural debt:**
 
-1. **Run content lives in the renderer, not in the data.** Session observations
-   (swab, session character, intensity, AI analysis) are string literals inside
-   `build_html()` in `Dabby_Log_Generator.py`. They are not in `Dabby_Data.py`.
-   Adding a run requires editing two files.
+1. ~~**Run content lives in the renderer, not in the data.**~~ **RESOLVED Session 43.** All `CompletedRun` and `StrainStatus` content fields populated. Adding a run requires editing only `Dabby_Data.py`.
 
-2. **`build_html()` enumerates strains instead of iterating over them.** ~540 lines
-   of per-strain inline HTML. Adding a strain or run requires adding code, not data.
+2. ~~**`build_html()` enumerates strains instead of iterating over them.**~~ **RESOLVED Session 43.** The target `for ss in STRAIN_STATUS:` loop is live. No strain names in the generator.
 
-3. **The generator is 32K tokens — too large to read in a single Claude pass.**
-   The primary cause is ~560 lines of CSS embedded as a Python f-string. The
-   secondary cause is the per-strain HTML blocks in `build_html()`.
+3. **The generator token count.** ~~32K tokens~~ → Step 1 (Session 36): 25,479 tokens; → **Step 3 (Session 43): ~5.8K tokens — well under the 25K single-pass limit.**
 
 4. **Equipment state is global and static.** `GLOBAL_INFO` describes the current
    rig configuration, but "current" is not always the same as the configuration used
@@ -721,7 +717,7 @@ per the data) is sanity-checked with the user rather than assumed.
 
 ---
 
-### Step 3 — Content Migration (Template-Driven Refactor)
+### Step 3 — Content Migration (Template-Driven Refactor) ✓ DONE — Session 43
 
 **What:** The main refactor — and the highest-risk change in the plan. Move all
 run content out of `build_html()` into `CompletedRun`/`StrainStatus` fields,
