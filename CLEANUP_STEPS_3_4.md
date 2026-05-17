@@ -66,7 +66,7 @@ Propose position and format before implementing.
 
 ---
 
-### 4. `Mode` row hardcoded "Custom Ascent" for all runs
+### 4. ✓ DONE Session 47 `Mode` row hardcoded "Custom Ascent" for all runs
 
 **Location:** `Dabby_Log_Generator.py` line 375.
 
@@ -105,6 +105,11 @@ ramp+hold runs (MB9ZST R3-4, MBD R3, BB36 R2-3, RF R3).
 
 Also check line 469 — a second hardcoded "Custom Ascent" in `what_to_try_next_html()`
 for the proposed baseline curve display. May need the same fix.
+
+**Actual resolution (Session 47):** Implemented as `_classify_curve_shape()` in
+`Dabby_Log_Generator.py` — a rendering utility function, not a `@property` on
+`CompletedRun`. Display logic stays in the generator layer. Supersedes the Session 46
+decision to use a property. See wisdom layer for the rationale.
 
 ---
 
@@ -198,7 +203,7 @@ is a starting framework, not a prediction."
 
 ## Category E — Schema rename (item 13)
 
-### 13. Rename `hold_seconds` → `duration_seconds` on `CompletedRun`
+### 13. ✓ DONE Session 48 Rename `hold_seconds` → `duration_seconds` on `CompletedRun`
 
 **Location:** `Dabby_Data.py` — `CompletedRun` field definition and all explicit
 constructor calls in `COMPLETED_RUNS`. `Dabby_Log_Generator.py` — `render_run_section()`
@@ -218,6 +223,12 @@ the confusion now that `hold_seconds` coexists with `Hold` as a curve shape labe
 
 Straightforward rename — no behavior change. Grep for `hold_seconds` to find all
 call sites before starting.
+
+**Done:** Field renamed in `Dabby_Data.py` (definition + all 17 explicit constructor
+calls), `run.hold_seconds` → `run.duration_seconds` in `Dabby_Log_Generator.py`,
+`Hold:` → `Duration:` in the Mode line label, schema def updated in
+`DABBY_ARCHITECTURE.md`. `Dabby_Handoff_Notes.md:259` reference is historical
+changelog text — intentionally left as-is.
 
 ---
 
