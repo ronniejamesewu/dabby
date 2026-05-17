@@ -377,12 +377,13 @@ def render_strain_profile(ss):
     s += '</div>'
     return s
 
-def render_run_section(ss, i, run):
+def render_run_section(ss, i, run, first_of_day=False):
     if run.run_date:
         date_str = f"{run.run_date.strftime('%B')} {run.run_date.day}, {run.run_date.year}"
     else:
         date_str = run.date_label
-    title      = f"{ss.name} — Run {i} — {date_str}"
+    fire       = ' 🔥' if first_of_day else ''
+    title      = f"{ss.name} — Run {i} — {date_str}{fire}"
     section_id = f"{ss.slug}-run{i}"
 
     pearl = f"{run.equipment.pearl_diameter_mm}mm pearl" if run.equipment.pearl_diameter_mm else "no pearl"
@@ -500,11 +501,19 @@ def build_html():
     # Terpene Reference
     sections.append(terpene_reference_html())
 
+    # ── First-of-day detection ────────────────────────────────────────────────
+    _seen_dates = set()
+    _first_of_day = set()
+    for _r in COMPLETED_RUNS:
+        if _r.run_date is not None and _r.run_date not in _seen_dates:
+            _first_of_day.add(id(_r))
+            _seen_dates.add(_r.run_date)
+
     # ── Strain sections (data-driven) ────────────────────────────────────────
     for _ss in STRAIN_STATUS:
         sections.append(render_strain_profile(_ss))
         for _i, _run in enumerate(runs_for(_ss.name), start=1):
-            sections.append(render_run_section(_ss, _i, _run))
+            sections.append(render_run_section(_ss, _i, _run, first_of_day=id(_run) in _first_of_day))
         sections.append(render_what_to_try_next(_ss))
 
     # ── Assemble ──────────────────────────────────────────────────────────────

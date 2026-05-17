@@ -53,6 +53,8 @@ A running log of sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Ri
 
 ## Session Logging Protocol
 
+**Tone:** Smart, dry, and funny when something earns it — don't force a bit every turn. Comedic references: Patrice O'Neal, Jimmy Norton, Sarah Silverman (dark, observational, willing to go there), Sheng Wang, Nate Bargatze (deadpan, quiet, almost accidental), Mike Birbiglia (self-deprecating storytelling), Doug Benson (loose, associative), Seth Rogen (intelligent stoner energy, warm, laughs at himself). Working blue is fine when it's genuinely funnier than the clean version — not as a default mode.
+
 **Run logging is a confirmed-interpretation conversation (Session 41 — Guardrail 4 in DABBY_ARCHITECTURE.md).** When the user reports a completed run, the AI never silently translates loose input into frozen log content. The pre-write readback has two beats:
 
 **Beat 1 — factual confirmation:** dates, curve, swab, equipment. State what you parsed — always, unconditionally, not gated on the AI feeling unsure (this project's documented failure mode is over-confidence). Users scan this for errors.
@@ -74,7 +76,13 @@ Runs are logged with exact date (not month only) when known.
 
 **Timestamp and date confirmation:** When logging a run, always capture `utc_logged_at = datetime.now(timezone.utc)` and derive local time using the user's timezone (US/Mountain, America/Denver — MDT in summer UTC-6, MST in winter UTC-7). Confirm with the user before writing: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off." Only surface the UTC/local date discrepancy in the message if the dates differ (i.e. it's late evening local time and UTC has rolled over). `run_date` should reflect the confirmed local date. If the user gives a relative offset ("about 10 minutes ago"), subtract that from `datetime.now(timezone.utc)` to derive the run time — do not ask them to state the time explicitly. Present the derived time in the confirmation prompt as usual.
 
-**sessions_prior_today:** When logging a run on the same day it was run, compute `sessions_prior_today` automatically from `COMPLETED_RUNS` (count entries with the same `run_date`) and tell the user what you filled in — no confirmation needed, they can correct if wrong. If logging post-date, ask casually: "Do you happen to know how many dabs you had before this one on [DATE]?" — use `None` if they don't know.
+**sessions_prior_today:** Count entries with the same `run_date` in `COMPLETED_RUNS` — silently, no narration. This applies whether logging same-day or post-date.
+
+When the count is zero (first of the day), say so in the confirmation beat and bring some real celebratory energy — this is a step up from the baseline wit, not just a dry aside. One or two sentences synthesized from whatever's present in the run context — strain, endpoint, what's being tested, time of day, run number, cross-strain patterns, anything. Working blue is encouraged when it lands. A setup and a punchline is fine. Leave the door open for correction.
+
+When the count is greater than zero, state it matter-of-factly ("3rd dab of the day") — no fanfare.
+
+For post-date runs, `utc_logged_at` can't be derived — ask casually: "Do you have a sense of what time it was?" Use `None` if they don't know.
 
 **Optional field register:** When prompting for optional or hard-to-recall fields (sessions prior today when post-date, load size, anything that may not be fresh in memory), use a casual register: "Do you happen to remember X?" This signals that the field is genuinely optional without making it feel like a required checkbox.
 
@@ -231,7 +239,7 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Putting color and design decisions in CLAUDE.md.** Color rules (no greens, minimum hue separation, no miami-vice saturation) belong as validation code in the generator, not as prose in CLAUDE.md. CLAUDE.md is for session-to-session behavioral instructions. When a rule is mechanical and checkable, write it as code.
 - **Opening a separate PR for a handoff update when a PR is already open.** When the session-close handoff update is written and there is an open PR from the same session, push the handoff to that branch — do not open PR #N+1 just for the handoff. Session 34 opened PR #56 for the handoff despite PR #55 (DABBY_ARCHITECTURE.md) being the natural home for it.
 
-- **Asking for sessions_prior_today when COMPLETED_RUNS can answer it.** The session logging protocol already specifies: compute sessions_prior_today automatically from COMPLETED_RUNS by counting entries with the same run_date, then tell the user what you filled in — no confirmation needed. Do not ask the user how many dabs they had earlier if the same-day entries are already in the log.
+- **Asking for or narrating sessions_prior_today when COMPLETED_RUNS can answer it.** Count entries with the same `run_date` silently — no narration, no asking. This applies same-day and post-date. When it's the first of the day, say so and riff; when it's not, state the count matter-of-factly.
 - **Asking for the time when the user gives a relative offset.** If the user says "about X minutes ago," subtract that from `datetime.now(timezone.utc)` and present the derived time in the confirmation prompt. Do not ask them to tell you the clock time.
 - **Using logging time for utc_logged_at when the user provides the actual run time.** When the user corrects the confirmation timestamp by giving a specific time ("it was at 8:30pm"), convert to UTC and use that as utc_logged_at — not `datetime.now()`. The relative-offset case ("about 10 minutes ago") was already covered; absolute times follow the same principle. MBD Run 4 was initially committed with logging time (04:29 UTC) instead of run time (02:30 UTC / 8:30 PM MDT).
 - **Blaming GitHub Pages propagation lag without verifying deployed content.** When the user reports the live site hasn't updated, do not attribute it to propagation delay until the deployment pipeline is verified end-to-end: (1) confirm gh-pages has a new commit with the expected timestamp, and (2) grep the deployed file for content that should be in the new version. A commit on gh-pages does not mean the right content was deployed — the deploy job can fail to push (rejected), push stale content, or push an empty diff. "Try a hard refresh" is not a first response; it's only appropriate after the pipeline is confirmed clean. This mistake was made twice in this project.
