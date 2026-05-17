@@ -66,7 +66,7 @@ artifacts distilled here and deleted (Session 35 precedent). No code changes;
 `Dabby_Data.py` / `Dabby_Log_Generator.py` / `index.html` untouched. No runs
 logged.
 
-**Session 39 — N2 dissolved, N5 resolved; B4/C1 closed; Step 3 ungated.**
+**Session 41 — N2 dissolved, N5 resolved; B4/C1 closed; Step 3 ungated.**
 The two open sub-problems were resolved through this project's audit
 discipline: two parallel memory-disabled subagent auditors (the fast pass),
 then one independent memory-off session given the source plus the fast pass
@@ -112,29 +112,29 @@ the fast pass on two points and was right both times; those divergences won.
 ---
 
 The items below were re-opened by prior audits. **B4, N2, N5, and C1 are
-resolved as of Session 39** (see the Session 39 note above) — their entries
+resolved as of Session 41** (see the Session 41 note above) — their entries
 are kept as the record of what was decided and when, not as live questions.
 **C2 and C3 remain open.**
 
-- **B4 — RESOLVED Session 39** (was: "resolved in shape only, two sub-problems
+- **B4 — RESOLVED Session 41** (was: "resolved in shape only, two sub-problems
   open" — Session 37). The Session 37 audits converged on a closed predicate
-  catalog + typed STORE; Session 39 superseded that — the catalog presumed
+  catalog + typed STORE; Session 41 superseded that — the catalog presumed
   *derivation* where the artifact is *authorship*. Final: no catalog, no
   referent rule; the curve-relation prose and per-run Results literals are
   frozen verbatim authored fields (**N2 dissolved**). `section_note` stays
   dropped. Mixed author/tense result rows (e.g. OC R5 "Observation:") are
   frozen verbatim literals like any other per-run row — no schema needed for
   them. `next_text` (open #6) is resolved: hand-maintained current state on
-  `StrainStatus` (see N5). See the Session 39 note above.
+  `StrainStatus` (see N5). See the Session 41 note above.
 
-- **C1 — RESOLVED Session 39 (via N5).** Session 35 recommended keeping the
+- **C1 — RESOLVED Session 41 (via N5).** Session 35 recommended keeping the
   per-run `analysis` frozen but decoupling the rendered "current What to Try
-  Next" from it. Adopted — with the gap the Session 39 independent audit
+  Next" from it. Adopted — with the gap the Session 41 independent audit
   caught: the frozen `analysis` is **also rendered read-only in each run's own
   section** (its permanent in-run history), and the strain-level "What to Try
   Next" renders from revisable `StrainStatus.next_*`. Decoupling *without*
   rendering would have orphaned `analysis` into write-only data — the failure
-  the first-classing was meant to eliminate. See the Session 39 note above.
+  the first-classing was meant to eliminate. See the Session 41 note above.
 
 - **C2 — append-only wisdom tables (Principle 6 / Step 4b).** Append-only leaves a
   15–35°F-offset row and its retraction both standing for the reader to reconcile;
@@ -217,8 +217,8 @@ Equipment can change and revert between runs. Each run happened against a specif
 configuration. That configuration is part of the run's record and is required for
 correct comparison between runs.
 
-**4. Run analysis is historically stable.** *(RESOLVED Session 39 via N5 — see
-the Session 39 note in Status & Re-opened Questions.)*
+**4. Run analysis is historically stable.** *(RESOLVED Session 41 via N5 — see
+the Session 41 note in Status & Re-opened Questions.)*
 
 The analysis field on a `CompletedRun` records the state of understanding at the
 moment it was written. It is frozen (correctable by exception when genuinely
@@ -338,7 +338,7 @@ suite. Expect minor revisions as fields meet real data. `extra_rows` holds
 genuinely one-off result rows (e.g. OC R5 "Observation:") as **frozen verbatim
 literals**, not a typed escape hatch.
 
-**Schema question status — RESOLVED Session 39** (see the Session 39 note in
+**Schema question status — RESOLVED Session 41** (see the Session 41 note in
 Status & Re-opened Questions). B4's closed-predicate-catalog / typed-STORE
 shape is **superseded**. The interpretive connective tissue — the
 Mode/Hold/Endpoint line, per-run Results rows, `endpoint_note`, `read`,
@@ -368,7 +368,7 @@ default here — it only rejects arbitrary unhashable defaults on Python ≥3.11
 is a version-dependent backstop, not the reason. `validate()` rejecting `None` is
 the enforcement.
 
-**Note on `analysis` placement (RESOLVED Session 39 via N5).** The analysis for
+**Note on `analysis` placement (RESOLVED Session 41 via N5).** The analysis for
 a run lives on the `CompletedRun` that generated it, not on `StrainStatus`. It
 is frozen and **rendered read-only inside that run's own section** — the
 permanent record of how understanding evolved, each run carrying the state of
@@ -381,9 +381,9 @@ independently of any run's `analysis` — N5 makes that latent reality explicit
 and *removes* a coupling rather than adding one. Sourcing the rendered guidance
 from the last run's frozen `analysis` is explicitly rejected: it both stales
 the guidance and, once `analysis` is a real field, would orphan it into
-write-only data (the gap the Session 39 independent audit caught).
+write-only data (the gap the Session 41 independent audit caught).
 
-**Schema question #6 — RESOLVED Session 39.** `next_text` — the dashboard
+**Schema question #6 — RESOLVED Session 41.** `next_text` — the dashboard
 strain-browser one-liner — stays a **hand-maintained `StrainStatus` field**
 (current revisable state), consistent with the rest of the
 `StrainStatus.next_*` guidance block under N5. It is *not* derived from the
@@ -462,7 +462,7 @@ Contains:
 - Current run counts per strain
 - Last run date per strain
 - Current "What to Try Next" per strain (from `StrainStatus.next_*` — **not**
-  the last run's frozen `analysis`; corrected per N5, Session 39)
+  the last run's frozen `analysis`; corrected per N5, Session 41)
 - Current equipment configuration per strain (last run's `equipment`)
 - Dashboard stats
 
@@ -519,7 +519,7 @@ is regenerated automatically by the generator run.
 These are protocol constraints, not schema constraints. They govern AI behavior
 during sessions, not data structure.
 
-**Guardrail 1: Run analysis is historically stable.** *(RESOLVED Session 39 via
+**Guardrail 1: Run analysis is historically stable.** *(RESOLVED Session 41 via
 N5 — frozen-record intent stands; the rendered "current" guidance is decoupled
 to `StrainStatus.next_*`.)*
 
@@ -554,7 +554,7 @@ equipment, not temperature. Runs are only directly comparable when their
 difference to be acknowledged in the analysis.
 
 **Guardrail 4: Logging is confirmed interpretation, not silent translation.**
-*(Added Session 39. Operational detail — the clarify-vs-thread-pull rule and
+*(Added Session 41. Operational detail — the clarify-vs-thread-pull rule and
 the necessity-class fields — lives once, in the Session Logging Protocol in
 `Dabby_Handoff_Notes.md`.)*
 
@@ -728,7 +728,7 @@ run content out of `build_html()` into `CompletedRun`/`StrainStatus` fields,
 replace the per-strain HTML blocks with a data-driven iteration loop, and (per
 B1) make that loop render each run's `equipment`.
 
-**Gating — RESOLVED Session 39.** N2 and N5 (the two sub-problems that gated
+**Gating — RESOLVED Session 41.** N2 and N5 (the two sub-problems that gated
 this step) are closed: N2 dissolved (frozen verbatim authored prose, no
 catalog, no numeric re-derivation); N5 resolved (frozen `analysis` rendered
 read-only in-run; "What to Try Next" from revisable `StrainStatus.next_*`).
@@ -745,7 +745,7 @@ largest diff in the project's history.
 **Sub-steps:**
 
 **3.0 — Normalization commit (separate, on the *old* generator, first).
-SCOPE-CORRECTED Session 39.** Resolve only the **trivial non-Mode-line**
+SCOPE-CORRECTED Session 41.** Resolve only the **trivial non-Mode-line**
 inconsistencies in the existing enumerated generator: `<h3>Curve</h3>` vs
 `<h3 class="amber">Curve Used</h3>`, `Results` vs `Observations`,
 `session_order_note()` present on some first runs but not others. **Mode/Hold/
@@ -764,7 +764,7 @@ today's `index.html`). Then the refactor can target *true byte-identity*.
 **3a.** Extend `CompletedRun` with the content fields from the data model above
 (including the `equipment` rendering wiring deferred from Step 2). `analysis` is
 a `CompletedRun` field, frozen, **rendered read-only in that run's own section**
-(N5(ii) — the explicit fate the Session 39 audit required: a frozen-but-unrendered
+(N5(ii) — the explicit fate the Session 41 audit required: a frozen-but-unrendered
 field would orphan the history into `git log` only). Extend `StrainStatus` with
 profile content fields **and** the explicit `next_dab_notes`/`next_ai_analysis`/
 `next_waypoints` fields (today inline `what_to_try_next_html()` args; now real
@@ -896,7 +896,7 @@ the template by editing one section.
 (data-driven generator) was correct; the schema design (rendering metadata in
 data, HTML strings in dataclass fields, `results_header` preserving an accidental
 inconsistency) was wrong. Step 3 of this plan targets the same goal with a
-*better* schema — **resolved Session 39** (see the Session 39 note in Status &
+*better* schema — **resolved Session 41** (see the Session 41 note in Status &
 Re-opened Questions): no rendering metadata and no HTML strings as typed data,
 but also no predicate catalog — the interpretive prose is frozen verbatim
 authored text (N2 dissolved) and the rendered "current" guidance is decoupled
