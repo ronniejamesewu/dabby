@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 17, 2026 — Session 46
+## Last updated: May 17, 2026 — Session 47
 
 This document provides operational context for sessions. Read alongside:
 - `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
@@ -154,7 +154,6 @@ The dashboard is live in the generator and deployed. It sits above the strain pr
 - 1D thermal resistance model is a dead end. Do not rebuild.
 - The 15–35°F offset estimate is retired. Current position: offset probably small.
 - Quartz-to-sapphire curve scaling does not work.
-- Valley mode is not appropriate for cold start sessions.
 - Consistency type alone does not justify a different baseline curve.
 - All MD files (`CLAUDE.md`, `Dabby_Handoff_Notes.md`, `Dabby_Methodology.md`) are in the repo. Push them when relevant changes are made.
 - The user's hypothesis that higher temperature (460°F endpoint) produced a notably stronger effect in OC Run 5 is logged as stated — one data point, not a confirmed finding. Do not dismiss it or over-assert it.
@@ -256,6 +255,8 @@ Specific errors made in past sessions that a new instance should avoid:
 ---
 
 ## Changelog
+
+- **May 17, 2026 — Session 47:** Item 4 cleanup (CLEANUP_STEPS_3_4.md) — curve shape classifier + methodology doc updates. No runs logged. Added `_classify_curve_shape()` to the generator as a rendering utility — display logic stays in the generator, no property added to `CompletedRun`. Replaces hardcoded "Custom Ascent" in all Mode rows with compositional labels derived from waypoint temperature diffs. "Complex" fallback for >4 direction groups. Removed Valley preference language from methodology doc, wisdom layer, and handoff decisions. Added Switch² device curve constraints block to methodology (heating/cooling rate limits, 10–90s session window). Rewrote "Why custom ascent" → "Why ascending curves". Corrected device mode name "Custom Ascent" → "Custom" throughout. Added item 13 to cleanup doc (rename `hold_seconds` → `duration_seconds`). PR #76.
 
 - **May 17, 2026 — Session 46:** Steps 3 & 4 cleanup audit — no runs logged. Identified 12 cleanup items from the Steps 3/4 implementation: 4 generator/data rendering gaps (`analysis`, `dab_notes`, `EquipmentConfig` not rendered; `Mode` hardcoded), 3 session logging instruction gaps (`dab_notes`/`analysis` fields missing from protocol and new-run checklist), 5 doc drift items. Created `CLEANUP_STEPS_3_4.md` for the 7 remaining code/instruction items. Fixed all 5 drift items this session: demoted `Dabby_Methodology.md` to conditional startup read in handoff introduction; corrected "edit generator" → "edit `Dabby_Data.py`" in CRITICAL section; updated Known Claude Failure Modes startup entry to current four required files; fixed Session Process step 7 calibration-endpoint language in methodology doc; fixed "Empirical calibration" → "Swab result is the empirical ground truth." Also established `curve_shape` as a `@property` on `CompletedRun` (derived from waypoints, not stored) as the resolution for the hardcoded Mode row. Docs only — no generator/`index.html`/run data change.
 
