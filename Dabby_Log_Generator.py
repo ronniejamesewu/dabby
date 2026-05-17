@@ -431,7 +431,8 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("WW Z", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p>'
     c += curve_chart_html(WWZ_RUN1)
     c += curve_table(WWZ_RUN1)
@@ -457,7 +458,8 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3 class="amber">Curve Used</h3>'
+    c  = session_order_note(_spr.get(("Caramel Apple Gelato", 1)))
+    c += '<h3 class="amber">Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p>'
     c += curve_chart_html(CAG_RUN1)
     c += curve_table(CAG_RUN1, amber=True)
@@ -485,26 +487,29 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3 class="amber">Curve Used</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 1)))
+    c += '<h3 class="amber">Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F</p>'
     c += curve_chart_html(OC_RUNS12)
     c += curve_table(OC_RUNS12, amber=True)
-    c += '<h3 class="amber">Observations</h3>'
+    c += '<h3 class="amber">Results</h3>'
     c += result_row("Swab:", "Not recorded.", amber=True)
     c += result_row("Result:", "Working well but first 40 seconds felt too flat and slow. Low vapor density in opening phase. Same result on Run 2.", amber=True)
     sections.append(collapsible_section("oc-run1", "Orange Candy — Run 1 — May 2026", c))
 
-    c  = '<h3 class="amber">Curve Used</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 2)))
+    c += '<h3 class="amber">Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 450°F — same as Run 1</p>'
     c += curve_chart_html(OC_RUNS12)
     c += curve_table(OC_RUNS12, amber=True)
-    c += '<h3 class="amber">Observations</h3>'
+    c += '<h3 class="amber">Results</h3>'
     c += result_row("Swab:", "Not recorded.", amber=True)
     c += result_row("Result:", "Same as Run 1 — opening too flat, low vapor density first 40s.", amber=True)
     c += result_row("Diagnosis:", "Opening too flat — low vapor density in first 40s. Steeper climb 15–35s drives earlier vapor production. Flatter tail 35–65s closes the offset — a slowly-arrived-at 440°F delivers more heat to the material than a steeply-arrived-at 450°F.", amber=True)
     sections.append(collapsible_section("oc-run2", "Orange Candy — Run 2 — May 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 3)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     c += curve_chart_html(OC_RUN3)
     c += curve_table(OC_RUN3)
@@ -526,7 +531,8 @@ def build_html():
     c += result_row("Verdict:", "Clean swab confirmed. Results stable. Lower opening setpoint (350°F) under exploration for Run 5 as next variable to test.")
     sections.append(collapsible_section("oc-run4", "Orange Candy — Run 4 — May 5, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Orange Candy", 5)))
+    c += '<h3 class="amber">Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F</p>'
     c += curve_chart_html(OC_RUN5)
     c += curve_table(OC_RUN5, amber=True)
@@ -577,7 +583,8 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("The Hive #1", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 440°F</p>'
     c += curve_chart_html(HIVE1_RUN1)
     c += curve_table(HIVE1_RUN1)
@@ -598,9 +605,9 @@ def build_html():
     c += result_row("Verdict:", "Two clean runs, consistent character, swab lighter on repeat. 440°F endpoint may be higher than needed — material is fully expressing before the endpoint. Run 3: trying steady 430°F flat hold (no ramp) to test whether curve shape affects the result.")
     sections.append(collapsible_section("hive1-run2", "The Hive #1 — Run 2 — May 7, 2026", c))
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("The Hive #1", 3)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 45 seconds &nbsp;|&nbsp; <strong>Setpoint:</strong> 430°F steady (no ramp)</p>'
-    c += '<p class="note">Curve shape experiment: steady flat hold at 430°F from session open, rather than the ramped curve used in Runs 1–2. Testing whether a multi-stage ramp produces meaningfully different results from a single sustained setpoint. Swab is a floor indicator only — session character is the primary readout.</p>'
     c += curve_chart_html(HIVE1_RUN3)
     c += curve_table(HIVE1_RUN3)
     c += '<h3>Results</h3>'
@@ -650,7 +657,8 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Fembot #3", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     c += curve_chart_html(FEMBOT3_RUN1)
     c += curve_table(FEMBOT3_RUN1)
@@ -718,7 +726,8 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Maple Bacon Donut", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
     c += curve_chart_html(MBD_RUN1)
     c += curve_table(MBD_RUN1)
@@ -895,7 +904,8 @@ def build_html():
     s += '</div>'
     sections.append(s)
 
-    c  = '<h3>Curve</h3>'
+    c  = session_order_note(_spr.get(("Blueberry 36 #1", 1)))
+    c += '<h3>Curve</h3>'
     c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F — baseline</p>'
     c += curve_chart_html(BB36_1_RUN1)
     c += curve_table(BB36_1_RUN1)
