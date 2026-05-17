@@ -53,6 +53,9 @@ class CompletedRun:
     analysis: str = ""               # AI synthesis (historically stable, rendered read-only)
     proposed_waypoints: list | None = None
 
+    # Title date override for runs where run_date=None (pre-dataclass era entries logged as "May 2026")
+    date_label: str = ""             # when set, used instead of derived run_date string in section title
+
 @dataclass
 class StrainStatus:
     name: str
@@ -492,7 +495,14 @@ _SPINNER = EquipmentConfig(insert="quartz", carb_cap="Cloud Vortex 21.0", pearl_
 _GEMLOCK = EquipmentConfig(insert="quartz", carb_cap="Gemlock joystick",  pearl_diameter_mm=None)
 
 COMPLETED_RUNS = [
-    CompletedRun(strain="WW Z",                              run_date=date(2026, 5, 2),  sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=WWZ_RUN1),
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 2), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=WWZ_RUN1,
+        hold_seconds=65, endpoint_note='<strong>Rate:</strong> ~0.6°F/sec',
+        swab='Light golden/amber. Clean. No dark coloration.',
+        extra_rows=[
+            ("Vapor:",   "Spectacular. Full session expressed well across the arc."),
+            ("Verdict:", "Clean on first run. Baseline curve well-matched to this material."),
+        ],
+    ),
     CompletedRun(strain="Caramel Apple Gelato",              run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=CAG_RUN1),
     CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUNS12),
     CompletedRun(strain="Orange Candy",                      run_date=None,              sessions_prior_today=None, utc_logged_at=None,                                              equipment=_SPINNER, waypoints=OC_RUNS12),
@@ -526,7 +536,12 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z",                              profile_anchor="#wwz-profile",      next_text="—",                                                                                    accent=None, slug="wwz"),
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="—", accent=None, slug="wwz",
+        info=WWZ_INFO,
+        terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="Nothing recorded",
+        next_ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
+    ),
     StrainStatus(name="Caramel Apple Gelato",              profile_anchor="#cag-profile",      next_text="Try 430°F endpoint",                                                                   accent=None, slug="cag"),
     StrainStatus(name="Orange Candy",                      profile_anchor="#oc-profile",       next_text="Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", accent=None, slug="oc"),
     StrainStatus(name="The Hive #1",                       profile_anchor="#hive1-profile",    next_text="Try 420–425°F endpoint on Run 6",                                                      accent=None, slug="hive1"),

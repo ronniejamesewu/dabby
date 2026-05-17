@@ -339,6 +339,70 @@ def curve_chart_html(waypoints, chart_id=None):
 </script>'''
     return html
 
+# ── DATA-DRIVEN RENDER HELPERS ───────────────────────────────────────────────
+
+def has_runs(strain_name):
+    return any(r.strain == strain_name for r in COMPLETED_RUNS)
+
+def runs_for(strain_name):
+    return [r for r in COMPLETED_RUNS if r.strain == strain_name]
+
+def render_strain_profile(ss):
+    accent = _ACCENT_RESOLVED[ss.name]
+    s  = f'<div class="section" id="{ss.slug}-profile">'
+    s += accent_header(f"{ss.name} — Strain Profile", accent)
+    s += info_table(ss.info)
+    if ss.terpene_table_rows is not None:
+        s += '<h3>Terpene Profile — Inferred</h3>'
+        if ss.terpene_table_note:
+            s += f'<p class="note">{ss.terpene_table_note}</p>'
+        s += terpene_table(ss.terpene_table_rows)
+    if ss.terpene_note:
+        s += f'<p class="note">{ss.terpene_note}</p>'
+    s += '</div>'
+    return s
+
+def render_run_section(ss, i, run):
+    if run.run_date:
+        date_str = f"{run.run_date.strftime('%B')} {run.run_date.day}, {run.run_date.year}"
+    else:
+        date_str = run.date_label
+    title      = f"{ss.name} — Run {i} — {date_str}"
+    section_id = f"{ss.slug}-run{i}"
+
+    c  = session_order_note(run.sessions_prior_today)
+    c += '<h3 class="amber">Curve</h3>' if run.too_hot else '<h3>Curve</h3>'
+    c += (f'<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp;'
+          f' <strong>Hold:</strong> {run.hold_seconds} seconds &nbsp;|&nbsp;'
+          f' {run.endpoint_note}</p>')
+    c += curve_chart_html(run.waypoints)
+    c += curve_table(run.waypoints, amber=run.too_hot)
+    c += '<h3 class="amber">Results</h3>' if run.too_hot else '<h3>Results</h3>'
+    if run.swab:
+        c += result_row("Swab:", run.swab, amber=run.too_hot)
+    if run.session_char:
+        c += result_row("Session:", run.session_char, amber=run.too_hot)
+    if run.intensity is not None:
+        c += result_row("Intensity:", run.intensity, amber=run.too_hot)
+    if run.read:
+        c += result_row("Read:", run.read, amber=run.too_hot)
+    if run.verdict:
+        c += result_row("Verdict:", run.verdict, amber=run.too_hot)
+    if run.extra_rows:
+        for label, value in run.extra_rows:
+            c += result_row(label, value, amber=run.too_hot)
+    return collapsible_section(section_id, title, c)
+
+def render_what_to_try_next(ss):
+    accent = _ACCENT_RESOLVED[ss.name]
+    return what_to_try_next_html(
+        f"{ss.slug}-next",
+        dab_notes=ss.next_dab_notes,
+        ai_analysis=ss.next_ai_analysis,
+        proposed_waypoints=ss.next_waypoints,
+        accent=accent,
+    )
+
 # ── SECTIONS ─────────────────────────────────────────────────────────────────
 
 def terpene_reference_html():
@@ -422,32 +486,12 @@ def build_html():
     # Terpene Reference
     sections.append(terpene_reference_html())
 
-    # ── WW Z ──────────────────────────────────────────────────────────────────
-
-    s  = f'<div class="section" id="wwz-profile">'
-    s += accent_header("WW Z — Strain Profile", _ac["WW Z"])
-    s += info_table(WWZ_INFO)
-    s += '<p class="note"><strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.</p>'
-    s += '</div>'
-    sections.append(s)
-
-    c  = session_order_note(_spr.get(("WW Z", 1)))
-    c += '<h3>Curve</h3>'
-    c += '<p><strong>Mode:</strong> Custom Ascent &nbsp;|&nbsp; <strong>Hold:</strong> 65 seconds &nbsp;|&nbsp; <strong>Rate:</strong> ~0.6°F/sec</p>'
-    c += curve_chart_html(WWZ_RUN1)
-    c += curve_table(WWZ_RUN1)
-    c += '<h3>Results</h3>'
-    c += result_row("Swab:", "Light golden/amber. Clean. No dark coloration.")
-    c += result_row("Vapor:", "Spectacular. Full session expressed well across the arc.")
-    c += result_row("Verdict:", "Clean on first run. Baseline curve well-matched to this material.")
-    sections.append(collapsible_section("wwz-run1", "WW Z — Run 1 — May 2, 2026", c))
-
-    sections.append(what_to_try_next_html(
-        "wwz-next",
-        dab_notes="Nothing recorded",
-        ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
-        accent=_ac["WW Z"],
-    ))
+    # ── WW Z ── [data-driven]
+    _wwz = next(ss for ss in STRAIN_STATUS if ss.name == "WW Z")
+    sections.append(render_strain_profile(_wwz))
+    for _i, _run in enumerate(runs_for("WW Z"), start=1):
+        sections.append(render_run_section(_wwz, _i, _run))
+    sections.append(render_what_to_try_next(_wwz))
 
     # ── Caramel Apple Gelato ──────────────────────────────────────────────────
 
