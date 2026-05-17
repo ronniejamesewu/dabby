@@ -33,13 +33,46 @@ class CompletedRun:
     # carries explicit equipment — None never means "inherit a session default".
     equipment: EquipmentConfig = None
 
+    # Semantic status — drives amber styling; amber is presentation, too_hot is the fact
+    too_hot: bool = False
+
+    # Curve description
+    hold_seconds: int = 65
+    endpoint_note: str = ""          # "steady (no ramp)", "same as Run 1", etc.
+
+    # Session content (currently string literals in build_html() — migrated in Step 3)
+    swab: str = ""
+    session_char: str = ""
+    intensity: str | None = None
+    read: str = ""                   # interpretation
+    verdict: str = ""
+    extra_rows: list | None = None   # genuinely one-off result rows (e.g. OC R5 "Observation:")
+
+    # Analysis (currently string literals in build_html() — migrated in Step 3)
+    dab_notes: str = ""              # user's read
+    analysis: str = ""               # AI synthesis (historically stable, rendered read-only)
+    proposed_waypoints: list | None = None
+
 @dataclass
 class StrainStatus:
     name: str
     profile_anchor: str
-    next_text: str
+    next_text: str                   # hand-maintained dashboard one-liner (current revisable state)
     accent: str | None
     slug: str
+
+    # Profile content (currently string literals in build_html() — migrated in Step 3)
+    info: list | None = None         # rows for info_table()
+    terpene_note: str = ""           # <p class="note"> in profile section
+    terpene_table_rows: list | None = None   # only MB9ZST currently
+    terpene_table_note: str = ""     # note above terpene table (MB9ZST only)
+
+    # Current "What to Try Next" — revisable strain-level guidance (N5)
+    # Today these are inline args to what_to_try_next_html(); Step 3 makes them explicit.
+    # NOT sourced from any run's frozen analysis.
+    next_dab_notes: str = ""
+    next_ai_analysis: str = ""
+    next_waypoints: list | None = None
 
 @dataclass
 class TerpeneEntry:
