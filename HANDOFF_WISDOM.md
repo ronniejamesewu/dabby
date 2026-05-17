@@ -44,6 +44,7 @@ Operational and data-integrity failures worth tracking across sessions.
 | UTC date used as local run_date | Late-evening logging when UTC has already rolled over (after ~6 PM MDT) | OC R6-7, Hive1 R4-5 | Logged as the next calendar day. Protocol: derive local time (UTC−6 MDT / UTC−7 MST), confirm with user before writing. `run_date` must reflect the confirmed local date |
 | Silent content loss via GitHub MCP push_files | Passing full `index.html` content as a string literal to push_files | Session 4; risk persisted through ~Session 28 | push_files strips charts, simplifies sections. Use git for all routine commits. push_files is acceptable only for temporary files on non-main branches when git checkout is impractical, and never for `index.html` |
 | Deploy race condition — live site not updated after merge | deploy.yml (push-to-main trigger) and preview cleanup (PR-closed trigger) both writing to gh-pages simultaneously | PR #39 | deploy job committed locally but push rejected as non-fast-forward. Fixed: concurrency group `gh-pages` on both `deploy.yml` and `preview.yml` — jobs queue rather than race |
+| Over-asserting device capability limits without verification | Assuming hardware constraints (e.g. waypoint count) from device category rather than actual specs | Session 47 | Claimed Switch² waypoint count was bounded by being a consumer device — user corrected with real limits (+10°F/sec heat, −3°F/sec cool, 10–90s window). Verify device specifications before using hardware constraints as reasoning inputs |
 
 ---
 
@@ -51,7 +52,7 @@ Operational and data-integrity failures worth tracking across sessions.
 
 | Decision | Rationale | Session |
 |---|---|---|
-| `curve_shape` as `@property` on `CompletedRun`, derived from waypoints, not stored | Property makes derived-not-authored distinction structurally unambiguous; always consistent with waypoints; queryable identically to a field; no `__post_init__` boilerplate | Session 46 |
+| Curve shape classifier lives in the generator as a rendering utility function, not as a `@property` on `CompletedRun` (supersedes Session 46 decision) | A string label is display logic — it belongs in the rendering layer, not the data model. The label is not queryable: if shape-based querying is needed in future, either query waypoints directly (e.g. `run.waypoints[-1].temp_f`, monotonicity checks) or add structured boolean/int properties to `CompletedRun` at that point. Do not add properties speculatively before a real query exists | Session 47 |
 
 ---
 
