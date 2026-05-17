@@ -40,7 +40,7 @@ class CompletedRun:
     hold_seconds: int = 65
     endpoint_note: str = ""          # "steady (no ramp)", "same as Run 1", etc.
 
-    # Session content (currently string literals in build_html() — migrated in Step 3)
+    # Session content — all fields live here; generator is rendering-only (Step 3)
     swab: str = ""
     session_char: str = ""
     intensity: str | None = None
