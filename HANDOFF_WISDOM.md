@@ -8,7 +8,7 @@ Session-close checklist:
 2. Did equipment configuration change or produce a new observation?
 3. Did a failure mode occur this session (data integrity / process)?
 4. Was any methodology position tested, confirmed, or revised?
-5. Were any decisions made that shouldn't be re-litigated?
+5. Were any decisions made that shouldn't be re-litigated? (Includes confirmed-correct audits — "we checked X and it's fine" belongs in Decisions — Do Not Re-Litigate in `Dabby_Handoff_Notes.md`, not the backlog.)
 
 Each "yes" produces one update to the relevant table or section below.
 

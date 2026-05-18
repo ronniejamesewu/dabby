@@ -42,7 +42,7 @@ body {
 .cover {
   background: var(--green-dark);
   color: #fff;
-  padding: 3rem var(--page-pad) 2.5rem;
+  padding: 2.5rem var(--page-pad) 2rem;
   text-align: center;
 }
 .cover h1 {
@@ -55,13 +55,7 @@ body {
 .cover .subtitle {
   font-size: 1rem;
   color: rgba(255,255,255,0.8);
-  margin-bottom: 0.4rem;
-}
-.cover .tagline {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 /* ── Sections ── */
@@ -412,6 +406,9 @@ p {
 .stat-card.c4 { border-top-color: #4A7C59; }
 .stat-card.c5 { border-top-color: #7A9EBB; }
 .stat-card.c6 { border-top-color: #9B7A3A; }
+.stat-card.c7 { border-top-color: #C8891C; }
+.stat-card.c8 { border-top-color: #7B7FB0; }
+.stat-card.c9 { border-top-color: #A08060; }
 .stat-value {
   font-family: 'DM Mono', monospace;
   font-size: 1.6rem;
@@ -476,19 +473,6 @@ details.collapsible > .collapsible-body { padding: 2rem var(--page-pad); }
   flex-shrink: 0;
   align-items: center;
 }
-.last-pill {
-  display: inline-block;
-  padding: 0.28rem 0.75rem;
-  background: var(--accent, var(--green-mid));
-  border-radius: 20px;
-  font-size: 0.75rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: opacity 0.15s;
-}
-.last-pill:hover { opacity: 0.8; }
 
 /* ── Terpene reference table ── */
 .terp-ref-wrap {
@@ -557,5 +541,6 @@ details.collapsible > .collapsible-body { padding: 2rem var(--page-pad); }
   body { padding: 0.5rem; }
   .info-table td:first-child { width: 35%; white-space: normal; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid > .stat-card:last-child:nth-child(odd) { grid-column: span 2; }
   .pill-group { flex-direction: column; gap: 0.3rem; align-items: flex-end; }
 }

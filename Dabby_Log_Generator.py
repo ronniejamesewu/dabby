@@ -126,6 +126,24 @@ def dashboard_html():
     max_dabs_day   = max(date_counts.values()) if date_counts else 0
     unique_strains = len(run_counts)
 
+    MDT = timezone(timedelta(hours=-6))
+    timed_runs = [r for r in COMPLETED_RUNS if r.utc_logged_at is not None]
+    if timed_runs:
+        earliest_str = min(timed_runs, key=lambda r: r.utc_logged_at).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        latest_str   = max(timed_runs, key=lambda r: r.utc_logged_at).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        day_firsts = {}
+        for r in timed_runs:
+            key = r.run_date if r.run_date is not None else r.utc_logged_at.astimezone(MDT).date()
+            if key not in day_firsts or r.utc_logged_at < day_firsts[key]:
+                day_firsts[key] = r.utc_logged_at
+        mins = [dt.astimezone(MDT).hour * 60 + dt.astimezone(MDT).minute for dt in day_firsts.values()]
+        avg_min = round(sum(mins) / len(mins))
+        avg_h, avg_m = divmod(avg_min, 60)
+        avg_h12 = avg_h % 12 or 12
+        avg_str = f'{avg_h12}:{avg_m:02d} {"AM" if avg_h < 12 else "PM"}'
+    else:
+        earliest_str = latest_str = avg_str = '&mdash;'
+
     last_dates = {}
     for run in COMPLETED_RUNS:
         if run.run_date is not None:
@@ -145,6 +163,9 @@ def dashboard_html():
         f'<div class="stat-card c2"><div class="stat-value">{avg_open}°</div><div class="stat-label">avg open</div></div>'
         f'<div class="stat-card c3"><div class="stat-value">{avg_end}°</div><div class="stat-label">avg endpoint</div></div>'
         f'<div class="stat-card c4"><div class="stat-value">{hot_temp}°</div><div class="stat-label">most time spent</div></div>'
+        f'<div class="stat-card c7"><div class="stat-value">{earliest_str}</div><div class="stat-label">earliest dab</div></div>'
+        f'<div class="stat-card c8"><div class="stat-value">{latest_str}</div><div class="stat-label">latest dab</div></div>'
+        f'<div class="stat-card c9"><div class="stat-value">{avg_str}</div><div class="stat-label">avg first dab of the day</div></div>'
         f'</div>'
     )
 
@@ -165,7 +186,6 @@ def dashboard_html():
         else:
             meta = f'{n} {session_word}'
         next_anchor = anchor.replace('-profile', '-next')
-        last_anchor = f'#{slug}-run{n}'
         rows += (
             f'<div class="strain-row" data-strain="{strain.lower()}" style="--accent:{color}">'
             f'<div class="strain-info">'
@@ -174,7 +194,6 @@ def dashboard_html():
             f'<span class="strain-next">{ss.next_text}</span>'
             f'</div>'
             f'<div class="pill-group">'
-            f'<a href="{last_anchor}" class="last-pill">&uarr; Last</a>'
             f'<a href="{next_anchor}" class="next-pill">&rarr; Next</a>'
             f'</div>'
             f'</div>'
@@ -518,12 +537,11 @@ def build_html():
 
     # ── Assemble ──────────────────────────────────────────────────────────────
     body = dash + ''.join(sections)
-    body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig &nbsp;·&nbsp; Hash Rosin — Solventless — Cold Start Protocol</div>'
+    body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig</div>'
 
     cover = '''<div class="cover">
         <h1>Dabby the House Rig</h1>
         <p class="subtitle">Session Log</p>
-        <p class="tagline">Hash Rosin &nbsp;·&nbsp; Solventless &nbsp;·&nbsp; Cold Start Protocol</p>
     </div>'''
 
     html = f"""<!DOCTYPE html>
