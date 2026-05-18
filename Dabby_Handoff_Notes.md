@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 17, 2026 — Session 50
+## Last updated: May 17, 2026 — Session 51
 
 This document provides operational context for sessions. Read alongside:
 - `HANDOFF_STATE.md` — generated per-strain status (run counts, last dates, current equipment, What to Try Next per strain). Do not edit by hand; regenerated every time `python3 Dabby_Log_Generator.py` runs.
@@ -137,6 +137,8 @@ Current spec:
 
 **Open ideas (not yet built):**
 - **End-of-jar comedian's set** — when a jar is finished, do a Harper's Index and a short comedian's set riffing on the run history. First attempt was MB9ZST (Session 51, May 17, 2026): Harper's Index landed ("chefs kiss"), comedian set got real laughs on second draft. Key notes: don't riff on premises the user taught you as if you discovered them; edgier beats charming; tight 4 minutes beats 5.
+- **Dashboard temperature stat card audit** — user flagged to check the calculations on avg open, avg endpoint, and most-time-spent (linear interpolation) cards. Has not been verified.
+- **Dab Notes row in What to Try Next renders when empty** — shows "Dab Notes: Nothing recorded" for strains with no user notes for the next run. Should suppress the row when there is no meaningful content, or reconsider the label for that context.
 - **Bring some excitement to first dab of the day** — user flagged a desire for this; no specific mechanism discussed yet. Could be curve, ritual, or strain choice.
 - **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Raised in Rain Fruit Run 2 context. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
@@ -242,6 +244,7 @@ Specific errors made in past sessions that a new instance should avoid:
 - **Putting color and design decisions in CLAUDE.md.** Color rules (no greens, minimum hue separation, no miami-vice saturation) belong as validation code in the generator, not as prose in CLAUDE.md. CLAUDE.md is for session-to-session behavioral instructions. When a rule is mechanical and checkable, write it as code.
 - **Opening a separate PR for a handoff update when a PR is already open.** When the session-close handoff update is written and there is an open PR from the same session, push the handoff to that branch — do not open PR #N+1 just for the handoff. Session 34 opened PR #56 for the handoff despite PR #55 (DABBY_ARCHITECTURE.md) being the natural home for it.
 
+- **Edit tool curly-quote contamination in HTML string attributes.** When a Python string containing HTML with escaped double-quote attributes (e.g. `style=\"...\"`) is written via the Edit tool, straight double quotes may be converted to curly quotes (U+201C/U+201D), leaving `\` + U+201D in the rendered HTML. The style attribute is then malformed and ignored by the browser. Fix: use single-quote HTML attributes in Python strings so no backslash escaping is needed (`style='...'`). If curly quotes appear in the file, use a Python script to replace them by byte position rather than the Edit tool.
 - **Asking for or narrating sessions_prior_today when COMPLETED_RUNS can answer it.** Count entries with the same `run_date` silently — no narration, no asking. This applies same-day and post-date. When it's the first of the day, say so and riff; when it's not, state the count matter-of-factly.
 - **Asking for the time when the user gives a relative offset.** If the user says "about X minutes ago," subtract that from `datetime.now(timezone.utc)` and present the derived time in the confirmation prompt. Do not ask them to tell you the clock time.
 - **Using logging time for utc_logged_at when the user provides the actual run time.** When the user corrects the confirmation timestamp by giving a specific time ("it was at 8:30pm"), convert to UTC and use that as utc_logged_at — not `datetime.now()`. The relative-offset case ("about 10 minutes ago") was already covered; absolute times follow the same principle. MBD Run 4 was initially committed with logging time (04:29 UTC) instead of run time (02:30 UTC / 8:30 PM MDT).
