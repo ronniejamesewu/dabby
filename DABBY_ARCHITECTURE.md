@@ -823,6 +823,11 @@ state into the structured table format. Remove the "Current Strain Status" secti
 (now generated). Preserve the infrastructure notes, decisions-made section, and
 changelog.
 
+**Session 52 note:** `Dabby_Handoff_Notes.md` further pruned — infrastructure
+section, chart styling, dashboard implementation details, and changelog removed.
+File now contains session logging protocol, behavioral decisions (pruned), failure
+modes (pruned), and backlog only.
+
 **4c.** Update CLAUDE.md session-start protocol: read `HANDOFF_STATE.md` (state)
 and `HANDOFF_WISDOM.md` (wisdom) instead of `Dabby_Handoff_Notes.md`. Update
 session-close protocol: regenerate state (automatic via generator), update wisdom
