@@ -67,6 +67,8 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 - Run `analysis` lives on `CompletedRun`, is frozen and historically stable. Correctable by exception when genuinely wrong; never casually overwritten when thinking changes. Revisions to current strategy go to `StrainStatus.next_ai_analysis`, not into a prior run's frozen `analysis`.
 - Current "What to Try Next" renders from revisable `StrainStatus` fields (`next_dab_notes`, `next_ai_analysis`, `next_waypoints`) — not derived from any run's frozen `analysis`.
 - Dashboard temp stat cards (avg open, avg endpoint, most time spent) confirmed correct in Session 53 — linear interpolation into 5°F buckets, computed fresh from `COMPLETED_RUNS` each generate. Do not re-audit.
+- No emojis on stat cards — tried all 9 in Session 53, removed. Cards are clean without them. Do not re-introduce.
+- Stat card labels use "avg" not "average" — consistent with existing cards (avg open, avg endpoint). Applied to "avg first dab of the day" in Session 53.
 
 ---
 
