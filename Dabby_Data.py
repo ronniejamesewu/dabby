@@ -473,11 +473,17 @@ MB9ZST_RUN4 = [
     Waypoint(time_s=45, temp_f=415, note="Endpoint — down 5°F from Run 3"),
     Waypoint(time_s=65, temp_f=415, note="Hold at 415°F"),
 ]
-MB9ZST_NEXT = [
+MB9ZST_RUN5 = [
     Waypoint(time_s=0,  temp_f=375, note="Session open"),
     Waypoint(time_s=25, temp_f=400, note="Mid climb"),
-    Waypoint(time_s=45, temp_f=410, note="Endpoint — down 5°F from Run 4"),
-    Waypoint(time_s=65, temp_f=410, note="Hold at 410°F"),
+    Waypoint(time_s=45, temp_f=415, note="Endpoint — same as Run 4"),
+    Waypoint(time_s=65, temp_f=415, note="Hold at 415°F"),
+]
+MB9ZST_NEXT = [
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=400, note="Faster mid climb"),
+    Waypoint(time_s=30, temp_f=415, note="Endpoint — faster ramp"),
+    Waypoint(time_s=50, temp_f=415, note="Hold — shorter session"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -700,6 +706,14 @@ COMPLETED_RUNS = [
         session_char="Less harsh at the tail than prior runs — still present but attenuating. More material in swabs at the end.",
         intensity="Decent — second dab of the evening, tolerance factor in play.",
     ),
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 17), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 18,  1,  9, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN5,
+        endpoint_note="<strong>Endpoint:</strong> 415°F with 20-second hold — same as Run 4",
+        swab="Super light golden — clean. Lighter than Run 4.",
+        session_char="Tiny bit of harshness in the throat. Tiny bit of burnt taste at the very last draw.",
+        dab_notes="Ran the same curve as last time, the 415 hold. Only one dab left in the jar. A tiny bit of harshness in the throat and a tiny bit of burnt taste at the very last draw. Swabs were their typical super light golden, so clean. Pretty hard hit.",
+        intensity="Pretty hard hit.",
+        analysis="Harshness at 415°F is now confirmed across two runs (Runs 4 and 5) — the same two-run pattern that triggered the step-down recommendation for BB36#1 at the same endpoint. The burnt taste at the very last draw is a new and more specific observation: it points at the final seconds of the 20-second hold as the problem zone, not the ascent. Swab came back super light golden — lighter than Run 4, which runs counter to the hypothesis that lower endpoints leave more material behind. One data point, swab noise is real. Intensity landed hard with no same-day tolerance confound, consistent with the strain's potency pattern.",
+    ),
     CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 15), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 16,  1, 53, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=BB36_1_RUN1,
         endpoint_note="<strong>Endpoint:</strong> 430°F — baseline",
         swab="Super light golden — very clean.",
@@ -777,12 +791,12 @@ STRAIN_STATUS = [
         next_ai_analysis="The 420°F endpoint confirmed the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.",
         next_waypoints=RF_RUN4_NEXT,
     ),
-    StrainStatus(name="Mango Banana #9 + Z + Sour Tangie", profile_anchor="#mb9zst-profile",  next_text="Try 410°F endpoint on Run 5 — tail harshness still present at 415°F",                 accent=None, slug="mb9zst",
+    StrainStatus(name="Mango Banana #9 + Z + Sour Tangie", profile_anchor="#mb9zst-profile",  next_text="Last dab in jar — try faster ramp to 415°F, shorter session (50s total)",            accent=None, slug="mb9zst",
         info=MB9ZST_INFO,
         terpene_table_rows=MB9ZST_TERPS,
         terpene_table_note="Terpene profile inferred from component strain genetics — not measured. This is the generic cannabis palette. Neapolitan format adds a further caveat: each layer may have a different terpene balance, and the session will vary depending on which portion is loaded.",
-        next_dab_notes="Run 4 at 415°F (375→400→415, 20s hold): golden swab, slightly darker than Run 3. Less harsh at the tail — still present but attenuating. More material in swabs at the end. Decent effect, second dab of the evening.",
-        next_ai_analysis="Harshness is continuing to attenuate as the endpoint steps down — consistent signal across three runs now (420°F harsh, 415°F less so). The slightly darker swab at 415°F is worth noting in the direction the user suggested: if it reflects more material left behind rather than a cleaner burn, lower endpoints may be leaving more rosin unvaporized within the session window. That's a genuine tension — lower endpoint eases the tail but potentially at a yield cost. One data point, and swab noise is real, but it's a reasonable thing to keep an eye on as the endpoint continues to move. Continuing down to 410°F should say more about where the harshness resolves.",
+        next_dab_notes="Run 5 at 415°F (same curve as Run 4): super light golden swab, lighter than Run 4. Tiny bit of harshness in the throat. Tiny bit of burnt taste at the very last draw. Pretty hard hit. Only one dab left in the jar.",
+        next_ai_analysis="Tail harshness confirmed at 415°F across Runs 4 and 5. The burnt taste at the very last draw on Run 5 points specifically at the session tail as the problem zone. Last dab tries a different angle: reach 415 faster (30s vs. 45s), cut total to 50s — testing duration-at-temperature rather than temperature itself. One data point; treat it accordingly.",
         next_waypoints=MB9ZST_NEXT,
     ),
     StrainStatus(name="Blueberry 36 #1",                  profile_anchor="#bb361-profile",    next_text="Try 410°F endpoint on Run 4 — tail harshness confirmed at 415°F across Runs 2 and 3", accent=None, slug="bb361",
