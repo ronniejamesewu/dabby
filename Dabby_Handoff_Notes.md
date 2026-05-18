@@ -66,6 +66,7 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 - `STRAIN_STATUS` badge fields (`badge_class`, `badge_text`) are gone — do not add them back. Do not revert to tuple form.
 - Run `analysis` lives on `CompletedRun`, is frozen and historically stable. Correctable by exception when genuinely wrong; never casually overwritten when thinking changes. Revisions to current strategy go to `StrainStatus.next_ai_analysis`, not into a prior run's frozen `analysis`.
 - Current "What to Try Next" renders from revisable `StrainStatus` fields (`next_dab_notes`, `next_ai_analysis`, `next_waypoints`) — not derived from any run's frozen `analysis`.
+- Dashboard temp stat cards (avg open, avg endpoint, most time spent) confirmed correct in Session 53 — linear interpolation into 5°F buckets, computed fresh from `COMPLETED_RUNS` each generate. Do not re-audit.
 
 ---
 
@@ -119,7 +120,6 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **End-of-jar comedian's set** — when a jar is finished, do a Harper's Index and a short comedian's set riffing on the run history. First attempt was MB9ZST (Session 51): Harper's Index landed, comedian set got laughs on second draft. Key notes: don't riff on premises the user taught you as if you discovered them; edgier beats charming; tight 4 minutes beats 5.
-- **Dashboard temperature stat card audit** — confirmed correct in Session 53 (avg open, avg endpoint, most time spent all compute cleanly from COMPLETED_RUNS). No change needed.
 - **Dab Notes row in What to Try Next renders when empty** — shows "Dab Notes: Nothing recorded" for strains with no user notes for the next run. Should suppress the row when there is no meaningful content, or reconsider the label for that context.
 - **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
