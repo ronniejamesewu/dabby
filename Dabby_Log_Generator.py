@@ -157,12 +157,12 @@ def dashboard_html():
 
     cards = (
         f'<div class="stats-grid">'
-        f'<div class="stat-card c1"><div class="stat-value">{total}</div><div class="stat-label">runs over {days} days</div></div>'
-        f'<div class="stat-card c5"><div class="stat-value">{max_dabs_day}</div><div class="stat-label">most dabs in a day</div></div>'
-        f'<div class="stat-card c6"><div class="stat-value">{unique_strains}</div><div class="stat-label">unique strains</div></div>'
-        f'<div class="stat-card c2"><div class="stat-value">{avg_open}°</div><div class="stat-label">avg open</div></div>'
-        f'<div class="stat-card c3"><div class="stat-value">{avg_end}°</div><div class="stat-label">avg endpoint</div></div>'
-        f'<div class="stat-card c4"><div class="stat-value">{hot_temp}°</div><div class="stat-label">most time spent</div></div>'
+        f'<div class="stat-card c1"><div class="stat-value">{total} <span style="font-size:0.85em">📅</span></div><div class="stat-label">runs over {days} days</div></div>'
+        f'<div class="stat-card c5"><div class="stat-value">{max_dabs_day} <span style="font-size:0.85em">🔥</span></div><div class="stat-label">most dabs in a day</div></div>'
+        f'<div class="stat-card c6"><div class="stat-value">{unique_strains} <span style="font-size:0.85em">🌿</span></div><div class="stat-label">unique strains</div></div>'
+        f'<div class="stat-card c2"><div class="stat-value">{avg_open}° <span style="font-size:0.85em">🌡️</span></div><div class="stat-label">avg open</div></div>'
+        f'<div class="stat-card c3"><div class="stat-value">{avg_end}° <span style="font-size:0.85em">🎯</span></div><div class="stat-label">avg endpoint</div></div>'
+        f'<div class="stat-card c4"><div class="stat-value">{hot_temp}° <span style="font-size:0.85em">🏆</span></div><div class="stat-label">most time spent</div></div>'
         f'<div class="stat-card c7"><div class="stat-value">{earliest_str} <span style="font-size:0.85em">☀️</span></div><div class="stat-label">earliest dab</div></div>'
         f'<div class="stat-card c8"><div class="stat-value">{latest_str} <span style="font-size:0.85em">🌙</span></div><div class="stat-label">latest dab</div></div>'
         f'<div class="stat-card c9"><div class="stat-value">{avg_str} <span style="font-size:0.85em">⏰</span></div><div class="stat-label">average first dab of the day</div></div>'
