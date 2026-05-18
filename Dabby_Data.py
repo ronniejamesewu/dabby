@@ -815,7 +815,7 @@ STRAIN_STATUS = [
             "Jar finished. Six runs over five days, May 13–17, 2026. This was also the Gemlock joystick’s debut jar — every data point in this strain’s history was collected on the new rig, so the baseline cross-strain confound never resolved. "
             "Harshness appeared in the tail on all six runs across three endpoint temperatures (430°F, 420°F, 415°F) and two curve shapes. A clean tail was never achieved. "
             "The fastest ramp (Run 6) produced the best first-half character and the hardest hit — the right shape arrived on the last dab of the jar."
-            "<br><br>"
+            "<span style=\”display:block;text-align:center;margin-top:0.8em;\”>"
             "<strong>Number of runs on a 2g jar:</strong> 6<br>"
             "<strong>Days from first dab to last:</strong> 5<br>"
             "<strong>Endpoint temperatures tried in search of a clean tail:</strong> 3<br>"
@@ -825,6 +825,7 @@ STRAIN_STATUS = [
             "<strong>Equipment changes mid-jar:</strong> 0 <em>(though this jar was the equipment change)</em><br>"
             "<strong>Seconds added to the final run by push button:</strong> 10<br>"
             "<strong>Remaining dabs:</strong> 0"
+            "</span>"
         ),
         next_waypoints=None,
     ),
