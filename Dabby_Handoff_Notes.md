@@ -71,6 +71,7 @@ The recommendation should always be concrete — one clear direction with the re
 - Dashboard temp stat cards (avg open, avg endpoint, most time spent) confirmed correct in Session 53 — linear interpolation into 5°F buckets, computed fresh from `COMPLETED_RUNS` each generate. Do not re-audit.
 - No emojis on stat cards — tried all 9 in Session 53, removed. Cards are clean without them. Do not re-introduce.
 - Stat card labels use "avg" not "average" — consistent with existing cards (avg open, avg endpoint). Applied to "avg first dab of the day" in Session 53.
+- Changelog removed from Handoff Notes — confirmed correct (Session 55). The failure case (AI couldn't answer "when did X happen" without searching git) is real but rare and not load-bearing for session operation. Important decisions have a second home in the Decisions sections and HANDOFF_WISDOM. Do not restore.
 
 ---
 
