@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 18, 2026 — Session 53
+## Last updated: May 18, 2026 — Session 54
 
 ---
 
@@ -117,6 +117,8 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 ---
 
 ## Backlog
+
+- **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed twice (Sessions 15, 27, and this session). A hook runs before the first turn and can't be bypassed by an attention-grabbing opening message. Tradeoff: Dabby_Data.py is ~800 lines of context overhead on every session start. Revisit when the skipped-read failure recurs or becomes costly.
 
 - **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Revisit around May 24–25, 2026 whether to keep or remove this step.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).

@@ -128,6 +128,12 @@ WWZ_RUN1 = [
     Waypoint(time_s=40, temp_f=395, note="Mid ascent — mid-range terpene zone (~334°F myrcene region)"),
     Waypoint(time_s=65, temp_f=440, note="Endpoint — upper terpene zone + THC completion"),
 ]
+WWZ_RUN2 = [
+    Waypoint(time_s=0,  temp_f=375, note="Session open"),
+    Waypoint(time_s=15, temp_f=400, note="Faster mid climb"),
+    Waypoint(time_s=30, temp_f=420, note="Endpoint — fast ramp, down 20°F from Run 1"),
+    Waypoint(time_s=60, temp_f=420, note="Hold"),
+]
 
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
@@ -515,6 +521,12 @@ COMPLETED_RUNS = [
             ("Verdict:", "Clean on first run. Baseline curve well-matched to this material."),
         ],
     ),
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 18), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 19, 2, 52, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN2,
+        duration_seconds=60, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp; down 20°F from Run 1',
+        swab='Wheat — very clean.',
+        dab_notes="Sneaky — felt light at first, enough that I finished the last 20 seconds of Sarah's dab when she didn't want it. But 5 minutes after that I was stoned as a bat. Having a hard time sitting up. Harsh in the throat in mine but interestingly not in finishing Sarah's. Maybe the harshness comes from the terpene mass up front? And not the heat? No real flavors coming through, Sarah says she hates the taste and is almost gagging. I don't find it tasty but I don't mind the taste.",
+        analysis="Run 1 (spinner, 6mm pearl, slow ramp to 440°F) and Run 2 (Gemlock, no pearl, fast ramp to 420°F) differ on equipment, curve shape, and endpoint — no isolation is possible between them. Swab came back wheat-clean, lighter than Run 1's golden/amber, consistent with the Gemlock running lighter swabs across other strains. Strong delayed onset despite the lower endpoint — stoned as a bat ~5 minutes post-dab. Harshness was present in the full session; absent when finishing Sarah's last 20 seconds (tail end of her run). User hypothesis: harshness is front-loaded rather than endpoint-driven. The observation is real; the mechanism is speculative — a lighter partial load producing less irritation regardless of session position is equally consistent. Not a working position until something tests it. No distinct flavor; Sarah found the taste actively unpleasant.",
+    ),
     CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=CAG_RUN1,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
@@ -751,11 +763,12 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="—", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Repeat Run 2 curve — harshness appeared, needs confirmation", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
         next_dab_notes="Nothing recorded",
-        next_ai_analysis="One session, clean swab, described as spectacular. No floor signal, no harshness. Nothing to chase — repeat when you want to revisit it.",
+        next_ai_analysis="Equipment and curve both changed from Run 1, so harshness can't be attributed to either variable yet. Repeat the same fast-ramp curve (375→400→420, 60s) on Run 3. If harshness shows up again it's real; if it doesn't, Run 2 may have been noise or a bad load day. Swab is clean and intensity is strong — no floor signal, no reason to touch the endpoint. If harshness reproduces, pay attention to where in the session it lands.",
+        next_waypoints=WWZ_RUN2,
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
         info=CAG_INFO,
