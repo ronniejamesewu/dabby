@@ -30,7 +30,7 @@ Each "yes" produces one update to the relevant table or section below.
 
 | Configuration | Observed Effect | Evidence | Confidence | Notes |
 |---|---|---|---|---|
-| Gemlock joystick, no pearl (vs. Cloud Vortex 21.0 + 6mm pearl) | Lighter swabs; visible vapor at lower temps than expected with prior spinner config; possibly more complete vaporization | MB9ZST R1-2 — only 2 direct Gemlock-era runs; cross-config comparison confounded by strain differences | Low — 2 direct points; cross-strain confound cannot be ruled out | Treat as a persistent confound when comparing new Gemlock runs against spinner-era cross-strain data. Do not assume equivalence between configs in analysis |
+| Gemlock joystick, no pearl (vs. Cloud Vortex 21.0 + 6mm pearl) | Lighter swabs than spinner config. Visible vapor at lower temps than expected with prior spinner setup. | MB9ZST R1-2 — first Gemlock-era runs; WW Z R1 (spinner) vs R2 (Gemlock) — first same-strain cross-config swab comparison: golden/amber on spinner, wheat-clean on Gemlock; endpoint also dropped 20°F (partial confound) | Low — cross-strain and cross-variable confounds persist | Lighter swabs *may* indicate less material remaining at end of cycle, which *may* indicate the joystick vaporizes more efficiently than the spinner + pearl setup — both steps are inferences, neither is settled. Treat as a persistent confound when comparing Gemlock runs against spinner-era data. Do not assume equivalence between configs in analysis. |
 
 ---
 
