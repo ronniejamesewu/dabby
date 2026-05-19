@@ -129,8 +129,9 @@ def dashboard_html():
     MDT = timezone(timedelta(hours=-6))
     timed_runs = [r for r in COMPLETED_RUNS if r.utc_logged_at is not None]
     if timed_runs:
-        earliest_str = min(timed_runs, key=lambda r: r.utc_logged_at).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
-        latest_str   = max(timed_runs, key=lambda r: r.utc_logged_at).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        def _tod_min(r): local = r.utc_logged_at.astimezone(MDT); return local.hour * 60 + local.minute
+        earliest_str = min(timed_runs, key=_tod_min).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        latest_str   = max(timed_runs, key=_tod_min).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
         day_firsts = {}
         for r in timed_runs:
             key = r.run_date if r.run_date is not None else r.utc_logged_at.astimezone(MDT).date()
