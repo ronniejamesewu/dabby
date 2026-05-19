@@ -52,6 +52,8 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 
 **What to Try Next — AI Analysis (`StrainStatus.next_ai_analysis`):** The AI Analysis field in each strain's What to Try Next section is not a summary of what happened — that belongs in the run results. It should state a concrete recommendation with the reasoning behind it. Before writing AI Analysis, draw on all four artifacts: `HANDOFF_WISDOM.md` (cross-strain patterns, equipment observations), `Dabby_Methodology.md` (thermal model and session process reasoning), the full run history for the strain, and the user's Dab Notes just added. Cross-strain patterns are often the most valuable input — flag them when relevant. Name confounders where they affect the recommendation. Flag clearly when a recommendation is based on a single data point. Keep it tight — concrete recommendation and the key reasoning, nothing more. If it runs more than 4–5 sentences, cut it down. Signal should dominate.
 
+The recommendation should always be concrete — one clear direction with the reasoning behind it. That direction doesn't have to be the cautious incremental step: when cross-strain patterns or within-strain history support a bigger jump, a reversal, or an experiment that breaks from prior logic, propose that instead. Flag it as speculative if the evidence is thin, but don't default to conservative when the data points somewhere more interesting.
+
 ---
 
 ## Decisions — Do Not Re-Litigate

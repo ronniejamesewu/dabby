@@ -91,7 +91,8 @@ def what_to_try_next_html(section_id, dab_notes, ai_analysis, proposed_waypoints
               f'<h2 style="color:{accent};">What to Try Next</h2></div>')
     else:
         s += section_header("What to Try Next", header_class="grey")
-    s += result_row("Dab Notes:", dab_notes)
+    if dab_notes:
+        s += result_row("Notes on What's Next:", dab_notes)
     s += result_row("AI Analysis:", ai_analysis)
     if proposed_waypoints:
         s += '<h3>Proposed Curve</h3>'
