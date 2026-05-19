@@ -52,6 +52,8 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 
 **What to Try Next — AI Analysis (`StrainStatus.next_ai_analysis`):** The AI Analysis field in each strain's What to Try Next section is not a summary of what happened — that belongs in the run results. It should state a concrete recommendation with the reasoning behind it. Before writing AI Analysis, draw on all four artifacts: `HANDOFF_WISDOM.md` (cross-strain patterns, equipment observations), `Dabby_Methodology.md` (thermal model and session process reasoning), the full run history for the strain, and the user's Dab Notes just added. Cross-strain patterns are often the most valuable input — flag them when relevant. Name confounders where they affect the recommendation. Flag clearly when a recommendation is based on a single data point. Keep it tight — concrete recommendation and the key reasoning, nothing more. If it runs more than 4–5 sentences, cut it down. Signal should dominate.
 
+The recommendation should always be concrete — one clear direction with the reasoning behind it. That direction doesn't have to be the cautious incremental step: when cross-strain patterns or within-strain history support a bigger jump, a reversal, or an experiment that breaks from prior logic, propose that instead. Flag it as speculative if the evidence is thin, but don't default to conservative when the data points somewhere more interesting.
+
 ---
 
 ## Decisions — Do Not Re-Litigate
@@ -69,6 +71,7 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 - Dashboard temp stat cards (avg open, avg endpoint, most time spent) confirmed correct in Session 53 — linear interpolation into 5°F buckets, computed fresh from `COMPLETED_RUNS` each generate. Do not re-audit.
 - No emojis on stat cards — tried all 9 in Session 53, removed. Cards are clean without them. Do not re-introduce.
 - Stat card labels use "avg" not "average" — consistent with existing cards (avg open, avg endpoint). Applied to "avg first dab of the day" in Session 53.
+- Changelog removed from Handoff Notes — confirmed correct (Session 55). The failure case (AI couldn't answer "when did X happen" without searching git) is real but rare and not load-bearing for session operation. Important decisions have a second home in the Decisions sections and HANDOFF_WISDOM. Do not restore.
 
 ---
 
@@ -124,7 +127,6 @@ Populate at logging time alongside the other content fields. Do not leave blank 
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **End-of-jar comedian's set** — when a jar is finished, do a Harper's Index and a short comedian's set riffing on the run history. First attempt was MB9ZST (Session 51): Harper's Index landed, comedian set got laughs on second draft. Key notes: don't riff on premises the user taught you as if you discovered them; edgier beats charming; tight 4 minutes beats 5.
-- **Dab Notes row in What to Try Next renders when empty** — shows "Dab Notes: Nothing recorded" for strains with no user notes for the next run. Should suppress the row when there is no meaningful content, or reconsider the label for that context.
 - **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
 - **Control water temperature and change frequency as variables** — standardize practice and log it.

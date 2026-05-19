@@ -91,7 +91,8 @@ def what_to_try_next_html(section_id, dab_notes, ai_analysis, proposed_waypoints
               f'<h2 style="color:{accent};">What to Try Next</h2></div>')
     else:
         s += section_header("What to Try Next", header_class="grey")
-    s += result_row("Dab Notes:", dab_notes)
+    if dab_notes:
+        s += result_row("Notes on What's Next:", dab_notes)
     s += result_row("AI Analysis:", ai_analysis)
     if proposed_waypoints:
         s += '<h3>Proposed Curve</h3>'
@@ -129,8 +130,9 @@ def dashboard_html():
     MDT = timezone(timedelta(hours=-6))
     timed_runs = [r for r in COMPLETED_RUNS if r.utc_logged_at is not None]
     if timed_runs:
-        earliest_str = min(timed_runs, key=lambda r: r.utc_logged_at).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
-        latest_str   = max(timed_runs, key=lambda r: r.utc_logged_at).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        def _tod_min(r): local = r.utc_logged_at.astimezone(MDT); return local.hour * 60 + local.minute
+        earliest_str = min(timed_runs, key=_tod_min).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        latest_str   = max(timed_runs, key=_tod_min).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
         day_firsts = {}
         for r in timed_runs:
             key = r.run_date if r.run_date is not None else r.utc_logged_at.astimezone(MDT).date()
