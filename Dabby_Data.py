@@ -134,6 +134,12 @@ WWZ_RUN2 = [
     Waypoint(time_s=30, temp_f=420, note="Endpoint — fast ramp, down 20°F from Run 1"),
     Waypoint(time_s=60, temp_f=420, note="Hold"),
 ]
+WWZ_RUN3 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=410, note="Steeper mid climb"),
+    Waypoint(time_s=30, temp_f=430, note="Endpoint — fast ramp, up 10°F from Run 2"),
+    Waypoint(time_s=50, temp_f=430, note="Hold"),
+]
 
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
@@ -527,6 +533,14 @@ COMPLETED_RUNS = [
         dab_notes="Sneaky — felt light at first, enough that I finished the last 20 seconds of Sarah's dab when she didn't want it. But 5 minutes after that I was stoned as a bat. Having a hard time sitting up. Harsh in the throat in mine but interestingly not in finishing Sarah's. Maybe the harshness comes from the terpene mass up front? And not the heat? No real flavors coming through, Sarah says she hates the taste and is almost gagging. I don't find it tasty but I don't mind the taste.",
         analysis="Run 1 (spinner, 6mm pearl, slow ramp to 440°F) and Run 2 (Gemlock, no pearl, fast ramp to 420°F) differ on equipment, curve shape, and endpoint — no isolation is possible between them. Swab came back wheat-clean, lighter than Run 1's golden/amber, consistent with the Gemlock running lighter swabs across other strains. Strong delayed onset despite the lower endpoint — stoned as a bat ~5 minutes post-dab. Harshness was present in the full session; absent when finishing Sarah's last 20 seconds (tail end of her run). User hypothesis: harshness is front-loaded rather than endpoint-driven. The observation is real; the mechanism is speculative — a lighter partial load producing less irritation regardless of session position is equally consistent. Not a working position until something tests it. No distinct flavor; Sarah found the taste actively unpleasant.",
     ),
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 19), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 20, 1, 20, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN3,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 430°F — fast ramp (30s), 20s hold; up 10°F from Run 2',
+        swab="One light golden with a small amber spot; the other barely absorbed anything — cleanest swab so far.",
+        session_char="Harshness at 414°F on the display during the ramp, lingered through the hold at low intensity, never spiked — a couple of coughs. Creative, sharp, stoned.",
+        intensity="Good — creative, sharp, and stoned. Not as hard as Run 2; less material consumed.",
+        dab_notes="Two swabs: one light golden with a small spot of amber, the other barely absorbed anything — cleanest run I've ever seen swab-wise. Harshness hit at exactly 414°F on the app display. Lingered and increased over the dab but never increased fast — mild, just a cough or two. Good intensity, not as hard as last night but I didn't take the last third of a second hit. I feel creative and sharp, and also stoned. This feels a little bit like trying to run a distillation column in my throat and lungs.",
+        analysis="Cleanest swab in the log for this strain — one light golden with a small amber spot, the other barely absorbed anything. No floor signal at 430°F. Harshness appeared at 414°F on the display during the ramp (somewhere in the 15s–30s window), lingered at low intensity through the hold, never spiked — a couple of coughs, not acute. This is a different profile from typical tail harshness: it started mid-climb rather than at the endpoint. User raised a methodological point this session — reported 'tail harshness' may be a threshold-crossing description rather than an endpoint-specific signal; harshness builds continuously and registers when it becomes noteworthy, not when the curve hits a particular temperature. Consistent with that framing, the harshness here was mild throughout and never became the story. Effect was good: creative, sharp, stoned — consistent with Z lineage. Less hard-hitting than Run 2 but user also took less material.",
+    ),
     CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=CAG_RUN1,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
@@ -763,12 +777,12 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Repeat Run 2 curve — harshness appeared, needs confirmation", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Repeat Run 3 curve — harshness mid-ramp at 414°F, needs confirmation", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="",
-        next_ai_analysis="Equipment and curve both changed from Run 1, so harshness can't be attributed to either variable yet. Repeat the same fast-ramp curve (375→400→420, 60s) on Run 3. If harshness shows up again it's real; if it doesn't, Run 2 may have been noise or a bad load day. Swab is clean and intensity is strong — no floor signal, no reason to touch the endpoint. If harshness reproduces, pay attention to where in the session it lands.",
-        next_waypoints=WWZ_RUN2,
+        next_dab_notes="Run 3 (380→410@15s→430@30s→430@50s): cleanest swab so far — one light golden with small amber spot, other barely absorbed. Harshness appeared at 414°F on display during the ramp, lingered mildly through the hold, never acute. Good effect — creative, sharp, stoned.",
+        next_ai_analysis="Swab clean, effect good, harshness mild and ambiguous in mechanism. Harshness appeared during the ramp at 414°F, not at the hold — consistent with the threshold-crossing reframe of 'tail harshness' rather than an endpoint-specific signal. Repeat this curve (380→410@15s→430@30s→430@50s) on Run 4. If harshness appears in the same place at similar intensity, it's the curve; if different or absent, Run 3 may have been load-dependent noise. Don't touch the endpoint yet — no floor signal and the effect character is right.",
+        next_waypoints=WWZ_RUN3,
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
         info=CAG_INFO,

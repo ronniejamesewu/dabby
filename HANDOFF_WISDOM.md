@@ -109,9 +109,41 @@ Source: ACS Omega 2017 peer-reviewed study.
 - Alarming toxicant levels in published studies used 500–550°C (932–1022°F) —
   far above typical practice. At conservative setpoints (375–440°F) benzene
   formation is at the low end of the documented range.
-- Benzene is a Group 1 carcinogen (IARC), linked to aplastic anemia and acute
-  myeloid leukemia. Lower temperatures are meaningfully safer as well as more
-  flavorful — this is a genuine harm reduction argument, not just a flavor argument.
+- **Session 57 correction (user-reported, paper not re-read):** Measured byproduct
+  quantities were in low ppb even at the high study temperatures — far below EPA
+  allowable levels in hundreds of ppm. The "meaningfully safer" framing overstates
+  what the evidence supports at our operating range. Do not invoke degradation
+  byproducts as a harm reduction argument for temperature choices within 375–460°F.
+  The thermal injury mechanism (see below) has the stronger evidence base.
 
 **Resolved:** The 440°F vs. 460°F question falls well below the temperature range
 where the research documents meaningful risk. No further discussion needed.
+
+---
+
+### Thermal Injury and Vapor Temperature
+Session 57.
+
+The maté throat/esophageal cancer research is relevant harm reduction context. The
+cancer association is thermal, not chemical — risk tracks with drinking temperature,
+not consumption volume. IARC classified hot beverages above 65°C (149°F) as Group 2A
+(probably carcinogenic) in 2016, substantially on maté data. Mechanism: repeated
+thermal insult to mucosal epithelium → chronic inflammation → increased malignant
+transformation risk.
+
+Applied to dabbing: if harshness tracks primarily with hot vapor hitting tissue —
+and it appears to (Session 57 analysis: cannabinoids dominate the volatile fraction
+at ~60–80%, heat is the primary driver of both intensity and harshness) — then
+harshness is not just an experience signal. It may be the signal of the thing worth
+minimizing on harm reduction grounds.
+
+Key unknown: actual vapor temperature at the throat. Insert temperature ≠ vapor
+temperature — water and pathway cooling is significant and rig-dependent. Whether
+vapor arrives above 65°C (149°F) at the throat is unknown. Fast ramp with dense
+vapor likely arrives warmer than a slow ramp. This is worth holding as a working
+concern, not a resolved finding.
+
+Open question flagged Session 57: water cooling that reduces vapor temperature enough
+to protect tissue may also condense some target volatiles (cannabinoids, terpenes)
+before they're inhaled — a real tradeoff between harm reduction and delivery
+efficiency. Not yet discussed.
