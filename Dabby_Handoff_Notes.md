@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 19, 2026 — Session 56
+## Last updated: May 19, 2026 — Session 57
 
 ---
 
@@ -116,6 +116,10 @@ The recommendation should always be concrete — one clear direction with the re
 - **Asserting infrastructure/pipeline facts without reading the pipeline.** Before asserting how CI/deploy behaves, open the workflow files. Do not infer it from the step description.
 
 - **Using ambiguous abbreviations in branch names.** "fb" reads as "Facebook" in some UIs. Use full strain abbreviations — "fembot", "hive1", "ms23", etc.
+
+- **Not following the date/time calculation protocol.** CLAUDE.md instructs: get current UTC via Bash, derive local time (UTC−6), present it. Instead asked the user for the time. After being corrected and calculating it, asked the user to confirm — also wrong. Correct behavior: run the Bash time command, derive, present, move on. User will correct if wrong.
+
+- **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window.
 
 ---
 
