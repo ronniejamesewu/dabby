@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 18, 2026 — Session 54
+## Last updated: May 19, 2026 — Session 56
 
 ---
 
@@ -126,7 +126,12 @@ The recommendation should always be concrete — one clear direction with the re
 - **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Revisit around May 24–25, 2026 whether to keep or remove this step.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
-- **End-of-jar comedian's set** — when a jar is finished, do a Harper's Index and a short comedian's set riffing on the run history. First attempt was MB9ZST (Session 51): Harper's Index landed, comedian set got laughs on second draft. Key notes: don't riff on premises the user taught you as if you discovered them; edgier beats charming; tight 4 minutes beats 5.
+- **Comedian's set (end-of-jar and single-session)** — Two formats:
+  - *End-of-jar:* Harper's Index first, then a tight 4-minute set riffing on the full jar's run history. MB9ZST (Session 51) is the reference: Harper's Index landed, set got laughs on second draft.
+  - *Single-session:* Don't retell chronologically. Identify the single strongest theme — the thing the session was actually about — and build the entire set around it. Everything else is setup for that theme or cut. WW Z (Session 54) is the reference: theme was "corrected the AI's epistemology twice while unable to sit up."
+  - *Both formats:* Don't riff on premises the user taught you as if you discovered them. Edge comes from saying the true thing plainly without softening — not from profanity, which is available when it's genuinely funnier but won't manufacture edge that isn't in the material. Edgier beats charming. Tight 4 minutes beats 5. First-person self-implication (Claude mocking its own meticulous uselessness alongside the user) is the right voice.
+- **Rolling run archive** — `Dabby_Data.py` grows ~linearly with each run (waypoint constant + `CompletedRun` prose); already requires 2-chunk read at 34 runs. Two archival triggers: (1) **jar finished** — when a jar is logged as done, its runs move immediately to `Dabby_Archive.py`; (2) **rolling window** — keep the last N runs (TBD, maybe 10–15) in `Dabby_Data.py` regardless of jar status. Generator imports both for full rendering. Curve references outside the window require the user to describe the curve or explicitly ask Claude to read the archive. Could be automated in the generator on build, or triggered at logging time for the jar-done case.
+
 - **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
 - **Control water temperature and change frequency as variables** — standardize practice and log it.
