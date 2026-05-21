@@ -87,6 +87,14 @@ parameter (η) concept was developed and abandoned — the two dominant paramete
 were partially redundant and the underlying geometry is unknowable. Swab result
 is the ground truth.
 
+### Tail Harshness Mechanism — Open Question
+Two competing hypotheses, neither isolated with current data:
+
+- **Vapor density:** Smaller load → less dense vapor → less irritation at any given moment during the session.
+- **Accumulated heat exposure:** Smaller load → material spent sooner → fewer draws through a hot empty insert after the load is done.
+
+Both predict the same outcome in a small-load test, so they can't be distinguished by load size alone. The accumulated heat framing points at *when you stop* as the real variable — not load size per se. Relevant for future experimental design. First articulated Session 60 based on WW Z run history; one data point (Run 5, small load, clean tail) supports the load-size direction but doesn't settle the mechanism.
+
 ### Baseline Philosophy
 Single baseline curve for all hash rosin with cold start. Strain-specific
 adjustment happens empirically via swab results, not terpene-profile reasoning.
