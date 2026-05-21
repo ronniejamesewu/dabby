@@ -140,6 +140,12 @@ WWZ_RUN3 = [
     Waypoint(time_s=30, temp_f=430, note="Endpoint — fast ramp, up 10°F from Run 2"),
     Waypoint(time_s=50, temp_f=430, note="Hold"),
 ]
+WWZ_RUN7_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=15, temp_f=410, note="Steeper mid climb"),
+    Waypoint(time_s=30, temp_f=420, note="Endpoint — down 10°F from Runs 3-6"),
+    Waypoint(time_s=50, temp_f=420, note="Hold"),
+]
 
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
@@ -557,6 +563,14 @@ COMPLETED_RUNS = [
         dab_notes="It was great, a little coughing but no harshness. Clean light golden swabs. A little mild on effect, my guess is smaller load.",
         analysis="Same curve as Runs 3–4 (380→410@15s→430@30s, hold to 50s), no push-button extension. Swab clean light golden — consistent with the Gemlock pattern. No harshness this run; Runs 3 and 4 both had harshness appearing mid-ramp at 414–420°F on the display. The difference may be load size — smaller load, less vapor density, less irritation regardless of temperature — but user couldn't confirm load was meaningfully different, so this is a confound, not a finding. Coughing without harshness is worth the distinction: vapor volume can produce coughing without the hot/irritating quality of harshness. Effect mild, consistent with user's smaller-load read.",
     ),
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 20), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 21, 3, 2, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN3,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 430°F — same curve as Runs 3-5, deliberate full load',
+        swab="Light golden — same as Run 5.",
+        session_char="Tail harshness in the last part.",
+        intensity="Strong — hit really hard.",
+        dab_notes="Swabs looked the same as last time, light golden. This one was more normal load. Harshness in the last part, and hit really hard. So load size really influenced both.",
+        analysis="Load-size hypothesis from Run 5 tested. Run 5 (smaller load, no harshness, mild effect) vs. Run 6 (fuller load, tail harshness, hard hit) on the same curve and equipment — the cleanest within-strain comparison in the log. Both harshness and effect strength scaled up with load. Swab stayed light golden, consistent with every Gemlock run on this strain. The curve produces harshness under a full load; the question is whether that's load-density-at-430°F specifically, or just load-density at any temperature.",
+    ),
     CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=CAG_RUN1,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
@@ -793,12 +807,12 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Run 6: repeat same curve with a fuller load — test whether load size drives the harshness signal from Runs 3–4", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Run 7: drop to 420°F endpoint, full load — test whether harshness clears at lower temperature", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Run 5 (same curve, 50s no extension): clean light golden swab, coughing but no harshness, mild effect — smaller load. Harshness from Runs 3–4 absent; load size is the unresolved variable.",
-        next_ai_analysis="Run 4's amber swab was the push-button extension, not the curve — that's confirmed. The harshness in Runs 3–4 vs. none in Run 5 is unresolved: same curve, possible load difference, can't isolate. Run 6: repeat the same curve with a more deliberate full load. If harshness returns, load isn't the variable and the curve itself is carrying the signal. If it stays clean, harshness is load-dependent — which would reframe the WW Z picture considerably.",
-        next_waypoints=WWZ_RUN3,
+        next_dab_notes="Run 6 (same curve, fuller load): light golden swab, tail harshness, hit really hard. Load size confirmed directionally to influence both harshness and effect strength.",
+        next_ai_analysis="Load-size influence is confirmed directionally — same curve, fuller load, harshness returned; lighter load, harshness absent. The next test is whether dropping the endpoint resolves it: try 420°F endpoint, same fast ramp shape, full load. That isolates temperature from load size. If harshness clears at 420°F with a full load, the ceiling is somewhere between 420-430°F. If it doesn't, the curve shape itself needs rethinking.",
+        next_waypoints=WWZ_RUN7_NEXT,
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
         info=CAG_INFO,
