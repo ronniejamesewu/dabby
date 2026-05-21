@@ -146,6 +146,12 @@ WWZ_RUN7_NEXT = [
     Waypoint(time_s=30, temp_f=420, note="Endpoint — down 10°F from Runs 3-6"),
     Waypoint(time_s=50, temp_f=420, note="Hold"),
 ]
+WWZ_RUN7 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=420, note="Endpoint — 420°F in 20s, 2°F/sec"),
+    Waypoint(time_s=50, temp_f=420, note="Hold"),
+]
 
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
@@ -571,6 +577,14 @@ COMPLETED_RUNS = [
         dab_notes="Swabs looked the same as last time, light golden. This one was more normal load. Harshness in the last part, and hit really hard. So load size really influenced both.",
         analysis="Load-size hypothesis from Run 5 tested. Run 5 (smaller load, no harshness, mild effect) vs. Run 6 (fuller load, tail harshness, hard hit) on the same curve and equipment — the cleanest within-strain comparison in the log. Both harshness and effect strength scaled up with load. Swab stayed light golden, consistent with every Gemlock run on this strain. The curve produces harshness under a full load; the question is whether that's load-density-at-430°F specifically, or just load-density at any temperature.",
     ),
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 21, 22, 16, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN7,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold',
+        swab="Light golden — clean.",
+        session_char="First half clean, no harshness; second half mild harshness, cough, throat irritation.",
+        intensity="Hard but manageable — fastest onset on this strain.",
+        dab_notes="First draw was about 20 seconds. No harshness, but not a ton of flavor either. That's been true across this strain. Got a little harsh in second half, mild cough, irritation in throat. Effect is nice fast, maybe fastest onset I've seen from this strain. Hard but still manageable. I'm not wiped out. Normal load.",
+        analysis="Fast ramp (2°F/sec, 420°F in 20s) — most compressed climb in the WW Z dataset. First half clean; harshness returned in the second half during the hold, mild but present. Normal load. Endpoint dropped 10°F from Runs 3–6 and harshness still appeared — temperature alone didn't resolve it. Run 5 (small load, 430°F, no harshness) points at load size as a candidate, but it's one uncontrolled data point. Two competing mechanisms: smaller load → less dense vapor → less irritation; or smaller load → material spent sooner → less accumulated heat exposure after the load is done. Both are consistent with the data so far. Fastest onset of any WW Z run — concentrated delivery confirmed at the lower endpoint.",
+    ),
     CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=CAG_RUN1,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
@@ -807,12 +821,12 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Run 7: drop to 420°F endpoint, full load — test whether harshness clears at lower temperature", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Runs 8–9: cut last dab into two small loads, same fast ramp to 420°F — testing small load with same curve", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Run 6 (same curve, fuller load): light golden swab, tail harshness, hit really hard. Load size confirmed directionally to influence both harshness and effect strength.",
-        next_ai_analysis="Load-size influence is confirmed directionally — same curve, fuller load, harshness returned; lighter load, harshness absent. The next test is whether dropping the endpoint resolves it: try 420°F endpoint, same fast ramp shape, full load. That isolates temperature from load size. If harshness clears at 420°F with a full load, the ceiling is somewhere between 420-430°F. If it doesn't, the curve shape itself needs rethinking.",
-        next_waypoints=WWZ_RUN7_NEXT,
+        next_dab_notes="Run 7 (normal load, fast ramp to 420°F): light golden swab, first half clean, second half mild harshness and cough. Fastest onset on this strain.",
+        next_ai_analysis="Harshness persisted at 420°F with a normal load — endpoint reduction alone didn't clear it. Last dab cut into two small loads, same fast ramp to 420°F, stop when vapor drops on both. Two competing mechanisms remain live: smaller load → less dense vapor → less irritation; or smaller load → material spent sooner → less accumulated heat exposure after the load is done. Both predict the same outcome here, so the mechanism can't be isolated with the available material. The result confirms or denies the directional finding (small load → clean tail) without resolving why.",
+        next_waypoints=WWZ_RUN7,
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
         info=CAG_INFO,
