@@ -268,20 +268,39 @@ UI work) where preview and audit trail are valuable.
 
 ```python
 @dataclass
+class Insert:
+    brand: str       # "Dr. Dabber", "OM Quartz", etc.
+    model: str       # "stock", "Sapphire Plus (v2)", etc.
+    material: str    # "quartz", "sapphire"
+
+@dataclass
+class CarbCap:
+    brand: str       # "Cloud Vortex", "Gemcup Glass"
+    model: str       # "21.0", "Gemlock joystick"
+    airflow: str     # "stock" by default — variant string when known
+
+@dataclass
+class Pearl:
+    diameter_mm: int
+    material: str    # "quartz" — future materials TBD
+
+@dataclass
 class EquipmentConfig:
-    insert: str                    # "quartz", "sapphire"
-    carb_cap: str                  # specific model, e.g. "Cloud Vortex 21.0",
-                                   # "Gemlock joystick" — NOT a category; string
-                                   # equality drives run comparability
-    pearl_diameter_mm: int | None  # None = no pearl (explicit); 3, 4, 6, etc.
+    insert: Insert
+    carb_cap: CarbCap
+    pearls: list[Pearl]   # empty list = no pearls; sorted in __post_init__ for stable equality
+    glass_top: str        # flat string — no sub-dimensions to track yet
+
+    def __post_init__(self):
+        self.pearls = sorted(self.pearls, key=lambda p: (p.diameter_mm, p.material))
 ```
 
-**Note on `EquipmentConfig` defaults:** No field has a default. Every call site
-must pass all three explicitly. This is deliberate: a default like
-`carb_cap="gemlock"` would let a spinner-era run constructed as `EquipmentConfig()`
-silently validate as Gemlock — equal to a real Gemlock config and undetectable by
-`validate()`. Removing defaults forces the configuration to be stated per run,
-which is the entire point of per-run equipment state.
+**Note on `EquipmentConfig` fields:** No field defaults. All four fields must be
+passed explicitly at every call site. `validate()` rejects `equipment=None`. Runs
+are comparable when all four fields match; `pearls` is sorted in `__post_init__`
+so list order doesn't affect equality. Named `RIG_N` constants (one per physical
+rig configuration) keep the call sites concise — the Rig Reference block on the
+rendered log documents each rig's meaning for human readers.
 
 ### `CompletedRun` (extended)
 

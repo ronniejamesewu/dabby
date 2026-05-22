@@ -50,9 +50,9 @@ on what to try next — not a formal calibration program.
   fields — lives in `Dabby_Data.py`. The generator loop in `build_html()`
   picks up new strains automatically. `Dabby_Log_Generator.py` requires no
   edits for run logging.
-- **Equipment is per-run.** `EquipmentConfig` with two named regimes
-  `_SPINNER`/`_GEMLOCK`; cutover at MB9ZST Run 1 (May 13 2026). `validate()`
-  rejects `equipment=None` — no field defaults by design.
+- **Equipment is per-run.** `EquipmentConfig` with nested `Insert`/`CarbCap`/`Pearl`
+  dataclasses; sequenced `RIG_N` constants; Rig Reference block on the rendered log
+  documents each rig. `validate()` rejects `equipment=None` — no field defaults by design.
 - **Charts:** Chart.js from CDN, one per curve via `curve_chart_html()`, fed by
   the same waypoint list as the table; needs internet to render.
 - **`DABBY_ARCHITECTURE.md`** is a living 6-step refactor plan (Steps 1–3 done;

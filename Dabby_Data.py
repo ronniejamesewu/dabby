@@ -13,14 +13,34 @@ class Waypoint:
     note: str
 
 @dataclass
+class Insert:
+    brand: str       # "Dr. Dabber", "OM Quartz", etc.
+    model: str       # "stock", "Sapphire Plus (v2)", etc.
+    material: str    # "quartz", "sapphire"
+
+@dataclass
+class CarbCap:
+    brand: str       # "Cloud Vortex", "Gemcup Glass"
+    model: str       # "21.0", "Gemlock joystick"
+    airflow: str     # "stock" by default — variant string when known
+
+@dataclass
+class Pearl:
+    diameter_mm: int
+    material: str    # "quartz" — future materials TBD
+
+@dataclass
 class EquipmentConfig:
-    insert: str                    # "quartz", "sapphire"
-    carb_cap: str                  # specific model, e.g. "Cloud Vortex 21.0",
-                                   # "Gemlock joystick" — NOT a category; string
-                                   # equality drives run comparability (Guardrail 3)
-    pearl_diameter_mm: int | None  # None = no pearl (explicit); 6, etc.
-    # No field defaults: a default would let an unspecified run silently validate
-    # as some config. Every run states its config explicitly (see _SPINNER/_GEMLOCK).
+    insert: Insert
+    carb_cap: CarbCap
+    pearls: list[Pearl]   # empty list = no pearls; sorted in __post_init__ for stable equality
+    glass_top: str        # flat string — no sub-dimensions to track yet
+    # Guardrail 3: all four fields contribute to nested-dataclass equality.
+    # pearls is sorted in __post_init__ so list order doesn't matter.
+    # Insert / carb cap / pearls / glass top are all confound boundaries when comparing runs.
+
+    def __post_init__(self):
+        self.pearls = sorted(self.pearls, key=lambda p: (p.diameter_mm, p.material))
 
 @dataclass
 class CompletedRun:
@@ -94,12 +114,11 @@ class TerpeneEntry:
 GLOBAL_INFO = [
     ("Device",       "Switch² (Dabby the House Rig)"),
     ("All Material", "Hash Rosin — ice water extracted, solventless. Consistency varies by jar — noted in each strain profile."),
-    ("Insert",       "20mm (quartz current; sapphire profiles to be added when acquired)"),
+    ("Insert",       "20mm — quartz or sapphire. Sapphire requires fresh calibration from scratch; do not scale from quartz curves."),
     ("Technique",    "Cold start — pre-load into cold insert before every session"),
     ("Load Size",    "Rice grain (small)"),
     ("Offset Est.",  "Probably small under most operating conditions. Dominant uncertainties are vaporization cooling and dynamic lag during steep ascent. At flat or slowly-ascending phases the system approaches equilibrium. Setpoints are reasonable proxies for material contact temperature."),
     ("Draw Style",   "Long, slow draws throughout session"),
-    ("Terp Tools",   "Cloud Vortex 21.0 spinner cap + 6mm quartz pearl in insert (current — returned after Gemlock joystick broke May 21, 2026). Gemlock era: MB9ZST Run 1 through WW Z Run 7 (May 13–21, 2026)."),
     ("Session End",  "Stop when vapor production drops — do not ride timer on small loads"),
 ]
 
@@ -523,17 +542,44 @@ MB9ZST_NEXT = [
 FIRST_RUN_DATE = date(2026, 5, 2)
 
 # ── EQUIPMENT ─────────────────────────────────────────────────────────────────
-# Two regimes in the log so far. The cutover is MB9ZST Run 1 (May 13, 2026):
-# the Gemlock joystick replaced the Cloud Vortex spinner cap and the 6mm pearl
-# was retired. Insert has been quartz throughout (sapphire not yet acquired).
-# Named constants, not per-call literals: the 24 pre-cutover runs were genuinely
-# one physical config, so one definition to verify beats 24 transcriptions.
+# Three rigs to date, sequenced RIG_N. Schema carries all content; the Rig Reference
+# table on the rendered log documents each rig's meaning for human readers.
+# New rigs get the next sequence number — no renames needed when new variables appear.
+# Run comparability: two runs share a config when all four EquipmentConfig fields
+# are equal. pearls is sorted in __post_init__ so list order doesn't matter.
+# Insert / carb cap / pearls / glass top are all confound boundaries when comparing runs.
 
-_SPINNER = EquipmentConfig(insert="quartz", carb_cap="Cloud Vortex 21.0", pearl_diameter_mm=6)
-_GEMLOCK = EquipmentConfig(insert="quartz", carb_cap="Gemlock joystick",  pearl_diameter_mm=None)
+# Rig 1: Pre-Gemlock era. Dr. Dabber stock quartz insert, Cloud Vortex 21.0 spinner
+# (stock airflow), 6mm quartz pearl, stock Dr. Dabber bubbler top. May 2 – May 13, 2026.
+RIG_1 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="stock", material="quartz"),
+    carb_cap=CarbCap(brand="Cloud Vortex", model="21.0", airflow="stock"),
+    pearls=[Pearl(diameter_mm=6, material="quartz")],
+    glass_top="Dr. Dabber stock bubbler",
+)
+
+# Rig 2: Gemlock era. Dr. Dabber stock quartz insert, Gemcup Glass Gemlock joystick
+# (stock airflow), no pearls, stock Dr. Dabber bubbler top. May 13 – May 21, 2026.
+# Joystick broke mid-session May 21.
+RIG_2 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="stock", material="quartz"),
+    carb_cap=CarbCap(brand="Gemcup Glass", model="Gemlock joystick", airflow="stock"),
+    pearls=[],
+    glass_top="Dr. Dabber stock bubbler",
+)
+
+# Rig 3: Sapphire era. Dr. Dabber Sapphire Plus (v2) insert (new May 22, 2026);
+# Cloud Vortex 21.0 spinner returning (stock airflow); 6mm quartz pearl; stock
+# Dr. Dabber bubbler top. In use as of May 22, 2026.
+RIG_3 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Cloud Vortex", model="21.0", airflow="stock"),
+    pearls=[Pearl(diameter_mm=6, material="quartz")],
+    glass_top="Dr. Dabber stock bubbler",
+)
 
 COMPLETED_RUNS = [
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 2), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=WWZ_RUN1,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 2), sessions_prior_today=0, utc_logged_at=None, equipment=RIG_1, waypoints=WWZ_RUN1,
         duration_seconds=65, endpoint_note='<strong>Rate:</strong> ~0.6°F/sec',
         swab='Light golden/amber. Clean. No dark coloration.',
         extra_rows=[
@@ -541,13 +587,13 @@ COMPLETED_RUNS = [
             ("Verdict:", "Clean on first run. Baseline curve well-matched to this material."),
         ],
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 18), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 19, 2, 52, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN2,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 18), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 19, 2, 52, tzinfo=timezone.utc), equipment=RIG_2, waypoints=WWZ_RUN2,
         duration_seconds=60, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp; down 20°F from Run 1',
         swab='Wheat — very clean.',
         dab_notes="Sneaky — felt light at first, enough that I finished the last 20 seconds of Sarah's dab when she didn't want it. But 5 minutes after that I was stoned as a bat. Having a hard time sitting up. Harsh in the throat in mine but interestingly not in finishing Sarah's. Maybe the harshness comes from the terpene mass up front? And not the heat? No real flavors coming through, Sarah says she hates the taste and is almost gagging. I don't find it tasty but I don't mind the taste.",
         analysis="Run 1 (spinner, 6mm pearl, slow ramp to 440°F) and Run 2 (Gemlock, no pearl, fast ramp to 420°F) differ on equipment, curve shape, and endpoint — no isolation is possible between them. Swab came back wheat-clean, lighter than Run 1's golden/amber, consistent with the Gemlock running lighter swabs across other strains. Strong delayed onset despite the lower endpoint — stoned as a bat ~5 minutes post-dab. Harshness was present in the full session; absent when finishing Sarah's last 20 seconds (tail end of her run). User hypothesis: harshness is front-loaded rather than endpoint-driven. The observation is real; the mechanism is speculative — a lighter partial load producing less irritation regardless of session position is equally consistent. Not a working position until something tests it. No distinct flavor; Sarah found the taste actively unpleasant.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 19), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 20, 1, 20, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN3,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 19), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 20, 1, 20, tzinfo=timezone.utc), equipment=RIG_2, waypoints=WWZ_RUN3,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 430°F — fast ramp (30s), 20s hold; up 10°F from Run 2',
         swab="One light golden with a small amber spot; the other barely absorbed anything — cleanest swab so far.",
         session_char="Harshness at 414°F on the display during the ramp, lingered through the hold at low intensity, never spiked — a couple of coughs. Creative, sharp, stoned.",
@@ -555,7 +601,7 @@ COMPLETED_RUNS = [
         dab_notes="Two swabs: one light golden with a small spot of amber, the other barely absorbed anything — cleanest run I've ever seen swab-wise. Harshness hit at exactly 414°F on the app display. Lingered and increased over the dab but never increased fast — mild, just a cough or two. Good intensity, not as hard as last night but I didn't take the last third of a second hit. I feel creative and sharp, and also stoned. This feels a little bit like trying to run a distillation column in my throat and lungs.",
         analysis="Cleanest swab in the log for this strain — one light golden with a small amber spot, the other barely absorbed anything. No floor signal at 430°F. Harshness appeared at 414°F on the display during the ramp (somewhere in the 15s–30s window), lingered at low intensity through the hold, never spiked — a couple of coughs, not acute. This is a different profile from typical tail harshness: it started mid-climb rather than at the endpoint. User raised a methodological point this session — reported 'tail harshness' may be a threshold-crossing description rather than an endpoint-specific signal; harshness builds continuously and registers when it becomes noteworthy, not when the curve hits a particular temperature. Consistent with that framing, the harshness here was mild throughout and never became the story. Effect was good: creative, sharp, stoned — consistent with Z lineage. Less hard-hitting than Run 2 but user also took less material.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 19), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 20, 4, 48, 24, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN3,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 19), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 20, 4, 48, 24, tzinfo=timezone.utc), equipment=RIG_2, waypoints=WWZ_RUN3,
         duration_seconds=60, endpoint_note='<strong>Endpoint:</strong> 430°F — repeated from Run 3',
         swab="Darker than Run 3 — maybe amber.",
         session_char="Harshness around 420°F on display (mid-ramp). Creative, sharp, stoned via body sensation.",
@@ -563,7 +609,7 @@ COMPLETED_RUNS = [
         dab_notes="Harshness didn't show up until around 420 on display. I added 10 seconds with the button. But only needed maybe 5, it was cashed. Swabs were darker than last time, maybe to amber. In theory nothing different this time but really different results. Feels similar to last time, creative and sharp but definitely also stoned via body sensation.",
         analysis="Run 4 repeats the same curve as Run 3 (380→410@15s→430@30s, hold to 50s) with one procedural difference: push-button extension to 60s, with material cashed around 55s. Load was in the ballpark with Run 3 — same jar section, possibly slightly less — which rules out load size as an explanation for the swab shift. The amber swab points at the extension: ~5s of 430°F hold after the load was spent, not a signal about the curve itself. Harshness appeared at ~420°F on the display, up from 414°F in Run 3. Both are mid-ramp (15–30s window), neither at the endpoint hold. The 6°F shift is within run-to-run variability, consistent with the threshold-crossing framing: harshness builds through the ramp and is noticed when it crosses a perceivable level, not pinned to a specific temperature. Effect was consistent — creative, sharp, stoned with body sensation.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 20), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 21, 1, 40, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN3,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 20), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 21, 1, 40, tzinfo=timezone.utc), equipment=RIG_2, waypoints=WWZ_RUN3,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 430°F — same curve as Runs 3–4, no push-button extension',
         swab="Clean light golden.",
         session_char="A little coughing, no harshness.",
@@ -571,7 +617,7 @@ COMPLETED_RUNS = [
         dab_notes="It was great, a little coughing but no harshness. Clean light golden swabs. A little mild on effect, my guess is smaller load.",
         analysis="Same curve as Runs 3–4 (380→410@15s→430@30s, hold to 50s), no push-button extension. Swab clean light golden — consistent with the Gemlock pattern. No harshness this run; Runs 3 and 4 both had harshness appearing mid-ramp at 414–420°F on the display. The difference may be load size — smaller load, less vapor density, less irritation regardless of temperature — but user couldn't confirm load was meaningfully different, so this is a confound, not a finding. Coughing without harshness is worth the distinction: vapor volume can produce coughing without the hot/irritating quality of harshness. Effect mild, consistent with user's smaller-load read.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 20), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 21, 3, 2, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN3,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 20), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 21, 3, 2, tzinfo=timezone.utc), equipment=RIG_2, waypoints=WWZ_RUN3,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 430°F — same curve as Runs 3-5, deliberate full load',
         swab="Light golden — same as Run 5.",
         session_char="Tail harshness in the last part.",
@@ -579,7 +625,7 @@ COMPLETED_RUNS = [
         dab_notes="Swabs looked the same as last time, light golden. This one was more normal load. Harshness in the last part, and hit really hard. So load size really influenced both.",
         analysis="Load-size hypothesis from Run 5 tested. Run 5 (smaller load, no harshness, mild effect) vs. Run 6 (fuller load, tail harshness, hard hit) on the same curve and equipment — the cleanest within-strain comparison in the log. Both harshness and effect strength scaled up with load. Swab stayed light golden, consistent with every Gemlock run on this strain. The curve produces harshness under a full load; the question is whether that's load-density-at-430°F specifically, or just load-density at any temperature.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 21, 22, 16, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=WWZ_RUN7,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 21, 22, 16, tzinfo=timezone.utc), equipment=RIG_2, waypoints=WWZ_RUN7,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold',
         swab="Light golden — clean.",
         session_char="First half clean, no harshness; second half mild harshness, cough, throat irritation.",
@@ -587,7 +633,7 @@ COMPLETED_RUNS = [
         dab_notes="First draw was about 20 seconds. No harshness, but not a ton of flavor either. That's been true across this strain. Got a little harsh in second half, mild cough, irritation in throat. Effect is nice fast, maybe fastest onset I've seen from this strain. Hard but still manageable. I'm not wiped out. Normal load.",
         analysis="Fast ramp (2°F/sec, 420°F in 20s) — most compressed climb in the WW Z dataset. First half clean; harshness returned in the second half during the hold, mild but present. Normal load. Endpoint dropped 10°F from Runs 3–6 and harshness still appeared — temperature alone didn't resolve it. Run 5 (small load, 430°F, no harshness) points at load size as a candidate, but it's one uncontrolled data point. Two competing mechanisms: smaller load → less dense vapor → less irritation; or smaller load → material spent sooner → less accumulated heat exposure after the load is done. Both are consistent with the data so far. Fastest onset of any WW Z run — concentrated delivery confirmed at the lower endpoint.",
     ),
-    CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=CAG_RUN1,
+    CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=RIG_1, waypoints=CAG_RUN1,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
         swab="Amber shading toward light brown.",
@@ -597,7 +643,7 @@ COMPLETED_RUNS = [
             ("Adjustment:", "Pull endpoint back to 430°F. Shorten hold to 55 seconds to reduce risk of outlasting small load."),
         ],
     ),
-    CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUNS12,
+    CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUNS12,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F',
         swab="Not recorded.",
@@ -605,7 +651,7 @@ COMPLETED_RUNS = [
             ("Result:", "Working well but first 40 seconds felt too flat and slow. Low vapor density in opening phase. Same result on Run 2."),
         ],
     ),
-    CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUNS12,
+    CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUNS12,
         date_label="May 2026",
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 450°F — same as Run 1',
         swab="Not recorded.",
@@ -614,7 +660,7 @@ COMPLETED_RUNS = [
             ("Diagnosis:", "Opening too flat — low vapor density in first 40s. Steeper climb 15–35s drives earlier vapor production. Flatter tail 35–65s closes the offset — a slowly-arrived-at 440°F delivers more heat to the material than a steeply-arrived-at 450°F."),
         ],
     ),
-    CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN3,
+    CompletedRun(strain="Orange Candy", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUN3,
         date_label="May 2026",
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
         swab="Light golden/tan. Clean. Minimal peripheral darkening at tip edge — consistent with insert wall cooling, not degradation.",
@@ -622,13 +668,13 @@ COMPLETED_RUNS = [
         intensity="Strong",
         analysis="Clean swab, strong result. Wispy opening draws suggest opportunity to raise opening setpoint slightly to improve vapor density at session start without affecting the clean tail.",
     ),
-    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 5), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN4,
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 5), sessions_prior_today=1, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUN4,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
         swab="Light golden. Clean both times.",
         session_char="Fine. Not noticeably different from Run 3. Run repeated twice on May 5, 2026 — consistent results across both.",
         analysis="Clean swab confirmed. Results stable. Lower opening setpoint (350°F) under exploration for Run 5 as next variable to test.",
     ),
-    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 6), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN5,
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 6), sessions_prior_today=0, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUN5,
         too_hot=True, duration_seconds=65, endpoint_note='<strong>Open:</strong> 350°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 460°F',
         swab="Darker than target — direction consistent with endpoint too hot.",
         session_char="Last portion tad harsh, consistent with elevated endpoint. Effect notably stronger than prior runs.",
@@ -637,7 +683,7 @@ COMPLETED_RUNS = [
             ("Next:",        "Returned to ramp curve for Run 6 — see results below."),
         ],
     ),
-    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 9), sessions_prior_today=3, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN6,
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 9), sessions_prior_today=3, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUN6,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
         swab="Light golden. Clean.",
         session_char="Very nice.",
@@ -645,7 +691,7 @@ COMPLETED_RUNS = [
             ("Next:", "Repeat to confirm, or test 350°F open / 460°F endpoint curve when ready."),
         ],
     ),
-    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 9), sessions_prior_today=4, utc_logged_at=None, equipment=_SPINNER, waypoints=OC_RUN7,
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 9), sessions_prior_today=4, utc_logged_at=None, equipment=RIG_1, waypoints=OC_RUN7,
         duration_seconds=60, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
         swab="Plain amber — clean.",
         session_char="Pleasant overall. Not as tasty as the ramp from lower temp. Harsh in the last 20 seconds.",
@@ -654,31 +700,31 @@ COMPLETED_RUNS = [
             ("Next:", "Ramp curve (Run 6 shape) is outperforming the flat hold at 430°F. Repeat Run 6 ramp to confirm, or try 420°F flat hold to find the flat-hold ceiling."),
         ],
     ),
-    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 7), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN1,
+    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 7), sessions_prior_today=0, utc_logged_at=None, equipment=RIG_1, waypoints=HIVE1_RUN1,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F',
         swab="Light golden — clean. No darkening.",
         session_char="Nice flavors on the way up through the arc. Heavy indica effect.",
         analysis="Clean swab on first run — curve appears well-matched to this material. Repeated as Run 2 to confirm.",
     ),
-    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 7), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN2,
+    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 7), sessions_prior_today=1, utc_logged_at=None, equipment=RIG_1, waypoints=HIVE1_RUN2,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 440°F — identical to Run 1',
         swab="Very light — cleaner than Run 1.",
         session_char="Really nice. Consistent with Run 1.",
         analysis="Two clean runs, consistent character, swab lighter on repeat. 440°F endpoint may be higher than needed — material is fully expressing before the endpoint. Run 3: trying steady 430°F flat hold (no ramp) to test whether curve shape affects the result.",
     ),
-    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN3,
+    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=0, utc_logged_at=None, equipment=RIG_1, waypoints=HIVE1_RUN3,
         duration_seconds=45, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
         swab="Light golden — clean.",
         session_char="First half: lots of flavor, low throat irritation. Second half: irritation increased, flavor faded to generic dab vapor — never harsh or burnt, just less distinct. Effect notably strong.",
         analysis="At a flat 430°F from the open, all terpene fractions (pinene through linalool, all below 430°F) are available simultaneously — first hit may be the full palette combining at once rather than staged. The ramp climbs through each fraction sequentially, which may be what gives those runs more distinct flavor progression across the arc. 45 seconds was too short — vapor was still producing at session end. Not a temperature issue, just cut off early. One data point. Directionally supports the ramp producing more distinct staged flavor vs. the flat hold combining everything at once. If revisiting the flat hold, extend to 60 seconds. Next planned: repeat the Run 1–2 ramp (380→390→410°F) with 430°F endpoint to compare directly on the same endpoint.",
     ),
-    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN4,
+    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=1, utc_logged_at=None, equipment=RIG_1, waypoints=HIVE1_RUN4,
         duration_seconds=60, endpoint_note="<strong>Setpoint:</strong> 430°F steady (no ramp) — extended from Run 3's 45s",
         swab="Light golden — clean. Consistent with Run 3.",
         session_char="Similar to Run 3. Extended hold confirmed vapor was still producing at 45s in Run 3 — 60s felt more complete.",
         analysis="Two flat-hold data points, both clean swabs, consistent character. Next: ramp to 430°F endpoint (380→390→410→430°F) — the original planned experiment — to compare curve shape on the same endpoint.",
     ),
-    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=2, utc_logged_at=None, equipment=_SPINNER, waypoints=HIVE1_RUN5,
+    CompletedRun(strain="The Hive #1", run_date=date(2026, 5, 8), sessions_prior_today=2, utc_logged_at=None, equipment=RIG_1, waypoints=HIVE1_RUN5,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F (ramp — same shape as Runs 1–2, endpoint reduced from 440°F)',
         swab="Light golden — a tad lighter than the flat-hold 430°F runs (Runs 3–4). Clean.",
         session_char="Nice distinct flavors through the first two-thirds. Harsh in the last ~10 seconds. Effects quite potent.",
@@ -687,7 +733,7 @@ COMPLETED_RUNS = [
             ("Next:", "Try 420–425°F endpoint on Run 6. Keep ramp shape unchanged."),
         ],
     ),
-    CompletedRun(strain="Fembot #3", run_date=date(2026, 5, 9), sessions_prior_today=0, utc_logged_at=None, equipment=_SPINNER, waypoints=FEMBOT3_RUN1,
+    CompletedRun(strain="Fembot #3", run_date=date(2026, 5, 9), sessions_prior_today=0, utc_logged_at=None, equipment=RIG_1, waypoints=FEMBOT3_RUN1,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
         swab="Light golden — clean. Two heads mostly white, two with light golden coloring. No darkening.",
         session_char="Very tasty on the ascent. No visible vapor until mid-range. Slight harshness at the tail. Effects upbeat, creative, not too body-heavy — consistent with sativa-dominant character.",
@@ -695,7 +741,7 @@ COMPLETED_RUNS = [
             ("Next:", "Try steady 420°F flat hold (60s) on Run 2 — drop endpoint and change curve shape to test both variables."),
         ],
     ),
-    CompletedRun(strain="Fembot #3", run_date=date(2026, 5, 9), sessions_prior_today=1, utc_logged_at=None, equipment=_SPINNER, waypoints=FEMBOT3_RUN2,
+    CompletedRun(strain="Fembot #3", run_date=date(2026, 5, 9), sessions_prior_today=1, utc_logged_at=None, equipment=RIG_1, waypoints=FEMBOT3_RUN2,
         duration_seconds=60, endpoint_note='<strong>Setpoint:</strong> 430°F steady (no ramp)',
         swab="Light golden — clean. Consistent with Run 1.",
         session_char="Very tasty, great effects. Harshness in the last third.",
@@ -704,7 +750,7 @@ COMPLETED_RUNS = [
             ("Next:", "Try 420°F steady flat hold on Run 3."),
         ],
     ),
-    CompletedRun(strain="Mango Starburst #23", run_date=date(2026, 5, 9), sessions_prior_today=2, utc_logged_at=None, equipment=_SPINNER, waypoints=MS23_RUN1,
+    CompletedRun(strain="Mango Starburst #23", run_date=date(2026, 5, 9), sessions_prior_today=2, utc_logged_at=None, equipment=RIG_1, waypoints=MS23_RUN1,
         duration_seconds=65, endpoint_note='<strong>Endpoint:</strong> 430°F',
         swab="Very clean — no darkening.",
         session_char="Very piney character throughout — almost pine sol. Tasty, though not to user's taste preference. Heady effects. No harshness.",
@@ -713,78 +759,78 @@ COMPLETED_RUNS = [
             ("Verdict:", "Clean swab on first run. Curve well-matched to this material. Repeat on Run 2 to confirm."),
         ],
     ),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=0,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=MBD_RUN1,
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=0,    utc_logged_at=None,                                              equipment=RIG_1, waypoints=MBD_RUN1,
         endpoint_note="<strong>Endpoint:</strong> 430°F",
         swab="Darker golden — between light golden target and amber. Nothing tasted burnt. Flagged as something to watch on subsequent runs.",
         session_char="Tasty first half, second half faded to generic. Milder effect — likely tolerance after 5 sessions the prior day.",
         intensity="Mild — tolerance confound (5 sessions prior day)",
     ),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=1,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=MBD_RUN2,
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 10), sessions_prior_today=1,    utc_logged_at=None,                                              equipment=RIG_1, waypoints=MBD_RUN2,
         endpoint_note="<strong>Endpoint:</strong> 430°F — same as Run 1",
         swab="Lighter than Run 1 — closer to the light golden target.",
         session_char="Distinct bacon character on the first half. Effects came on noticeably after this session.",
         intensity="Moderate",
         analysis="Swab trending cleaner on repeat. Flavor expressed distinctly on the first half. No harshness on either run. The Run 1 milder effect reads as a tolerance confound — effects landed clearly on Run 2.",
     ),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 11), sessions_prior_today=2,    utc_logged_at=datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=MBD_RUN3,
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 11), sessions_prior_today=2,    utc_logged_at=datetime(2026, 5, 12,  5, 24, tzinfo=timezone.utc), equipment=RIG_1, waypoints=MBD_RUN3,
         endpoint_note="<strong>Endpoint:</strong> 420°F (10-second hold) — down 10°F, ramp from 375°F open",
         swab="Clean golden.",
         session_char="Little bit harsh in the last 5 seconds. No harshness earlier in the session.",
         intensity="Medium-hard",
     ),
-    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 12), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=MBD_RUN4,
+    CompletedRun(strain="Maple Bacon Donut",                 run_date=date(2026, 5, 12), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 13,  2, 30, tzinfo=timezone.utc), equipment=RIG_1, waypoints=MBD_RUN4,
         endpoint_note="<strong>Endpoint:</strong> 430°F — same as Runs 1 and 2",
         swab="Light golden.",
         session_char="Tail harshness again, consistent with prior 430°F runs. Interesting bitter note throughout — citrus rind character.",
         intensity="Big effect, seemingly short duration.",
     ),
-    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 10), sessions_prior_today=2,    utc_logged_at=None,                                              equipment=_SPINNER, waypoints=RF_RUN1,
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 10), sessions_prior_today=2,    utc_logged_at=None,                                              equipment=RIG_1, waypoints=RF_RUN1,
         endpoint_note="<strong>Endpoint:</strong> 430°F — baseline ramp",
         swab="Notably clean — lighter than target. No darkening.",
         session_char="Really clear fruit notes throughout. Strong effects — pressure up and behind the eyes. No harshness.",
         intensity="Strong",
         analysis="Clean first run. Distinct fruit character, strong effect. No floor signal, no harshness. Repeat the same curve on Run 2 to confirm.",
     ),
-    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=RF_RUN2,
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 11, 22, 44, tzinfo=timezone.utc), equipment=RIG_1, waypoints=RF_RUN2,
         endpoint_note="<strong>Endpoint:</strong> 430°F &nbsp;|&nbsp; Open 5°F below baseline — testing lower open",
         swab="Light golden — clean.",
         session_char="Tasty. Got a bit hot in the last 10 seconds.",
         intensity="Mild",
         analysis="Curve felt well-suited to the strain overall. Tail heat in the last 10 seconds is consistent with the cross-strain pattern at 430°F endpoints (Hive #1 Run 5, Fembot #3 Runs 1–2). Swab is clean so this is a session character signal, not a floor indicator. Effects milder than Run 1 — likely session-to-session variability rather than a curve signal.",
     ),
-    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=RF_RUN3,
+    CompletedRun(strain="Rain Fruit",                        run_date=date(2026, 5, 11), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 12,  0, 30, tzinfo=timezone.utc), equipment=RIG_1, waypoints=RF_RUN3,
         endpoint_note="<strong>Endpoint:</strong> 420°F (10-second hold) — down 10°F from prior runs",
         swab="Clean golden.",
         session_char="Notably less harshness. Slow build to intensity — not hard hitting.",
         intensity="Mild-moderate",
         analysis="420°F endpoint resolved the tail harshness that appeared at 430°F on Run 2 — consistent with the cross-strain pattern. Clean swab means no floor signal. The slower, gentler build suggests some intensity lives in the higher-temperature band. The path forward is to walk the endpoint back up incrementally to find where harshness re-enters.",
     ),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN1,
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 13, 23, 27, tzinfo=timezone.utc), equipment=RIG_2, waypoints=MB9ZST_RUN1,
         endpoint_note="<strong>Endpoint:</strong> 430°F — baseline ramp &nbsp;|&nbsp; <strong>Equipment:</strong> First session with Gemlock joystick, no pearl",
         swab="Very light golden.",
         session_char="Pronounced flavors up front. Bitter citrus note with a distinct tangerine quality — consistent with Sour Tangie lineage (limonene-forward). Slight harshness at the end. Also appeared as a bitter/citrus rind note in Maple Bacon Donut Run 4 (May 12) — cross-strain parallel, genetics connection unclear, worth watching.",
         intensity="Strong — face tingling.",
         extra_rows=[("Equipment note:", "First run with Gemlock joystick, no pearl. Swab lighter than typical for a first run. Hypothesis: joystick may be more efficient — cleaner swab and/or more material vaporized in the same window. Single data point; something to watch.")],
     ),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN2,
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 13), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 14,  4, 55, tzinfo=timezone.utc), equipment=RIG_2, waypoints=MB9ZST_RUN2,
         endpoint_note="<strong>Endpoint:</strong> 430°F — baseline ramp repeated",
         swab="Light golden — same as Run 1.",
         session_char="Big flavors up front. Visible vapor at lower temps than expected. Slight harshness at the end.",
         intensity="Strong — not too cloudy mentally, noticeably lazy physically.",
     ),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 15,  2,  0, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN3,
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 15,  2,  0, tzinfo=timezone.utc), equipment=RIG_2, waypoints=MB9ZST_RUN3,
         endpoint_note='<strong>Endpoint:</strong> 420°F with 20-second hold — ramp 375→400→420°F',
         swab='Light golden — "lightly toasted marshmallow." Clean.',
         session_char="Nice. Climb rate felt right, hold felt right. Still a bit harsh at the end.",
         intensity="High",
     ),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 15,  4, 34, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN4,
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 14), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 15,  4, 34, tzinfo=timezone.utc), equipment=RIG_2, waypoints=MB9ZST_RUN4,
         endpoint_note="<strong>Endpoint:</strong> 415°F with 20-second hold — down 5°F from Run 3",
         swab="Golden — slightly darker than Run 3. Still in the clean range.",
         session_char="Less harsh at the tail than prior runs — still present but attenuating. More material in swabs at the end.",
         intensity="Decent — second dab of the evening, tolerance factor in play.",
     ),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 17), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 18,  1,  9, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN5,
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 17), sessions_prior_today=0,   utc_logged_at=datetime(2026, 5, 18,  1,  9, tzinfo=timezone.utc), equipment=RIG_2, waypoints=MB9ZST_RUN5,
         endpoint_note="<strong>Endpoint:</strong> 415°F with 20-second hold — same as Run 4",
         swab="Super light golden — clean. Lighter than Run 4.",
         session_char="Tiny bit of harshness in the throat. Tiny bit of burnt taste at the very last draw.",
@@ -792,7 +838,7 @@ COMPLETED_RUNS = [
         intensity="Pretty hard hit.",
         analysis="Harshness at 415°F is now confirmed across two runs (Runs 4 and 5) — the same two-run pattern that triggered the step-down recommendation for BB36#1 at the same endpoint. The burnt taste at the very last draw is a new and more specific observation: it points at the final seconds of the 20-second hold as the problem zone, not the ascent. Swab came back super light golden — lighter than Run 4, which runs counter to the hypothesis that lower endpoints leave more material behind. One data point, swab noise is real. Intensity landed hard with no same-day tolerance confound, consistent with the strain's potency pattern.",
     ),
-    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 17), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 18,  5,  1, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=MB9ZST_RUN6,
+    CompletedRun(strain="Mango Banana #9 + Z + Sour Tangie", run_date=date(2026, 5, 17), sessions_prior_today=1,   utc_logged_at=datetime(2026, 5, 18,  5,  1, tzinfo=timezone.utc), equipment=RIG_2, waypoints=MB9ZST_RUN6,
         duration_seconds=60,
         endpoint_note="<strong>Endpoint:</strong> 420°F — faster ramp (30s), 60s total (planned 50s + push-button extension)",
         swab="Super light golden — clean.",
@@ -801,26 +847,26 @@ COMPLETED_RUNS = [
         intensity="Very stoned.",
         analysis="Fastest ramp in the MB9ZST dataset — 420°F in 30s vs. 45s in Run 3. The harder hit and front-loaded flavor are consistent with that: same temperature, more vaporization concentrated in the early window. 'Didn't miss the lingering lower longer' is the clearest preference signal in the strain's history — the compressed front end works better than the drawn-out one. The push-button extension to 60s added 10s of hold at 420°F beyond the plan, and the harshness arrived there — consistent with the full MB9ZST/420°F pattern. Swab came back light golden throughout, same as every other Gemlock run on this strain. Jar done at 6 runs.",
     ),
-    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 15), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 16,  1, 53, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=BB36_1_RUN1,
+    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 15), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 16,  1, 53, tzinfo=timezone.utc), equipment=RIG_2, waypoints=BB36_1_RUN1,
         endpoint_note="<strong>Endpoint:</strong> 430°F — baseline",
         swab="Super light golden — very clean.",
         session_char="Not the most flavorful. Hard in the tail.",
         intensity="Medium",
     ),
-    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 15), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 16,  5, 48, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=BB36_1_RUN2,
+    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 15), sessions_prior_today=1,    utc_logged_at=datetime(2026, 5, 16,  5, 48, tzinfo=timezone.utc), equipment=RIG_2, waypoints=BB36_1_RUN2,
         endpoint_note="<strong>Endpoint:</strong> 415°F with 20-second hold — ramp 375→400→415°F",
         swab="Very light golden — clean.",
         session_char="Not a lot of distinct flavor. Throat irritation at the tail. Spicy note at the end — like hot spice.",
         intensity="Medium and climbing",
         extra_rows=[("Effect:", "Waves of anxiety / possible paranoia emerging post-session. User notes Blueberry strains hit harder than they look — this has come up before on this lineage.")],
     ),
-    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 16), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 17,  5, 32, tzinfo=timezone.utc), equipment=_GEMLOCK, waypoints=BB36_1_RUN3,
+    CompletedRun(strain="Blueberry 36 #1",                  run_date=date(2026, 5, 16), sessions_prior_today=0,    utc_logged_at=datetime(2026, 5, 17,  5, 32, tzinfo=timezone.utc), equipment=RIG_2, waypoints=BB36_1_RUN3,
         endpoint_note="<strong>Endpoint:</strong> 415°F with 20-second hold — repeated from Run 2",
         swab="Golden and light — clean.",
         session_char="Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end.",
         intensity="Pretty big at the moment.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 22, 1, 28, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=WWZ_RUN7,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 22, 1, 28, tzinfo=timezone.utc), equipment=RIG_1, waypoints=WWZ_RUN7,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold &nbsp;|&nbsp; <strong>Equipment:</strong> First run back on Cloud Vortex 21.0 + 6mm pearl',
         swab="Light golden — same as Gemlock runs.",
         session_char="First 30 seconds smooth; second 20 seconds rising harshness — more harsh than Run 7.",
@@ -828,7 +874,7 @@ COMPLETED_RUNS = [
         dab_notes="First 30 seconds smooth, second 20 rising harshness. More harsh than previous run. Swabs were light golden, same as with Gemlock. Seems to have slow onset, or maybe breaking the joystick was a buzzkill. Effect duration roughly 2.5–3 hours.",
         analysis="First run back on Cloud Vortex 21.0 + 6mm pearl after the Gemlock broke. Small load — one of three roughly equal chunks, imprecise split. Equipment change and load change happened simultaneously: the load-size experiment can't be isolated here. More harshness than Run 7 despite the smaller load — counterintuitive if load size is the driver, but the spinner reintroducing a pearl and different airflow dynamics is an equally plausible explanation. Swab returned light golden, same as every Gemlock run on this strain — doesn't obviously support the Gemlock-lighter-swab hypothesis, though the load difference is a confound there too. Onset slower than Run 7; user flagged broken joystick as a mood factor, which is real and uncontrollable.",
     ),
-    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 22, 5, 58, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=WWZ_RUN9,
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 22, 5, 58, tzinfo=timezone.utc), equipment=RIG_1, waypoints=WWZ_RUN9,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold — same as Runs 7–8',
         swab="Clean light golden.",
         session_char="Harshness in the second half. Medium intensity, delayed onset.",
@@ -839,11 +885,11 @@ COMPLETED_RUNS = [
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Jar done — 9 runs. Next jar: same fast ramp to 420°F as starting point; watch harshness on spinner config", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Jar done — 9 runs. If it shows up again: fast ramp to 420°F is a reasonable starting point", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
         next_dab_notes="Run 9 (small load, spinner): clean light golden swab, harshness in second half, medium intensity, delayed onset. Kind of a whimper of a last dab. Jar done.",
-        next_ai_analysis="Jar done. The load-size hypothesis from Runs 5–6 didn't hold: Runs 8–9 (small load, spinner) both produced harshness where Run 5 (small load, Gemlock) was clean. Equipment config is the more likely driver, though the 420°F endpoint sits at the harshness boundary for this strain regardless of shape. On the next jar: start with the same fast ramp to 420°F on the spinner — if harshness persists, step the endpoint down to 415°F. If a Gemlock-equivalent becomes available, a direct same-curve comparison would settle the config question.",
+        next_ai_analysis="Jar done. Equipment config is the more likely harshness driver — Runs 8–9 (small load, spinner) both produced harshness where Run 5 (same load class, Gemlock) was clean. The 420°F endpoint also sits near the harshness boundary regardless of config. If this strain shows up again, the fast ramp to 420°F (380→400@10s→420@20s, hold to 50s) is a reasonable starting point. Harshness on the spinner at that endpoint is a known risk — step down to 415°F if it persists, or test a joystick if one's available.",
         next_waypoints=WWZ_RUN9,
         jar_index=(
             "<div style='text-align:center;margin-top:1em;'>"
@@ -1061,10 +1107,31 @@ def validate():
             errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): waypoint times not monotonically increasing: {times}")
 
     for i, run in enumerate(COMPLETED_RUNS):
-        if run.equipment is None:
+        eq = run.equipment
+        if eq is None:
             errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment is None — "
                            f"every run must carry an explicit EquipmentConfig "
                            f"(None never means 'inherit a session default')")
+            continue
+        if not eq.glass_top:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.glass_top is empty")
+        if not eq.insert.brand:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.brand is empty")
+        if not eq.insert.model:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.model is empty")
+        if not eq.insert.material:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.material is empty")
+        if not eq.carb_cap.brand:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.brand is empty")
+        if not eq.carb_cap.model:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.model is empty")
+        if not eq.carb_cap.airflow:
+            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.airflow is empty")
+        for j, pearl in enumerate(eq.pearls):
+            if pearl.diameter_mm <= 0:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): pearl[{j}].diameter_mm={pearl.diameter_mm} must be > 0")
+            if not pearl.material:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): pearl[{j}].material is empty")
 
     if errors:
         print("VALIDATION ERRORS:")
