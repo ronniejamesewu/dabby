@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 22, 2026 — Session 63
+## Last updated: May 22, 2026 — Session 64
 
 ---
 
@@ -122,6 +122,8 @@ The recommendation should always be concrete — one clear direction with the re
 - **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window.
 
 - **Recalculating timestamp at reporting time when a session start time was already established.** When the user says "about to hit it" and a UTC timestamp is captured, that is the `utc_logged_at` for the run. If the user reports results later in the same conversation, do not re-run `date -u` and use the current time — use the timestamp captured at session start. Presenting a stale recalculated time in Beat 1 forces the user to correct it.
+
+- **Asking the user questions that could be reasoned through.** When evaluating whether a schema field is needed (e.g., insert diameter), reason about physical/logical constraints first. The Switch² heating cup geometry physically constrains inserts to a tight ~20mm fit — diameter variation isn't realistic on this device. Asking the user "should diameter be a field?" when a few seconds of reasoning would answer it wastes their attention. Reason first; ask only what genuinely requires user input (product knowledge, preferences, plans).
 
 ---
 
