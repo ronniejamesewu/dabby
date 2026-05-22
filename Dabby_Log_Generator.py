@@ -557,7 +557,7 @@ def rig_reference_html():
 
         rows += (
             f'<tr>'
-            f'<td><strong>{label}</strong></td>'
+            f'<td style="white-space:nowrap"><strong>{label}</strong></td>'
             f'<td>{insert_cell}</td>'
             f'<td>{cap_cell}</td>'
             f'<td>{pearl_cell}</td>'
@@ -569,7 +569,7 @@ def rig_reference_html():
     table = (
         '<div class="terp-ref-wrap">'
         '<table class="terp-ref-table"><thead><tr>'
-        '<th>Rig</th><th>Insert</th><th>Carb Cap</th>'
+        '<th style="white-space:nowrap">Rig</th><th>Insert</th><th>Carb Cap</th>'
         '<th>Pearls</th><th>Glass Top</th><th>Active</th>'
         f'</tr></thead><tbody>{rows}</tbody></table></div>'
     )
