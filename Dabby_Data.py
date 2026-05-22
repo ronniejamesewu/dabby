@@ -98,7 +98,7 @@ GLOBAL_INFO = [
     ("Load Size",    "Rice grain (small)"),
     ("Offset Est.",  "Probably small under most operating conditions. Dominant uncertainties are vaporization cooling and dynamic lag during steep ascent. At flat or slowly-ascending phases the system approaches equilibrium. Setpoints are reasonable proxies for material contact temperature."),
     ("Draw Style",   "Long, slow draws throughout session"),
-    ("Terp Tools",   "Gemlock joystick (as of MB9ZST Run 1, May 13, 2026). Prior sessions: Cloud Vortex 21.0 spinner cap + 6mm quartz pearl in insert."),
+    ("Terp Tools",   "Cloud Vortex 21.0 spinner cap + 6mm quartz pearl in insert (current — returned after Gemlock joystick broke May 21, 2026). Gemlock era: MB9ZST Run 1 through WW Z Run 7 (May 13–21, 2026)."),
     ("Session End",  "Stop when vapor production drops — do not ride timer on small loads"),
 ]
 
@@ -833,7 +833,7 @@ STRAIN_STATUS = [
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
         next_dab_notes="Run 8 (small load, spinner): light golden swab — same as Gemlock. First 30s smooth, second 20s rising harshness — more harsh than Run 7 (normal load, Gemlock). Medium intensity, slow onset, ~2.5–3h duration. Second chunk: Sarah, unlogged.",
-        next_ai_analysis="Two small loads remain on spinner. Run 8's harshness result runs opposite to Runs 5–6 (small load clean, normal load harsh on Gemlock) — but equipment changed at the same time, so it doesn't settle the contradiction. Runs 9 and 10: same small loads, same curve, same spinner config — continue and document. If harshness stays elevated across both, the spinner becomes the more likely driver than load size. After the last chunk, that's the primary open question.",
+        next_ai_analysis="One small load remains on spinner (second chunk went to Sarah, unlogged). Run 8's harshness result runs opposite to Runs 5–6 (small load clean, normal load harsh on Gemlock) — but equipment changed at the same time, so it doesn't settle the contradiction. Run 9: same small load, same curve, same spinner config — continue and document. If harshness stays elevated, the spinner becomes the more likely driver than load size. Also track effect duration — Run 8 ran ~2.5–3 hours against a personal range of 6–8 hours, so this strain may run short.",
         next_waypoints=WWZ_RUN7,
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
