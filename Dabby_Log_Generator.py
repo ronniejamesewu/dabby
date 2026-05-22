@@ -21,7 +21,7 @@ def _fmt_equipment_display(eq):
     if ins.model == "stock":
         insert_str = f"{ins.brand} stock {ins.material}"
     else:
-        insert_str = f"{ins.material} ({ins.brand} {ins.model})"
+        insert_str = f"{ins.brand} {ins.model}"
 
     cap = eq.carb_cap
     if cap.airflow == "stock":
@@ -534,7 +534,7 @@ def rig_reference_html():
         cap = rig.carb_cap
 
         insert_cell = (f"{ins.brand} stock {ins.material}" if ins.model == "stock"
-                       else f"{ins.material} ({ins.brand} {ins.model})")
+                       else f"{ins.brand} {ins.model}")
 
         cap_cell = (f"{cap.brand} {cap.model}" if cap.airflow == "stock"
                     else f"{cap.brand} {cap.model}<br><small>{cap.airflow} airflow</small>")
