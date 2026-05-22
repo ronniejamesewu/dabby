@@ -534,7 +534,7 @@ def rig_reference_html():
         cap = rig.carb_cap
 
         insert_cell = (f"{ins.brand} stock {ins.material}" if ins.model == "stock"
-                       else f"{ins.material}<br><small>{ins.brand} {ins.model}</small>")
+                       else f"{ins.material} ({ins.brand} {ins.model})")
 
         cap_cell = (f"{cap.brand} {cap.model}" if cap.airflow == "stock"
                     else f"{cap.brand} {cap.model}<br><small>{cap.airflow} airflow</small>")
