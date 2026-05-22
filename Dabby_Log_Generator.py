@@ -11,6 +11,35 @@ from datetime import datetime, date, timezone, timedelta
 from Dabby_Data import *
 from Dabby_Data import _ACCENT_RESOLVED  # underscore names are skipped by wildcard import
 
+_RIG_LABELS = [(RIG_1, "Rig 1"), (RIG_2, "Rig 2"), (RIG_3, "Rig 3")]
+
+def _fmt_equipment_display(eq):
+    """Human-readable equipment string from EquipmentConfig. Format: 'Rig N — insert · cap · pearls · glass'."""
+    rig_label = next((label for rig, label in _RIG_LABELS if rig == eq), None)
+
+    ins = eq.insert
+    if ins.model == "stock":
+        insert_str = f"{ins.brand} stock {ins.material}"
+    else:
+        insert_str = f"{ins.material} ({ins.brand} {ins.model})"
+
+    cap = eq.carb_cap
+    if cap.airflow == "stock":
+        cap_str = f"{cap.brand} {cap.model}"
+    else:
+        cap_str = f"{cap.brand} {cap.model} ({cap.airflow} airflow)"
+
+    pearl_parts = [f"{p.diameter_mm}mm {p.material} pearl" for p in eq.pearls]
+    segments = [insert_str, cap_str]
+    if pearl_parts:
+        segments.append(" + ".join(pearl_parts))
+    segments.append(eq.glass_top)
+
+    body = " \N{MIDDLE DOT} ".join(segments)
+    if rig_label:
+        return f"{rig_label} \N{EM DASH} {body}"
+    return body
+
 # ── HELPERS ────────────────────────────────────────────────────────────────
 
 def _classify_curve_shape(waypoints):
@@ -410,8 +439,7 @@ def render_run_section(ss, i, run, first_of_day=False):
     title      = f"{ss.name} — Run {i} — {date_str}{fire}"
     section_id = f"{ss.slug}-run{i}"
 
-    pearl = f"{run.equipment.pearl_diameter_mm}mm pearl" if run.equipment.pearl_diameter_mm else "no pearl"
-    equipment_str = f"{run.equipment.carb_cap}, {pearl}"
+    equipment_str = _fmt_equipment_display(run.equipment)
 
     c  = session_order_note(run.sessions_prior_today)
     c += '<h3 class="amber">Curve</h3>' if run.too_hot else '<h3>Curve</h3>'
@@ -486,6 +514,73 @@ def terpene_reference_html():
     return collapsible_section("terpene-ref", "Terpene Reference", content, header_class="grey")
 
 
+def rig_reference_html():
+    """Collapsible Rig Reference block — one table row per RIG_N constant."""
+    def _short_date(d):
+        return d.strftime('%b %d, %Y').replace(' 0', ' ')
+
+    rig_stats = {label: {"runs": [], "dates": []} for _, label in _RIG_LABELS}
+    for run in COMPLETED_RUNS:
+        for rig, label in _RIG_LABELS:
+            if run.equipment == rig:
+                rig_stats[label]["runs"].append(run)
+                if run.run_date is not None:
+                    rig_stats[label]["dates"].append(run.run_date)
+                break
+
+    rows = ""
+    for rig, label in _RIG_LABELS:
+        ins = rig.insert
+        cap = rig.carb_cap
+
+        insert_cell = (f"{ins.brand} stock {ins.material}" if ins.model == "stock"
+                       else f"{ins.material}<br><small>{ins.brand} {ins.model}</small>")
+
+        cap_cell = (f"{cap.brand} {cap.model}" if cap.airflow == "stock"
+                    else f"{cap.brand} {cap.model}<br><small>{cap.airflow} airflow</small>")
+
+        pearl_cell = (" + ".join(f"{p.diameter_mm}mm {p.material}" for p in rig.pearls)
+                      or "&mdash;")
+
+        stats = rig_stats[label]
+        n     = len(stats["runs"])
+        dates = stats["dates"]
+        if n == 0:
+            active_cell = "not yet used"
+        elif not dates:
+            active_cell = f"{n} run{'s' if n != 1 else ''} (dates unknown)"
+        else:
+            first     = _short_date(min(dates))
+            last      = _short_date(max(dates))
+            date_span = first if first == last else f"{first} &ndash; {last}"
+            active_cell = f"{date_span}<br><small>{n} run{'s' if n != 1 else ''}</small>"
+
+        rows += (
+            f'<tr>'
+            f'<td><strong>{label}</strong></td>'
+            f'<td>{insert_cell}</td>'
+            f'<td>{cap_cell}</td>'
+            f'<td>{pearl_cell}</td>'
+            f'<td>{rig.glass_top}</td>'
+            f'<td>{active_cell}</td>'
+            f'</tr>'
+        )
+
+    table = (
+        '<div class="terp-ref-wrap">'
+        '<table class="terp-ref-table"><thead><tr>'
+        '<th>Rig</th><th>Insert</th><th>Carb Cap</th>'
+        '<th>Pearls</th><th>Glass Top</th><th>Active</th>'
+        f'</tr></thead><tbody>{rows}</tbody></table></div>'
+    )
+    note = (
+        '<p class="note">Physical equipment configuration per rig. '
+        'Two runs are directly comparable only when their EquipmentConfig matches exactly &mdash; '
+        'insert, carb cap, pearls, and glass top are all confound boundaries.</p>'
+    )
+    return collapsible_section("rig-ref", "Rig Reference", note + table, header_class="grey")
+
+
 def build_html():
     validate()
     validate_accent_colors()
@@ -524,6 +619,9 @@ def build_html():
 
     # Terpene Reference
     sections.append(terpene_reference_html())
+
+    # Rig Reference
+    sections.append(rig_reference_html())
 
     # ── First-of-day detection ────────────────────────────────────────────────
     _seen_dates = set()
@@ -597,8 +695,7 @@ def generate_handoff_state():
     def fmt_equipment(eq):
         if eq is None:
             return "unknown"
-        pearl = f"{eq.pearl_diameter_mm}mm pearl" if eq.pearl_diameter_mm else "no pearl"
-        return f"{eq.carb_cap}, {pearl}"
+        return _fmt_equipment_display(eq)
 
     lines = []
     lines.append("# Dabby — Session State")

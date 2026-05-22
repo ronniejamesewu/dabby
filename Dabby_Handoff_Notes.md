@@ -56,6 +56,26 @@ The recommendation should always be concrete — one clear direction with the re
 
 ---
 
+**Equipment Protocol**
+
+Run logging assumes equipment continuity from the most recent run. The default equipment for a new run is the `.equipment` field of the most recent `COMPLETED_RUNS` entry — not the latest `RIG_N` constant defined.
+
+**Beat 1 readback expansion:** When stating the rig in Beat 1 confirmation, always expand it fully on first mention per conversation, on any rig change, and on the session-open soft check. Format: "Logging on Rig 3 — sapphire (Dr. Dabber Sapphire Plus v2) · Cloud Vortex 21.0 spinner · 6mm quartz pearl · stock Dr. Dabber bubbler". Subsequent same-rig mentions in the same conversation may use bare "Rig 3".
+
+**Equipment-change detection:** If the user's dab notes mention any equipment change ("new glass top," "tried the sapphire," "swapped pearl"), treat it as a signal to ask clarifying questions about what specifically changed. Necessity-bounded clarification — as many as needed to record faithfully.
+
+**New rig creation:** When the reported equipment doesn't match any existing `RIG_N`:
+1. Confirm all four fields (insert, carb_cap, pearls, glass_top), defaulting unchanged ones from the prior run's equipment.
+2. Propose a new `RIG_N` constant definition with the next sequence number.
+3. Get explicit user confirmation before adding it to `Dabby_Data.py`.
+4. Then log the run using the new constant.
+
+**Session-open soft check:** If the most recent run's `utc_logged_at` (fallback: `run_date`) is more than 3 days old, check the last `CompletedRun`'s `equipment` field, identify the rig via `_RIG_LABELS`, and ask: "Last run was on [full expansion — same format as Beat 1]. Anything change since then?" Skip if the gap is shorter than 3 days.
+
+**Display convention:** Always "Rig 3" in user-facing text (chat, readbacks, log). Never echo the Python identifier `RIG_3` (with underscore) to the user. Same rule applies to all `RIG_N` identifiers.
+
+---
+
 ## Decisions — Do Not Re-Litigate
 
 - Blueberry 36 phenotypes are logged as separate strains, not grouped.
@@ -101,7 +121,7 @@ The recommendation should always be concrete — one clear direction with the re
 
 - **Byte-comparing a Windows working copy against an LF-deployed file (false CRLF mismatch).** Windows working copies are CRLF; git stores and deploys LF. A raw byte comparison of the on-disk working file against a deployed artifact will report a false mismatch. Correct deployed-content verification: compare against `git show HEAD:<file>`, not the working copy.
 
-- **Echoing an internal `Dabby_Data.py` constant name to the user instead of resolving it.** When logging a run, state the equipment back to the user as readable text from `EquipmentConfig` fields — never echo `_SPINNER` or `_GEMLOCK`. Constant names are an implementation detail.
+- **Echoing an internal `Dabby_Data.py` constant name to the user instead of resolving it.** When logging a run, state the equipment back to the user as readable text from `EquipmentConfig` fields — never echo the Python identifier (`RIG_1`, `RIG_2`, `RIG_3`, etc.). Always say "Rig 1", "Rig 2", etc. Constant names are an implementation detail.
 
 - **Writing `next_ai_analysis` that recaps instead of recommends.** The What to Try Next AI Analysis is a concrete recommendation with brief reasoning — not a summary of run history (that's what the run sections are for). If it takes more than 4–5 sentences to say what to try and why, it has too much noise.
 
