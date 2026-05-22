@@ -76,6 +76,7 @@ class StrainStatus:
     next_dab_notes: str = ""
     next_ai_analysis: str = ""
     next_waypoints: list | None = None
+    jar_index: str = ""         # Harper's Index for finished jars — rendered in strain profile
 
 @dataclass
 class TerpeneEntry:
@@ -844,6 +845,20 @@ STRAIN_STATUS = [
         next_dab_notes="Run 9 (small load, spinner): clean light golden swab, harshness in second half, medium intensity, delayed onset. Kind of a whimper of a last dab. Jar done.",
         next_ai_analysis="Jar done. The load-size hypothesis from Runs 5–6 didn't hold: Runs 8–9 (small load, spinner) both produced harshness where Run 5 (small load, Gemlock) was clean. Equipment config is the more likely driver, though the 420°F endpoint sits at the harshness boundary for this strain regardless of shape. On the next jar: start with the same fast ramp to 420°F on the spinner — if harshness persists, step the endpoint down to 415°F. If a Gemlock-equivalent becomes available, a direct same-curve comparison would settle the config question.",
         next_waypoints=WWZ_RUN9,
+        jar_index=(
+            "<div style='text-align:center;margin-top:1em;'>"
+            "<strong>Runs on the jar:</strong> 9<br>"
+            "<strong>Runs that ended without harshness:</strong> 1<br>"
+            "<strong>Dabs taken by Sarah that were logged:</strong> 0<br>"
+            "<strong>Sarah's review of the flavor:</strong> \"almost gagging\"<br>"
+            "<strong>Temperature at which harshness first appeared mid-ramp, Run 3:</strong> 414°F<br>"
+            "<strong>Temperature at which harshness first appeared mid-ramp, Run 4:</strong> 420°F<br>"
+            "<strong>Variables cleanly isolated in the load-size experiment before equipment changed:</strong> 0<br>"
+            "<strong>Session on which the Gemlock joystick broke:</strong> the one right before the last two runs<br>"
+            "<strong>Description of the final dab:</strong> \"kind of a whimper of a last dab\"<br>"
+            "<strong>Fraction of the jar described as \"spectacular vapor\":</strong> 1 in 9"
+            "</div>"
+        ),
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
         info=CAG_INFO,
@@ -903,6 +918,9 @@ STRAIN_STATUS = [
             "Jar finished. Six runs over five days, May 13–17, 2026. This was also the Gemlock joystick’s debut jar — every data point in this strain’s history was collected on the new rig, so the baseline cross-strain confound never resolved. "
             "Harshness appeared in the tail on all six runs across three endpoint temperatures (430°F, 420°F, 415°F) and two curve shapes. A clean tail was never achieved. "
             "The fastest ramp (Run 6) produced the best first-half character and the hardest hit — the right shape arrived on the last dab of the jar."
+        ),
+        next_waypoints=None,
+        jar_index=(
             "<div style='text-align:center;margin-top:1em;'>"
             "<strong>Number of runs on a 2g jar:</strong> 6<br>"
             "<strong>Days from first dab to last:</strong> 5<br>"
@@ -915,7 +933,6 @@ STRAIN_STATUS = [
             "<strong>Remaining dabs:</strong> 0"
             "</div>"
         ),
-        next_waypoints=None,
     ),
     StrainStatus(name="Blueberry 36 #1",                  profile_anchor="#bb361-profile",    next_text="Try 410°F endpoint on Run 4 — tail harshness confirmed at 415°F across Runs 2 and 3", accent=None, slug="bb361",
         info=BB36_1_INFO,
