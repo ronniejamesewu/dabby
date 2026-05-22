@@ -76,6 +76,7 @@ class StrainStatus:
     next_dab_notes: str = ""
     next_ai_analysis: str = ""
     next_waypoints: list | None = None
+    jar_index: str = ""         # Harper's Index for finished jars — rendered in strain profile
 
 @dataclass
 class TerpeneEntry:
@@ -152,6 +153,7 @@ WWZ_RUN7 = [
     Waypoint(time_s=20, temp_f=420, note="Endpoint — 420°F in 20s, 2°F/sec"),
     Waypoint(time_s=50, temp_f=420, note="Hold"),
 ]
+WWZ_RUN9 = WWZ_RUN7
 
 CAG_INFO = [
     ("Strain",      "Caramel Apple Gelato (Gelato lineage: Sunset Sherbet × Thin Mint GSC — inferred)"),
@@ -826,15 +828,37 @@ COMPLETED_RUNS = [
         dab_notes="First 30 seconds smooth, second 20 rising harshness. More harsh than previous run. Swabs were light golden, same as with Gemlock. Seems to have slow onset, or maybe breaking the joystick was a buzzkill. Effect duration roughly 2.5–3 hours.",
         analysis="First run back on Cloud Vortex 21.0 + 6mm pearl after the Gemlock broke. Small load — one of three roughly equal chunks, imprecise split. Equipment change and load change happened simultaneously: the load-size experiment can't be isolated here. More harshness than Run 7 despite the smaller load — counterintuitive if load size is the driver, but the spinner reintroducing a pearl and different airflow dynamics is an equally plausible explanation. Swab returned light golden, same as every Gemlock run on this strain — doesn't obviously support the Gemlock-lighter-swab hypothesis, though the load difference is a confound there too. Onset slower than Run 7; user flagged broken joystick as a mood factor, which is real and uncontrollable.",
     ),
+    CompletedRun(strain="WW Z", run_date=date(2026, 5, 21), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 22, 5, 58, tzinfo=timezone.utc), equipment=_SPINNER, waypoints=WWZ_RUN9,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold — same as Runs 7–8',
+        swab="Clean light golden.",
+        session_char="Harshness in the second half. Medium intensity, delayed onset.",
+        intensity="Medium, delayed onset.",
+        dab_notes="Clean light golden swabs, harshness in the second half. Medium intensity, delayed onset. Kind of a whimper of a last dab.",
+        analysis="Run 9 repeats the same curve as Runs 7–8 (fast ramp to 420°F in 20s, hold to 50s) on the spinner config with a small load — the final chunk of the jar. Harshness returned in the second half, consistent with Run 8 (small load, spinner, same outcome). Two consecutive small-load runs on the spinner both produced harshness; Run 5 (small load, Gemlock) was clean on the same endpoint. This is the clearest equipment signal in the WW Z dataset: the spinner appears to contribute to harshness at 420°F in a way the Gemlock didn't. The endpoint itself remains a candidate — 420°F sits near the cross-strain harshness boundary and harshness appeared mid-ramp at 414–420°F on display in Runs 3–4 regardless of config. Medium intensity and delayed onset consistent with Run 8. Jar done at 9 runs.",
+    ),
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Run 9: one small load remains — same fast ramp to 420°F, spinner config (second chunk went to Sarah, unlogged)", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Jar done — 9 runs. Next jar: same fast ramp to 420°F as starting point; watch harshness on spinner config", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Run 8 (small load, spinner): light golden swab — same as Gemlock. First 30s smooth, second 20s rising harshness — more harsh than Run 7 (normal load, Gemlock). Medium intensity, slow onset, ~2.5–3h duration. Second chunk: Sarah, unlogged.",
-        next_ai_analysis="One small load remains on spinner (second chunk went to Sarah, unlogged). Run 8's harshness result runs opposite to Runs 5–6 (small load clean, normal load harsh on Gemlock) — but equipment changed at the same time, so it doesn't settle the contradiction. Run 9: same small load, same curve, same spinner config — continue and document. If harshness stays elevated, the spinner becomes the more likely driver than load size. Also track effect duration — Run 8 ran ~2.5–3 hours against a personal range of 6–8 hours, so this strain may run short.",
-        next_waypoints=WWZ_RUN7,
+        next_dab_notes="Run 9 (small load, spinner): clean light golden swab, harshness in second half, medium intensity, delayed onset. Kind of a whimper of a last dab. Jar done.",
+        next_ai_analysis="Jar done. The load-size hypothesis from Runs 5–6 didn't hold: Runs 8–9 (small load, spinner) both produced harshness where Run 5 (small load, Gemlock) was clean. Equipment config is the more likely driver, though the 420°F endpoint sits at the harshness boundary for this strain regardless of shape. On the next jar: start with the same fast ramp to 420°F on the spinner — if harshness persists, step the endpoint down to 415°F. If a Gemlock-equivalent becomes available, a direct same-curve comparison would settle the config question.",
+        next_waypoints=WWZ_RUN9,
+        jar_index=(
+            "<div style='text-align:center;margin-top:1em;'>"
+            "<strong>Runs on the jar:</strong> 9<br>"
+            "<strong>Runs that ended without harshness:</strong> 1<br>"
+            "<strong>Dabs taken by Sarah that were logged:</strong> 0<br>"
+            "<strong>Sarah's review of the flavor:</strong> \"almost gagging\"<br>"
+            "<strong>Temperature at which harshness first appeared mid-ramp, Run 3:</strong> 414°F<br>"
+            "<strong>Temperature at which harshness first appeared mid-ramp, Run 4:</strong> 420°F<br>"
+            "<strong>Variables cleanly isolated in the load-size experiment before equipment changed:</strong> 0<br>"
+            "<strong>Session on which the Gemlock joystick broke:</strong> the one right before the last two runs<br>"
+            "<strong>Description of the final dab:</strong> \"kind of a whimper of a last dab\"<br>"
+            "<strong>Fraction of the jar described as \"spectacular vapor\":</strong> 1 in 9"
+            "</div>"
+        ),
     ),
     StrainStatus(name="Caramel Apple Gelato", profile_anchor="#cag-profile", next_text="Try 430°F endpoint", accent=None, slug="cag",
         info=CAG_INFO,
@@ -894,6 +918,9 @@ STRAIN_STATUS = [
             "Jar finished. Six runs over five days, May 13–17, 2026. This was also the Gemlock joystick’s debut jar — every data point in this strain’s history was collected on the new rig, so the baseline cross-strain confound never resolved. "
             "Harshness appeared in the tail on all six runs across three endpoint temperatures (430°F, 420°F, 415°F) and two curve shapes. A clean tail was never achieved. "
             "The fastest ramp (Run 6) produced the best first-half character and the hardest hit — the right shape arrived on the last dab of the jar."
+        ),
+        next_waypoints=None,
+        jar_index=(
             "<div style='text-align:center;margin-top:1em;'>"
             "<strong>Number of runs on a 2g jar:</strong> 6<br>"
             "<strong>Days from first dab to last:</strong> 5<br>"
@@ -906,7 +933,6 @@ STRAIN_STATUS = [
             "<strong>Remaining dabs:</strong> 0"
             "</div>"
         ),
-        next_waypoints=None,
     ),
     StrainStatus(name="Blueberry 36 #1",                  profile_anchor="#bb361-profile",    next_text="Try 410°F endpoint on Run 4 — tail harshness confirmed at 415°F across Runs 2 and 3", accent=None, slug="bb361",
         info=BB36_1_INFO,
