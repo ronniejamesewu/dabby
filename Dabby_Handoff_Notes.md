@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 21, 2026 — Session 61
+## Last updated: May 21, 2026 — Session 62
 
 ---
 
@@ -120,6 +120,8 @@ The recommendation should always be concrete — one clear direction with the re
 - **Not following the date/time calculation protocol.** CLAUDE.md instructs: get current UTC via Bash, derive local time (UTC−6), present it. Instead asked the user for the time. After being corrected and calculating it, asked the user to confirm — also wrong. Correct behavior: run the Bash time command, derive, present, move on. User will correct if wrong.
 
 - **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window.
+
+- **Recalculating timestamp at reporting time when a session start time was already established.** When the user says "about to hit it" and a UTC timestamp is captured, that is the `utc_logged_at` for the run. If the user reports results later in the same conversation, do not re-run `date -u` and use the current time — use the timestamp captured at session start. Presenting a stale recalculated time in Beat 1 forces the user to correct it.
 
 ---
 
