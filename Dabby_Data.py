@@ -822,17 +822,17 @@ COMPLETED_RUNS = [
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold &nbsp;|&nbsp; <strong>Equipment:</strong> First run back on Cloud Vortex 21.0 + 6mm pearl',
         swab="Light golden — same as Gemlock runs.",
         session_char="First 30 seconds smooth; second 20 seconds rising harshness — more harsh than Run 7.",
-        intensity="Medium. Slow onset (mood factor possible — Gemlock broke this session).",
-        dab_notes="First 30 seconds smooth, second 20 rising harshness. More harsh than previous run. Swabs were light golden, same as with Gemlock. Seems to have slow onset, or maybe breaking the joystick was a buzzkill.",
+        intensity="Medium. Slow onset (mood factor possible — Gemlock broke this session). Duration: roughly 2.5–3 hours.",
+        dab_notes="First 30 seconds smooth, second 20 rising harshness. More harsh than previous run. Swabs were light golden, same as with Gemlock. Seems to have slow onset, or maybe breaking the joystick was a buzzkill. Effect duration roughly 2.5–3 hours.",
         analysis="First run back on Cloud Vortex 21.0 + 6mm pearl after the Gemlock broke. Small load — one of three roughly equal chunks, imprecise split. Equipment change and load change happened simultaneously: the load-size experiment can't be isolated here. More harshness than Run 7 despite the smaller load — counterintuitive if load size is the driver, but the spinner reintroducing a pearl and different airflow dynamics is an equally plausible explanation. Swab returned light golden, same as every Gemlock run on this strain — doesn't obviously support the Gemlock-lighter-swab hypothesis, though the load difference is a confound there too. Onset slower than Run 7; user flagged broken joystick as a mood factor, which is real and uncontrollable.",
     ),
 ]
 
 STRAIN_STATUS = [
-    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Runs 9–10: two small loads remain — same fast ramp to 420°F, spinner config", accent=None, slug="wwz",
+    StrainStatus(name="WW Z", profile_anchor="#wwz-profile", next_text="Run 9: one small load remains — same fast ramp to 420°F, spinner config (second chunk went to Sarah, unlogged)", accent=None, slug="wwz",
         info=WWZ_INFO,
         terpene_note='<strong>Terpene inference:</strong> Pinene inferred dominant — weakly supported by piney nose observation. Standard cannabis palette otherwise. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Run 8 (small load, spinner): light golden swab — same as Gemlock. First 30s smooth, second 20s rising harshness — more harsh than Run 7 (normal load, Gemlock). Medium intensity, slow onset.",
+        next_dab_notes="Run 8 (small load, spinner): light golden swab — same as Gemlock. First 30s smooth, second 20s rising harshness — more harsh than Run 7 (normal load, Gemlock). Medium intensity, slow onset, ~2.5–3h duration. Second chunk: Sarah, unlogged.",
         next_ai_analysis="Two small loads remain on spinner. Run 8's harshness result runs opposite to Runs 5–6 (small load clean, normal load harsh on Gemlock) — but equipment changed at the same time, so it doesn't settle the contradiction. Runs 9 and 10: same small loads, same curve, same spinner config — continue and document. If harshness stays elevated across both, the spinner becomes the more likely driver than load size. After the last chunk, that's the primary open question.",
         next_waypoints=WWZ_RUN7,
     ),
