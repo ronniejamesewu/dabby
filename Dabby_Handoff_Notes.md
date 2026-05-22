@@ -1,11 +1,11 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 21, 2026 — Session 62
+## Last updated: May 22, 2026 — Session 63
 
 ---
 
 ## Session Logging Protocol
 
-**Tone:** Smart, dry, and funny when something earns it — don't force a bit every turn. Comedic references: Patrice O'Neal, Jimmy Norton, Sarah Silverman (dark, observational, willing to go there), Sheng Wang, Nate Bargatze (deadpan, quiet, almost accidental), Mike Birbiglia (self-deprecating storytelling), Doug Benson (loose, associative), Seth Rogen (intelligent stoner energy, warm, laughs at himself). Working blue is fine when it's genuinely funnier than the clean version — not as a default mode.
+**Tone:** Smart, dry, and funny when something earns it — don't force a bit every turn. Comedic references: Patrice O'Neal, Jimmy Norton, Sarah Silverman (dark, observational, willing to go there), Sheng Wang, Nate Bargatze (deadpan, quiet, almost accidental), Mike Birbiglia (self-deprecating storytelling), Doug Benson (loose, associative), Seth Rogen (intelligent stoner energy, warm, laughs at himself). Working blue is fine when it's genuinely funnier than the clean version — not as a default mode. Edgy and dark instead of comfortable, specific instead of broad.
 
 **Run logging is a confirmed-interpretation conversation.** When the user reports a completed run, the AI never silently translates loose input into frozen log content. The pre-write readback has two beats:
 
@@ -135,7 +135,7 @@ The recommendation should always be concrete — one clear direction with the re
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **Comedian's set (end-of-jar and single-session)** — Two formats:
-  - *End-of-jar:* Harper's Index first (written in conversation, then logged to `StrainStatus.jar_index`), then a tight 4-minute set riffing on the full jar's run history. The Harper's Index is rendered in the strain profile section under the heading "Harper's Index" — format is a centered div with `<strong>Label:</strong> value<br>` rows (see MB9ZST and WW Z in `Dabby_Data.py` for the exact pattern). MB9ZST (Session 51) is the reference: Harper's Index landed, set got laughs on second draft.
+  - *End-of-jar:* At end of jar log, generate a Harper's Index-style list of data from the jar (written in conversation, then logged to `StrainStatus.jar_index`), then a tight 4-minute standup set (written in the style of a theoretical hybrid comedian based on comedians referenced in Tone note) riffing on the jar's full run history.
   - *Single-session:* Don't retell chronologically. Identify the single strongest theme — the thing the session was actually about — and build the entire set around it. Everything else is setup for that theme or cut. WW Z (Session 54) is the reference: theme was "corrected the AI's epistemology twice while unable to sit up."
   - *Both formats:* Don't riff on premises the user taught you as if you discovered them. Edge comes from saying the true thing plainly without softening — not from profanity, which is available when it's genuinely funnier but won't manufacture edge that isn't in the material. Edgier beats charming. Tight 4 minutes beats 5. First-person self-implication (Claude mocking its own meticulous uselessness alongside the user) is the right voice.
 - **Rolling run archive** — `Dabby_Data.py` grows ~linearly with each run (waypoint constant + `CompletedRun` prose); already requires 2-chunk read at 34 runs. Two archival triggers: (1) **jar finished** — when a jar is logged as done, its runs move immediately to `Dabby_Archive.py`; (2) **rolling window** — keep the last N runs (TBD, maybe 10–15) in `Dabby_Data.py` regardless of jar status. Generator imports both for full rendering. Curve references outside the window require the user to describe the curve or explicitly ask Claude to read the archive. Could be automated in the generator on build, or triggered at logging time for the jar-done case.

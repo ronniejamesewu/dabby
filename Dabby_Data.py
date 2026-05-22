@@ -76,7 +76,7 @@ class StrainStatus:
     next_dab_notes: str = ""
     next_ai_analysis: str = ""
     next_waypoints: list | None = None
-    jar_index: str = ""         # Harper's Index for finished jars — rendered in strain profile
+    jar_index: str = ""         # Jar Index for finished jars — rendered in strain profile
 
 @dataclass
 class TerpeneEntry:
