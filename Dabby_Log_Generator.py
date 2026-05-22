@@ -396,7 +396,7 @@ def render_strain_profile(ss):
     if ss.terpene_note:
         s += f'<p class="note">{ss.terpene_note}</p>'
     if ss.jar_index:
-        s += '<h3>Harper\'s Index</h3>'
+        s += '<h3>Jar Index</h3>'
         s += ss.jar_index
     s += '</div>'
     return s
