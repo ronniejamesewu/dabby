@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 22, 2026 — Session 66
+## Last updated: May 22, 2026 — Session 67
 
 ---
 
@@ -145,7 +145,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Recalculating timestamp at reporting time when a session start time was already established.** When the user says "about to hit it" and a UTC timestamp is captured, that is the `utc_logged_at` for the run. If the user reports results later in the same conversation, do not re-run `date -u` and use the current time — use the timestamp captured at session start. Presenting a stale recalculated time in Beat 1 forces the user to correct it.
 
-- **Asking the user questions that could be reasoned through.** When evaluating whether a schema field is needed (e.g., insert diameter), reason about physical/logical constraints first. The Switch² heating cup geometry physically constrains inserts to a tight ~20mm fit — diameter variation isn't realistic on this device. Asking the user "should diameter be a field?" when a few seconds of reasoning would answer it wastes their attention. Reason first; ask only what genuinely requires user input (product knowledge, preferences, plans).
+- **Asking the user questions that could be reasoned through.** When evaluating whether a schema field is needed (e.g., insert diameter), reason about physical/logical constraints first. The Switch² heating cup geometry physically constrains inserts to a tight ~20mm fit — diameter variation isn't realistic on this device. Asking the user "should diameter be a field?" when a few seconds of reasoning would answer it wastes their attention. Reason first; ask only what genuinely requires user input (product knowledge, preferences, plans). Session 67 variant: presenting a Beat 2 question about a distinction that isn't actually a distinction. Asked whether trace harshness at load's end was a "temperature signal vs. empty-insert behavior" — user correctly identified these as the same physical event. A hot insert running out of material IS the temperature signal. Reason through the physics before surfacing it as an ambiguity.
 
 ---
 
