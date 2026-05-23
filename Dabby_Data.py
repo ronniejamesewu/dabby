@@ -263,6 +263,12 @@ OC_RUN9_NEXT = [
     Waypoint(time_s=50, temp_f=415, note="Hold"),
 ]
 OC_RUN9 = OC_RUN9_NEXT
+OC_RUN11_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=417, note="Endpoint — up 2°F from Runs 9–10"),
+    Waypoint(time_s=50, temp_f=417, note="Hold"),
+]
 
 HIVE1_INFO = [
     ("Strain",      "The Hive #1 (Honey Banana × Papaya — Bloom Seed Co)"),
@@ -911,6 +917,14 @@ COMPLETED_RUNS = [
         dab_notes="First draw went 25 seconds, no harshness, kind of wispy vapor. Second draw was about 10 seconds, felt like it was knocking on the harshness but was just barely there. And then the load was definitely done. I think I probably loaded less rather than more. See it's going to be a hard habit to break. Swabs were golden clean but not as light as previous run. Effects mild so far but that would also fit with smaller dab load. It stayed mild.",
         analysis="OC Run 9 on sapphire at 415°F — directionally cleaner than Run 8. Run 8 (420°F) had harshness entering 11 seconds into the hold; Run 9 had a clean 25-second first draw and trace harshness only as the load ran out. That's a meaningful difference, but the small load is a confound — less material vaporizes over a shorter window, which means less time at endpoint temperature before the load is spent. Can't attribute the cleaner tail to 415°F alone. Wispy vapor on the first draw is consistent with a small load; could also suggest 415°F is slightly below the sapphire's vapor production sweet spot. Swab came back golden clean — slightly darker than Run 8's near-white, which may just be run-to-run variation, or slightly more material left at the lower endpoint. Intensity mild, consistent with smaller load.",
     ),
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 23), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 23, 19, 24, tzinfo=timezone.utc), equipment=RIG_3, waypoints=OC_RUN9,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 415°F — same as Run 9; ~25% larger load',
+        swab="Very light golden — a bit more reclaim than prior runs.",
+        session_char="No harshness on two full draws across 50 seconds.",
+        intensity="Medium (delayed onset ~5 min).",
+        dab_notes="Very light golden, maybe a bit more reclaim than prior runs. Harshness never really entered on two big draws across 50 seconds. Effect right after is very light. It grew to a medium I think. This is maybe why increase in temp is warranted.",
+        analysis="415°F on Rig 3 with a ~25% larger load — clean across two full draws, no harshness. This resolves Run 9's load-size confound: a fuller load at 415°F still produced no harshness, confirming 415°F is within the clean range on the sapphire. Run 8 (420°F, normal load) had harshness at 11s into the hold — 5°F made the difference. Swab came back very light golden with slightly more reclaim than prior runs, consistent with slightly less complete vaporization at the lower endpoint. Effect grew from very light to medium over ~5 minutes — delayed onset pattern consistent with Run 8. Medium ceiling vs. Run 8's \"very very intense\" may reflect the lower endpoint, but run-to-run variability and tolerance are real confounders; single data point. User flagged this as a reason to inch the temperature up.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -942,12 +956,12 @@ STRAIN_STATUS = [
         next_ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         next_waypoints=CAG_RUN2,
     ),
-    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="Repeat 415°F with a fuller load — Run 10", accent=None, slug="oc",
+    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="Try 417°F endpoint on Run 11 — 415°F confirmed clean, inching up", accent=None, slug="oc",
         info=OC_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from orange character (Naran J × Tropimango lineage — unconfirmed). See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="First draw went 25 seconds, no harshness, kind of wispy vapor. Second draw was about 10 seconds, felt like it was knocking on the harshness but was just barely there. And then the load was definitely done. I think I probably loaded less rather than more. See it's going to be a hard habit to break. Swabs were golden clean but not as light as previous run. Effects mild so far but that would also fit with smaller dab load. It stayed mild.",
-        next_ai_analysis="Repeat 415°F with a fuller load. Run 9 was too small to cleanly test whether 415°F resolves harshness on a typical load — the clean tail may be the endpoint or may be the load size. A fuller run at 415°F will answer it. If wispy vapor reappears on a normal load, that's a signal the endpoint is slightly below the sapphire's sweet spot and may need nudging back up. Same fast ramp shape.",
-        next_waypoints=OC_RUN9_NEXT,
+        next_dab_notes="Very light golden, maybe a bit more reclaim than prior runs. Harshness never really entered on two big draws across 50 seconds. Effect right after is very light. It grew to a medium I think. This is maybe why increase in temp is warranted.",
+        next_ai_analysis="415°F confirmed clean on a fuller load — the load-size question from Run 9 is settled. Slightly more reclaim and a medium effect suggest 415°F sits at the lower edge of the useful band on the sapphire. Try 417°F, same ramp shape. If clean, keep walking; if harshness returns, the window is 415–417°F and you've found the ceiling.",
+        next_waypoints=OC_RUN11_NEXT,
     ),
     StrainStatus(name="The Hive #1", profile_anchor="#hive1-profile", next_text="Try 420–425°F endpoint on Run 6", accent=None, slug="hive1",
         info=HIVE1_INFO,
