@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 22, 2026 — Session 65
+## Last updated: May 22, 2026 — Session 66
 
 ---
 
@@ -138,6 +138,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Using ambiguous abbreviations in branch names.** "fb" reads as "Facebook" in some UIs. Use full strain abbreviations — "fembot", "hive1", "ms23", etc.
 
 - **Not following the date/time calculation protocol.** CLAUDE.md instructs: get current UTC via Bash, derive local time (UTC−6), present it. Instead asked the user for the time. After being corrected and calculating it, asked the user to confirm — also wrong. Correct behavior: run the Bash time command, derive, present, move on. User will correct if wrong.
+
+- **Paraphrasing `dab_notes` instead of using verbatim user words.** The protocol is explicit: `dab_notes` is the user's verbatim words at logging time — not a paraphrase, not a structured extraction. In Session 66, drafted a clean paraphrased version and presented it as the readback. Caught when user asked. Fix: copy the user's exact words from the conversation, in the order they were said.
 
 - **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window.
 

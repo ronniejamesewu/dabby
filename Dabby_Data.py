@@ -207,7 +207,7 @@ OC_INFO = [
     ("Producer",    "Nikka T"),
     ("Input",       "90 micron full melt bubble hash"),
     ("Consistency", "Cold cure"),
-    ("Nose",        "Not yet recorded"),
+    ("Nose",        "Strong orange note at cold nose"),
 ]
 OC_TERPS = [
     ("Caryophyllene", "266°F / 130°C", "Spicy — inferred, low room-temp volatility"),
@@ -249,6 +249,18 @@ OC_RUN6 = [
 OC_RUN7 = [
     Waypoint(time_s=0,  temp_f=430, note="Steady hold — flat 430°F from session open"),
     Waypoint(time_s=60, temp_f=430, note="Endpoint"),
+]
+OC_RUN8 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=420, note="Endpoint — 420°F in 20s, 2°F/sec"),
+    Waypoint(time_s=50, temp_f=420, note="Hold"),
+]
+OC_RUN9_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=415, note="Endpoint — down 5°F from Run 8"),
+    Waypoint(time_s=50, temp_f=415, note="Hold"),
 ]
 
 HIVE1_INFO = [
@@ -882,6 +894,14 @@ COMPLETED_RUNS = [
         dab_notes="Clean light golden swabs, harshness in the second half. Medium intensity, delayed onset. Kind of a whimper of a last dab.",
         analysis="Run 9 repeats the same curve as Runs 7–8 (fast ramp to 420°F in 20s, hold to 50s) on the spinner config with a small load — the final chunk of the jar. Harshness returned in the second half, consistent with Run 8 (small load, spinner, same outcome). Two consecutive small-load runs on the spinner both produced harshness; Run 5 (small load, Gemlock) was clean on the same endpoint. This is the clearest equipment signal in the WW Z dataset: the spinner appears to contribute to harshness at 420°F in a way the Gemlock didn't. The endpoint itself remains a candidate — 420°F sits near the cross-strain harshness boundary and harshness appeared mid-ramp at 414–420°F on display in Runs 3–4 regardless of config. Medium intensity and delayed onset consistent with Run 8. Jar done at 9 runs.",
     ),
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 22), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 22, 23, 36, tzinfo=timezone.utc), equipment=RIG_3, waypoints=OC_RUN8,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 420°F — fast ramp (20s, 2°F/sec); 30s hold &nbsp;|&nbsp; <strong>Equipment:</strong> Inaugural Rig 3 (sapphire) run',
+        swab="Ultra clean — essentially white/cream, no visible coloration.",
+        session_char="Smooth and flavorful first draw through ~23s. Harshness in throat starting at ~31s (11s into 420°F hold), built through end.",
+        intensity="Very very intense, delayed ~5 min onset.",
+        dab_notes="Big cold nose orange note just now as I opened jar. Swabs look ultra clean to me. Hit was flavorful and smooth up for first draw which lasted until timer showed 27 seconds left. Next draw got harsh in throat at 19 left on timer and that built through the end. I probably could have stopped hitting it earlier, which maybe points to loading bigger dabs and not trying to be super efficient about vaporizing it, just vaporize the sweet spot and leave the rest to the swab. Which would mean that swab color doesn't matter anymore. Would maybe be a difficult habit to break, the thinking is to not waste any of this precious and expensive stuff. Very very intense after about 5 mins.",
+        analysis="Inaugural Rig 3 run on OC — first sapphire data point in the log. Ultra-clean swab and very strong delayed effect are consistent: sapphire extracting efficiently, 420°F delivering more than 420°F on quartz would. If sapphire runs 10–20°F hotter in effective temperature (per methodology note), this sits in the 430–440°F equivalent zone — which maps onto OC's quartz history: Run 6 (ramp to 430°F) was clean but at the edge. Ramp phase smooth; harshness entered 11 seconds into the 420°F hold. Shape working — this is a hold-temperature issue. Strong cold nose orange note at jar open; flavor in vapor was 'flavorful and smooth' without named character — whether the orange came through in vapor is unresolved. User suggested loading bigger and stopping at the sweet spot rather than riding the tail, noting this would make swab color less meaningful as a floor indicator — logged as a hypothesis, not a finding.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -913,12 +933,12 @@ STRAIN_STATUS = [
         next_ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         next_waypoints=CAG_RUN2,
     ),
-    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="Ramp (Run 6) outperforming flat hold — repeat ramp to confirm, or try 420°F flat hold", accent=None, slug="oc",
+    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="Step down to 415°F, same fast ramp — Run 9", accent=None, slug="oc",
         info=OC_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from orange character (Naran J × Tropimango lineage — unconfirmed). See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Repeat Run 6 ramp to confirm, or try 420°F flat hold.",
-        next_ai_analysis="Run 6 (ramp to 430°F) vs Run 7 (flat 430°F) on the same day is the cleanest curve-shape comparison in the log. Ramp won clearly on flavor and harshness. Repeat the ramp before adding more variables — confirm it holds before dropping the endpoint.",
-        next_waypoints=OC_RUN6,
+        next_dab_notes="Big cold nose orange note just now as I opened jar. Swabs look ultra clean to me. Hit was flavorful and smooth up for first draw which lasted until timer showed 27 seconds left. Next draw got harsh in throat at 19 left on timer and that built through the end. I probably could have stopped hitting it earlier, which maybe points to loading bigger dabs and not trying to be super efficient about vaporizing it, just vaporize the sweet spot and leave the rest to the swab. Which would mean that swab color doesn't matter anymore. Would maybe be a difficult habit to break, the thinking is to not waste any of this precious and expensive stuff. Very very intense after about 5 mins.",
+        next_ai_analysis="One sapphire data point, pointing at 420°F as slightly above ideal for OC on this insert. Step down to 415°F, same fast ramp shape — if harshness resolves, it confirms sapphire is running 5–10°F effective-temperature hotter than quartz for OC at this endpoint. Ramp and hold shape don't need to change; the endpoint does.",
+        next_waypoints=OC_RUN9_NEXT,
     ),
     StrainStatus(name="The Hive #1", profile_anchor="#hive1-profile", next_text="Try 420–425°F endpoint on Run 6", accent=None, slug="hive1",
         info=HIVE1_INFO,
