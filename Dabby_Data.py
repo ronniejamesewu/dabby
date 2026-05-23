@@ -930,8 +930,8 @@ COMPLETED_RUNS = [
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 417°F — up 2°F from Runs 9–10',
         swab="Very light golden, slightly more reclaim than Run 10.",
         session_char="Clean through first draw; harshness entered at exactly 417°F (end of first draw, ~20s), mild but present and slowly building through the hold.",
-        intensity="Very hard.",
-        dab_notes="Same golden as last time, maybe more reclaim than last time too. Harshness hit exactly at the end of the first draw which was also exactly when temp hit 417. It was mild but present and slowly increasing through rest of the draw. Very hard.",
+        intensity="Very hard — eyes blurring, body vibrating ~14 minutes post-session.",
+        dab_notes="Same golden as last time, maybe more reclaim than last time too. Harshness hit exactly at the end of the first draw which was also exactly when temp hit 417. It was mild but present and slowly increasing through rest of the draw. Very hard. Eyes are blurring, body feels like it's vibrating — about 14 minutes after session open.",
         analysis="417°F on Rig 3, slightly larger load than Run 10. Harshness appeared at exactly the moment the temperature reached 417°F — end of the first draw (~20s), immediate on endpoint arrival, not a hold-duration accumulation effect. Mild but present and building through the hold. Run 10 (415°F, comparable load) was clean across two full draws. Two-degree difference, clean outcome vs. immediate harshness onset: the ceiling is located at 415–417°F, and this run puts the top edge there. Swab came back very light golden with slightly more reclaim than Run 10 — consistent with less complete vaporization at a lower endpoint, though the read is noisy at this level of difference. Effect landed very hard — a meaningful potency step up from Run 10's medium. The intensity trade-off across 2°F is real.",
     ),
 ]
