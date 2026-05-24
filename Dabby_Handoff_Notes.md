@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 23, 2026 — Session 70
+## Last updated: May 24, 2026 — Session 71
 
 ---
 
@@ -92,6 +92,9 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - No emojis on stat cards — tried all 9 in Session 53, removed. Cards are clean without them. Do not re-introduce.
 - Stat card labels use "avg" not "average" — consistent with existing cards (avg open, avg endpoint). Applied to "avg first dab of the day" in Session 53.
 - Changelog removed from Handoff Notes — confirmed correct (Session 55). The failure case (AI couldn't answer "when did X happen" without searching git) is real but rare and not load-bearing for session operation. Important decisions have a second home in the Decisions sections and HANDOFF_WISDOM. Do not restore.
+- Auto-assigned accent colors do not need to be stable across refactors. They are deterministic output of `_resolve_accent_colors()` — a hue distribution function with no semantic meaning. When list length or order changes (new strain added, jar archived), colors redistribute. Do not engineer explicit hex assignment to stabilize them unless the user requests it for a real reason (brand identity, accessibility). Session 71.
+- HTML diff against `git show main:index.html` is a structural check, not a correctness oracle. Useful for spotting unintended content changes on a run-logging commit. NOT useful as the only verification on a refactor that legitimately changes rendering — color distribution, render order, removed features all produce noisy diffs that don't indicate bugs. For refactor verification, check content directly: run counts in active vs. archived; specific strain sections render; preserved-run ordering; presence/absence of intentionally removed blocks. Session 71.
+- `terpene_table_rows` / `terpene_table_note` removal (Session 71) was correct and is documented in `DABBY_ARCHITECTURE.md` → Removed Capabilities. The generic cannabis palette rendered as strain-specific contradicted the epistemic flags in CLAUDE.md (terpene profiles inferred, not measured). Do not restore unless a strain ships with genuinely measured terpene data; re-add path is in the architecture doc.
 
 ---
 
@@ -131,7 +134,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Auditing or distilling a document without cross-checking its claims against source already in context.** Every factual claim in an audited doc must be checked against the code/data, especially source already read this session. An audit that trusts the audited document is not an audit.
 
-- **Trusting plan-doc claims about Python language behavior without verification.** Treat language-level claims (import semantics, attribute access, scoping) as hypotheses to verify on first run, not facts on the page.
+- **Trusting plan-doc claims about Python language behavior without verification.** Treat language-level claims (import semantics, attribute access, scoping) as hypotheses to verify on first run, not facts on the page. Session 71 confirmed instance: the archive refactor plan stated that re-calling `_resolve_accent_colors()` from the generator after reassigning `STRAIN_STATUS = ARCHIVED_STATUS + STRAIN_STATUS` would resolve colors against the combined list. False — Python functions bind globals to their defining module, so the function reads `Dabby_Data.STRAIN_STATUS` (active only) regardless of caller-side reassignment. Caught by a neutral-context plan review before execution; fix was to parameterize the function (`_resolve_accent_colors(strain_list=None)`) so the generator can pass the combined list explicitly. **Operational takeaway for non-trivial refactors: pass the plan through a clean-context reviewer (e.g., separate Claude.ai session) before executing.** Neutral reviewers don't share the plan author's blind spots and can catch Python-mechanics blockers that the author has stopped seeing.
 
 - **Asserting infrastructure/pipeline facts without reading the pipeline.** Before asserting how CI/deploy behaves, open the workflow files. Do not infer it from the step description.
 
@@ -147,6 +150,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Asking the user questions that could be reasoned through.** When evaluating whether a schema field is needed (e.g., insert diameter), reason about physical/logical constraints first. The Switch² heating cup geometry physically constrains inserts to a tight ~20mm fit — diameter variation isn't realistic on this device. Asking the user "should diameter be a field?" when a few seconds of reasoning would answer it wastes their attention. Reason first; ask only what genuinely requires user input (product knowledge, preferences, plans). Session 67 variant: presenting a Beat 2 question about a distinction that isn't actually a distinction. Asked whether trace harshness at load's end was a "temperature signal vs. empty-insert behavior" — user correctly identified these as the same physical event. A hot insert running out of material IS the temperature signal. Reason through the physics before surfacing it as an ambiguity.
 
+- **Architecting the implementation to pass a self-imposed verification check.** Session 71: the archive refactor plan included a diff oracle ("one known intentional diff against committed `index.html`"). When the actual diff came back at 383 lines because the combined-list reordering shifted auto-assigned accent colors, the reflex was to assign explicit hex accent values to all ten strains to make the diff small again. User caught it: "these colors were auto-assigned, they don't hold any meaning. why do we need to retain them? to pass a test we designed?" Correct. The colors are deterministic output of a function that distributes hues across non-green space — they have no semantic meaning. The diff oracle was the wrong verification framing for a refactor that legitimately changes rendering (color distribution, render order). Lesson: verification checks must target content correctness, not output stability. When a test produces a noisy diff because the rendering legitimately changed, the answer is to evaluate the diff manually, not to reverse-engineer the implementation to make the test small.
+
 ---
 
 ## Backlog
@@ -155,7 +160,6 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Out-of-session commits can leave gh-pages stale after subsequent PR merges** — if a run is committed and pushed to main between Claude sessions (outside the PR workflow), the deploy fires from that state. Subsequent PR merges trigger new deploys, but these can land in a sequencing order where the root index.html doesn't update cleanly (intermediate deploy wins). Recovery: push an empty commit to main (`git commit --allow-empty -m "Trigger redeploy"`) to fire a fresh deploy from the current HEAD.
 
-- **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Revisit around May 24–25, 2026 whether to keep or remove this step.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **Comedian's set (end-of-jar and single-session)** — Two formats:
