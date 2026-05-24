@@ -9,7 +9,13 @@ To log a new run: edit Dabby_Data.py, then add the run section in build_html().
 from datetime import datetime, date, timezone, timedelta
 
 from Dabby_Data import *
-from Dabby_Data import _ACCENT_RESOLVED  # underscore names are skipped by wildcard import
+from Dabby_Data import _ACCENT_RESOLVED, _resolve_accent_colors  # underscore names are skipped by wildcard import
+import Dabby_Data
+
+from Dabby_Archive import ARCHIVED_RUNS, ARCHIVED_STATUS
+COMPLETED_RUNS   = ARCHIVED_RUNS + COMPLETED_RUNS
+STRAIN_STATUS    = ARCHIVED_STATUS + STRAIN_STATUS
+_ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)   # re-run over full combined list
 
 _RIG_LABELS = [(RIG_1, "Rig 1"), (RIG_2, "Rig 2"), (RIG_3, "Rig 3")]
 
@@ -417,11 +423,6 @@ def render_strain_profile(ss):
     s  = f'<div class="section" id="{ss.slug}-profile">'
     s += accent_header(f"{ss.name} — Strain Profile", accent)
     s += info_table(ss.info)
-    if ss.terpene_table_rows is not None:
-        s += '<h3>Terpene Profile — Inferred</h3>'
-        if ss.terpene_table_note:
-            s += f'<p class="note">{ss.terpene_table_note}</p>'
-        s += terpene_table(ss.terpene_table_rows)
     if ss.terpene_note:
         s += f'<p class="note">{ss.terpene_note}</p>'
     if ss.jar_index:
