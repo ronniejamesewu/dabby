@@ -530,9 +530,12 @@ At session close, the AI runs a checklist before updating the handoff:
 3. Did a failure mode occur this session?
 4. Was any methodology position tested, confirmed, or revised?
 5. Were any decisions made that shouldn't be re-litigated?
+6. Before adding any new wisdom rows: existing row to update instead? Evidence cites specific runs with inline observations?
+7. Open backlog items rendered obsolete this session, or any with a scheduled revisit date that has arrived?
 
-Each "yes" produces one append to the relevant wisdom layer table. The state layer
-is regenerated automatically by the generator run.
+Each "yes" produces one update to the relevant wisdom layer table (or to the
+backlog itself, for Q7). The state layer is regenerated automatically by the
+generator run. See `HANDOFF_WISDOM.md` for the authoritative checklist wording.
 
 ---
 

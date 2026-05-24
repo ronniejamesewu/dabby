@@ -9,14 +9,10 @@ Session-close checklist:
 3. Did a failure mode occur this session (data integrity / process)?
 4. Was any methodology position tested, confirmed, or revised?
 5. Were any decisions made that shouldn't be re-litigated? (Includes confirmed-correct audits — "we checked X and it's fine" belongs in Decisions — Do Not Re-Litigate in `Dabby_Handoff_Notes.md`, not the backlog.)
+6. Before adding any new wisdom rows: did I check whether an existing row should be updated instead, and does each new or updated Evidence entry cite specific runs with inline observations (e.g. "WW Z R5 (smaller load, no harshness, mild)"), never just run numbers or vague phrases like "multiple strains"? Trim Evidence to the strongest examples — don't accumulate every confirming run.
+7. Were any open backlog items in `Dabby_Handoff_Notes.md` rendered obsolete by changes this session, or do any have a scheduled revisit date that has arrived?
 
-Each "yes" produces one update to the relevant table or section below.
-
-**Evidence quality rule.** Before adding a new wisdom row, scan for an existing row to update
-instead — new rows are for genuinely novel patterns only. When updating, trim Evidence to the
-strongest examples; don't accumulate every confirming run. Every Evidence entry must name
-specific runs with inline observations (e.g. "WW Z R5 (smaller load, no harshness, mild)"),
-never just run numbers or vague phrases like "multiple strains."
+Each "yes" produces one update to the relevant table or section below (or to the backlog itself, for Q7).
 
 ---
 

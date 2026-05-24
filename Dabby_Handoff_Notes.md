@@ -160,6 +160,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Out-of-session commits can leave gh-pages stale after subsequent PR merges** — if a run is committed and pushed to main between Claude sessions (outside the PR workflow), the deploy fires from that state. Subsequent PR merges trigger new deploys, but these can land in a sequencing order where the root index.html doesn't update cleanly (intermediate deploy wins). Recovery: push an empty commit to main (`git commit --allow-empty -m "Trigger redeploy"`) to fire a fresh deploy from the current HEAD.
 
+- **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Revisit around May 30, 2026 whether to keep or remove this step.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **Comedian's set (end-of-jar and single-session)** — Two formats:
