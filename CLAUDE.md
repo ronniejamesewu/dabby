@@ -10,7 +10,7 @@ At the start of every session:
    - `HANDOFF_STATE.md` — generated per-strain status: run counts, last dates, current equipment, current What to Try Next per strain. Read first — this is the working surface for run logging.
    - `HANDOFF_WISDOM.md` — accumulated cross-strain patterns, equipment observations, failure modes, and methodology state.
    - `Dabby_Handoff_Notes.md` — operational notes, session protocol, decisions made, known failure modes.
-   - `Dabby_Data.py` — all run data, strain status, waypoints, and schema; the file you edit for run logging.
+   - `Dabby_Data.py` — active run data, strain status, waypoints, and schema; the file you edit for run logging. Frozen runs from finished jars live in `Dabby_Archive.py` (not a session-start read — see "Updating the Log").
    - For generator/rendering work: also read `Dabby_Log_Generator.py`
    - For curve design or methodology questions: also read `Dabby_Methodology.md`
    - For UI/layout changes: also read `Dabby_UI_Principles.md`
@@ -42,9 +42,12 @@ on what to try next — not a formal calibration program.
   `TerpeneEntry`), `GLOBAL_INFO`, `COMPLETED_RUNS`, `STRAIN_STATUS`,
   `TERPENE_REFERENCE`, accent-color resolution, and `validate()`.
   `Dabby_Log_Generator.py` = rendering only; imports `from Dabby_Data import *`
-  plus an explicit `from Dabby_Data import _ACCENT_RESOLVED` (wildcard skips
-  underscore names). CSS is external in `style.css` (Session 36), linked from
-  the generated `<head>`.
+  plus explicit `from Dabby_Data import _ACCENT_RESOLVED, _resolve_accent_colors`
+  (wildcard skips underscore names), plus `from Dabby_Archive import
+  ARCHIVED_RUNS, ARCHIVED_STATUS` and a four-line reassignment block that
+  combines archived + active lists and re-runs accent color resolution over the
+  combined list. CSS is external in `style.css` (Session 36), linked from the
+  generated `<head>`.
 - **Adding a run or strain is data-only (Step 3 complete, Session 43).** All
   content — waypoints, dates, equipment, swab/session/verdict fields, `next_*`
   fields — lives in `Dabby_Data.py`. The generator loop in `build_html()`

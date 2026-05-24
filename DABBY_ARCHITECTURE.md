@@ -159,11 +159,12 @@ questions. **C3 remains open** (gates Step 5).
 ## Current State
 
 **What exists and works:**
-- Data/code split: `Dabby_Data.py` (data) and `Dabby_Log_Generator.py` (rendering)
+- Data/code split: `Dabby_Data.py` (active data) and `Dabby_Log_Generator.py` (rendering)
+- Archive split (PR #109): `Dabby_Archive.py` holds frozen runs from finished jars; generator combines both at import time
 - Dataclasses: `Waypoint`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`
 - Dashboard, strain browser, collapsible run sections, Chart.js curves
 - GitHub Actions: deploy on push to main, preview URL on PR
-- 31 logged runs across 10 strains
+- 46 logged runs across 10 strains (31 active, 15 archived)
 
 **Structural debt:**
 
@@ -425,8 +426,7 @@ class StrainStatus:
     # Profile content (new — currently string literals in build_html())
     info: list = None                   # rows for info_table()
     terpene_note: str = ""              # <p class="note"> in profile section
-    terpene_table_rows: list = None     # only MB9ZST currently
-    terpene_table_note: str = ""        # note above terpene table (MB9ZST only)
+    # (terpene_table_rows + terpene_table_note removed — see "Removed Capabilities")
 
     # Current "What to Try Next" — revisable strain-level guidance (N5).
     # Today these are inline args to what_to_try_next_html(); Step 3 makes
@@ -491,10 +491,12 @@ No AI authorship. Always current as long as data is current. Replaces the
 
 ### Wisdom layer — `HANDOFF_WISDOM.md` (AI-maintained)
 
-AI-authored at session close via a defined checklist. Structured as append-only
-tables — new entries are added; old entries are not rewritten unless explicitly
-correcting an error. Each entry is traceable to the session and data that produced
-it.
+AI-authored at session close via a defined checklist. Structured tables that
+support superseding entries — rows can be updated or marked superseded when
+understanding evolves; new rows are reserved for genuinely novel patterns.
+Evidence columns must cite specific runs with inline observations (no vague
+"multiple strains" entries). Each entry is traceable to the session and data
+that produced it.
 
 **Structure:**
 

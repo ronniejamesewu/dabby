@@ -83,7 +83,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - Calibration framing retired. This is a session log, not a calibration program. Do not re-introduce "dialed," "in calibration," status badges, or status columns anywhere in the log or dashboard.
 - Contents/TOC section removed. The searchable strain browser on the dashboard serves as navigation. Do not re-add a separate Contents section.
 - Do not merge `Dabby_Data.py` and `Dabby_Log_Generator.py` back together.
-- `_ACCENT_RESOLVED` requires an explicit `from Dabby_Data import _ACCENT_RESOLVED` line in the generator alongside the wildcard import. Do not delete the explicit import line "to clean up the duplication" — it is load-bearing.
+- `_ACCENT_RESOLVED` and `_resolve_accent_colors` both require an explicit `from Dabby_Data import _ACCENT_RESOLVED, _resolve_accent_colors` line in the generator alongside the wildcard import — underscore names skip wildcard import. Do not delete the explicit import line "to clean up the duplication" — it is load-bearing. The generator calls `_resolve_accent_colors(STRAIN_STATUS)` after combining `ARCHIVED_STATUS + STRAIN_STATUS` so colors distribute across the full combined list, not just active strains.
 - `DABBY_ARCHITECTURE.md` is a committed living **proposed plan** — not settled architecture, not "do not re-litigate," and not a throwaway planning doc. Keep and update it as steps complete; do not delete it; do not treat it as settled.
 - `STRAIN_STATUS` badge fields (`badge_class`, `badge_text`) are gone — do not add them back. Do not revert to tuple form.
 - Run `analysis` lives on `CompletedRun`, is frozen and historically stable. Correctable by exception when genuinely wrong; never casually overwritten when thinking changes. Revisions to current strategy go to `StrainStatus.next_ai_analysis`, not into a prior run's frozen `analysis`.
@@ -151,7 +151,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 ## Backlog
 
-- **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed twice (Sessions 15, 27, and this session). A hook runs before the first turn and can't be bypassed by an attention-grabbing opening message. Tradeoff: Dabby_Data.py is ~800 lines of context overhead on every session start. Revisit when the skipped-read failure recurs or becomes costly.
+- **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed twice (Sessions 15, 27, and this session). A hook runs before the first turn and can't be bypassed by an attention-grabbing opening message. Tradeoff: Dabby_Data.py is ~915 lines of context overhead on every session start (still 2-chunk; Phase 2 of the archive will drop this further). Revisit when the skipped-read failure recurs or becomes costly.
 
 - **Out-of-session commits can leave gh-pages stale after subsequent PR merges** — if a run is committed and pushed to main between Claude sessions (outside the PR workflow), the deploy fires from that state. Subsequent PR merges trigger new deploys, but these can land in a sequencing order where the root index.html doesn't update cleanly (intermediate deploy wins). Recovery: push an empty commit to main (`git commit --allow-empty -m "Trigger redeploy"`) to fire a fresh deploy from the current HEAD.
 
