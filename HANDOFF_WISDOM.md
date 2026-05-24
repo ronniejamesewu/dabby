@@ -12,6 +12,12 @@ Session-close checklist:
 
 Each "yes" produces one update to the relevant table or section below.
 
+**Evidence quality rule.** Before adding a new wisdom row, scan for an existing row to update
+instead — new rows are for genuinely novel patterns only. When updating, trim Evidence to the
+strongest examples; don't accumulate every confirming run. Every Evidence entry must name
+specific runs with inline observations (e.g. "WW Z R5 (smaller load, no harshness, mild)"),
+never just run numbers or vague phrases like "multiple strains."
+
 ---
 
 ## Cross-Strain Patterns

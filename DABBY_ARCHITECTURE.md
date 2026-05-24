@@ -190,6 +190,14 @@ questions. **C3 remains open** (gates Step 5).
 
 ---
 
+## Removed Capabilities
+
+**Per-strain terpene tables (`terpene_table_rows` / `terpene_table_note`).** Removed alongside the introduction of `Dabby_Archive.py`. `StrainStatus` previously carried two optional fields for rendering a strain-specific terpene table; only MB9ZST used them, and the `terpene_table_note` openly stated "This is the generic cannabis palette" — the same five-terpene reference every strain implicitly carries, dressed up as Neapolitan-specific. The epistemic flags in `CLAUDE.md` already disclaim per-strain terpene profiles as inferred, not measured; rendering a strain-labeled table of the generic palette was content that contradicted those flags. All nine other strain-specific `*_TERPS` arrays were dead code (orphaned by Step 3's migration to prose `terpene_note`). Net deletion: ~50 lines plus two dataclass fields.
+
+**To re-add if a strain with genuinely measured terpene data appears:** add `terpene_table_rows: list[tuple] | None = None` and `terpene_table_note: str = ""` back to `StrainStatus`, and restore the rendering block in `render_strain_profile()` (between `info_table` and the `terpene_note` paragraph). The conditional `if ss.terpene_table_rows is not None:` keeps it dormant for strains without measured data, so the existing prose `terpene_note` field continues to serve everyone else.
+
+---
+
 ## Architecture Principles
 
 **1. Data carries semantic content, not rendering metadata.**

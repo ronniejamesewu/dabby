@@ -75,6 +75,14 @@ to regenerate `index.html`. Commit both files to a feature branch, then open a P
 
 Never write `index.html` by hand — always run the generator and commit its output.
 
+`Dabby_Archive.py` is NOT a session-start read. It holds frozen runs from finished jars
+(historical record, never edited). When writing `analysis` or `next_ai_analysis`, check
+`HANDOFF_WISDOM.md` first — most cross-strain patterns are summarized there with specific
+run citations. Read `Dabby_Archive.py` only when: (a) a wisdom citation points to archived
+runs and the summary feels thin for the analysis at hand, (b) a pattern is flagged as
+needing cross-strain confirmation and you want to search for it, or (c) a wisdom entry is
+vague and you need the underlying run prose.
+
 ## Date and Time Logging
 
 User timezone: **America/Denver (MDT, UTC-6)**
