@@ -124,9 +124,9 @@ GLOBAL_INFO = [
 
 BASELINE_CURVE = [
     Waypoint(time_s=0,  temp_f=380, note="Session open"),
-    Waypoint(time_s=15, temp_f=390, note="Early ascent"),
-    Waypoint(time_s=40, temp_f=410, note="Mid ascent"),
-    Waypoint(time_s=65, temp_f=430, note="Endpoint"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=416, note="Endpoint"),
+    Waypoint(time_s=50, temp_f=416, note="Hold"),
 ]
 
 WWZ_INFO = [
@@ -563,6 +563,20 @@ MB9ZST_NEXT = [
     Waypoint(time_s=50, temp_f=415, note="Hold — shorter session"),
 ]
 
+FW106_INFO = [
+    ("Strain",      "Fire Water #106 (Firewood × Key Limeade — Umami Seed Co., seed hunted)"),
+    ("Consistency", "Cold cure badder"),
+    ("Producer",    "710 Labs"),
+    ("Nose",        "Prominent berry; gassy underneath"),
+]
+
+WATERMELLOS_INFO = [
+    ("Strain",      "Watermellos ((Melonade × Gushers) × Purple Ice Water)"),
+    ("Consistency", "Cold cure badder"),
+    ("Washer",      "Malek's Melts"),
+    ("Nose",        "Skunky, gassy — not loud"),
+]
+
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
 FIRST_RUN_DATE = date(2026, 5, 2)
@@ -601,6 +615,16 @@ RIG_3 = EquipmentConfig(
     insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
     carb_cap=CarbCap(brand="Cloud Vortex", model="21.0", airflow="stock"),
     pearls=[Pearl(diameter_mm=6, material="quartz")],
+    glass_top="Dr. Dabber stock bubbler",
+)
+
+# Rig 4: Sapphire insert, ruby pearl. Dr. Dabber Sapphire Plus (v2) insert;
+# Cloud Vortex 21.0 spinner (stock airflow); 5mm synthetic ruby pearl;
+# stock Dr. Dabber bubbler top. In use as of May 24, 2026.
+RIG_4 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Cloud Vortex", model="21.0", airflow="stock"),
+    pearls=[Pearl(diameter_mm=5, material="synthetic ruby")],
     glass_top="Dr. Dabber stock bubbler",
 )
 
@@ -1052,6 +1076,20 @@ STRAIN_STATUS = [
         next_dab_notes="Run 3 repeated the 415°F curve (375→400→415, 20s hold): golden and light swab. Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end. Pretty big intensity.",
         next_ai_analysis="Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.",
         next_waypoints=BB36_1_NEXT,
+    ),
+    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Run baseline curve — first session", accent=None, slug="fw106",
+        info=FW106_INFO,
+        terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="",
+        next_ai_analysis="No runs yet. Start on the baseline curve (380→400@10s→416@20s, hold to 50s). Single data point — repeat before changing anything.",
+        next_waypoints=BASELINE_CURVE,
+    ),
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run baseline curve — first session", accent=None, slug="watermellos",
+        info=WATERMELLOS_INFO,
+        terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="",
+        next_ai_analysis="No runs yet. Start on the baseline curve (380→400@10s→416@20s, hold to 50s). Single data point — repeat before changing anything.",
+        next_waypoints=BASELINE_CURVE,
     ),
 ]
 
