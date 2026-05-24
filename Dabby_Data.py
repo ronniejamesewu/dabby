@@ -269,6 +269,7 @@ OC_RUN11_NEXT = [
     Waypoint(time_s=20, temp_f=417, note="Endpoint — up 2°F from Runs 9–10"),
     Waypoint(time_s=50, temp_f=417, note="Hold"),
 ]
+OC_RUN11 = OC_RUN11_NEXT
 
 HIVE1_INFO = [
     ("Strain",      "The Hive #1 (Honey Banana × Papaya — Bloom Seed Co)"),
@@ -925,6 +926,14 @@ COMPLETED_RUNS = [
         dab_notes="Very light golden, maybe a bit more reclaim than prior runs. Harshness never really entered on two big draws across 50 seconds. Effect right after is very light. It grew to a medium I think. This is maybe why increase in temp is warranted.",
         analysis="415°F on Rig 3 with a ~25% larger load — clean across two full draws, no harshness. This resolves Run 9's load-size confound: a fuller load at 415°F still produced no harshness, confirming 415°F is within the clean range on the sapphire. Run 8 (420°F, normal load) had harshness at 11s into the hold — 5°F made the difference. Swab came back very light golden with slightly more reclaim than prior runs, consistent with slightly less complete vaporization at the lower endpoint. Effect grew from very light to medium over ~5 minutes — delayed onset pattern consistent with Run 8. Medium ceiling vs. Run 8's \"very very intense\" may reflect the lower endpoint, but run-to-run variability and tolerance are real confounders; single data point. User flagged this as a reason to inch the temperature up.",
     ),
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 23), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 23, 23, 38, tzinfo=timezone.utc), equipment=RIG_3, waypoints=OC_RUN11,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 417°F — up 2°F from Runs 9–10',
+        swab="Very light golden, slightly more reclaim than Run 10.",
+        session_char="Clean through first draw; harshness entered at exactly 417°F (end of first draw, ~20s), mild but present and slowly building through the hold.",
+        intensity="Very hard — eyes blurring, body feels like it's vibrating ~14 minutes post-session.",
+        dab_notes="Same golden as last time, maybe more reclaim than last time too. Harshness hit exactly at the end of the first draw which was also exactly when temp hit 417. It was mild but present and slowly increasing through rest of the draw. Very hard. Eyes are blurring, body feels like it's vibrating — about 14 minutes after session open.",
+        analysis="417°F on Rig 3, slightly larger load than Run 10. Harshness appeared at exactly the moment the temperature reached 417°F — end of the first draw (~20s), immediate on endpoint arrival, not a hold-duration accumulation effect. Mild but present and building through the hold. Run 10 (415°F, comparable load) was clean across two full draws. Two-degree difference, clean outcome vs. immediate harshness onset: the ceiling is located at 415–417°F, and this run puts the top edge there. Swab came back very light golden with slightly more reclaim than Run 10 — consistent with less complete vaporization at a lower endpoint, though the read is noisy at this level of difference. Effect landed very hard — a meaningful potency step up from Run 10's medium. The intensity trade-off across 2°F is real.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -956,12 +965,12 @@ STRAIN_STATUS = [
         next_ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         next_waypoints=CAG_RUN2,
     ),
-    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="Try 417°F endpoint on Run 11 — 415°F confirmed clean, inching up", accent=None, slug="oc",
+    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="415°F is the operating point — ceiling confirmed at 417°F", accent=None, slug="oc",
         info=OC_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from orange character (Naran J × Tropimango lineage — unconfirmed). See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Very light golden, maybe a bit more reclaim than prior runs. Harshness never really entered on two big draws across 50 seconds. Effect right after is very light. It grew to a medium I think. This is maybe why increase in temp is warranted.",
-        next_ai_analysis="415°F confirmed clean on a fuller load — the load-size question from Run 9 is settled. Slightly more reclaim and a medium effect suggest 415°F sits at the lower edge of the useful band on the sapphire. Try 417°F, same ramp shape. If clean, keep walking; if harshness returns, the window is 415–417°F and you've found the ceiling.",
-        next_waypoints=OC_RUN11_NEXT,
+        next_dab_notes="Same golden as last time, maybe more reclaim than last time too. Harshness hit exactly at the end of the first draw which was also exactly when temp hit 417. It was mild but present and slowly increasing through rest of the draw. Very hard.",
+        next_ai_analysis="415°F is the clean operating point on the sapphire for OC. Run 11 at 417°F produced harshness immediately on reaching endpoint — not a hold-duration issue, the temperature itself was the trigger. Run 10 at 415°F was clean on a comparable load. The intensity trade-off is real and worth flagging: 415°F delivered medium, 417°F delivered very hard. If the harshness at 417°F is tolerable, that's a preference call — it was mild. But the ceiling is established: 415–417°F, with harshness onset immediate at 417. 415°F is the recommendation unless you decide the mild harshness is acceptable for the harder hit.",
+        next_waypoints=OC_RUN9,
     ),
     StrainStatus(name="The Hive #1", profile_anchor="#hive1-profile", next_text="Try 420–425°F endpoint on Run 6", accent=None, slug="hive1",
         info=HIVE1_INFO,
