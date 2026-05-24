@@ -270,6 +270,12 @@ OC_RUN11_NEXT = [
     Waypoint(time_s=50, temp_f=417, note="Hold"),
 ]
 OC_RUN11 = OC_RUN11_NEXT
+OC_RUN12 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=416, note="Endpoint — 416°F in 20s, 2°F/sec"),
+    Waypoint(time_s=50, temp_f=416, note="Hold"),
+]
 
 HIVE1_INFO = [
     ("Strain",      "The Hive #1 (Honey Banana × Papaya — Bloom Seed Co)"),
@@ -958,6 +964,14 @@ COMPLETED_RUNS = [
         dab_notes="Same golden as last time, maybe more reclaim than last time too. Harshness hit exactly at the end of the first draw which was also exactly when temp hit 417. It was mild but present and slowly increasing through rest of the draw. Very hard. Eyes are blurring, body feels like it's vibrating — about 14 minutes after session open.",
         analysis="417°F on Rig 3, slightly larger load than Run 10. Harshness appeared at exactly the moment the temperature reached 417°F — end of the first draw (~20s), immediate on endpoint arrival, not a hold-duration accumulation effect. Mild but present and building through the hold. Run 10 (415°F, comparable load) was clean across two full draws. Two-degree difference, clean outcome vs. immediate harshness onset: the ceiling is located at 415–417°F, and this run puts the top edge there. Swab came back very light golden with slightly more reclaim than Run 10 — consistent with less complete vaporization at a lower endpoint, though the read is noisy at this level of difference. Effect landed very hard — a meaningful potency step up from Run 10's medium. The intensity trade-off across 2°F is real.",
     ),
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 5, 23), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 24, 4, 21, tzinfo=timezone.utc), equipment=RIG_3, waypoints=OC_RUN12,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — up 1°F from Runs 9–10, down 1°F from Run 11',
+        swab="Light golden.",
+        session_char="First draw flavorful with bitter citrus note; harshness entered ~35s in (15s into 416°F hold), mild and never acute.",
+        intensity="Medium.",
+        dab_notes="Got harsh at about 15 seconds left on the timer, and never got super harsh. Swabs were light golden. Intensity medium right now. First draw was flavorful, that increasingly familiar bitter citrus note came through from the beginning.",
+        analysis="416°F on Rig 3 — between Run 10's clean 415°F and Run 11's immediate-harshness 417°F. Harshness entered at ~35s, 15 seconds into the hold, mild and never acute. For comparison, Run 11 (417°F) had harshness at endpoint arrival (~20s, immediately). The gradient is clear across three adjacent endpoints: 415°F clean, 416°F mild harshness entering mid-hold, 417°F immediate on arrival. Swab light golden, consistent with the sapphire OC pattern. Intensity medium — same read as Run 10 at 415°F, though this was the third session of the day, so the lack of intensity gain over 415°F is hard to read cleanly. Bitter citrus note from the first draw — consistent with OC's orange lineage expressing in vapor; the same cross-strain citrus note has appeared in MB9ZST R1 (tangerine) and MBD R4 (citrus rind), though the connection is not established.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -989,12 +1003,12 @@ STRAIN_STATUS = [
         next_ai_analysis="One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.",
         next_waypoints=CAG_RUN2,
     ),
-    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="415°F is the operating point — ceiling confirmed at 417°F", accent=None, slug="oc",
+    StrainStatus(name="Orange Candy", profile_anchor="#oc-profile", next_text="Repeat 416°F as first dab of the day — clean intensity read vs. 415°F", accent=None, slug="oc",
         info=OC_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from orange character (Naran J × Tropimango lineage — unconfirmed). See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Same golden as last time, maybe more reclaim than last time too. Harshness hit exactly at the end of the first draw which was also exactly when temp hit 417. It was mild but present and slowly increasing through rest of the draw. Very hard.",
-        next_ai_analysis="415°F is the clean operating point on the sapphire for OC. Run 11 at 417°F produced harshness immediately on reaching endpoint — not a hold-duration issue, the temperature itself was the trigger. Run 10 at 415°F was clean on a comparable load. The intensity trade-off is real and worth flagging: 415°F delivered medium, 417°F delivered very hard. If the harshness at 417°F is tolerable, that's a preference call — it was mild. But the ceiling is established: 415–417°F, with harshness onset immediate at 417. 415°F is the recommendation unless you decide the mild harshness is acceptable for the harder hit.",
-        next_waypoints=OC_RUN9,
+        next_dab_notes="Got harsh at about 15 seconds left on the timer, and never got super harsh. Swabs were light golden. Intensity medium right now. First draw was flavorful, that increasingly familiar bitter citrus note came through from the beginning.",
+        next_ai_analysis="416°F delivered mild late harshness (entering 15s into the hold) as the third dab of the day — the intensity comparison to 415°F was muddied by tolerance. Next: repeat 416°F as the first dab of the day to get a clean read. If intensity steps up meaningfully over 415°F with the same harshness profile, 416°F becomes a real preference option. If not, 415°F is the call.",
+        next_waypoints=OC_RUN12,
     ),
     StrainStatus(name="The Hive #1", profile_anchor="#hive1-profile", next_text="Try 420–425°F endpoint on Run 6", accent=None, slug="hive1",
         info=HIVE1_INFO,
