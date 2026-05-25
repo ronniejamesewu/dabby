@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 24, 2026 — Session 71
+## Last updated: May 25, 2026 — Session 72
 
 ---
 
@@ -144,6 +144,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Paraphrasing `dab_notes` instead of using verbatim user words.** The protocol is explicit: `dab_notes` is the user's verbatim words at logging time — not a paraphrase, not a structured extraction. In Session 66, drafted a clean paraphrased version and presented it as the readback. Caught when user asked. Fix: copy the user's exact words from the conversation, in the order they were said. Session 69 variant: same failure in the intensity field — user said "body feels like it's vibrating" (subjective sensation); logged as "body vibrating" (physical state). Different thing. Verbatim accuracy applies to all user-reported experiential fields, not just `dab_notes`.
 
+- **Skipping Q6 of the session-close checklist.** Q6 is a process gate — verify Evidence cites inline observations and check for existing rows to update before writing new wisdom rows. Unlike the other checklist items, Q6 doesn't produce an action; it produces a constraint that must be applied at the moment of writing. In execution mode, it gets bypassed because it doesn't pattern-match to the "fire or skip" model of the other items. Session 72: wrote a vague Evidence entry for the Rig 4 row ("inaugural run, new strain") and skipped Q6 entirely — required a follow-up commit to fix.
+
 - **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window.
 
 - **Recalculating timestamp at reporting time when a session start time was already established.** When the user says "about to hit it" and a UTC timestamp is captured, that is the `utc_logged_at` for the run. If the user reports results later in the same conversation, do not re-run `date -u` and use the current time — use the timestamp captured at session start. Presenting a stale recalculated time in Beat 1 forces the user to correct it.
@@ -155,6 +157,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 ---
 
 ## Backlog
+
+- **Revisit session-close checklist structure — Q6 fires unreliably.** Q6 is a conditional process gate (applies when Q1 or Q2 produce a new wisdom row) but is formatted like the other top-level yes/no questions, so it gets skipped in execution mode. Consider restructuring: fold Q6 into Q1 and Q2 as an inline sub-step ("→ before writing: verify Evidence cites inline run observations; check whether an existing row should be updated instead"), or mark it visually as a sub-check. Goal is to make the gate fire at the moment of writing, not as a separate checklist item that can be bypassed. Session 72.
 
 - **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed twice (Sessions 15, 27, and this session). A hook runs before the first turn and can't be bypassed by an attention-grabbing opening message. Tradeoff: Dabby_Data.py is ~915 lines of context overhead on every session start (still 2-chunk; Phase 2 of the archive will drop this further). Revisit when the skipped-read failure recurs or becomes costly.
 
