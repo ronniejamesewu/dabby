@@ -17,7 +17,11 @@ COMPLETED_RUNS   = ARCHIVED_RUNS + COMPLETED_RUNS
 STRAIN_STATUS    = ARCHIVED_STATUS + STRAIN_STATUS
 _ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)   # re-run over full combined list
 
-_RIG_LABELS = [(RIG_1, "Rig 1"), (RIG_2, "Rig 2"), (RIG_3, "Rig 3"), (RIG_4, "Rig 4"), (RIG_5, "Rig 5")]
+_RIG_LABELS = sorted(
+    [(getattr(Dabby_Data, name), f"Rig {name[4:]}") for name in dir(Dabby_Data)
+     if name.startswith('RIG_') and name[4:].isdigit()],
+    key=lambda pair: int(pair[1].split()[1])
+)
 
 def _fmt_equipment_display(eq):
     """Human-readable equipment string from EquipmentConfig. Format: 'Rig N — insert · cap · pearls · glass'."""
