@@ -610,12 +610,12 @@ def build_html():
     # Baseline Curve
     c  = '<p class="note">Single starting curve for all hash rosin sessions with cold start technique. Strain profiles document empirical deviations from this baseline via swab results and session observations. Do not design different starting curves based on strain name, inferred terpene profile, consistency, or provenance quality without empirical justification.</p>'
     c += '<h3>Parameters</h3>'
-    c += f'<p><strong>Mode:</strong> {_classify_curve_shape(BASELINE_CURVE)} &nbsp;|&nbsp; <strong>Duration:</strong> 65 seconds &nbsp;|&nbsp; <strong>Open:</strong> 380°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 430°F</p>'
+    c += f'<p><strong>Mode:</strong> {_classify_curve_shape(BASELINE_CURVE)} &nbsp;|&nbsp; <strong>Duration:</strong> {BASELINE_CURVE[-1].time_s} seconds &nbsp;|&nbsp; <strong>Open:</strong> {BASELINE_CURVE[0].temp_f}°F &nbsp;|&nbsp; <strong>Endpoint:</strong> {BASELINE_CURVE[-1].temp_f}°F</p>'
     c += curve_chart_html(BASELINE_CURVE)
     c += curve_table(BASELINE_CURVE)
     c += '<p class="note">Terpene zone annotations in individual run curves are approximate orientation points — not measured targets. The same common cannabis terpenes appear across most strains. Annotations reflect boiling point ranges, not confirmed strain-specific data.</p>'
     c += '<h3>Rationale</h3>'
-    c += '<p>380°F opening reflects the effective starting point used across most strains in the log. 430°F endpoint is where results have converged across multiple strains; all waypoints are starting points, swab results drive adjustment.</p>'
+    c += '<p>380°F opening and fast 20-second ramp reflect the shape that has performed best across strains in the log. 416°F endpoint sits below the cross-strain harshness boundary (≥430°F produced tail harshness on seven strains). All waypoints are starting points — swab results drive adjustment.</p>'
     sections.append(collapsible_section("baseline", "Baseline Curve", c, header_class="grey"))
 
     # Terpene Reference
