@@ -715,6 +715,14 @@ COMPLETED_RUNS = [
         dab_notes="Same ultra clean light beige. Harshness again very mild, around 25 seconds left. Grew through second and third draws. Third draw it was almost unbearable harshness. Pretty big intensity right now. Notable bitter citrus note throughout.",
         analysis="Run 2 on Rig 4, baseline curve repeated. Swab matched Run 1 — ultra clean, very light beige. Harshness entered notably earlier: ~25s elapsed (5s into the 416°F hold) vs. Run 1's 39s (19s into hold). More significantly, harshness escalated across three draws — mild at entry, grew through the 2nd, nearly unbearable on the 3rd. Run 1 had one mild harshness note at the tail; Run 2 had a three-draw escalation to the edge of tolerance. Two possible mechanisms: (1) airway sensitization — once harshness starts, subsequent draws hit already-irritated tissue and register more intensely; (2) session heat accumulation — the ruby pearl re-equilibrates to 416°F quickly between draws and delivers denser vapor on each successive hit. Both predict the same outcome, so they can't be isolated from this run alone. Draw count wasn't recorded for Run 1, which is the key gap — if Run 1 was a single draw, the difference may be draw-count-driven rather than a temperature shift. Intensity stepped up from Run 1's medium to pretty big, consistent with more complete vaporization across three draws. Notable bitter citrus note throughout — consistent with the cross-strain pattern (MB9ZST R1, MBD R4, OC R12); FW106's Key Limeade lineage makes limonene a plausible carrier, but the same note appears in unrelated strains.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 25, 17, 12, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_CURVE,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
+        swab="Clean, golden — warmer than Rig 4's ultra-clean light beige on FW106.",
+        session_char="Multiple draws; harshness minimal during session, appeared pronounced post-session and lingered.",
+        intensity="Pretty intense. Van Halen sounds amazing.",
+        dab_notes="I totally did more draws than I should have and felt the harshness afterward. Throat is sore 10 minutes later. Swabs were clean, more on the golden side than we've been seeing but nothing dark. Effects is pretty intense. Van Halen sounds amazing. [Clarification: harshness didn't show up too intense during but afterward it was pronounced for a long time]",
+        analysis="First run of Watermellos on Rig 4, baseline curve. Multiple draws, more than intended. Harshness was minimal during the session but appeared pronounced post-session and persisted — throat still sore at 10+ minutes. This is a distinct presentation from FW106 R2's in-session escalation (draw-by-draw buildup to nearly unbearable on draw 3); the post-session onset here suggests cumulative mucosal exposure that crossed a threshold after the session ended rather than registering acutely during it. Draw count is still the most likely driver — no baseline exists yet for how this strain behaves at 1–2 draws. Swab came back clean but golden — distinctly warmer than FW106's ultra-clean light beige on the same Rig 4 setup. Whether that's Watermellos' residue character or a temperature signal is unclear from one run. Effects landed pretty intense.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -781,11 +789,11 @@ STRAIN_STATUS = [
         next_ai_analysis="Two things changed from Run 1 to Run 2 in a worse direction: harshness onset earlier (5s vs. 19s into hold) and escalation to nearly unbearable by draw 3. Draw count is the key unknown — Run 1's wasn't noted. Next: limit to 1–2 draws at 416°F. If onset timing matches Run 1 and harshness doesn't escalate, the pattern is airway sensitization or draw-count heat accumulation, not the endpoint temperature. If harshness still enters at 5s on a single draw, drop the endpoint.",
         next_waypoints=BASELINE_CURVE,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run baseline curve — first session", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Limit draws on Run 2 — confirm draw count as harshness driver", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="",
-        next_ai_analysis="No runs yet. Start on the baseline curve (380→400@10s→416@20s, hold to 50s). Single data point — repeat before changing anything.",
+        next_dab_notes="I totally did more draws than I should have and felt the harshness afterward. Throat is sore 10 minutes later. Swabs were clean, more on the golden side than we've been seeing but nothing dark. Effects is pretty intense. Van Halen sounds amazing.",
+        next_ai_analysis="Post-session soreness with minimal in-session harshness is a different pattern from FW106 R2, but draw count is still the likeliest variable. Run 2: limit to 1–2 draws at the same baseline curve and endpoint. If the post-session soreness drops meaningfully, draw count is the driver. If it persists on a controlled draw count, drop the endpoint. The golden swab is worth watching — if it's consistent on Run 2 with the same curve, it's Watermellos' baseline character on Rig 4, not a temperature signal.",
         next_waypoints=BASELINE_CURVE,
     ),
 ]
