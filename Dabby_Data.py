@@ -467,6 +467,16 @@ RIG_4 = EquipmentConfig(
     glass_top="Dr. Dabber stock bubbler",
 )
 
+# Rig 5: Sapphire insert, dual ruby pearls. Dr. Dabber Sapphire Plus (v2) insert;
+# Cloud Vortex 21.0 spinner (stock airflow); two 5mm synthetic ruby pearls;
+# stock Dr. Dabber bubbler top. In use as of May 25, 2026.
+RIG_5 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Cloud Vortex", model="21.0", airflow="stock"),
+    pearls=[Pearl(diameter_mm=5, material="synthetic ruby"), Pearl(diameter_mm=5, material="synthetic ruby")],
+    glass_top="Dr. Dabber stock bubbler",
+)
+
 COMPLETED_RUNS = [
     CompletedRun(strain="Caramel Apple Gelato", run_date=None, sessions_prior_today=None, utc_logged_at=None, equipment=RIG_1, waypoints=CAG_RUN1,
         date_label="May 2026",
