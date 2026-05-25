@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 25, 2026 — Session 74
+## Last updated: May 25, 2026 — Session 75
 
 ---
 
@@ -171,6 +171,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
   - *End-of-jar:* At end of jar log, generate a Harper's Index-style list of data from the jar (written in conversation, then logged to `StrainStatus.jar_index`), then a tight 4-minute standup set (written in the style of a theoretical hybrid comedian based on comedians referenced in Tone note) riffing on the jar's full run history.
   - *Single-session:* Don't retell chronologically. Identify the single strongest theme — the thing the session was actually about — and build the entire set around it. Everything else is setup for that theme or cut. WW Z (Session 54) is the reference: theme was "corrected the AI's epistemology twice while unable to sit up."
   - *Both formats:* Don't riff on premises the user taught you as if you discovered them. Edge comes from saying the true thing plainly without softening — not from profanity, which is available when it's genuinely funnier but won't manufacture edge that isn't in the material. Edgier beats charming. Tight 4 minutes beats 5. First-person self-implication (Claude mocking its own meticulous uselessness alongside the user) is the right voice.
+- **Auto-discover `RIG_N` constants in generator** — `_RIG_LABELS` in `Dabby_Log_Generator.py` is hardcoded and must be manually updated when a new rig is added. Replace with auto-discovery: `sorted([(getattr(Dabby_Data, name), f"Rig {name[4:]}") for name in dir(Dabby_Data) if name.startswith('RIG_') and name[4:].isdigit()], key=lambda pair: int(pair[1].split()[1]))`. Eliminates the RIG_N/`_RIG_LABELS` sync failure mode structurally. Session 75.
+
 - **Rolling run archive — Phase 2 (rolling window cap)** — Phase 1 (jar-done archive) shipped in PR #109: closed jars now live in `Dabby_Archive.py`, generator combines both at import time, `Dabby_Data.py` dropped from 1,230 to 915 lines. Phase 2 adds a hard cap regardless of jar status: a `ROLLING_WINDOW` constant in `Dabby_Data.py` and a console notice in `build_html()` when active runs exceed it, plus a manual migration rule at session close. Design and execution details (including correctness traps — e.g. why the window check must use `len(Dabby_Data.COMPLETED_RUNS)` rather than a list comprehension with `set(ARCHIVED_RUNS)`) live in `C:\Users\user-1\.claude\plans\yes-but-why-not-hazy-hippo.md`. Implement when active runs approach the read-tool cap (~784 lines / ~25K tokens), or when a single jar accumulates enough runs to push the file there.
 
 - **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
