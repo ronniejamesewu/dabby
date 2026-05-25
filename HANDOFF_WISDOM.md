@@ -96,12 +96,13 @@ were partially redundant and the underlying geometry is unknowable. Swab result
 is the ground truth.
 
 ### Tail Harshness Mechanism — Open Question
-Two competing hypotheses, neither isolated with current data:
+Three hypotheses, none isolated with current data:
 
 - **Vapor density:** Smaller load → less dense vapor → less irritation at any given moment during the session.
 - **Accumulated heat exposure:** Smaller load → material spent sooner → fewer draws through a hot empty insert after the load is done.
+- **Airway sensitization:** Each draw progressively irritates airway tissue regardless of vapor temperature. The insert temperature profile is roughly similar across draws (convective cooling during the draw, rapid re-equilibration after via the titanium-insert interface), so escalating harshness across draws reflects increasing airway sensitivity rather than increasing vapor temperature. Harshness ceiling at a given setpoint may be higher than multi-draw observations suggest if draw count is controlled.
 
-Both predict the same outcome in a small-load test, so they can't be distinguished by load size alone. The accumulated heat framing points at *when you stop* as the real variable — not load size per se. Relevant for future experimental design. First articulated Session 60 based on WW Z run history; one data point (Run 5, small load, clean tail) supports the load-size direction but doesn't settle the mechanism.
+Both the first two hypotheses predict the same outcome in a small-load test, so they can't be distinguished by load size alone. The accumulated heat framing points at *when you stop* as the real variable — not load size per se. The airway sensitization hypothesis predicts harshness ceiling scales with draw count independent of load size or setpoint — FW106 R2 (three draws, escalating to nearly unbearable on draw 3 at a setpoint that was clean on draw 1) is the first data point; FW106 R3 draw-count isolation experiment is the direct test. First two hypotheses articulated Session 60; airway sensitization added Session 73.
 
 ### Baseline Philosophy
 Single baseline curve for all hash rosin with cold start. Strain-specific
