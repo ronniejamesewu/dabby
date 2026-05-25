@@ -741,6 +741,14 @@ COMPLETED_RUNS = [
         dab_notes="First run with Rig 5. Baseline curve, only 2 draws. First draw to 17s remaining, second draw started at 10 seconds remaining and went till end of cycle. Never got harsh but got terp cough. Afterward I can feel some harshness in my throat but it's mild. Maybe this is decent support for the number of draws hypothesis? Swabs are cleaner than last run, into beige territory. Hit is pretty intense right now, I want to go lay down. Effect is pretty big, mind is a bit racy, not to paranoia yet.",
         analysis="Run 2 on Rig 5 (inaugural), two controlled draws. Post-session harshness dropped meaningfully from Run 1 (pronounced soreness at 10+ minutes) to mild — directional support for the draw-count hypothesis. But two things changed simultaneously: draw count (many → 2) and equipment (Rig 4 → Rig 5, second ruby pearl added). The harshness reduction can't be cleanly attributed to either variable alone. Swab came back beige — lighter than Run 1's golden, closer to FW106's ultra-clean light beige on Rig 4. Whether the lighter swab reflects Rig 5's dual pearl vaporizing more completely, or fewer draws extracting less material, is unclear. No in-session harshness with terp cough is a cleaner presentation than Run 1. Intensity still landed big on two draws.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 25, 21, 48, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
+        swab="Ultra clean beige.",
+        session_char="Two big draws; no harshness. Immediate big effect.",
+        intensity="Immediate and big.",
+        dab_notes="Ultra clean beige swabs, no harshness across two big draws. Immediate big effect. If anything maybe faster climb and 5-10 seconds shorter",
+        analysis="Run 3 repeats Run 2's setup exactly — Rig 5, 2 controlled draws, baseline curve. Result was consistent: ultra clean beige swab, no harshness. Second consecutive 2-draw run on Rig 5 without harshness. Post-session harshness that appeared mild on Run 2 wasn't mentioned, suggesting it dropped further or was within noise on the third session of the day. Intensity came on immediately and big — a delivery-speed step up from Run 2's 'mind racy' build, though tolerance confound applies as the third dab of the day. The draw-count pattern holds: Run 1 (many draws, Rig 4) produced pronounced post-session soreness; Runs 2–3 (2 draws, Rig 5) produced no or minimal harshness. The Rig 4→5 change remains an unresolved confound — cross-rig comparison at the same draw count hasn't happened yet.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -807,11 +815,11 @@ STRAIN_STATUS = [
         next_ai_analysis="Two things changed from Run 1 to Run 2 in a worse direction: harshness onset earlier (5s vs. 19s into hold) and escalation to nearly unbearable by draw 3. Draw count is the key unknown — Run 1's wasn't noted. Next: limit to 1–2 draws at 416°F. If onset timing matches Run 1 and harshness doesn't escalate, the pattern is airway sensitization or draw-count heat accumulation, not the endpoint temperature. If harshness still enters at 5s on a single draw, drop the endpoint.",
         next_waypoints=BASELINE_CURVE,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 3: repeat 2-draw limit on Rig 5 — confirm draw-count result", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 4: add draws on Rig 5 at baseline — find the draw-count harshness threshold", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="First run with Rig 5. Baseline curve, only 2 draws. First draw to 17s remaining, second draw started at 10 seconds remaining and went till end of cycle. Never got harsh but got terp cough. Afterward I can feel some harshness in my throat but it's mild. Maybe this is decent support for the number of draws hypothesis? Swabs are cleaner than last run, into beige territory. Hit is pretty intense right now, I want to go lay down. Effect is pretty big, mind is a bit racy, not to paranoia yet.",
-        next_ai_analysis="Two variables changed from Run 1 to Run 2: draw count (many → 2) and equipment (Rig 4 → Rig 5). Post-session harshness dropped from pronounced soreness to mild — directional support for draw count, but the rig change is a confound. Next: stay on Rig 5, same 2-draw limit, to get a second data point on the current setup before separating variables.",
+        next_dab_notes="Ultra clean beige swabs, no harshness across two big draws. Immediate big effect. If anything maybe faster climb and 5-10 seconds shorter",
+        next_ai_analysis="Two consecutive clean runs at 2 draws on Rig 5 make draw count the leading candidate for Run 1's harshness. Run 4: stay on Rig 5, same baseline curve, add draws — find where harshness re-enters with rig held constant. If it comes back at 3+, draw count is confirmed. If it stays clean, the ceiling is higher than 2. Faster/shorter curve idea noted for after the draw-count question is settled.",
         next_waypoints=BASELINE_CURVE,
     ),
 ]
