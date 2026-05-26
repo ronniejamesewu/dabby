@@ -408,6 +408,12 @@ FW106_INFO = [
     ("Producer",    "710 Labs"),
     ("Nose",        "Prominent berry; gassy underneath"),
 ]
+FW106_FASTER = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=416, note="Endpoint — 8s to 416°F"),
+    Waypoint(time_s=40, temp_f=416, note="Hold — 40s session"),
+]
 
 WATERMELLOS_INFO = [
     ("Strain",      "Watermellos ((Melonade × Gushers) × Purple Ice Water)"),
@@ -417,9 +423,9 @@ WATERMELLOS_INFO = [
 ]
 WM_RUN5_NEXT = [
     Waypoint(time_s=0,  temp_f=380, note="Session open"),
-    Waypoint(time_s=8,  temp_f=400, note="Fast early climb"),
-    Waypoint(time_s=16, temp_f=416, note="Endpoint — 4s faster than baseline"),
-    Waypoint(time_s=40, temp_f=416, note="Hold — 10s shorter session"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=416, note="Endpoint — 8s to 416°F"),
+    Waypoint(time_s=40, temp_f=416, note="Hold — 40s session"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -731,6 +737,14 @@ COMPLETED_RUNS = [
         dab_notes="Same ultra clean light beige. Harshness again very mild, around 25 seconds left. Grew through second and third draws. Third draw it was almost unbearable harshness. Pretty big intensity right now. Notable bitter citrus note throughout.",
         analysis="Run 2 on Rig 4, baseline curve repeated. Swab matched Run 1 — ultra clean, very light beige. Harshness entered notably earlier: ~25s elapsed (5s into the 416°F hold) vs. Run 1's 39s (19s into hold). More significantly, harshness escalated across three draws — mild at entry, grew through the 2nd, nearly unbearable on the 3rd. Run 1 had one mild harshness note at the tail; Run 2 had a three-draw escalation to the edge of tolerance. Two possible mechanisms: (1) airway sensitization — once harshness starts, subsequent draws hit already-irritated tissue and register more intensely; (2) session heat accumulation — the ruby pearl re-equilibrates to 416°F quickly between draws and delivers denser vapor on each successive hit. Both predict the same outcome, so they can't be isolated from this run alone. Draw count wasn't recorded for Run 1, which is the key gap — if Run 1 was a single draw, the difference may be draw-count-driven rather than a temperature shift. Intensity stepped up from Run 1's medium to pretty big, consistent with more complete vaporization across three draws. Notable bitter citrus note throughout — consistent with the cross-strain pattern (MB9ZST R1, MBD R4, OC R12); FW106's Key Limeade lineage makes limonene a plausible carrier, but the same note appears in unrelated strains.",
     ),
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 5, 26), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 26, 20, 23, tzinfo=timezone.utc), equipment=RIG_5, waypoints=FW106_FASTER,
+        duration_seconds=40, endpoint_note='<strong>Endpoint:</strong> 416°F — faster ramp (8s), 40s session &nbsp;|&nbsp; <strong>Equipment:</strong> Rig 5 (sapphire + dual ruby pearls)',
+        swab="Clean beige.",
+        session_char="Very flavorful, 2 draws; tiny bit of harshness at tail of draw 2 (~last 10s). Strong effect, relatively short duration.",
+        intensity="Strong, relatively short duration.",
+        dab_notes="Swabs were clean beige, tiny bit of harshness at back of second draw, maybe last 10 seconds. Very very tasty, strong effect but relatively short duration.",
+        analysis="Run 3 on Rig 5 (sapphire + dual ruby pearls), faster ramp (8s to 416°F vs. baseline's 20s), 40s session, 2 draws. Three things changed from Run 2 simultaneously: draw count (3→2), rig (Rig 4→5), and curve shape plus session length (50s→40s). Clean beige swab — consistent with FW106's ultra-clean light beige pattern across Runs 1–2 on Rig 4, suggesting swab character reflects the strain, not the rig. Harshness limited to a tiny trace at the tail of draw 2 (~last 10s) — a large improvement over Run 2's draw-by-draw escalation to nearly unbearable on draw 3. Draw-count reduction is the most likely driver, consistent with Watermellos' confirmed draw-count ceiling at exactly draw 3 (R4); rig and curve changes are unresolved confounds. \"Very very tasty\" is a flavor step up from Run 1's \"very flavorful\" — the faster ramp may be concentrating first-draw character as observed on Watermellos in the immediately preceding session, but one data point. Strong intensity; relatively short duration — the 40s session (10s shorter than baseline) plausibly contributes.",
+    ),
     CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 25, 17, 12, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_CURVE,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Clean, golden — warmer than Rig 4's ultra-clean light beige on FW106.",
@@ -822,18 +836,18 @@ STRAIN_STATUS = [
         next_ai_analysis="Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.",
         next_waypoints=BB36_1_NEXT,
     ),
-    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Try 1–2 draws at 416°F — isolate draw-count vs. temperature as harshness driver", accent=None, slug="fw106",
+    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Repeat faster curve (Rig 5, 2 draws) — confirm Run 3 improvement", accent=None, slug="fw106",
         info=FW106_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Same ultra clean light beige. Harshness again very mild, around 25 seconds left. Grew through second and third draws. Third draw it was almost unbearable harshness. Pretty big intensity right now. Notable bitter citrus note throughout.",
-        next_ai_analysis="Two things changed from Run 1 to Run 2 in a worse direction: harshness onset earlier (5s vs. 19s into hold) and escalation to nearly unbearable by draw 3. Draw count is the key unknown — Run 1's wasn't noted. Next: limit to 1–2 draws at 416°F. If onset timing matches Run 1 and harshness doesn't escalate, the pattern is airway sensitization or draw-count heat accumulation, not the endpoint temperature. If harshness still enters at 5s on a single draw, drop the endpoint.",
-        next_waypoints=BASELINE_CURVE,
+        next_dab_notes="Swabs were clean beige, tiny bit of harshness at back of second draw, maybe last 10 seconds. Very very tasty, strong effect but relatively short duration.",
+        next_ai_analysis="Three variables changed from R2→R3 (draw count, rig, curve shape) — none isolated. Repeat R3's exact setup: faster curve, Rig 5, 2-draw limit. If harshness stays minimal and flavor holds, the draw-count improvement is real and the faster curve is delivering. After a confirming run, test single-draw to find the clean ceiling, or hold at 2 draws and nudge the endpoint if intensity warrants.",
+        next_waypoints=FW106_FASTER,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 5: faster/shorter curve at 2 draws — reach 416°F at 16s, end at 40s", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 5: faster ramp (8s to 416°F, 40s session, 2 draws)", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
         next_dab_notes="Ultra clean beige swabs. Big flavor on first draw. Harshness at third draw which started at 14 seconds left. Big effect hit fast. No harshness in second draw, flavor was changing by then, still flavorful but less than first draw which started",
-        next_ai_analysis="Draw-count ceiling confirmed: 2 draws clean, 3 triggers harshness on Rig 5 at 416°F. Flavor depletion was already visible on draw 2 (character changing, less than draw 1) — most of the flavor expression is front-loaded in the first draw regardless of curve shape. Run 5: test the faster/shorter curve the user flagged in Run 3 dab notes — faster climb to 416°F (reach it at 16s instead of 20s), shorten the session to 40s. Keep the 2-draw limit. Tests whether a faster ramp concentrates the first-draw character without changing the harshness ceiling.",
+        next_ai_analysis="Draw-count ceiling confirmed: 2 draws clean, 3 triggers harshness on Rig 5 at 416°F. Run 5: faster ramp — 8s to 416°F (same curve used on FW106 R3 immediately preceding, which delivered strong flavor improvement on that strain). Keep the 2-draw limit. Tests whether the faster ramp concentrates first-draw character on Watermellos as it appeared to on FW106.",
         next_waypoints=WM_RUN5_NEXT,
     ),
 ]
