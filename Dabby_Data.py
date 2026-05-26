@@ -415,6 +415,12 @@ WATERMELLOS_INFO = [
     ("Washer",      "Malek's Melts"),
     ("Nose",        "Skunky, gassy — not loud"),
 ]
+WM_RUN5_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=8,  temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=16, temp_f=416, note="Endpoint — 4s faster than baseline"),
+    Waypoint(time_s=40, temp_f=416, note="Hold — 10s shorter session"),
+]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -749,6 +755,14 @@ COMPLETED_RUNS = [
         dab_notes="Ultra clean beige swabs, no harshness across two big draws. Immediate big effect. If anything maybe faster climb and 5-10 seconds shorter",
         analysis="Run 3 repeats Run 2's setup exactly — Rig 5, 2 controlled draws, baseline curve. Result was consistent: ultra clean beige swab, no harshness. Second consecutive 2-draw run on Rig 5 without harshness. Post-session harshness that appeared mild on Run 2 wasn't mentioned, suggesting it dropped further or was within noise on the third session of the day. Intensity came on immediately and big — a delivery-speed step up from Run 2's 'mind racy' build, though tolerance confound applies as the third dab of the day. The draw-count pattern holds: Run 1 (many draws, Rig 4) produced pronounced post-session soreness; Runs 2–3 (2 draws, Rig 5) produced no or minimal harshness. The Rig 4→5 change remains an unresolved confound — cross-rig comparison at the same draw count hasn't happened yet.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=3, utc_logged_at=datetime(2026, 5, 26, 3, 44, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
+        swab="Ultra clean beige.",
+        session_char="Three draws; draws 1–2 clean, harshness entered on third draw (starting at 14s remaining). Immediate big effect.",
+        intensity="Big, immediate onset.",
+        dab_notes="Ultra clean beige swabs. Big flavor on first draw. Harshness at third draw which started at 14 seconds left. Big effect hit fast. No harshness in second draw, flavor was changing by then, still flavorful but less than first draw which started",
+        analysis="Run 4 on Rig 5, three draws, baseline curve. Draw-count question answered cleanly: draws 1–2 clean, harshness entered on draw 3 (starting at 14s remaining, ~36s into the 50s session). Flavor tracked depletion across the arc — big and distinct on draw 1, shifting but still present on draw 2, threshold crossed on draw 3. Swab ultra clean beige, consistent across Runs 2–4 on Rig 5. The 2-draw ceiling on Rig 5 at 416°F is confirmed. Effect immediate and big — consistent with the Rig 5 pattern. Cross-run: FW106 R2 on Rig 4 showed the same draw-by-draw escalation to harshness; draw count as the primary harshness driver now has two strains confirming it across two rigs.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -815,12 +829,12 @@ STRAIN_STATUS = [
         next_ai_analysis="Two things changed from Run 1 to Run 2 in a worse direction: harshness onset earlier (5s vs. 19s into hold) and escalation to nearly unbearable by draw 3. Draw count is the key unknown — Run 1's wasn't noted. Next: limit to 1–2 draws at 416°F. If onset timing matches Run 1 and harshness doesn't escalate, the pattern is airway sensitization or draw-count heat accumulation, not the endpoint temperature. If harshness still enters at 5s on a single draw, drop the endpoint.",
         next_waypoints=BASELINE_CURVE,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 4: add draws on Rig 5 at baseline — find the draw-count harshness threshold", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 5: faster/shorter curve at 2 draws — reach 416°F at 16s, end at 40s", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Ultra clean beige swabs, no harshness across two big draws. Immediate big effect. If anything maybe faster climb and 5-10 seconds shorter",
-        next_ai_analysis="Two consecutive clean runs at 2 draws on Rig 5 make draw count the leading candidate for Run 1's harshness. Run 4: stay on Rig 5, same baseline curve, add draws — find where harshness re-enters with rig held constant. If it comes back at 3+, draw count is confirmed. If it stays clean, the ceiling is higher than 2. Faster/shorter curve idea noted for after the draw-count question is settled.",
-        next_waypoints=BASELINE_CURVE,
+        next_dab_notes="Ultra clean beige swabs. Big flavor on first draw. Harshness at third draw which started at 14 seconds left. Big effect hit fast. No harshness in second draw, flavor was changing by then, still flavorful but less than first draw which started",
+        next_ai_analysis="Draw-count ceiling confirmed: 2 draws clean, 3 triggers harshness on Rig 5 at 416°F. Flavor depletion was already visible on draw 2 (character changing, less than draw 1) — most of the flavor expression is front-loaded in the first draw regardless of curve shape. Run 5: test the faster/shorter curve the user flagged in Run 3 dab notes — faster climb to 416°F (reach it at 16s instead of 20s), shorten the session to 40s. Keep the 2-draw limit. Tests whether a faster ramp concentrates the first-draw character without changing the harshness ceiling.",
+        next_waypoints=WM_RUN5_NEXT,
     ),
 ]
 
