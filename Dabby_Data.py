@@ -414,6 +414,10 @@ FW106_FASTER = [
     Waypoint(time_s=8,  temp_f=416, note="Endpoint — 8s to 416°F"),
     Waypoint(time_s=40, temp_f=416, note="Hold — 40s session"),
 ]
+FW106_HOLD_440 = [
+    Waypoint(time_s=0,  temp_f=440, note="Steady hold — flat 440°F from session open"),
+    Waypoint(time_s=40, temp_f=440, note="Endpoint"),
+]
 
 WATERMELLOS_INFO = [
     ("Strain",      "Watermellos ((Melonade × Gushers) × Purple Ice Water)"),
@@ -785,6 +789,14 @@ COMPLETED_RUNS = [
         dab_notes="Swabs were light golden slightly darker than last run. Very tasty, got a little bit of the bitter citrus taste in first draw. Harshness showed up on exhale of first drawn, didn't increase with inhale but with exhale of second draw it did. It's lingering now a few minutes later. Effects are really big right now whoot [Beat 2: harshness just on exhale, not on inhale]",
         analysis="Run 4, same setup as Run 3 (FW106_FASTER, Rig 5, 2 draws) — step back from Run 3's near-clean result. Exhale-only harshness appeared on draw 1 and worsened on exhale of draw 2, lingering for several minutes after. The exhale-specific pattern is distinct from the inhale-path harshness tracked across strains — this isn't hot vapor hitting airways on the way in, but something manifesting on breathout: condensed aerosol re-irritating on exhale, or exhaled vapor hitting already-sensitized tissue. One real confound: Run 3 was the first dab of the day, Run 4 was the second — accumulated exposure from Run 3 could be priming the airways before this session even started. Swab slightly darker than Run 3 (light golden vs. clean beige) — within noise. Intensity \"really big,\" consistent with FW106's Rig 5 pattern. Bitter citrus in the first draw — consistent with FW106's cross-run character (R2: \"notable bitter citrus throughout\").",
     ),
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 5, 26), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 27, 1, 37, tzinfo=timezone.utc), equipment=RIG_5, waypoints=FW106_HOLD_440,
+        duration_seconds=40, endpoint_note='<strong>Setpoint:</strong> 440°F steady (no ramp)',
+        swab="Very clean, almost beige.",
+        session_char="Three draws, extended past heating cycle into residual insert heat. Harshness at ~28s (12s left in 40s cycle).",
+        intensity="Heavy.",
+        dab_notes="Very clean almost beige swabs. I set the curve for 40 seconds, and harshness came through around 12 seconds left. But it kept producing thick vapor so I kept hitting it. 3 draws, even went past the heating cycle drawing into the residual heat of the insert. Heaaaaaavy effect.",
+        analysis="First run above 416°F for FW106 — flat 440°F hold, 40s, 3 draws with extension into residual heat. Swab came back clean beige, consistent with FW106's light beige pattern across Rig 5 runs; swab is a floor indicator here, not a quality signal. Harshness entered at ~28s — well into the session, not just the tail. That's earlier than FW106's 416°F profile (R3: trace at last ~10s; R4: exhale-only) and consistent with the cross-strain harshness pattern at ≥430°F confirmed across 7 strains on both ramp and flat-hold shapes. Effect stepped up to heavy — consistent with higher endpoint delivering more complete vaporization. Third dab of the day is a confound for harshness severity perception, but onset timing at ~28s is less sensitive to session order than subjective intensity. 440°F is above FW106's clean zone on current evidence.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -844,11 +856,11 @@ STRAIN_STATUS = [
         next_ai_analysis="Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.",
         next_waypoints=BB36_1_NEXT,
     ),
-    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Repeat as first dab of the day — isolate the session-order confound", accent=None, slug="fw106",
+    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Run 6: repeat FW106_FASTER as first dab of the day — isolate session-order confound", accent=None, slug="fw106",
         info=FW106_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Swabs were light golden slightly darker than last run. Very tasty, got a little bit of the bitter citrus taste in first draw. Harshness showed up on exhale of first drawn, didn't increase with inhale but with exhale of second draw it did. It's lingering now a few minutes later. Effects are really big right now whoot [Beat 2: harshness just on exhale, not on inhale]",
-        next_ai_analysis="The step back from Run 3 has a clean confound: Run 3 was the first dab of the day, Run 4 the second. Repeat as the first dab of the day before adjusting anything. If exhale harshness still appears first-dab, the setup needs work — try 1 draw or back the endpoint slightly. If it comes out clean, Run 3's result holds and session order was the explanation.",
+        next_dab_notes="Very clean almost beige swabs. I set the curve for 40 seconds, and harshness came through around 12 seconds left. But it kept producing thick vapor so I kept hitting it. 3 draws, even went past the heating cycle drawing into the residual heat of the insert. Heaaaaaavy effect.",
+        next_ai_analysis="Run 6: first dab of the day, FW106_FASTER (380→400→416°F in 8s, 40s session, 2 draws). Run 5 adds a useful bracket: 440°F is above FW106's clean zone, harshness at ~28s, heavy effect. The 416°F first-dab test is still the right call to isolate whether R4's exhale harshness was session-order driven or a setup issue. If Run 6 is clean, session order explains Run 4. If exhale harshness reappears first-dab, the setup itself needs attention.",
         next_waypoints=FW106_FASTER,
     ),
     StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 5: faster ramp (8s to 416°F, 40s session, 2 draws)", accent=None, slug="watermellos",
