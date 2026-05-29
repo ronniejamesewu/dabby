@@ -913,7 +913,7 @@ STRAIN_STATUS = [
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
         next_dab_notes="Ultra clean beige swabs. Big flavor on first draw. Harshness at third draw which started at 14 seconds left. Big effect hit fast. No harshness in second draw, flavor was changing by then, still flavorful but less than first draw which started",
-        next_ai_analysis="Draw-count ceiling confirmed: 2 draws clean, 3 triggers harshness on Rig 5 at 416°F. Run 5: faster ramp — 8s to 416°F (same curve used on FW106 R3 immediately preceding, which delivered strong flavor improvement on that strain). Keep the 2-draw limit. Tests whether the faster ramp concentrates first-draw character on Watermellos as it appeared to on FW106.",
+        next_ai_analysis="Draw-count ceiling confirmed: 2 draws clean, 3 triggers harshness on Rig 5 at 416°F. Run 5: faster ramp — 8s to 416°F, 2 draws, larger load. FW106 R6–10 added a refinement: the ceiling is material depletion, not draw count per se — a small load can exhaust before 2 draws are done and harshness enters early. Load large to keep that confound out of the Run 5 read. Tests whether the faster ramp concentrates first-draw character on Watermellos as it appeared to on FW106. Endpoint headroom (416°F is the only data point) is a secondary open question once the curve shape is settled.",
         next_waypoints=WM_RUN5_NEXT,
     ),
 ]
