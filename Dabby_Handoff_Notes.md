@@ -100,6 +100,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 ## Known Claude Failure Modes — This Project
 
+- **Reconstructing from memory instead of reading the file when asked to show a document section verbatim.** When asked to display the backlog, checklist, or any other section of a handoff file, the correct behavior is to Read the file and quote it. In Session 83, asked to show the backlog at session start, the response reconstructed from memory and dropped the first item entirely — no truncation signal, no ellipsis, just a silent omission. Correct behavior: always Read the file fresh, return the verbatim content, never paraphrase or reconstruct.
+
 - **Narrating instead of proposing.** Presenting an interpretation or plan and then immediately executing is not confirmation — it is narration with extra steps. This applies to all actions: editing files, running the generator, committing, updating methodology or collaboration notes. The correct behavior is always: present the plan, ask for approval or corrections, wait for a response, then act.
 
 - **Not reading the required files at session start.** CLAUDE.md explicitly requires reading `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`, and `Dabby_Data.py` before taking any action. This was skipped in Session 15 and again in Session 27 — both times because the user's opening message pointed to a specific file and the startup sequence was bypassed. Read all four required files before responding to any request, every session, regardless of what the opening message asks.
@@ -157,8 +159,6 @@ Run logging assumes equipment continuity from the most recent run. The default e
 ---
 
 ## Backlog
-
-- **Revisit session-close checklist structure — Q6 fires unreliably.** Q6 is a conditional process gate (applies when Q1 or Q2 produce a new wisdom row) but is formatted like the other top-level yes/no questions, so it gets skipped in execution mode. Consider restructuring: fold Q6 into Q1 and Q2 as an inline sub-step ("→ before writing: verify Evidence cites inline run observations; check whether an existing row should be updated instead"), or mark it visually as a sub-check. Goal is to make the gate fire at the moment of writing, not as a separate checklist item that can be bypassed. Session 72.
 
 - **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed twice (Sessions 15, 27, and this session). A hook runs before the first turn and can't be bypassed by an attention-grabbing opening message. Tradeoff: Dabby_Data.py is ~915 lines of context overhead on every session start (still 2-chunk; Phase 2 of the archive will drop this further). Revisit when the skipped-read failure recurs or becomes costly.
 
