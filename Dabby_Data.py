@@ -843,6 +843,14 @@ COMPLETED_RUNS = [
         dab_notes="very tasty larger load. 2 draws. no harshness. lots of light gold reclaim on swabs. medium intensity. fell asleep.",
         analysis="2 draws, larger load, 5th dab of the day. No harshness — the 2-draw ceiling held through the final session after maximum accumulated daily exposure. Very tasty, consistent with FW106's flavor character across the log. Lots of light golden reclaim consistent with the larger-load pattern (Runs 6, 7). Medium intensity at the 5th dab of the day is expected. Runs 6 and 10 bookend the day: 2 draws + larger load delivered no harshness first and last, regardless of session order.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 29), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 30, 0, 56, tzinfo=timezone.utc), equipment=RIG_5, waypoints=WM_RUN5_NEXT,
+        duration_seconds=40, endpoint_note='<strong>Endpoint:</strong> 416°F — faster ramp (8s), 40s session',
+        swab="Beige.",
+        session_char="Terp cough on draw 1, no harshness; mildewy note on exhale of draw 2.",
+        intensity="Medium high.",
+        dab_notes="Beige swabs, no harshness, little terp cough on first draw. Not so tasty, only thing that came through was a mildewy type flavor on exhale of second draw. Medium high intensity. Kept it to 2 draws — gap between them, short second draw at the tail. Load just a bit larger than normal.",
+        analysis="Faster ramp (8s to 416°F, 40s session) — first clean first-dab read for Watermellos on the new curve shape. Beige swab consistent with the WM Rig 5 pattern across Runs 2–4. Two draws with a gap between them, no harshness — draw-count ceiling held. Slightly larger load than normal. Terp cough on draw 1 without harshness. Flavor subdued overall; a mildewy note on the exhale of draw 2 — not seen on prior WM runs. Intensity medium high. First dab of the day, no session-order confound.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -909,11 +917,11 @@ STRAIN_STATUS = [
         next_ai_analysis="Run 4's session-order question is resolved — Run 6 (first dab, same setup) was clean, confirming accumulated airway exposure drove Run 4's exhale harshness, not the setup. Operating point confirmed: FW106_FASTER, Rig 5, 2 draws, larger load, 416°F is clean across the full day. Next: 460°F endpoint as first dab of the day, 2-draw limit, larger load. 440°F flat hold (Run 5) was harsh at ~28s — a ramped approach to 460°F is untested and worth a clean first-dab read to see what headroom exists above 416°F. Keep the 2-draw limit so draw count doesn't confound the endpoint read. Other experiments in the queue: extend session to 50s at 416°F (intensity fades quickly — may be a session-length effect), or step up incrementally to 418–420°F before going to 460.",
         next_waypoints=FW106_RAMP460,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 5: faster ramp (8s to 416°F, 40s session, 2 draws)", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 6: repeat faster ramp — confirm if mildewy note recurs", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Ultra clean beige swabs. Big flavor on first draw. Harshness at third draw which started at 14 seconds left. Big effect hit fast. No harshness in second draw, flavor was changing by then, still flavorful but less than first draw which started",
-        next_ai_analysis="Draw-count ceiling confirmed: 2 draws clean, 3 triggers harshness on Rig 5 at 416°F. Run 5: faster ramp — 8s to 416°F, 2 draws, larger load. FW106 R6–10 added a refinement: the ceiling is material depletion, not draw count per se — a small load can exhaust before 2 draws are done and harshness enters early. Load large to keep that confound out of the Run 5 read. Tests whether the faster ramp concentrates first-draw character on Watermellos as it appeared to on FW106. Endpoint headroom (416°F is the only data point) is a secondary open question once the curve shape is settled.",
+        next_dab_notes="Beige swabs, no harshness, little terp cough on first draw. Not so tasty, only thing that came through was a mildewy type flavor on exhale of second draw. Medium high intensity. Kept it to 2 draws — gap between them, short second draw at the tail. Load just a bit larger than normal.",
+        next_ai_analysis="Run 5 confirmed no harshness on the faster ramp with the draw-count ceiling intact. Flavor was subdued and a mildewy note appeared on the second-draw exhale — new for this strain. Repeat Run 5 before changing direction: if the note recurs, compare back to the baseline curve to see whether it's curve-driven or strain character. If it doesn't, it was noise.",
         next_waypoints=WM_RUN5_NEXT,
     ),
 ]
