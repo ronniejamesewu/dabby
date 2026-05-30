@@ -859,6 +859,14 @@ COMPLETED_RUNS = [
         dab_notes="Swabs super clean beige, not a lot of flavor, light medium intensity feels like short duration, no harshness. No mildewy note obvious.",
         analysis="Run 6 on the faster ramp (same as Run 5), Rig 5, 2nd dab of the day. Super clean beige swab — consistent with WM's Rig 5 pattern. No harshness, 2-draw ceiling intact. Mildewy note from Run 5 didn't recur — two runs is enough to call it noise. Flavor subdued again: \"not so tasty\" on Run 5, \"not a lot of flavor\" on Run 6. Intensity light to medium with a short-duration feel — step down from Run 5's medium high, consistent with session order. The subdued flavor across both faster-ramp runs is worth noting in context: baseline Runs 2–4 on Rig 5 didn't flag flavor as a problem, and Run 4 specifically had \"big flavor on first draw\" at the same 416°F endpoint. The faster ramp concentrates delivery in the opening seconds — it suits FW106 (\"very very tasty\") but may be flattening WM's expression.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 29), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 30, 5, 13, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
+        swab="Beige.",
+        session_char="First draw ~30s, second draw smaller; earthy note on second-draw exhale; tiny harshness at ~6s left; distinct watermelon note from bubbler residue.",
+        intensity="Mild (3rd dab of the day).",
+        dab_notes="Beige swabs, first draw 30 seconds, second draw smaller. Tasty first draw, maybe a bit of the mildew on the exhale but this time it tasted more earthy than mildewy. Tiny bit of harshness at 6 seconds left. Just pulled the cooked vapor that was sitting in the bubbler and it had a distinct watermelon note. Effect just mild right now.",
+        analysis="Baseline curve, Rig 5, 3rd dab of the day. Beige swab — consistent with WM's Rig 5 pattern. Tasty first draw; earthy note on second-draw exhale — similar to Run 5's mildewy note but described differently. Run 5 (faster ramp, 1st dab): mildewy. Run 6 (faster ramp, 2nd dab): none. Run 7 (baseline, 3rd dab): earthy. The note may be a second-draw exhale trait that varies by session rather than a curve signal — session order is an unresolved confound. Tiny harshness at 6s left (session tail); absent on Runs 5–6 — could be session order or the 10 extra seconds of hold, not conclusively curve-driven. Distinct watermelon note from residual bubbler vapor — first time this strain character has been named. Flavor comparison to faster ramp inconclusive: \"maybe\" better — too much noise on the 3rd dab to read clearly.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -925,11 +933,11 @@ STRAIN_STATUS = [
         next_ai_analysis="Run 4's session-order question is resolved — Run 6 (first dab, same setup) was clean, confirming accumulated airway exposure drove Run 4's exhale harshness, not the setup. Operating point confirmed: FW106_FASTER, Rig 5, 2 draws, larger load, 416°F is clean across the full day. Next: 460°F endpoint as first dab of the day, 2-draw limit, larger load. 440°F flat hold (Run 5) was harsh at ~28s — a ramped approach to 460°F is untested and worth a clean first-dab read to see what headroom exists above 416°F. Keep the 2-draw limit so draw count doesn't confound the endpoint read. Other experiments in the queue: extend session to 50s at 416°F (intensity fades quickly — may be a session-length effect), or step up incrementally to 418–420°F before going to 460.",
         next_waypoints=FW106_RAMP460,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Try baseline curve with 2-draw ceiling — compare flavor against faster ramp", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 8: repeat baseline curve as first dab of the day — clean flavor comparison vs. faster ramp", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Swabs super clean beige, not a lot of flavor, light medium intensity feels like short duration, no harshness. No mildewy note obvious.",
-        next_ai_analysis="Mildewy note resolved — noise. But flavor has been subdued on both faster-ramp runs, and baseline Run 4 had \"big flavor on first draw\" at the same endpoint. Try the baseline curve with a 2-draw ceiling — that comparison hasn't been done cleanly on Rig 5 (Runs 2–4 had varying draw counts). If flavor improves on the baseline, the faster ramp is the wrong shape for this strain.",
+        next_dab_notes="Beige swabs, first draw 30 seconds, second draw smaller. Tasty first draw, maybe a bit of the mildew on the exhale but this time it tasted more earthy than mildewy. Tiny bit of harshness at 6 seconds left. Just pulled the cooked vapor that was sitting in the bubbler and it had a distinct watermelon note. Effect just mild right now.",
+        next_ai_analysis="Session order muddied the baseline vs. faster-ramp flavor comparison. Repeat baseline as first dab of the day. The earthy/mildewy second-draw note is worth watching — appeared on Runs 5 and 7 (1st and 3rd dabs) but not Run 6 (2nd dab); unclear if it's curve, draw-position, or session-order driven.",
         next_waypoints=BASELINE_CURVE,
     ),
 ]
