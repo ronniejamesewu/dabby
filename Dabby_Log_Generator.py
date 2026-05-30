@@ -83,15 +83,6 @@ def curve_table(rows, amber=False):
         html += f'<tr><td>{wp.time_s}s</td><td>{wp.temp_f}°F</td><td>{wp.note}</td></tr>'
     return html + '</tbody></table>'
 
-def terpene_table(rows):
-    html = '<table class="terpene-table"><thead><tr>'
-    for col in ["Terpene", "Boiling Point", "Character"]:
-        html += f'<th>{col}</th>'
-    html += '</tr></thead><tbody>'
-    for terpene, bp, char in rows:
-        html += f'<tr><td>{terpene}</td><td>{bp}</td><td>{char}</td></tr>'
-    return html + '</tbody></table>'
-
 def section_header(title, header_class=""):
     html = f'<div class="section-header {header_class}">'
     html += f'<h2>{title}</h2>'
