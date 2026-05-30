@@ -71,7 +71,6 @@ class CompletedRun:
     # Analysis (currently string literals in build_html() — migrated in Step 3)
     dab_notes: str = ""              # user's read
     analysis: str = ""               # AI synthesis (historically stable, rendered read-only)
-    proposed_waypoints: list | None = None
 
     # Title date override for runs where run_date=None (pre-dataclass era entries logged as "May 2026")
     date_label: str = ""             # when set, used instead of derived run_date string in section title
@@ -431,12 +430,9 @@ WATERMELLOS_INFO = [
     ("Washer",      "Malek's Melts"),
     ("Nose",        "Skunky, gassy — not loud"),
 ]
-WM_RUN5_NEXT = [
-    Waypoint(time_s=0,  temp_f=380, note="Session open"),
-    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
-    Waypoint(time_s=8,  temp_f=416, note="Endpoint — 8s to 416°F"),
-    Waypoint(time_s=40, temp_f=416, note="Hold — 40s session"),
-]
+# Identical to FW106_FASTER (fast 8s ramp to 416°F, 40s hold). Aliased to avoid
+# a duplicate literal; redefine as its own list if WM's curve diverges from FW106's.
+WM_RUN5_NEXT = FW106_FASTER
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -1046,49 +1042,48 @@ def validate():
     strain_names = {s.name for s in STRAIN_STATUS}
     errors = []
 
+    # Single pass per run: strain membership, waypoint sanity, equipment completeness.
     for i, run in enumerate(COMPLETED_RUNS):
         if run.strain not in strain_names:
             errors.append(f"COMPLETED_RUNS[{i}] strain '{run.strain}' not found in STRAIN_STATUS")
 
-    for i, run in enumerate(COMPLETED_RUNS):
         wps = run.waypoints
         if not wps:
             errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): empty waypoints list")
-            continue
-        for j, wp in enumerate(wps):
-            if not (200 <= wp.temp_f <= 650):
-                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}) waypoint {j}: "
-                               f"temp_f={wp.temp_f} outside expected range 200–650°F")
-        times = [wp.time_s for wp in wps]
-        if times != sorted(times):
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): waypoint times not monotonically increasing: {times}")
+        else:
+            for j, wp in enumerate(wps):
+                if not (200 <= wp.temp_f <= 650):
+                    errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}) waypoint {j}: "
+                                   f"temp_f={wp.temp_f} outside expected range 200–650°F")
+            times = [wp.time_s for wp in wps]
+            if times != sorted(times):
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): waypoint times not monotonically increasing: {times}")
 
-    for i, run in enumerate(COMPLETED_RUNS):
         eq = run.equipment
         if eq is None:
             errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment is None — "
                            f"every run must carry an explicit EquipmentConfig "
                            f"(None never means 'inherit a session default')")
-            continue
-        if not eq.glass_top:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.glass_top is empty")
-        if not eq.insert.brand:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.brand is empty")
-        if not eq.insert.model:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.model is empty")
-        if not eq.insert.material:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.material is empty")
-        if not eq.carb_cap.brand:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.brand is empty")
-        if not eq.carb_cap.model:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.model is empty")
-        if not eq.carb_cap.airflow:
-            errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.airflow is empty")
-        for j, pearl in enumerate(eq.pearls):
-            if pearl.diameter_mm <= 0:
-                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): pearl[{j}].diameter_mm={pearl.diameter_mm} must be > 0")
-            if not pearl.material:
-                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): pearl[{j}].material is empty")
+        else:
+            if not eq.glass_top:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.glass_top is empty")
+            if not eq.insert.brand:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.brand is empty")
+            if not eq.insert.model:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.model is empty")
+            if not eq.insert.material:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.insert.material is empty")
+            if not eq.carb_cap.brand:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.brand is empty")
+            if not eq.carb_cap.model:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.model is empty")
+            if not eq.carb_cap.airflow:
+                errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): equipment.carb_cap.airflow is empty")
+            for j, pearl in enumerate(eq.pearls):
+                if pearl.diameter_mm <= 0:
+                    errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): pearl[{j}].diameter_mm={pearl.diameter_mm} must be > 0")
+                if not pearl.material:
+                    errors.append(f"COMPLETED_RUNS[{i}] ({run.strain}): pearl[{j}].material is empty")
 
     if errors:
         print("VALIDATION ERRORS:")
