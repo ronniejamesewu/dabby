@@ -230,7 +230,6 @@ class CompletedRun:
     # Analysis (new — currently string literals in build_html())
     dab_notes: str = ""                 # user's read
     analysis: str = ""                  # AI synthesis (historically stable)
-    proposed_waypoints: list[Waypoint] | None = None
 ```
 
 **Note on field boundaries:** The exact field set — and its *granularity* (one
@@ -238,7 +237,8 @@ frozen Mode/Results string vs. decomposed `swab`/`session_char`/`read`/`verdict`
 fields) — is settled during Step 3 against the 28 existing runs as the test
 suite. Expect minor revisions as fields meet real data. `extra_rows` holds
 genuinely one-off result rows (e.g. OC R5 "Observation:") as **frozen verbatim
-literals**, not a typed escape hatch.
+literals**, not a typed escape hatch. (`proposed_waypoints` was dropped as
+unused — proposed/revisable curves live on `StrainStatus.next_waypoints`.)
 
 **Schema question status — RESOLVED Session 41** (see the Session 41 note in
 Status & Re-opened Questions). B4's closed-predicate-catalog / typed-STORE
