@@ -4,15 +4,17 @@ AI-maintained at session close. Structured tables that support superseding entri
 append-only). Each entry is traceable to the session and data that produced it.
 
 Session-close checklist:
+
+**Before writing any new row to any table:** check whether an existing row should be updated instead. Evidence must cite specific runs with inline observations (e.g. "WW Z R5 (smaller load, no harshness, mild)") — never just run numbers or vague phrases like "multiple strains." Trim to the strongest examples; don't accumulate every confirming run.
+
 1. Did any new cross-strain pattern emerge or get confirmed?
 2. Did equipment configuration change or produce a new observation?
 3. Did a failure mode occur this session (data integrity / process)?
 4. Was any methodology position tested, confirmed, or revised?
 5. Were any decisions made that shouldn't be re-litigated? (Includes confirmed-correct audits — "we checked X and it's fine" belongs in Decisions — Do Not Re-Litigate in `Dabby_Handoff_Notes.md`, not the backlog.)
-6. Before adding any new wisdom rows: did I check whether an existing row should be updated instead, and does each new or updated Evidence entry cite specific runs with inline observations (e.g. "WW Z R5 (smaller load, no harshness, mild)"), never just run numbers or vague phrases like "multiple strains"? Trim Evidence to the strongest examples — don't accumulate every confirming run.
-7. Were any open backlog items in `Dabby_Handoff_Notes.md` rendered obsolete by changes this session, or do any have a scheduled revisit date that has arrived?
+6. Were any open backlog items in `Dabby_Handoff_Notes.md` rendered obsolete by changes this session, or do any have a scheduled revisit date that has arrived?
 
-Each "yes" produces one update to the relevant table or section below (or to the backlog itself, for Q7).
+Each "yes" produces one update to the relevant table or section below (or to the backlog itself, for Q6).
 
 ---
 
