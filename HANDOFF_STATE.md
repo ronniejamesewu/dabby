@@ -185,11 +185,11 @@
 ### Watermellos
 **9 sessions** &nbsp;·&nbsp; Last: May 30, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 10: return to 420°F baseline ascent as first dab — clean read vs. the descent run
+**Next:** Run 10: ascending ramp to 420°F (380→400→420, hold to 50s) as first dab — clean read vs. the descent run
 
 **Dab Notes:** Swabs were clean and beige, harshness started about halfway through first draw but never got really harsh. Finished the load with about 10 seconds left on the timer. Intensity was medium. Significant throat soreness after — odd, because I've done higher temp dabs without soreness before.
 
-**AI Analysis:** The descent run is hard to read cleanly: early draw-1 harshness, clean swab, medium intensity, and significant post-session soreness that the user flagged as unusual. None of it conclusively isolates opening temperature, descent shape, or session-order — and the post-session soreness (echoing Run 1) is the most interesting open thread. Next: return to the familiar 420°F baseline ascent (380 → 400 @10s → 420 @20s, hold to 50s) as a first dab of the day. It isolates the endpoint-bump question on the shape where harshness has always stayed late, and removes both the descent and the session-order confounds — a clean read to compare soreness and harshness timing against this descent run.
+**AI Analysis:** The descent run is hard to read cleanly: early draw-1 harshness, clean swab, medium intensity, and significant post-session soreness that the user flagged as unusual. None of it conclusively isolates opening temperature, descent shape, or session-order — and the post-session soreness (echoing Run 1) is the most interesting open thread. Next: run an ascending ramp to 420°F (380°F open → 400°F at 10s → 420°F at 20s, then hold flat at 420°F to 50s) as a first dab of the day. This is the familiar ascending shape — hottest at the tail, opposite of Run 9's descent — at a 420°F endpoint (4°F above the jar's prior 416°F runs, keeping the modest endpoint-bump question alive). It puts the hottest vapor at session end, where harshness has always landed before, so if harshness and soreness move back to the tail that points at opening temperature as the descent-run driver. First dab removes the session-order confound.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
