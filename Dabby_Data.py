@@ -433,6 +433,16 @@ WATERMELLOS_INFO = [
 # Identical to FW106_FASTER (fast 8s ramp to 416°F, 40s hold). Aliased to avoid
 # a duplicate literal; redefine as its own list if WM's curve diverges from FW106's.
 WM_RUN5_NEXT = FW106_FASTER
+WM_RUN9 = [
+    Waypoint(time_s=0,  temp_f=460, note="Session open — descent mode setpoint (hottest at open)"),
+    Waypoint(time_s=40, temp_f=420, note="Endpoint — assumed ~1°F/sec cooling (device rate unmeasured)"),
+]
+WM_RUN10_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=420, note="Endpoint — up 4°F from prior runs"),
+    Waypoint(time_s=50, temp_f=420, note="Hold"),
+]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
@@ -863,6 +873,22 @@ COMPLETED_RUNS = [
         dab_notes="Beige swabs, first draw 30 seconds, second draw smaller. Tasty first draw, maybe a bit of the mildew on the exhale but this time it tasted more earthy than mildewy. Tiny bit of harshness at 6 seconds left. Just pulled the cooked vapor that was sitting in the bubbler and it had a distinct watermelon note. Effect just mild right now.",
         analysis="Baseline curve, Rig 5, 3rd dab of the day. Beige swab — consistent with WM's Rig 5 pattern. Tasty first draw; earthy note on second-draw exhale — similar to Run 5's mildewy note but described differently. Run 5 (faster ramp, 1st dab): mildewy. Run 6 (faster ramp, 2nd dab): none. Run 7 (baseline, 3rd dab): earthy. The note may be a second-draw exhale trait that varies by session rather than a curve signal — session order is an unresolved confound. Tiny harshness at 6s left (session tail); absent on Runs 5–6 — could be session order or the 10 extra seconds of hold, not conclusively curve-driven. Distinct watermelon note from residual bubbler vapor — first time this strain character has been named. Flavor comparison to faster ramp inconclusive: \"maybe\" better — too much noise on the 3rd dab to read clearly.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 30), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 30, 22, 0, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
+        swab="Clean beige.",
+        session_char="2 draws; slight harshness in draw 2 around 12s left (difficult to read); slight mildew note in draw 2, otherwise not a ton of flavor.",
+        intensity="Medium high.",
+        dab_notes="Swabs were clean beige, slight harshness in draw 2 around 12 seconds left. Little bit of mildew note in draw 2, otherwise not a ton of flavor. Medium high intensity.",
+        analysis="Baseline curve, Rig 5, first dab of the day — the clean first-dab read Run 7 called for, resolving the session-order confound on the baseline-vs-faster-ramp flavor comparison. Beige swab, consistent with WM's Rig 5 pattern across Runs 2–7. Two draws, slight harshness near the tail of draw 2 (~12s left) — user reports it was difficult to read, so weight is low; directionally consistent with the material-depletion framing (harshness as the load winds down near session end). Flavor subdued again — \"not a ton of flavor,\" matching faster-ramp Run 5 (\"not so tasty,\" also a first dab). With both curve shapes now read clean as first dabs and both subdued, the faster-ramp-flattens-flavor idea floated on Run 6 doesn't hold — subdued flavor looks like the strain's character at 416°F, not a curve-shape signal. The mildewy draw-2 exhale note returned (mildew R5, earthy R7, mildew R8 — 3 of 4 faster-ramp/baseline runs): looking like a recurring second-draw exhale trait, not noise. Intensity medium high, matching Run 5's first-dab read.",
+    ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 30), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 31, 2, 13, tzinfo=timezone.utc), equipment=RIG_5, waypoints=WM_RUN9,
+        duration_seconds=40, endpoint_note='<strong>Open:</strong> 460°F &nbsp;|&nbsp; <strong>Endpoint:</strong> 420°F — descent mode (~1°F/sec, assumed)',
+        swab="Clean beige.",
+        session_char="2 draws; harshness onset ~halfway through draw 1, never got really harsh; load finished with ~10s left. Significant post-session throat soreness.",
+        intensity="Medium.",
+        dab_notes="Swabs were clean and beige, harshness started about halfway through first draw but never got really harsh. Finished the load with about 10 seconds left on the timer. Intensity was medium. Significant throat soreness after — odd, because I've done higher temp dabs without soreness before.",
+        analysis="First descent-mode run for Watermellos and the first in the log — 460°F open descending ~1°F/sec to 420°F over 40s (cooling rate assumed, not measured). Clean beige swab, consistent with WM's Rig 5 pattern — no darkening despite the 460°F open, the hottest this jar has run. Harshness onset halfway through draw 1 is the earliest in WM's history (all prior runs: tail of draw 2 or session tail). One reading is that the descent front-loads the hottest vapor at session open, so early harshness would track opening temperature — but this is a single confounded data point and shouldn't be treated as established; the load also finished early (~10s left, spent ~30s), so depletion can't be cleanly separated either, though harshness here preceded the load running thin. User reported significant post-session throat soreness and noted it as odd against prior higher-temp dabs without soreness — captured as an open observation, not explained. It echoes Watermellos Run 1 (Rig 4), which also showed pronounced post-session soreness distinct from mild in-session harshness; two instances now of a post-session throat signal that doesn't track in-session severity, both on this jar. Whether that's descent-shape, opening-temperature, cumulative airway exposure (2nd dab of the day), or strain-specific is unresolved. Intensity medium — no step up over the 416°F runs despite the much higher open.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -929,12 +955,12 @@ STRAIN_STATUS = [
         next_ai_analysis="Run 4's session-order question is resolved — Run 6 (first dab, same setup) was clean, confirming accumulated airway exposure drove Run 4's exhale harshness, not the setup. Operating point confirmed: FW106_FASTER, Rig 5, 2 draws, larger load, 416°F is clean across the full day. Next: 460°F endpoint as first dab of the day, 2-draw limit, larger load. 440°F flat hold (Run 5) was harsh at ~28s — a ramped approach to 460°F is untested and worth a clean first-dab read to see what headroom exists above 416°F. Keep the 2-draw limit so draw count doesn't confound the endpoint read. Other experiments in the queue: extend session to 50s at 416°F (intensity fades quickly — may be a session-length effect), or step up incrementally to 418–420°F before going to 460.",
         next_waypoints=FW106_RAMP460,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 8: repeat baseline curve as first dab of the day — clean flavor comparison vs. faster ramp", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 10: ascending ramp to 420°F (380→400→420, hold to 50s) as first dab — clean read vs. the descent run", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="Beige swabs, first draw 30 seconds, second draw smaller. Tasty first draw, maybe a bit of the mildew on the exhale but this time it tasted more earthy than mildewy. Tiny bit of harshness at 6 seconds left. Just pulled the cooked vapor that was sitting in the bubbler and it had a distinct watermelon note. Effect just mild right now.",
-        next_ai_analysis="Session order muddied the baseline vs. faster-ramp flavor comparison. Repeat baseline as first dab of the day. The earthy/mildewy second-draw note is worth watching — appeared on Runs 5 and 7 (1st and 3rd dabs) but not Run 6 (2nd dab); unclear if it's curve, draw-position, or session-order driven.",
-        next_waypoints=BASELINE_CURVE,
+        next_dab_notes="Swabs were clean and beige, harshness started about halfway through first draw but never got really harsh. Finished the load with about 10 seconds left on the timer. Intensity was medium. Significant throat soreness after — odd, because I've done higher temp dabs without soreness before.",
+        next_ai_analysis="The descent run is hard to read cleanly: early draw-1 harshness, clean swab, medium intensity, and significant post-session soreness that the user flagged as unusual. None of it conclusively isolates opening temperature, descent shape, or session-order — and the post-session soreness (echoing Run 1) is the most interesting open thread. Next: run an ascending ramp to 420°F (380°F open → 400°F at 10s → 420°F at 20s, then hold flat at 420°F to 50s) as a first dab of the day. This is the familiar ascending shape — hottest at the tail, opposite of Run 9's descent — at a 420°F endpoint (4°F above the jar's prior 416°F runs, keeping the modest endpoint-bump question alive). It puts the hottest vapor at session end, where harshness has always landed before, so if harshness and soreness move back to the tail that points at opening temperature as the descent-run driver. First dab removes the session-order confound.",
+        next_waypoints=WM_RUN10_NEXT,
     ),
 ]
 
