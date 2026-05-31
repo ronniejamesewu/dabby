@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 64 across 12 strains
+- **Total runs:** 65 across 12 strains
 - **Active since:** May 2, 2026 (29 days)
 - **Last run date:** May 30, 2026
 
@@ -183,13 +183,13 @@
 ---
 
 ### Watermellos
-**8 sessions** &nbsp;·&nbsp; Last: May 30, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**9 sessions** &nbsp;·&nbsp; Last: May 30, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 9: push endpoint to 420°F (baseline shape, first dab) — test whether flavor/intensity step up
+**Next:** Run 10: return to 420°F baseline ascent as first dab — clean read vs. the descent run
 
-**Dab Notes:** Swabs were clean beige, slight harshness in draw 2 around 12 seconds left. Little bit of mildew note in draw 2, otherwise not a ton of flavor. Medium high intensity.
+**Dab Notes:** Swabs were clean and beige, harshness started about halfway through first draw but never got really harsh. Finished the load with about 10 seconds left on the timer. Intensity was medium. Significant throat soreness after — odd, because I've done higher temp dabs without soreness before.
 
-**AI Analysis:** The curve-shape question is resolved — baseline and faster ramp both give subdued flavor and clean 2-draw sessions at 416°F as first dabs. Flavor is the persistent disappointment, and 416°F is the only endpoint this jar has run on Rig 5. Next: push the endpoint to 420°F (baseline shape, 2-draw limit, first dab) to test whether flavor and intensity step up — the higher band drives intensity (low-confidence cross-strain), and 2-draw sessions have stayed clean-to-borderline at 416°F so there's likely a little headroom. If flavor stays flat at 420°F too, that's the phenotype, and the call becomes a preference between 416 and 420 on intensity alone.
+**AI Analysis:** The descent run is hard to read cleanly: early draw-1 harshness, clean swab, medium intensity, and significant post-session soreness that the user flagged as unusual. None of it conclusively isolates opening temperature, descent shape, or session-order — and the post-session soreness (echoing Run 1) is the most interesting open thread. Next: return to the familiar 420°F baseline ascent (380 → 400 @10s → 420 @20s, hold to 50s) as a first dab of the day. It isolates the endpoint-bump question on the shape where harshness has always stayed late, and removes both the descent and the session-order confounds — a clean read to compare soreness and harshness timing against this descent run.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
