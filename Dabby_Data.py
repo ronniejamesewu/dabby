@@ -369,12 +369,23 @@ RF_RUN4_NEXT = [
 ]
 
 BB36_1_INFO = [
-    ("Strain",      "Blueberry 36 #1 (DJ Short's Blueberry base genetics — producer-specific pheno designation)"),
+    ("Strain",      "Blueberry 36 #1 (Higher Ground Seed Bank — DJ Short Blueberry lineage unconfirmed despite the name)"),
+    ("Provenance",  "Pheno #1 of Matt's 4-seed pop — 1 male culled, surviving females jarred as #1, #2, #4"),
     ("Consistency", "Badder"),
     ("Micron",      "90μ"),
     ("Growers",     "Matt & Oliver"),
     ("Washer",      "Three Blind Trichs"),
     ("Nose",        "LOUD at cold nose; no distinct flavor notes discernible"),
+]
+
+BB36_2_INFO = [
+    ("Strain",      "Blueberry 36 #2 (Higher Ground Seed Bank — DJ Short Blueberry lineage unconfirmed despite the name)"),
+    ("Provenance",  "Pheno #2 of Matt's 4-seed pop — 1 male culled, surviving females jarred as #1, #2, #4"),
+    ("Consistency", "Badder"),
+    ("Micron",      "90μ"),
+    ("Growers",     "Matt & Oliver"),
+    ("Washer",      "Three Blind Trichs"),
+    ("Nose",        "Not yet recorded"),
 ]
 BB36_1_RUN1 = [
     Waypoint(time_s=0,  temp_f=380, note="Session open"),
@@ -943,10 +954,17 @@ STRAIN_STATUS = [
     ),
     StrainStatus(name="Blueberry 36 #1",                  profile_anchor="#bb361-profile",    next_text="Try 410°F endpoint on Run 4 — tail harshness confirmed at 415°F across Runs 2 and 3", accent=None, slug="bb361",
         info=BB36_1_INFO,
-        terpene_note="<strong>Terpene inference:</strong> Myrcene inferred dominant from DJ Short's Blueberry base genetics; caryophyllene and alpha-pinene as secondaries. LOUD cold nose with no distinct discernible notes — nose is a weak secondary signal only. See <a href=\"#terpene-ref\">Terpene Reference</a>.",
+        terpene_note="<strong>Terpene inference:</strong> Myrcene inferred from Blueberry-type character (lineage unconfirmed — Higher Ground Seed Bank, not DJ Short confirmed); caryophyllene and alpha-pinene as secondaries. LOUD cold nose with no distinct discernible notes — nose is a weak secondary signal only. See <a href=\"#terpene-ref\">Terpene Reference</a>.",
         next_dab_notes="Run 3 repeated the 415°F curve (375→400→415, 20s hold): golden and light swab. Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end. Pretty big intensity.",
         next_ai_analysis="Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.",
         next_waypoints=BB36_1_NEXT,
+    ),
+    StrainStatus(name="Blueberry 36 #2",                  profile_anchor="#bb362-profile",    next_text="First run pending — start from the baseline curve (380→416°F, 20s ramp, hold to 50s)", accent=None, slug="bb362",
+        info=BB36_2_INFO,
+        terpene_note="<strong>Terpene inference:</strong> Myrcene inferred from Blueberry-type character (lineage unconfirmed — Higher Ground Seed Bank, not DJ Short confirmed); caryophyllene and alpha-pinene as secondaries. Nose not yet recorded. See <a href=\"#terpene-ref\">Terpene Reference</a>.",
+        next_dab_notes="",
+        next_ai_analysis="New jar, no runs yet. Per baseline philosophy, start from the baseline curve — strain name and the sister-pheno history don't override an empirical start. BB36 #1 showed tail harshness at 415°F and consistently flat/mild flavor, which could repeat here — but all of #1's data is Rig 2 (Gemlock, no pearl) and we're now on Rig 5 (sapphire + dual ruby), a hotter and more efficient pathway, so #1's endpoints don't transfer directly. Let the first swab and session character drive the first adjustment.",
+        next_waypoints=BASELINE_CURVE,
     ),
     StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Try 460°F ramp endpoint as first dab of the day — probe headroom above 416°F", accent=None, slug="fw106",
         info=FW106_INFO,
