@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: May 31, 2026 — Session 85
+## Last updated: June 1, 2026 — Session 86
 
 ---
 
@@ -153,6 +153,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Recalculating timestamp at reporting time when a session start time was already established.** When the user says "about to hit it" and a UTC timestamp is captured, that is the `utc_logged_at` for the run. If the user reports results later in the same conversation, do not re-run `date -u` and use the current time — use the timestamp captured at session start. Presenting a stale recalculated time in Beat 1 forces the user to correct it.
 
 - **Asking the user questions that could be reasoned through.** When evaluating whether a schema field is needed (e.g., insert diameter), reason about physical/logical constraints first. The Switch² heating cup geometry physically constrains inserts to a tight ~20mm fit — diameter variation isn't realistic on this device. Asking the user "should diameter be a field?" when a few seconds of reasoning would answer it wastes their attention. Reason first; ask only what genuinely requires user input (product knowledge, preferences, plans). Session 67 variant: presenting a Beat 2 question about a distinction that isn't actually a distinction. Asked whether trace harshness at load's end was a "temperature signal vs. empty-insert behavior" — user correctly identified these as the same physical event. A hot insert running out of material IS the temperature signal. Reason through the physics before surfacing it as an ambiguity.
+
+- **Not checking for open PRs before reporting strain status.** Session-start reads pull from main — but active work may live on an unmerged PR branch. In Session 86, gave stale bb362 "what's next" (Run 1 still in PR #128, not yet on main). Fix: after session-start reads, check open PRs before answering questions about a strain's current state.
 
 - **Architecting the implementation to pass a self-imposed verification check.** Session 71: the archive refactor plan included a diff oracle ("one known intentional diff against committed `index.html`"). When the actual diff came back at 383 lines because the combined-list reordering shifted auto-assigned accent colors, the reflex was to assign explicit hex accent values to all ten strains to make the diff small again. User caught it: "these colors were auto-assigned, they don't hold any meaning. why do we need to retain them? to pass a test we designed?" Correct. The colors are deterministic output of a function that distributes hues across non-green space — they have no semantic meaning. The diff oracle was the wrong verification framing for a refactor that legitimately changes rendering (color distribution, render order). Lesson: verification checks must target content correctness, not output stability. When a test produces a noisy diff because the rendering legitimately changed, the answer is to evaluate the diff manually, not to reverse-engineer the implementation to make the test small.
 
