@@ -386,6 +386,7 @@ BB36_2_INFO = [
     ("Growers",     "Matt & Oliver"),
     ("Washer",      "Three Blind Trichs"),
     ("Nose",        "VERY loud at cold nose; strong grape jam note, very fruity"),
+    ("Flavor",      "Top-tier — user rates vapor flavor among the best hash rosin they've had"),
 ]
 BB36_1_RUN1 = [
     Waypoint(time_s=0,  temp_f=380, note="Session open"),
