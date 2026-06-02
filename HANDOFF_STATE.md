@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 67 across 13 strains
+- **Total runs:** 68 across 13 strains
 - **Active since:** May 2, 2026 (31 days)
 - **Last run date:** June 1, 2026
 
@@ -166,13 +166,13 @@
 ---
 
 ### Blueberry 36 #2
-**2 sessions** &nbsp;·&nbsp; Last: June 1, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**3 sessions** &nbsp;·&nbsp; Last: June 1, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Repeat baseline on Run 3 — control load size, watch whether draw-2 harshness recurs
+**Next:** Try minimal load at 416°F on Run 5 — Run 4 already loaded large; go as light as the gooey consistency allows
 
-**Dab Notes:** Very tasty on the first draw that went to 30 seconds left. Just a hint of harshness showed up midway through second draw — harshness noticed before the cough. Didn't see the timer because the harshness coincided with a big terp cough, felt more like a choking sensation than irritation. Second draw had much thicker vapor than the wispy stuff yesterday, that was clear. I took a small third draw at 6 seconds left and kept drawing as it cooled down to 390 ish. The sapphire definitely holds heat longer than quartz. My throat is burning a bit still. Swabs were dark golden. I think the effect from this one is much bigger than yesterday — it's the same curve, so maybe load variation? It hit very hard.
+**Dab Notes:** Swabs were clean and dark gold. 3 draws, very tasty, a little bit of harshness started in end of draw 2. Stayed low level. Medium intensity. Incredible quality and taste — easily as good as any top tier rosin I've had, maybe better.
 
-**AI Analysis:** Run 2 introduced draw-2 harshness and a darker swab — but load wasn't controlled, and the thicker vapor and intensity step-up both point at a larger load as the primary variable. The condition for bumping to 420°F (wispiness + modest intensity persisting on Run 2) doesn't apply — Run 2 was thick and hit very hard. Don't go up. Next: repeat baseline on Run 3, deliberately matching Run 1's load size. If harshness recurs on draw 2 with a controlled load, that's a temperature signal and we step down. If clean, depletion was the driver. Watch swab color — two darker reads in a row with a controlled load would add weight to the temperature hypothesis.
+**AI Analysis:** Draw-2 harshness is now a two-run pattern (Run 2 midway, Run 3 end of draw 2). Load isolation as a controlled test is structurally off the table for this jar — gooey consistency makes precise loading impossible in either direction, so the pre-run 'controlled load → temperature signal' condition never applied. Load density is still the most likely driver: both likely-large-load runs produced draw-2 harshness; Run 1 with wispy vapor and moderate intensity did not. Temperature step-down is available if harshness becomes unwanted, but the load-size question is worth testing first. Run 4 is already loaded larger than normal — likely to replicate the pattern. On Run 5, go as light as the gooey consistency allows at 416°F to probe whether harshness tracks vapor density. If harshness drops or disappears, load is the driver. If it persists on a clearly lighter load, that's the temperature signal.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
