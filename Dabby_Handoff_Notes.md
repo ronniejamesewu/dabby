@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 1, 2026 — Session 86
+## Last updated: June 2, 2026 — Session 87
 
 ---
 
@@ -139,6 +139,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Trusting plan-doc claims about Python language behavior without verification.** Treat language-level claims (import semantics, attribute access, scoping) as hypotheses to verify on first run, not facts on the page. Session 71 confirmed instance: the archive refactor plan stated that re-calling `_resolve_accent_colors()` from the generator after reassigning `STRAIN_STATUS = ARCHIVED_STATUS + STRAIN_STATUS` would resolve colors against the combined list. False — Python functions bind globals to their defining module, so the function reads `Dabby_Data.STRAIN_STATUS` (active only) regardless of caller-side reassignment. Caught by a neutral-context plan review before execution; fix was to parameterize the function (`_resolve_accent_colors(strain_list=None)`) so the generator can pass the combined list explicitly. **Operational takeaway for non-trivial refactors: pass the plan through a clean-context reviewer (e.g., separate Claude.ai session) before executing.** Neutral reviewers don't share the plan author's blind spots and can catch Python-mechanics blockers that the author has stopped seeing.
 
 - **Asserting infrastructure/pipeline facts without reading the pipeline.** Before asserting how CI/deploy behaves, open the workflow files. Do not infer it from the step description.
+
+- **Deferring a user's stated observation to a future run instead of capturing it when given.** When the user reports something meaningful about a strain or session — quality, character, a notable detail — log it immediately in the current run's `dab_notes` and any appropriate strain-level fields. "We can add that in Run 4" or "we'll capture that in the strain profile later" is deferral. Log it now.
 
 - **Using ambiguous abbreviations in branch names.** "fb" reads as "Facebook" in some UIs. Use full strain abbreviations — "fembot", "hive1", "ms23", etc.
 
