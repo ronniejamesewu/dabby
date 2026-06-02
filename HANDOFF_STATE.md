@@ -170,7 +170,7 @@
 
 **Next:** Try minimal load at 416°F on Run 5 — Run 4 already loaded large; go as light as the gooey consistency allows
 
-**Dab Notes:** Swabs were clean and dark gold. 3 draws, very tasty, a little bit of harshness started in end of draw 2. Stayed low level. Medium intensity.
+**Dab Notes:** Swabs were clean and dark gold. 3 draws, very tasty, a little bit of harshness started in end of draw 2. Stayed low level. Medium intensity. Incredible quality and taste — easily as good as any top tier rosin I've had, maybe better.
 
 **AI Analysis:** Draw-2 harshness is now a two-run pattern (Run 2 midway, Run 3 end of draw 2). Load isolation as a controlled test is structurally off the table for this jar — gooey consistency makes precise loading impossible in either direction, so the pre-run 'controlled load → temperature signal' condition never applied. Load density is still the most likely driver: both likely-large-load runs produced draw-2 harshness; Run 1 with wispy vapor and moderate intensity did not. Temperature step-down is available if harshness becomes unwanted, but the load-size question is worth testing first. Run 4 is already loaded larger than normal — likely to replicate the pattern. On Run 5, go as light as the gooey consistency allows at 416°F to probe whether harshness tracks vapor density. If harshness drops or disappears, load is the driver. If it persists on a clearly lighter load, that's the temperature signal.
 
