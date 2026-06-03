@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 69 across 13 strains
+- **Total runs:** 70 across 13 strains
 - **Active since:** May 2, 2026 (32 days)
 - **Last run date:** June 2, 2026
 
@@ -166,19 +166,19 @@
 ---
 
 ### Blueberry 36 #2
-**4 sessions** &nbsp;·&nbsp; Last: June 2, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**5 sessions** &nbsp;·&nbsp; Last: June 2, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 5: minimal load at 416°F — hold result loosely given jar variability
+**Next:** Run 6: try 420°F endpoint — load ruled out as a variable
 
-**Dab Notes:** Very tasty, first draw ended at 404, please do the math on how many seconds. Second draw stayed tasty and developed harshness at very end, but it was very faint. Seemed wispy again. Third draw little more density then wispy again. Lots of reclaim in insert, dark gold on the swabs. Same great medium high creative chatty effects. High enough I want to be lounging.
+**Dab Notes:** I loaded as little as I could. It felt exactly the same as the last run. Dark golden swabs, slight harshness in the second draw that stayed at the slight level. lots of flavor. wispy vapor. lots of reclaim. i'm really wondering if we need faster ramp and higher hold for this strain. medium high intensity
 
-**AI Analysis:** Four runs in, this jar's variability — wispy on both likely-smaller and confirmed-larger loads, harshness on some larger-load runs but not others — means a controlled load test won't have clean read conditions. Proceed with minimal load on Run 5 as planned, but hold the result loosely: if vapor is still wispy and harshness stays faint, that's the strain's character across load sizes, not a load signal. Endpoint is a more controllable variable than load size on this jar — a modest bump to 418–420°F may be the cleaner experiment if load continues to be unreadable.
+**AI Analysis:** Load is off the table as a variable on this jar. Runs 4 and 5 closed that thread — very different loads, identical outcomes. Wispy vapor and draw-2 slight harshness are temperature and strain character, not load character. Two levers remain: endpoint temperature and ramp shape. User flagged "faster ramp, higher hold" — that's the right direction and matches the prior handoff note on a modest endpoint bump. Rather than testing both at once: try the same baseline ramp shape with a 420°F endpoint first. One variable, clean signal. If vapor density and harshness still don't move, then swap in the faster ramp. Hold the result loosely either way — this jar has earned skepticism toward any single run.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 10s → 400°F — Fast early climb
-- 20s → 416°F — Endpoint
-- 50s → 416°F — Hold
+- 20s → 420°F — Endpoint — up 4°F from baseline
+- 50s → 420°F — Hold
 
 ---
 

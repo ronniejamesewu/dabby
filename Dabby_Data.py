@@ -413,6 +413,13 @@ BB36_1_NEXT = [
     Waypoint(time_s=65, temp_f=410, note="Hold at 410°F"),
 ]
 
+BB36_2_RUN6_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=20, temp_f=420, note="Endpoint — up 4°F from baseline"),
+    Waypoint(time_s=50, temp_f=420, note="Hold"),
+]
+
 FW106_INFO = [
     ("Strain",      "Fire Water #106 (Firewood × Key Limeade — Umami Seed Co., seed hunted)"),
     ("Consistency", "Cold cure badder"),
@@ -933,6 +940,14 @@ COMPLETED_RUNS = [
         dab_notes="Very tasty, first draw ended at 404, please do the math on how many seconds. Second draw stayed tasty and developed harshness at very end, but it was very faint. Seemed wispy again. Third draw little more density then wispy again. Lots of reclaim in insert, dark gold on the swabs. Same great medium high creative chatty effects. High enough I want to be lounging.",
         analysis="Larger-than-normal load, baseline curve, Rig 5, first dab of the day. Prediction from Session 87 was that a larger load would replicate the draw-2 harshness from Runs 2–3; instead, harshness was very faint and only at the very end of draw 2. Wispy vapor throughout and lots of reclaim — but Run 2 (same curve, also larger load) produced explicitly thick vapor and clear harshness, so load size doesn't explain the difference; and wispy has appeared on both Run 1 (likely smaller load) and Run 4, so it doesn't track load size cleanly either. This jar has enough run-to-run variability in vapor density and harshness that the inputs driving any given result are hard to isolate. Swab dark gold, consistent with phenotype character. Intensity medium high, familiar creative-chatty effects.",
     ),
+    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 2), sessions_prior_today=1, utc_logged_at=datetime(2026, 6, 3, 3, 5, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+        duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve; minimal load',
+        swab="Dark golden.",
+        session_char="2 draws; slight harshness in draw 2, stayed slight; lots of flavor; wispy vapor; lots of reclaim.",
+        intensity="Medium high.",
+        dab_notes="I loaded as little as I could. It felt exactly the same as the last run. Dark golden swabs, slight harshness in the second draw that stayed at the slight level. lots of flavor. wispy vapor. lots of reclaim. i'm really wondering if we need faster ramp and higher hold for this strain. medium high intensity",
+        analysis="Minimal load, baseline curve, second dab of the day. User's own read: \"felt exactly the same as Run 4.\" The run confirms it — dark golden swabs, slight draw-2 harshness staying slight, wispy vapor, lots of reclaim, medium high intensity. Load size did not move the needle: Run 4 (larger-than-normal load) and Run 5 (minimal) produced the same vapor character and harshness profile. The vapor density hypothesis is closed for this jar. Wispy vapor and draw-2 harshness are not load-driven. Dark golden swab with lots of reclaim is consistent across all five runs — phenotype character, not a floor signal.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -992,12 +1007,12 @@ STRAIN_STATUS = [
         next_ai_analysis="Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.",
         next_waypoints=BB36_1_NEXT,
     ),
-    StrainStatus(name="Blueberry 36 #2",                  profile_anchor="#bb362-profile",    next_text="Run 5: minimal load at 416°F — hold result loosely given jar variability", accent=None, slug="bb362",
+    StrainStatus(name="Blueberry 36 #2",                  profile_anchor="#bb362-profile",    next_text="Run 6: try 420°F endpoint — load ruled out as a variable", accent=None, slug="bb362",
         info=BB36_2_INFO,
         terpene_note="<strong>Terpene inference:</strong> Myrcene inferred from Blueberry-type character (lineage unconfirmed — Higher Ground Seed Bank, not DJ Short confirmed); caryophyllene and alpha-pinene as secondaries. See <a href=\"#terpene-ref\">Terpene Reference</a>.",
-        next_dab_notes="Very tasty, first draw ended at 404, please do the math on how many seconds. Second draw stayed tasty and developed harshness at very end, but it was very faint. Seemed wispy again. Third draw little more density then wispy again. Lots of reclaim in insert, dark gold on the swabs. Same great medium high creative chatty effects. High enough I want to be lounging.",
-        next_ai_analysis="Four runs in, this jar's variability — wispy on both likely-smaller and confirmed-larger loads, harshness on some larger-load runs but not others — means a controlled load test won't have clean read conditions. Proceed with minimal load on Run 5 as planned, but hold the result loosely: if vapor is still wispy and harshness stays faint, that's the strain's character across load sizes, not a load signal. Endpoint is a more controllable variable than load size on this jar — a modest bump to 418–420°F may be the cleaner experiment if load continues to be unreadable.",
-        next_waypoints=BASELINE_CURVE,
+        next_dab_notes="I loaded as little as I could. It felt exactly the same as the last run. Dark golden swabs, slight harshness in the second draw that stayed at the slight level. lots of flavor. wispy vapor. lots of reclaim. i'm really wondering if we need faster ramp and higher hold for this strain. medium high intensity",
+        next_ai_analysis="Load is off the table as a variable on this jar. Runs 4 and 5 closed that thread — very different loads, identical outcomes. Wispy vapor and draw-2 slight harshness are temperature and strain character, not load character. Two levers remain: endpoint temperature and ramp shape. User flagged \"faster ramp, higher hold\" — that's the right direction and matches the prior handoff note on a modest endpoint bump. Rather than testing both at once: try the same baseline ramp shape with a 420°F endpoint first. One variable, clean signal. If vapor density and harshness still don't move, then swap in the faster ramp. Hold the result loosely either way — this jar has earned skepticism toward any single run.",
+        next_waypoints=BB36_2_RUN6_NEXT,
     ),
     StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Try 460°F ramp endpoint as first dab of the day — probe headroom above 416°F", accent=None, slug="fw106",
         info=FW106_INFO,
