@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 2, 2026 — Session 88
+## Last updated: June 2, 2026 — Session 89
 
 ---
 
