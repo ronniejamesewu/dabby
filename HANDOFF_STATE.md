@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 71 across 13 strains
+- **Total runs:** 72 across 13 strains
 - **Active since:** May 2, 2026 (33 days)
 - **Last run date:** June 3, 2026
 
@@ -166,19 +166,19 @@
 ---
 
 ### Blueberry 36 #2
-**5 sessions** &nbsp;·&nbsp; Last: June 2, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**6 sessions** &nbsp;·&nbsp; Last: June 3, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 6: try 420°F endpoint — load ruled out as a variable
+**Next:** Run 7: repeat 8s ramp to 420°F — confirm Run 6 swab and vapor improvement
 
-**Dab Notes:** I loaded as little as I could. It felt exactly the same as the last run. Dark golden swabs, slight harshness in the second draw that stayed at the slight level. lots of flavor. wispy vapor. lots of reclaim. i'm really wondering if we need faster ramp and higher hold for this strain. medium high intensity
+**Dab Notes:** Swabs were beige, very clean. And not a lot of reclaim. Vapor was thick from the start. Flavor was nice. Harshness at end of second draw, didn't increase a lot on short third draw. Never tasted toasted. Big effect after the OC earlier. I'm feeling rocked right now. Switching strains seems to lead to bigger effect than returning to same strain.
 
-**AI Analysis:** Load is off the table as a variable on this jar. Runs 4 and 5 closed that thread — very different loads, identical outcomes. Wispy vapor and draw-2 slight harshness are temperature and strain character, not load character. Two levers remain: endpoint temperature and ramp shape. User flagged "faster ramp, higher hold" — that's the right direction and matches the prior handoff note on a modest endpoint bump. Rather than testing both at once: try the same baseline ramp shape with a 420°F endpoint first. One variable, clean signal. If vapor density and harshness still don't move, then swap in the faster ramp. Hold the result loosely either way — this jar has earned skepticism toward any single run.
+**AI Analysis:** Repeat this exact curve (8s ramp to 420°F, 40s session) to confirm before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 confirms, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
-- 10s → 400°F — Fast early climb
-- 20s → 420°F — Endpoint — up 4°F from baseline
-- 50s → 420°F — Hold
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint — 8s ramp; up 4°F from baseline
+- 40s → 420°F — Hold
 
 ---
 
