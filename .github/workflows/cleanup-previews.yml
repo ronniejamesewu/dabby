@@ -1,0 +1,83 @@
+name: Cleanup Stale Previews
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # daily at 6 AM UTC
+  workflow_dispatch:      # allow manual trigger for testing
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Remove closed PR previews
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+
+            const previewDir = 'preview';
+            if (!fs.existsSync(previewDir)) {
+              console.log('No preview directory found — nothing to do.');
+              return;
+            }
+
+            const dirs = fs.readdirSync(previewDir);
+            if (dirs.length === 0) {
+              console.log('Preview directory is empty — nothing to do.');
+              return;
+            }
+
+            execSync('git config user.name "github-actions[bot]"');
+            execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
+
+            let removed = [];
+            let skipped = [];
+
+            for (const dir of dirs) {
+              const match = dir.match(/^pr-(\d+)$/);
+              if (!match) {
+                console.log(`Skipping unexpected entry: preview/${dir}`);
+                continue;
+              }
+
+              const prNumber = parseInt(match[1]);
+              let state;
+
+              try {
+                const pr = await github.rest.pulls.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                });
+                state = pr.data.state;
+              } catch (e) {
+                // PR not found — treat as closed
+                state = 'not found';
+              }
+
+              if (state !== 'open') {
+                console.log(`PR #${prNumber}: ${state} — removing preview/pr-${prNumber}`);
+                execSync(`git rm -rf preview/pr-${prNumber}`);
+                removed.push(prNumber);
+              } else {
+                console.log(`PR #${prNumber}: open — skipping`);
+                skipped.push(prNumber);
+              }
+            }
+
+            console.log(`\nSummary: removed ${removed.length} (${removed.join(', ') || 'none'}), skipped ${skipped.length} open PRs.`);
+
+            if (removed.length > 0) {
+              const msg = `Remove stale previews for closed PRs: ${removed.map(n => '#' + n).join(', ')}`;
+              execSync(`git commit -m "${msg}"`);
+              execSync('git push');
+            } else {
+              console.log('Nothing to commit.');
+            }
