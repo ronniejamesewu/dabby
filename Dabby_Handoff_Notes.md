@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 3, 2026 — Session 91
+## Last updated: June 4, 2026 — Session 91
 
 ---
 
@@ -87,6 +87,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - `_ACCENT_RESOLVED` and `_resolve_accent_colors` both require an explicit `from Dabby_Data import _ACCENT_RESOLVED, _resolve_accent_colors` line in the generator alongside the wildcard import — underscore names skip wildcard import. Do not delete the explicit import line "to clean up the duplication" — it is load-bearing. The generator calls `_resolve_accent_colors(STRAIN_STATUS)` after combining `ARCHIVED_STATUS + STRAIN_STATUS` so colors distribute across the full combined list, not just active strains.
 - `DABBY_ARCHITECTURE.md` is a committed living **proposed plan** — not settled architecture, not "do not re-litigate," and not a throwaway planning doc. Keep and update it as steps complete; do not delete it; do not treat it as settled.
 - `STRAIN_STATUS` badge fields (`badge_class`, `badge_text`) are gone — do not add them back. Do not revert to tuple form.
+- Deploy race condition fix (Session 91): preview cleanup was removed from `preview.yml` and replaced with a daily scheduled `cleanup-previews.yml` workflow. Do not add cleanup back to `preview.yml` — the race between `pull_request: closed` and `push: main` is why it was moved. Preview directories are cleaned up within 24 hours by the scheduled workflow; that delay is acceptable.
 - Run `analysis` lives on `CompletedRun`, is frozen and historically stable. Correctable by exception when genuinely wrong; never casually overwritten when thinking changes. Revisions to current strategy go to `StrainStatus.next_ai_analysis`, not into a prior run's frozen `analysis`.
 - Current "What to Try Next" renders from revisable `StrainStatus` fields (`next_dab_notes`, `next_ai_analysis`, `next_waypoints`) — not derived from any run's frozen `analysis`.
 - Dashboard temp stat cards (avg open, avg endpoint, most time spent) confirmed correct in Session 53 — linear interpolation into 5°F buckets, computed fresh from `COMPLETED_RUNS` each generate. Do not re-audit.
@@ -173,8 +174,6 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed twice (Sessions 15, 27, and this session). A hook runs before the first turn and can't be bypassed by an attention-grabbing opening message. Tradeoff: Dabby_Data.py is ~915 lines of context overhead on every session start (still 2-chunk; Phase 2 of the archive will drop this further). Revisit when the skipped-read failure recurs or becomes costly.
 
 - **Out-of-session commits can leave gh-pages stale after subsequent PR merges** — if a run is committed and pushed to main between Claude sessions (outside the PR workflow), the deploy fires from that state. Subsequent PR merges trigger new deploys, but these can land in a sequencing order where the root index.html doesn't update cleanly (intermediate deploy wins). Recovery: push an empty commit to main (`git commit --allow-empty -m "Trigger redeploy"`) to fire a fresh deploy from the current HEAD.
-
-- **Deploy race condition — structural fix pending** — when a PR is merged, the `push` (to main, triggering Deploy) and `pull_request` `closed` (triggering Preview cleanup) events fire at the same millisecond. Both workflows enter the `gh-pages` concurrency group; `cancel-in-progress: false` only protects *running* workflows, not *pending* ones. The cleanup workflow, being newer, cancels the pending Deploy and runs first. The subsequent GitHub Pages build deploys the cleanup state, not the new content. **The failure is nearly silent**: no red-X CI failure appears — the Deploy run simply shows as cancelled, easy to miss on a quick scan. The site silently serves stale content, and the failure is only noticed later when prod doesn't reflect the merged changes. Recovery: empty commit to main. Structural fix: merge Deploy and Preview cleanup into one workflow — Deploy runs first, cleanup runs as a second job after it, eliminating the simultaneous-trigger race entirely. Session 89.
 
 - **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Reviewed June 4, 2026 — keeping the step.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
