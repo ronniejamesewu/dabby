@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 4, 2026 — Session 91
+## Last updated: June 4, 2026 — Session 92
 
 ---
 
@@ -44,6 +44,16 @@ When the count is greater than zero, state it matter-of-factly ("3rd dab of the 
 Every claim in `analysis` must trace to one of: (a) what the user reported this session, (b) prior run history for this strain, or (c) the wisdom layer — cross-strain patterns and equipment observations. Before drawing on (b) or (c), check per-run `EquipmentConfig`: if equipment differs across compared runs, flag it as a confound rather than asserting the comparison. Match confidence to evidence: "user reported X" for single-session observations; "consistent with Run N" for single corroboration; "pattern across runs X/Y/Z" for confirmed patterns. A hypothesis in `dab_notes` — whether from the initial dump or a conversational aside — is treated as "user suggested X" at single-data-point weight. It does not become a working position in `analysis` until subsequent runs test and support it.
 
 A run that doesn't follow the prior suggestion is more data, not a deviation. What to Try Next tracks accumulated state of understanding, not prescriptions.
+
+**Epistemics of the Log**
+
+*Applies during reading and synthesis throughout the session — not only at logging time.*
+
+The log is a noisy, uncontrolled system — load size can't be precisely controlled, many variables shift between runs, and session order, tolerance, and material batch all interact. That isn't a limitation to overcome; it's the nature of observational logging. Pattern recognition in noisy systems generates real value: directional intuitions and strong priors that guide better decisions, even without the certainty that controlled experiments produce.
+
+When the user's accumulated sense of their own system points somewhere unexpected — a deviation from the planned run, an observation that doesn't fit prior patterns — that intuition deserves weight in analysis. It's built from experiencing every run in ways the data can't fully capture. Curiosity about surprising results is more useful than forcing them into existing patterns or dismissing them as noise.
+
+The limit is what can be concluded. Two layers of uncertainty exist in every analysis: (1) whether a pattern is real, and (2) whether the inferred mechanism is correct. The log can address (1) directionally across enough runs; it generally cannot address (2), which requires controlled isolation this setup can't provide. Analysis language must not collapse these layers — 'consistent with' and 'plausible' are the honest framings at any confidence level. The right question after every run is 'what does this update?' not 'what does this confirm?'
 
 **`endpoint_note` (per-run record, `CompletedRun.endpoint_note`):** AI-authored inline HTML describing the curve's key characteristic — endpoint temperature, shape note, and optionally a cross-run comparison. Rendered on the Mode line as its third segment. Use `<strong>` labels; convention from Step 3 migration:
 - Ramp runs: `'<strong>Endpoint:</strong> 430°F'` + optional note (e.g. `'— same as Run 1'`, `'— down 10°F from prior runs'`)
@@ -167,6 +177,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Architecting the implementation to pass a self-imposed verification check.** Session 71: the archive refactor plan included a diff oracle ("one known intentional diff against committed `index.html`"). When the actual diff came back at 383 lines because the combined-list reordering shifted auto-assigned accent colors, the reflex was to assign explicit hex accent values to all ten strains to make the diff small again. User caught it: "these colors were auto-assigned, they don't hold any meaning. why do we need to retain them? to pass a test we designed?" Correct. The colors are deterministic output of a function that distributes hues across non-green space — they have no semantic meaning. The diff oracle was the wrong verification framing for a refactor that legitimately changes rendering (color distribution, render order). Lesson: verification checks must target content correctness, not output stability. When a test produces a noisy diff because the rendering legitimately changed, the answer is to evaluate the diff manually, not to reverse-engineer the implementation to make the test small.
 
+- **Over-claiming certainty in analysis language.** Using 'confirmed,' 'established,' or 'the data shows' for patterns that are consistent with hypotheses but not proven. The appropriate framing at any confidence level: 'consistent with,' 'plausible,' 'directional support for.' Even multi-strain patterns don't confirm — they survive disconfirmation. Each run updates priors; no run closes questions.
+
 ---
 
 ## Backlog
@@ -189,3 +201,4 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Dashboard: style Next pill in strain accent color** — Last pill removed (Session 53). Next pill still uses default styling; consider accent color.
 - **Dashboard: time-of-day stat cards** — built in Session 53. Three cards: ☀️ earliest dab, 🌙 latest dab, ⏰ average first dab of the day. Computed from `utc_logged_at` only — 13 of 33 runs, all May 11+. Git commit timestamps for the 20 None runs were ruled out (most were retroactive backfill, not real-time logging). Cards will fill in naturally as logging continues.
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent.
+- **Audit existing run analyses for overclaiming language** — Review `COMPLETED_RUNS` (and archived runs if needed) for 'confirmed,' 'established,' and similar language that overstates pattern certainty. Replace with 'consistent with,' 'directional support for,' or equivalent. Low urgency — the failure mode is now documented; this is a cleanup pass.
