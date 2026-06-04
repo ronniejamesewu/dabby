@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 2, 2026 — Session 89
+## Last updated: June 3, 2026 — Session 90
 
 ---
 
@@ -174,7 +174,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Deploy race condition — structural fix pending** — when a PR is merged, the `push` (to main, triggering Deploy) and `pull_request` `closed` (triggering Preview cleanup) events fire at the same millisecond. Both workflows enter the `gh-pages` concurrency group; `cancel-in-progress: false` only protects *running* workflows, not *pending* ones. The cleanup workflow, being newer, cancels the pending Deploy and runs first. The subsequent GitHub Pages build deploys the cleanup state, not the new content. **The failure is nearly silent**: no red-X CI failure appears — the Deploy run simply shows as cancelled, easy to miss on a quick scan. The site silently serves stale content, and the failure is only noticed later when prod doesn't reflect the merged changes. Recovery: empty commit to main. Structural fix: merge Deploy and Preview cleanup into one workflow — Deploy runs first, cleanup runs as a second job after it, eliminating the simultaneous-trigger race entirely. Session 89.
 
-- **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Revisit around June 4, 2026 whether to keep or remove this step.
+- **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Reviewed June 4, 2026 — keeping the step.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **Comedian's set (end-of-jar and single-session)** — Two formats:
