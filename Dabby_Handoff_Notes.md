@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 3, 2026 — Session 90
+## Last updated: June 3, 2026 — Session 91
 
 ---
 
@@ -96,6 +96,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - Auto-assigned accent colors do not need to be stable across refactors. They are deterministic output of `_resolve_accent_colors()` — a hue distribution function with no semantic meaning. When list length or order changes (new strain added, jar archived), colors redistribute. Do not engineer explicit hex assignment to stabilize them unless the user requests it for a real reason (brand identity, accessibility). Session 71.
 - HTML diff against `git show main:index.html` is a structural check, not a correctness oracle. Useful for spotting unintended content changes on a run-logging commit. NOT useful as the only verification on a refactor that legitimately changes rendering — color distribution, render order, removed features all produce noisy diffs that don't indicate bugs. For refactor verification, check content directly: run counts in active vs. archived; specific strain sections render; preserved-run ordering; presence/absence of intentionally removed blocks. Session 71.
 - `terpene_table_rows` / `terpene_table_note` removal (Session 71) was correct and is documented in `DABBY_ARCHITECTURE.md` → Removed Capabilities. The generic cannabis palette rendered as strain-specific contradicted the epistemic flags in CLAUDE.md (terpene profiles inferred, not measured). Do not restore unless a strain ships with genuinely measured terpene data; re-add path is in the architecture doc.
+- Variable isolation is a valuable analytical tool, not a rigid rule. For finite jars, the user's intuition built from accumulated data is a valid directional signal alongside the data patterns. The goal is to generate enough signal for pattern recognition to work — not to exhaust the jar on methodical isolation whose conclusions wouldn't change the next step. Session 91.
 
 ---
 
@@ -184,7 +185,6 @@ Run logging assumes equipment continuity from the most recent run. The default e
   - *Both formats:* Don't riff on premises the user taught you as if you discovered them. Edge comes from saying the true thing plainly without softening — not from profanity, which is available when it's genuinely funnier but won't manufacture edge that isn't in the material. Edgier beats charming. Tight 4 minutes beats 5. First-person self-implication (Claude mocking its own meticulous uselessness alongside the user) is the right voice.
 - **Rolling run archive — Phase 2 (rolling window cap)** — Phase 1 (jar-done archive) shipped in PR #109: closed jars now live in `Dabby_Archive.py`, generator combines both at import time, `Dabby_Data.py` dropped from 1,230 to 915 lines. Phase 2 adds a hard cap regardless of jar status: a `ROLLING_WINDOW` constant in `Dabby_Data.py` and a console notice in `build_html()` when active runs exceed it, plus a manual migration rule at session close. Design and execution details (including correctness traps — e.g. why the window check must use `len(Dabby_Data.COMPLETED_RUNS)` rather than a list comprehension with `set(ARCHIVED_RUNS)`) live in `C:\Users\user-1\.claude\plans\yes-but-why-not-hazy-hippo.md`. Implement when active runs approach the read-tool cap (~784 lines / ~25K tokens), or when a single jar accumulates enough runs to push the file there.
 
-- **THC boil-off vs. harshness trade-off** — higher endpoints complete more THC vaporization but produce tail harshness. Worth thinking through whether there's a way to characterize the trade-off empirically across strains, or whether it just becomes a preference call.
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
 - **Control water temperature and change frequency as variables** — standardize practice and log it.
 - **Dashboard: style Next pill in strain accent color** — Last pill removed (Session 53). Next pill still uses default styling; consider accent color.
