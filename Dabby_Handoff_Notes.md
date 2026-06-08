@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 5, 2026 — Session 93
+## Last updated: June 7, 2026 — Session 94
 
 ---
 
@@ -117,7 +117,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Narrating instead of proposing.** Presenting an interpretation or plan and then immediately executing is not confirmation — it is narration with extra steps. This applies to all actions: editing files, running the generator, committing, updating methodology or collaboration notes. The correct behavior is always: present the plan, ask for approval or corrections, wait for a response, then act.
 
-- **Not reading the required files at session start.** CLAUDE.md explicitly requires reading `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`, and `Dabby_Data.py` before taking any action. This was skipped in Session 15 and again in Session 27 — both times because the user's opening message pointed to a specific file and the startup sequence was bypassed. Read all four required files before responding to any request, every session, regardless of what the opening message asks.
+- **Not reading the required files at session start.** CLAUDE.md explicitly requires reading `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`, and `Dabby_Data.py` before taking any action. This was skipped in Sessions 15, 27, and 94 — each time because the user's opening message pointed to a specific task and the startup sequence was bypassed. Read all four required files before responding to any request, every session, regardless of what the opening message asks.
 
 - **Treating product format names as strain names.** "Persy Neapolitan" is a 710 Labs product type (three-strain cold-cure jar). The strain name is the component strains listed on the jar. When a user hands you a product description, check whether the product name and the strain name are the same thing before logging.
 
