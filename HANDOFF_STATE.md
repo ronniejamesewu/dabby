@@ -187,9 +187,9 @@
 
 **Next:** Run 15: 8s ramp to 420°F, normal load — vapor density vs. throat-heat test
 
-**Dab Notes:** Very beige swabs with lots reclaim. I think I loaded too much, but it's kind of gooey. Very tasty throughout, harshness in throat at 5 sec left. Effects feel pretty intense right now. Paranoia and somatic stuff coming on. Hypothesis: harshness is some sort of heat accumulation in the throat — this has been my experience.
+**Dab Notes:** Very beige swabs with lots reclaim. I think I loaded too much, but it's kind of gooey. Very tasty throughout, harshness in throat at 5 sec left. Effects feel pretty intense right now. Paranoia and somatic stuff coming on. Hypothesis: harshness is some sort of heat accumulation in the throat — this has been my experience. Not just building over a run — building over a longer timeframe.
 
-**AI Analysis:** 420°F isn't confirmed clean independent of load — Run 14's tail harshness came with material remaining and only 2 draws, which depletion can't explain. Run 15: repeat the 8s ramp to 420°F, 2 draws, with a deliberately normal/light load. This now does double duty: if a lighter load runs clean to the tail, vapor density was driving it and 420°F is the operating point; if tail harshness persists at the same curve and duration, that supports the throat-heat-accumulation read (load-independent thermal dose) and points the lever at a shorter session or lower endpoint rather than load.
+**AI Analysis:** 420°F isn't confirmed clean independent of load — Run 14's tail harshness came with material remaining and only 2 draws, which depletion can't explain. Run 15: repeat the 8s ramp to 420°F, 2 draws, with a deliberately normal/light load. This does double duty: if a lighter load runs clean to the tail, vapor density was driving it and 420°F is the operating point; if tail harshness persists at the same curve and duration, that supports the throat-heat-accumulation read (load-independent thermal dose) and points the lever at a shorter session or lower endpoint rather than load. The user's longer-timeframe framing adds a separate probe: a first dab taken after a day or more off would test whether harshness eases once multi-day throat load has decayed — worth grabbing opportunistically rather than scheduling.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
