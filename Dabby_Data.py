@@ -454,6 +454,19 @@ FW106_RAMP460 = [
     Waypoint(time_s=25, temp_f=430, note="Mid ascent"),
     Waypoint(time_s=50, temp_f=460, note="Endpoint — 460°F at the very end"),
 ]
+FW106_RAMP460_40S = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=5,  temp_f=400, note="Fast early climb"),
+    Waypoint(time_s=25, temp_f=430, note="Mid ascent"),
+    Waypoint(time_s=30, temp_f=430, note="Brief hold at 430°F"),
+    Waypoint(time_s=40, temp_f=460, note="Endpoint — programmed; actual peak estimated high 440s (sapphire thermal lag)"),
+]
+FW106_FASTER_420 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=420, note="Endpoint — 8s ramp; up 4°F from operating point"),
+    Waypoint(time_s=40, temp_f=420, note="Hold"),
+]
 
 WATERMELLOS_INFO = [
     ("Strain",      "Watermellos ((Melonade × Gushers) × Purple Ice Water)"),
@@ -984,6 +997,30 @@ COMPLETED_RUNS = [
         dab_notes="Swabs were beige, very clean. And not a lot of reclaim. Vapor was thick from the start. Flavor was nice. Harshness at end of second draw, didn't increase a lot on short third draw. Never tasted toasted. Big effect after the OC earlier. I'm feeling rocked right now. Switching strains seems to lead to bigger effect than returning to same strain.",
         analysis="Two variables changed simultaneously — 8s ramp (vs baseline's 20s) and 420°F endpoint (vs 416°F) — so neither can be isolated as the driver. The results shifted clearly on three dimensions: swab went from dark golden on every prior run to beige, reclaim dropped from 'lots' to 'not a lot,' and vapor was thick from the start rather than wispy. All three prior-run patterns reversed in the same direction. The draw-2 harshness persisted — end of second draw, didn't escalate much on a short third — consistent with all five prior runs. No floor signal at 420°F (never tasted toasted). Intensity was big, but this was the second dab after OC on a different strain — the cross-strain confound is the user's own framing, held appropriately loosely.",
     ),
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 6, 5), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 5, 17, 42, tzinfo=timezone.utc), equipment=RIG_5, waypoints=FW106_RAMP460_40S,
+        too_hot=True, duration_seconds=40, endpoint_note='<strong>Endpoint:</strong> 460°F programmed — actual peak estimated high 440s (sapphire thermal lag)',
+        swab="Light gold — surprisingly light given toasty session character.",
+        session_char="Very harsh second draw; big clouds of vapor; heavy coughing. Toasty taste; hot in throat afterward.",
+        intensity="Very high.",
+        dab_notes="very harsh in second draw, big clouds of vapor, lots of coughing, big effects. Swabs were surprisingly light gold, I would have expected darker. Very tasty! But the coughing is nuts. It was hot and tasted toasty for sure. Definitely hot in that afterward.",
+        analysis="First attempt at the 460°F ramp endpoint on Rig 5. The programmed curve arrives at 460°F at exactly 40s — the session terminus, with no hold at that temperature. The sapphire insert's higher thermal mass lagged the programmed setpoint: estimated actual temperature at terminus was in the high 440s rather than 460°F. Despite falling short of 460°F, the session was clearly above the ceiling: toasty taste, harsh second draw, heavy coughing, hot aftermath. The 'toasty' character distinguishes this from terpene-load cough — it's thermal degradation, not vapor overwhelm. Swab came back light gold, consistent with Rig 5's lighter-than-expected swab pattern, but the session character is the operative signal here. Light swab against toasty session is a new combination in the log — sapphire may leave less residue at elevated temperatures even while delivering hot vapor. Very high intensity, consistent with more complete vaporization at higher temperature. Replicated identically on Run 12.",
+    ),
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 6, 5), sessions_prior_today=1, utc_logged_at=datetime(2026, 6, 5, 20, 15, tzinfo=timezone.utc), equipment=RIG_5, waypoints=FW106_RAMP460_40S,
+        too_hot=True, duration_seconds=40, endpoint_note='<strong>Endpoint:</strong> 460°F programmed — actual peak estimated high 440s (sapphire thermal lag) — same as Run 11',
+        swab="Light gold — same as Run 11.",
+        session_char="Identical result to Run 11: very harsh second draw, big clouds, heavy coughing, toasty taste, hot afterward.",
+        intensity="Very high.",
+        dab_notes="Same result as Run 11 — very harsh in second draw, big clouds of vapor, lots of coughing. Very tasty but toasty, hot in throat afterward. Very high intensity.",
+        analysis="Same curve, second dab of the day — identical result to Run 11. Two consecutive confirming runs at the high-440s zone on this ramp: above FW106's clean zone on Rig 5. Session order (2nd dab) could amplify harshness perception, but 'toasty' is a flavor signal, not a harshness threshold — it confirms the material reached above its clean vaporization zone regardless of airway sensitization. The ramp-to-460°F experiment is closed on Rig 5: the sapphire can't reach the programmed 460°F at the 40s terminus, and the high 440s it does reach is above the ceiling.",
+    ),
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 6, 5), sessions_prior_today=2, utc_logged_at=datetime(2026, 6, 6, 0, 45, tzinfo=timezone.utc), equipment=RIG_5, waypoints=FW106_FASTER_420,
+        duration_seconds=40, endpoint_note='<strong>Endpoint:</strong> 420°F — 8s ramp; up 4°F from operating point',
+        swab="Beige.",
+        session_char="Very tasty; hot at end of draw 3.",
+        intensity="Medium-high.",
+        dab_notes="beige looking swabs. Very tasty. Got hot at the end but I recommend re-running this one again. 3 draws, medium high intensity.",
+        analysis="Stepped back to the fast ramp shape at 420°F (8s to endpoint, 40s session) — same curve shape as FW106_FASTER but endpoint raised 4°F from the operating point. Beige swab, consistent with Rig 5's FW106 pattern. Very tasty — full flavor recovery after Runs 11–12's toasty character. Three draws with hot character at the end of draw 3, consistent with the confirmed depletion pattern: 2-draw ceiling on Rig 5 at these temperatures, draw 3 triggers harshness. Tail harshness is consistent with the depletion pattern rather than an endpoint signal, though session order (third dab) is an unresolved confound. Intensity medium-high on the third dab of the day. The contrast with Runs 11–12 is the key read: same rig, same session day — 420°F fast ramp was very tasty in the clean zone; high 440s was not. Worth confirming at 2 draws to separate draw count from the endpoint bump.",
+    ),
 ]
 
 STRAIN_STATUS = [
@@ -1050,12 +1087,12 @@ STRAIN_STATUS = [
         next_ai_analysis="Repeat this exact curve (8s ramp to 420°F, 40s session) to confirm before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 confirms, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.",
         next_waypoints=BB36_2_RUN6,
     ),
-    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Try 460°F ramp endpoint as first dab of the day — probe headroom above 416°F", accent=None, slug="fw106",
+    StrainStatus(name="Fire Water #106", profile_anchor="#fw106-profile", next_text="Run 14: repeat 8s ramp to 420°F, 2 draws — confirm clean zone", accent=None, slug="fw106",
         info=FW106_INFO,
         terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="very tasty larger load. 2 draws. no harshness. lots of light gold reclaim on swabs. medium intensity. fell asleep.",
-        next_ai_analysis="Run 4's session-order question is resolved — Run 6 (first dab, same setup) was clean, confirming accumulated airway exposure drove Run 4's exhale harshness, not the setup. Operating point confirmed: FW106_FASTER, Rig 5, 2 draws, larger load, 416°F is clean across the full day. Next: 460°F endpoint as first dab of the day, 2-draw limit, larger load. 440°F flat hold (Run 5) was harsh at ~28s — a ramped approach to 460°F is untested and worth a clean first-dab read to see what headroom exists above 416°F. Keep the 2-draw limit so draw count doesn't confound the endpoint read. Other experiments in the queue: extend session to 50s at 416°F (intensity fades quickly — may be a session-length effect), or step up incrementally to 418–420°F before going to 460.",
-        next_waypoints=FW106_RAMP460,
+        next_dab_notes="beige looking swabs. Very tasty. Got hot at the end but I recommend re-running this one again.",
+        next_ai_analysis="Run 13 (fast ramp to 420°F, 3 draws) was very tasty with depletion-only tail harshness on draw 3 — draw-count pattern, not an endpoint signal. Repeat at 2 draws to confirm 420°F is clean independent of draw count. If clean, 420°F fast ramp is confirmed above the 416°F operating point. The ramp-to-460°F experiment (Runs 11–12) is closed: sapphire thermal lag prevented reaching 460°F in 40s, and the high 440s it reached was above the ceiling on both runs.",
+        next_waypoints=FW106_FASTER_420,
     ),
     StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 10: ascending ramp to 420°F (380→400→420, hold to 50s) as first dab — clean read vs. the descent run", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
