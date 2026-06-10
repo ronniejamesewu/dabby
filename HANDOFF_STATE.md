@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 79 across 13 strains
+- **Total runs:** 80 across 13 strains
 - **Active since:** May 2, 2026 (39 days)
 - **Last run date:** June 9, 2026
 
@@ -200,13 +200,13 @@
 ---
 
 ### Watermellos
-**10 sessions** &nbsp;·&nbsp; Last: June 9, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**11 sessions** &nbsp;·&nbsp; Last: June 9, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 11: fast 8s ramp to 420°F, 2-draw limit — confirm operating point and flavor character
+**Next:** Run 12: fast 8s ramp to 420°F, 2 draws only (no second cycle) — isolate swab shift from extended session heat
 
-**Dab Notes:** First draw to about 21 seconds left. Almost no vapor. Tasted the mildewy taste. Second draw was only about 5 seconds and then I tasted some pine sol and coughed. So third draw finished it. In third draw I tasted some toasted flavors. I had sense there was more so I reran the cycle and did indeed get a nice two more draws that were somehow less toasted and less harsh. What! Beige swabs, intense high. No post-session throat soreness.
+**Dab Notes:** Dark golden swabs, ran it two cycles two draws each. Harshness at end of draw 2 and throughout draws 3 and 4. Pretty mild. More than anything I think it points to substandard quality of the rosin. Hit really hard.
 
-**AI Analysis:** Repeat the fast 8s ramp to 420°F with a deliberate 2-draw limit. The toasted draw 3 follows the established Rig 5 depletion ceiling — cutting at 2 draws removes it. Two draws also gives the cleanest read on whether the wispy opening and the mildewy/pine sol flavor character are consistent WM traits at this setup. If it comes in clean at 2 draws, the fast ramp at 420°F is confirmed as the operating point.
+**AI Analysis:** Run 11 introduced a swab shift — dark golden where WM has been consistently beige on Rig 5 across Runs 2–10. Run 12: same fast ramp to 420°F, 2 draws only, no second cycle. If swab comes back to beige at 2 draws, the dark golden on Run 11 was extended-session-heat driven (the second cycle kept the insert hot longer). If it stays dark golden on 2 draws, the user's quality-shift read has more support and the material itself is likely changing as the jar ages.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
