@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 8, 2026 — Session 95
+## Last updated: June 9, 2026 — Session 96
 
 ---
 
@@ -81,7 +81,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 3. Get explicit user confirmation before adding it to `Dabby_Data.py`.
 4. Then log the run using the new constant.
 
-**Session-open soft check:** If the most recent run's `utc_logged_at` (fallback: `run_date`) is more than 3 days old, check the last `CompletedRun`'s `equipment` field, identify the rig via `_RIG_LABELS`, and ask: "Last run was on [full expansion — same format as Beat 1]. Anything change since then?" Skip if the gap is shorter than 3 days.
+**Session-open soft check:** If the most recent run across all strains (last entry in `COMPLETED_RUNS`) has `utc_logged_at` (fallback: `run_date`) more than 3 days old, check that entry's `equipment` field, identify the rig via `_RIG_LABELS`, and ask: "Last run was on [full expansion — same format as Beat 1]. Anything change since then?" Skip if the gap is shorter than 3 days.
 
 **Display convention:** Always "Rig 3" in user-facing text (chat, readbacks, log). Never echo the Python identifier `RIG_3` (with underscore) to the user. Same rule applies to all `RIG_N` identifiers.
 
@@ -178,6 +178,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Architecting the implementation to pass a self-imposed verification check.** Session 71: the archive refactor plan included a diff oracle ("one known intentional diff against committed `index.html`"). When the actual diff came back at 383 lines because the combined-list reordering shifted auto-assigned accent colors, the reflex was to assign explicit hex accent values to all ten strains to make the diff small again. User caught it: "these colors were auto-assigned, they don't hold any meaning. why do we need to retain them? to pass a test we designed?" Correct. The colors are deterministic output of a function that distributes hues across non-green space — they have no semantic meaning. The diff oracle was the wrong verification framing for a refactor that legitimately changes rendering (color distribution, render order). Lesson: verification checks must target content correctness, not output stability. When a test produces a noisy diff because the rendering legitimately changed, the answer is to evaluate the diff manually, not to reverse-engineer the implementation to make the test small.
 
 - **Over-claiming certainty in analysis language.** Using 'confirmed,' 'established,' or 'the data shows' for patterns that are consistent with hypotheses but not proven. The appropriate framing at any confidence level: 'consistent with,' 'plausible,' 'directional support for.' Even multi-strain patterns don't confirm — they survive disconfirmation. Each run updates priors; no run closes questions.
+
+- **Misreading equipment check scope as per-jar rather than global.** The session-open equipment check triggers if the most recent run across all strains (last `COMPLETED_RUNS` entry) is more than 3 days old — not the most recent run on the strain or jar being discussed. In Session 96, asked about equipment after a 10-day gap on the Watermellos jar, ignoring that FW106 Run 15 had been logged the previous day. Correct behavior: check the `run_date` / `utc_logged_at` of the last `COMPLETED_RUNS` entry regardless of strain.
 
 ---
 

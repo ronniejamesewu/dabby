@@ -481,12 +481,6 @@ WM_RUN9 = [
     Waypoint(time_s=0,  temp_f=460, note="Session open — descent mode setpoint (hottest at open)"),
     Waypoint(time_s=40, temp_f=420, note="Endpoint — assumed ~1°F/sec cooling (device rate unmeasured)"),
 ]
-WM_RUN10_NEXT = [
-    Waypoint(time_s=0,  temp_f=380, note="Session open"),
-    Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
-    Waypoint(time_s=20, temp_f=420, note="Endpoint — up 4°F from prior runs"),
-    Waypoint(time_s=50, temp_f=420, note="Hold"),
-]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
 
