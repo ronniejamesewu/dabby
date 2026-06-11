@@ -12,7 +12,7 @@ Session-close checklist:
 3. Did a failure mode occur this session (data integrity / process)?
 4. Was any methodology position tested, confirmed, or revised?
 5. Were any decisions made that shouldn't be re-litigated? (Includes confirmed-correct audits — "we checked X and it's fine" belongs in Decisions — Do Not Re-Litigate in `Dabby_Handoff_Notes.md`, not the backlog.)
-6. Were any open backlog items in `Dabby_Handoff_Notes.md` rendered obsolete by changes this session, or do any have a scheduled revisit date that has arrived?
+6. Were any open backlog items in `Dabby_Handoff_Notes.md` rendered obsolete by changes this session, or do any have a scheduled revisit date that has arrived? Also scan all existing backlog entries for items describing work already completed in prior sessions.
 
 Each "yes" produces one update to the relevant table or section below (or to the backlog itself, for Q6).
 

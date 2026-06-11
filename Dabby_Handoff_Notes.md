@@ -191,7 +191,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Out-of-session commits can leave gh-pages stale after subsequent PR merges** — if a run is committed and pushed to main between Claude sessions (outside the PR workflow), the deploy fires from that state. Subsequent PR merges trigger new deploys, but these can land in a sequencing order where the root index.html doesn't update cleanly (intermediate deploy wins). Recovery: push an empty commit to main (`git commit --allow-empty -m "Trigger redeploy"`) to fire a fresh deploy from the current HEAD.
 
-- **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Reviewed June 4, 2026 — keeping the step.
+- **Analysis preview in conversation** — Currently drafting both `analysis` and `next_ai_analysis` in chat for user review before writing to `Dabby_Data.py`. Reviewed June 4, 2026 — keeping the step. Check again July 1, 2026.
 - **Visual overhaul of the log** — forest green styling feeling heavyweight. Raise as agenda item at start of a future session. Do not make styling changes without raising this first. CSS is in `style.css` (independently editable).
 - **Session date backfill** — CAG Run 1 and OC Runs 1–3 have `run_date = None`. Update if user can recall the dates.
 - **Comedian's set (end-of-jar and single-session)** — Two formats:
@@ -203,6 +203,5 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Quantify "rice grain" load descriptor** — weigh a few loads to establish a mg range (e.g. 0.05–0.15g). One-time calibration; update the global constants with the range.
 - **Control water temperature and change frequency as variables** — standardize practice and log it.
 - **Dashboard: style Next pill in strain accent color** — Last pill removed (Session 53). Next pill still uses default styling; consider accent color.
-- **Dashboard: time-of-day stat cards** — built in Session 53. Three cards: ☀️ earliest dab, 🌙 latest dab, ⏰ average first dab of the day. Computed from `utc_logged_at` only — 13 of 33 runs, all May 11+. Git commit timestamps for the 20 None runs were ruled out (most were retroactive backfill, not real-time logging). Cards will fill in naturally as logging continues.
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent.
 - **Audit existing run analyses for overclaiming language** — Review `COMPLETED_RUNS` (and archived runs if needed) for 'confirmed,' 'established,' and similar language that overstates pattern certainty. Replace with 'consistent with,' 'directional support for,' or equivalent. Low urgency — the failure mode is now documented; this is a cleanup pass.
