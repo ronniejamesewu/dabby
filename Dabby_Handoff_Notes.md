@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 9, 2026 — Session 96
+## Last updated: June 10, 2026 — Session 97
 
 ---
 
@@ -163,7 +163,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Skipping Q6 of the session-close checklist.** Q6 is a process gate — verify Evidence cites inline observations and check for existing rows to update before writing new wisdom rows. Unlike the other checklist items, Q6 doesn't produce an action; it produces a constraint that must be applied at the moment of writing. In execution mode, it gets bypassed because it doesn't pattern-match to the "fire or skip" model of the other items. Session 72: wrote a vague Evidence entry for the Rig 4 row ("inaugural run, new strain") and skipped Q6 entirely — required a follow-up commit to fix.
 
-- **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window. After a git branch switch, re-read any file before editing — read state does not persist across branch changes even when file content is identical.
+- **Using Edit tool without reading the file first in the same session.** Attempting to edit a file that hasn't been read in the current session errors immediately. Read any file before editing it, even if its contents are known from a prior context window. After a git branch switch, re-read any file before editing — read state does not persist across branch changes even when file content is identical. Session 97 variant: after an in-session edit, attempted a second edit on the same file using the old content as `old_string` — the first edit had already replaced it, so the match failed. Fix required grepping and re-reading to find the actual current content. Re-read any file before a second edit within the same session if prior edits may have touched the target region.
 
 - **Recalculating timestamp at reporting time when a session start time was already established.** When the user says "about to hit it" and a UTC timestamp is captured, that is the `utc_logged_at` for the run. If the user reports results later in the same conversation, do not re-run `date -u` and use the current time — use the timestamp captured at session start. Presenting a stale recalculated time in Beat 1 forces the user to correct it.
 
