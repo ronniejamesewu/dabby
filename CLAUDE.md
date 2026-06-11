@@ -113,9 +113,7 @@ pushing, and opening PRs can all be done without asking.
 
 ## PR Workflow
 
-Changes go to a feature branch, then a PR to merge into `main`. Every PR 
-automatically gets a preview URL posted as a comment so the rendered log can be 
-reviewed before merging.
+Changes go to a feature branch, then a PR to merge into `main`. Never commit data directly to main — always use a feature branch and PR. Every PR automatically gets a preview URL posted as a comment so the rendered log can be reviewed before merging.
 
 PR descriptions should be plain English, not code diffs. Example format:
 
