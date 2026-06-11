@@ -146,6 +146,17 @@ For methodology, design, and schema decisions, apply first-principles reasoning:
 
 ## Epistemic Flags
 
+General:
+- Match confidence to evidence weight. One run is an observation. Two 
+  consistent runs are directional. Do not write "confirmed," "established," 
+  or "resolved" until the evidence would be surprising if it reversed.
+- Do not promote correlates to causal variables. If the mechanism is 
+  unresolved, describe what happened and flag the mechanism as open. 
+  Example: "harshness entered on draw 3" is data; "the 2-draw ceiling" 
+  treats draw count as the boundary variable when it may be a proxy for 
+  depletion, cumulative heat exposure, or something else.
+
+Domain-specific:
 - Terpene profiles are inferred from genetics, not measured. The same generic 
   cannabis terpene palette appears across most strains. Do not present inferences 
   as specifications or dress up the generic palette as strain-specific knowledge.

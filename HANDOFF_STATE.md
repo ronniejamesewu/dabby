@@ -137,7 +137,7 @@
 
 **Dab Notes:** 420 hold worked — notably less harshness, clean golden swabs. Not hard hitting but slow build to intensity. Want to slowly walk up the curve.
 
-**AI Analysis:** The 420°F endpoint confirmed the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.
+**AI Analysis:** The 420°F endpoint is consistent with the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.
 
 **Proposed Curve:**
 - 0s → 375°F — Session open
@@ -151,11 +151,11 @@
 ### Blueberry 36 #1
 **3 sessions** &nbsp;·&nbsp; Last: May 16, 2026 &nbsp;·&nbsp; Equipment: Rig 2 — Dr. Dabber stock quartz · Gemcup Glass Gemlock joystick · Dr. Dabber stock bubbler
 
-**Next:** Try 410°F endpoint on Run 4 — tail harshness confirmed at 415°F across Runs 2 and 3
+**Next:** Try 410°F endpoint on Run 4 — tail harshness consistent at 415°F across Runs 2 and 3
 
 **Dab Notes:** Run 3 repeated the 415°F curve (375→400→415, 20s hold): golden and light swab. Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end. Pretty big intensity.
 
-**AI Analysis:** Tail harshness at 415°F is now confirmed across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two confirmed runs at 415°F with harshness — time to step down.
+**AI Analysis:** Tail harshness at 415°F is now consistent across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two consistent runs at 415°F with harshness — time to step down.
 
 **Proposed Curve:**
 - 0s → 375°F — Session open
@@ -172,7 +172,7 @@
 
 **Dab Notes:** Swabs were beige, very clean. And not a lot of reclaim. Vapor was thick from the start. Flavor was nice. Harshness at end of second draw, didn't increase a lot on short third draw. Never tasted toasted. Big effect after the OC earlier. I'm feeling rocked right now. Switching strains seems to lead to bigger effect than returning to same strain.
 
-**AI Analysis:** Repeat this exact curve (8s ramp to 420°F, 40s session) to confirm before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 confirms, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.
+**AI Analysis:** Repeat this exact curve (8s ramp to 420°F, 40s session) to replicate before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 replicates, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
@@ -189,7 +189,7 @@
 
 **Dab Notes:** Beige swabs, lots of reclaim. Tiny hint of harshness around 7 seconds left, very minor — ran a second heating cycle and had two more draws. Still got a lot of reclaim after second cycle. Really tasty. Very very intense, uplifting, euphoric. Load was bigger than normal — consistency made it hard to load a normal amount.
 
-**AI Analysis:** 420°F 8s ramp has now produced two clean-to-nearly-clean runs at this endpoint, with the heaviest harshness landing in depletion territory (Run 15) or as a one-off at matched conditions (Run 14). The load variable is still unresolved — gooey consistency makes controlled loading difficult, but a deliberate effort at a normal load would clarify whether the run-to-run variance tracks load size. Run 16: same curve, make a real attempt at a normal load. If clean, 420°F is confirmed as the operating point and joystick becomes the next interesting variable.
+**AI Analysis:** 420°F 8s ramp has now produced two clean-to-nearly-clean runs at this endpoint, with the heaviest harshness landing in depletion territory (Run 15) or as a one-off at matched conditions (Run 14). The load variable is still unresolved — gooey consistency makes controlled loading difficult, but a deliberate effort at a normal load would clarify whether the run-to-run variance tracks load size. Run 16: same curve, make a real attempt at a normal load. If clean, 420°F is the operating point and joystick becomes the next interesting variable.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
