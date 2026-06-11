@@ -16,6 +16,8 @@ Session-close checklist:
 
 Each "yes" produces one update to the relevant table or section below (or to the backlog itself, for Q6).
 
+Then: update `Dabby_Handoff_Notes.md` header date and run `python3 Dabby_Log_Generator.py` to regenerate `HANDOFF_STATE.md`.
+
 ---
 
 ## Cross-Strain Patterns
