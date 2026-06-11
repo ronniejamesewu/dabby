@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 11, 2026 — Session 98
+## Last updated: June 11, 2026 — Session 99
 
 ---
 
@@ -202,4 +202,4 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Control water temperature and change frequency as variables** — standardize practice and log it.
 - **Dashboard: style Next pill in strain accent color** — Last pill removed (Session 53). Next pill still uses default styling; consider accent color.
 - **Visual distinction between What to Try Next and new-strain onboarding** — the two contexts (continuing calibration vs. opening a new strain) look identical but carry different intent.
-- **Audit existing run analyses for overclaiming language** — Review `COMPLETED_RUNS` (and archived runs if needed) for 'confirmed,' 'established,' and similar language that overstates pattern certainty. Replace with 'consistent with,' 'directional support for,' or equivalent. Low urgency — the failure mode is now documented; this is a cleanup pass.
+- **~~Audit existing run analyses for overclaiming language~~** — Completed Session 99. 38 edits across `Dabby_Data.py` and `Dabby_Archive.py`. General epistemic calibration rules added to CLAUDE.md Epistemic Flags.

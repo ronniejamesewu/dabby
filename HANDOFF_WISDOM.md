@@ -130,6 +130,15 @@ Both the first two hypotheses predict the same outcome in a small-load test, so 
 
 **Session 96 — WM R10 adds no-soreness control point for the opening-temperature / throat-soreness thread:** WM R10 (Rig 5, fast 8s ramp to 420°F, 380°F open, first dab of day): no post-session throat soreness. WM Runs 1 and 9 both produced pronounced post-session soreness. Two variables changed from Run 9 to Run 10: opening temperature (460°F → 380°F) and session order (2nd dab → first dab). Opening temperature tracks most clearly with the soreness signal across these three data points — Run 1 (Rig 4, rapid heat to 416°F, soreness), Run 9 (460°F descent open, 2nd dab, soreness), Run 10 (380°F ascending open, first dab, none). Session order is a partial confound on Run 9 only. Directional: the throat signal appears linked to high opening temperature, not the 420°F endpoint or Rig 5 itself. One clean contrast point; not established.
 
+### Epistemic Calibration — Session 99 Audit
+Draw count was treated as a causal variable ("2-draw ceiling," "draw count as the
+primary harshness driver") across ~38 analysis fields in COMPLETED_RUNS and
+STRAIN_STATUS. Session 99 audited all analyses and reframed: draw count correlates
+with harshness timing but the underlying mechanism (depletion, cumulative heat
+exposure, airway sensitization) is unresolved. "Harshness entered on draw 3" is
+data; "the 2-draw ceiling" promotes a correlate to a boundary variable. General
+epistemic calibration rules added to CLAUDE.md Epistemic Flags (general section).
+
 ### Baseline Philosophy
 Single baseline curve for all hash rosin with cold start. Strain-specific
 adjustment happens empirically via swab results, not terpene-profile reasoning.
