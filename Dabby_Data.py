@@ -472,7 +472,8 @@ WATERMELLOS_INFO = [
     ("Strain",      "Watermellos ((Melonade × Gushers) × Purple Ice Water)"),
     ("Consistency", "Cold cure badder"),
     ("Washer",      "Malek's Melts"),
-    ("Nose",        "Skunky, gassy — not loud"),
+    ("Nose",        "Great cold nose — more fragrant than initial impression; jar appears to be actively cold-curing in fridge post-purchase."),
+    ("Flavor",      "Cold nose does not translate to vapor — flavor in vapor notably muted relative to cold nose intensity."),
 ]
 # Identical to FW106_FASTER (fast 8s ramp to 416°F, 40s hold). Aliased to avoid
 # a duplicate literal; redefine as its own list if WM's curve diverges from FW106's.
@@ -480,6 +481,12 @@ WM_RUN5_NEXT = FW106_FASTER
 WM_RUN9 = [
     Waypoint(time_s=0,  temp_f=460, note="Session open — descent mode setpoint (hottest at open)"),
     Waypoint(time_s=40, temp_f=420, note="Endpoint — assumed ~1°F/sec cooling (device rate unmeasured)"),
+]
+WM_RUN15_NEXT = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=420, note="Endpoint — 8s ramp"),
+    Waypoint(time_s=60, temp_f=420, note="Hold — extended from 40s; single cycle, no second"),
 ]
 
 # ── DASHBOARD DATA ────────────────────────────────────────────────────────────
@@ -975,6 +982,14 @@ COMPLETED_RUNS = [
         dab_notes="2x2. Dark golden swabs, got harsh in 4th draw and terminated only about halfway through second cycle. Nice effect even if it ain't so tasty.",
         analysis="Three consecutive dark gold swabs on 2x2 sessions (Runs 11–13). Single-cycle isolation still hasn't happened, but the streak is now three runs — dark gold is now a three-run pattern. Harshness on the 4th draw with the second cycle cut short fits the pattern from prior runs: second cycle is scraping the bottom on a hot insert. 'Not very tasty' is a new note — Runs 10–12 all had flavor present (mildew, watermelon). Diminished flavor alongside persistent dark gold is directionally consistent with the quality-shift read from Run 11. Very hard effect.",
     ),
+    CompletedRun(strain="Watermellos", run_date=date(2026, 6, 11), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 11, 23, 22, tzinfo=timezone.utc), equipment=RIG_5, waypoints=FW106_FASTER_420,
+        duration_seconds=40, endpoint_note='<strong>Endpoint:</strong> 420°F — 8s fast ramp; same as Runs 11–13',
+        swab="Dark golden.",
+        session_char="2x2; dark golden swab; harshness at tail of draw 2, medium through draws 3–4; fast onset; very hard effect.",
+        intensity="Very hard — fast onset; light eating day (confound).",
+        dab_notes="2x2 draws. Harshness in last 2 seconds of second draw and through draws 3 and 4. But not too bad, medium at most. Effects pretty fast but I haven't had much to eat today. Feel pretty big intensity wise. Cold nose on this jar is great but it doesn't at all deliver that flavor when vaped. Jar is probably continuing to cure in the fridge. Always seems like there's lots more to hit at end of 40s.",
+        analysis="Fourth consecutive dark golden swab on a 2x2 session. [Color calibration note: photo read as lighter than prior runs by AI; user confirmed dark gold, consistent with Runs 11–13 — a shared color reference session is warranted.] Harshness entered at the very tail of draw 2 and held medium through draws 3–4, consistent with the second-cycle heat pattern but milder than Run 13's early termination. Fast onset, very hard effect; light eating day is a confound on intensity. The single-cycle isolation test remains undone across four consecutive 2x2 sessions. User's consistent observation of material remaining at 40s reframes what the next test should be: a longer single cycle (60s, device ceiling) is more informative than 2-draws-only — removes the reheat while giving the load time to fully express.",
+    ),
     CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 5, 31), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 1, 3, 26, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Very golden — tad dark; user notes this jar tends toward darker reclaim than its sisters. Generally clean.",
@@ -1136,12 +1151,12 @@ STRAIN_STATUS = [
         next_ai_analysis="420°F 8s ramp has now produced two clean-to-nearly-clean runs at this endpoint, with the heaviest harshness landing in depletion territory (Run 15) or as a one-off at matched conditions (Run 14). The load variable is still unresolved — gooey consistency makes controlled loading difficult, but a deliberate effort at a normal load would clarify whether the run-to-run variance tracks load size. Run 16: same curve, make a real attempt at a normal load. If clean, 420°F is the operating point and joystick becomes the next interesting variable.",
         next_waypoints=FW106_FASTER_420,
     ),
-    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 14: fast 8s ramp to 420°F, 2 draws only (no second cycle) — isolate swab shift from extended session heat", accent=None, slug="watermellos",
+    StrainStatus(name="Watermellos", profile_anchor="#watermellos-profile", next_text="Run 15: same fast 8s ramp to 420°F, extended hold to 60s, single cycle only — no second cycle", accent=None, slug="watermellos",
         info=WATERMELLOS_INFO,
         terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-        next_dab_notes="2x2. Dark golden swabs, got harsh in 4th draw and terminated only about halfway through second cycle. Nice effect even if it ain't so tasty.",
-        next_ai_analysis="Three consecutive dark gold swabs on 2x2 sessions (Runs 11–13) makes the isolation more pointed than ever. Run 14: 2 draws only, stop there, no second cycle. If dark gold persists on a single cycle, the material quality shift read has solid support across four runs. If it comes back to beige, extended heat has been driving all three.",
-        next_waypoints=FW106_FASTER_420,
+        next_dab_notes="2x2 draws. Harshness in last 2 seconds of second draw and through draws 3 and 4. But not too bad, medium at most. Effects pretty fast but I haven't had much to eat today. Feel pretty big intensity wise. Cold nose on this jar is great but it doesn't at all deliver that flavor when vaped. Jar is probably continuing to cure in the fridge. Always seems like there's lots more to hit at end of 40s.",
+        next_ai_analysis="Four straight dark gold 2x2 runs and material consistently remaining at 40s. Run 15: same fast 8s ramp to 420°F, extend the hold to 60s (device ceiling), single cycle only — no second. Gives the material the best shot at full expression in one continuous heat event. If the swab lightens, the reheat has been the dark gold driver. If it stays dark gold, it's the material.",
+        next_waypoints=WM_RUN15_NEXT,
     ),
 ]
 
