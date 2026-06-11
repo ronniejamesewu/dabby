@@ -6,14 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 At the start of every session:
 1. Run `git checkout main && git pull origin main` — do this before reading any files. The working directory may be on a stale branch.
-2. Read these four files (all are in the repo):
+2. Always read these three files:
    - `HANDOFF_STATE.md` — generated per-strain status: run counts, last dates, current equipment, current What to Try Next per strain. Read first — this is the working surface for run logging.
    - `HANDOFF_WISDOM.md` — accumulated cross-strain patterns, equipment observations, failure modes, and methodology state.
    - `Dabby_Handoff_Notes.md` — operational notes, session protocol, decisions made, known failure modes.
-   - `Dabby_Data.py` — active run data, strain status, waypoints, and schema; the file you edit for run logging. Frozen runs from finished jars live in `Dabby_Archive.py` (not a session-start read — see "Updating the Log").
-   - For generator/rendering work: also read `Dabby_Log_Generator.py`
-   - For curve design or methodology questions: also read `Dabby_Methodology.md`
-   - For UI/layout changes: also read `Dabby_UI_Principles.md`
+3. Read these files when relevant:
+   - `Dabby_Data.py` — active run data, strain status, waypoints, and schema. Skip only when the session is clearly non-strain work (backlog, infra/CI, generator internals, UI/layout, documentation). If the opening message names a strain, read this before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the data file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Frozen runs from finished jars live in `Dabby_Archive.py` (not a session-start read — see "Updating the Log").
+   - `Dabby_Log_Generator.py` — for generator/rendering work.
+   - `Dabby_Methodology.md` — for curve design or methodology questions.
+   - `Dabby_UI_Principles.md` — for UI/layout changes.
 
 This project logs sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig."
 All material is hash rosin (ice water extracted, solventless) unless explicitly 
