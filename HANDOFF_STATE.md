@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 81 across 13 strains
+- **Total runs:** 82 across 13 strains
 - **Active since:** May 2, 2026 (40 days)
 - **Last run date:** June 10, 2026
 
@@ -200,13 +200,13 @@
 ---
 
 ### Watermellos
-**12 sessions** &nbsp;·&nbsp; Last: June 10, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**13 sessions** &nbsp;·&nbsp; Last: June 10, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 13: fast 8s ramp to 420°F, 2 draws only (no second cycle) — isolate swab shift from extended session heat
+**Next:** Run 14: fast 8s ramp to 420°F, 2 draws only (no second cycle) — isolate swab shift from extended session heat
 
-**Dab Notes:** Hit it same as yesterday, 2x2. First draw had the mildew, second had a little hint of watermelon! Harshness peeked through at the very end. Third and fourth were tasty, a tiny bit harsh in throat, toasted by end of 4th. Heavy effect pretty fast. Swabs dark gold.
+**Dab Notes:** 2x2. Dark golden swabs, got harsh in 4th draw and terminated only about halfway through second cycle. Nice effect even if it ain't so tasty.
 
-**AI Analysis:** Two consecutive dark gold swabs on 2x2 sessions (Runs 11–12) — the streak is real, cause still unresolved. Run 13: 2 draws only, no second cycle. If swab comes back to beige, extended heat was driving both dark gold reads. If it stays dark gold on 2 draws, the material quality shift read has strong support across three runs.
+**AI Analysis:** Three consecutive dark gold swabs on 2x2 sessions (Runs 11–13) makes the isolation more pointed than ever. Run 14: 2 draws only, stop there, no second cycle. If dark gold persists on a single cycle, the material quality shift read has solid support across four runs. If it comes back to beige, extended heat has been driving all three.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
