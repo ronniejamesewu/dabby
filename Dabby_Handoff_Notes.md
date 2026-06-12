@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 11, 2026 — Session 101
+## Last updated: June 11, 2026 — Session 102
 
 ---
 
@@ -222,9 +222,13 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Misreading equipment check scope as per-jar rather than global.** The session-open equipment check triggers if the most recent run across all strains (last `COMPLETED_RUNS` entry) is more than 3 days old — not the most recent run on the strain or jar being discussed. In Session 96, asked about equipment after a 10-day gap on the Watermellos jar, ignoring that FW106 Run 15 had been logged the previous day. Correct behavior: check the `run_date` / `utc_logged_at` of the last `COMPLETED_RUNS` entry regardless of strain.
 
+- **Misreading swab color from a photo without a calibrated reference.** AI read a swab photo as lighter than the user's actual color call (Session 102: read as "lighter than dark gold"; user confirmed dark gold, consistent with Runs 11–13). No shared color vocabulary or reference standard exists — "dark gold," "golden," "light golden," and "beige" map differently under different lighting conditions and between user and AI. Until a calibration session happens, defer to the user's color call; note any discrepancy in analysis rather than asserting a different color in the swab field.
+
 ---
 
 ## Backlog
+
+- **[PRIORITY — next session] Unpublish `dab_notes` from public log** — `dab_notes` is verbatim user words and should not be rendered in the public `index.html`. Raise at session start to determine approach: hide entirely, add collapsible toggle, or add per-run visibility flag.
 
 - **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed in Sessions 15, 27, 94, 95, 100, and 101. Session 98 partial fix: CLAUDE.md restructured to split session-start reads into always-reads and conditional reads. Session 101: mandatory reads moved to a blockquoted gate at the top of CLAUDE.md, before any project context, with explicit "do not respond first and read later" language. Hook approach evaluated in depth Session 101 and deferred — downsides (staleness within session from one-time injection, double reads if CLAUDE.md still triggers Read calls, unconditional context loading on every session, Windows/PowerShell platform friction, invisible injection making debugging harder) outweigh the benefit over a stronger CLAUDE.md gate. If the Session 101 gate still fails, revisit the hook — the evaluation and tradeoffs are documented here.
 
