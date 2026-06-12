@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 83 across 13 strains
+- **Total runs:** 84 across 13 strains
 - **Active since:** May 2, 2026 (41 days)
 - **Last run date:** June 11, 2026
 
@@ -200,13 +200,13 @@
 ---
 
 ### Watermellos
-**14 sessions** &nbsp;·&nbsp; Last: June 11, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**15 sessions** &nbsp;·&nbsp; Last: June 11, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 15: same fast 8s ramp to 420°F, extended hold to 60s, single cycle only — no second cycle
+**Next:** Run 16: same 60s single cycle at 420°F, larger load — test whether harshness timing tracks load size
 
-**Dab Notes:** 2x2 draws. Harshness in last 2 seconds of second draw and through draws 3 and 4. But not too bad, medium at most. Effects pretty fast but I haven't had much to eat today. Feel pretty big intensity wise. Cold nose on this jar is great but it doesn't at all deliver that flavor when vaped. Jar is probably continuing to cure in the fridge. Always seems like there's lots more to hit at end of 40s.
+**Dab Notes:** Beige swabs, harshness in the second half of cycle, many draws. Very intense. Vapor was dense throughout. No indication of depletion of material. But the throat harshness was real!
 
-**AI Analysis:** Four straight dark gold 2x2 runs and material consistently remaining at 40s. Run 15: same fast 8s ramp to 420°F, extend the hold to 60s (device ceiling), single cycle only — no second. Gives the material the best shot at full expression in one continuous heat event. If the swab lightens, the reheat has been the dark gold driver. If it stays dark gold, it's the material.
+**AI Analysis:** Second cycle was the dark gold driver — settled. Harshness with dense vapor in the second half of 60s is directional support for the heat exposure / airway sensitization hypothesis. Run 16: same curve (8s ramp to 420°F, 60s single cycle), larger load. If harshness enters in the same place regardless, load size isn't the variable and heat exposure is the more parsimonious explanation. If the timing shifts — earlier, later, or absent — vapor density is back in play.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
