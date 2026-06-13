@@ -31,6 +31,34 @@
 
 ---
 
+### Fembot #3
+**2 sessions** &nbsp;·&nbsp; Last: May 9, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
+
+**Next:** Not my jar — closed after 2 runs. If it shows up again: try 420°F flat hold.
+
+**AI Analysis:** Not my jar — two dabs from Matt's. Both showed harshness at 430°F across a ramp and a flat hold. The 420°F flat hold was the logical next test but didn't happen. If this strain shows up again: start there.
+
+**Proposed Curve:**
+- 0s → 420°F — Steady hold — flat 420°F from session open
+- 60s → 420°F — Endpoint
+
+---
+
+### Mango Starburst #23
+**1 session** &nbsp;·&nbsp; Last: May 9, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
+
+**Next:** Not my jar — closed after 1 run. If it shows up again: repeat the baseline.
+
+**AI Analysis:** Not my jar — one dab from Matt's. Clean swab, no harshness, pine-forward character noted. Single run; no confirmation. If this strain shows up again: repeat the baseline before changing anything.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 15s → 390°F — Early ascent
+- 40s → 410°F — Mid ascent
+- 65s → 430°F — Endpoint
+
+---
+
 ### Caramel Apple Gelato
 **1 session** &nbsp;·&nbsp; Last: unknown &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
@@ -47,21 +75,6 @@
 
 ---
 
-### Orange Candy
-**14 sessions** &nbsp;·&nbsp; Last: June 4, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
-
-**Next:** Run 15: repeat 8s ramp to 420°F with normal load — clean read on temperature ceiling
-
-**AI Analysis:** Before isolating ramp speed from endpoint, repeat this exact curve (8s to 420°F, 40s session) with a deliberate normal or slightly heavier load. A load that fills the session gives a clean temperature-ceiling read — if harshness stays absent or depletion-only through 40s, 420°F is within range on Rig 5 for OC. That unlocks variable isolation: hold 420°F and try the baseline 20s ramp to separate endpoint from ramp speed.
-
-**Proposed Curve:**
-- 0s → 380°F — Session open
-- 4s → 400°F — Steep early climb
-- 8s → 420°F — Endpoint — 8s ramp; up 4°F from baseline
-- 40s → 420°F — Hold
-
----
-
 ### The Hive #1
 **5 sessions** &nbsp;·&nbsp; Last: May 8, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
@@ -74,34 +87,6 @@
 - 15s → 390°F — Early ascent
 - 35s → 410°F — Mid ascent
 - 65s → 425°F — Endpoint — down 5°F from Run 5
-
----
-
-### Fembot #3
-**2 sessions** &nbsp;·&nbsp; Last: May 9, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
-
-**Next:** Try 420°F steady hold on Run 3
-
-**AI Analysis:** Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.
-
-**Proposed Curve:**
-- 0s → 420°F — Steady hold — flat 420°F from session open
-- 60s → 420°F — Endpoint
-
----
-
-### Mango Starburst #23
-**1 session** &nbsp;·&nbsp; Last: May 9, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
-
-**Next:** Repeat Run 1 curve to confirm
-
-**AI Analysis:** One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.
-
-**Proposed Curve:**
-- 0s → 380°F — Session open
-- 15s → 390°F — Early ascent
-- 40s → 410°F — Mid ascent
-- 65s → 430°F — Endpoint
 
 ---
 
@@ -148,6 +133,21 @@
 - 25s → 400°F — Mid climb
 - 45s → 410°F — Endpoint — down 5°F from Run 3
 - 65s → 410°F — Hold at 410°F
+
+---
+
+### Orange Candy
+**14 sessions** &nbsp;·&nbsp; Last: June 4, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+
+**Next:** Run 15: repeat 8s ramp to 420°F with normal load — clean read on temperature ceiling
+
+**AI Analysis:** Before isolating ramp speed from endpoint, repeat this exact curve (8s to 420°F, 40s session) with a deliberate normal or slightly heavier load. A load that fills the session gives a clean temperature-ceiling read — if harshness stays absent or depletion-only through 40s, 420°F is within range on Rig 5 for OC. That unlocks variable isolation: hold 420°F and try the baseline 20s ramp to separate endpoint from ramp speed.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint — 8s ramp; up 4°F from baseline
+- 40s → 420°F — Hold
 
 ---
 

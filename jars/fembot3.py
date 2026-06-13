@@ -56,7 +56,7 @@ RUNS = [
 STATUS = StrainStatus(
     name='Fembot #3',
     profile_anchor='#fembot3-profile',
-    next_text='Try 420°F steady hold on Run 3',
+    next_text='Not my jar — closed after 2 runs. If it shows up again: try 420°F flat hold.',
     accent=None,
     slug='fembot3',
     info=[
@@ -69,7 +69,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene inferred likely dominant from Fuzzy Melon character; Fuzzy Melon × Rambutan lineage. Standard cannabis palette otherwise — not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Strongest signal in the log — harshness at 430°F on both a ramp and a flat hold. Two shapes, same outcome. 430°F is above ideal for this material. 420°F flat hold is the clear next test.',
+    next_ai_analysis='Not my jar — two dabs from Matt\'s. Both showed harshness at 430°F across a ramp and a flat hold. The 420°F flat hold was the logical next test but didn\'t happen. If this strain shows up again: start there.',
     next_waypoints=FEMBOT3_RUN3,
     jar_index='',
 )

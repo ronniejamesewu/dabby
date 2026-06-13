@@ -346,6 +346,19 @@ def validate(runs, statuses):
                 if not pearl.material:
                     errors.append(f"runs[{i}] ({run.strain}): pearl[{j}].material is empty")
 
+    # Date ordering — within each strain, non-None run_dates must be ascending
+    strain_run_dates = {}
+    for run in runs:
+        if run.run_date is not None:
+            strain_run_dates.setdefault(run.strain, []).append(run.run_date)
+    for strain, dates in strain_run_dates.items():
+        for i in range(1, len(dates)):
+            if dates[i] < dates[i - 1]:
+                errors.append(
+                    f"{strain}: run dates out of order — "
+                    f"{dates[i - 1]} followed by {dates[i]}"
+                )
+
     if errors:
         print("VALIDATION ERRORS:")
         for e in errors:

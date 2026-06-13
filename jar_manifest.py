@@ -6,18 +6,12 @@ a jar, RUNS order sets run numbering.
 """
 import importlib
 import os
+import re
 
 # ── Tier lists ────────────────────────────────────────────────────────────────
 
 ACTIVE = [
-    'cag',
     'oc',
-    'hive1',
-    'fembot3',
-    'ms23',
-    'mbd',
-    'rainfruit',
-    'bb361',
     'bb362',
     'fw106',
     'watermellos',
@@ -27,17 +21,47 @@ ACTIVE = [
     'papzp22',
 ]
 
-PAUSED = []
+PAUSED = [
+    'cag',
+    'hive1',
+    'mbd',
+    'rainfruit',
+    'bb361',
+]
 
 CLOSED = [
     'wwz',
     'mb9zst',
+    'fembot3',
+    'ms23',
 ]
+
+# ── Validation helpers ────────────────────────────────────────────────────────
+
+_ALLOWED_IMPORT_RE = re.compile(
+    r'^(from (datetime|Dabby_Core) import|import datetime\b)'
+)
+_RUN_REF_RE = re.compile(r'Run (\d+)', re.IGNORECASE)
+
+
+def _check_closed_tier(slug, runs, status):
+    """Return errors if a closed jar's status still contains forward-looking run references."""
+    errors = []
+    run_count = len(runs)
+    for field_name in ('next_text', 'next_ai_analysis'):
+        val = getattr(status, field_name, '') or ''
+        for m in _RUN_REF_RE.finditer(val):
+            if int(m.group(1)) > run_count:
+                errors.append(
+                    f"Closed jar '{slug}' ({run_count} runs): {field_name} "
+                    f"references Run {m.group(1)} — forward-looking, jar is closed"
+                )
+    return errors
 
 # ── Load functions ────────────────────────────────────────────────────────────
 
 def _validate_manifest_preflight():
-    """Check for duplicate slugs and missing/orphan jar files BEFORE importing.
+    """Check for duplicate slugs, missing/orphan jar files, and disallowed imports BEFORE importing.
     Raises SystemExit on any error — fail fast with clear diagnostics."""
     all_list = ACTIVE + PAUSED + CLOSED
     errors = []
@@ -53,6 +77,14 @@ def _validate_manifest_preflight():
         jar_path = os.path.join(jar_dir, f'{slug}.py')
         if not os.path.isfile(jar_path):
             errors.append(f"Manifest slug '{slug}' has no jar file: {jar_path}")
+            continue
+        with open(jar_path, encoding='utf-8') as fh:
+            for lineno, line in enumerate(fh, 1):
+                stripped = line.strip()
+                if stripped.startswith(('import ', 'from ')) and not _ALLOWED_IMPORT_RE.match(stripped):
+                    errors.append(
+                        f"Jar '{slug}' line {lineno}: disallowed import: {stripped!r}"
+                    )
 
     if os.path.isdir(jar_dir):
         jar_files = {f[:-3] for f in os.listdir(jar_dir)
@@ -86,10 +118,25 @@ def load_all_jars():
     _validate_manifest_preflight()
     all_runs = []
     all_statuses = []
-    for slug in CLOSED + PAUSED + ACTIVE:
+    tier_errors = []
+
+    for slug in CLOSED:
         runs, status = _load_jar(slug)
         all_runs.extend(runs)
         all_statuses.append(status)
+        tier_errors.extend(_check_closed_tier(slug, runs, status))
+
+    if tier_errors:
+        print("TIER ERRORS:")
+        for e in tier_errors:
+            print(f"  {e}")
+        raise SystemExit(1)
+
+    for slug in PAUSED + ACTIVE:
+        runs, status = _load_jar(slug)
+        all_runs.extend(runs)
+        all_statuses.append(status)
+
     return all_runs, all_statuses
 
 def load_active_jars():

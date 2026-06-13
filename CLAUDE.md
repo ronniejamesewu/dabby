@@ -90,9 +90,6 @@ on what to try next — not a formal calibration program.
   documents each rig. `validate()` rejects `equipment=None` — no field defaults by design.
 - **Charts:** Chart.js from CDN, one per curve via `curve_chart_html()`, fed by
   the same waypoint list as the table; needs internet to render.
-- **`DABBY_ARCHITECTURE.md`** is a living 6-step refactor plan (Steps 1–4 done;
-  Steps 5–6 remaining). Read it before any structural/schema change; it
-  supersedes the deleted `REFACTOR_TEMPLATE_DRIVEN.md`.
 - **Infra hazards:** never use GitHub MCP `push_files` for `index.html` or
   routine commits (caused silent content loss — use git); `push_files` is
   acceptable only for temporary files on non-main branches when git checkout
