@@ -108,10 +108,9 @@ Any number of waypoints may be defined within these constraints. The heating rat
 | Parameter | Guidance |
 |---|---|
 | Opening setpoint | 380°F baseline |
-| Opening flat phase | 10–15s for low-boiling dominant terpenes; shorter otherwise |
-| Ascent rate | 0.6–1.2°F/sec. Gentleness is the goal |
-| Endpoint | 430°F baseline starting point |
-| Hold time | 55–65 seconds. End when vapor drops — do not ride timer |
+| Ascent rate | Fast ramp to endpoint — 380→420°F in 8s (~5°F/sec). Hold for the remainder of the session. |
+| Endpoint | 420°F baseline starting point |
+| Hold time | 60s total session (8s ramp + hold). End when vapor drops — do not ride timer on small loads. |
 
 **Hash rosin vs flower rosin:** Hash rosin vaporizes more cleanly at lower temperatures due to lower plant material contamination. This is an efficiency argument. Do not import curve assumptions from flower rosin contexts.
 

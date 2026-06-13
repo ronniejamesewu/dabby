@@ -117,15 +117,13 @@ def collapsible_section(section_id, title, content_html, header_class=""):
     s += '</details>'
     return s
 
-def what_to_try_next_html(section_id, dab_notes, ai_analysis, proposed_waypoints=None, accent=None):
+def what_to_try_next_html(section_id, ai_analysis, proposed_waypoints=None, accent=None):
     s = f'<div class="section" id="{section_id}">'
     if accent:
         s += (f'<div class="section-header grey" style="border-bottom-color:{accent};">'
               f'<h2 style="color:{accent};">What to Try Next</h2></div>')
     else:
         s += section_header("What to Try Next", header_class="grey")
-    if dab_notes:
-        s += result_row("Notes on What's Next:", dab_notes)
     s += result_row("AI Analysis:", ai_analysis)
     if proposed_waypoints:
         s += '<h3>Proposed Curve</h3>'
@@ -462,8 +460,6 @@ def render_run_section(ss, i, run, first_of_day=False):
     if run.extra_rows:
         for label, value in run.extra_rows:
             c += result_row(label, value, amber=run.too_hot)
-    if run.dab_notes:
-        c += result_row("Notes on this dab:", run.dab_notes)
     if run.analysis:
         c += result_row("AI Run Analysis:", run.analysis)
     return collapsible_section(section_id, title, c)
@@ -472,7 +468,6 @@ def render_what_to_try_next(ss):
     accent = _ACCENT_RESOLVED[ss.name]
     return what_to_try_next_html(
         f"{ss.slug}-next",
-        dab_notes=ss.next_dab_notes,
         ai_analysis=ss.next_ai_analysis,
         proposed_waypoints=ss.next_waypoints,
         accent=accent,
@@ -722,9 +717,6 @@ def generate_handoff_state():
         lines.append("")
         lines.append(f"**Next:** {ss.next_text}")
         lines.append("")
-        if ss.next_dab_notes:
-            lines.append(f"**Dab Notes:** {ss.next_dab_notes}")
-            lines.append("")
         if ss.next_ai_analysis:
             lines.append(f"**AI Analysis:** {ss.next_ai_analysis}")
             lines.append("")
