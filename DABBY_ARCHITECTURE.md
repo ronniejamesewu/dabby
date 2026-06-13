@@ -344,8 +344,9 @@ def build_html():
         sections.append(render_what_to_try_next(ss))           # from ss.next_*, NOT last run (N5)
 ```
 
-Adding a strain: add entries to `Dabby_Data.py`. Zero generator edits.
-Adding a run: add an entry to `COMPLETED_RUNS` in `Dabby_Data.py`. Zero generator edits.
+Adding a strain: create `jars/<slug>.py` (from the boilerplate pattern) and add its slug to `ACTIVE` in `jar_manifest.py`. Zero generator edits.
+Adding a run: add a `CompletedRun` to that jar's `RUNS` list in `jars/<slug>.py`. Zero generator edits.
+*(Per-jar architecture, Session 108 — supersedes the original single-`Dabby_Data.py` workflow described in the 6-step plan. The generator loop is unchanged; it iterates the assembled `COMPLETED_RUNS`/`STRAIN_STATUS` that `jar_manifest.load_all_jars()` now produces.)*
 
 The CSS block moves to `style.css`, referenced via `<link>` in the HTML head.
 This removes ~13K characters of CSS, but **measured at the current run count (28
@@ -487,11 +488,11 @@ recorded as vague, never upgraded to a confident claim.
 
 ```
 1. User describes the run
-2. AI edits Dabby_Data.py — adds run to COMPLETED_RUNS
+2. AI edits jars/<slug>.py — adds a CompletedRun to that jar's RUNS list
 3. AI runs: python3 Dabby_Log_Generator.py
 4. User opens index.html in browser — immediate local review
 5. User confirms
-6. AI commits: git add Dabby_Data.py index.html HANDOFF_STATE.md && git commit
+6. AI commits: git add jars/<slug>.py index.html HANDOFF_STATE.md && git commit
 7. At session close: AI updates HANDOFF_WISDOM.md via checklist, commits
 ```
 
@@ -528,9 +529,10 @@ dependency in the critical path. Python + browser is the minimum viable stack.
 Git for history, any static host for sharing — neither is required.
 
 **Community template = this repo minus the data.** The generator is already
-generic (no strain names in rendering logic, post-refactor). `Dabby_Data.py`
-contains this user's data. A community template ships with example data and a
-setup doc. The CLAUDE.md protocol and wisdom layer start empty for a new user.
+generic (no strain names in rendering logic, post-refactor). The `jars/` directory
+contains this user's data; `Dabby_Core.py` and `jar_manifest.py` are generic. A
+community template ships with an example jar and a setup doc. The CLAUDE.md protocol
+and wisdom layer start empty for a new user.
 
 ---
 

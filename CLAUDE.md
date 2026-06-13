@@ -128,7 +128,7 @@ When logging a run:
 2. Derive local time by subtracting 6 hours (MDT) from UTC.
 3. Confirm with the user before writing: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off."
 4. Only surface the date discrepancy if UTC and local dates differ (i.e. after ~6pm MDT when UTC has rolled over).
-5. Use the confirmed local date as `run_date` in the COMPLETED_RUNS tuple.
+5. Use the confirmed local date as `run_date` in the new `CompletedRun` entry (added to the jar's `RUNS` list).
 6. If the user corrects the time with a specific clock time ("it was at 8:30pm"), convert that to UTC and use it as `utc_logged_at` — not `datetime.now()`. If the user gives a relative offset ("about 10 minutes ago"), subtract from `datetime.now(timezone.utc)`. Either way, present the derived time in the confirmation prompt.
 7. The handoff's `## Last updated:` header must be the **local date derived from `utc_logged_at` of the last run logged this session** (UTC−6) — not the UTC date, and not `run_date` (which reflects when the dab happened, not when logging occurred). For sessions with no new runs, apply UTC−6 to the current time.
 8. For post-date runs, `utc_logged_at` can't be derived from `datetime.now()` — ask casually: "Do you have a sense of what time it was?" Use `None` if they don't know.
