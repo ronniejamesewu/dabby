@@ -40,12 +40,18 @@ resolved questions (B4, N2, N5, C1, C2).
 ## Current State
 
 **What exists and works:**
-- Data/code split: `Dabby_Data.py` (active data) and `Dabby_Log_Generator.py` (rendering)
-- Archive split (PR #109): `Dabby_Archive.py` holds frozen runs from finished jars; generator combines both at import time
-- Dataclasses: `Waypoint`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`
+- **Per-jar architecture (Session 108):** `Dabby_Core.py` (dataclasses, `RIG_N`,
+  `BASELINE_*`, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, parameterized
+  `validate`/`validate_accent_colors`) + `jars/<slug>.py` (one file per jar, each
+  exporting `RUNS` + `STATUS`) + `jar_manifest.py` (`ACTIVE`/`PAUSED`/`CLOSED` tiers
+  and `load_all_jars()`) + `Dabby_Log_Generator.py` (rendering). This supersedes the
+  former `Dabby_Data.py` / `Dabby_Archive.py` split (PR #109), which is retired —
+  closed jars are now jar files in the `CLOSED` tier, not a separate archive module.
+- Dataclasses: `Waypoint`, `Insert`, `CarbCap`, `Pearl`, `EquipmentConfig`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`
+- Dormancy lifecycle: `_check_dormancy()` prints advisory notices (21-day threshold); archiving/reactivation is a slug move in `jar_manifest.py`
 - Dashboard, strain browser, collapsible run sections, Chart.js curves
 - GitHub Actions: deploy on push to main, preview URL on PR
-- 46 logged runs across 10 strains (31 active, 15 archived)
+- 86 logged runs across 13 strains with runs (17 jar files total: 15 active incl. 4 status-only placeholders, 2 closed)
 
 **Structural debt:**
 
@@ -326,6 +332,11 @@ like this:
 
 ```python
 def build_html():
+    # Per-jar era (Session 108): validate() / validate_accent_colors() now take
+    # explicit args — validate(COMPLETED_RUNS, STRAIN_STATUS) and
+    # validate_accent_colors(STRAIN_STATUS, _ACCENT_RESOLVED). This sketch keeps the
+    # original no-arg form as the 6-step design record; see Dabby_Log_Generator.py
+    # for the live signatures.
     validate()
     validate_accent_colors()
 
@@ -338,8 +349,9 @@ def build_html():
         sections.append(render_what_to_try_next(ss))           # from ss.next_*, NOT last run (N5)
 ```
 
-Adding a strain: add entries to `Dabby_Data.py`. Zero generator edits.
-Adding a run: add an entry to `COMPLETED_RUNS` in `Dabby_Data.py`. Zero generator edits.
+Adding a strain: create `jars/<slug>.py` (from the boilerplate pattern) and add its slug to `ACTIVE` in `jar_manifest.py`. Zero generator edits.
+Adding a run: add a `CompletedRun` to that jar's `RUNS` list in `jars/<slug>.py`. Zero generator edits.
+*(Per-jar architecture, Session 108 — supersedes the original single-`Dabby_Data.py` workflow described in the 6-step plan. The generator loop is unchanged; it iterates the assembled `COMPLETED_RUNS`/`STRAIN_STATUS` that `jar_manifest.load_all_jars()` now produces.)*
 
 The CSS block moves to `style.css`, referenced via `<link>` in the HTML head.
 This removes ~13K characters of CSS, but **measured at the current run count (28
@@ -481,11 +493,11 @@ recorded as vague, never upgraded to a confident claim.
 
 ```
 1. User describes the run
-2. AI edits Dabby_Data.py — adds run to COMPLETED_RUNS
+2. AI edits jars/<slug>.py — adds a CompletedRun to that jar's RUNS list
 3. AI runs: python3 Dabby_Log_Generator.py
 4. User opens index.html in browser — immediate local review
 5. User confirms
-6. AI commits: git add Dabby_Data.py index.html HANDOFF_STATE.md && git commit
+6. AI commits: git add jars/<slug>.py index.html HANDOFF_STATE.md && git commit
 7. At session close: AI updates HANDOFF_WISDOM.md via checklist, commits
 ```
 
@@ -522,9 +534,10 @@ dependency in the critical path. Python + browser is the minimum viable stack.
 Git for history, any static host for sharing — neither is required.
 
 **Community template = this repo minus the data.** The generator is already
-generic (no strain names in rendering logic, post-refactor). `Dabby_Data.py`
-contains this user's data. A community template ships with example data and a
-setup doc. The CLAUDE.md protocol and wisdom layer start empty for a new user.
+generic (no strain names in rendering logic, post-refactor). The `jars/` directory
+contains this user's data; `Dabby_Core.py` and `jar_manifest.py` are generic. A
+community template ships with an example jar and a setup doc. The CLAUDE.md protocol
+and wisdom layer start empty for a new user.
 
 ---
 

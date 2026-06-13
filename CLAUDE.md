@@ -5,7 +5,7 @@
 > At the start of every session, before producing any reply:
 > 1. `git checkout main && git pull origin main` — the working directory may be on a stale branch.
 > 2. Read all three: `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`.
-> 3. If the opening message names a strain, also read `Dabby_Data.py`.
+> 3. If the opening message names a strain, also read that strain's jar file in `jars/` (filename = the strain's slug — `Glob jars/*.py` to discover, or check `jar_manifest.py`).
 >
 > These are not optional. Do not respond first and read later. Do not answer from memory or summaries.
 
@@ -23,7 +23,9 @@ The three mandatory files and what they contain:
 ## Conditional Reads
 
 Read these files when the session topic requires them:
-- `Dabby_Data.py` — active run data, strain status, waypoints, and schema. Skip only when the session is clearly non-strain work (backlog, infra/CI, generator internals, UI/layout, documentation). If the opening message names a strain, read this before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the data file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Frozen runs from finished jars live in `Dabby_Archive.py` (not a session-start read — see "Updating the Log").
+- `jars/<slug>.py` — one file per jar, holding that jar's runs (`RUNS`), status (`STATUS`), and local waypoint constants. This is the per-strain run data, status, waypoints. If the opening message names a strain, read its jar file before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the jar file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Discover the slug via `Glob jars/*.py` or `jar_manifest.py`. Closed/paused jars are jar files too (in the `CLOSED`/`PAUSED` tiers) — not a separate archive file.
+- `Dabby_Core.py` — dataclasses, `RIG_N` constants, `BASELINE_*` curves, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, `validate()`. Read for schema/equipment/baseline questions.
+- `jar_manifest.py` — the `ACTIVE`/`PAUSED`/`CLOSED` tier lists and the load functions that assemble all jars. Read for lifecycle/dormancy work.
 - `Dabby_Log_Generator.py` — for generator/rendering work.
 - `Dabby_Methodology.md` — for curve design or methodology questions.
 - `Dabby_UI_Principles.md` — for UI/layout changes.
@@ -36,8 +38,9 @@ on what to try next — not a formal calibration program.
 ## Commands
 
 - **Generate the log:** `python3 Dabby_Log_Generator.py` (Windows: `python
-  Dabby_Log_Generator.py`) — reads `Dabby_Data.py`, writes `index.html` and
-  `HANDOFF_STATE.md`.
+  Dabby_Log_Generator.py`) — assembles the jar files via `jar_manifest.py`, writes
+  `index.html` and `HANDOFF_STATE.md`. Also prints dormancy notices for active jars
+  approaching the 21-day idle threshold.
 - `validate()` and `validate_accent_colors()` run automatically at the top of
   `build_html()`. A data error prints `VALIDATION ERRORS:` and exits 1 — a bad
   edit fails the generate step instead of producing a broken page.
@@ -50,22 +53,38 @@ on what to try next — not a formal calibration program.
 
 ## Architecture
 
-- **Two-file split (Session 31).** `Dabby_Data.py` = all data + dataclasses
-  (`Waypoint`, `CompletedRun`, `EquipmentConfig`, `StrainStatus`,
-  `TerpeneEntry`), `GLOBAL_INFO`, `COMPLETED_RUNS`, `STRAIN_STATUS`,
-  `TERPENE_REFERENCE`, accent-color resolution, and `validate()`.
-  `Dabby_Log_Generator.py` = rendering only; imports `from Dabby_Data import *`
-  plus explicit `from Dabby_Data import _ACCENT_RESOLVED, _resolve_accent_colors`
-  (wildcard skips underscore names), plus `from Dabby_Archive import
-  ARCHIVED_RUNS, ARCHIVED_STATUS` and a four-line reassignment block that
-  combines archived + active lists and re-runs accent color resolution over the
-  combined list. CSS is external in `style.css` (Session 36), linked from the
-  generated `<head>`.
-- **Adding a run or strain is data-only (Step 3 complete, Session 43).** All
-  content — waypoints, dates, equipment, swab/session/verdict fields, `next_*`
-  fields — lives in `Dabby_Data.py`. The generator loop in `build_html()`
-  picks up new strains automatically. `Dabby_Log_Generator.py` requires no
-  edits for run logging.
+- **Per-jar architecture (Session 108).** Three layers: (1) `Dabby_Core.py` =
+  dataclasses (`Waypoint`, `Insert`, `CarbCap`, `Pearl`, `EquipmentConfig`,
+  `CompletedRun`, `StrainStatus`, `TerpeneEntry`), `GLOBAL_INFO`, `FIRST_RUN_DATE`,
+  `BASELINE_416`, `BASELINE_CURVE`, `RIG_1`–`RIG_5`, `TERPENE_REFERENCE`,
+  accent-color resolution, and the parameterized `validate(runs, statuses)` /
+  `validate_accent_colors(statuses, resolved)`. (2) `jars/<slug>.py` = one file per
+  jar, each exporting `RUNS` (list of `CompletedRun`) and `STATUS` (a single
+  `StrainStatus`), plus that jar's local waypoint constants; each imports only
+  `datetime` and `from Dabby_Core import *`. (3) `jar_manifest.py` = `ACTIVE`/
+  `PAUSED`/`CLOSED` slug lists + `load_all_jars()`, which assembles them (closed,
+  then paused, then active) into the combined `COMPLETED_RUNS` / `STRAIN_STATUS`.
+  `Dabby_Log_Generator.py` = rendering only; imports `from Dabby_Core import *`,
+  `from Dabby_Core import _resolve_accent_colors`, and
+  `from jar_manifest import load_all_jars, ACTIVE, PAUSED`, then
+  `COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()` and re-runs accent resolution
+  over the combined list. CSS is external in `style.css` (Session 36).
+- **Jar isolation invariant.** Jar files never import from other jar files. If two
+  jars need the same curve, the waypoint values are duplicated locally (e.g.
+  Watermellos carries its own copies of the FW106 curves it borrowed). Shared
+  constants (`BASELINE_*`, `RIG_N`) come from `Dabby_Core`, never duplicated.
+- **Adding a run is data-only.** Edit the jar file in `jars/`: add the local
+  waypoint constant, add a `CompletedRun` to `RUNS`, update the jar's `STATUS`
+  `next_*` fields. The generator loop picks it up automatically — no generator
+  edits for run logging. A new strain = a new `jars/<slug>.py` (from the
+  boilerplate pattern) + its slug added to `ACTIVE` in `jar_manifest.py`; `validate()`
+  and the manifest preflight catch a missed half.
+- **Lifecycle / dormancy.** `_check_dormancy()` in the generator prints advisory
+  notices for active jars whose last run is ≥19 days old (T-2/T-1/T-0 at the 21-day
+  threshold). Notices are build-frequency-dependent — the real state is always
+  computed from run dates, never from whether a prior notice fired. Archiving a jar
+  = move its slug from `ACTIVE` to `CLOSED` (jar gone/empty) or `PAUSED` (material
+  left). The jar file itself is never touched by the move.
 - **Equipment is per-run.** `EquipmentConfig` with nested `Insert`/`CarbCap`/`Pearl`
   dataclasses; sequenced `RIG_N` constants; Rig Reference block on the rendered log
   documents each rig. `validate()` rejects `equipment=None` — no field defaults by design.
@@ -82,21 +101,23 @@ on what to try next — not a formal calibration program.
 
 ## Updating the Log
 
-Adding or changing a run is data-only: edit `Dabby_Data.py` — add the waypoint
-constant, add a `CompletedRun` entry with all content fields, and update the
-strain's `StrainStatus` `next_*` fields. Then run `python3 Dabby_Log_Generator.py`
-to regenerate `index.html`. Commit both files to a feature branch, then open a PR.
-`Dabby_Log_Generator.py` requires no edits for run logging.
+Adding or changing a run is data-only: edit the strain's `jars/<slug>.py` — add the
+local waypoint constant, add a `CompletedRun` to `RUNS` with all content fields, and
+update the jar's `STATUS` `next_*` fields. Then run `python3 Dabby_Log_Generator.py`
+to regenerate `index.html`. Commit the jar file and the regenerated output to a
+feature branch, then open a PR. `Dabby_Log_Generator.py` requires no edits for run
+logging.
 
 Never write `index.html` by hand — always run the generator and commit its output.
 
-`Dabby_Archive.py` is NOT a session-start read. It holds frozen runs from finished jars
-(historical record, never edited). When writing `analysis` or `next_ai_analysis`, check
-`HANDOFF_WISDOM.md` first — most cross-strain patterns are summarized there with specific
-run citations. Read `Dabby_Archive.py` only when: (a) a wisdom citation points to archived
-runs and the summary feels thin for the analysis at hand, (b) a pattern is flagged as
-needing cross-strain confirmation and you want to search for it, or (c) a wisdom entry is
-vague and you need the underlying run prose.
+Closed/paused jars are jar files like any other (in the `CLOSED`/`PAUSED` tiers of
+`jar_manifest.py`) — historical record, never edited. When writing `analysis` or
+`next_ai_analysis`, check `HANDOFF_WISDOM.md` first — most cross-strain patterns are
+summarized there with specific run citations. Read a closed jar's `jars/<slug>.py`
+only when: (a) a wisdom citation points to its runs and the summary feels thin for
+the analysis at hand, (b) a pattern is flagged as needing cross-strain confirmation
+and you want to search for it, or (c) a wisdom entry is vague and you need the
+underlying run prose.
 
 ## Date and Time Logging
 
@@ -107,7 +128,7 @@ When logging a run:
 2. Derive local time by subtracting 6 hours (MDT) from UTC.
 3. Confirm with the user before writing: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off."
 4. Only surface the date discrepancy if UTC and local dates differ (i.e. after ~6pm MDT when UTC has rolled over).
-5. Use the confirmed local date as `run_date` in the COMPLETED_RUNS tuple.
+5. Use the confirmed local date as `run_date` in the new `CompletedRun` entry (added to the jar's `RUNS` list).
 6. If the user corrects the time with a specific clock time ("it was at 8:30pm"), convert that to UTC and use it as `utc_logged_at` — not `datetime.now()`. If the user gives a relative offset ("about 10 minutes ago"), subtract from `datetime.now(timezone.utc)`. Either way, present the derived time in the confirmation prompt.
 7. The handoff's `## Last updated:` header must be the **local date derived from `utc_logged_at` of the last run logged this session** (UTC−6) — not the UTC date, and not `run_date` (which reflects when the dab happened, not when logging occurred). For sessions with no new runs, apply UTC−6 to the current time.
 8. For post-date runs, `utc_logged_at` can't be derived from `datetime.now()` — ask casually: "Do you have a sense of what time it was?" Use `None` if they don't know.

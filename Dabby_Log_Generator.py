@@ -2,23 +2,22 @@
 """
 Dabby the House Rig — Session Log Generator
 Produces index.html — a mobile-responsive, screen-optimized web document.
-Data lives in Dabby_Data.py; this file is rendering logic only.
-To log a new run: edit Dabby_Data.py, then add the run section in build_html().
+Data lives in jars/<slug>.py (assembled by jar_manifest); this file is rendering logic only.
+To log a new run: edit the jar file in jars/, then add the run section in build_html().
 """
 
 from datetime import datetime, date, timezone, timedelta
 
-from Dabby_Data import *
-from Dabby_Data import _ACCENT_RESOLVED, _resolve_accent_colors  # underscore names are skipped by wildcard import
-import Dabby_Data
+from Dabby_Core import *
+from Dabby_Core import _resolve_accent_colors  # underscore names are skipped by wildcard import
+import Dabby_Core
 
-from Dabby_Archive import ARCHIVED_RUNS, ARCHIVED_STATUS
-COMPLETED_RUNS   = ARCHIVED_RUNS + COMPLETED_RUNS
-STRAIN_STATUS    = ARCHIVED_STATUS + STRAIN_STATUS
-_ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)   # re-run over full combined list
+from jar_manifest import load_all_jars, ACTIVE as _ACTIVE_SLUGS, PAUSED as _PAUSED_SLUGS
+COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()   # closed + paused + active, in render order
+_ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)
 
 _RIG_LABELS = sorted(
-    [(getattr(Dabby_Data, name), f"Rig {name[4:]}") for name in dir(Dabby_Data)
+    [(getattr(Dabby_Core, name), f"Rig {name[4:]}") for name in dir(Dabby_Core)
      if name.startswith('RIG_') and name[4:].isdigit()],
     key=lambda pair: int(pair[1].split()[1])
 )
@@ -572,9 +571,51 @@ def rig_reference_html():
     return collapsible_section("rig-ref", "Rig Reference", note + table, header_class="grey")
 
 
+def _check_dormancy(all_runs, all_statuses):
+    """Print dormancy notices for active jars approaching the 21-day threshold, and
+    flag any paused jar with recent activity. Advisory only — fires every build, so
+    the graduated T-2/T-1 notices are skipped if no build runs in that window; the
+    real state is always computed from run dates, never from whether a notice fired."""
+    today = date.today()
+    DORMANCY_DAYS = 21
+    status_by_slug = {s.slug: s for s in all_statuses}
+
+    def _last_date(status):
+        jar_runs = [r for r in all_runs if r.strain == status.name and r.run_date is not None]
+        return max((r.run_date for r in jar_runs), default=None)
+
+    for slug in _ACTIVE_SLUGS:
+        status = status_by_slug.get(slug)
+        if not status:
+            continue
+        last = _last_date(status)
+        if last is None:
+            continue
+        days_since = (today - last).days
+        remaining = DORMANCY_DAYS - days_since
+        if remaining <= 0:
+            print(f"[DORMANT] {status.name}: last run {last} ({days_since} days ago) — archive candidate")
+        elif remaining == 1:
+            print(f"[DORMANT T-1] {status.name}: last run {last} — goes dormant tomorrow")
+        elif remaining == 2:
+            print(f"[DORMANT T-2] {status.name}: last run {last} — goes dormant in 2 days")
+
+    for slug in _PAUSED_SLUGS:
+        status = status_by_slug.get(slug)
+        if not status:
+            continue
+        last = _last_date(status)
+        if last is None:
+            continue
+        days_since = (today - last).days
+        if days_since < DORMANCY_DAYS:
+            print(f"[PAUSED BUT ACTIVE] {status.name}: last run {last} ({days_since} days ago) — reactivate?")
+
+
 def build_html():
-    validate()
-    validate_accent_colors()
+    validate(COMPLETED_RUNS, STRAIN_STATUS)
+    validate_accent_colors(STRAIN_STATUS, _ACCENT_RESOLVED)
+    _check_dormancy(COMPLETED_RUNS, STRAIN_STATUS)
     sections = []
 
     dash = dashboard_html()
@@ -661,7 +702,7 @@ def build_html():
 # ── HANDOFF STATE ────────────────────────────────────────────────────────────
 
 def generate_handoff_state():
-    """Return HANDOFF_STATE.md as a string — machine-generated from Dabby_Data.py.
+    """Return HANDOFF_STATE.md as a string — machine-generated from the jar files.
     The header is derived from the data (not wall-clock time) so identical data
     regenerates an identical file — no no-op diffs."""
     run_counts, last_dates, last_equipment = {}, {}, {}
