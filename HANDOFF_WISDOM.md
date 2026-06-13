@@ -152,6 +152,8 @@ adjustment happens empirically via swab results, not terpene-profile reasoning.
 Do not design different starting curves from strain name, consistency type, or
 inferred terpene profile without empirical justification.
 
+**Current baseline (as of Session 107):** 380°F open → 400°F @4s → 420°F @8s, hold to 60s. Fast 8-second ramp. Prior baseline (380→400→416, ~20s ramp, 50s session) retired as `BASELINE_416`. Upgrade driven by multi-strain Rig 5 data: FW106 and BB36 #2 both showed improved vapor density and swab results on the faster ramp; OC R14 matched the pattern. Wispy-vapor-with-material-remaining was a two-strain signal on the prior baseline that the faster ramp resolved. Note: the fast-ramp improvement did not replicate for Watermellos (WM R10 — almost no vapor on draw 1) — the upgrade may be material-specific rather than universal. New strains still start from the current baseline; the Watermellos exception is strain-level data, not a baseline revision signal.
+
 ### Sapphire Insert
 When acquired: fresh empirical calibration from scratch. Do not scale from quartz
 curves. Two mechanisms that differentiate sapphire from quartz: (1) higher
