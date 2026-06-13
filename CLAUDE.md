@@ -98,6 +98,26 @@ runs and the summary feels thin for the analysis at hand, (b) a pattern is flagg
 needing cross-strain confirmation and you want to search for it, or (c) a wisdom entry is
 vague and you need the underlying run prose.
 
+## Changing the Baseline Curve
+
+`BASELINE_CURVE` always means "current recommended starting point for new strains." The invariant is maintained by renaming the retiring curve before redefining it. Skipping the rename causes every historical `CompletedRun` that referenced `BASELINE_CURVE` to silently render the new curve — wrong data, no error.
+
+**Protocol:**
+
+1. **Name the retiring curve by its endpoint temperature** — e.g., `BASELINE_416`, not `LEGACY_BASELINE`. Endpoint-temperature names are durable: they survive equipment changes and are self-documenting. Equipment-era names (e.g., `BASELINE_SAPPHIRE`) break down the moment the baseline changes without an equipment change.
+
+2. **Define the retiring constant first.** Copy the current `BASELINE_CURVE` waypoints verbatim into `BASELINE_XXX` before redefining `BASELINE_CURVE`.
+
+3. **Replace all COMPLETED_RUNS references.** Grep for `waypoints=BASELINE_CURVE,` (with trailing comma). Every match is a historical run that must be updated to `waypoints=BASELINE_XXX,`. Use `replace_all=True` in Edit — it's safe because the comma distinguishes these from `next_waypoints=BASELINE_CURVE` in STRAIN_STATUS (which does not have the leading `waypoints=` pattern).
+
+4. **`next_waypoints=BASELINE_CURVE` in STRAIN_STATUS is intentional.** Those forward-pointing entries correctly reference the new baseline — do not change them.
+
+5. **Check Dabby_Archive.py.** Confirm no `BASELINE_CURVE` references exist there. Archived runs use individual named constants and should always be clean, but verify.
+
+6. **Update Dabby_Methodology.md Section 5 table** to reflect the new curve parameters (opening setpoint, ascent rate, endpoint, hold time).
+
+7. Run the generator, verify output, commit.
+
 ## Date and Time Logging
 
 User timezone: **America/Denver (MDT, UTC-6)**
