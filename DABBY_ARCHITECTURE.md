@@ -332,6 +332,11 @@ like this:
 
 ```python
 def build_html():
+    # Per-jar era (Session 108): validate() / validate_accent_colors() now take
+    # explicit args — validate(COMPLETED_RUNS, STRAIN_STATUS) and
+    # validate_accent_colors(STRAIN_STATUS, _ACCENT_RESOLVED). This sketch keeps the
+    # original no-arg form as the 6-step design record; see Dabby_Log_Generator.py
+    # for the live signatures.
     validate()
     validate_accent_colors()
 
