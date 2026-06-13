@@ -40,12 +40,18 @@ resolved questions (B4, N2, N5, C1, C2).
 ## Current State
 
 **What exists and works:**
-- Data/code split: `Dabby_Data.py` (active data) and `Dabby_Log_Generator.py` (rendering)
-- Archive split (PR #109): `Dabby_Archive.py` holds frozen runs from finished jars; generator combines both at import time
-- Dataclasses: `Waypoint`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`
+- **Per-jar architecture (Session 108):** `Dabby_Core.py` (dataclasses, `RIG_N`,
+  `BASELINE_*`, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, parameterized
+  `validate`/`validate_accent_colors`) + `jars/<slug>.py` (one file per jar, each
+  exporting `RUNS` + `STATUS`) + `jar_manifest.py` (`ACTIVE`/`PAUSED`/`CLOSED` tiers
+  and `load_all_jars()`) + `Dabby_Log_Generator.py` (rendering). This supersedes the
+  former `Dabby_Data.py` / `Dabby_Archive.py` split (PR #109), which is retired —
+  closed jars are now jar files in the `CLOSED` tier, not a separate archive module.
+- Dataclasses: `Waypoint`, `Insert`, `CarbCap`, `Pearl`, `EquipmentConfig`, `CompletedRun`, `StrainStatus`, `TerpeneEntry`
+- Dormancy lifecycle: `_check_dormancy()` prints advisory notices (21-day threshold); archiving/reactivation is a slug move in `jar_manifest.py`
 - Dashboard, strain browser, collapsible run sections, Chart.js curves
 - GitHub Actions: deploy on push to main, preview URL on PR
-- 46 logged runs across 10 strains (31 active, 15 archived)
+- 86 logged runs across 13 strains with runs (17 jar files total: 15 active incl. 4 status-only placeholders, 2 closed)
 
 **Structural debt:**
 
