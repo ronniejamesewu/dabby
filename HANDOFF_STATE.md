@@ -18,8 +18,6 @@
 
 **Next:** Jar done — 9 runs. If it shows up again: fast ramp to 420°F is a reasonable starting point
 
-**Dab Notes:** Run 9 (small load, spinner): clean light golden swab, harshness in second half, medium intensity, delayed onset. Kind of a whimper of a last dab. Jar done.
-
 **AI Analysis:** Jar done. Equipment config is the more likely harshness driver — Runs 8–9 (small load, spinner) both produced harshness where Run 5 (same load class, Gemlock) was clean. The 420°F endpoint also sits near the harshness boundary regardless of config. If this strain shows up again, the fast ramp to 420°F (380→400@10s→420@20s, hold to 50s) is a reasonable starting point. Harshness on the spinner at that endpoint is a known risk — step down to 415°F if it persists, or test a joystick if one's available.
 
 ---
@@ -28,8 +26,6 @@
 **6 sessions** &nbsp;·&nbsp; Last: May 17, 2026 &nbsp;·&nbsp; Equipment: Rig 2 — Dr. Dabber stock quartz · Gemcup Glass Gemlock joystick · Dr. Dabber stock bubbler
 
 **Next:** Jar finished — 6 runs, May 13–17, 2026
-
-**Dab Notes:** Run 6 at 420°F (faster ramp to 30s, planned 50s extended to 60s via push button): super light golden swab, very tasty first half, faster to 420 hit harder than the slower ramp. Extension into harsh territory. Jar done.
 
 **AI Analysis:** Jar finished. Six runs over five days, May 13–17, 2026. This was also the Gemlock joystick's debut jar — every data point in this strain's history was collected on the new rig, so the baseline cross-strain confound never resolved. Harshness appeared in the tail on all six runs across three endpoint temperatures (430°F, 420°F, 415°F) and two curve shapes. A clean tail was never achieved. The fastest ramp (Run 6) produced the best first-half character and the hardest hit — the right shape arrived on the last dab of the jar.
 
@@ -56,8 +52,6 @@
 
 **Next:** Run 15: repeat 8s ramp to 420°F with normal load — clean read on temperature ceiling
 
-**Dab Notes:** I suspect I loaded a light load without meaning to. Vapor ran out even before the 40 seconds curve. Very very mild harshness in second hit towards the end, a point for depletion theory. Very beige and minimal reclaim on swabs. Maybe effect is going to grow but I'd say medium intensity right now. Without the finicky business of measuring out the loads, I'm not sure how we will ever isolate this particular variable well enough. Effect is medium to high right now, so it rose up.
-
 **AI Analysis:** Before isolating ramp speed from endpoint, repeat this exact curve (8s to 420°F, 40s session) with a deliberate normal or slightly heavier load. A load that fills the session gives a clean temperature-ceiling read — if harshness stays absent or depletion-only through 40s, 420°F is within range on Rig 5 for OC. That unlocks variable isolation: hold 420°F and try the baseline 20s ramp to separate endpoint from ramp speed.
 
 **Proposed Curve:**
@@ -72,8 +66,6 @@
 **5 sessions** &nbsp;·&nbsp; Last: May 8, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
 **Next:** Try 420–425°F endpoint on Run 6
-
-**Dab Notes:** Try 420–425°F endpoint, keep ramp shape.
 
 **AI Analysis:** Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.
 
@@ -118,8 +110,6 @@
 
 **Next:** Try faster ramp to 460°F on Run 5
 
-**Dab Notes:** Run 4 back to 430°F: light golden swab, tail harshness consistent with prior 430°F pattern, interesting bitter/citrus rind note throughout, big effect, seemingly short duration.
-
 **AI Analysis:** Tail harshness at 430°F is consistent across runs. Run 5 moves in a different direction — faster ramp to 460°F — rather than continuing to work the lower end. That's an exploratory step; the session character at 460°F is unknown for MBD. The citrus rind note is worth watching on Run 5 to see whether it changes with the faster climb. The short duration observation from Run 4 is a single data point, unclear if it means anything. Swab has been clean throughout, so the harshness is coming from endpoint temperature, not material condition.
 
 **Proposed Curve:**
@@ -134,8 +124,6 @@
 **3 sessions** &nbsp;·&nbsp; Last: May 11, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
 **Next:** Walk endpoint up incrementally — try 423°F on Run 4
-
-**Dab Notes:** 420 hold worked — notably less harshness, clean golden swabs. Not hard hitting but slow build to intensity. Want to slowly walk up the curve.
 
 **AI Analysis:** The 420°F endpoint is consistent with the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.
 
@@ -153,8 +141,6 @@
 
 **Next:** Try 410°F endpoint on Run 4 — tail harshness consistent at 415°F across Runs 2 and 3
 
-**Dab Notes:** Run 3 repeated the 415°F curve (375→400→415, 20s hold): golden and light swab. Taste still mild, not a lot of distinct flavor. Tad bit of harshness in the throat at the end. Pretty big intensity.
-
 **AI Analysis:** Tail harshness at 415°F is now consistent across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two consistent runs at 415°F with harshness — time to step down.
 
 **Proposed Curve:**
@@ -169,8 +155,6 @@
 **6 sessions** &nbsp;·&nbsp; Last: June 3, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
 **Next:** Run 7: repeat 8s ramp to 420°F — confirm Run 6 swab and vapor improvement
-
-**Dab Notes:** Swabs were beige, very clean. And not a lot of reclaim. Vapor was thick from the start. Flavor was nice. Harshness at end of second draw, didn't increase a lot on short third draw. Never tasted toasted. Big effect after the OC earlier. I'm feeling rocked right now. Switching strains seems to lead to bigger effect than returning to same strain.
 
 **AI Analysis:** Repeat this exact curve (8s ramp to 420°F, 40s session) to replicate before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 replicates, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.
 
@@ -187,8 +171,6 @@
 
 **Next:** Run 18: repeat 8s ramp to 420°F, 60s hold on Rig 5 — watch within-draw vapor pattern (thick-to-wispy vs. Run 16 on Rig 4?)
 
-**Dab Notes:** I could taste some lime notes maybe.
-
 **AI Analysis:** Repeat this exact curve with attention to the within-draw vapor pattern: does each draw start thick and go wispy, or stay consistent? Run 16 (Rig 4, single pearl, same 60s curve) showed thick-at-draw-start → wispy pattern every draw. If Rig 5 (dual pearl) doesn't show it, pearl count is confirmed as the thermal variable. That's the one signal to watch on Run 18.
 
 **Proposed Curve:**
@@ -203,8 +185,6 @@
 **15 sessions** &nbsp;·&nbsp; Last: June 11, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
 **Next:** Run 16: same 60s single cycle at 420°F, larger load — test whether harshness timing tracks load size
-
-**Dab Notes:** Beige swabs, harshness in the second half of cycle, many draws. Very intense. Vapor was dense throughout. No indication of depletion of material. But the throat harshness was real!
 
 **AI Analysis:** Second cycle was the dark gold driver — settled. Harshness with dense vapor in the second half of 60s is directional support for the heat exposure / airway sensitization hypothesis. Run 16: same curve (8s ramp to 420°F, 60s single cycle), larger load. If harshness enters in the same place regardless, load size isn't the variable and heat exposure is the more parsimonious explanation. If the timing shifts — earlier, later, or absent — vapor density is back in play.
 

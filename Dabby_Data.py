@@ -119,11 +119,18 @@ GLOBAL_INFO = [
     ("Session End",  "Stop when vapor production drops — do not ride timer on small loads"),
 ]
 
-BASELINE_CURVE = [
+BASELINE_416 = [
     Waypoint(time_s=0,  temp_f=380, note="Session open"),
     Waypoint(time_s=10, temp_f=400, note="Fast early climb"),
     Waypoint(time_s=20, temp_f=416, note="Endpoint"),
     Waypoint(time_s=50, temp_f=416, note="Hold"),
+]
+
+BASELINE_CURVE = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=420, note="Endpoint"),
+    Waypoint(time_s=60, temp_f=420, note="Hold"),
 ]
 
 CAG_INFO = [
@@ -788,7 +795,7 @@ COMPLETED_RUNS = [
         dab_notes="Got harsh at about 15 seconds left on the timer, and never got super harsh. Swabs were light golden. Intensity medium right now. First draw was flavorful, that increasingly familiar bitter citrus note came through from the beginning.",
         analysis="416°F on Rig 3 — between Run 10's clean 415°F and Run 11's immediate-harshness 417°F. Harshness entered at ~35s, 15 seconds into the hold, mild and never acute. For comparison, Run 11 (417°F) had harshness at endpoint arrival (~20s, immediately). The gradient is directionally consistent across three adjacent endpoints: 415°F clean, 416°F mild harshness entering mid-hold, 417°F immediate on arrival. Swab light golden, consistent with the sapphire OC pattern. Intensity medium — same read as Run 10 at 415°F, though this was the third session of the day, so the lack of intensity gain over 415°F is hard to read cleanly. Bitter citrus note from the first draw — consistent with OC's orange lineage expressing in vapor; the same cross-strain citrus note has appeared in MB9ZST R1 (tangerine) and MBD R4 (citrus rind), though the connection is not established.",
     ),
-    CompletedRun(strain="Orange Candy", run_date=date(2026, 6, 3), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 3, 22, 49, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Orange Candy", run_date=date(2026, 6, 3), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 3, 22, 49, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve &nbsp;|&nbsp; <strong>Equipment:</strong> Inaugural Rig 5 (sapphire + dual ruby pearls) run',
         swab="Dark golden — noticeably darker than Rig 3 OC runs; not brown. Second cycle context: ran a second cycle when first ended, denser vapor but getting toasty — extra residue likely from the second pass, not the first cycle running hot.",
         session_char="First draw: distinct orange peel note — closest flavor-name match OC has shown. Wispy vapor throughout first cycle; material left at 50s. Second cycle: denser vapor, toasty taste, stopped there.",
@@ -804,7 +811,7 @@ COMPLETED_RUNS = [
         dab_notes="I suspect I loaded a light load without meaning to. Vapor ran out even before the 40 seconds curve. Very very mild harshness in second hit towards the end, a point for depletion theory. Very beige and minimal reclaim on swabs. Maybe effect is going to grow but I'd say medium intensity right now. Without the finicky business of measuring out the loads, I'm not sure how we will ever isolate this particular variable well enough. Effect is medium to high right now, so it rose up. Got the very clear orange rind note again on first draw.",
         analysis="OC Run 14 on Rig 5, 8s ramp to 420°F, 40s session — first dab of the day. Two variables changed from Run 13 simultaneously: ramp speed (20s→8s) and endpoint (416→420°F), same situation as BB362 Run 6. The swab and session pattern shifted clearly in the same direction as BB362 Run 6: very beige with minimal reclaim vs. Run 13's dark golden and material remaining at 50s requiring a second cycle. These signals match the BB362 pattern on a second strain. Harshness: very very mild in the second draw toward the end, user-attributed to depletion — the load ran out before 40s, and harshness arrived at session end consistent with hot insert contact after the material was spent. User noted suspecting a lighter-than-intended load. This is distinct from OC's Rig 3 pattern, where 417°F produced immediate harshness on endpoint arrival (temperature threshold, not depletion). The depletion read is plausible; a fuller load that fills the 40s session would confirm it. Intensity built from medium to medium-to-high as a first dab. Direct comparison to Run 13's 'very very very stoned' is confounded — Run 13 included a second cycle and this run had a lighter load. Both ramp speed and endpoint changed simultaneously; neither can be isolated as the driver of the swab and vapor shift. Orange rind note appeared again on the first draw — second consecutive run showing this character after Run 13's first instance; too few runs to call it consistent but tracking in the same direction.",
     ),
-    CompletedRun(strain="Fire Water #106", run_date=date(2026, 5, 24), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 24, 23, 30, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 5, 24), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 24, 23, 30, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve &nbsp;|&nbsp; <strong>Equipment:</strong> Inaugural Rig 4 (sapphire + ruby pearl) run',
         swab="Super clean, very light beige.",
         session_char="Very flavorful throughout; terpene-load cough without heat irritation. Mild harshness entering at ~39s (19s into 416°F hold).",
@@ -812,7 +819,7 @@ COMPLETED_RUNS = [
         dab_notes="Swabs are super clean, very light beige. Harshness very mild and at roughly 11 seconds left mark. Very flavorful, terpenes obvious from the coughing without harshness.",
         analysis="First run on Rig 4 (sapphire + 5mm ruby pearl). Super clean swab, very flavorful — terpene-load cough without harshness is a strong first-impression character read for FW106. Mild harshness at 19s into the 416°F hold (39s total). Ruby is corundum (same material as the sapphire insert) — ~2x heat capacity and ~20x conductivity over quartz, so despite the smaller diameter the pearl carries comparable thermal mass and delivers heat more uniformly; the full corundum pathway likely runs at a higher effective temperature than sapphire + quartz pearl at the same setpoint. Whether that pushes harshness earlier (denser vapor) or later (material done sooner) is unresolved — needs a same-strain cross-rig comparison to isolate.",
     ),
-    CompletedRun(strain="Fire Water #106", run_date=date(2026, 5, 24), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 25, 2, 47, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Fire Water #106", run_date=date(2026, 5, 24), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 25, 2, 47, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve, repeated from Run 1',
         swab="Ultra clean, very light beige — same as Run 1.",
         session_char="Harshness entered mild at ~25s (5s into 416°F hold); grew through 2nd draw; nearly unbearable on 3rd draw. Notable bitter citrus note throughout.",
@@ -828,7 +835,7 @@ COMPLETED_RUNS = [
         dab_notes="Swabs were clean beige, tiny bit of harshness at back of second draw, maybe last 10 seconds. Very very tasty, strong effect but relatively short duration.",
         analysis="Run 3 on Rig 5 (sapphire + dual ruby pearls), faster ramp (8s to 416°F vs. baseline's 20s), 40s session, 2 draws. Three things changed from Run 2 simultaneously: draw count (3→2), rig (Rig 4→5), and curve shape plus session length (50s→40s). Clean beige swab — consistent with FW106's ultra-clean light beige pattern across Runs 1–2 on Rig 4, suggesting swab character reflects the strain, not the rig. Harshness limited to a tiny trace at the tail of draw 2 (~last 10s) — a large improvement over Run 2's draw-by-draw escalation to nearly unbearable on draw 3. Draw-count reduction is a plausible factor — Watermellos R4 also showed harshness entering on draw 3; rig and curve changes are unresolved confounds. \"Very very tasty\" is a flavor step up from Run 1's \"very flavorful\" — the faster ramp may be concentrating first-draw character as observed on Watermellos in the immediately preceding session, but one data point. Strong intensity; relatively short duration — the 40s session (10s shorter than baseline) plausibly contributes.",
     ),
-    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 25, 17, 12, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 25, 17, 12, tzinfo=timezone.utc), equipment=RIG_4, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Clean, golden — warmer than Rig 4's ultra-clean light beige on FW106.",
         session_char="Multiple draws; harshness minimal during session, appeared pronounced post-session and lingered.",
@@ -836,7 +843,7 @@ COMPLETED_RUNS = [
         dab_notes="I totally did more draws than I should have and felt the harshness afterward. Throat is sore 10 minutes later. Swabs were clean, more on the golden side than we've been seeing but nothing dark. Effects is pretty intense. Van Halen sounds amazing. [Clarification: harshness didn't show up too intense during but afterward it was pronounced for a long time]",
         analysis="First run of Watermellos on Rig 4, baseline curve. Multiple draws, more than intended. Harshness was minimal during the session but appeared pronounced post-session and persisted — throat still sore at 10+ minutes. This is a distinct presentation from FW106 R2's in-session escalation (draw-by-draw buildup to nearly unbearable on draw 3); the post-session onset here suggests cumulative mucosal exposure that crossed a threshold after the session ended rather than registering acutely during it. Draw count correlates, but the underlying mechanism is unresolved — no baseline exists yet for how this strain behaves at 1–2 draws. Swab came back clean but golden — distinctly warmer than FW106's ultra-clean light beige on the same Rig 4 setup. Whether that's Watermellos' residue character or a temperature signal is unclear from one run. Effects landed pretty intense.",
     ),
-    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 25, 20, 15, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=1, utc_logged_at=datetime(2026, 5, 25, 20, 15, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve &nbsp;|&nbsp; <strong>Equipment:</strong> Inaugural Rig 5 (sapphire + dual ruby pearls) run',
         swab="Beige — cleaner than Run 1's golden.",
         session_char="Two draws; no in-session harshness, terp cough. Mild post-session throat harshness.",
@@ -844,7 +851,7 @@ COMPLETED_RUNS = [
         dab_notes="First run with Rig 5. Baseline curve, only 2 draws. First draw to 17s remaining, second draw started at 10 seconds remaining and went till end of cycle. Never got harsh but got terp cough. Afterward I can feel some harshness in my throat but it's mild. Maybe this is decent support for the number of draws hypothesis? Swabs are cleaner than last run, into beige territory. Hit is pretty intense right now, I want to go lay down. Effect is pretty big, mind is a bit racy, not to paranoia yet.",
         analysis="Run 2 on Rig 5 (inaugural), two controlled draws. Post-session harshness dropped meaningfully from Run 1 (pronounced soreness at 10+ minutes) to mild — directional support for the draw-count hypothesis. But two things changed simultaneously: draw count (many → 2) and equipment (Rig 4 → Rig 5, second ruby pearl added). The harshness reduction can't be cleanly attributed to either variable alone. Swab came back beige — lighter than Run 1's golden, closer to FW106's ultra-clean light beige on Rig 4. Whether the lighter swab reflects Rig 5's dual pearl vaporizing more completely, or fewer draws extracting less material, is unclear. No in-session harshness with terp cough is a cleaner presentation than Run 1. Intensity still landed big on two draws.",
     ),
-    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 25, 21, 48, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 25, 21, 48, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Ultra clean beige.",
         session_char="Two big draws; no harshness. Immediate big effect.",
@@ -852,7 +859,7 @@ COMPLETED_RUNS = [
         dab_notes="Ultra clean beige swabs, no harshness across two big draws. Immediate big effect. If anything maybe faster climb and 5-10 seconds shorter",
         analysis="Run 3 repeats Run 2's setup exactly — Rig 5, 2 controlled draws, baseline curve. Result was consistent: ultra clean beige swab, no harshness. Second consecutive 2-draw run on Rig 5 without harshness. Post-session harshness that appeared mild on Run 2 wasn't mentioned, suggesting it dropped further or was within noise on the third session of the day. Intensity came on immediately and big — a delivery-speed step up from Run 2's 'mind racy' build, though tolerance confound applies as the third dab of the day. The draw-count pattern holds: Run 1 (many draws, Rig 4) produced pronounced post-session soreness; Runs 2–3 (2 draws, Rig 5) produced no or minimal harshness. The Rig 4→5 change remains an unresolved confound — cross-rig comparison at the same draw count hasn't happened yet.",
     ),
-    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=3, utc_logged_at=datetime(2026, 5, 26, 3, 44, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 25), sessions_prior_today=3, utc_logged_at=datetime(2026, 5, 26, 3, 44, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Ultra clean beige.",
         session_char="Three draws; draws 1–2 clean, harshness entered on third draw (starting at 14s remaining). Immediate big effect.",
@@ -932,7 +939,7 @@ COMPLETED_RUNS = [
         dab_notes="Swabs super clean beige, not a lot of flavor, light medium intensity feels like short duration, no harshness. No mildewy note obvious.",
         analysis="Run 6 on the faster ramp (same as Run 5), Rig 5, 2nd dab of the day. Super clean beige swab — consistent with WM's Rig 5 pattern. No harshness, 2-draw ceiling intact. Mildewy note from Run 5 didn't recur — two runs is enough to call it noise. Flavor subdued again: \"not so tasty\" on Run 5, \"not a lot of flavor\" on Run 6. Intensity light to medium with a short-duration feel — step down from Run 5's medium high, consistent with session order. The subdued flavor across both faster-ramp runs is worth noting in context: baseline Runs 2–4 on Rig 5 didn't flag flavor as a problem, and Run 4 specifically had \"big flavor on first draw\" at the same 416°F endpoint. The faster ramp concentrates delivery in the opening seconds — it suits FW106 (\"very very tasty\") but may be flattening WM's expression.",
     ),
-    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 29), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 30, 5, 13, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 29), sessions_prior_today=2, utc_logged_at=datetime(2026, 5, 30, 5, 13, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Beige.",
         session_char="First draw ~30s, second draw smaller; earthy note on second-draw exhale; tiny harshness at ~6s left; distinct watermelon note from bubbler residue.",
@@ -940,7 +947,7 @@ COMPLETED_RUNS = [
         dab_notes="Beige swabs, first draw 30 seconds, second draw smaller. Tasty first draw, maybe a bit of the mildew on the exhale but this time it tasted more earthy than mildewy. Tiny bit of harshness at 6 seconds left. Just pulled the cooked vapor that was sitting in the bubbler and it had a distinct watermelon note. Effect just mild right now.",
         analysis="Baseline curve, Rig 5, 3rd dab of the day. Beige swab — consistent with WM's Rig 5 pattern. Tasty first draw; earthy note on second-draw exhale — similar to Run 5's mildewy note but described differently. Run 5 (faster ramp, 1st dab): mildewy. Run 6 (faster ramp, 2nd dab): none. Run 7 (baseline, 3rd dab): earthy. The note may be a second-draw exhale trait that varies by session rather than a curve signal — session order is an unresolved confound. Tiny harshness at 6s left (session tail); absent on Runs 5–6 — could be session order or the 10 extra seconds of hold, not conclusively curve-driven. Distinct watermelon note from residual bubbler vapor — first time this strain character has been named. Flavor comparison to faster ramp inconclusive: \"maybe\" better — too much noise on the 3rd dab to read clearly.",
     ),
-    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 30), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 30, 22, 0, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Watermellos", run_date=date(2026, 5, 30), sessions_prior_today=0, utc_logged_at=datetime(2026, 5, 30, 22, 0, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Clean beige.",
         session_char="2 draws; slight harshness in draw 2 around 12s left (difficult to read); slight mildew note in draw 2, otherwise not a ton of flavor.",
@@ -1004,7 +1011,7 @@ COMPLETED_RUNS = [
         dab_notes="Beige swabs, harshness in the second half of cycle, many draws. Very intense. Vapor was dense throughout. No indication of depletion of material. But the throat harshness was real!",
         analysis="Single cycle, 60s hold — beige swab after four consecutive dark gold 2x2 sessions. The hypothesis was direct: if the swab lightens on single cycle, the reheat was driving dark gold. It lightened. The second cycle was the culprit, not the material. Harshness entered in the second half of the 60s session with vapor dense throughout — user confirmed no depletion. That takes depletion off the table as the mechanism. This is directional support for the heat exposure / airway sensitization hypothesis: continuous draws at 420°F, thermal load accumulating in the airways, harshness crossing the threshold somewhere past 30s with material still present. Consistent with FW106 R14 (first dab, 2 draws, material confirmed remaining, harshness at session tail) — both share the same signature: load intact, harshness arrives as session length accumulates. Very intense, consistent with WM's Rig 5 pattern.",
     ),
-    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 5, 31), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 1, 3, 26, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 5, 31), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 1, 3, 26, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve',
         swab="Very golden — tad dark; user notes this jar tends toward darker reclaim than its sisters. Generally clean.",
         session_char="2 big draws + 6-second third; no harshness; terp cough. Very wispy vapor throughout. First draw very flavorful and fruity; second less distinct but not unpleasant.",
@@ -1012,7 +1019,7 @@ COMPLETED_RUNS = [
         dab_notes="Very golden swabs, I remember this jar seemed to have darker reclaim than its sisters. But generally clean looking, just a tad dark. Two big draws and then a 6 second third. No harshness at all, terp cough though. First draw was really flavorful, lots of fruit but I couldn't pick one out. Second draw less flavorful but not at all unpleasant. Very wispy vapor, wonder if this wants more heat applied. Effects are starting light, some body sensation. I think this one builds over maybe 15 mins. Oh I get a very clear blueberry note much much after taking the dab. It seems to come up my throat too, which is a strange way for something to show up. Moderate intensity — creative and chatty energy, body tingling movement sensations, nothing overpowering.",
         analysis="Run 1 on Rig 5, baseline curve — clean debut. No harshness across two big draws and a 6-second tail. On Rig 5, harshness has entered around draw 3 for FW106 and Watermellos; the short third here didn't trigger it, but 6 seconds is too thin to count as a full draw — treat the pattern as unresolved, not extended. Swab came back very golden — warmer than the beige Rig 5 typically returns on FW106 and Watermellos. User attributed it to the jar's character (darker reclaim than its sisters), which is the right read: within the clean range, swab is a floor indicator, and this isn't a floor signal. The golden does hint at less complete vaporization at this endpoint — consistent with the wispy vapor throughout — but one confounded data point isn't enough to act on. Wispy vapor was the defining session note. FW106 and WM both delivered denser vapor at 416°F on Rig 5; the contrast here may be material character (badder consistency, this phenotype), load size, or a temperature signal. The user's more-heat hypothesis is plausible, not confirmed. Flavor followed the Rig 5 terpene depletion pattern: fruity and distinct on the first draw, falling off sharply on the second — same arc as WM R4 ('big flavor on first draw, flavor was changing by then on second draw'). Retronasal blueberry arriving well after the session — coming up through the throat — is a novel presentation in the log. The blueberry character exists in this material but didn't express in real-time vapor; it released slowly post-session through retronasal olfaction. Whether that's a consistent signature or a first-run anomaly is worth watching. Intensity moderate after a ~15-minute build — creative and chatty energy with body tingling and movement sensations, nothing overpowering. The uplifting, social character is notable for a blueberry lineage strain; worth tracking on future runs to see if it's consistent or session-specific.",
     ),
-    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 1), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 1, 22, 34, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 1), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 1, 22, 34, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve, repeated from Run 1',
         swab="Dark golden.",
         session_char="First draw very tasty (~20s elapsed); harshness midway through second draw (before terp-load cough, separate phenomena); notably thicker vapor than Run 1; small third draw at 6s remaining, continued drawing into cooldown to ~390°F; post-session throat burning.",
@@ -1020,7 +1027,7 @@ COMPLETED_RUNS = [
         dab_notes="Very tasty on the first draw that went to 30 seconds left. Just a hint of harshness showed up midway through second draw — harshness noticed before the cough. Didn't see the timer because the harshness coincided with a big terp cough, felt more like a choking sensation than irritation. Second draw had much thicker vapor than the wispy stuff yesterday, that was clear. I took a small third draw at 6 seconds left and kept drawing as it cooled down to 390 ish. The sapphire definitely holds heat longer than quartz. My throat is burning a bit still. Swabs were dark golden. I think the effect from this one is much bigger than yesterday — it's the same curve, so maybe load variation? It hit very hard.",
         analysis="Run 2 on Rig 5, baseline curve repeated. Thicker vapor throughout vs. Run 1's wispy, and intensity stepped up from moderate to very hard — both consistent with a larger load; same curve, so load variation is the most likely driver. Harshness arrived midway through the second draw, confirmed before the terp-load cough, so a real signal. This is earlier than the Rig 5 pattern of harshness entering around draw 3 on FW106 and Watermellos — points either at the load running thin within draw 2 (dense vapor depleting faster) or at 416°F sitting at the edge of the clean zone for this phenotype. Can't distinguish the two from this run alone — load wasn't controlled. Swab came back dark golden, a step darker than Run 1's 'very golden, just a tad dark.' On a larger load, the swab would be expected to run lighter if load quantity were the only variable; darker is a mild directional signal toward temperature rather than depletion, but doesn't rise to a floor signal. Post-session throat burning is consistent with the in-session harshness. Sapphire heat retention observed: continued drawing into cooldown to ~390°F, consistent with the insert's higher thermal mass holding temperature after the session ends.",
     ),
-    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 1), sessions_prior_today=1, utc_logged_at=datetime(2026, 6, 2, 3, 1, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 1), sessions_prior_today=1, utc_logged_at=datetime(2026, 6, 2, 3, 1, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve, third run',
         swab="Clean dark gold.",
         session_char="3 draws; very tasty throughout; low-level harshness at end of draw 2, stayed low.",
@@ -1028,7 +1035,7 @@ COMPLETED_RUNS = [
         dab_notes="Swabs were clean and dark gold. 3 draws, very tasty, a little bit of harshness started in end of draw 2. Stayed low level. Medium intensity. Incredible quality and taste — easily as good as any top tier rosin I've had, maybe better.",
         analysis="Harshness at end of draw 2, consistent with Run 2 (midway through draw 2) — draw-2 harshness is now a two-run pattern. Load control was compromised by gooey consistency; load was if anything still larger than normal, so the pre-run condition ('controlled load → temperature signal') doesn't apply cleanly. Load density remains the unresolved variable: both runs with likely-large loads produced draw-2 harshness; Run 1 with wispy vapor and moderate intensity did not. Timing is directionally consistent with the density reading — harshness entered later in draw 2 on Run 3 than Run 2, as vapor density framing would predict if load was modestly smaller. But load isolation as a controlled test is structurally off the table for this jar: gooey consistency makes precise loading impossible in both directions. Temperature step-down remains available as the other lever if needed. Swab dark gold again, matching Run 2; warming character appears phenotype-specific for this jar on Rig 5, not a floor signal. Three draws taken; harshness entered at end of draw 2, not draw 3, so draw count isn't the culprit. Session character note: user rates this among the best rosin they've had — flavor quality is top tier regardless of the harshness question. Run 4 already loaded larger than normal — likely to replicate the pattern. Next deliberate test is Run 5: minimal load at 416°F, going as light as the consistency allows, to probe whether harshness tracks vapor density.",
     ),
-    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 2), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 2, 23, 33, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 2), sessions_prior_today=0, utc_logged_at=datetime(2026, 6, 2, 23, 33, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve; larger-than-normal load',
         swab="Dark gold; lots of reclaim in insert.",
         session_char="3 draws; wispy throughout; first draw ended ~13s in at 404°F (before plateau); second draw tasty, very faint harshness at very end; third draw slightly more density then wispy.",
@@ -1036,7 +1043,7 @@ COMPLETED_RUNS = [
         dab_notes="Very tasty, first draw ended at 404, please do the math on how many seconds. Second draw stayed tasty and developed harshness at very end, but it was very faint. Seemed wispy again. Third draw little more density then wispy again. Lots of reclaim in insert, dark gold on the swabs. Same great medium high creative chatty effects. High enough I want to be lounging.",
         analysis="Larger-than-normal load, baseline curve, Rig 5, first dab of the day. Prediction from Session 87 was that a larger load would replicate the draw-2 harshness from Runs 2–3; instead, harshness was very faint and only at the very end of draw 2. Wispy vapor throughout and lots of reclaim — but Run 2 (same curve, also larger load) produced explicitly thick vapor and clear harshness, so load size doesn't explain the difference; and wispy has appeared on both Run 1 (likely smaller load) and Run 4, so it doesn't track load size cleanly either. This jar has enough run-to-run variability in vapor density and harshness that the inputs driving any given result are hard to isolate. Swab dark gold, consistent with phenotype character. Intensity medium high, familiar creative-chatty effects.",
     ),
-    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 2), sessions_prior_today=1, utc_logged_at=datetime(2026, 6, 3, 3, 5, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_CURVE,
+    CompletedRun(strain="Blueberry 36 #2", run_date=date(2026, 6, 2), sessions_prior_today=1, utc_logged_at=datetime(2026, 6, 3, 3, 5, tzinfo=timezone.utc), equipment=RIG_5, waypoints=BASELINE_416,
         duration_seconds=50, endpoint_note='<strong>Endpoint:</strong> 416°F — baseline curve; minimal load',
         swab="Dark golden.",
         session_char="2 draws; slight harshness in draw 2, stayed slight; lots of flavor; wispy vapor; lots of reclaim.",
@@ -1107,6 +1114,38 @@ COMPLETED_RUNS = [
         dab_notes="I could taste some lime notes maybe.",
         analysis="Run 17 on Rig 5 (dual pearl), matching Run 16's curve exactly — 8s ramp to 420°F, 60s hold. Dark golden swab is consistent with Run 16's, making this the first same-curve, same-duration cross-rig swab comparison: swab stayed dark golden across the Rig 4→Rig 5 swap, consistent with swab tracking material rather than rig. Session character wasn't captured this run, so the within-draw thick-to-wispy question from Run 16 remains open. Lime note is consistent with Key Limeade lineage (limonene inferred); single-session flavor observations are noisy.",
     ),
+]
+
+DBRB_INFO = [
+    ("Strains",     "Donny Burger (GMO × Han Solo Burger — Han Solo Burger: GMO × Larry OG F8; Larry OG: SFV OG × OG Kush) + Rainbow Belts (Z × Moonbow)"),
+    ("Format",      "Close Friends Persy Thumbprint — two strains: outer ring cold cure badder (Donny Burger), center jam (Rainbow Belts). 90μ persy-tier. Load position not reliably distinguishable."),
+    ("Producer",    "710 Labs"),
+    ("710 Notes",   "Donny Burger brings sweet GMO funk with garlic, onion, and spice. Rainbow Belts cuts through with lemon-lime, floral Z, and a smooth exhale. Gas, funk, and bright fruit."),
+    ("Nose",        "Not yet recorded"),
+]
+
+LHBH_INFO = [
+    ("Strains",     "Lemon Heads (Lemon G × Face Off OG BX) + Blueberry Haze (Blueberry × Haze)"),
+    ("Format",      "Close Friends Persy Thumbprint — two strains: outer ring cold cure badder (Lemon Heads), center jam (Blueberry Haze). 90μ persy-tier. Load position not reliably distinguishable."),
+    ("Producer",    "710 Labs"),
+    ("710 Notes",   "Lemon Heads brings one of our favorite Lemon G profiles with a hint of gas. Blueberry Haze starts with a forward blueberry zing, then lets the haze linger. Bright citrus up front, haze on the backend."),
+    ("Nose",        "Not yet recorded"),
+]
+
+BP4RW13_INFO = [
+    ("Strains",     "Banana Punch #4 (Banana OG × Purple Punch) + Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch)"),
+    ("Format",      "Close Friends Persy Thumbprint — two strains: outer ring cold cure badder (Banana Punch #4), center jam (Randy Watzon #13). 90μ persy-tier. Load position not reliably distinguishable."),
+    ("Producer",    "710 Labs"),
+    ("710 Notes",   "Banana Punch #4 brings ripe banana and grape. Randy Watzon #13 adds Runtz-forward sweetness, Z, and musky gas on the backend. Fruit up front, gas underneath."),
+    ("Nose",        "Not yet recorded"),
+]
+
+PAPZP22_INFO = [
+    ("Strains",     "Papaya (clone-only, lineage unknown) + Z Pie #22 (Z × Georgia Pie — Georgia Pie: Gelato × Gushers-adjacent lineage)"),
+    ("Format",      "Close Friends Persy Thumbprint — two strains: outer ring cold cure badder (Papaya), center jam (Z Pie #22). 90μ persy-tier. Load position not reliably distinguishable."),
+    ("Producer",    "710 Labs"),
+    ("710 Notes",   "Papaya brings sweet, tart exotic fruit. Z Pie #22 layers in Z, sour citrus, spice, and Georgia Pie. Bright fruit meets sour citrus funk."),
+    ("Nose",        "Not yet recorded"),
 ]
 
 STRAIN_STATUS = [
@@ -1186,6 +1225,34 @@ STRAIN_STATUS = [
         next_dab_notes="Beige swabs, harshness in the second half of cycle, many draws. Very intense. Vapor was dense throughout. No indication of depletion of material. But the throat harshness was real!",
         next_ai_analysis="Second cycle was the dark gold driver — settled. Harshness with dense vapor in the second half of 60s is directional support for the heat exposure / airway sensitization hypothesis. Run 16: same curve (8s ramp to 420°F, 60s single cycle), larger load. If harshness enters in the same place regardless, load size isn't the variable and heat exposure is the more parsimonious explanation. If the timing shifts — earlier, later, or absent — vapor density is back in play.",
         next_waypoints=WM_RUN15_NEXT,
+    ),
+    StrainStatus(name="Donny Burger + Rainbow Belts", profile_anchor="#dbrb-profile", next_text="No runs yet — start from baseline curve", accent=None, slug="dbrb",
+        info=DBRB_INFO,
+        terpene_note='<strong>Terpene inference:</strong> Caryophyllene inferred dominant from GMO and OG lineage on the Donny Burger side (funky, gassy, garlic-onion character); limonene inferred from Rainbow Belts Z side (lemon-lime, citrus). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="",
+        next_ai_analysis="No runs yet. This is a two-strain Close Friends Persy Thumbprint — load position is not distinguishable by eye, so each run reflects whichever zone was loaded. Start from baseline curve (380°F open, 420°F in 8s, 60s session). Note nose and vapor character per run — it may help identify which strain contributed over time, but single-session flavor observations are noisy.",
+        next_waypoints=BASELINE_CURVE,
+    ),
+    StrainStatus(name="Lemon Heads + Blueberry Haze", profile_anchor="#lhbh-profile", next_text="No runs yet — start from baseline curve", accent=None, slug="lhbh",
+        info=LHBH_INFO,
+        terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from Lemon Heads (Lemon G × Face Off OG BX) — Lemon G is known for strong citrus/lemon character; myrcene and terpinolene inferred from Blueberry Haze (Blueberry × Haze). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="",
+        next_ai_analysis="No runs yet. This is a two-strain Close Friends Persy Thumbprint — load position is not distinguishable by eye, so each run reflects whichever zone was loaded. Start from baseline curve (380°F open, 420°F in 8s, 60s session). Note nose and vapor character per run — it may help identify which strain contributed over time, but single-session flavor observations are noisy.",
+        next_waypoints=BASELINE_CURVE,
+    ),
+    StrainStatus(name="Banana Punch #4 + Randy Watzon #13", profile_anchor="#bp4rw13-profile", next_text="No runs yet — start from baseline curve", accent=None, slug="bp4rw13",
+        info=BP4RW13_INFO,
+        terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="",
+        next_ai_analysis="No runs yet. This is a two-strain Close Friends Persy Thumbprint — load position is not distinguishable by eye, so each run reflects whichever zone was loaded. Start from baseline curve (380°F open, 420°F in 8s, 60s session). Note nose and vapor character per run — it may help identify which strain contributed over time, but single-session flavor observations are noisy.",
+        next_waypoints=BASELINE_CURVE,
+    ),
+    StrainStatus(name="Papaya + Z Pie #22", profile_anchor="#papzp22-profile", next_text="No runs yet — start from baseline curve", accent=None, slug="papzp22",
+        info=PAPZP22_INFO,
+        terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene; Georgia Pie typically Gelato × Gushers-adjacent: limonene/myrcene/linalool). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
+        next_dab_notes="",
+        next_ai_analysis="No runs yet. This is a two-strain Close Friends Persy Thumbprint — load position is not distinguishable by eye, so each run reflects whichever zone was loaded. Start from baseline curve (380°F open, 420°F in 8s, 60s session). Note nose and vapor character per run — it may help identify which strain contributed over time, but single-session flavor observations are noisy.",
+        next_waypoints=BASELINE_CURVE,
     ),
 ]
 
