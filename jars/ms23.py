@@ -33,7 +33,7 @@ RUNS = [
 STATUS = StrainStatus(
     name='Mango Starburst #23',
     profile_anchor='#ms23-profile',
-    next_text='Repeat Run 1 curve to confirm',
+    next_text='Not my jar — closed after 1 run. If it shows up again: repeat the baseline.',
     accent=None,
     slug='ms23',
     info=[
@@ -47,7 +47,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene and terpinolene weighted from SB36 line\'s citrus-candy character; pronounced pine on Run 1 suggests pinene may be more prominent than inferred. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="One run, clean swab, no harshness. Pine-forward character was noted but single-session flavor observations are noisy. Repeat the same curve before changing anything — if it's pine again on Run 2, that's real.",
+    next_ai_analysis="Not my jar — one dab from Matt's. Clean swab, no harshness, pine-forward character noted. Single run; no confirmation. If this strain shows up again: repeat the baseline before changing anything.",
     next_waypoints=MS23_RUN1,
     jar_index='',
 )
