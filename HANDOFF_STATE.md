@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 85 across 13 strains
+- **Total runs:** 86 across 13 strains
 - **Active since:** May 2, 2026 (42 days)
 - **Last run date:** June 12, 2026
 
@@ -183,19 +183,19 @@
 ---
 
 ### Fire Water #106
-**16 sessions** &nbsp;·&nbsp; Last: June 12, 2026 &nbsp;·&nbsp; Equipment: Rig 4 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**17 sessions** &nbsp;·&nbsp; Last: June 12, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 17: return to Rig 5, 8s ramp to 420°F, 40s hold — test whether within-draw vapor thinning was Rig 4 single-pearl behavior
+**Next:** Run 18: repeat 8s ramp to 420°F, 60s hold on Rig 5 — watch within-draw vapor pattern (thick-to-wispy vs. Run 16 on Rig 4?)
 
-**Dab Notes:** I confounded the hell out of that run. The part that worked was first cycle first draw, smooth, tasty. The taste to my recollection faded a bit maybe over time in the fridge — makes me wonder about the humidity environment in my fridge where I'm keeping this stuff. There was also a faint crackle and pop — only one crackle in the first draw, never heard again, probably from water left over from the cleaning I had just done to the entire rig. Wispy vapor in that first draw though. Each following draw had the pattern of thicker vapor at first part of draw and then wispy over the length of the draw. This kept going through the rest of the cycle regardless of number of draws. And the harshness was building up. I ran another cycle and waited for it to get to 420 before I drew on it and it was still doing it. Hit it short draws until the harshness warned me off. Swabs were dark golden, surprising amount of reclaim. I was sure I loaded on the normal side. I got as normal a load size as possible with the runny consistency. Pretty stoned. Chatty, creative, some body tension. High intensity.
+**Dab Notes:** I could taste some lime notes maybe.
 
-**AI Analysis:** Run 17: back on Rig 5, same 8s ramp to 420°F, 40s hold. The within-draw thick-to-wispy pattern is the open question from Run 16 — if it disappears on Rig 5, single pearl thermal mass is confirmed as the variable. 40s first, not 60s — adding session length would muddy the equipment comparison.
+**AI Analysis:** Repeat this exact curve with attention to the within-draw vapor pattern: does each draw start thick and go wispy, or stay consistent? Run 16 (Rig 4, single pearl, same 60s curve) showed thick-at-draw-start → wispy pattern every draw. If Rig 5 (dual pearl) doesn't show it, pearl count is confirmed as the thermal variable. That's the one signal to watch on Run 18.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
-- 8s → 420°F — Endpoint — 8s ramp; up 4°F from operating point
-- 40s → 420°F — Hold
+- 8s → 420°F — Endpoint — 8s ramp
+- 60s → 420°F — Hold — extended from 40s
 
 ---
 
