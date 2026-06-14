@@ -1,7 +1,7 @@
 """Jar manifest — tracks which lifecycle tier each jar is in.
 
-The move primitive: relocate a slug between ACTIVE / PAUSED / CLOSED. The jar
-file itself is never touched. List order within a tier is display order; within
+The move primitive: relocate a slug between ACTIVE / CLOSED. The jar file
+itself is never touched. List order within a tier is display order; within
 a jar, RUNS order sets run numbering.
 """
 import importlib
@@ -11,29 +11,26 @@ import re
 # ── Tier lists ────────────────────────────────────────────────────────────────
 
 ACTIVE = [
-    'oc',
-    'bb362',
-    'fw106',
-    'watermellos',
-    'dbrb',
-    'lhbh',
-    'bp4rw13',
-    'papzp22',
-]
-
-PAUSED = [
-    'cag',
-    'hive1',
-    'mbd',
-    'rainfruit',
-    'bb361',
+    'cag',         # Caramel Apple Gelato
+    'hive1',       # The Hive #1
+    'mbd',         # Maple Bacon Donut
+    'rainfruit',   # Rain Fruit
+    'bb361',       # Blueberry 36 #1
+    'oc',          # Orange Candy
+    'bb362',       # Blueberry 36 #2
+    'fw106',       # Fire Water #106
+    'watermellos', # Watermellos
+    'dbrb',        # Donny Burger + Rainbow Belts
+    'lhbh',        # Lemon Heads + Blueberry Haze
+    'bp4rw13',     # Banana Punch #4 + Randy Watzon #13
+    'papzp22',     # Papaya + Z Pie #22
 ]
 
 CLOSED = [
-    'wwz',
-    'mb9zst',
-    'fembot3',
-    'ms23',
+    'wwz',     # WW Z
+    'mb9zst',  # Mango Banana #9 + Z + Sour Tangie
+    'fembot3', # Fembot #3
+    'ms23',    # Mango Starburst #23
 ]
 
 # ── Validation helpers ────────────────────────────────────────────────────────
@@ -63,7 +60,7 @@ def _check_closed_tier(slug, runs, status):
 def _validate_manifest_preflight():
     """Check for duplicate slugs, missing/orphan jar files, and disallowed imports BEFORE importing.
     Raises SystemExit on any error — fail fast with clear diagnostics."""
-    all_list = ACTIVE + PAUSED + CLOSED
+    all_list = ACTIVE + CLOSED
     errors = []
 
     seen = set()
@@ -113,8 +110,7 @@ def _load_jar(slug):
 
 def load_all_jars():
     """Load all jars across all tiers. Returns (all_runs, all_statuses).
-    Order: closed, then paused, then active — matching the prior
-    ARCHIVED + ACTIVE concatenation so render order and accent colors are stable."""
+    Order: closed first, then active — closed jars render as historical archive."""
     _validate_manifest_preflight()
     all_runs = []
     all_statuses = []
@@ -132,20 +128,9 @@ def load_all_jars():
             print(f"  {e}")
         raise SystemExit(1)
 
-    for slug in PAUSED + ACTIVE:
-        runs, status = _load_jar(slug)
-        all_runs.extend(runs)
-        all_statuses.append(status)
-
-    return all_runs, all_statuses
-
-def load_active_jars():
-    """Load only active jars. For dormancy checks that don't need archived data."""
-    _validate_manifest_preflight()
-    all_runs = []
-    all_statuses = []
     for slug in ACTIVE:
         runs, status = _load_jar(slug)
         all_runs.extend(runs)
         all_statuses.append(status)
+
     return all_runs, all_statuses

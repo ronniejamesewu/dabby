@@ -23,9 +23,9 @@ The three mandatory files and what they contain:
 ## Conditional Reads
 
 Read these files when the session topic requires them:
-- `jars/<slug>.py` — one file per jar, holding that jar's runs (`RUNS`), status (`STATUS`), and local waypoint constants. This is the per-strain run data, status, waypoints. If the opening message names a strain, read its jar file before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the jar file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Discover the slug via `Glob jars/*.py` or `jar_manifest.py`. Closed/paused jars are jar files too (in the `CLOSED`/`PAUSED` tiers) — not a separate archive file.
+- `jars/<slug>.py` — one file per jar, holding that jar's runs (`RUNS`), status (`STATUS`), and local waypoint constants. This is the per-strain run data, status, waypoints. If the opening message names a strain, read its jar file before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the jar file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Discover the slug via `Glob jars/*.py` or `jar_manifest.py`. Closed jars are jar files too (in the `CLOSED` tier) — not a separate archive file.
 - `Dabby_Core.py` — dataclasses, `RIG_N` constants, `BASELINE_*` curves, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, `validate()`. Read for schema/equipment/baseline questions.
-- `jar_manifest.py` — the `ACTIVE`/`PAUSED`/`CLOSED` tier lists and the load functions that assemble all jars. Read for lifecycle/dormancy work.
+- `jar_manifest.py` — the `ACTIVE` / `CLOSED` tier lists and the load function that assembles all jars. Read for lifecycle work.
 - `Dabby_Log_Generator.py` — for generator/rendering work.
 - `Dabby_Methodology.md` — for curve design or methodology questions.
 - `Dabby_UI_Principles.md` — for UI/layout changes.
@@ -39,8 +39,7 @@ on what to try next — not a formal calibration program.
 
 - **Generate the log:** `python3 Dabby_Log_Generator.py` (Windows: `python
   Dabby_Log_Generator.py`) — assembles the jar files via `jar_manifest.py`, writes
-  `index.html` and `HANDOFF_STATE.md`. Also prints dormancy notices for active jars
-  approaching the 21-day idle threshold.
+  `index.html` and `HANDOFF_STATE.md`.
 - `validate()` and `validate_accent_colors()` run automatically at the top of
   `build_html()`. A data error prints `VALIDATION ERRORS:` and exits 1 — a bad
   edit fails the generate step instead of producing a broken page.
@@ -61,12 +60,12 @@ on what to try next — not a formal calibration program.
   `validate_accent_colors(statuses, resolved)`. (2) `jars/<slug>.py` = one file per
   jar, each exporting `RUNS` (list of `CompletedRun`) and `STATUS` (a single
   `StrainStatus`), plus that jar's local waypoint constants; each imports only
-  `datetime` and `from Dabby_Core import *`. (3) `jar_manifest.py` = `ACTIVE`/
-  `PAUSED`/`CLOSED` slug lists + `load_all_jars()`, which assembles them (closed,
-  then paused, then active) into the combined `COMPLETED_RUNS` / `STRAIN_STATUS`.
+  `datetime` and `from Dabby_Core import *`. (3) `jar_manifest.py` = `ACTIVE` /
+  `CLOSED` slug lists + `load_all_jars()`, which assembles them (closed first,
+  then active) into the combined `COMPLETED_RUNS` / `STRAIN_STATUS`.
   `Dabby_Log_Generator.py` = rendering only; imports `from Dabby_Core import *`,
   `from Dabby_Core import _resolve_accent_colors`, and
-  `from jar_manifest import load_all_jars, ACTIVE, PAUSED`, then
+  `from jar_manifest import load_all_jars`, then
   `COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()` and re-runs accent resolution
   over the combined list. CSS is external in `style.css` (Session 36).
 - **Jar isolation invariant.** Jar files never import from other jar files. If two
@@ -77,14 +76,14 @@ on what to try next — not a formal calibration program.
   waypoint constant, add a `CompletedRun` to `RUNS`, update the jar's `STATUS`
   `next_*` fields. The generator loop picks it up automatically — no generator
   edits for run logging. A new strain = a new `jars/<slug>.py` (from the
-  boilerplate pattern) + its slug added to `ACTIVE` in `jar_manifest.py`; `validate()`
-  and the manifest preflight catch a missed half.
-- **Lifecycle / dormancy.** `_check_dormancy()` in the generator prints advisory
-  notices for active jars whose last run is ≥19 days old (T-2/T-1/T-0 at the 21-day
-  threshold). Notices are build-frequency-dependent — the real state is always
-  computed from run dates, never from whether a prior notice fired. Archiving a jar
-  = move its slug from `ACTIVE` to `CLOSED` (jar gone/empty) or `PAUSED` (material
-  left). The jar file itself is never touched by the move.
+  boilerplate pattern) + its slug added to `ACTIVE` in `jar_manifest.py` with an
+  inline name comment (`'slug',  # Full Strain Name`); `validate()` and the manifest
+  preflight catch a missed half.
+- **Lifecycle.** Two tiers: `ACTIVE` (material remaining) and `CLOSED` (jar
+  done). Closing a jar = move its slug from `ACTIVE` to `CLOSED` in
+  `jar_manifest.py`. The jar file itself is never touched by the move. The
+  rendered log shows each jar's last-run date, which is sufficient to surface
+  idle jars without a separate dormancy check.
 - **Equipment is per-run.** `EquipmentConfig` with nested `Insert`/`CarbCap`/`Pearl`
   dataclasses; sequenced `RIG_N` constants; Rig Reference block on the rendered log
   documents each rig. `validate()` rejects `equipment=None` — no field defaults by design.
@@ -107,7 +106,7 @@ logging.
 
 Never write `index.html` by hand — always run the generator and commit its output.
 
-Closed/paused jars are jar files like any other (in the `CLOSED`/`PAUSED` tiers of
+Closed jars are jar files like any other (in the `CLOSED` tier of
 `jar_manifest.py`) — historical record, never edited. When writing `analysis` or
 `next_ai_analysis`, check `HANDOFF_WISDOM.md` first — most cross-strain patterns are
 summarized there with specific run citations. Read a closed jar's `jars/<slug>.py`
