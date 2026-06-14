@@ -12,7 +12,7 @@ from Dabby_Core import *
 from Dabby_Core import _resolve_accent_colors  # underscore names are skipped by wildcard import
 import Dabby_Core
 
-from jar_manifest import load_all_jars
+from jar_manifest import load_all_jars, CLOSED
 COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()   # closed first, then active, in render order
 _ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)
 
@@ -218,6 +218,10 @@ def dashboard_html():
         else:
             meta = f'{n} {session_word}'
         next_anchor = anchor.replace('-profile', '-next')
+        if slug in CLOSED:
+            pill = f'<a href="#{slug}-index" class="next-pill">&rarr; Index</a>' if ss.jar_index else ''
+        else:
+            pill = f'<a href="{next_anchor}" class="next-pill">&rarr; Next</a>'
         rows += (
             f'<div class="strain-row" data-strain="{strain.lower()}" style="--accent:{color}">'
             f'<div class="strain-info">'
@@ -226,7 +230,7 @@ def dashboard_html():
             f'<span class="strain-next">{ss.next_text}</span>'
             f'</div>'
             f'<div class="pill-group">'
-            f'<a href="{next_anchor}" class="next-pill">&rarr; Next</a>'
+            f'{pill}'
             f'</div>'
             f'</div>'
         )
@@ -319,7 +323,7 @@ def curve_chart_html(waypoints, chart_id=None):
 
     html = f'''<div class="curve-chart-wrap">
 <div class="curve-chart-legend">
-  <span><span class="legend-line" style="background:#1DB954;"></span>Setpoint (°F)</span>
+  <span><span class="legend-line" style="background:oklch(18% 0.01 250);"></span>Setpoint (°F)</span>
   <span><span class="legend-line" style="height:0;border-top:2px dashed #4A7D9A;"></span>Terpene BPs</span>
   <span><span class="legend-box" style="background:rgba(210,90,80,0.12);border:1px solid rgba(210,90,80,0.35);"></span>THC range</span>
 </div>
@@ -335,11 +339,11 @@ def curve_chart_html(waypoints, chart_id=None):
     type:"line",
     data:{{datasets:[{{
       label:"Setpoint",data:{pts_js},
-      borderColor:"#1DB954",backgroundColor:"transparent",
+      borderColor:"oklch(18% 0.01 250)",backgroundColor:"transparent",
       borderWidth:2,
       pointRadius:2.7,pointStyle:"circle",
-      pointBackgroundColor:"#1DB954",pointBorderColor:"#1DB954",pointBorderWidth:0,
-      pointHoverRadius:5,pointHoverBackgroundColor:"#1DB954",pointHoverBorderColor:"#fff",pointHoverBorderWidth:1.5,
+      pointBackgroundColor:"oklch(18% 0.01 250)",pointBorderColor:"oklch(18% 0.01 250)",pointBorderWidth:0,
+      pointHoverRadius:5,pointHoverBackgroundColor:"oklch(18% 0.01 250)",pointHoverBorderColor:"#fff",pointHoverBorderWidth:1.5,
       fill:false,tension:0,parsing:false,clip:false
     }}]}},
     options:{{responsive:true,maintainAspectRatio:false,parsing:false,
@@ -347,8 +351,8 @@ def curve_chart_html(waypoints, chart_id=None):
       plugins:{{
         legend:{{display:false}},
         tooltip:{{
-          backgroundColor:"#111",borderColor:"#1DB954",borderWidth:1,
-          titleColor:"#888",bodyColor:"#1DB954",
+          backgroundColor:"#111",borderColor:"oklch(18% 0.01 250)",borderWidth:1,
+          titleColor:"#888",bodyColor:"oklch(18% 0.01 250)",
           titleFont:{{family:mono,size:10,weight:"300"}},
           bodyFont:{{family:mono,size:13,weight:"500"}},
           padding:10,cornerRadius:4,
@@ -421,7 +425,7 @@ def render_strain_profile(ss):
     if ss.terpene_note:
         s += f'<p class="note">{ss.terpene_note}</p>'
     if ss.jar_index:
-        s += '<h3>Jar Index</h3>'
+        s += f'<h3 id="{ss.slug}-index">Jar Index</h3>'
         s += ss.jar_index
     s += '</div>'
     return s
