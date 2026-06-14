@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 14, 2026 — Session 114
+## Last updated: June 14, 2026 — Session 115
 
 ---
 
@@ -236,11 +236,15 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Proposing backlog items without testing the justification before writing them.** Session 112: proposed moving lifecycle onto `StrainStatus` as a backlog item, framing it as architectural consistency. User had to interrogate the argument to find it was hand-wavy — the real justification (unenforced manifest move) only emerged under questioning. The right behavior: before writing a backlog item, ask "what is the specific failure mode this solves, and has it actually occurred?" If the answer is aesthetic preference or hypothetical risk, either don't add it or say so explicitly. The user should not be doing quality control on the AI's proposed work.
 
+- **Giving the planned next run's curve when asked to recite the baseline.** Session 115: user asked "tell me baseline curve again" — response gave the Run 2 curve (425°F) instead of the canonical BASELINE_CURVE (420°F). The planned next run was fresh in context and substituted for the actual baseline. When asked for the baseline, always return BASELINE_CURVE (currently 380→400@4s→420@8s, hold to 60s) regardless of what the planned next run is.
+
+- **Using "persy" as a consistency or texture descriptor.** Session 115: wrote "persy consistency" as if persy described the physical form of the material. Persy (short for "personal") is a sourcing/tier designation — the washer/cultivator's personal stash reserve, signifying highest quality and higher price. It says nothing about consistency or texture. The material's physical form (cold cure badder, jam, live rosin, etc.) is what describes consistency.
+
 ---
 
 ## Before Next Session
 
-- **Inspect rig before loading:** Heard a pop while cleaning after papzp22 Run 1 (June 14, 2026). Check insert, pearls, glass top, and all joints visually before the next session, regardless of strain. Remove this item once cleared.
+*(clear)*
 
 ---
 
