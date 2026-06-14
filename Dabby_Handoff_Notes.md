@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 13, 2026 — Session 111
+## Last updated: June 14, 2026 — Session 112
 
 ---
 
@@ -150,6 +150,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - `terpene_table_rows` / `terpene_table_note` removal (Session 71) was correct. The generic cannabis palette rendered as strain-specific contradicted the epistemic flags in CLAUDE.md (terpene profiles inferred, not measured). Do not restore unless a strain ships with genuinely measured terpene data. To re-add: restore `terpene_table_rows: list[tuple] | None = None` and `terpene_table_note: str = ""` to `StrainStatus`, add a conditional rendering block in the generator between `info_table` and the `terpene_note` paragraph.
 - Variable isolation is a valuable analytical tool, not a rigid rule. For finite jars, the user's intuition built from accumulated data is a valid directional signal alongside the data patterns. The goal is to generate enough signal for pattern recognition to work — not to exhaust the jar on methodical isolation whose conclusions wouldn't change the next step. Session 91.
 - Voice & Role definition settled Session 100: *Diamond Age* Primer frame; personality influences list (Patrice, Norton, Attell, Bennington, Silverman, Bargatze, Birbiglia, Benson, Rogen, Wang, Feynman, Lewis, Perel, Savage); failure modes ranked sycophantic > retreating to safe > corny > douchey; sex-positive/drug-positive posture; safety calibration (user cannot be offended by AI-generated text). Independence means skepticism in both directions — toward the user's framing and toward Claude's own prior analysis. Do not rewrite or water down.
+- Three-tier lifecycle (ACTIVE/PAUSED/CLOSED) collapsed to two (ACTIVE/CLOSED). PAUSED existed solely to feed the dormancy check; the dormancy check existed solely to maintain the PAUSED/ACTIVE split — closed loop with no external consumer. `_check_dormancy()` and `load_active_jars()` deleted from the generator. CLOSED survives: it marks a jar non-actionable for downstream reasoning and its consumer (`_check_closed_tier`) is external to itself. Do not re-introduce PAUSED or a dormancy check. Session 112.
+- Manifest slugs require inline name comments (`'slug',  # Full Strain Name`) — convention established Session 112 so a fresh Claude can map strain name → file without opening each jar. Enforce on every new jar addition. Session 112.
 
 ---
 
@@ -228,6 +230,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Abandoning established equipment framing in favor of improvised material-mechanism explanations.** When LHBH Run 1 (Session 110) showed the dense-then-wispy within-draw pattern on Rig 5, the correct move was to connect it to the Rig 4 pearl-heat hypothesis from HANDOFF_WISDOM and note that Rig 5 now shows it too. Instead, invented a material-flow mechanism (surface layer depletes, bulk doesn't replenish) without referencing the prior equipment observation. User caught it. Correct behavior: before proposing a mechanism for a session observation, check Equipment Observations in HANDOFF_WISDOM for existing framing — especially for patterns that have been documented before on any rig.
 
 - **Using slug abbreviations in readbacks instead of the full strain name.** Used "LHBH" as a shorthand in the Beat 1 readback header (Session 110). The strain name is "Lemon Heads + Blueberry Haze" — always use the full name in user-facing text. Slug abbreviations (lhbh, fw106, etc.) are internal identifiers; the same rule that applies to RIG_N constants applies here.
+
+- **Proposing backlog items without testing the justification before writing them.** Session 112: proposed moving lifecycle onto `StrainStatus` as a backlog item, framing it as architectural consistency. User had to interrogate the argument to find it was hand-wavy — the real justification (unenforced manifest move) only emerged under questioning. The right behavior: before writing a backlog item, ask "what is the specific failure mode this solves, and has it actually occurred?" If the answer is aesthetic preference or hypothetical risk, either don't add it or say so explicitly. The user should not be doing quality control on the AI's proposed work.
 
 ---
 
