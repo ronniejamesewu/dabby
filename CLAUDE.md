@@ -24,7 +24,7 @@ The three mandatory files and what they contain:
 
 Read these files when the session topic requires them:
 - `jars/<slug>.py` — one file per jar, holding that jar's runs (`RUNS`), status (`STATUS`), and local waypoint constants. This is the per-strain run data, status, waypoints. If the opening message names a strain, read its jar file before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the jar file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Discover the slug via `Glob jars/*.py` or `jar_manifest.py`. Closed jars are jar files too (in the `CLOSED` tier) — not a separate archive file.
-- `Dabby_Core.py` — dataclasses, `RIG_N` constants, `BASELINE_*` curves, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, `validate()`. Read for schema/equipment/baseline questions.
+- `Dabby_Core.py` — dataclasses, `RIG_N` constants, `BASELINE_*` curves, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, `validate()`. Read for schema/equipment/baseline questions. If the named jar has `RUNS = []`, read this file at session start — use the CONTENTS index at the top to jump directly to `CompletedRun` and `StrainStatus`.
 - `jar_manifest.py` — the `ACTIVE` / `CLOSED` tier lists and the load function that assembles all jars. Read for lifecycle work.
 - `Dabby_Log_Generator.py` — for generator/rendering work.
 - `Dabby_Methodology.md` — for curve design or methodology questions.
