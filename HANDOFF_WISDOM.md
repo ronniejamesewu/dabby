@@ -13,6 +13,7 @@ Session-close checklist:
 4. Was any methodology position tested, confirmed, or revised?
 5. Were any decisions made that shouldn't be re-litigated? (Includes confirmed-correct audits — "we checked X and it's fine" belongs in Decisions — Do Not Re-Litigate in `Dabby_Handoff_Notes.md`, not the backlog.)
 6. Were any open backlog items in `Dabby_Handoff_Notes.md` rendered obsolete by changes this session, or do any have a scheduled revisit date that has arrived? Also scan all existing backlog entries for items describing work already completed in prior sessions.
+7. Did any jar close this session? If yes, confirm the slug was moved from `ACTIVE` to `CLOSED` in `jar_manifest.py` before the session commit. This is not enforced structurally — the generator runs clean either way.
 
 Each "yes" produces one update to the relevant table or section below (or to the backlog itself, for Q6).
 
