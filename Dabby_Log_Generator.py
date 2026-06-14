@@ -12,8 +12,8 @@ from Dabby_Core import *
 from Dabby_Core import _resolve_accent_colors  # underscore names are skipped by wildcard import
 import Dabby_Core
 
-from jar_manifest import load_all_jars, ACTIVE as _ACTIVE_SLUGS, PAUSED as _PAUSED_SLUGS
-COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()   # closed + paused + active, in render order
+from jar_manifest import load_all_jars
+COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()   # closed first, then active, in render order
 _ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)
 
 _RIG_LABELS = sorted(
@@ -571,51 +571,11 @@ def rig_reference_html():
     return collapsible_section("rig-ref", "Rig Reference", note + table, header_class="grey")
 
 
-def _check_dormancy(all_runs, all_statuses):
-    """Print dormancy notices for active jars approaching the 21-day threshold, and
-    flag any paused jar with recent activity. Advisory only — fires every build, so
-    the graduated T-2/T-1 notices are skipped if no build runs in that window; the
-    real state is always computed from run dates, never from whether a notice fired."""
-    today = date.today()
-    DORMANCY_DAYS = 21
-    status_by_slug = {s.slug: s for s in all_statuses}
-
-    def _last_date(status):
-        jar_runs = [r for r in all_runs if r.strain == status.name and r.run_date is not None]
-        return max((r.run_date for r in jar_runs), default=None)
-
-    for slug in _ACTIVE_SLUGS:
-        status = status_by_slug.get(slug)
-        if not status:
-            continue
-        last = _last_date(status)
-        if last is None:
-            continue
-        days_since = (today - last).days
-        remaining = DORMANCY_DAYS - days_since
-        if remaining <= 0:
-            print(f"[DORMANT] {status.name}: last run {last} ({days_since} days ago) — archive candidate")
-        elif remaining == 1:
-            print(f"[DORMANT T-1] {status.name}: last run {last} — goes dormant tomorrow")
-        elif remaining == 2:
-            print(f"[DORMANT T-2] {status.name}: last run {last} — goes dormant in 2 days")
-
-    for slug in _PAUSED_SLUGS:
-        status = status_by_slug.get(slug)
-        if not status:
-            continue
-        last = _last_date(status)
-        if last is None:
-            continue
-        days_since = (today - last).days
-        if days_since < DORMANCY_DAYS:
-            print(f"[PAUSED BUT ACTIVE] {status.name}: last run {last} ({days_since} days ago) — reactivate?")
 
 
 def build_html():
     validate(COMPLETED_RUNS, STRAIN_STATUS)
     validate_accent_colors(STRAIN_STATUS, _ACCENT_RESOLVED)
-    _check_dormancy(COMPLETED_RUNS, STRAIN_STATUS)
     sections = []
 
     dash = dashboard_html()
