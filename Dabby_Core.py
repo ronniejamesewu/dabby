@@ -7,6 +7,34 @@ BASELINE_* curves, GLOBAL_INFO, TERPENE_REFERENCE, color resolution, and the
 equipment rig, or baseline curve is added.
 """
 
+# ── CONTENTS ─────────────────────────────────────────────────────────────────
+# Navigation index for this file. When you edit Dabby_Core.py — add a field,
+# add a RIG_N, rename a section — update the line numbers below in the same
+# edit. Skipping this makes the index wrong, which is worse than no index: it
+# sends the next Claude to the wrong place. You have the file open. It takes
+# 30 seconds. Don't leave a trap.
+#
+# Logging quick-reference (what a run-logging Claude needs):
+#   CompletedRun fields → line  81    (schema for new RUNS entries)
+#   StrainStatus fields  → line 114    (schema for STATUS blocks)
+#
+# Full index:
+#   Line  42 — # ── DATACLASSES
+#   Line  45 — Waypoint
+#   Line  51 — Insert
+#   Line  57 — CarbCap
+#   Line  63 — Pearl
+#   Line  68 — EquipmentConfig
+#   Line  81 — CompletedRun
+#   Line 114 — StrainStatus
+#   Line 134 — TerpeneEntry
+#   Line 144 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
+#   Line 173 — # ── EQUIPMENT (RIG_1 – RIG_5)
+#   Line 222 — # ── TERPENE REFERENCE
+#   Line 266 — # ── COLOR RESOLUTION
+#   Line 318 — # ── VALIDATION (validate, validate_accent_colors)
+# ─────────────────────────────────────────────────────────────────────────────
+
 from datetime import datetime, date, timezone
 from dataclasses import dataclass
 from typing import Literal
