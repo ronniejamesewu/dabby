@@ -76,8 +76,9 @@ on what to try next — not a formal calibration program.
   waypoint constant, add a `CompletedRun` to `RUNS`, update the jar's `STATUS`
   `next_*` fields. The generator loop picks it up automatically — no generator
   edits for run logging. A new strain = a new `jars/<slug>.py` (from the
-  boilerplate pattern) + its slug added to `ACTIVE` in `jar_manifest.py`; `validate()`
-  and the manifest preflight catch a missed half.
+  boilerplate pattern) + its slug added to `ACTIVE` in `jar_manifest.py` with an
+  inline name comment (`'slug',  # Full Strain Name`); `validate()` and the manifest
+  preflight catch a missed half.
 - **Lifecycle.** Two tiers: `ACTIVE` (material remaining) and `CLOSED` (jar
   done). Closing a jar = move its slug from `ACTIVE` to `CLOSED` in
   `jar_manifest.py`. The jar file itself is never touched by the move. The
