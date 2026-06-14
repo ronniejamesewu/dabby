@@ -238,6 +238,12 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 ---
 
+## Before Next Session
+
+- **Inspect rig before loading:** Heard a pop while cleaning after papzp22 Run 1 (June 14, 2026). Check insert, pearls, glass top, and all joints visually before the next session, regardless of strain. Remove this item once cleared.
+
+---
+
 ## Backlog
 
 

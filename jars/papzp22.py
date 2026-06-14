@@ -45,7 +45,7 @@ STATUS = StrainStatus(
         ('Nose', 'Loud gas but not super stinky. Subtle fruit note underneath.'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene; Georgia Pie typically Gelato × Gushers-adjacent: limonene/myrcene/linalool). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='REMINDER: Heard a pop while cleaning after Run 1 — inspect rig thoroughly before loading (insert, pearls, glass top, all joints). Confirm everything looks right before proceeding.',
+    next_dab_notes='',
     next_ai_analysis='Try 425°F, same 8s ramp, single cycle. LHBH Run 2 (June 13, same rig and ramp) resolved the within-draw density drop with exactly this change — 5°F up, ramp held constant, cleanest available isolation. Single cycle only: harshness in cycles 2 and 3 was accumulated exposure, not a 420°F ceiling. Let Run 2 establish what this strain does at 425°F before stacking cycles.',
     next_waypoints=PAPZP22_425,
     jar_index='',
