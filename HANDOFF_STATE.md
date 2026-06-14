@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 89 across 15 strains
+- **Total runs:** 90 across 15 strains
 - **Active since:** May 2, 2026 (44 days)
 - **Last run date:** June 14, 2026
 
@@ -212,11 +212,11 @@
 ---
 
 ### Papaya + Z Pie #22
-**1 session** &nbsp;·&nbsp; Last: June 14, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**2 sessions** &nbsp;·&nbsp; Last: June 14, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Try 425°F on Run 2 — test whether endpoint bump resolves within-draw density drop
+**Next:** Run 3: repeat 425°F, 8s ramp, 60s single cycle — confirm 31s harshness onset before adjusting
 
-**AI Analysis:** Try 425°F, same 8s ramp, single cycle. LHBH Run 2 (June 13, same rig and ramp) resolved the within-draw density drop with exactly this change — 5°F up, ramp held constant, cleanest available isolation. Single cycle only: harshness in cycles 2 and 3 was accumulated exposure, not a 420°F ceiling. Let Run 2 establish what this strain does at 425°F before stacking cycles.
+**AI Analysis:** Density drop resolved at 425°F. Harshness entered at ~31s with material still present through ~58s — one data point. Repeat this exact curve (425°F, 8s ramp, 60s single cycle) before trying to address the harshness onset. Confirm the timing is consistent. If 31s replicates, that opens the question of endpoint vs. session length — but let the data land twice first. Smaller load is not a practical lever with this material consistency.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
