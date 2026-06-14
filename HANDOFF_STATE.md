@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 87 across 14 strains
+- **Total runs:** 88 across 14 strains
 - **Active since:** May 2, 2026 (43 days)
 - **Last run date:** June 13, 2026
 
@@ -197,11 +197,11 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**1 session** &nbsp;·&nbsp; Last: June 13, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**2 sessions** &nbsp;·&nbsp; Last: June 13, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Try 425°F endpoint on Run 2 — same baseline ramp, 5°F up from Run 1
+**Next:** Run 3: try 425°F with a 2-draw limit — test whether draw count is driving the harshness
 
-**AI Analysis:** The within-draw dropoff and heavy reclaim are the threads to watch. Try 425°F on Run 2 — same baseline ramp, 5°F endpoint bump. More thermal headroom may sustain pearl temperature longer through each draw, extending the dense vapor window. Cross-strain pattern puts harshness risk at ≥430°F; 420°F was clean, so there's room to probe. Watch whether the within-draw dropoff extends or stays identical — that's the signal on whether endpoint temperature is the relevant variable for this pattern, or whether something else is driving it.
+**AI Analysis:** The draw 3 harshness is the open question. Two ways to probe it: (1) 2-draw limit at 425°F — keeps the vapor improvement, tests whether draw count is the driver; if draw 2 stays clean, 425°F is workable with discipline. (2) Drop to 422–423°F — incremental probe between the clean floor and the harshness point, same ramp. Option 1 is the sharper isolation — holds endpoint constant, changes only exposure. Try that first.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
