@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 13, 2026 — Session 109
+## Last updated: June 13, 2026 — Session 110
 
 ---
 
@@ -224,6 +224,10 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Misreading equipment check scope as per-jar rather than global.** The session-open equipment check triggers if the most recent run across all strains (last `COMPLETED_RUNS` entry) is more than 3 days old — not the most recent run on the strain or jar being discussed. In Session 96, asked about equipment after a 10-day gap on the Watermellos jar, ignoring that FW106 Run 15 had been logged the previous day. Correct behavior: check the `run_date` / `utc_logged_at` of the last `COMPLETED_RUNS` entry regardless of strain.
 
 - **Misreading swab color from a photo without a calibrated reference.** AI read a swab photo as lighter than the user's actual color call (Session 102: read as "lighter than dark gold"; user confirmed dark gold, consistent with Runs 11–13). No shared color vocabulary or reference standard exists — "dark gold," "golden," "light golden," and "beige" map differently under different lighting conditions and between user and AI. Until a calibration session happens, defer to the user's color call; note any discrepancy in analysis rather than asserting a different color in the swab field.
+
+- **Abandoning established equipment framing in favor of improvised material-mechanism explanations.** When LHBH Run 1 (Session 110) showed the dense-then-wispy within-draw pattern on Rig 5, the correct move was to connect it to the Rig 4 pearl-heat hypothesis from HANDOFF_WISDOM and note that Rig 5 now shows it too. Instead, invented a material-flow mechanism (surface layer depletes, bulk doesn't replenish) without referencing the prior equipment observation. User caught it. Correct behavior: before proposing a mechanism for a session observation, check Equipment Observations in HANDOFF_WISDOM for existing framing — especially for patterns that have been documented before on any rig.
+
+- **Using slug abbreviations in readbacks instead of the full strain name.** Used "LHBH" as a shorthand in the Beat 1 readback header (Session 110). The strain name is "Lemon Heads + Blueberry Haze" — always use the full name in user-facing text. Slug abbreviations (lhbh, fw106, etc.) are internal identifiers; the same rule that applies to RIG_N constants applies here.
 
 ---
 
