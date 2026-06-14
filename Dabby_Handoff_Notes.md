@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 14, 2026 — Session 113
+## Last updated: June 14, 2026 — Session 114
 
 ---
 
@@ -235,6 +235,12 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Using slug abbreviations in readbacks instead of the full strain name.** Used "LHBH" as a shorthand in the Beat 1 readback header (Session 110). The strain name is "Lemon Heads + Blueberry Haze" — always use the full name in user-facing text. Slug abbreviations (lhbh, fw106, etc.) are internal identifiers; the same rule that applies to RIG_N constants applies here.
 
 - **Proposing backlog items without testing the justification before writing them.** Session 112: proposed moving lifecycle onto `StrainStatus` as a backlog item, framing it as architectural consistency. User had to interrogate the argument to find it was hand-wavy — the real justification (unenforced manifest move) only emerged under questioning. The right behavior: before writing a backlog item, ask "what is the specific failure mode this solves, and has it actually occurred?" If the answer is aesthetic preference or hypothetical risk, either don't add it or say so explicitly. The user should not be doing quality control on the AI's proposed work.
+
+---
+
+## Before Next Session
+
+- **Inspect rig before loading:** Heard a pop while cleaning after papzp22 Run 1 (June 14, 2026). Check insert, pearls, glass top, and all joints visually before the next session, regardless of strain. Remove this item once cleared.
 
 ---
 
