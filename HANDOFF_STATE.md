@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 90 across 15 strains
+- **Total runs:** 91 across 15 strains
 - **Active since:** May 2, 2026 (44 days)
 - **Last run date:** June 14, 2026
 
@@ -212,11 +212,11 @@
 ---
 
 ### Papaya + Z Pie #22
-**2 sessions** &nbsp;·&nbsp; Last: June 14, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**3 sessions** &nbsp;·&nbsp; Last: June 14, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 3: repeat 425°F, 8s ramp, 60s single cycle — confirm 31s harshness onset before adjusting
+**Next:** Run 4: 425°F, 8s ramp, 60s single cycle, shorter draws throughout — first dab of session
 
-**AI Analysis:** Density drop resolved at 425°F. Harshness entered at ~31s with material still present through ~58s — one data point. Repeat this exact curve (425°F, 8s ramp, 60s single cycle) before trying to address the harshness onset. Confirm the timing is consistent. If 31s replicates, that opens the question of endpoint vs. session length — but let the data land twice first. Smaller load is not a practical lever with this material consistency.
+**AI Analysis:** Three runs, no clean harshness-window read yet — Run 2 gave ~31s onset, Run 3 gave earlier onset but draw-length management was in play and third-dab-of-day is a real confound. The actionable finding from Run 3 is that shorter draws kept both harshness and taste in a better place — worth testing deliberately. Run 4: 425°F, 8s ramp, 60s single cycle, shorter draws throughout from draw 1, first dab of a session. Question: does the draw-discipline approach keep 60s harshness-free? If yes, 425°F works with discipline. If harshness still enters in the first 30s, pull the endpoint to 422–423°F.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
