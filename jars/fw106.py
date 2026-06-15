@@ -32,6 +32,12 @@ FW106_FASTER_420_60S = [
     Waypoint(time_s=8, temp_f=420, note='Endpoint — 8s ramp'),
     Waypoint(time_s=60, temp_f=420, note='Hold — extended from 40s'),
 ]
+FW106_FASTER_425_60S = [
+    Waypoint(time_s=0, temp_f=380, note='Session open'),
+    Waypoint(time_s=4, temp_f=400, note='Steep early climb'),
+    Waypoint(time_s=8, temp_f=425, note='Endpoint — 8s ramp; up 5°F from FW106_FASTER_420_60S'),
+    Waypoint(time_s=60, temp_f=425, note='Hold'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -291,13 +297,28 @@ RUNS = [
         dab_notes='I could taste some lime notes maybe.',
         analysis="Run 17 on Rig 5 (dual pearl), matching Run 16's curve exactly — 8s ramp to 420°F, 60s hold. Dark golden swab is consistent with Run 16's, making this the first same-curve, same-duration cross-rig swab comparison: swab stayed dark golden across the Rig 4→Rig 5 swap, consistent with swab tracking material rather than rig. Session character wasn't captured this run, so the within-draw thick-to-wispy question from Run 16 remains open. Lime note is consistent with Key Limeade lineage (limonene inferred); single-session flavor observations are noisy.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 15),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 15, 22, 2, tzinfo=timezone.utc),
+        waypoints=FW106_FASTER_425_60S,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 425°F — 8s ramp; up 5°F from operating point &nbsp;|&nbsp; <strong>Note:</strong> Second cycle added',
+        swab='Golden with amber spots — more amber than golden.',
+        session_char='Short draw technique; tasty first few draws, flavor faded. Very little harshness in back quarter of first cycle. Visible within-draw density drop throughout first cycle. Second cycle: vapor density held longer, more harshness.',
+        intensity='Quite high.',
+        dab_notes='Used the short draw technique from yesterday. Tasty first few draws, then it faded. Very very little harshness but in the back quarter. Lots of vapor but it was visible wispy intra draw. Ran a second cycle and the vapor density held up longer for some reason. But also the harshness. So there\'s a possible connection between density and harshness. Swabs were golden with amber spots, more amber spots though. Each cycle was 60 seconds. Intensity is quite high!',
+        analysis="Deviated from the planned 420°F pearl-count isolation test in favor of 425°F — Rig 4 vs. Rig 5 same-endpoint comparison is still open. The within-draw wispy pattern appeared at 425°F on Rig 5, which puts FW106 in direct contradiction with LHBH Run 2 and papzp22 Run 2, both of which resolved the density drop at exactly this endpoint on the same rig. Short draw technique is a plausible confound — shorter draws sample the early-draw dense phase more than the wispy tail — but 'visible wispy intra-draw' suggests the pattern was legible regardless. More likely this is material-specific: FW106's vapor density at this endpoint drops off faster within a draw than LHBH or papzp22 did. The second cycle is the more interesting data point: density held up longer, but harshness increased. The insert was already at temperature when the second cycle started, eliminating the cold-ramp phase and delivering sustained heat from the first draw — more sustained density, more harshness. The sequencing is the cleanest within-session evidence for the vapor density hypothesis yet: same material, same rig, same endpoint, more density in cycle two, more harshness in cycle two. Accumulated airway exposure across two cycles is an unresolved confound — 'denser vapor caused the harshness' and 'second cycle, airways already worked' predict the same outcome. Swab came back golden with more amber than golden — darker than FW106's typical Rig 5 beige on 40s runs, consistent with Run 17's dark golden at the same 60s duration. Duration looks like the swab driver on this strain: 40s runs at 420°F ran consistently beige; 60s runs at 420°F (Run 17) and 425°F (Run 18) both show darker results.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 18: repeat 8s ramp to 420°F, 60s hold on Rig 5 — watch within-draw vapor pattern (thick-to-wispy vs. Run 16 on Rig 4?)',
+    next_text='Run 19: 8s ramp to 425°F, 60s, Rig 5, single cycle, normal draws — test whether within-draw density drop repeats',
     accent=None,
     slug='fw106',
     info=[
@@ -307,8 +328,8 @@ STATUS = StrainStatus(
         ('Nose', 'Prominent berry; gassy underneath'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='I could taste some lime notes maybe.',
-    next_ai_analysis="Repeat this exact curve with attention to the within-draw vapor pattern: does each draw start thick and go wispy, or stay consistent? Run 16 (Rig 4, single pearl, same 60s curve) showed thick-at-draw-start → wispy pattern every draw. If Rig 5 (dual pearl) doesn't show it, pearl count is confirmed as the thermal variable. That's the one signal to watch on Run 18.",
-    next_waypoints=FW106_FASTER_420_60S,
+    next_dab_notes='',
+    next_ai_analysis="The Rig 4 vs. Rig 5 pearl-count question at 420°F is still open — Run 18 answered the 425°F question instead. Before going back to isolate that thread, confirm whether the within-draw density drop at 425°F is repeatable or whether the short draw technique obscured it. Run 19: same curve (8s ramp to 425°F, 60s, Rig 5), normal draws, single cycle — clean read on whether the wispy pattern is real for FW106 at this endpoint, and whether a single cycle keeps harshness out of the session.",
+    next_waypoints=FW106_FASTER_425_60S,
     jar_index='',
 )
