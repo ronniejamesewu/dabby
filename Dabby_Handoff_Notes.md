@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 14, 2026 — Session 116
+## Last updated: June 15, 2026 — Session 117
 
 ---
 
@@ -239,6 +239,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Giving the planned next run's curve when asked to recite the baseline.** Session 115: user asked "tell me baseline curve again" — response gave the Run 2 curve (425°F) instead of the canonical BASELINE_CURVE (420°F). The planned next run was fresh in context and substituted for the actual baseline. When asked for the baseline, always return BASELINE_CURVE (currently 380→400@4s→420@8s, hold to 60s) regardless of what the planned next run is.
 
 - **Using "persy" as a consistency or texture descriptor.** Session 115: wrote "persy consistency" as if persy described the physical form of the material. Persy (short for "personal") is a sourcing/tier designation — the washer/cultivator's personal stash reserve, signifying highest quality and higher price. It says nothing about consistency or texture. The material's physical form (cold cure badder, jam, live rosin, etc.) is what describes consistency.
+
+- **Asking for confirmation on new waypoint constant definitions.** Adding a local waypoint constant is a standard mechanical part of run logging — already defined as such in CLAUDE.md. It follows directly from an approved run and requires no separate confirmation. Session 117.
 
 ---
 
