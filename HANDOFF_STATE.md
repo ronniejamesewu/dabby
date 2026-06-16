@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 92 across 15 strains
+- **Total runs:** 93 across 15 strains
 - **Active since:** May 2, 2026 (45 days)
 - **Last run date:** June 15, 2026
 
@@ -167,11 +167,11 @@
 ---
 
 ### Fire Water #106
-**18 sessions** &nbsp;·&nbsp; Last: June 15, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**19 sessions** &nbsp;·&nbsp; Last: June 15, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 19: 8s ramp to 425°F, 60s, Rig 5, single cycle, normal draws — test whether within-draw density drop repeats
+**Next:** Run 20: 2-draw limit at 425°F, single cycle, Rig 5 — test whether draw count is driving harshness; watch for within-draw density thinning
 
-**AI Analysis:** The Rig 4 vs. Rig 5 pearl-count question at 420°F is still open — Run 18 answered the 425°F question instead. Before going back to isolate that thread, confirm whether the within-draw density drop at 425°F is repeatable or whether the short draw technique obscured it. Run 19: same curve (8s ramp to 425°F, 60s, Rig 5), normal draws, single cycle — clean read on whether the wispy pattern is real for FW106 at this endpoint, and whether a single cycle keeps harshness out of the session.
+**AI Analysis:** 425°F consistently produces harshness by draw 3 across R18 and R19, and density stays high when the harshness enters — so the mechanism looks more like airway accumulation or vapor composition than depletion. Clearest next isolation: 2-draw limit at 425°F, single cycle, Rig 5. Holds the endpoint and equipment constant, removes the third draw. Also: deliberately watch within each draw for the thick-then-wispy pattern — Run 19 didn't track it and the intra-draw thinning question from R18 is still open. If 2 draws stays clean, 425°F is workable with draw discipline.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
