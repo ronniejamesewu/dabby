@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 16, 2026 — Session 118
+## Last updated: June 17, 2026 — Session 119
 
 ---
 
@@ -232,7 +232,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Abandoning established equipment framing in favor of improvised material-mechanism explanations.** When LHBH Run 1 (Session 110) showed the dense-then-wispy within-draw pattern on Rig 5, the correct move was to connect it to the Rig 4 pearl-heat hypothesis from HANDOFF_WISDOM and note that Rig 5 now shows it too. Instead, invented a material-flow mechanism (surface layer depletes, bulk doesn't replenish) without referencing the prior equipment observation. User caught it. Correct behavior: before proposing a mechanism for a session observation, check Equipment Observations in HANDOFF_WISDOM for existing framing — especially for patterns that have been documented before on any rig.
 
-- **Using slug abbreviations in readbacks instead of the full strain name.** Used "LHBH" as a shorthand in the Beat 1 readback header (Session 110). The strain name is "Lemon Heads + Blueberry Haze" — always use the full name in user-facing text. Slug abbreviations (lhbh, fw106, etc.) are internal identifiers; the same rule that applies to RIG_N constants applies here.
+- **Using slug abbreviations or shortened names in any user-facing text.** Used "LHBH" as a shorthand in the Beat 1 readback header (Session 110); used "Banana Punch + RW13", "LHBH", "Papaya + Z Pie #22" as table entries in the session-start summary (Session 119). Full strain names are always required — in Beat 1 readbacks, session-start status tables, and any other user-facing output. Slug abbreviations (lhbh, fw106, bp4rw13, etc.) and informal shortenings are internal identifiers only.
 
 - **Proposing backlog items without testing the justification before writing them.** Session 112: proposed moving lifecycle onto `StrainStatus` as a backlog item, framing it as architectural consistency. User had to interrogate the argument to find it was hand-wavy — the real justification (unenforced manifest move) only emerged under questioning. The right behavior: before writing a backlog item, ask "what is the specific failure mode this solves, and has it actually occurred?" If the answer is aesthetic preference or hypothetical risk, either don't add it or say so explicitly. The user should not be doing quality control on the AI's proposed work.
 
