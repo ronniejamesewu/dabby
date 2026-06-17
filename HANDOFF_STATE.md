@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 93 across 16 strains
+- **Total runs:** 94 across 16 strains
 - **Active since:** May 2, 2026 (46 days)
 - **Last run date:** June 16, 2026
 
@@ -212,17 +212,17 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**1 session** &nbsp;·&nbsp; Last: June 16, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**2 sessions** &nbsp;·&nbsp; Last: June 16, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 2: try 425°F with normal load, single cycle
+**Next:** Run 3: try 430°F with normal load, single cycle
 
-**AI Analysis:** Run 2: user wants 425°F — reasonable direction. But the large-load confound is real: harshness tracking into the second cycle matches the session-duration/airway-sensitization framing more than an endpoint signal. Try 425°F at normal load, single cycle — the first cycle at baseline was nearly clean, so a clean first-cycle read at 425°F is the sharpest available test. If harshness stays out through 60s, the prior run's harshness was load- and second-cycle-driven, not endpoint-driven. If it enters earlier than the first cycle did, pull back.
+**AI Analysis:** Run 3: try 430°F, same 8s ramp, 60s single cycle. Harshness in the last 20s with material confirmed remaining at 425°F points at accumulated heat exposure / airway sensitization, not depletion — depletion won't fix it. The user's instinct toward higher temp aligns with the curve working theory: faster, more complete vaporization means the load is spent before the harshness window. The golden reclaim at 425°F also confirms there's room to push. If harshness shifts earlier at 430°F, pull back to 427–428°F; if it stays in the tail or disappears, 430°F is the operating point.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
-- 8s → 425°F — Endpoint — up 5°F from baseline
-- 60s → 425°F — Hold
+- 8s → 430°F — Endpoint — up 5°F from Run 2
+- 60s → 430°F — Hold
 
 ---
 

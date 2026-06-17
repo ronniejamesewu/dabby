@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 15, 2026 — Session 117
+## Last updated: June 16, 2026 — Session 118
 
 ---
 
@@ -178,7 +178,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Edit tool curly-quote contamination in HTML string attributes.** When a Python string containing HTML with escaped double-quote attributes (e.g. `style=\"...\"`) is written via the Edit tool, straight double quotes may be converted to curly quotes (U+201C/U+201D), leaving `\` + U+201D in the rendered HTML. The style attribute is then malformed and ignored by the browser. Fix: use single-quote HTML attributes in Python strings so no backslash escaping is needed (`style='...'`). If curly quotes appear in the file, use a Python script to replace them by byte position rather than the Edit tool.
 
-- **Asking for or narrating sessions_prior_today when COMPLETED_RUNS can answer it.** Count entries with the same `run_date` silently — no narration, no asking. This applies same-day and post-date. When it's the first of the day, say so and riff; when it's not, state the count matter-of-factly.
+- **Asking for or narrating sessions_prior_today when COMPLETED_RUNS can answer it.** Count entries with the same `run_date` silently — no narration, no asking. This applies same-day and post-date. When it's the first of the day, say so and riff; when it's not, state the count matter-of-factly. Re-triggered June 16, 2026 (Session 118) — asked "first dab of the day?" when Run 1 was already logged for the same date.
 
 - **Blaming GitHub Pages propagation lag without verifying deployed content.** When the user reports the live site hasn't updated, verify the pipeline end-to-end before attributing it to propagation delay: confirm gh-pages has a new commit with the expected timestamp, and grep the deployed file for content that should be in the new version. "Try a hard refresh" is not a first response; it's only appropriate after the pipeline is confirmed clean.
 
