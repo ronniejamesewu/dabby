@@ -219,6 +219,16 @@ RIG_5 = EquipmentConfig(
     glass_top="Dr. Dabber stock bubbler",
 )
 
+# Rig 6: Sapphire insert, no pearls, Wym Stick Piston joystick. Dr. Dabber Sapphire Plus (v2)
+# insert; Wym Stick Piston titanium joystick (.094" bore, stock airflow); no pearls;
+# stock Dr. Dabber bubbler top.
+RIG_6 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Wym Stick", model="Piston", airflow='stock — .094" bore'),
+    pearls=[],
+    glass_top="Dr. Dabber stock bubbler",
+)
+
 # ── TERPENE REFERENCE ────────────────────────────────────────────────────────
 
 TERPENE_REFERENCE = [
