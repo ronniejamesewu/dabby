@@ -77,7 +77,7 @@ RUNS = [
         strain='Banana Punch #4 + Randy Watzon #13',
         run_date=date(2026, 6, 16),
         sessions_prior_today=3,
-        utc_logged_at=datetime(2026, 6, 17, 6, 20, 11, tzinfo=timezone.utc),
+        utc_logged_at=datetime(2026, 6, 17, 5, 28, 50, tzinfo=timezone.utc),
         waypoints=BP4RW13_435,
         equipment=RIG_5,
         duration_seconds=60,
