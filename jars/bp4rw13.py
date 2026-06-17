@@ -73,13 +73,28 @@ RUNS = [
         dab_notes='Super nice run. Tasty, harshness in last 10 second but not bad. I wanted to run a second cycle but didn\'t. Swabs were golden, maybe still a lot more reclaim and that seemed like a normal load. But this jar is runnier than the other thumbprint jars. Hard to control load size — been trying, thought I had it much smaller.',
         analysis='Run 3, 430°F, single cycle, third dab of the day. Harshness pushed back another 10 seconds from Run 2 — last 20s at 425°F, last 10s at 430°F. The trend across three single-cycle runs is clean and directional: each 5°F bump has bought roughly 10 more seconds of clean session. "Not bad" matters — this is threshold-crossing at the very tail, not the acute carry-over harshness from Run 1\'s second cycle. Golden swab with heavy reclaim again; user has been trying to keep loads small but the runniness makes portion control genuinely difficult — actual load size across all three runs is uncertain, and some of the persistent reclaim likely reflects consistency-driven pooling rather than purely unconsumed material. Depletion-ruled-out framing stands but is softened. Intensity landed medium as third dab of the day — tolerance accumulation is the dominant read; not diagnostic for the temperature-intensity relationship.',
     ),
+    CompletedRun(
+        strain='Banana Punch #4 + Randy Watzon #13',
+        run_date=date(2026, 6, 16),
+        sessions_prior_today=3,
+        utc_logged_at=datetime(2026, 6, 17, 6, 20, 11, tzinfo=timezone.utc),
+        waypoints=BP4RW13_435,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 435°F — up 5°F from Run 3',
+        swab='golden',
+        session_char='Lots of vapor; harshness in last 17 seconds; tasty; high intensity',
+        intensity='high',
+        dab_notes='Golden swab, less reclaim than prior runs. Lots of vapor, harshness with about 17 seconds left. Tasty. Hit hard, high intensity.',
+        analysis='Run 4, 435°F, 8s ramp, 60s single cycle, fourth dab of the day. Harshness entered at ~17s left — a step backward from Run 3\'s last 10s, against the predicted direction. Less reclaim than prior runs is the most plausible confound: smaller actual load means less material buffering the session, earlier heat-exposure onset once the load thins. Fourth dab of the day adds a mild airway-sensitization confound — threshold may be lower than a fresh-start run would show. "Lots of vapor" and high intensity confirm material was present well into the session, so outright depletion isn\'t the obvious driver, but a smaller load that ran thin around 43s is consistent with both the vapor density reading and the harshness onset timing. The 10s-per-5°F trend from Runs 1–3 didn\'t hold at 435°F — two reads: the trend was fragile and the load confound finally showed through, or 435°F has a different relationship with harshness than the lower endpoints did. With four uncontrolled loads across this jar\'s history, the load read is more parsimonious. "Tasty" and high intensity at 435°F are clean positives.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Banana Punch #4 + Randy Watzon #13',
     profile_anchor='#bp4rw13-profile',
-    next_text='Run 4: try 435°F — harshness window shrinking ~10s per 5°F bump',
+    next_text='Run 5: repeat 435°F, first dab of day, deliberate larger load — confirm whether the Run 4 reversal was confound-driven',
     accent=None,
     slug='bp4rw13',
     info=[
@@ -91,7 +106,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Three data points, clean trend: 420°F (two cycles) harshness throughout; 425°F last 20s; 430°F last 10s. Each 5°F bump has bought ~10s of clean session. Run 4: try 435°F, same 8s ramp, 60s single cycle. If the trend holds, harshness disappears or lands in the last 5s where an early stop is an easy fix. Runniness makes load size uncertain across all three runs — some of the persistent reclaim may reflect consistency-driven pooling, not purely unconsumed material; doesn\'t change the endpoint direction. If 435°F still shows harshness in the tail, 50–55s at 430°F is the fallback.',
+    next_ai_analysis='The 10s-per-5°F trend didn\'t hold at Run 4 — harshness landed at ~17s instead of the predicted ~5s or gone. Less reclaim suggests a smaller load, which is the most plausible explanation: smaller load means less material buffering the session, triggering heat-exposure harshness sooner. Fourth dab of the day adds an airway-sensitization confound. Before stepping to 440°F, repeat 435°F as first dab of day with a deliberate larger load. If harshness pushes back to 5–10s, the trend is intact and 440°F is the next step. If it still lands at ~17s, the 435°F ceiling is real and 440°F or a session-length cut (stop at ~45s at 430°F) is the direction.',
     next_waypoints=BP4RW13_435,
     jar_index='',
 )

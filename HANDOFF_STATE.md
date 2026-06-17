@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 95 across 16 strains
+- **Total runs:** 96 across 16 strains
 - **Active since:** May 2, 2026 (46 days)
 - **Last run date:** June 16, 2026
 
@@ -212,11 +212,11 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**3 sessions** &nbsp;·&nbsp; Last: June 16, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**4 sessions** &nbsp;·&nbsp; Last: June 16, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 4: try 435°F — harshness window shrinking ~10s per 5°F bump
+**Next:** Run 5: repeat 435°F, first dab of day, deliberate larger load — confirm whether the Run 4 reversal was confound-driven
 
-**AI Analysis:** Three data points, clean trend: 420°F (two cycles) harshness throughout; 425°F last 20s; 430°F last 10s. Each 5°F bump has bought ~10s of clean session. Run 4: try 435°F, same 8s ramp, 60s single cycle. If the trend holds, harshness disappears or lands in the last 5s where an early stop is an easy fix. Runniness makes load size uncertain across all three runs — some of the persistent reclaim may reflect consistency-driven pooling, not purely unconsumed material; doesn't change the endpoint direction. If 435°F still shows harshness in the tail, 50–55s at 430°F is the fallback.
+**AI Analysis:** The 10s-per-5°F trend didn't hold at Run 4 — harshness landed at ~17s instead of the predicted ~5s or gone. Less reclaim suggests a smaller load, which is the most plausible explanation: smaller load means less material buffering the session, triggering heat-exposure harshness sooner. Fourth dab of the day adds an airway-sensitization confound. Before stepping to 440°F, repeat 435°F as first dab of day with a deliberate larger load. If harshness pushes back to 5–10s, the trend is intact and 440°F is the next step. If it still lands at ~17s, the 435°F ceiling is real and 440°F or a session-length cut (stop at ~45s at 430°F) is the direction.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
