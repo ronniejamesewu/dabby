@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 98 across 16 strains
+- **Total runs:** 99 across 17 strains
 - **Active since:** May 2, 2026 (47 days)
 - **Last run date:** June 17, 2026
 
@@ -163,6 +163,21 @@
 - 4s → 400°F — Steep early climb
 - 8s → 420°F — Endpoint — 8s ramp; up 4°F from baseline
 - 40s → 420°F — Hold
+
+---
+
+### Blueberry 36 #4
+**1 session** &nbsp;·&nbsp; Last: June 17, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+
+**Next:** Run 2: repeat baseline — confirm clean swab and no-harshness result before adjusting
+
+**AI Analysis:** One clean run at baseline on Rig 6 — no harshness, clean swab, high vapor density. Repeat the exact same curve before adjusting anything. BB36 #2 had documented run-to-run variability; one clean result is not enough to call the ceiling or the rig's working range for this phenotype.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
 
 ---
 
