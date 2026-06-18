@@ -312,13 +312,28 @@ RUNS = [
         dab_notes='Used the short draw technique from yesterday. Tasty first few draws, then it faded. Very very little harshness but in the back quarter. Lots of vapor but it was visible wispy intra draw. Ran a second cycle and the vapor density held up longer for some reason. But also the harshness. So there\'s a possible connection between density and harshness. Swabs were golden with amber spots, more amber spots though. Each cycle was 60 seconds. Intensity is quite high!',
         analysis="Deviated from the planned 420°F pearl-count isolation test in favor of 425°F — Rig 4 vs. Rig 5 same-endpoint comparison is still open. The within-draw wispy pattern appeared at 425°F on Rig 5, which puts FW106 in direct contradiction with LHBH Run 2 and papzp22 Run 2, both of which resolved the density drop at exactly this endpoint on the same rig. Short draw technique is a plausible confound — shorter draws sample the early-draw dense phase more than the wispy tail — but 'visible wispy intra-draw' suggests the pattern was legible regardless. More likely this is material-specific: FW106's vapor density at this endpoint drops off faster within a draw than LHBH or papzp22 did. The second cycle is the more interesting data point: density held up longer, but harshness increased. The insert was already at temperature when the second cycle started, eliminating the cold-ramp phase and delivering sustained heat from the first draw — more sustained density, more harshness. The sequencing is the cleanest within-session evidence for the vapor density hypothesis yet: same material, same rig, same endpoint, more density in cycle two, more harshness in cycle two. Accumulated airway exposure across two cycles is an unresolved confound — 'denser vapor caused the harshness' and 'second cycle, airways already worked' predict the same outcome. Swab came back golden with more amber than golden — darker than FW106's typical Rig 5 beige on 40s runs, consistent with Run 17's dark golden at the same 60s duration. Duration looks like the swab driver on this strain: 40s runs at 420°F ran consistently beige; 60s runs at 420°F (Run 17) and 425°F (Run 18) both show darker results.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 15),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 16, 0, 21, 12, tzinfo=timezone.utc),
+        waypoints=FW106_FASTER_425_60S,
+        equipment=RIG_5,
+        duration_seconds=56,
+        endpoint_note='<strong>Endpoint:</strong> 425°F — 8s ramp; 60s hold &nbsp;|&nbsp; <strong>Note:</strong> Normal draws; stopped 4s early',
+        swab='Golden.',
+        session_char='Three draws, single cycle; draw 1 no harshness, tasty, decent density; draw 2 no taste, slight harshness, lots of density; draw 3 lots of harshness, lots of density — stopped 4s early.',
+        intensity='Very hard.',
+        dab_notes="Three draws in a single cycle. First one no harshness, tasty, decent amount of vapor density. Second one, no taste, slight harshness, lots of density, third one lots of harshness lots of density. I stopped with 4 seconds left cause too harsh. Didn't notice intra draw, wasn't even looking. When I exhaled it was a LOT of visible vapor. Couple theories: it matters how hard I draw, and/or the pearl's thermal mass and the circumference of the insert versus velocity of the pearls spinning is in the equation. Swabs golden, hit very hard.",
+        analysis="Run 19: 425°F, 8s ramp, 60s hold, Rig 5, normal draws, single cycle — 3 draws, stopped 4s early. Harshness escalated draw-by-draw: none on 1, slight on 2, lots on 3, with density present throughout all three. The stopping condition was harshness, not depletion — dense vapor was still coming when bailing. That pairing — dense vapor and lots of harshness on the same draw — is the clearest same-session evidence yet that density and harshness are traveling together at 425°F on Rig 5. Consistent with Run 18's second-cycle finding (pre-warmed insert, sustained density, more harshness), but now confirmed without the cross-cycle confound. Within-draw thinning question unresolved — user wasn't tracking it, but visible exhaled vapor suggests material was making it through. Taste faded after draw 1 despite density remaining through draw 3; first time that sequence is legible in FW106's log — terpene fraction possibly exhausting before cannabinoid fraction, or palate saturation. Swab golden, consistent with the 60s duration pattern (R17–R18 also dark; 40s runs consistently beige). Second dab of the day is a confound for harshness severity; the draw-1 clean result is the least confounded read. Draw velocity noted as an uncontrolled variable — draw effort affects both convective cooling rate and pearl spin rate; not tracked across runs.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 19: 8s ramp to 425°F, 60s, Rig 5, single cycle, normal draws — test whether within-draw density drop repeats',
+    next_text='Run 20: 2-draw limit at 425°F, single cycle, Rig 5 — test whether draw count is driving harshness; watch for within-draw density thinning',
     accent=None,
     slug='fw106',
     info=[
@@ -329,7 +344,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="The Rig 4 vs. Rig 5 pearl-count question at 420°F is still open — Run 18 answered the 425°F question instead. Before going back to isolate that thread, confirm whether the within-draw density drop at 425°F is repeatable or whether the short draw technique obscured it. Run 19: same curve (8s ramp to 425°F, 60s, Rig 5), normal draws, single cycle — clean read on whether the wispy pattern is real for FW106 at this endpoint, and whether a single cycle keeps harshness out of the session.",
+    next_ai_analysis="425°F consistently produces harshness by draw 3 across R18 and R19, and density stays high when the harshness enters — so the mechanism looks more like airway accumulation or vapor composition than depletion. Clearest next isolation: 2-draw limit at 425°F, single cycle, Rig 5. Holds the endpoint and equipment constant, removes the third draw. Also: deliberately watch within each draw for the thick-then-wispy pattern — Run 19 didn't track it and the intra-draw thinning question from R18 is still open. If 2 draws stays clean, 425°F is workable with draw discipline.",
     next_waypoints=FW106_FASTER_425_60S,
     jar_index='',
 )
