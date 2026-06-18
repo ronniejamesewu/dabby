@@ -169,7 +169,7 @@
 ### Blueberry 36 #4
 **1 session** &nbsp;·&nbsp; Last: June 17, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 2: repeat baseline — confirm clean swab and no-harshness result before adjusting
+**Next:** Run 2: try 425°F — up 5°F from baseline, same 8s ramp and 60s hold
 
 **AI Analysis:** One clean run at baseline on Rig 6 — no harshness, clean swab, high vapor density. Repeat the exact same curve before adjusting anything. BB36 #2 had documented run-to-run variability; one clean result is not enough to call the ceiling or the rig's working range for this phenotype.
 
