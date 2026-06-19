@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 103 across 17 strains
+- **Total runs:** 104 across 17 strains
 - **Active since:** May 2, 2026 (49 days)
 - **Last run date:** June 19, 2026
 
@@ -76,11 +76,11 @@
 ---
 
 ### The Hive #1
-**6 sessions** &nbsp;·&nbsp; Last: June 19, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**7 sessions** &nbsp;·&nbsp; Last: June 19, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Try 420–425°F endpoint on Run 6
+**Next:** Run 8: repeat 420°F on Rig 6, first dab of day, deliberate larger load
 
-**AI Analysis:** Repeat 420°F on Rig 6 before adjusting anything. Material depleted at ~50s on Run 6 — on Run 7, stop at the depletion signal rather than riding to 60s; that alone may eliminate the harshness tail without touching the endpoint. If Run 7 replicates the ~43s harshness onset and ~50s depletion, the pattern is established. Don't step to 425°F yet — Rig 6's efficiency advantage is still being mapped for this strain.
+**AI Analysis:** Two runs at 420°F on Rig 6 — Run 6: harshness at ~43s (first dab, very intense); Run 7: clean to 60s (second dab, medium). Opposite outcomes. Session order goes the wrong direction — second dab should be harder to run clean, not easier. The intensity difference is the live confound: lighter load → lower vapor density → harshness below threshold. Run 8: repeat 420°F, first dab of day, deliberate larger load. If clean, 420°F is the confirmed working point on Rig 6 for this strain. If harshness returns near Run 6's timing, load size is the key variable and the strain's Rig 6 ceiling may still sit above 420°F.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
