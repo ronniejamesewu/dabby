@@ -103,6 +103,19 @@ RUNS = [
         ],
         analysis='Distinct staged flavor character is consistent with the ramp — each terpene fraction vaporizes as the curve climbs through it, rather than all at once as in the flat hold. Swab difference vs. Runs 3–4 is within noise (too many uncontrolled variables). Harshness at session tail is a directional signal that 430°F may still be slightly above ideal for this material on the ramp.',
     ),
+    CompletedRun(
+        strain='The Hive #1',
+        run_date=date(2026, 6, 19),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 19, 19, 28, 13, tzinfo=timezone.utc),
+        waypoints=BASELINE_CURVE,
+        equipment=RIG_6,
+        endpoint_note='<strong>Endpoint:</strong> 420°F — 8s ramp; first run on Rig 6',
+        swab='Beige — clean.',
+        session_char='Dense vapor throughout to ~50s depletion. Harshness entered at ~43s with vapor still dense; water at 43s resolved it; next draw through active vapor clean; depletion signal (vapor drop visible through glass) at end of that draw; two post-depletion draws confirmed no harshness. Very intense. Chatty, creative, uplifting.',
+        dab_notes='I was reminded what incredible quality this jar is. The rosin is so incredibly clean. Swabs were beige. Harshness showed up with 17 seconds left. A drink of water and it went away. Maybe a support for particulate accumulation? Very nice very intense high. Feels like the chatty creative and uplifting energy I wanted. Vapor was still dense when harshness showed up, but the material was depleted before the end of 60 seconds, I\'d guess around the 50 second mark. That may be why the harshness resolved, the material ran out so no more particles. Next draw had dense vapor and right at the end of draw showed depletion in drop in vapor observed through stock glass.',
+        analysis='First run on Rig 6, first run on sapphire for this jar — all five prior runs were on Rig 1 quartz. Beige swab consistent with this strain\'s historical light-golden-to-very-light pattern and with Rig 6\'s documented efficient vaporization. Harshness entered at ~43s with dense vapor and material still present. User drank water; next draw through active dense vapor was clean — harshness did not return. Depletion signal (vapor drop visible through glass) appeared at end of that draw; two subsequent draws of hot air produced no harshness, consistent with Session 106 (hot air alone at 420°F does not cause harshness). Whatever water reset — particulate load, mucosal sensitization, or thermal sensitization — it held through the remaining material exposure. Mechanism remains open. User notes this as possible support for more percolating glass — more water contact in the vapor path could filter particles before they reach the airway, potentially delaying harshness onset. Tradeoff: more percolation also strips desirable compounds alongside particles. Effects — chatty, creative, uplifting, very intense — matched the occasion and the strain\'s terpene inference exactly.',
+    ),
 ]
 
 # ── Status ──
@@ -120,8 +133,8 @@ STATUS = StrainStatus(
         ('Nose', 'Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only).'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene and terpinolene inferred from tropical fruit character; Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios not inferable from genetics — standard palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Try 420–425°F endpoint, keep ramp shape.',
-    next_ai_analysis="Flat-hold 430°F was clean twice. Ramp to 430°F showed tail harshness once. Harshness is directional but one data point — the flat holds didn't show it at the same endpoint. 425°F ramp is a reasonable conservative step; could also repeat the ramp at 430°F first to confirm the harshness was real.",
-    next_waypoints=HIVE1_NEXT,
+    next_dab_notes='Repeat 420°F on Rig 6. Stop at depletion signal (~50s) rather than riding to 60s.',
+    next_ai_analysis='Repeat 420°F on Rig 6 before adjusting anything. Material depleted at ~50s on Run 6 — on Run 7, stop at the depletion signal rather than riding to 60s; that alone may eliminate the harshness tail without touching the endpoint. If Run 7 replicates the ~43s harshness onset and ~50s depletion, the pattern is established. Don\'t step to 425°F yet — Rig 6\'s efficiency advantage is still being mapped for this strain.',
+    next_waypoints=BASELINE_CURVE,
     jar_index='',
 )

@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 18, 2026 — Session 122
+## Last updated: June 19, 2026 — Session 123
 
 ---
 
@@ -244,6 +244,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 - **Asking for confirmation on new waypoint constant definitions.** Adding a local waypoint constant is a standard mechanical part of run logging — already defined as such in CLAUDE.md. It follows directly from an approved run and requires no separate confirmation. Session 117.
 
+- **Overclaiming on a mechanistic observation after explicitly flagging it for careful treatment.** Hive #1 R6 water-mid-session finding was noted in conversation as "worth noting carefully" — then written up in the analysis draft as mechanism-discriminating evidence ("thermal injury and airway sensitization don't resolve that cleanly or quickly with water"). Neither claim was established. Caught by user before writing. Companion failure: explained to the user that sipped water ≠ bubbler water as if the distinction was unclear to them, when they were making a coherent inferential chain between the two. Session 123.
+
 ---
 
 ## Before Next Session
@@ -272,5 +274,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **CLAUDE.md User Configuration block** — Extract timezone, device, insert type, and technique from the protocol body into a User Configuration section at the top of CLAUDE.md. A new user edits that section without touching the protocol. Prerequisite for the open-source companion spec.
 
 - **Draw velocity and cap-pearl dynamics** — FW106 R19 introduced draw effort as an uncontrolled variable: harder draws pull more airflow → more convective cooling of pearl and insert → faster within-draw heat shed; harder draws also spin the pearls faster via the Cloud Vortex cap. The two effects partially offset (faster spin = more heat delivery per contact; more airflow = more cooling). The deeper thread: pearl thermal mass × insert circumference × spin velocity × draw velocity all interact to determine heat-per-draw delivered to material. FW106 R20 (Rig 6, Wym Stick Piston, no pearls) added first direct data: joystick delivered significantly more intensity than Rig 5 spinner at same endpoint, with harshness arriving one draw earlier — consistent with directed airflow delivering more material per draw than the vortex/pearl setup. Stationary-pearls-with-Piston (thermal mass present, spin absent) identified as a potential future isolation to separate pearl thermal mass from cap airflow design. Sessions 118, 120.
+
+- **Percolation glass as a testable harshness variable** — Hive #1 R6 water-reset observation (Session 123) raises the hypothesis that more percolating glass would filter particles before they reach the airway, potentially delaying harshness onset. Testable: same rig, same curve, more percolation glass piece, compare harshness onset timing. Tradeoff: more percolation also strips desirable compounds alongside particles.
 
 - **Lifecycle flag on `StrainStatus` — deferred, specific trigger required.** Closing a jar is a two-file edit: move the slug in `jar_manifest.py` AND update prose framing in the jar file. `_check_closed_tier()` only fires *after* the slug is already in `CLOSED` — it catches forgot-the-prose but not forgot-the-manifest-move. The manifest move is unenforced in the direction that can actually fail silently. The session-close checklist (Q7) now covers this operationally. A structural fix would be an `is_closed` flag on `StrainStatus` — jar-close becomes a one-file edit, `_check_closed_tier()` becomes an in-jar invariant, the gap disappears. Deferred because it requires changing `Dabby_Core.py`, all ~17 jar files, the manifest, and the generator simultaneously with no test suite. **Trigger:** a session where the manifest move is actually forgotten and causes a problem that Q7 didn't catch.
