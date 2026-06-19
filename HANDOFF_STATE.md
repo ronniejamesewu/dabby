@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 101 across 17 strains
+- **Total runs:** 102 across 17 strains
 - **Active since:** May 2, 2026 (48 days)
 - **Last run date:** June 18, 2026
 
@@ -212,11 +212,11 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**4 sessions** &nbsp;·&nbsp; Last: June 18, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**5 sessions** &nbsp;·&nbsp; Last: June 18, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 5: drop to 420°F on Rig 6, normal load — test whether the floor is clean
+**Next:** Run 6: 420°F on Rig 6, first dab of day — isolate session order from endpoint as the harshness driver
 
-**AI Analysis:** Runs 3 and 4 together make the clearest load-size comparison in this jar: smaller load → harshness at ~40s; larger load → harshness at ~30s, same curve, same rig. Earlier onset on more material cuts against depletion and points at vapor density or particle accumulation. 425°F is producing harshness too early on a loaded session (~30s in a 60s window). Drop to 420°F on Rig 6 with a normal load — 420°F was clean on Rig 5 for this strain (Run 1, no harshness across two cycles) and may have headroom on the joystick. If harshness stays absent or late, 420°F is the operating point. If it enters early, the strain has a lower ceiling on Rig 6 than on Rig 5.
+**AI Analysis:** Draw-3 harshness at 420°F on Rig 6 could be session order (third dab of day) or the rig shifting the clean range down vs. Rig 5. A first-dab run at 420°F on Rig 6 separates them. If harshness stays absent or late first-dab, session order was the confound and 420°F is the working point on Rig 6. If harshness still enters on draw 3 first-dab, the joystick is shifting the ceiling down and 416–417°F is the next probe.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
