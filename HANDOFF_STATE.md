@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 100 across 17 strains
+- **Total runs:** 101 across 17 strains
 - **Active since:** May 2, 2026 (48 days)
 - **Last run date:** June 18, 2026
 
@@ -212,17 +212,17 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**3 sessions** &nbsp;·&nbsp; Last: June 18, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**4 sessions** &nbsp;·&nbsp; Last: June 18, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 4: larger normal load at 425°F — confirm harshness timing before probing 430°F
+**Next:** Run 5: drop to 420°F on Rig 6, normal load — test whether the floor is clean
 
-**AI Analysis:** Dense vapor at 40s harshness means the ceiling is likely the endpoint, not load-driven depletion — harshness entered while vapor was still thick, 15s before the material ran out. But the small load this run means the timing could shift with more material. Repeat 425°F with a larger normal load. If harshness holds at ~40s, 425°F is near the working limit on Rig 6 for this strain. If it pushes later, 430°F is the next probe. Don't jump to 430°F before that confirmation.
+**AI Analysis:** Runs 3 and 4 together make the clearest load-size comparison in this jar: smaller load → harshness at ~40s; larger load → harshness at ~30s, same curve, same rig. Earlier onset on more material cuts against depletion and points at vapor density or particle accumulation. 425°F is producing harshness too early on a loaded session (~30s in a 60s window). Drop to 420°F on Rig 6 with a normal load — 420°F was clean on Rig 5 for this strain (Run 1, no harshness across two cycles) and may have headroom on the joystick. If harshness stays absent or late, 420°F is the operating point. If it enters early, the strain has a lower ceiling on Rig 6 than on Rig 5.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
-- 8s → 425°F — Endpoint — up 5°F from Run 1
-- 60s → 425°F — Hold
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
 
 ---
 
