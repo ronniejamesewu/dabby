@@ -129,13 +129,26 @@ RUNS = [
         dab_notes='Cold nose has a floral note on jar today. Super clean run. No harshness with a sip of water in the middle — just a proactive sip. Finished whole 60 seconds, saw vapor wispiness in last 2.',
         analysis='Run 7 on Rig 6 at 420°F — clean throughout, full 60s, no harshness. Beige swab consistent with Run 6 and this jar\'s history. Water sip was proactive, not reactive — the clean outcome stands on its own without water as an intervention. Vapor wispy in the last 2 (seconds or draws — reported ambiguously) is consistent with depletion near session end, parallel to Run 6\'s ~50s depletion signal. Two runs at 420°F on Rig 6 now give opposite harshness outcomes: Run 6 had harshness at ~43s (first dab, very intense); Run 7 was clean to 60s (second dab, medium intensity). Session order goes the wrong direction to explain it — second dab should accumulate more airway exposure, not less. The intensity gap is the live confound: medium vs. very intense suggests Run 7 may have been a lighter load, and lower vapor density may have kept the harshness threshold uncrossed throughout. Pre-session cold nose note (floral) logged; different character from prior spice-forward descriptions, consistent with the jar continuing to develop in the fridge.',
     ),
+    CompletedRun(
+        strain='The Hive #1',
+        run_date=date(2026, 6, 19),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 6, 20, 2, 1, 5, tzinfo=timezone.utc),
+        waypoints=BASELINE_CURVE,
+        equipment=RIG_6,
+        endpoint_note='<strong>Endpoint:</strong> 420°F — 8s ramp; third run on Rig 6',
+        swab='Beige — clean.',
+        session_char='Very nice. Harshness at ~23s (~37s remaining, timing approximate). Reactive water sip; harshness returned; stopped cycle early. Load present at end of cycle. High intensity initially; duration short.',
+        dab_notes='Not the planned experiment — same 420 curve. Very nice. Swabs beige. Harshness around 37 seconds left — might have the time wrong. Had a sip of water and kept going. Load wasn\'t depleted at end of cycle but harshness was back and I was done. High intensity for a little bit, duration doesn\'t seem to stick.',
+        analysis='Run 8 on Rig 6 at 420°F — beige swab consistent with the jar\'s history. Harshness entered at approximately 23s (~37s remaining, timing flagged as uncertain). Water sip mid-session (reactive this time, unlike Run 7\'s proactive sip) didn\'t hold — harshness returned and the user stopped the cycle. Load was present at the end, so depletion doesn\'t explain it. Third dab of the day. Three runs at 420°F on Rig 6 now span a range: Run 6 (first dab, harshness ~43s), Run 7 (second dab, clean to 60s), Run 8 (third dab, harshness ~23s approximate). The pattern isn\'t monotone — cleanest run was the second dab, not the first — which cuts against a simple session-order story and keeps load size as a live confound. Run 7\'s medium intensity vs. Run 6 and 8\'s higher intensity is consistent with a lighter load in Run 7 explaining the clean result as much as session order. "High intensity for a little bit, duration doesn\'t stick" noted; three dabs into the day, tolerance is the most parsimonious read on the short duration.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='The Hive #1',
     profile_anchor='#hive1-profile',
-    next_text='Run 8: repeat 420°F on Rig 6, first dab of day, deliberate larger load',
+    next_text='Run 9: repeat 420°F on Rig 6, first dab of day, deliberate larger load',
     accent=None,
     slug='hive1',
     info=[
@@ -146,8 +159,8 @@ STATUS = StrainStatus(
         ('Nose', 'Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only).'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene and terpinolene inferred from tropical fruit character; Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios not inferable from genetics — standard palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Repeat 420°F on Rig 6, first dab of day, deliberate larger load — isolate session-order and load-size confounds from Run 6/7 comparison.',
-    next_ai_analysis='Two runs at 420°F on Rig 6 — Run 6: harshness at ~43s (first dab, very intense); Run 7: clean to 60s (second dab, medium). Opposite outcomes. Session order goes the wrong direction — second dab should be harder to run clean, not easier. The intensity difference is the live confound: lighter load → lower vapor density → harshness below threshold. Run 8: repeat 420°F, first dab of day, deliberate larger load. If clean, 420°F is the confirmed working point on Rig 6 for this strain. If harshness returns near Run 6\'s timing, load size is the key variable and the strain\'s Rig 6 ceiling may still sit above 420°F.',
+    next_dab_notes='Repeat 420°F on Rig 6, first dab of day, deliberate larger load — test whether the clean range at this endpoint holds at higher material weight.',
+    next_ai_analysis='Three runs at 420°F on Rig 6, all from the same day, now show: Run 6 (first dab, harshness ~43s), Run 7 (second dab, clean to 60s), Run 8 (third dab, harshness ~23s approximate). Non-monotone pattern keeps load size and session order entangled — the planned experiment (first dab, deliberate larger load) still hasn\'t happened. Run 9: first dab, deliberate larger load. That\'s the one that actually tests whether 420°F on Rig 6 is clean at this material weight.',
     next_waypoints=BASELINE_CURVE,
     jar_index='',
 )

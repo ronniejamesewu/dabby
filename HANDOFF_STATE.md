@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 104 across 17 strains
+- **Total runs:** 105 across 17 strains
 - **Active since:** May 2, 2026 (49 days)
 - **Last run date:** June 19, 2026
 
@@ -76,11 +76,11 @@
 ---
 
 ### The Hive #1
-**7 sessions** &nbsp;·&nbsp; Last: June 19, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**8 sessions** &nbsp;·&nbsp; Last: June 19, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 8: repeat 420°F on Rig 6, first dab of day, deliberate larger load
+**Next:** Run 9: repeat 420°F on Rig 6, first dab of day, deliberate larger load
 
-**AI Analysis:** Two runs at 420°F on Rig 6 — Run 6: harshness at ~43s (first dab, very intense); Run 7: clean to 60s (second dab, medium). Opposite outcomes. Session order goes the wrong direction — second dab should be harder to run clean, not easier. The intensity difference is the live confound: lighter load → lower vapor density → harshness below threshold. Run 8: repeat 420°F, first dab of day, deliberate larger load. If clean, 420°F is the confirmed working point on Rig 6 for this strain. If harshness returns near Run 6's timing, load size is the key variable and the strain's Rig 6 ceiling may still sit above 420°F.
+**AI Analysis:** Three runs at 420°F on Rig 6, all from the same day, now show: Run 6 (first dab, harshness ~43s), Run 7 (second dab, clean to 60s), Run 8 (third dab, harshness ~23s approximate). Non-monotone pattern keeps load size and session order entangled — the planned experiment (first dab, deliberate larger load) still hasn't happened. Run 9: first dab, deliberate larger load. That's the one that actually tests whether 420°F on Rig 6 is clean at this material weight.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
