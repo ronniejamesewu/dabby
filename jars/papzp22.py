@@ -60,13 +60,29 @@ RUNS = [
         dab_notes="Harshness entered at end of first draw. I kept it at bay by shortening my draws, and that seemed to help a lot. Both with harshness and taste. But by the end harshness was strong. Maybe it's this material? Very very tasty throughout, even through 2/3 of a second cycle before I quit. Swab the same golden with a couple amber spots. My suspicion is the spots are pressure points that are pressing the reclaim against the still hot insert. Pretty intense! [Updated:] Big big high.",
         analysis="Harshness entered at end of first draw — earlier than Run 2's ~31s clock-time read, though the comparison is draw-length-dependent: if the first draw ran ~20s, onset was earlier; if ~30s, roughly comparable. Third dab of the day is a real confound — cumulative airway exposure from Runs 1 and 2 earlier today plausibly lowers the harshness threshold relative to Run 2 (which was the second dab). Clean timing comparison against Run 2 is not possible here. Shorter draws helped with both harshness and taste — the more actionable finding. This extends Run 1's intra-draw observation (stop at the within-draw density drop) and is now two within-strain data points on draw discipline as a working lever. Consistent with the vapor density hypothesis: shorter draws deliver less aerosol per breath, delaying threshold crossing; flavor reads improve because each draw captures the aromatic front before riding into the tail. Swab light golden, couple amber spots — identical to Run 2 at the same endpoint. Stable across two 425°F runs; not a heat-ceiling signal. User's pressure-point hypothesis for the amber spots is mechanically plausible — localized reclaim pressing against the still-hot insert during draws — and the inconsistency (spots rather than uniform color) supports a mechanical-artifact read over systematic overheating. 'Maybe it's this material?' — harshness pattern across three runs doesn't cleanly point to the material over the temperature and session length. Cross-strain parallel holds: LHBH R2 showed harshness on draw 3 at 425°F with material still present. The more interesting material-specific signal is the taste — 'very very tasty throughout, even through 2/3 of a second cycle' is three-run consistent and stands out.",
     ),
+    CompletedRun(
+        strain="Papaya + Z Pie #22",
+        run_date=date(2026, 6, 22),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 22, 1, 20, 0, tzinfo=timezone.utc),
+        waypoints=PAPZP22_425,
+        equipment=RIG_6,
+        too_hot=False,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 425°F — Rig 6 debut; same as Runs 2–3',
+        swab="beige, very light",
+        session_char="First dab of the day on Rig 6. Shorter draws throughout. Dense vapor with terpene-load coughing throughout; no within-draw density drop until final ~2 seconds. Mild harshness at ~38s, didn't escalate. Single 60s cycle.",
+        intensity="medium, building",
+        dab_notes="Beige very light swabs. Mild harshness showed up at 22 left, didn't progress much but was there. Tons of rep coughing throughout. Seems like it's building here, medium intensity right now. Don't notice density drop, except maybe in last 2 seconds. It was terp coughing.",
+        analysis="First Rig 6 run for this strain, and the first clean session-order read — first dab of day, no prior runs today. A few things stand out.\n\nWithin-draw density drop absent. Vapor was solid throughout, only the last ~2 seconds showing any drop — depletion, not a ceiling signal. Contrasts sharply with Run 1 (Rig 5, 420°F, density drop present throughout all three cycles) and Run 2 (Rig 5, 425°F, vapor faded in final 2s of the hold). Consistent with Rig 6's directed airflow delivering sustained vapor without the pearl thermal-loss dynamic that drove the drop on Rig 5.\n\nHarshness onset at ~38s — mild, non-escalating. Later than Run 2's ~31s (Rig 5, 425°F, first dab, standard draws). Two variables changed: rig and draw length. The later onset is surprising on its face — Rig 6 pushed harshness earlier on FW106 R20 and LHBH R4 at the same endpoint. Draw discipline is the more plausible driver here: shorter draws delivered less aerosol per breath even with dense vapor present, delaying threshold crossing. But rig and draw length are fully confounded; they can't be separated from a single run.\n\nTerpene-load coughing throughout — involuntary, dense-vapor-triggered, not harshness. Cross-strain: FW106 R1 (Rig 4, terpene-load cough without harshness at 416°F), Hive1 R8 (Rig 6, heavy terpene-load cough with larger load at 420°F). Consistent with Rig 6's higher per-draw delivery triggering the cough mechanism that Rig 5 didn't reach on this strain.\n\nSwab beige, very light — lighter than Run 2's light golden with amber spots at the same endpoint. LHBH R3 showed sparse reclaim on Rig 6 directional for more complete vaporization; shorter draws may also contribute. Not a ceiling signal.\n\nIntensity medium, building — same immediate read as Run 2 ('medium, possibly building'). Effects will continue for a while; this is a logging-time snapshot only.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Papaya + Z Pie #22',
     profile_anchor='#papzp22-profile',
-    next_text='Run 4: 425°F, 8s ramp, 60s single cycle, shorter draws throughout — first dab of session',
+    next_text='Run 5: repeat 425°F on Rig 6, 8s ramp, 60s single cycle, shorter draws — confirm Run 4 onset timing before moving the endpoint',
     accent=None,
     slug='papzp22',
     info=[
@@ -78,7 +94,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene; Georgia Pie typically Gelato × Gushers-adjacent: limonene/myrcene/linalool). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='Nose at room temp (~few hours out of fridge): garlicky in a good way (June 14, 2026).',
-    next_ai_analysis='Three runs, no clean harshness-window read yet — Run 2 gave ~31s onset, Run 3 gave earlier onset but draw-length management was in play and third-dab-of-day is a real confound. The actionable finding from Run 3 is that shorter draws kept both harshness and taste in a better place — worth testing deliberately. Run 4: 425°F, 8s ramp, 60s single cycle, shorter draws throughout from draw 1, first dab of a session. Question: does the draw-discipline approach keep 60s harshness-free? If yes, 425°F works with discipline. If harshness still enters in the first 30s, pull the endpoint to 422–423°F.',
+    next_ai_analysis='Run 4 is the first clean data point for this strain on Rig 6 — first dab of day, draw discipline applied, mild harshness at 38s that didn\'t escalate. Before moving the endpoint, replicate: same curve (425°F, 8s ramp, 60s single cycle), same rig, same shorter-draw approach. One run isn\'t enough to call 425°F the working point, especially with both rig and draw length new to this strain simultaneously. If Run 5 replicates (mild harshness at or after ~35s, non-escalating), 425°F with draw discipline is established and a step to 428–430°F is the next probe. If harshness arrives earlier or escalates, draw discipline alone isn\'t holding it and 422–423°F is the direction.',
     next_waypoints=PAPZP22_425,
     jar_index='',
 )
