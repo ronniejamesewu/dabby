@@ -10,6 +10,13 @@ PAPZP22_425 = [
     Waypoint(time_s=60, temp_f=425, note="Hold"),
 ]
 
+PAPZP22_430 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=430, note="Endpoint — up 5°F from Runs 2–5"),
+    Waypoint(time_s=60, temp_f=430, note="Hold"),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -76,13 +83,29 @@ RUNS = [
         dab_notes="Beige very light swabs. Mild harshness showed up at 22 left, didn't progress much but was there. Tons of rep coughing throughout. Seems like it's building here, medium intensity right now. Don't notice density drop, except maybe in last 2 seconds. It was terp coughing.",
         analysis="First Rig 6 run for this strain, and the first clean session-order read — first dab of day, no prior runs today. A few things stand out.\n\nWithin-draw density drop absent. Vapor was solid throughout, only the last ~2 seconds showing any drop — depletion, not a ceiling signal. Contrasts sharply with Run 1 (Rig 5, 420°F, density drop present throughout all three cycles) and Run 2 (Rig 5, 425°F, vapor faded in final 2s of the hold). Consistent with Rig 6's directed airflow delivering sustained vapor without the pearl thermal-loss dynamic that drove the drop on Rig 5.\n\nHarshness onset at ~38s — mild, non-escalating. Later than Run 2's ~31s (Rig 5, 425°F, first dab, standard draws). Two variables changed: rig and draw length. The later onset is surprising on its face — Rig 6 pushed harshness earlier on FW106 R20 and LHBH R4 at the same endpoint. Draw discipline is the more plausible driver here: shorter draws delivered less aerosol per breath even with dense vapor present, delaying threshold crossing. But rig and draw length are fully confounded; they can't be separated from a single run.\n\nTerpene-load coughing throughout — involuntary, dense-vapor-triggered, not harshness. Cross-strain: FW106 R1 (Rig 4, terpene-load cough without harshness at 416°F), Hive1 R8 (Rig 6, heavy terpene-load cough with larger load at 420°F). Consistent with Rig 6's higher per-draw delivery triggering the cough mechanism that Rig 5 didn't reach on this strain.\n\nSwab beige, very light — lighter than Run 2's light golden with amber spots at the same endpoint. LHBH R3 showed sparse reclaim on Rig 6 directional for more complete vaporization; shorter draws may also contribute. Not a ceiling signal.\n\nIntensity medium, building — same immediate read as Run 2 ('medium, possibly building'). Effects will continue for a while; this is a logging-time snapshot only.",
     ),
+    CompletedRun(
+        strain="Papaya + Z Pie #22",
+        run_date=date(2026, 6, 22),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 22, 5, 42, 0, tzinfo=timezone.utc),
+        waypoints=PAPZP22_425,
+        equipment=RIG_6,
+        too_hot=False,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 425°F — repeat of Run 4 on Rig 6; single cycle + second cycle ~30s',
+        swab="golden (second cycle)",
+        session_char="Second dab of evening on Rig 6. Draw discipline maintained. Harshness mild to medium at ~35s, non-escalating through first cycle; stayed at medium through second cycle (~30s). Vapor dense throughout. Golden swab attributed to second cycle.",
+        intensity="medium-high",
+        dab_notes="Swabs were golden, probably because I ran a second cycle for maybe 30 seconds. Mild to medium harshness around the 35 second mark, stayed about the same. Vapor production stayed dense, enough for me to try a second cycle. Medium high intensity. [Second cycle:] Medium harshness.",
+        analysis="Run 5 replicates Run 4's harshness onset timing — ~35s here vs. ~38s on Run 4. That's within noise range for a manual observation on a 60s session; two consistent data points. Harshness was mild-to-medium at onset, held there through the first cycle, and stayed at medium through the second cycle (~30s) without escalating. Non-escalating through ~90s total is notably better than Run 1's behavior (escalating to harsh by cycle 3 at the same endpoint). Draw discipline is a live lever across both Rig 6 runs.\n\nSession order is a confound — Run 4 was first dab of the evening, Run 5 was second. The 3-second onset shift (38s → 35s) is consistent with prior airway exposure lowering the threshold slightly, but it's within noise. The overall pattern holds: 425°F with draw discipline produces mild-to-medium onset around 35–38s, non-escalating.\n\nSwab golden vs. Run 4's beige — consistent with the second cycle driving the swab darker, same pattern as WM. Not a ceiling signal. Vapor dense enough through the full first cycle to prompt a second — vapor quality not the limiting factor.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Papaya + Z Pie #22',
     profile_anchor='#papzp22-profile',
-    next_text='Run 5: repeat 425°F on Rig 6, 8s ramp, 60s single cycle, shorter draws — confirm Run 4 onset timing before moving the endpoint',
+    next_text='Run 6: step to 430°F on Rig 6, 8s ramp, 60s single cycle, draw discipline — first dab of the day if possible',
     accent=None,
     slug='papzp22',
     info=[
@@ -94,7 +117,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene; Georgia Pie typically Gelato × Gushers-adjacent: limonene/myrcene/linalool). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='Nose at room temp (~few hours out of fridge): garlicky in a good way (June 14, 2026).',
-    next_ai_analysis='Run 4 is the first clean data point for this strain on Rig 6 — first dab of day, draw discipline applied, mild harshness at 38s that didn\'t escalate. Before moving the endpoint, replicate: same curve (425°F, 8s ramp, 60s single cycle), same rig, same shorter-draw approach. One run isn\'t enough to call 425°F the working point, especially with both rig and draw length new to this strain simultaneously. If Run 5 replicates (mild harshness at or after ~35s, non-escalating), 425°F with draw discipline is established and a step to 428–430°F is the next probe. If harshness arrives earlier or escalates, draw discipline alone isn\'t holding it and 422–423°F is the direction.',
-    next_waypoints=PAPZP22_425,
+    next_ai_analysis='Two Rig 6 runs now show consistent harshness onset at 35–38s, non-escalating, with draw discipline applied. The replication condition is met. Step to 430°F on Run 6 — same 8s ramp, 60s single cycle, same draw discipline. Session order on Run 5 (second dab) is real but doesn\'t change the direction: non-escalating harshness at 35s on a second dab is the same signature Run 4 produced first dab. Run 6 as first dab of the day if possible — cleaner read when probing the ceiling.',
+    next_waypoints=PAPZP22_430,
     jar_index='',
 )

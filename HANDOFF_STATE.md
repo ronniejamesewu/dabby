@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 106 across 17 strains
+- **Total runs:** 107 across 17 strains
 - **Active since:** May 2, 2026 (52 days)
 - **Last run date:** June 22, 2026
 
@@ -242,16 +242,16 @@
 ---
 
 ### Papaya + Z Pie #22
-**4 sessions** &nbsp;·&nbsp; Last: June 22, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**5 sessions** &nbsp;·&nbsp; Last: June 22, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 5: repeat 425°F on Rig 6, 8s ramp, 60s single cycle, shorter draws — confirm Run 4 onset timing before moving the endpoint
+**Next:** Run 6: step to 430°F on Rig 6, 8s ramp, 60s single cycle, draw discipline — first dab of the day if possible
 
-**AI Analysis:** Run 4 is the first clean data point for this strain on Rig 6 — first dab of day, draw discipline applied, mild harshness at 38s that didn't escalate. Before moving the endpoint, replicate: same curve (425°F, 8s ramp, 60s single cycle), same rig, same shorter-draw approach. One run isn't enough to call 425°F the working point, especially with both rig and draw length new to this strain simultaneously. If Run 5 replicates (mild harshness at or after ~35s, non-escalating), 425°F with draw discipline is established and a step to 428–430°F is the next probe. If harshness arrives earlier or escalates, draw discipline alone isn't holding it and 422–423°F is the direction.
+**AI Analysis:** Two Rig 6 runs now show consistent harshness onset at 35–38s, non-escalating, with draw discipline applied. The replication condition is met. Step to 430°F on Run 6 — same 8s ramp, 60s single cycle, same draw discipline. Session order on Run 5 (second dab) is real but doesn't change the direction: non-escalating harshness at 35s on a second dab is the same signature Run 4 produced first dab. Run 6 as first dab of the day if possible — cleaner read when probing the ceiling.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
-- 8s → 425°F — Endpoint — up 5°F from Run 1
-- 60s → 425°F — Hold
+- 8s → 430°F — Endpoint — up 5°F from Runs 2–5
+- 60s → 430°F — Hold
 
 ---
