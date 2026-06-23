@@ -99,13 +99,29 @@ RUNS = [
         dab_notes="Swabs were golden, probably because I ran a second cycle for maybe 30 seconds. Mild to medium harshness around the 35 second mark, stayed about the same. Vapor production stayed dense, enough for me to try a second cycle. Medium high intensity. [Second cycle:] Medium harshness.",
         analysis="Run 5 replicates Run 4's harshness onset timing — ~35s here vs. ~38s on Run 4. That's within noise range for a manual observation on a 60s session; two consistent data points. Harshness was mild-to-medium at onset, held there through the first cycle, and stayed at medium through the second cycle (~30s) without escalating. Non-escalating through ~90s total is notably better than Run 1's behavior (escalating to harsh by cycle 3 at the same endpoint). Draw discipline is a live lever across both Rig 6 runs.\n\nSession order is a confound — Run 4 was first dab of the evening, Run 5 was second. The 3-second onset shift (38s → 35s) is consistent with prior airway exposure lowering the threshold slightly, but it's within noise. The overall pattern holds: 425°F with draw discipline produces mild-to-medium onset around 35–38s, non-escalating.\n\nSwab golden vs. Run 4's beige — consistent with the second cycle driving the swab darker, same pattern as WM. Not a ceiling signal. Vapor dense enough through the full first cycle to prompt a second — vapor quality not the limiting factor.",
     ),
+    CompletedRun(
+        strain="Papaya + Z Pie #22",
+        run_date=date(2026, 6, 22),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 23, 3, 27, 0, tzinfo=timezone.utc),
+        waypoints=PAPZP22_430,
+        equipment=RIG_6,
+        too_hot=False,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 430°F — up 5°F from Runs 2–5; first 430°F run',
+        swab="golden, spots of light brown",
+        session_char="First dab of the day at 430°F. First cycle (60s): dense vapor throughout; flavor enormous — bitter, savory, nothing fruity/sweet; sip of water mid-cycle from terpene intensity (not harshness); zero harshness. Second cycle: flavor present but diminishing; harshness last ~20s, medium; faded. Device top and cap noticeably hot after two consecutive 430°F cycles.",
+        intensity="pretty fucking hard",
+        dab_notes="That was intense. Flavor was so big I almost gagged. Bitter note, maybe something savory even? Nothing fruity or sweet. Dense dense vapor to the end and I'm gonna run another cycle. No harshness, but I did have a sip of water in the middle because the terps were so loud. [After second cycle:] Harshness in last 20 seconds, medium. Flavor was still there although not as strong in first draw or second cycle, then it faded. I think holding 430 for that long two times in a row is heating up the top of the device and the cap enough that they feel hot but touchable. Swabs golden but also spots of light brown. Again, lots of heat. Pretty fucking hard.",
+        analysis="Most striking result in this strain's history: zero harshness through the full 60s first cycle at 430°F, when 425°F consistently showed onset at 35–38s across both prior Rig 6 runs. Three candidates:\n\nWater mid-cycle. Hive1 R6 established that water reset harshness after it appeared; here water was taken preemptively — terpene intensity, not harshness, was the trigger. If water prevents harshness rather than only reversing it, the clean first cycle has a confound. That's the most important unresolved question in this run.\n\nHigher endpoint driving faster vaporization. The 'shorter and higher' working theory: 430°F burns through material faster, possibly getting most of the load through the vaporization window before the harshness threshold is reached — counterintuitively cleaner because the session is effectively over sooner. One data point, consistent with the framework.\n\nSession order is matched to Run 4 (also first dab of day, draw discipline, 38s onset at 425°F). The improvement is 5°F, not a first-dab effect.\n\nSecond cycle harshness in the last 20s is depletion-consistent — material largely spent after one full 430°F cycle, hot insert contact driving the tail. Not a temperature ceiling signal.\n\nSwab golden with light brown spots — new territory; all prior runs were amber or lighter. Two consecutive 430°F cycles is the most parsimonious driver, same pattern as WM and Run 5 where second cycles drove swabs darker. Not a first-cycle heat signal, but worth watching on a clean single-cycle run.\n\nFlavor character distinctly different from prior runs: bitter, savory, nothing fruity/sweet — versus the generic 'very tasty' of Runs 1–3. Whether that's 430°F unlocking different fractions, load position variation (Papaya outer ring vs. Z Pie #22 center), or intensity making it more legible is unclear.\n\nIntensity 'pretty fucking hard' at 430°F — consistent with the cross-strain directional (higher endpoint → stronger effect). Second independent data point on this pattern.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Papaya + Z Pie #22',
     profile_anchor='#papzp22-profile',
-    next_text='Run 6: step to 430°F on Rig 6, 8s ramp, 60s single cycle, draw discipline — first dab of the day if possible',
+    next_text='Run 7: repeat 430°F single cycle, 8s ramp, draw discipline, water available as needed — first dab of the day if possible',
     accent=None,
     slug='papzp22',
     info=[
@@ -117,7 +133,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene; Georgia Pie typically Gelato × Gushers-adjacent: limonene/myrcene/linalool). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='Nose at room temp (~few hours out of fridge): garlicky in a good way (June 14, 2026).',
-    next_ai_analysis='Two Rig 6 runs now show consistent harshness onset at 35–38s, non-escalating, with draw discipline applied. The replication condition is met. Step to 430°F on Run 6 — same 8s ramp, 60s single cycle, same draw discipline. Session order on Run 5 (second dab) is real but doesn\'t change the direction: non-escalating harshness at 35s on a second dab is the same signature Run 4 produced first dab. Run 6 as first dab of the day if possible — cleaner read when probing the ceiling.',
+    next_ai_analysis='Run 7: repeat 430°F single cycle, same technique — 8s ramp, draw discipline, water available if needed. First dab of the day if possible. The question is whether the clean first cycle holds without the second-cycle heat and device warmth as confounds. If it does, 430°F is genuinely better than 425°F on this strain — that\'s a stronger result than the two Rig 6 runs at 425°F with consistent 35–38s onset and worth establishing cleanly.',
     next_waypoints=PAPZP22_430,
     jar_index='',
 )

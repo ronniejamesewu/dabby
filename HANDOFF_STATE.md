@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 107 across 17 strains
+- **Total runs:** 108 across 17 strains
 - **Active since:** May 2, 2026 (52 days)
 - **Last run date:** June 22, 2026
 
@@ -242,11 +242,11 @@
 ---
 
 ### Papaya + Z Pie #22
-**5 sessions** &nbsp;·&nbsp; Last: June 22, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**6 sessions** &nbsp;·&nbsp; Last: June 22, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 6: step to 430°F on Rig 6, 8s ramp, 60s single cycle, draw discipline — first dab of the day if possible
+**Next:** Run 7: repeat 430°F single cycle, 8s ramp, draw discipline, water available as needed — first dab of the day if possible
 
-**AI Analysis:** Two Rig 6 runs now show consistent harshness onset at 35–38s, non-escalating, with draw discipline applied. The replication condition is met. Step to 430°F on Run 6 — same 8s ramp, 60s single cycle, same draw discipline. Session order on Run 5 (second dab) is real but doesn't change the direction: non-escalating harshness at 35s on a second dab is the same signature Run 4 produced first dab. Run 6 as first dab of the day if possible — cleaner read when probing the ceiling.
+**AI Analysis:** Run 7: repeat 430°F single cycle, same technique — 8s ramp, draw discipline, water available if needed. First dab of the day if possible. The question is whether the clean first cycle holds without the second-cycle heat and device warmth as confounds. If it does, 430°F is genuinely better than 425°F on this strain — that's a stronger result than the two Rig 6 runs at 425°F with consistent 35–38s onset and worth establishing cleanly.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
