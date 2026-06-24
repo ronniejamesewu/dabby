@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 109 across 17 strains
+- **Total runs:** 110 across 17 strains
 - **Active since:** May 2, 2026 (53 days)
 - **Last run date:** June 23, 2026
 
@@ -212,11 +212,11 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**6 sessions** &nbsp;·&nbsp; Last: June 23, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**7 sessions** &nbsp;·&nbsp; Last: June 23, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 7: 420°F on Rig 6 — operating point established
+**Next:** Run 8: 420°F on Rig 6, first dab, deliberate larger load — test whether load size is the flavor lever
 
-**AI Analysis:** 420°F is the established operating point on Rig 6 first-dab. The ~40s harshness onset has now appeared on two first-dab Rig 6 runs at different endpoints (425°F Run 3, 420°F Run 6) — the ceiling isn't moving much with endpoint in this range, which makes 420°F the better choice: same practical session, lower temperature. Run 7 at 420°F, run it normally. One thing worth watching: this strain's 710 profile promises citrus/lemon/blueberry character, and both first-dab Rig 6 runs have returned terpene-load cough without a lot of distinct flavor — just the generic bitter note at the front. Track whether that's a consistent ceiling or whether the character opens up.
+**AI Analysis:** Run 8: first dab, deliberate larger load, 420°F. The best flavor this jar has produced came on an accidentally large load — but that was second dab, so session order is an unresolved confound. A first-dab large-load run tests whether load size is the flavor lever without that confound. If lemon/fruit character opens up, load size is in play. If it's sparse again, the picture stays murky — thumbprint load composition and session-to-session variability are both uncontrolled.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
