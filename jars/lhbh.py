@@ -89,13 +89,28 @@ RUNS = [
         dab_notes='Swab was light golden, a few amber spots on tip. Harshness started in third draw and kept building. Finished the cycle and felt like there was more to hit but I didn\'t fire it again. I\'m glad I didn\'t, in realllllly high.',
         analysis='420°F on Rig 6 produced draw-3 harshness — not the clean floor this strain found on Rig 5 at the same endpoint. Run 1 on Rig 5 at 420°F ran two full cycles with no harshness, first dab of the day; Run 5 on Rig 6 at 420°F arrived at draw-3 harshness, third dab of the day. The session-order confound (third dab following Runs 3 and 4 earlier today) is the most plausible single explanation — cumulative airway exposure from the day may be lowering the harshness threshold independent of endpoint or rig. However, the rig difference (Rig 5 vs. Rig 6) changed simultaneously, so the two explanations can\'t be separated from this run alone. A first-dab run at 420°F on Rig 6 is the test that isolates them. Lightest swab in this jar\'s history — lower endpoint is the obvious driver vs. Runs 3 and 4 at 425°F. Amber spots on the tip consistent with Run 4; may reflect load geometry or insert contact pattern. Intensity very high — strongest read in this jar across five runs, third dab of the day. Skipping the second cycle was the right call.',
     ),
+    CompletedRun(
+        strain='Lemon Heads + Blueberry Haze',
+        run_date=date(2026, 6, 23),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 24, 0, 42, 6, tzinfo=timezone.utc),
+        waypoints=BASELINE_CURVE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 420°F — first-dab on Rig 6, session-order confound resolved',
+        swab='golden with amber spots',
+        session_char='Dense, cloudy vapor throughout first cycle; no within-draw dropoff. Harshness entered at ~40s, grew to medium by end. Bitter note at session open. Heavy terpene-load coughing throughout. Second cycle: two draws (swab confounded by second cycle).',
+        intensity='Medium-high — possibly still building at logging time',
+        dab_notes='Vapor stayed dense and cloudy through the run. Harshness in last 20 seconds, growing to medium by end. Not a ton of taste but that bitter note in the beginning we\'ve seen in other strains was there. A lot of coughing from terp load though, interesting without a lot of flavor. Took two more hits on a second cycle — swabs aren\'t a great read. They were golden with amber spots. Intensity medium-high, maybe still building.',
+        analysis='The key result: harshness entered at ~40s on a first-dab run at 420°F on Rig 6 — dramatically later than Run 5\'s draw-3 harshness under third-dab conditions. Session order was the primary driver in Run 5, not the endpoint or the rig. 420°F is workable on Rig 6 first-dab.\n\nDense, cloudy vapor throughout the first cycle with no within-draw dropoff — the Rig 5 wispy pattern doesn\'t appear on Rig 6 at 420°F. The joystick\'s directed airflow sustains vapor delivery where Rig 5\'s spinner/pearl setup didn\'t. Swab is second-cycle driven and not a clean read on the first 60s; not entered as a temperature signal.\n\nBitter note at session open is consistent with the cross-strain bitter citrus pattern in the wisdom layer — likely limonene-forward, not strain-specific character. Terpene-load cough without distinct flavor has appeared on Rig 6 across other strains (Hive #1 R8, papzp22 R4) at this temperature range. Medium-high intensity building is expected on a first-dab run with good vapor density throughout.\n\nOne notable comparison: Run 3 (425°F on Rig 6, first dab, suspected small load) also showed ~40s harshness onset. Two first-dab runs at different endpoints showing similar onset timing suggests the practical ceiling on Rig 6 for this strain is around 40s regardless of whether the endpoint is 420 or 425. Load size is an unresolved variable between those two runs.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Lemon Heads + Blueberry Haze',
     profile_anchor='#lhbh-profile',
-    next_text='Run 6: 420°F on Rig 6, first dab of day — isolate session order from endpoint as the harshness driver',
+    next_text='Run 7: 420°F on Rig 6 — operating point established',
     accent=None,
     slug='lhbh',
     info=[
@@ -107,7 +122,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from Lemon Heads (Lemon G × Face Off OG BX) — Lemon G is known for strong citrus/lemon character; myrcene and terpinolene inferred from Blueberry Haze (Blueberry × Haze). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Draw-3 harshness at 420°F on Rig 6 could be session order (third dab of day) or the rig shifting the clean range down vs. Rig 5. A first-dab run at 420°F on Rig 6 separates them. If harshness stays absent or late first-dab, session order was the confound and 420°F is the working point on Rig 6. If harshness still enters on draw 3 first-dab, the joystick is shifting the ceiling down and 416–417°F is the next probe.',
+    next_ai_analysis='420°F is the established operating point on Rig 6 first-dab. The ~40s harshness onset has now appeared on two first-dab Rig 6 runs at different endpoints (425°F Run 3, 420°F Run 6) — the ceiling isn\'t moving much with endpoint in this range, which makes 420°F the better choice: same practical session, lower temperature. Run 7 at 420°F, run it normally. One thing worth watching: this strain\'s 710 profile promises citrus/lemon/blueberry character, and both first-dab Rig 6 runs have returned terpene-load cough without a lot of distinct flavor — just the generic bitter note at the front. Track whether that\'s a consistent ceiling or whether the character opens up.',
     next_waypoints=BASELINE_CURVE,
     jar_index='',
 )
