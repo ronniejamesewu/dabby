@@ -104,13 +104,28 @@ RUNS = [
         dab_notes='Vapor stayed dense and cloudy through the run. Harshness in last 20 seconds, growing to medium by end. Not a ton of taste but that bitter note in the beginning we\'ve seen in other strains was there. A lot of coughing from terp load though, interesting without a lot of flavor. Took two more hits on a second cycle — swabs aren\'t a great read. They were golden with amber spots. Intensity medium-high, maybe still building.',
         analysis='The key result: harshness entered at ~40s on a first-dab run at 420°F on Rig 6 — dramatically later than Run 5\'s draw-3 harshness under third-dab conditions. Session order was the primary driver in Run 5, not the endpoint or the rig. 420°F is workable on Rig 6 first-dab.\n\nDense, cloudy vapor throughout the first cycle with no within-draw dropoff — the Rig 5 wispy pattern doesn\'t appear on Rig 6 at 420°F. The joystick\'s directed airflow sustains vapor delivery where Rig 5\'s spinner/pearl setup didn\'t. Swab is second-cycle driven and not a clean read on the first 60s; not entered as a temperature signal.\n\nBitter note at session open is consistent with the cross-strain bitter citrus pattern in the wisdom layer — likely limonene-forward, not strain-specific character. Terpene-load cough without distinct flavor has appeared on Rig 6 across other strains (Hive #1 R8, papzp22 R4) at this temperature range. Medium-high intensity building is expected on a first-dab run with good vapor density throughout.\n\nOne notable comparison: Run 3 (425°F on Rig 6, first dab, suspected small load) also showed ~40s harshness onset. Two first-dab runs at different endpoints showing similar onset timing suggests the practical ceiling on Rig 6 for this strain is around 40s regardless of whether the endpoint is 420 or 425. Load size is an unresolved variable between those two runs.',
     ),
+    CompletedRun(
+        strain='Lemon Heads + Blueberry Haze',
+        run_date=date(2026, 6, 23),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 24, 4, 36, 58, tzinfo=timezone.utc),
+        waypoints=BASELINE_CURVE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 420°F — second dab of day, large load',
+        swab='golden with amber streaks',
+        session_char='Two big draws on first cycle — fruit/lemon on draw 1, possibly blueberry; harshness on draw 2. Second cycle: one medium draw, mild harshness, toasty flavor. Accidentally large load; heavy reclaim.',
+        intensity='Medium-high',
+        dab_notes='Got two big draws on first cycle. First draw gave a ton of fruit, definitely got some lemon, maybe a hint of blueberry. Harshness in second draw and then the cycle was over. Second cycle: only took one medium length draw. Mild harshness but tasted toasty. Depletion doesn\'t make sense, swabs had a lot of reclaim, I must have accidentally loaded large. So the toasty could be the cooking effect of material being near 420 but not yet booking into vapor…eventually maybe the prolonged slow heat changes something. Swabs were golden with a few amber streaks. More reclaim than typical. Intensity medium-high.',
+        analysis='Run 7\'s standout result is the flavor: lemon and fruit clearly on draw 1 — the most distinct character this jar has produced across all six prior runs. Both first-dab Rig 6 runs (R3 and R6) returned terpene-load cough with little specific flavor; the earlier lemon on Run 2 was also a second dab. This run is second dab and an accidentally large load, so session order and load size both changed from the first-dab reads simultaneously — can\'t isolate which drove it.\n\nHarshness arriving on draw 2 is earlier than Run 6\'s ~40s onset at the same endpoint and rig. Second-dab accumulated airway exposure is the most parsimonious explanation, consistent with the pattern across other strains.\n\nSecond cycle: toasty flavor, mild harshness, heavy reclaim. Depletion ruled out. User proposed a prolonged-heat mechanism — material near the insert at 420°F that isn\'t yet vaporizing undergoes slow thermal change over the extended session, altering flavor before going into vapor. One data point; logged as a user hypothesis at single-data-point weight.\n\nAmber component in the swab (golden with amber streaks) now appears across all three second-cycle runs in this jar — R4, R6, R7 all show amber where single-cycle runs don\'t. Amber appears to be a second-cycle marker for this strain, not a temperature signal.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Lemon Heads + Blueberry Haze',
     profile_anchor='#lhbh-profile',
-    next_text='Run 7: 420°F on Rig 6 — operating point established',
+    next_text='Run 8: 420°F on Rig 6, first dab, deliberate larger load — test whether load size is the flavor lever',
     accent=None,
     slug='lhbh',
     info=[
@@ -122,7 +137,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from Lemon Heads (Lemon G × Face Off OG BX) — Lemon G is known for strong citrus/lemon character; myrcene and terpinolene inferred from Blueberry Haze (Blueberry × Haze). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='420°F is the established operating point on Rig 6 first-dab. The ~40s harshness onset has now appeared on two first-dab Rig 6 runs at different endpoints (425°F Run 3, 420°F Run 6) — the ceiling isn\'t moving much with endpoint in this range, which makes 420°F the better choice: same practical session, lower temperature. Run 7 at 420°F, run it normally. One thing worth watching: this strain\'s 710 profile promises citrus/lemon/blueberry character, and both first-dab Rig 6 runs have returned terpene-load cough without a lot of distinct flavor — just the generic bitter note at the front. Track whether that\'s a consistent ceiling or whether the character opens up.',
+    next_ai_analysis='Run 8: first dab, deliberate larger load, 420°F. The best flavor this jar has produced came on an accidentally large load — but that was second dab, so session order is an unresolved confound. A first-dab large-load run tests whether load size is the flavor lever without that confound. If lemon/fruit character opens up, load size is in play. If it\'s sparse again, the picture stays murky — thumbprint load composition and session-to-session variability are both uncontrolled.',
     next_waypoints=BASELINE_CURVE,
     jar_index='',
 )
