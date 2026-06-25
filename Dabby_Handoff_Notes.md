@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 23, 2026 — Session 128
+## Last updated: June 24, 2026 — Session 129
 
 ---
 
@@ -282,5 +282,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Dab rig vs. erig temperature ranges — Oliver consult** — Higher-temp-hits-harder anecdote confirmed on papzp22 R6 (430°F, June 22, 2026). Questions for Oliver: (1) Have you watched the thermometer during a dab — what can you tell me about what it does? (2) Is there a sweet spot on the thermometer or on a timer where you get what you think is the tastiest part? (3) What experiments have you run? (4) What dialing-in process do you do when you change rig configuration, if any? Broader discussion: what dab rig setpoint conventions mean when translated to erig operating ranges, and whether "higher temp" anecdotes from traditional rigs carry over. Session 127.
 
 - **Percolation glass as a testable harshness variable** — Hive #1 R6 water-reset observation (Session 123) raises the hypothesis that more percolating glass would filter particles before they reach the airway, potentially delaying harshness onset. Testable: same rig, same curve, more percolation glass piece, compare harshness onset timing. Tradeoff: more percolation also strips desirable compounds alongside particles.
+
+- **Strain-to-strain temperature variance on Rig 6** — FW106 R21–22 mapped 420°F (wispy, light) vs. 425°F (dense, very hard) on Rig 6. User hypothesis: working endpoint doesn't shift dramatically across strains on a given rig, so this calibration informs starting points for new strains on Rig 6. Have a conversation about whether FW106's endpoint map should shape the Rig 6 baseline specifically, or whether per-strain calibration from BASELINE_CURVE remains the right approach regardless. Session 129.
 
 - **Lifecycle flag on `StrainStatus` — deferred, specific trigger required.** Closing a jar is a two-file edit: move the slug in `jar_manifest.py` AND update prose framing in the jar file. `_check_closed_tier()` only fires *after* the slug is already in `CLOSED` — it catches forgot-the-prose but not forgot-the-manifest-move. The manifest move is unenforced in the direction that can actually fail silently. The session-close checklist (Q7) now covers this operationally. A structural fix would be an `is_closed` flag on `StrainStatus` — jar-close becomes a one-file edit, `_check_closed_tier()` becomes an in-jar invariant, the gap disappears. Deferred because it requires changing `Dabby_Core.py`, all ~17 jar files, the manifest, and the generator simultaneously with no test suite. **Trigger:** a session where the manifest move is actually forgotten and causes a problem that Q7 didn't catch.
