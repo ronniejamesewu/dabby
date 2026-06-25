@@ -252,7 +252,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 
 ## Before Next Session
 
-*(clear)*
+- **Bamboo vs. paper swab comparison** — user has old paper-stick swabs; run a dry comparison against the bamboo-stick swabs to determine whether amber spots on recent swabs are material-derived or swab-artifact. FW106 Run 21 swab (golden with amber spots) flagged as pending this test.
 
 ---
 

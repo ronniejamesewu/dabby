@@ -342,13 +342,28 @@ RUNS = [
         dab_notes="Swabs were dark golden, ordinary amount reclaim. Joystick hits hard as fuck, so much harder than the spinner. This wasn't me misremembering, Claude. Harshness present earlier in the cycle than we expect, like second draw. And stayed, and got heavier. But holy shit was it dense. Full 60 seconds, Paige says it was 4 draws. It was still super dense when I stopped, I could have kept going but it was too harsh. I think this material has a larger particle size in it because it supports particle accumulation theory.",
         analysis="Run 20 on Rig 6 (inaugural — sapphire + Wym Stick Piston joystick, no pearls): massive intensity step-up from Rig 5 at the same endpoint and curve — first dab of the day, user confirmed not misremembering. Dense vapor throughout all 60s with material clearly present at close; dark golden swab consistent with the 60s duration pattern (all 60s runs dark golden; all 40s runs beige). Harshness arrived on draw 2 — one draw earlier than Rig 5's draw-3 pattern across Runs 18–19 at the same endpoint — and escalated through draw 4. Stopping condition was harshness, not depletion: dense vapor still coming at 60s. Density-harshness pairing holds: high vapor density and escalating harshness co-present throughout, not sequential. Earlier draw-2 onset relative to Rig 5 is consistent with higher per-draw efficiency on the Piston — if the joystick delivers more material per draw, the harshness threshold crosses one draw earlier for the same reason intensity is higher: more complete vaporization per draw. Dark golden swab matches all prior 60s FW106 runs (R17, R18) regardless of rig — duration remains the most parsimonious swab driver, not rig configuration. User proposed particle accumulation as a contributing mechanism: larger aerosol particles deposit in upper airways causing harshness independent of temperature — plausible aerosol physics, distinct from the three existing hypotheses (vapor density, heat exposure, airway sensitization), untestable with current setup. Captured as user-suggested at single-data-point weight.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 24),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 24, 23, 30, tzinfo=timezone.utc),
+        waypoints=FW106_FASTER_420_60S,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 420°F — 8s ramp (baseline) &nbsp;|&nbsp; <strong>Note:</strong> Second cycle added, one draw',
+        swab='Golden with amber spots (bamboo swab stick — color may be swab artifact; comparison test pending).',
+        session_char='Wispy vapor throughout; mild harshness on draw 2; second cycle added, one draw.',
+        intensity='Light',
+        dab_notes="It was pretty wispy all the way through, mild harshness in second draw, didn't really seem to hit very hard. I ran a second cycle to see if there was more and had one draw and called it. Swabs were golden with some amber spots. I'm starting to wonder if the amber is actually the new swabs I've been using that have a bamboo stick instead of paper qtip stick. Body effects: tenseness, energy.",
+        analysis="Run 21 on Rig 6 at 420°F — the question was whether the joystick's efficiency advantage would carry at 420°F, delivering comparable intensity to Rig 5's 425°F results while avoiding draw-2 harshness. Answer on both counts: no. Wispy vapor throughout, light intensity, mild draw-2 harshness still present. 420°F on Rig 6 lands in the same bucket as 420°F on Rig 5 — below the effective vaporization zone for FW106. The joystick advantage doesn't lower the working temperature; it increases delivery at the working temperature. The 5°F step down from Run 20's dense, hard-hitting session completely reversed the result. Second cycle squeezed one more draw but didn't change the character. Mild harshness on draw 2 with wispy vapor is worth noting — the harshness threshold is being crossed even in the low-density regime on this rig. It didn't escalate (contrast Run 20's draw-by-draw buildup through draw 4) but it didn't disappear. Suggests FW106's harshness on Rig 6 isn't purely vapor-density-driven. Swab golden with amber spots — open question whether amber reflects bamboo swab stick material rather than residue; comparison test pending next session. Body effects: tenseness, energy — consistent with FW106's prior somatic notes.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 21: 420°F on Rig 6, 60s — test whether joystick efficiency delivers comparable intensity at lower endpoint without draw-2 harshness',
+    next_text='Run 22: repeat 425°F on Rig 6 — confirm draw-2 harshness pattern, no draw constraints, first dab of day if possible',
     accent=None,
     slug='fw106',
     info=[
@@ -359,7 +374,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="Rig 6 delivers significantly more intensity than Rig 5 at 425°F, with harshness arriving one draw earlier. The efficiency advantage is real. Two directions: (1) drop to 420°F on Rig 6 — if the joystick advantage carries, you may get Rig 5's 425°F intensity at the lower endpoint, potentially without draw-2 harshness; this tests whether the endpoint map shifts on Rig 6. (2) 2-draw limit at 425°F to test whether draw discipline holds harshness off. Option 1 is recommended — it probes whether the joystick reshapes the working range for this strain.",
-    next_waypoints=FW106_FASTER_420_60S,
+    next_ai_analysis="420°F is below FW106's working zone on Rig 6 — wispy, light, mildly harsh. The working endpoint is 425°F. Run 20 at 425°F was one unconstrained first-dab run — dense throughout, very hard, draw-2 harshness escalating through draw 4. Repeat it: same curve, no constraints, first dab of day if possible. Two consistent first-dab runs at 425°F establish whether draw-2 harshness is the shape of this rig on this strain at that endpoint, then you decide where to go.",
+    next_waypoints=FW106_FASTER_425_60S,
     jar_index='',
 )
