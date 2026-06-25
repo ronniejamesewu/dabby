@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 111 across 17 strains
+- **Total runs:** 112 across 17 strains
 - **Active since:** May 2, 2026 (54 days)
 - **Last run date:** June 24, 2026
 
@@ -182,11 +182,11 @@
 ---
 
 ### Fire Water #106
-**21 sessions** &nbsp;·&nbsp; Last: June 24, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**22 sessions** &nbsp;·&nbsp; Last: June 24, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 22: repeat 425°F on Rig 6 — confirm draw-2 harshness pattern, no draw constraints, first dab of day if possible
+**Next:** Run 23: repeat 425°F on Rig 6, first dab of day — clean comparison to Runs 20 and 22; confirm whether harshness timing is session-order-driven
 
-**AI Analysis:** 420°F is below FW106's working zone on Rig 6 — wispy, light, mildly harsh. The working endpoint is 425°F. Run 20 at 425°F was one unconstrained first-dab run — dense throughout, very hard, draw-2 harshness escalating through draw 4. Repeat it: same curve, no constraints, first dab of day if possible. Two consistent first-dab runs at 425°F establish whether draw-2 harshness is the shape of this rig on this strain at that endpoint, then you decide where to go.
+**AI Analysis:** Two runs at 425°F on Rig 6 — both very hard, harshness around the draw 1→2 window both times, water a workable mid-session tool. Run 20 was first dab (draw-2 mid-draw escalating through 4 draws); Run 22 was second dab (inter-draw pause harshness, mild on draw 2, stopped on intensity). Repeat 425°F first dab of day: if harshness is still there around draw 2, it's the shape of this rig on this strain at that endpoint. If it's cleaner than Run 22, session order was the driver. That's the one remaining question before 425°F is settled for FW106 on Rig 6.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open

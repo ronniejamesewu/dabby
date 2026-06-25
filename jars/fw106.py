@@ -351,11 +351,26 @@ RUNS = [
         equipment=RIG_6,
         duration_seconds=60,
         endpoint_note='<strong>Endpoint:</strong> 420°F — 8s ramp (baseline) &nbsp;|&nbsp; <strong>Note:</strong> Second cycle added, one draw',
-        swab='Golden with amber spots (bamboo swab stick — color may be swab artifact; comparison test pending).',
+        swab='Golden — amber spots confirmed as bamboo swab stick artifact (resolved Run 22).',
         session_char='Wispy vapor throughout; mild harshness on draw 2; second cycle added, one draw.',
         intensity='Light',
         dab_notes="It was pretty wispy all the way through, mild harshness in second draw, didn't really seem to hit very hard. I ran a second cycle to see if there was more and had one draw and called it. Swabs were golden with some amber spots. I'm starting to wonder if the amber is actually the new swabs I've been using that have a bamboo stick instead of paper qtip stick. Body effects: tenseness, energy.",
-        analysis="Run 21 on Rig 6 at 420°F — the question was whether the joystick's efficiency advantage would carry at 420°F, delivering comparable intensity to Rig 5's 425°F results while avoiding draw-2 harshness. Answer on both counts: no. Wispy vapor throughout, light intensity, mild draw-2 harshness still present. 420°F on Rig 6 lands in the same bucket as 420°F on Rig 5 — below the effective vaporization zone for FW106. The joystick advantage doesn't lower the working temperature; it increases delivery at the working temperature. The 5°F step down from Run 20's dense, hard-hitting session completely reversed the result. Second cycle squeezed one more draw but didn't change the character. Mild harshness on draw 2 with wispy vapor is worth noting — the harshness threshold is being crossed even in the low-density regime on this rig. It didn't escalate (contrast Run 20's draw-by-draw buildup through draw 4) but it didn't disappear. Suggests FW106's harshness on Rig 6 isn't purely vapor-density-driven. Swab golden with amber spots — open question whether amber reflects bamboo swab stick material rather than residue; comparison test pending next session. Body effects: tenseness, energy — consistent with FW106's prior somatic notes.",
+        analysis="Run 21 on Rig 6 at 420°F — the question was whether the joystick's efficiency advantage would carry at 420°F, delivering comparable intensity to Rig 5's 425°F results while avoiding draw-2 harshness. Answer on both counts: no. Wispy vapor throughout, light intensity, mild draw-2 harshness still present. 420°F on Rig 6 lands in the same bucket as 420°F on Rig 5 — below the effective vaporization zone for FW106. The joystick advantage doesn't lower the working temperature; it increases delivery at the working temperature. The 5°F step down from Run 20's dense, hard-hitting session completely reversed the result. Second cycle squeezed one more draw but didn't change the character. Mild harshness on draw 2 with wispy vapor is worth noting — the harshness threshold is being crossed even in the low-density regime on this rig. It didn't escalate (contrast Run 20's draw-by-draw buildup through draw 4) but it didn't disappear. Suggests FW106's harshness on Rig 6 isn't purely vapor-density-driven. Swab golden — amber spots confirmed as bamboo swab stick artifact in Run 22. Body effects: tenseness, energy — consistent with FW106's prior somatic notes.",
+    ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 24),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 25, 0, 22, tzinfo=timezone.utc),
+        waypoints=FW106_FASTER_425_60S,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Endpoint:</strong> 425°F — 8s ramp; 60s hold &nbsp;|&nbsp; <strong>Note:</strong> Single cycle, three draws; stopped voluntarily on intensity',
+        swab='Golden (amber spots confirmed as bamboo swab stick artifact — resolves Run 21 open question).',
+        session_char='Three draws; harshness appeared in pause between draws 1–2 (not mid-draw, not exhale); water sip resolved it, terpene character opened. Mild harshness on draw 2. Stopped after draw 3 on intensity — not harshness.',
+        intensity='Really really hard',
+        dab_notes="Swab is golden and amber, and I'm pretty sure it's the bamboo pressing through the cotton that's making it look amber. So golden. It hit really hard. Really really hard. I made myself not run a second cycle cause it maybe would have been too much. A thought: I don't believe that strain to strain temp variance is going to be huge on this, let's note to have a conversation about that. Harshness showed up in a pause after the first draw. It showed up in between. I had a sip of water and it went away and I could really taste the terpenes. Hit it again and some harshness, mild. One last hit and I was too baked to keep going. [Clarified: harshness in the pause between draws, not on the exhale.]",
+        analysis="Run 22 at 425°F on Rig 6, second dab of the day. Massive intensity — consistent with Run 20 despite the session-order confound. Three draws, no second cycle (held back; would have been too much). Stopped on intensity, not harshness. Swab golden — amber confirmed as bamboo swab stick artifact, resolving Run 21's open question. Harshness appeared in the pause between draws 1 and 2 — not mid-draw, not on the exhale, but in the quiet rest between. This is distinct from every prior harshness timing in the log: not the tail of the session (FW106 R14), not mid-draw (Run 20), not exhale-specific (Run 4). Water sip resolved it; terpene character opened up noticeably after. Mild harshness returned on draw 2, manageable. This is the second log instance of water clearing mid-session harshness — first was Hive #1 R6 at 420°F on Rig 6 (Session 123). What water resets mechanistically remains open. Session-order confound is real: Run 20 was first dab with draw-2 mid-draw escalating harshness through draw 4; Run 22 was second dab with harshness in the inter-draw pause and a manageable session. Whether the harshness timing shift reflects session order or run-to-run variation is unresolved — a first-dab repeat will clarify.",
     ),
 ]
 
@@ -363,7 +378,7 @@ RUNS = [
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 22: repeat 425°F on Rig 6 — confirm draw-2 harshness pattern, no draw constraints, first dab of day if possible',
+    next_text='Run 23: repeat 425°F on Rig 6, first dab of day — clean comparison to Runs 20 and 22; confirm whether harshness timing is session-order-driven',
     accent=None,
     slug='fw106',
     info=[
@@ -374,7 +389,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="420°F is below FW106's working zone on Rig 6 — wispy, light, mildly harsh. The working endpoint is 425°F. Run 20 at 425°F was one unconstrained first-dab run — dense throughout, very hard, draw-2 harshness escalating through draw 4. Repeat it: same curve, no constraints, first dab of day if possible. Two consistent first-dab runs at 425°F establish whether draw-2 harshness is the shape of this rig on this strain at that endpoint, then you decide where to go.",
+    next_ai_analysis="Two runs at 425°F on Rig 6 — both very hard, harshness around the draw 1→2 window both times, water a workable mid-session tool. Run 20 was first dab (draw-2 mid-draw escalating through 4 draws); Run 22 was second dab (inter-draw pause harshness, mild on draw 2, stopped on intensity). Repeat 425°F first dab of day: if harshness is still there around draw 2, it's the shape of this rig on this strain at that endpoint. If it's cleaner than Run 22, session order was the driver. That's the one remaining question before 425°F is settled for FW106 on Rig 6.",
     next_waypoints=FW106_FASTER_425_60S,
     jar_index='',
 )
