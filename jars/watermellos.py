@@ -280,13 +280,28 @@ RUNS = [
         dab_notes='Larger than normal load. App showed 353 at 30 seconds, thought I saw similar delta at 20 — not confident in the readout, bluetooth lag and may be showing an interpreted value rather than raw sensor. Down vaporizing around 10 seconds left. Second cycle to check if depleted or just too cold at 350°F — one very dense and even tasty rip, second one no vapor, terminated at 30 seconds. Meaningful hit off the third cycle. Another very good hit off the fourth cycle. Four cycles total. Very little reclaim, dark golden swabs. Very very intense. Harshness showed up in second cycle draws and stayed for cycles 3 and 4.',
         analysis="Descent curve debut for Watermellos — 440°F open programmed to 350°F over 30s, hold to 60s, larger than normal load, first dab of day. Cycle 1 was clean throughout: no harshness across the full 60s despite opening hotter than any prior WM run.\n\nDirect comparison to Run 15 (60s hold at 420°F, harshness in second half with material present and no depletion signal): curve shape is the primary differing variable, but session order changed simultaneously — Run 15 was second dab, Run 16 first. The descent kept cycle 1 clean; those two variables can't be isolated from this run alone.\n\nMaterial wound down at the 350°F floor with ~10s remaining — not depletion, confirmed by three productive recovery cycles. The 350°F floor is below WM's effective vaporization threshold on Rig 5. Each recovery cycle started back at 440°F; harshness entered on cycle 2 draws and persisted through cycles 3–4. Under the particle accumulation model: cycle 1 accumulated enough airway load to prime the state; each subsequent cycle started into already-loaded airways and crossed the harshness threshold early. The recovery cycles were effectively additional hot sessions.\n\nDark golden swab consistent with the multiple-cycle driver established across Runs 11–14. Very little reclaim on a larger load across four cycles is efficient vaporization overall. Intensity very very high.",
     ),
+    CompletedRun(
+        strain='Watermellos',
+        run_date=date(2026, 6, 26),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 26, 22, 33, tzinfo=timezone.utc),
+        waypoints=WM_RUN17_NEXT,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent; 440→420@30s→400@60s',
+        swab='Golden, minimal reclaim.',
+        session_char='Draw 1 (ended at 42s remaining): zero harshness, ton of flavor, very dense. Draw 2 (ended at 30s remaining): same density, less flavor, harshness appeared. Draws 3–4 in final 30s; draw 4 going wispy, session ended naturally.',
+        intensity='Medium-high — felt intense at first, dropped faster than expected.',
+        dab_notes="First rip to 42 on countdown, zero harshness, ton of flavor, very dense. Second same density, less flavor, harshness appears. Not sure what time second rip started but ended at 30 left. Hit it third and fourth times, by fourth time it was looking wispy then it ended. Minimal reclaim, golden. Seemed intense at first but almost immediately it's maybe dropping? Medium high. Second dab of the day.",
+        analysis="Descent curve second run — 440→420@30s→400@60s, Rig 5, second dab of the day. Draw 1 was the cleanest in WM's run history: zero harshness, ton of flavor, very dense across the opening phase. The 440°F open front-loading the most volatile compounds into draw 1 is consistent with the descent moving through the lightest terpenes first; draw 2's reduced flavor with density held is consistent with those compounds spent.\n\nHarshness appeared on draw 2 with vapor still dense — so the mechanism isn't vapor density alone, and material wasn't gone. Session order is the unresolved confound: second dab means accumulated airway exposure from R16 is a live driver. This isn't a clean harshness test. The clean-first-draw pattern now holds across R16 cycle 1 and R17 draw 1 — both on the descent open, both clean — but R16 was first dab overall and R17 draw 1 was only first draw of the second session.\n\nDraw 4 going wispy at the 400°F floor confirms that 400°F is near the bottom of effective vaporization for this material on Rig 5 — the session ran the full curve productively, unlike R16 where the 350°F floor stopped vaporization entirely with ~10s remaining and material still present.\n\nIntensity front-loaded then dropping fast is consistent with descent mechanics: heaviest delivery at the 440°F open, tapering as temperature descends. Medium-high as second dab vs. R16's very very intense as first — tolerance confound present, can't isolate. Golden swab with minimal reclaim on a single clean 60s cycle is a better result than R16's dark golden across four cycles.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Watermellos',
     profile_anchor='#watermellos-profile',
-    next_text='Run 17: 440°F open, gentle descent to 400°F over 60s — keep the session in the vaporization range throughout',
+    next_text='Run 18: same descent curve (440→420@30s→400@60s), first dab of day — isolate session order from Run 17 draw 2 harshness',
     accent=None,
     slug='watermellos',
     info=[
@@ -297,8 +312,8 @@ STATUS = StrainStatus(
         ('Flavor', 'Cold nose does not translate to vapor — flavor in vapor notably muted relative to cold nose intensity.'),
     ],
     terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Larger than normal load. App showed 353 at 30 seconds, thought I saw similar delta at 20 — not confident in the readout, bluetooth lag and may be showing an interpreted value rather than raw sensor. Down vaporizing around 10 seconds left. Second cycle to check if depleted or just too cold at 350°F — one very dense and even tasty rip, second one no vapor, terminated at 30 seconds. Meaningful hit off the third cycle. Another very good hit off the fourth cycle. Four cycles total. Very little reclaim, dark golden swabs. Very very intense. Harshness showed up in second cycle draws and stayed for cycles 3 and 4.',
-    next_ai_analysis="The descent is moving too fast and too deep for this material — 350°F drops below WM's effective vaporization threshold before the load is spent, requiring three recovery cycles that each brought harshness. Run 17: gentler slope, same 440°F open, descending to 400°F over the full 60 seconds. Stays in the vaporization range throughout. If the load depletes cleanly within the single cycle, the curve is working. The original load-size thread is secondary — get the curve shape right first.",
+    next_dab_notes="First rip to 42 on countdown, zero harshness, ton of flavor, very dense. Second same density, less flavor, harshness appears. Not sure what time second rip started but ended at 30 left. Hit it third and fourth times, by fourth time it was looking wispy then it ended. Minimal reclaim, golden. Seemed intense at first but almost immediately it's maybe dropping? Medium high. Second dab of the day.",
+    next_ai_analysis="Draw 1 clean two runs running (R16 cycle 1, R17 draw 1) — the 440°F open with descent is consistently producing the cleanest first draw in this jar's history. Draw 2 harshness in R17 is unresolved between the curve and session order (second dab). Run 18 same curve, first dab — if draw 2 comes clean, the curve is working and session order was the driver. If harshness persists even first dab, the curve needs adjustment.",
     next_waypoints=WM_RUN17_NEXT,
     jar_index='',
 )
