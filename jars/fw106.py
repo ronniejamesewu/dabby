@@ -38,6 +38,13 @@ FW106_FASTER_425_60S = [
     Waypoint(time_s=8, temp_f=425, note='Endpoint — 8s ramp; up 5°F from FW106_FASTER_420_60S'),
     Waypoint(time_s=60, temp_f=425, note='Hold'),
 ]
+FW106_DESCENT_440 = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open, descent start'),
+    Waypoint(time_s=10, temp_f=410, note='Descent'),
+    Waypoint(time_s=20, temp_f=380, note='Descent'),
+    Waypoint(time_s=30, temp_f=350, note='Descent floor'),
+    Waypoint(time_s=60, temp_f=350, note='Hold at 350°F to end'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -372,13 +379,28 @@ RUNS = [
         dab_notes="Swab is golden and amber, and I'm pretty sure it's the bamboo pressing through the cotton that's making it look amber. So golden. It hit really hard. Really really hard. I made myself not run a second cycle cause it maybe would have been too much. A thought: I don't believe that strain to strain temp variance is going to be huge on this, let's note to have a conversation about that. Harshness showed up in a pause after the first draw. It showed up in between. I had a sip of water and it went away and I could really taste the terpenes. Hit it again and some harshness, mild. One last hit and I was too baked to keep going. [Clarified: harshness in the pause between draws, not on the exhale.]",
         analysis="Run 22 at 425°F on Rig 6, second dab of the day. Massive intensity — consistent with Run 20 despite the session-order confound. Three draws, no second cycle (held back; would have been too much). Stopped on intensity, not harshness. Swab golden — amber confirmed as bamboo swab stick artifact, resolving Run 21's open question. Harshness appeared in the pause between draws 1 and 2 — not mid-draw, not on the exhale, but in the quiet rest between. This is distinct from every prior harshness timing in the log: not the tail of the session (FW106 R14), not mid-draw (Run 20), not exhale-specific (Run 4). Water sip resolved it; terpene character opened up noticeably after. Mild harshness returned on draw 2, manageable. This is the second log instance of water clearing mid-session harshness — first was Hive #1 R6 at 420°F on Rig 6 (Session 123). What water resets mechanistically remains open. Session-order confound is real: Run 20 was first dab with draw-2 mid-draw escalating harshness through draw 4; Run 22 was second dab with harshness in the inter-draw pause and a manageable session. Whether the harshness timing shift reflects session order or run-to-run variation is unresolved — a first-dab repeat will clarify.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 25),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 25, 23, 1, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_440,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 350°F — descent curve; programmed to mimic quartz passive decay; sapphire insert lag expected; stopped early (timing unknown)',
+        swab='Golden, very little reclaim.',
+        session_char='Draw 1 — massive terpene load (bouquet effect), couldn\'t hold past ~10s. Draw 2 — dense, little flavor. Draws 3–4 — no vapor. No harshness throughout. Stopped early after empty draws, timing unknown.',
+        intensity='Medium',
+        dab_notes='So, it was gone before it could get harsh. First draw had that bitter note of 380ish dab plus a lot more. Terp load was so high I couldn\'t keep inhaling past maybe 10 seconds on first rip. Second was still very dense but didn\'t notice much flavor. And then there was no more vapor. I hit it two times with no vapor. No harshness either. More evidence to support accumulation theory. Swabs were golden, with very little reclaim. I\'m pretty sure I loaded a normal size dab. Medium intensity, I wanted more. More flavor complexity — it had a bouquet effect.',
+        analysis="Descent curve experiment — first FW106 run at a descending profile. 440°F open drove fast, complete vaporization: material was spent in 2 productive draws, draws 3–4 empty. Three things stand out. First, the bouquet effect: the 440°F open released a broader volatile fraction on draw 1 than any prior FW106 run — 'bouquet effect' in the user's words: flavor complexity rather than the usual character at lower opening temperatures. Second, no harshness: Run 5 (flat 440°F hold) produced harshness at ~28s. This run opened at 440°F and produced none. The variable that changed: flat hold sustained 440°F; descent moved away immediately. This is the cleanest FW106 data point yet for cumulative session exposure — not endpoint temperature alone — as the harshness driver. Material was consumed before enough exposure accumulated to cross the threshold, consistent with the user's accumulation framing. Third, very little reclaim on a normal load: more complete vaporization than any prior 40–60s run at 420–425°F. Medium intensity wanting more follows directly — the load was spent before the session could deliver its full payload. Whether sapphire lag (insert running warmer than programmed during the descent) accelerated depletion relative to quartz is consistent with the result and was the planned observation; brevity is directional for it running warmer than the curve suggests, though this is one run. One run; curve and approach entirely new. Nothing established.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 23: repeat 425°F on Rig 6, first dab of day — clean comparison to Runs 20 and 22; confirm whether harshness timing is session-order-driven',
+    next_text='Run 24: repeat descent curve (440°F→350°F), larger load — test whether intensity steps up with more material; 425°F first-dab session-order test deferred to Run 25',
     accent=None,
     slug='fw106',
     info=[
@@ -389,7 +411,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="Two runs at 425°F on Rig 6 — both very hard, harshness around the draw 1→2 window both times, water a workable mid-session tool. Run 20 was first dab (draw-2 mid-draw escalating through 4 draws); Run 22 was second dab (inter-draw pause harshness, mild on draw 2, stopped on intensity). Repeat 425°F first dab of day: if harshness is still there around draw 2, it's the shape of this rig on this strain at that endpoint. If it's cleaner than Run 22, session order was the driver. That's the one remaining question before 425°F is settled for FW106 on Rig 6.",
-    next_waypoints=FW106_FASTER_425_60S,
+    next_ai_analysis="Run 23 (descent 440°F→350°F, normal load): material spent in 2 productive draws, medium intensity, no harshness. The descent curve produced a qualitatively different result — bouquet effect on draw 1, complete vaporization, no harshness despite 440°F opening. Run 24: same descent curve, deliberate larger load. If intensity steps up and the no-harshness result holds with more material in the session, the curve is worth pursuing. The 425°F first-dab session-order test remains open for Run 25.",
+    next_waypoints=FW106_DESCENT_440,
     jar_index='',
 )
