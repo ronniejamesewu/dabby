@@ -25,6 +25,18 @@ WM_RUN15_NEXT = [
     Waypoint(time_s=8, temp_f=420, note='Endpoint — 8s ramp'),
     Waypoint(time_s=60, temp_f=420, note='Hold — extended from 40s; single cycle, no second'),
 ]
+WM_DESCENT_440 = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open, descent start'),
+    Waypoint(time_s=10, temp_f=410, note='Descent'),
+    Waypoint(time_s=20, temp_f=380, note='Descent'),
+    Waypoint(time_s=30, temp_f=350, note='Descent floor'),
+    Waypoint(time_s=60, temp_f=350, note='Hold at 350°F to end'),
+]
+WM_RUN17_NEXT = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=30, temp_f=420, note='Gentle descent'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -253,13 +265,28 @@ RUNS = [
         dab_notes='Beige swabs, harshness in the second half of cycle, many draws. Very intense. Vapor was dense throughout. No indication of depletion of material. But the throat harshness was real!',
         analysis="Single cycle, 60s hold — beige swab after four consecutive dark gold 2x2 sessions. The hypothesis was direct: if the swab lightens on single cycle, the reheat was driving dark gold. It lightened. The second cycle was the culprit, not the material. Harshness entered in the second half of the 60s session with vapor dense throughout — user confirmed no depletion. That takes depletion off the table as the mechanism. This is directional support for the heat exposure / airway sensitization hypothesis: continuous draws at 420°F, thermal load accumulating in the airways, harshness crossing the threshold somewhere past 30s with material still present. Consistent with FW106 R14 (first dab, 2 draws, material confirmed remaining, harshness at session tail) — both share the same signature: load intact, harshness arrives as session length accumulates. Very intense, consistent with WM's Rig 5 pattern.",
     ),
+    CompletedRun(
+        strain='Watermellos',
+        run_date=date(2026, 6, 26),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 26, 19, 0, tzinfo=timezone.utc),
+        waypoints=WM_DESCENT_440,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 350°F — steep descent; 440→410@10s→380@20s→350@30s, hold to 60s',
+        swab='Dark golden, very little reclaim.',
+        session_char='Descent cycle (60s): no harshness; material wound down at 350°F floor ~10s before end — not depleted, just stopped vaporizing at 350°F. Three recovery cycles: cycle 2 first rip dense and tasty, second rip no vapor, terminated at 30s; cycles 3–4 each yielded productive hits. Harshness entered on cycle 2 draws, persisted through cycles 3–4. Four cycles total.',
+        intensity='Very very intense.',
+        dab_notes='Larger than normal load. App showed 353 at 30 seconds, thought I saw similar delta at 20 — not confident in the readout, bluetooth lag and may be showing an interpreted value rather than raw sensor. Down vaporizing around 10 seconds left. Second cycle to check if depleted or just too cold at 350°F — one very dense and even tasty rip, second one no vapor, terminated at 30 seconds. Meaningful hit off the third cycle. Another very good hit off the fourth cycle. Four cycles total. Very little reclaim, dark golden swabs. Very very intense. Harshness showed up in second cycle draws and stayed for cycles 3 and 4.',
+        analysis="Descent curve debut for Watermellos — 440°F open programmed to 350°F over 30s, hold to 60s, larger than normal load, first dab of day. Cycle 1 was clean throughout: no harshness across the full 60s despite opening hotter than any prior WM run.\n\nDirect comparison to Run 15 (60s hold at 420°F, harshness in second half with material present and no depletion signal): curve shape is the primary differing variable, but session order changed simultaneously — Run 15 was second dab, Run 16 first. The descent kept cycle 1 clean; those two variables can't be isolated from this run alone.\n\nMaterial wound down at the 350°F floor with ~10s remaining — not depletion, confirmed by three productive recovery cycles. The 350°F floor is below WM's effective vaporization threshold on Rig 5. Each recovery cycle started back at 440°F; harshness entered on cycle 2 draws and persisted through cycles 3–4. Under the particle accumulation model: cycle 1 accumulated enough airway load to prime the state; each subsequent cycle started into already-loaded airways and crossed the harshness threshold early. The recovery cycles were effectively additional hot sessions.\n\nDark golden swab consistent with the multiple-cycle driver established across Runs 11–14. Very little reclaim on a larger load across four cycles is efficient vaporization overall. Intensity very very high.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Watermellos',
     profile_anchor='#watermellos-profile',
-    next_text='Run 16: same 60s single cycle at 420°F, larger load — test whether harshness timing tracks load size',
+    next_text='Run 17: 440°F open, gentle descent to 400°F over 60s — keep the session in the vaporization range throughout',
     accent=None,
     slug='watermellos',
     info=[
@@ -270,8 +297,8 @@ STATUS = StrainStatus(
         ('Flavor', 'Cold nose does not translate to vapor — flavor in vapor notably muted relative to cold nose intensity.'),
     ],
     terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Beige swabs, harshness in the second half of cycle, many draws. Very intense. Vapor was dense throughout. No indication of depletion of material. But the throat harshness was real!',
-    next_ai_analysis="Second cycle was the dark gold driver — settled. Harshness with dense vapor in the second half of 60s is directional support for the heat exposure / airway sensitization hypothesis. Run 16: same curve (8s ramp to 420°F, 60s single cycle), larger load. If harshness enters in the same place regardless, load size isn't the variable and heat exposure is the more parsimonious explanation. If the timing shifts — earlier, later, or absent — vapor density is back in play.",
-    next_waypoints=WM_RUN15_NEXT,
+    next_dab_notes='Larger than normal load. App showed 353 at 30 seconds, thought I saw similar delta at 20 — not confident in the readout, bluetooth lag and may be showing an interpreted value rather than raw sensor. Down vaporizing around 10 seconds left. Second cycle to check if depleted or just too cold at 350°F — one very dense and even tasty rip, second one no vapor, terminated at 30 seconds. Meaningful hit off the third cycle. Another very good hit off the fourth cycle. Four cycles total. Very little reclaim, dark golden swabs. Very very intense. Harshness showed up in second cycle draws and stayed for cycles 3 and 4.',
+    next_ai_analysis="The descent is moving too fast and too deep for this material — 350°F drops below WM's effective vaporization threshold before the load is spent, requiring three recovery cycles that each brought harshness. Run 17: gentler slope, same 440°F open, descending to 400°F over the full 60 seconds. Stays in the vaporization range throughout. If the load depletes cleanly within the single cycle, the curve is working. The original load-size thread is secondary — get the curve shape right first.",
+    next_waypoints=WM_RUN17_NEXT,
     jar_index='',
 )
