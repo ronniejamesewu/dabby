@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 114 across 17 strains
+- **Total runs:** 115 across 17 strains
 - **Active since:** May 2, 2026 (55 days)
 - **Last run date:** June 25, 2026
 
@@ -182,11 +182,11 @@
 ---
 
 ### Fire Water #106
-**24 sessions** &nbsp;·&nbsp; Last: June 25, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**25 sessions** &nbsp;·&nbsp; Last: June 25, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 25: descent curve with deliberate larger load — test whether intensity steps up; 425°F first-dab session-order test still open
+**Next:** Run 26: descent curve, first dab of day, same larger load — clean session-order test for harshness
 
-**AI Analysis:** Two descent runs on normal load — both no harshness, golden/minimal reclaim, very terpy, mild-to-medium intensity (second dab on Run 24). Run 25: same descent curve, deliberate larger load, ideally first dab of day. If intensity steps up materially, the curve works with more material. If intensity stays mild-to-medium, the descent shape may not be the right fit for FW106 regardless of load. The 425°F first-dab session-order test remains open for a subsequent run.
+**AI Analysis:** Run 25 answered the intensity question: larger load → super hard, even on the 3rd dab of the day. Load size was the limiting factor; the descent curve works. Harshness at end of draw 1 is the open thread — session order (3rd dab) is the most parsimonious cause, but larger load and denser 440°F opening vapor aren't ruled out. Run 26: descent curve, first dab of day, same larger load. If clean → session order drove Run 25 harshness. If harshness still appears at end of draw 1 → the larger load / 440°F vapor density is the ceiling on this curve. The 425°F first-dab test remains open for a subsequent run.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start

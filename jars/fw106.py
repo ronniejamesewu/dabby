@@ -409,13 +409,28 @@ RUNS = [
         dab_notes='Great hits, very terpy. It\'s too hard to mark the times and also be hitting it. Vapor just ended. Again that was a normal load. Swabs were same golden and minimal reclaim. It\'s surprising to see. Mild to medium. No harshness.',
         analysis="Run 24 on the descent curve, second dab of the day, normal load. Vapor ended naturally at 43s; stopped without finishing the programmed cycle. Two results from Run 23 confirmed across a second run: no harshness and golden swab with minimal reclaim on a normal load. 'Great hits, very terpy' is consistent with the descent curve's character. Mild to medium intensity is most parsimoniously session order — second dab after a medium Run 23. Minimal reclaim confirms the material delivered efficiently; a softer read on the second dab is expected.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 25),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 6, 26, 5, 31, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_440,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 350°F — descent curve; larger load; second cycle, two draws',
+        swab='Golden, regular reclaim.',
+        session_char='Harshness at end of draw 1; water sip resolved it, continued pulling. Thick vapor through full first cycle. Second cycle added, two draws.',
+        intensity='Super hard.',
+        dab_notes="Swabs golden, regular amount of reclaim. It hit super hard. Harshness was there at the end of the first draw, maybe another point for accumulation? Sip of water and kept pulling. There was enough thick vapor at the end that I ran a second cycle and took two more draws.",
+        analysis="Run 25 on the descent curve, 3rd dab of the day, deliberate larger load. Two key results. First: intensity stepped up to 'super hard' — confirming the descent curve delivers when there's more material. Runs 23 and 24 were mild-to-medium on normal load; 'super hard' on the third dab of the day with tolerance working against the result means a first-dab repeat would likely land higher still. Load size was the limiting factor, not the curve shape. Second: harshness entered at end of draw 1 — new on this curve. Runs 23–24 (normal load, 1st and 2nd dabs respectively) were harshness-free throughout. Two variables changed: load size and session order (3rd dab). Can't isolate. The user's accumulation framing is consistent with either: airway sensitization building across three consecutive sessions, or a larger load producing denser vapor at the 440°F opening and crossing the threshold faster. Water sip resolved the harshness; continued drawing. This is the third logged instance of water clearing mid-session harshness on Rig 6 — Hive #1 R6 at 420°F (Session 123), FW106 R22 at 425°F (Session 129), and now R25 on the descent curve. Three instances, two strains, same rig, three different curve shapes — the water reset is consistent enough to treat as a reliable technique. Regular reclaim (vs. minimal on Runs 23–24) and a productive second cycle both track the larger load: more material in, more material throughout. The descent curve is confirmed as a viable operating mode for FW106 on Rig 6 with a larger load.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 25: descent curve with deliberate larger load — test whether intensity steps up; 425°F first-dab session-order test still open',
+    next_text='Run 26: descent curve, first dab of day, same larger load — clean session-order test for harshness',
     accent=None,
     slug='fw106',
     info=[
@@ -426,7 +441,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="Two descent runs on normal load — both no harshness, golden/minimal reclaim, very terpy, mild-to-medium intensity (second dab on Run 24). Run 25: same descent curve, deliberate larger load, ideally first dab of day. If intensity steps up materially, the curve works with more material. If intensity stays mild-to-medium, the descent shape may not be the right fit for FW106 regardless of load. The 425°F first-dab session-order test remains open for a subsequent run.",
+    next_ai_analysis="Run 25 answered the intensity question: larger load → super hard, even on the 3rd dab of the day. Load size was the limiting factor; the descent curve works. Harshness at end of draw 1 is the open thread — session order (3rd dab) is the most parsimonious cause, but larger load and denser 440°F opening vapor aren't ruled out. Run 26: descent curve, first dab of day, same larger load. If clean → session order drove Run 25 harshness. If harshness still appears at end of draw 1 → the larger load / 440°F vapor density is the ceiling on this curve. The 425°F first-dab test remains open for a subsequent run.",
     next_waypoints=FW106_DESCENT_440,
     jar_index='',
 )
