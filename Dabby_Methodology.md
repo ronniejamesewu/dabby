@@ -122,6 +122,8 @@ Practical implications: flat opening phases deliver the most accurate temperatur
 
 **Torch comparison:** Traditional torch fired dab has a decaying temperature. Banger is superheated and then cold dab is applied when the decaying temperature reaches a desired start point. Consumption happens on decaying curve. Switch² Custom mode is opposite — controlled rise from lowest point.
 
+**Descent curves on Switch²:** A programmed descent curve is not a simulation of torch passive decay. The Switch² PID controller stops the heater and allows passive heat loss — the mechanism is passive, but the controller tracks waypoints rather than free-decaying. A descent programmed as 440→350 over 30s is executed by holding the temperature to those waypoints as the insert passively cools. Sapphire's higher thermal mass means the insert lags the programmed curve (actual descent slower than specified), but the curve still executes — it does not free-decay at sapphire's ~1°F/sec passive rate. Descent curves via programmed waypoints are viable on Rig 5 and Rig 6. (WM R16, Session 132.)
+
 ---
 
 ## 6. Session Process
@@ -135,3 +137,5 @@ Practical implications: flat opening phases deliver the most accurate temperatur
 7. Each run informs the next — adjust based on swab result and session character, log the outcome.
 
 Swab result is the empirical ground truth. Terpene profile reasoning is a starting framework, not a prediction.
+
+**Timing precision:** The countdown timer within the cycle is the primary timing unit — when harshness onset or depletion is logged as "harshness at 22 seconds left," that comes from the app countdown and is reasonably precise. Draw count is a fallback when the countdown wasn't captured at the moment — useful for sequencing observations (harshness entered on draw 3) but lower-precision than timer-referenced events. Draw count without time reference cannot support precise cross-run comparison of onset timing.
