@@ -392,7 +392,22 @@ RUNS = [
         session_char='Draw 1 — massive terpene load (bouquet effect), couldn\'t hold past ~10s. Draw 2 — dense, little flavor. Draws 3–4 — no vapor. No harshness throughout. Stopped early after empty draws, timing unknown.',
         intensity='Medium',
         dab_notes='So, it was gone before it could get harsh. First draw had that bitter note of 380ish dab plus a lot more. Terp load was so high I couldn\'t keep inhaling past maybe 10 seconds on first rip. Second was still very dense but didn\'t notice much flavor. And then there was no more vapor. I hit it two times with no vapor. No harshness either. More evidence to support accumulation theory. Swabs were golden, with very little reclaim. I\'m pretty sure I loaded a normal size dab. Medium intensity, I wanted more. More flavor complexity — it had a bouquet effect.',
-        analysis="Descent curve experiment — first FW106 run at a descending profile. 440°F open drove fast, complete vaporization: material was spent in 2 productive draws, draws 3–4 empty. Three things stand out. First, the bouquet effect: the 440°F open released a broader volatile fraction on draw 1 than any prior FW106 run — 'bouquet effect' in the user's words: flavor complexity rather than the usual character at lower opening temperatures. Second, no harshness: Run 5 (flat 440°F hold) produced harshness at ~28s. This run opened at 440°F and produced none. The variable that changed: flat hold sustained 440°F; descent moved away immediately. This is the cleanest FW106 data point yet for cumulative session exposure — not endpoint temperature alone — as the harshness driver. Material was consumed before enough exposure accumulated to cross the threshold, consistent with the user's accumulation framing. Third, very little reclaim on a normal load: more complete vaporization than any prior 40–60s run at 420–425°F. Medium intensity wanting more follows directly — the load was spent before the session could deliver its full payload. Whether sapphire lag (insert running warmer than programmed during the descent) accelerated depletion relative to quartz is consistent with the result and was the planned observation; brevity is directional for it running warmer than the curve suggests, though this is one run. One run; curve and approach entirely new. Nothing established.",
+        analysis="Descent curve experiment — first FW106 run at a descending profile. 440°F open drove fast, complete vaporization: material was spent in 2 productive draws, draws 3–4 empty. Three things stand out. First, the bouquet effect: the 440°F open released a broader volatile fraction on draw 1 than any prior FW106 run — 'bouquet effect' in the user's words: flavor complexity rather than the usual character at lower opening temperatures. Second, no harshness: Run 5 (flat 440°F hold) produced harshness at ~28s. This run opened at 440°F and produced none. The variable that changed: flat hold sustained 440°F; descent moved away immediately. This is the cleanest FW106 data point yet for cumulative session exposure — not endpoint temperature alone — as the harshness driver. Material was consumed before enough exposure accumulated to cross the threshold, consistent with the user's accumulation framing. Third, very little reclaim on a normal load: more complete vaporization than any prior 40–60s run at 420–425°F. Whether sapphire lag (insert running warmer than programmed during the descent) accelerated depletion relative to quartz is consistent with the result and was the planned observation; brevity is directional for it running warmer than the curve suggests, though this is one run. One run; curve and approach entirely new. Nothing established.",
+    ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 25),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 26, 2, 0, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_440,
+        equipment=RIG_6,
+        duration_seconds=43,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 350°F — descent curve; vapor ended at 43s, stopped with 17s remaining',
+        swab='Golden, minimal reclaim — same as Run 23.',
+        session_char='Great hits, very terpy. Vapor ended at 43s (17s remaining). No harshness. Normal load.',
+        intensity='Mild to medium',
+        dab_notes='Great hits, very terpy. It\'s too hard to mark the times and also be hitting it. Vapor just ended. Again that was a normal load. Swabs were same golden and minimal reclaim. It\'s surprising to see. Mild to medium. No harshness.',
+        analysis="Run 24 on the descent curve, second dab of the day, normal load. Vapor ended naturally at 43s; stopped without finishing the programmed cycle. Two results from Run 23 confirmed across a second run: no harshness and golden swab with minimal reclaim on a normal load. 'Great hits, very terpy' is consistent with the descent curve's character. Mild to medium intensity is most parsimoniously session order — second dab after a medium Run 23. Minimal reclaim confirms the material delivered efficiently; a softer read on the second dab is expected.",
     ),
 ]
 
@@ -400,7 +415,7 @@ RUNS = [
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 24: repeat descent curve (440°F→350°F), larger load — test whether intensity steps up with more material; 425°F first-dab session-order test deferred to Run 25',
+    next_text='Run 25: descent curve with deliberate larger load — test whether intensity steps up; 425°F first-dab session-order test still open',
     accent=None,
     slug='fw106',
     info=[
@@ -411,7 +426,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="Run 23 (descent 440°F→350°F, normal load): material spent in 2 productive draws, medium intensity, no harshness. The descent curve produced a qualitatively different result — bouquet effect on draw 1, complete vaporization, no harshness despite 440°F opening. Run 24: same descent curve, deliberate larger load. If intensity steps up and the no-harshness result holds with more material in the session, the curve is worth pursuing. The 425°F first-dab session-order test remains open for Run 25.",
+    next_ai_analysis="Two descent runs on normal load — both no harshness, golden/minimal reclaim, very terpy, mild-to-medium intensity (second dab on Run 24). Run 25: same descent curve, deliberate larger load, ideally first dab of day. If intensity steps up materially, the curve works with more material. If intensity stays mild-to-medium, the descent shape may not be the right fit for FW106 regardless of load. The 425°F first-dab session-order test remains open for a subsequent run.",
     next_waypoints=FW106_DESCENT_440,
     jar_index='',
 )
