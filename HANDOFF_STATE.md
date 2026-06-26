@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 113 across 17 strains
+- **Total runs:** 114 across 17 strains
 - **Active since:** May 2, 2026 (55 days)
 - **Last run date:** June 25, 2026
 
@@ -182,11 +182,11 @@
 ---
 
 ### Fire Water #106
-**23 sessions** &nbsp;·&nbsp; Last: June 25, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**24 sessions** &nbsp;·&nbsp; Last: June 25, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 24: repeat descent curve (440°F→350°F), larger load — test whether intensity steps up with more material; 425°F first-dab session-order test deferred to Run 25
+**Next:** Run 25: descent curve with deliberate larger load — test whether intensity steps up; 425°F first-dab session-order test still open
 
-**AI Analysis:** Run 23 (descent 440°F→350°F, normal load): material spent in 2 productive draws, medium intensity, no harshness. The descent curve produced a qualitatively different result — bouquet effect on draw 1, complete vaporization, no harshness despite 440°F opening. Run 24: same descent curve, deliberate larger load. If intensity steps up and the no-harshness result holds with more material in the session, the curve is worth pursuing. The 425°F first-dab session-order test remains open for Run 25.
+**AI Analysis:** Two descent runs on normal load — both no harshness, golden/minimal reclaim, very terpy, mild-to-medium intensity (second dab on Run 24). Run 25: same descent curve, deliberate larger load, ideally first dab of day. If intensity steps up materially, the curve works with more material. If intensity stays mild-to-medium, the descent shape may not be the right fit for FW106 regardless of load. The 425°F first-dab session-order test remains open for a subsequent run.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start
