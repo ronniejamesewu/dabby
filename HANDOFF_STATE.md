@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 116 across 17 strains
+- **Total runs:** 117 across 17 strains
 - **Active since:** May 2, 2026 (56 days)
 - **Last run date:** June 26, 2026
 
@@ -198,11 +198,11 @@
 ---
 
 ### Watermellos
-**16 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**17 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 17: 440°F open, gentle descent to 400°F over 60s — keep the session in the vaporization range throughout
+**Next:** Run 18: same descent curve (440→420@30s→400@60s), first dab of day — isolate session order from Run 17 draw 2 harshness
 
-**AI Analysis:** The descent is moving too fast and too deep for this material — 350°F drops below WM's effective vaporization threshold before the load is spent, requiring three recovery cycles that each brought harshness. Run 17: gentler slope, same 440°F open, descending to 400°F over the full 60 seconds. Stays in the vaporization range throughout. If the load depletes cleanly within the single cycle, the curve is working. The original load-size thread is secondary — get the curve shape right first.
+**AI Analysis:** Draw 1 clean two runs running (R16 cycle 1, R17 draw 1) — the 440°F open with descent is consistently producing the cleanest first draw in this jar's history. Draw 2 harshness in R17 is unresolved between the curve and session order (second dab). Run 18 same curve, first dab — if draw 2 comes clean, the curve is working and session order was the driver. If harshness persists even first dab, the curve needs adjustment.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
