@@ -295,13 +295,28 @@ RUNS = [
         dab_notes="First rip to 42 on countdown, zero harshness, ton of flavor, very dense. Second same density, less flavor, harshness appears. Not sure what time second rip started but ended at 30 left. Hit it third and fourth times, by fourth time it was looking wispy then it ended. Minimal reclaim, golden. Seemed intense at first but almost immediately it's maybe dropping? Medium high. Second dab of the day.",
         analysis="Descent curve second run — 440→420@30s→400@60s, Rig 5, second dab of the day. Draw 1 was the cleanest in WM's run history: zero harshness, ton of flavor, very dense across the opening phase. The 440°F open front-loading the most volatile compounds into draw 1 is consistent with the descent moving through the lightest terpenes first; draw 2's reduced flavor with density held is consistent with those compounds spent.\n\nHarshness appeared on draw 2 with vapor still dense — so the mechanism isn't vapor density alone, and material wasn't gone. Session order is the unresolved confound: second dab means accumulated airway exposure from R16 is a live driver. This isn't a clean harshness test. The clean-first-draw pattern now holds across R16 cycle 1 and R17 draw 1 — both on the descent open, both clean — but R16 was first dab overall and R17 draw 1 was only first draw of the second session.\n\nDraw 4 going wispy at the 400°F floor confirms that 400°F is near the bottom of effective vaporization for this material on Rig 5 — the session ran the full curve productively, unlike R16 where the 350°F floor stopped vaporization entirely with ~10s remaining and material still present.\n\nIntensity front-loaded then dropping fast is consistent with descent mechanics: heaviest delivery at the 440°F open, tapering as temperature descends. Medium-high as second dab vs. R16's very very intense as first — tolerance confound present, can't isolate. Golden swab with minimal reclaim on a single clean 60s cycle is a better result than R16's dark golden across four cycles.",
     ),
+    CompletedRun(
+        strain='Watermellos',
+        run_date=date(2026, 6, 26),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 6, 27, 0, 7, tzinfo=timezone.utc),
+        waypoints=WM_RUN17_NEXT,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent; 440→420@30s→400@60s — same as Run 17',
+        swab='Golden, minimal reclaim.',
+        session_char='Mild harshness starting at ~37s remaining (~23s in); dense vapor throughout; strong terp and flavor presence; second cycle empty — material fully spent in single 60s cycle.',
+        intensity='Medium, building.',
+        dab_notes='Mild harshness starting around 37 seconds left. Dense vapor throughout, lots of terps lots of flavor. Medium and building intensity. Swabs were golden and minimal reclaim. Very efficient, tried a second cycle and there was nothing there.',
+        analysis="Descent curve Run 2 on Rig 5, third dab of the day. Dense vapor throughout, strong terp and flavor presence — the strongest flavor description in this jar's history. Golden swab, minimal reclaim, second cycle empty: material ran cleanly through the 60s single cycle. The 400°F floor is confirmed right — R16's 350°F floor killed vaporization with ~10s remaining and forced recovery cycles; R17 and R18 both depleted naturally within the single cycle.\n\nMild harshness starting at ~37s remaining (~23s in). R17 (second dab) had harshness appear somewhere between 42s and 30s remaining on draw 2 — similar window. The timing held despite an additional session of accumulated airway exposure. That's directional for the curve having a ceiling there rather than session order driving it — same threshold reached at roughly the same clock time under heavier airway load. Both runs are still confounded (R17 second dab, R18 third dab); a first-dab run is needed to close it. Golden swab consistent with the single-cycle pattern: 2x2 sessions (Runs 11–14) → dark gold; single 60s cycles (Runs 15, 17, 18) → golden or beige.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Watermellos',
     profile_anchor='#watermellos-profile',
-    next_text='Run 18: same descent curve (440→420@30s→400@60s), first dab of day — isolate session order from Run 17 draw 2 harshness',
+    next_text='Run 19: same descent curve (440→420@30s→400@60s), first dab of day — confirm whether harshness ceiling at ~37s remaining is curve-driven',
     accent=None,
     slug='watermellos',
     info=[
@@ -312,8 +327,8 @@ STATUS = StrainStatus(
         ('Flavor', 'Cold nose does not translate to vapor — flavor in vapor notably muted relative to cold nose intensity.'),
     ],
     terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes="First rip to 42 on countdown, zero harshness, ton of flavor, very dense. Second same density, less flavor, harshness appears. Not sure what time second rip started but ended at 30 left. Hit it third and fourth times, by fourth time it was looking wispy then it ended. Minimal reclaim, golden. Seemed intense at first but almost immediately it's maybe dropping? Medium high. Second dab of the day.",
-    next_ai_analysis="Draw 1 clean two runs running (R16 cycle 1, R17 draw 1) — the 440°F open with descent is consistently producing the cleanest first draw in this jar's history. Draw 2 harshness in R17 is unresolved between the curve and session order (second dab). Run 18 same curve, first dab — if draw 2 comes clean, the curve is working and session order was the driver. If harshness persists even first dab, the curve needs adjustment.",
+    next_dab_notes='Mild harshness starting around 37 seconds left. Dense vapor throughout, lots of terps lots of flavor. Medium and building intensity. Swabs were golden and minimal reclaim. Very efficient, tried a second cycle and there was nothing there.',
+    next_ai_analysis="Harshness onset (~37s remaining) held consistent across R17 (second dab) and R18 (third dab) — same timing under increasing airway load is directional for the curve having a ceiling there, not session order. Run 19: same curve, first dab of day. If harshness still appears in the 30–40s remaining window, the curve has a real ceiling at that threshold. If it's clean or substantially later, session order was carrying more weight than the timing consistency implies.",
     next_waypoints=WM_RUN17_NEXT,
     jar_index='',
 )
