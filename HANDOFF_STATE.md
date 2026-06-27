@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 117 across 17 strains
+- **Total runs:** 118 across 17 strains
 - **Active since:** May 2, 2026 (56 days)
 - **Last run date:** June 26, 2026
 
@@ -198,11 +198,11 @@
 ---
 
 ### Watermellos
-**17 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**18 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 18: same descent curve (440→420@30s→400@60s), first dab of day — isolate session order from Run 17 draw 2 harshness
+**Next:** Run 19: same descent curve (440→420@30s→400@60s), first dab of day — confirm whether harshness ceiling at ~37s remaining is curve-driven
 
-**AI Analysis:** Draw 1 clean two runs running (R16 cycle 1, R17 draw 1) — the 440°F open with descent is consistently producing the cleanest first draw in this jar's history. Draw 2 harshness in R17 is unresolved between the curve and session order (second dab). Run 18 same curve, first dab — if draw 2 comes clean, the curve is working and session order was the driver. If harshness persists even first dab, the curve needs adjustment.
+**AI Analysis:** Harshness onset (~37s remaining) held consistent across R17 (second dab) and R18 (third dab) — same timing under increasing airway load is directional for the curve having a ceiling there, not session order. Run 19: same curve, first dab of day. If harshness still appears in the 30–40s remaining window, the curve has a real ceiling at that threshold. If it's clean or substantially later, session order was carrying more weight than the timing consistency implies.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
