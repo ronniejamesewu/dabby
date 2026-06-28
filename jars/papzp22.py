@@ -17,6 +17,18 @@ PAPZP22_430 = [
     Waypoint(time_s=60, temp_f=430, note="Hold"),
 ]
 
+PAPZP22_DESCENT_440 = [
+    Waypoint(time_s=0,  temp_f=440, note="Session open — hot open, descent start"),
+    Waypoint(time_s=30, temp_f=420, note="Descent midpoint"),
+    Waypoint(time_s=60, temp_f=400, note="Floor"),
+]
+
+PAPZP22_DESCENT_415 = [
+    Waypoint(time_s=0,  temp_f=440, note="Session open — hot open, descent start"),
+    Waypoint(time_s=30, temp_f=428, note="Descent midpoint"),
+    Waypoint(time_s=60, temp_f=415, note="Floor — up 15°F from Run 7"),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -115,13 +127,29 @@ RUNS = [
         dab_notes="That was intense. Flavor was so big I almost gagged. Bitter note, maybe something savory even? Nothing fruity or sweet. Dense dense vapor to the end and I'm gonna run another cycle. No harshness, but I did have a sip of water in the middle because the terps were so loud. [After second cycle:] Harshness in last 20 seconds, medium. Flavor was still there although not as strong in first draw or second cycle, then it faded. I think holding 430 for that long two times in a row is heating up the top of the device and the cap enough that they feel hot but touchable. Swabs golden but also spots of light brown. Again, lots of heat. Pretty fucking hard.",
         analysis="Most striking result in this strain's history: zero harshness through the full 60s first cycle at 430°F, when 425°F consistently showed onset at 35–38s across both prior Rig 6 runs. Three candidates:\n\nWater mid-cycle. Hive1 R6 established that water reset harshness after it appeared; here water was taken preemptively — terpene intensity, not harshness, was the trigger. If water prevents harshness rather than only reversing it, the clean first cycle has a confound. That's the most important unresolved question in this run.\n\nHigher endpoint driving faster vaporization. The 'shorter and higher' working theory: 430°F burns through material faster, possibly getting most of the load through the vaporization window before the harshness threshold is reached — counterintuitively cleaner because the session is effectively over sooner. One data point, consistent with the framework.\n\nSession order is matched to Run 4 (also first dab of day, draw discipline, 38s onset at 425°F). The improvement is 5°F, not a first-dab effect.\n\nSecond cycle harshness in the last 20s is depletion-consistent — material largely spent after one full 430°F cycle, hot insert contact driving the tail. Not a temperature ceiling signal.\n\nSwab golden with light brown spots — new territory; all prior runs were amber or lighter. Two consecutive 430°F cycles is the most parsimonious driver, same pattern as WM and Run 5 where second cycles drove swabs darker. Not a first-cycle heat signal, but worth watching on a clean single-cycle run.\n\nFlavor character distinctly different from prior runs: bitter, savory, nothing fruity/sweet — versus the generic 'very tasty' of Runs 1–3. Whether that's 430°F unlocking different fractions, load position variation (Papaya outer ring vs. Z Pie #22 center), or intensity making it more legible is unclear.\n\nIntensity 'pretty fucking hard' at 430°F — consistent with the cross-strain directional (higher endpoint → stronger effect). Second independent data point on this pattern.",
     ),
+    CompletedRun(
+        strain="Papaya + Z Pie #22",
+        run_date=date(2026, 6, 27),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 28, 5, 15, 0, tzinfo=timezone.utc),
+        waypoints=PAPZP22_DESCENT_440,
+        equipment=RIG_6,
+        too_hot=False,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — linear descent over 60s',
+        swab="golden",
+        session_char="First descent on this strain. Larger load. Dense vapor throughout full 60s; productive hit post-session on still-hot insert — material present at close. Harshness at the end, located in chest rather than usual throat. Very high intensity.",
+        intensity="very high",
+        dab_notes="Wow, super nice. Swabs were golden, normal amount of reclaim although I purposely loaded a bit large. It gave off powerful vapor the whole way through, never depleted, even took a dense hit on the still hot insert after the heating ended. So it maybe could have gone a bit hotter? Harshness I didn't notice until the end. It felt lower in my chest than my normal throat. Intensity is very high. [Beat 2 — chest vs. throat:] Location.",
+        analysis="First descent curve on this strain, first dab of the day, larger load. Dense vapor throughout the full 60s and a productive hit on the still-hot insert at close — material was present when the heating cycle ended. That's the 400°F floor telling on itself: it's 25–30°F below where this strain has shown efficiency on Rig 6 (425–430°F). The larger load bought session density, but the residual material is the consequence of undershooting the floor, not a bonus.\n\nHarshness arrived at the end — late, and physically located in the chest rather than the usual throat. Two separable signals. Late onset relative to the 35–38s pattern on 425°F flat runs is consistent with the descent reducing cumulative hot-insert exposure as temps fall, or the larger load buffering the session, or first-dab session order, or all three. The chest location is new to this strain's history; single observation. One candidate: the 440°F open delivers hotter, denser aerosol that travels further into the airway before depositing. Not established — flagged for recurrence.\n\nGolden swab on a 60s Rig 6 session is duration-consistent. The 440°F open is the hottest this strain has seen; golden rather than darker tracks with FW106's pattern where session length drives swab color, not peak temperature.\n\nVery high intensity despite ending at 400°F — the hot open front-loads delivery even as the descent brings temps down. 'Maybe could have gone a bit hotter' and the productive post-session hit are the key signal: the descent shape works, the floor needs to come up.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Papaya + Z Pie #22',
     profile_anchor='#papzp22-profile',
-    next_text='Run 7: repeat 430°F single cycle, 8s ramp, draw discipline, water available as needed — first dab of the day if possible',
+    next_text='Run 8: descent to 415°F — 440@0s → 428@30s → 415@60s, draw discipline, same load class',
     accent=None,
     slug='papzp22',
     info=[
@@ -133,7 +161,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene; Georgia Pie typically Gelato × Gushers-adjacent: limonene/myrcene/linalool). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='Nose at room temp (~few hours out of fridge): garlicky in a good way (June 14, 2026).',
-    next_ai_analysis='Run 7: repeat 430°F single cycle, same technique — 8s ramp, draw discipline, water available if needed. First dab of the day if possible. The question is whether the clean first cycle holds without the second-cycle heat and device warmth as confounds. If it does, 430°F is genuinely better than 425°F on this strain — that\'s a stronger result than the two Rig 6 runs at 425°F with consistent 35–38s onset and worth establishing cleanly.',
-    next_waypoints=PAPZP22_430,
+    next_ai_analysis='Raise the floor and tighten the midpoint: 440°F → 428°F @30s → 415°F @60s. The 400°F floor left material in the insert; 415°F puts the endpoint closer to this strain\'s demonstrated efficiency range on Rig 6. Same draw discipline, same load class. If the post-session hit disappears and vapor density holds through 60s, the floor was the variable. If the chest harshness location recurs on the descent shape, that\'s worth logging as a separate signal from the timing question.',
+    next_waypoints=PAPZP22_DESCENT_415,
     jar_index='',
 )
