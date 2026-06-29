@@ -444,13 +444,28 @@ RUNS = [
         dab_notes='Really nice run. Thick vapor throughout, I even ran a second cycle for one more draw and it never let up. Tasty, I even got the key lime note. Swabs were dark golden. Intensity was medium high. Harshness in last 10 seconds and into second cycle.',
         analysis="Gentle descent (440→420@30s→400@60s), first dab of the day, larger load. Two things stand out. First, vapor persistence: material lasted the full 60s plus a productive second cycle — a stark contrast with the steep descent on Runs 23–24, where the same load depleted by 43s. The 400°F floor vs. 350°F floor is the most parsimonious explanation: 50°F warmer sustains active vaporization rather than dropping the insert below the productive zone. Second, the key lime note — FW106's Key Limeade lineage expressing more distinctly than in recent 60s runs. The 440°F open releases the bouquet; the gentler descent may be holding terpene-range temperatures long enough to sustain character across draws.\n\nHarshness in the last ~10s and into the second cycle. Session order is clean (first dab), so this is a real signal. Two candidates: (1) depletion — material winding down at the 60s tail, hot-insert contact; (2) cumulative session exposure — 60s sustained at 420–400°F crosses the harshness threshold late but reliably. Second cycle harshness is consistent with either. Dark golden swab consistent with all 60s-duration FW106 runs regardless of rig.\n\nTwo variables changed from R25 (steep descent, 3rd dab, harshness at end of draw 1): curve and session order. This run can't isolate them — the steep/first-dab test still hasn't happened.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 28),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 6, 29, 1, 24, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent (440→420@30s→400@60s); second cycle, couple of draws',
+        swab='Amber into brown — second cycle likely driver; bamboo swab artifact may account for amber component.',
+        session_char='Very dense, very tasty throughout; faint harshness at end of draw 1 (~16s in); second cycle, couple more draws.',
+        intensity='Very intense',
+        dab_notes="Amber into brown swabs, but no toasty taste. Very dense, very tasty, but harshness started faintly at end of first draw (16 second draw). Very intense. Ran a second cycle, couple more draws, maybe that's the brown?",
+        analysis="Run 27 on the gentle descent, second dab of the day. Three things from R26 replicated: very dense vapor throughout, very tasty character, productive second cycle. One thing didn't: harshness onset. R26 (first dab) stayed clean until the last ~10s; R27 had faint harshness at end of draw 1, around 16s in — dramatically earlier. Session order is the primary candidate. Earlier harshness onset on a second dab is directionally consistent with airway sensitization / accumulated exposure, and matches the LHBH R3/R4 pattern and other second-dab comparisons in the log.\n\nDarker swab (amber into brown vs. R26's dark golden) is plausibly second-cycle driven — same mechanism as WM R15. No toasty taste rules out thermal degradation. Bamboo swab artifact may account for the amber component. Very intense on the second dab underscores the gentle descent is solidly in the working zone. The harshness confound means R27 can't confirm or contradict R26's late-harshness profile. A first-dab repeat is the next test.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 27: repeat gentle descent (440→420@30s→400@60s), first dab of day, same larger load — confirm harshness timing and vapor persistence',
+    next_text='Run 28: repeat gentle descent (440→420@30s→400@60s), first dab of day, same larger load — isolate harshness timing from session order',
     accent=None,
     slug='fw106',
     info=[
@@ -461,7 +476,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="Repeat the gentle descent — same curve, first dab, same larger load — to confirm harshness at last 10s and vapor persistence are consistent. One run on a new curve isn't enough to call it. If R27 replicates — thick vapor through 60s, late harshness, productive second cycle — the gentle descent is FW106's established working descent curve. The steep descent first-dab test (original R26 plan) remains open as a separate comparison run once the gentle curve is confirmed.",
+    next_ai_analysis="R27 replicated density and character from R26 but harshness arrived at ~16s vs. R26's last ~10s. Session order (2nd vs. 1st dab) is the primary candidate — a first-dab repeat is needed to determine whether late-cycle harshness is the reliable profile or whether R27 was the noisy read. Same curve, same larger load, first dab of day. If harshness holds to the last 10–15s, the gentle descent has a consistent late-harshness signature. If it arrives at ~16s again, R26 was the favorable end of the variance range and there's more to understand about what's driving the timing.",
     next_waypoints=FW106_DESCENT_GENTLE,
     jar_index='',
 )

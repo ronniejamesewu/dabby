@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 120 across 17 strains
+- **Total runs:** 121 across 17 strains
 - **Active since:** May 2, 2026 (58 days)
 - **Last run date:** June 28, 2026
 
@@ -182,11 +182,11 @@
 ---
 
 ### Fire Water #106
-**26 sessions** &nbsp;·&nbsp; Last: June 28, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**27 sessions** &nbsp;·&nbsp; Last: June 28, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 27: repeat gentle descent (440→420@30s→400@60s), first dab of day, same larger load — confirm harshness timing and vapor persistence
+**Next:** Run 28: repeat gentle descent (440→420@30s→400@60s), first dab of day, same larger load — isolate harshness timing from session order
 
-**AI Analysis:** Repeat the gentle descent — same curve, first dab, same larger load — to confirm harshness at last 10s and vapor persistence are consistent. One run on a new curve isn't enough to call it. If R27 replicates — thick vapor through 60s, late harshness, productive second cycle — the gentle descent is FW106's established working descent curve. The steep descent first-dab test (original R26 plan) remains open as a separate comparison run once the gentle curve is confirmed.
+**AI Analysis:** R27 replicated density and character from R26 but harshness arrived at ~16s vs. R26's last ~10s. Session order (2nd vs. 1st dab) is the primary candidate — a first-dab repeat is needed to determine whether late-cycle harshness is the reliable profile or whether R27 was the noisy read. Same curve, same larger load, first dab of day. If harshness holds to the last 10–15s, the gentle descent has a consistent late-harshness signature. If it arrives at ~16s again, R26 was the favorable end of the variance range and there's more to understand about what's driving the timing.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, gentle descent start
