@@ -45,6 +45,11 @@ FW106_DESCENT_440 = [
     Waypoint(time_s=30, temp_f=350, note='Descent floor'),
     Waypoint(time_s=60, temp_f=350, note='Hold at 350°F to end'),
 ]
+FW106_DESCENT_GENTLE = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open, gentle descent start'),
+    Waypoint(time_s=30, temp_f=420, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -424,13 +429,28 @@ RUNS = [
         dab_notes="Swabs golden, regular amount of reclaim. It hit super hard. Harshness was there at the end of the first draw, maybe another point for accumulation? Sip of water and kept pulling. There was enough thick vapor at the end that I ran a second cycle and took two more draws.",
         analysis="Run 25 on the descent curve, 3rd dab of the day, deliberate larger load. Two key results. First: intensity stepped up to 'super hard' — confirming the descent curve delivers when there's more material. Runs 23 and 24 were mild-to-medium on normal load; 'super hard' on the third dab of the day with tolerance working against the result means a first-dab repeat would likely land higher still. Load size was the limiting factor, not the curve shape. Second: harshness entered at end of draw 1 — new on this curve. Runs 23–24 (normal load, 1st and 2nd dabs respectively) were harshness-free throughout. Two variables changed: load size and session order (3rd dab). Can't isolate. The user's accumulation framing is consistent with either: airway sensitization building across three consecutive sessions, or a larger load producing denser vapor at the 440°F opening and crossing the threshold faster. Water sip resolved the harshness; continued drawing. This is the third logged instance of water clearing mid-session harshness on Rig 6 — Hive #1 R6 at 420°F (Session 123), FW106 R22 at 425°F (Session 129), and now R25 on the descent curve. Three instances, two strains, same rig, three different curve shapes — the water reset is consistent enough to treat as a reliable technique. Regular reclaim (vs. minimal on Runs 23–24) and a productive second cycle both track the larger load: more material in, more material throughout. The descent curve is confirmed as a viable operating mode for FW106 on Rig 6 with a larger load.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 28),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 28, 20, 47, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent (440→420@30s→400@60s); second cycle, one draw',
+        swab='Dark golden.',
+        session_char='Thick vapor throughout full 60s; key lime note; harshness in last ~10s, continued into second cycle. Second cycle, one draw.',
+        intensity='Medium high',
+        dab_notes='Really nice run. Thick vapor throughout, I even ran a second cycle for one more draw and it never let up. Tasty, I even got the key lime note. Swabs were dark golden. Intensity was medium high. Harshness in last 10 seconds and into second cycle.',
+        analysis="Gentle descent (440→420@30s→400@60s), first dab of the day, larger load. Two things stand out. First, vapor persistence: material lasted the full 60s plus a productive second cycle — a stark contrast with the steep descent on Runs 23–24, where the same load depleted by 43s. The 400°F floor vs. 350°F floor is the most parsimonious explanation: 50°F warmer sustains active vaporization rather than dropping the insert below the productive zone. Second, the key lime note — FW106's Key Limeade lineage expressing more distinctly than in recent 60s runs. The 440°F open releases the bouquet; the gentler descent may be holding terpene-range temperatures long enough to sustain character across draws.\n\nHarshness in the last ~10s and into the second cycle. Session order is clean (first dab), so this is a real signal. Two candidates: (1) depletion — material winding down at the 60s tail, hot-insert contact; (2) cumulative session exposure — 60s sustained at 420–400°F crosses the harshness threshold late but reliably. Second cycle harshness is consistent with either. Dark golden swab consistent with all 60s-duration FW106 runs regardless of rig.\n\nTwo variables changed from R25 (steep descent, 3rd dab, harshness at end of draw 1): curve and session order. This run can't isolate them — the steep/first-dab test still hasn't happened.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 26: descent curve, first dab of day, same larger load — clean session-order test for harshness',
+    next_text='Run 27: repeat gentle descent (440→420@30s→400@60s), first dab of day, same larger load — confirm harshness timing and vapor persistence',
     accent=None,
     slug='fw106',
     info=[
@@ -441,7 +461,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="Run 25 answered the intensity question: larger load → super hard, even on the 3rd dab of the day. Load size was the limiting factor; the descent curve works. Harshness at end of draw 1 is the open thread — session order (3rd dab) is the most parsimonious cause, but larger load and denser 440°F opening vapor aren't ruled out. Run 26: descent curve, first dab of day, same larger load. If clean → session order drove Run 25 harshness. If harshness still appears at end of draw 1 → the larger load / 440°F vapor density is the ceiling on this curve. The 425°F first-dab test remains open for a subsequent run.",
-    next_waypoints=FW106_DESCENT_440,
+    next_ai_analysis="Repeat the gentle descent — same curve, first dab, same larger load — to confirm harshness at last 10s and vapor persistence are consistent. One run on a new curve isn't enough to call it. If R27 replicates — thick vapor through 60s, late harshness, productive second cycle — the gentle descent is FW106's established working descent curve. The steep descent first-dab test (original R26 plan) remains open as a separate comparison run once the gentle curve is confirmed.",
+    next_waypoints=FW106_DESCENT_GENTLE,
     jar_index='',
 )
