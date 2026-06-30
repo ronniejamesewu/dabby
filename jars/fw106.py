@@ -459,13 +459,28 @@ RUNS = [
         dab_notes="Amber into brown swabs, but no toasty taste. Very dense, very tasty, but harshness started faintly at end of first draw (16 second draw). Very intense. Ran a second cycle, couple more draws, maybe that's the brown?",
         analysis="Run 27 on the gentle descent, second dab of the day. Three things from R26 replicated: very dense vapor throughout, very tasty character, productive second cycle. One thing didn't: harshness onset. R26 (first dab) stayed clean until the last ~10s; R27 had faint harshness at end of draw 1, around 16s in — dramatically earlier. Session order is the primary candidate. Earlier harshness onset on a second dab is directionally consistent with airway sensitization / accumulated exposure, and matches the LHBH R3/R4 pattern and other second-dab comparisons in the log.\n\nDarker swab (amber into brown vs. R26's dark golden) is plausibly second-cycle driven — same mechanism as WM R15. No toasty taste rules out thermal degradation. Bamboo swab artifact may account for the amber component. Very intense on the second dab underscores the gentle descent is solidly in the working zone. The harshness confound means R27 can't confirm or contradict R26's late-harshness profile. A first-dab repeat is the next test.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 6, 29),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 6, 30, 0, 24, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent (440→420@30s→400@60s); larger load; second cycle, one draw',
+        swab='Amber, lot of reclaim.',
+        session_char='Tasty; dense vapor throughout; draw 1 clean (14s); medium harshness at end of draw 2 (~32s); draw 3 harsh, kept short, water sip; cycle ran to 60s; second cycle, 1 draw, mild harshness post-water.',
+        intensity='Very hard, in a good way.',
+        dab_notes='Very nice hit. Tasty. Dense vapor throughout, medium harshness by end of second draw. Third was harsh so I kept it short and grabbed a sip of water. Cycle ran out so I fired a second cycle and got one last draw — after water the harshness was mild. Swabs amber, a lot of reclaim. Very hard hitting in a good way. Larger load, maybe too large. Draw 1 was 14 seconds; draw 2 was 10 seconds, ended at 32.',
+        analysis="Run 28 on the gentle descent, first dab of the day, larger-than-planned load. Harshness arrived at ~32s — end of draw 2, draw 2 ending at 32s from session open. Three-run comparison now legible:\n\n- R26: first dab, larger load → ~50s\n- R28: first dab, maybe-too-large load → ~32s\n- R27: second dab, larger load → ~16s\n\nSession order is confirmed as a real factor: R27 (16s) vs R28 (32s), matched curve and rig, 16s shift going from 2nd to 1st dab. But R28 didn't replicate R26's 50s ceiling despite matching session order. Load is the primary candidate — 'maybe too large' vs R26's 'larger.' More material at 440°F open likely crosses the harshness threshold sooner, consistent with LHBH R3/R4 (same rig, same curve, larger load → earlier onset). The gentle descent's ceiling sits in the 30–50s range, with session order and load both modulating where in that range it lands. R26 at 50s is likely the curve's favorable ceiling under a well-sized load.\n\nSwab amber — darker than R26's dark golden. Larger load and second cycle are both plausible drivers; no toasty taste rules out a thermal ceiling breach. Lot of reclaim consistent with 'maybe too large.' Water reset on draw 3 is the fourth logged instance on Rig 6 for FW106 (R22, R25, R26 second-cycle thread, R28). Intensity very hard on first dab — the descent curve is solidly in the working zone when loaded appropriately.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 28: repeat gentle descent (440→420@30s→400@60s), first dab of day, same larger load — isolate harshness timing from session order',
+    next_text='Run 29: gentle descent (440→420@30s→400@60s), first dab, deliberate moderate load — test whether load size explains the R26 vs R28 harshness timing gap',
     accent=None,
     slug='fw106',
     info=[
@@ -476,7 +491,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis="R27 replicated density and character from R26 but harshness arrived at ~16s vs. R26's last ~10s. Session order (2nd vs. 1st dab) is the primary candidate — a first-dab repeat is needed to determine whether late-cycle harshness is the reliable profile or whether R27 was the noisy read. Same curve, same larger load, first dab of day. If harshness holds to the last 10–15s, the gentle descent has a consistent late-harshness signature. If it arrives at ~16s again, R26 was the favorable end of the variance range and there's more to understand about what's driving the timing.",
+    next_ai_analysis="Session order is real and load is now the live variable. R26 (first dab, larger load) → ~50s; R28 (first dab, maybe-too-large load) → ~32s. Run 29: same curve, same first-dab condition, deliberate load pulled back toward R26's — not minimal, just not overdoing it. If harshness pushes back toward 50s, load is confirmed as the modulator and the gentle descent has a workable late-harshness ceiling. If it stays at ~32s on a smaller load, something else explains the R26/R28 gap.",
     next_waypoints=FW106_DESCENT_GENTLE,
     jar_index='',
 )
