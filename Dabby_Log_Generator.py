@@ -3,7 +3,7 @@
 Dabby the House Rig — Session Log Generator
 Produces index.html — a mobile-responsive, screen-optimized web document.
 Data lives in jars/<slug>.py (assembled by jar_manifest); this file is rendering logic only.
-To log a new run: edit the jar file in jars/, then add the run section in build_html().
+To log a new run: edit the jar file in jars/ — no generator edits needed; the render loop picks it up.
 """
 
 from datetime import datetime, date, timezone, timedelta

@@ -49,6 +49,8 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 - Offset is a stable calibration constant, not a variable dependent on loading timing.
 - Do not reason about cold-material thermal shock. It does not apply.
 
+**Session timer:** The countdown starts when the first waypoint temperature is achieved — not when the heating cycle begins. Pre-heat from room temperature to the first waypoint happens before t=0. At t=0, the insert is already at the opening setpoint. The first draw typically happens at or immediately after t=0. This means the ramp phase occurs during the first draw, not before it — material is vaporizing while the curve is still ascending. The app displays seconds *remaining* in the cycle, so session observations are typically reported as time-remaining rather than elapsed time. See §6 Timing precision for how draw count is used as a fallback.
+
 ---
 
 ## 4. Terpene & Temperature Reference
