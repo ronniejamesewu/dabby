@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 122 across 17 strains
+- **Total runs:** 123 across 17 strains
 - **Active since:** May 2, 2026 (59 days)
 - **Last run date:** June 29, 2026
 
@@ -182,11 +182,11 @@
 ---
 
 ### Fire Water #106
-**28 sessions** &nbsp;·&nbsp; Last: June 29, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**29 sessions** &nbsp;·&nbsp; Last: June 29, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 29: gentle descent (440→420@30s→400@60s), first dab, deliberate moderate load — test whether load size explains the R26 vs R28 harshness timing gap
+**Next:** Run 30: gentle descent (440→420@30s→400@60s), first dab of day, moderate load — complete the session-order isolation against R29
 
-**AI Analysis:** Session order is real and load is now the live variable. R26 (first dab, larger load) → ~50s; R28 (first dab, maybe-too-large load) → ~32s. Run 29: same curve, same first-dab condition, deliberate load pulled back toward R26's — not minimal, just not overdoing it. If harshness pushes back toward 50s, load is confirmed as the modulator and the gentle descent has a workable late-harshness ceiling. If it stays at ~32s on a smaller load, something else explains the R26/R28 gap.
+**AI Analysis:** Load effect confirmed on the 2nd-dab axis: R27 (larger) → ~16s vs R29 (moderate) → ~30s. The remaining piece is first-dab moderate-load. Run 30: same curve, first dab of day, moderate load (same class as R29). If harshness holds near 50s, the gentle descent ceiling under controlled conditions is well-characterized. If it comes in at ~30s anyway, something beyond session order and load explains R26's late profile.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, gentle descent start
