@@ -29,7 +29,7 @@ equipment rig, or baseline curve is added.
 #   Line 114 — StrainStatus
 #   Line 134 — TerpeneEntry
 #   Line 144 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
-#   Line 173 — # ── EQUIPMENT (RIG_1 – RIG_5)
+#   Line 173 — # ── EQUIPMENT (RIG_1 – RIG_6)
 #   Line 222 — # ── TERPENE REFERENCE
 #   Line 266 — # ── COLOR RESOLUTION
 #   Line 318 — # ── VALIDATION (validate, validate_accent_colors)
@@ -62,7 +62,7 @@ class CarbCap:
 @dataclass
 class Pearl:
     diameter_mm: int
-    material: str    # "quartz" — future materials TBD
+    material: str    # "quartz", "synthetic ruby"
 
 @dataclass
 class EquipmentConfig:
@@ -95,15 +95,15 @@ class CompletedRun:
     duration_seconds: int = 65
     endpoint_note: str = ""          # "steady (no ramp)", "same as Run 1", etc.
 
-    # Session content — all fields live here; generator is rendering-only (Step 3)
+    # Session content — all fields live here; generator is rendering-only
     swab: str = ""
     session_char: str = ""
     intensity: str | None = None
-    read: str = ""                   # interpretation
-    verdict: str = ""
+    read: str = ""                   # SUPERSEDED by analysis — do not populate on new runs
+    verdict: str = ""                # SUPERSEDED by analysis — do not populate on new runs
     extra_rows: list | None = None   # genuinely one-off result rows (e.g. OC R5 "Observation:")
 
-    # Analysis (currently string literals in build_html() — migrated in Step 3)
+    # Analysis
     dab_notes: str = ""              # user's read
     analysis: str = ""               # AI synthesis (historically stable, rendered read-only)
 
@@ -118,12 +118,11 @@ class StrainStatus:
     accent: str | None
     slug: str
 
-    # Profile content (currently string literals in build_html() — migrated in Step 3)
+    # Profile content
     info: list | None = None         # rows for info_table()
     terpene_note: str = ""           # <p class="note"> in profile section
 
-    # Current "What to Try Next" — revisable strain-level guidance (N5)
-    # Today these are inline args to what_to_try_next_html(); Step 3 makes them explicit.
+    # Current "What to Try Next" — revisable strain-level guidance.
     # NOT sourced from any run's frozen analysis.
     next_dab_notes: str = ""
     next_ai_analysis: str = ""

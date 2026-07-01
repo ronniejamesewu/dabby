@@ -165,9 +165,9 @@ If there is already an open PR when the handoff update is written, push the hand
 
 ## Reference Sections
 
-The four reference sections (Device & Session Constants, Swab Color Reference, Baseline
-Curve, Terpene Reference) live on the main index page as collapsible blocks. Do not
-move them to a separate page — they collapse when not needed and are rarely accessed.
+The five reference sections (Device & Session Constants, Swab Color Reference, Baseline
+Curve, Terpene Reference, Rig Reference) live on the main index page as collapsible blocks.
+Do not move them to a separate page — they collapse when not needed and are rarely accessed.
 
 ## Reasoning Standard
 
