@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 124 across 17 strains
+- **Total runs:** 125 across 17 strains
 - **Active since:** May 2, 2026 (60 days)
 - **Last run date:** June 30, 2026
 
@@ -225,11 +225,11 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**5 sessions** &nbsp;·&nbsp; Last: June 30, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**6 sessions** &nbsp;·&nbsp; Last: June 30, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 6: same descent curve (440→420@30s→400@60s), lighter load — confirm whether intensity is load-driven or curve-driven
+**Next:** Run 7: repeat same descent curve and similar lighter load — confirm reproducibility now that load size resolved Run 5's overwhelm
 
-**AI Analysis:** Same descent curve (440→420@30s→400@60s), lighter load. Run 5 was overwhelming partly because it was a big load on a new curve shape after two weeks away. A lighter first load would still deliver the descent's terpene character with a more manageable session, and gives a cleaner read on whether cycle 2 harshness is load-driven or cumulative-exposure driven. If intensity is still big on a lighter load, the curve is the driver. If it's more manageable, load was the primary variable.
+**AI Analysis:** Repeat the same curve and a similar lighter load on Run 7 to confirm reproducibility before calling this the jar's working point — one clean comparison against Run 5's overwhelm isn't enough, especially given this thumbprint's documented run-to-run load variability (Runs 1–4 all fought portion control on the runny material). If Run 7 replicates clean and medium, this curve/load combination is the baseline going forward. If intensity swings again despite a deliberately controlled load, load control on this specific jar is as unreliable as it's looked all along, and the fix becomes weighing or eyeballing more carefully before starting rather than trusting the "lighter" instruction alone.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start

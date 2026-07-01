@@ -109,13 +109,28 @@ RUNS = [
         dab_notes='Cycle 1: 14 second hit and then maybe an 8 second hit from that cycle but it was so terpy I felt like I was choking to death. No harshness but coughing and flavor for days. Cycle 2: got a rip, same character, massive terp load, some harshness appearing — put it down to exhale, coughed a lot on exhale. When I recovered I didn\'t remember I had done the rip so I hit the button to start what I thought was the second cycle but was actually the third cycle, then I realized that I had short stopped the previous cycle and then I restarted it and did another cycle and then did one big rip from that and that\'s when I couldn\'t do any more. God I can\'t hang with it. Harshness moderate, dropped to mild after water. Intensity is fucking big and kind of buzzy. Swabs plentifully showing brown reclaim.',
         analysis='Run 5, first descent curve on this jar, 440°F open → 400°F floor, Rig 5, big load (roughly equal proportions of both rosins), first dab of the day. 14 days and six-plus other jars since Run 4.\n\nThe most striking result: the session ended because intensity overwhelmed, not because harshness crossed a threshold. All four prior runs ended at the tail-harshness ceiling. This run had no harshness on cycle 1 at all — terpene-load cough, no airway harshness, flavor throughout. Harshness appeared on cycle 2 (moderate, dropped to mild after water) but wasn\'t the stopping condition. Intensity was. That\'s a categorically different session profile from any prior run on this jar.\n\nThe descent curve is the most plausible driver. FW106 R23 (Rig 6, 440→350°F descent, first dab, normal load) and WM R16 (Rig 5, same shape, first dab, larger load) both produced clean first cycles with no harshness despite the hot open. This replicates that pattern on a third strain. Opening at 440°F and moving away from it immediately delivers a heavy terpene bolus up front without the sustained high-temperature exposure that drove tail harshness on the ramp runs.\n\nBrown swab is the first departure from golden on this jar. Three cycles from the same load is the most parsimonious driver — same mechanism documented on FW106 where 60s duration runs returned dark golden while 40s runs were beige. 440°F open is an unresolved confound but less likely given that prior descent runs on other strains didn\'t produce notably darker swabs.\n\nThe memory gap after cycle 2 is a data point about intensity, not noise. "Fucking big, buzzy" — Randy Watzon\'s Runtz lineage (Zkittlez × Gelato) is directionally consistent with the cerebral character noted.\n\nUser\'s working hypothesis going in: jar-to-jar variation in optimal curve is small; the descent shape should generalize. One run, large load, long jar gap — the hypothesis earns a supportive data point, not confirmation.',
     ),
+    CompletedRun(
+        strain='Banana Punch #4 + Randy Watzon #13',
+        run_date=date(2026, 6, 30),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 1, 4, 24, 25, tzinfo=timezone.utc),
+        waypoints=BP4RW13_DESCENT_GENTLE,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — same descent curve as Run 5, lighter load',
+        swab='golden',
+        session_char='Lighter load; single cycle; depletion right near session end; harshness slight in the last third; medium intensity',
+        intensity='medium',
+        dab_notes='It was lighter load, golden swabs, depletion right near the end, harshness slight in the last third. Medium effect.',
+        analysis='Run 6, same descent curve as Run 5 (440°F open → 420°F @30s → 400°F floor @60s), Rig 5, lighter load, single cycle, second dab of the day. This directly answers the question Run 5 left open: is intensity load-driven or curve-driven? Medium effect on a lighter load with an identical curve — down sharply from Run 5\'s overwhelming, memory-gap intensity — points at load as the primary lever, not the curve itself. Golden swab returns after Run 5\'s one-off brown, consistent with the swab-darkening pattern being duration/cycle-count driven rather than descent-curve-specific (documented cross-strain on FW106). Harshness stayed mild, appearing in the last third with depletion arriving right near session end — consistent with the harshness-preceding-depletion pattern seen on LHBH R3 (Rig 6), not a pure empty-insert signal. Fourth data point (with FW106 R23, WM R16, and this jar\'s own R5) supporting the descent shape\'s core finding: opening hot and moving immediately away from peak temperature front-loads the terpene bolus without sustained high-temp exposure. With load now controlled down, the curve itself reads as comfortably within range — Run 5\'s ceiling problem was the load, not the shape. Single comparison point; "lighter load → medium" isn\'t a mapped relationship yet, just one data point against Run 5\'s much bigger load.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Banana Punch #4 + Randy Watzon #13',
     profile_anchor='#bp4rw13-profile',
-    next_text='Run 6: same descent curve (440→420@30s→400@60s), lighter load — confirm whether intensity is load-driven or curve-driven',
+    next_text='Run 7: repeat same descent curve and similar lighter load — confirm reproducibility now that load size resolved Run 5\'s overwhelm',
     accent=None,
     slug='bp4rw13',
     info=[
@@ -127,7 +142,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Same descent curve (440→420@30s→400@60s), lighter load. Run 5 was overwhelming partly because it was a big load on a new curve shape after two weeks away. A lighter first load would still deliver the descent\'s terpene character with a more manageable session, and gives a cleaner read on whether cycle 2 harshness is load-driven or cumulative-exposure driven. If intensity is still big on a lighter load, the curve is the driver. If it\'s more manageable, load was the primary variable.',
+    next_ai_analysis='Repeat the same curve and a similar lighter load on Run 7 to confirm reproducibility before calling this the jar\'s working point — one clean comparison against Run 5\'s overwhelm isn\'t enough, especially given this thumbprint\'s documented run-to-run load variability (Runs 1–4 all fought portion control on the runny material). If Run 7 replicates clean and medium, this curve/load combination is the baseline going forward. If intensity swings again despite a deliberately controlled load, load control on this specific jar is as unreliable as it\'s looked all along, and the fix becomes weighing or eyeballing more carefully before starting rather than trusting the "lighter" instruction alone.',
     next_waypoints=BP4RW13_DESCENT_GENTLE,
     jar_index='',
 )
