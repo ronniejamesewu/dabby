@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 29, 2026 — Session 136
+## Last updated: June 30, 2026 — Session 137
 
 ---
 
@@ -246,6 +246,8 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - **Asking for confirmation on new waypoint constant definitions.** Adding a local waypoint constant is a standard mechanical part of run logging — already defined as such in CLAUDE.md. It follows directly from an approved run and requires no separate confirmation. Session 117.
 
 - **Recommending removal of harm-reduction behaviors to isolate experimental variables (researcher-participant conflict of interest).** When a What to Try Next recommendation proposes withholding or modifying a protective behavior (water, draw discipline, stopping early) to clean up a variable, it optimizes for data quality at the participant's cost. The roles of researcher and participant are collapsed in this project — there is no external check. The fix: (1) harm-reduction behaviors are not experimental variables to be controlled away; they are part of the technique; (2) when a recommendation involves changing a protective behavior, the tradeoff must be stated explicitly and the session goal takes priority over experimental cleanness; (3) if the recommendation serves the data rather than the session, say so and let the user decide. First identified instance: recommending 'no water' after papzp22 Run 6 (June 22, 2026) to isolate whether water was confounding the zero-harshness result. Session 127.
+
+- **Using `git checkout -b` on the designated session branch when the harness already created it.** The session instructions include the designated branch name because the harness creates it during session initialization — the branch name being handed over *is* the signal that the branch already exists. Using `-b` fails immediately. Correct behavior: `git checkout <branch-name>`, or fetch first if the remote branch isn't local yet. Session 137.
 
 - **Claiming "programmed active descent" and "passive decay" are distinct mechanisms when the device has no active cooling.** The Switch² has no active cooling element — descent curves work by stopping the heater and letting the insert passively lose heat while the PID controller holds the temperature to the programmed waypoints. "Programmed descent" and "passive decay" describe the same physical process (passive heat loss); the distinction is whether the controller is tracking waypoints or free-running. Presented these as two different mechanisms and required two user corrections before the framing was right. The position "descent curves not a useful lever on Rig 5" was based on sapphire's slow free-decay (~1°F/sec), which is real — but PID-controlled descent via waypoints is a different operating mode, not a different mechanism. WM R16 empirically retired the "not a useful lever" position. Session 132.
 
