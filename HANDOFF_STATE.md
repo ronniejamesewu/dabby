@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 127 across 17 strains
+- **Total runs:** 128 across 17 strains
 - **Active since:** May 2, 2026 (61 days)
 - **Last run date:** July 1, 2026
 
@@ -225,11 +225,11 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**8 sessions** &nbsp;·&nbsp; Last: July 1, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**9 sessions** &nbsp;·&nbsp; Last: July 1, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 9: repeat the same descent curve, push into a second cycle, and watch for chest-located harshness recurring
+**Next:** Run 10: repeat the same descent curve on Rig 6, first dab of the day, normal load — confirm whether the toasty/near-combustion flavor at 440°F open repeats or was session-order driven
 
-**AI Analysis:** Run 9: repeat the same descent curve, normal load, and push into a deliberate second cycle instead of stopping after the first — tests whether harshness reappears with depletion, same open question as before. This time, also note harshness location specifically. R8's chest-located, post-session harshness is the second instance of that exact combination on this curve shape (after Papaya + Z Pie #22 R7) — a third occurrence, on this jar or another running the same shape, would move it from "candidate" to a real curve-shape-linked pattern worth its own line in cross-strain wisdom.
+**AI Analysis:** Run 10: repeat this exact curve on Rig 6, normal load, first dab of the day — isolate whether the toasty/near-combustion flavor is repeatable at 440°F open on this rig, or was specific to being the third dab of the day (accumulated heat exposure is an unresolved confound here). If it recurs on a fresh start, pull the open point back — 430°F or 425°F — rather than touching the floor, since the flavor read as present early, not just at the hold. Also worth resolving before Run 10: how to handle R5–R8's disputed Rig 5 equipment field, since it's currently sitting as an open data question rather than a corrected one.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start

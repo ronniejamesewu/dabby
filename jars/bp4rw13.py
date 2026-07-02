@@ -154,13 +154,28 @@ RUNS = [
         dab_notes='Dense high terp rips. Couching and choking from the terps. Got many fat rips, by end of first cycle I had sense it was done. Amber reclaim, minimal amount on swabs. Load size looked normal to me. Effect was medium right now. There was a little bit of harshness, it was in chest though. Late and after.',
         analysis='Run 8, same descent curve as Runs 5–7 (440°F open → 420°F @30s → 400°F floor), Rig 5, second dab of the day, normal load, single cycle — ended voluntarily when it felt done. Amber swab with minimal reclaim is the lightest reclaim reading on this curve\'s runs to date, consistent with a normal (not oversized) load being more fully consumed. Coughing and choking read as terp-load cough — dense vapor delivery, documented cross-strain (FW106 R1, Hive #1 R8) as distinct from airway harshness. Mild harshness did appear late in the cycle, chest-located, persisting after the session ended rather than resolving with it. This is notable beyond this jar: Papaya + Z Pie #22 R7, on the same hot-open/gentle-decline curve shape, flagged the same combination — chest location and a post-session hit — as a candidate curve-shape-specific signal rather than a timing or dose question. Two strains, same curve shape, same unusual location and persistence now on record; still early, but a real candidate pattern to watch rather than one-off noise. Medium intensity on normal load continues to sit where expected — between R6\'s light-load medium and R7\'s bigger-load medium-high — supporting load size as the primary intensity lever on this curve, independent of the harshness-location question.',
     ),
+    CompletedRun(
+        strain='Banana Punch #4 + Randy Watzon #13',
+        run_date=date(2026, 7, 1),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 7, 2, 3, 53, 45, tzinfo=timezone.utc),
+        waypoints=BP4RW13_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — same descent curve as Runs 5–8, first run on Rig 6',
+        swab='dark golden',
+        session_char='No depletion harshness; toasty near-combustion flavor built through the session; mild harshness both throat and chest, resolved with water; two cycles (full + 2 draws); medium-high and rising intensity',
+        intensity='medium-high',
+        dab_notes='The headline is no depletion harshness, just toasty flavor growing. Swabs were dark golden. Two cycles, did two draws off second cycle then terminated. Normal load. A little bit in both throat and chest. Medium high and rising. Toasty is definitely a combusted flavor, not burning but almost. It resolved with sips of water.',
+        analysis='Run 9, same descent curve as Runs 5–8 (440°F open → 420°F @30s → 400°F floor), first run on this jar logged as Rig 6 rather than Rig 5. Given tonight\'s discussion, R5–R8\'s Rig 5 equipment field is disputed — the working belief is that it\'s a logging error carried forward by prior sessions defaulting to the jar\'s last-used rig instead of the last rig actually run. That correction hasn\'t been applied to R5–R8 yet, so treat any comparison between this run and those four as resting on unresolved equipment history.\n\nTwo cycles — full first cycle, two draws into the second before stopping — and notably the stop wasn\'t depletion-driven. That breaks from the draw-count-as-depletion-proxy pattern documented on FW106/Watermellos. Instead, a toasty, near-combustion flavor built through the session and read as the actual limiting factor — first time this jar has thrown that character. It parallels FW106 R11-12\'s toasty-flavor finding (Rig 5, above-ceiling degradation, swab staying light despite the flavor signal), but that was a different rig and different jar; whether Rig 6 runs this material hotter than Rig 5 did at the same 440°F open, or this is specific to this jar this late in its life, isn\'t resolvable from one run.\n\nHarshness was mild, throat and chest both — a departure from R8\'s chest-only, persisted-after-session-ended read — and resolved with water rather than lingering. This doesn\'t extend the papzp22 R7 / bp4rw13 R8 candidate pattern (chest-located, post-session persistence); if anything it argues against treating that as settled, since the same curve just produced a different location and different resolution behavior.\n\nDark golden swab sits consistent with this jar\'s cycle-count/swab-darkening pattern — between R6\'s golden (1 cycle) and R7\'s amber-to-brown (2 cycles), matching this run\'s ~2-cycle exposure. Medium-high, rising intensity on a normal load continues to track with the load-size-intensity relationship established across R5–R7.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Banana Punch #4 + Randy Watzon #13',
     profile_anchor='#bp4rw13-profile',
-    next_text='Run 9: repeat the same descent curve, push into a second cycle, and watch for chest-located harshness recurring',
+    next_text='Run 10: repeat the same descent curve on Rig 6, first dab of the day, normal load — confirm whether the toasty/near-combustion flavor at 440°F open repeats or was session-order driven',
     accent=None,
     slug='bp4rw13',
     info=[
@@ -172,7 +187,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Run 9: repeat the same descent curve, normal load, and push into a deliberate second cycle instead of stopping after the first — tests whether harshness reappears with depletion, same open question as before. This time, also note harshness location specifically. R8\'s chest-located, post-session harshness is the second instance of that exact combination on this curve shape (after Papaya + Z Pie #22 R7) — a third occurrence, on this jar or another running the same shape, would move it from "candidate" to a real curve-shape-linked pattern worth its own line in cross-strain wisdom.',
+    next_ai_analysis='Run 10: repeat this exact curve on Rig 6, normal load, first dab of the day — isolate whether the toasty/near-combustion flavor is repeatable at 440°F open on this rig, or was specific to being the third dab of the day (accumulated heat exposure is an unresolved confound here). If it recurs on a fresh start, pull the open point back — 430°F or 425°F — rather than touching the floor, since the flavor read as present early, not just at the hold. Also worth resolving before Run 10: how to handle R5–R8\'s disputed Rig 5 equipment field, since it\'s currently sitting as an open data question rather than a corrected one.',
     next_waypoints=BP4RW13_DESCENT_GENTLE,
     jar_index='',
 )
