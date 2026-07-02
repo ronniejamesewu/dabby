@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 126 across 17 strains
+- **Total runs:** 127 across 17 strains
 - **Active since:** May 2, 2026 (61 days)
 - **Last run date:** July 1, 2026
 
@@ -225,11 +225,11 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**7 sessions** &nbsp;·&nbsp; Last: July 1, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**8 sessions** &nbsp;·&nbsp; Last: July 1, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
-**Next:** Run 8: repeat the same descent curve — load size will keep varying here; that's a feature of the jar, not something to fix
+**Next:** Run 9: repeat the same descent curve, push into a second cycle, and watch for chest-located harshness recurring
 
-**AI Analysis:** Run 8: repeat the same descent curve — load control isn't the lever to keep chasing on this jar. You're already loading as precisely as you can, and Run 7 still landed bigger than intended; that's consistent with this thumbprint's runniness making load size inherently hard to pin down, not a technique gap. Three points on this curve now — big (R5, overwhelming), light (R6, medium), bigger-than-intended (R7, medium-high) — consistently track load size to intensity, which is enough of a pattern to treat as background rather than something to keep isolating. Read Run 8, and future runs, with load-driven intensity swings as an expected feature of this jar, not a confound to eliminate.
+**AI Analysis:** Run 9: repeat the same descent curve, normal load, and push into a deliberate second cycle instead of stopping after the first — tests whether harshness reappears with depletion, same open question as before. This time, also note harshness location specifically. R8's chest-located, post-session harshness is the second instance of that exact combination on this curve shape (after Papaya + Z Pie #22 R7) — a third occurrence, on this jar or another running the same shape, would move it from "candidate" to a real curve-shape-linked pattern worth its own line in cross-strain wisdom.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start
