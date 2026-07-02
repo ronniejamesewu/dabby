@@ -83,6 +83,16 @@ def _validate_manifest_preflight():
                     errors.append(
                         f"Jar '{slug}' line {lineno}: disallowed import: {stripped!r}"
                     )
+                # Edit-tool contamination signature: an escaped straight quote
+                # (\") converted to backslash + typographic quote — malforms any
+                # HTML attribute it was escaping. Plain curly quotes in prose are
+                # fine; only the backslash pairing is the bug.
+                if '\\“' in line or '\\”' in line:
+                    errors.append(
+                        f"Jar '{slug}' line {lineno}: backslash + curly quote — Edit-tool "
+                        f"contamination. Fix by byte position with a Python script, not the "
+                        f"Edit tool (see HANDOFF_WISDOM.md failure modes)."
+                    )
 
     if os.path.isdir(jar_dir):
         jar_files = {f[:-3] for f in os.listdir(jar_dir)

@@ -8,6 +8,8 @@
 - **Total runs:** 128 across 17 strains
 - **Active since:** May 2, 2026 (61 days)
 - **Last run date:** July 1, 2026
+- **Most recent run (all jars, by utc_logged_at):** Banana Punch #4 + Randy Watzon #13 Run 9 — July 1, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
 
@@ -60,7 +62,7 @@
 ---
 
 ### Caramel Apple Gelato
-**1 session** &nbsp;·&nbsp; Last: unknown &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
+**1 session** &nbsp;·&nbsp; Next run: 2 &nbsp;·&nbsp; Last: unknown &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
 **Next:** Try 430°F endpoint
 
@@ -76,7 +78,7 @@
 ---
 
 ### The Hive #1
-**8 sessions** &nbsp;·&nbsp; Last: June 20, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**8 sessions** &nbsp;·&nbsp; Next run: 9 &nbsp;·&nbsp; Last: June 20, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 9: push to 425°F — first dab of day, larger load
 
@@ -91,7 +93,7 @@
 ---
 
 ### Maple Bacon Donut
-**4 sessions** &nbsp;·&nbsp; Last: May 12, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
+**4 sessions** &nbsp;·&nbsp; Next run: 5 &nbsp;·&nbsp; Last: May 12, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
 **Next:** Try faster ramp to 460°F on Run 5
 
@@ -106,7 +108,7 @@
 ---
 
 ### Rain Fruit
-**3 sessions** &nbsp;·&nbsp; Last: May 11, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
+**3 sessions** &nbsp;·&nbsp; Next run: 4 &nbsp;·&nbsp; Last: May 11, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
 **Next:** Walk endpoint up incrementally — try 423°F on Run 4
 
@@ -122,7 +124,7 @@
 ---
 
 ### Blueberry 36 #1
-**3 sessions** &nbsp;·&nbsp; Last: May 16, 2026 &nbsp;·&nbsp; Equipment: Rig 2 — Dr. Dabber stock quartz · Gemcup Glass Gemlock joystick · Dr. Dabber stock bubbler
+**3 sessions** &nbsp;·&nbsp; Next run: 4 &nbsp;·&nbsp; Last: May 16, 2026 &nbsp;·&nbsp; Equipment: Rig 2 — Dr. Dabber stock quartz · Gemcup Glass Gemlock joystick · Dr. Dabber stock bubbler
 
 **Next:** Try 410°F endpoint on Run 4 — tail harshness consistent at 415°F across Runs 2 and 3
 
@@ -137,7 +139,7 @@
 ---
 
 ### Orange Candy
-**14 sessions** &nbsp;·&nbsp; Last: June 4, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**14 sessions** &nbsp;·&nbsp; Next run: 15 &nbsp;·&nbsp; Last: June 4, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
 **Next:** Run 15: repeat 8s ramp to 420°F with normal load — clean read on temperature ceiling
 
@@ -152,7 +154,7 @@
 ---
 
 ### Blueberry 36 #2
-**6 sessions** &nbsp;·&nbsp; Last: June 3, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**6 sessions** &nbsp;·&nbsp; Next run: 7 &nbsp;·&nbsp; Last: June 3, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
 
 **Next:** Run 7: repeat 8s ramp to 420°F — confirm Run 6 swab and vapor improvement
 
@@ -167,7 +169,7 @@
 ---
 
 ### Blueberry 36 #4
-**1 session** &nbsp;·&nbsp; Last: June 17, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**1 session** &nbsp;·&nbsp; Next run: 2 &nbsp;·&nbsp; Last: June 17, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 2: try 425°F — up 5°F from baseline, same 8s ramp and 60s hold
 
@@ -182,7 +184,7 @@
 ---
 
 ### Fire Water #106
-**29 sessions** &nbsp;·&nbsp; Last: June 29, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**29 sessions** &nbsp;·&nbsp; Next run: 30 &nbsp;·&nbsp; Last: June 29, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 30: gentle descent (440→420@30s→400@60s), first dab of day, moderate load — complete the session-order isolation against R29
 
@@ -196,7 +198,7 @@
 ---
 
 ### Watermellos
-**18 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**18 sessions** &nbsp;·&nbsp; Next run: 19 &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 19: same descent curve (440→420@30s→400@60s), first dab of day — confirm whether harshness ceiling at ~37s remaining is curve-driven
 
@@ -210,7 +212,7 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**7 sessions** &nbsp;·&nbsp; Last: June 23, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: June 23, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 8: 420°F on Rig 6, first dab, deliberate larger load — test whether load size is the flavor lever
 
@@ -225,7 +227,7 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**9 sessions** &nbsp;·&nbsp; Last: July 1, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**9 sessions** &nbsp;·&nbsp; Next run: 10 &nbsp;·&nbsp; Last: July 1, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 10: repeat the same descent curve on Rig 6, first dab of the day, normal load — confirm whether the toasty/near-combustion flavor at 440°F open repeats or was session-order driven
 
@@ -239,7 +241,7 @@
 ---
 
 ### Papaya + Z Pie #22
-**7 sessions** &nbsp;·&nbsp; Last: June 27, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: June 27, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 8: descent to 415°F — 440@0s → 428@30s → 415@60s, draw discipline, same load class
 

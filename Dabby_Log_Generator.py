@@ -52,6 +52,42 @@ def _fmt_equipment_display(eq):
         return f"{rig_label} \N{EM DASH} {body}"
     return body
 
+# ── PENDING DABS TRIPWIRE ────────────────────────────────────────────────────
+
+def _check_pending_dabs(runs):
+    """Refuse to generate while captured dab timestamps have no matching run.
+
+    pending_dab.py writes .pending_dabs.json the moment a dab is announced.
+    Entries whose timestamp matches a logged run's utc_logged_at are auto-pruned
+    here; leftovers are captured dabs that never became runs, and generating
+    past them is how they get silently forgotten. Escape hatch for a generate
+    that legitimately precedes reconciliation (e.g. a docs-only change while a
+    party queue is waiting): set DABBY_ALLOW_PENDING=1.
+    """
+    import json, os
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.pending_dabs.json')
+    if not os.path.isfile(path):
+        return
+    with open(path, encoding='utf-8-sig') as fh:  # -sig: BOM-tolerant (PowerShell writes BOMs)
+        entries = json.load(fh)
+    if not entries:
+        return
+    logged = {r.utc_logged_at for r in runs if r.utc_logged_at is not None}
+    remaining = [e for e in entries
+                 if datetime.fromisoformat(e['utc']) not in logged]
+    if len(remaining) != len(entries):
+        with open(path, 'w', encoding='utf-8') as fh:
+            json.dump(remaining, fh, indent=2, ensure_ascii=False)
+    if remaining and not os.environ.get('DABBY_ALLOW_PENDING'):
+        print("PENDING DABS — captured but never logged:")
+        for e in remaining:
+            note = f" — {e['note']}" if e.get('note') else ""
+            print(f"  {e['utc']}{note}")
+        print("Log these runs (`python pending_dab.py consume` prints the paste-ready")
+        print("timestamp lines), discard deliberately (`python pending_dab.py discard N`),")
+        print("or set DABBY_ALLOW_PENDING=1 to generate without reconciling.")
+        raise SystemExit(1)
+
 # ── HELPERS ────────────────────────────────────────────────────────────────
 
 def _classify_curve_shape(waypoints):
@@ -610,7 +646,9 @@ def build_html():
     c += curve_table(BASELINE_CURVE)
     c += '<p class="note">Terpene zone annotations in individual run curves are approximate orientation points — not measured targets. The same common cannabis terpenes appear across most strains. Annotations reflect boiling point ranges, not confirmed strain-specific data.</p>'
     c += '<h3>Rationale</h3>'
-    c += '<p>380°F opening and fast 20-second ramp reflect the shape that has performed best across strains in the log. 416°F endpoint sits below the cross-strain harshness boundary (≥430°F produced tail harshness on seven strains). All waypoints are starting points — swab results drive adjustment.</p>'
+    _bl_end = BASELINE_CURVE[-1].temp_f
+    _bl_ramp = next(wp.time_s for wp in BASELINE_CURVE if wp.temp_f == _bl_end)
+    c += f'<p>{BASELINE_CURVE[0].temp_f}°F opening and fast {_bl_ramp}-second ramp reflect the shape that has performed best across strains in the log. {_bl_end}°F endpoint sits below the cross-strain harshness boundary (≥430°F produced tail harshness on seven strains). All waypoints are starting points — swab results drive adjustment.</p>'
     sections.append(collapsible_section("baseline", "Baseline Curve", c, header_class="grey"))
 
     # Terpene Reference
@@ -705,6 +743,22 @@ def generate_handoff_state():
         days = (last_date - first_date).days + 1
         lines.append(f"- **Active since:** {fmt_date(first_date)} ({days} days)")
         lines.append(f"- **Last run date:** {fmt_date(last_date)}")
+
+    # Chronologically most recent run across ALL jars — the Equipment Protocol's
+    # continuity default and >3-day soft check read this line instead of
+    # re-deriving recency from list position (Session 140 failure mode).
+    with_utc = [r for r in COMPLETED_RUNS if r.utc_logged_at is not None]
+    latest = (max(with_utc, key=lambda r: r.utc_logged_at) if with_utc
+              else (max((r for r in COMPLETED_RUNS if r.run_date is not None),
+                        key=lambda r: r.run_date, default=None)))
+    if latest is not None:
+        latest_n = sum(1 for r in COMPLETED_RUNS[:COMPLETED_RUNS.index(latest) + 1]
+                       if r.strain == latest.strain)
+        lines.append(f"- **Most recent run (all jars, by utc_logged_at):** {latest.strain} "
+                     f"Run {latest_n} — {fmt_date(latest.run_date)}, {fmt_equipment(latest.equipment)}")
+
+    bl = " → ".join(f"{wp.temp_f}°F@{wp.time_s}s" for wp in BASELINE_CURVE)
+    lines.append(f"- **Canonical baseline curve (BASELINE_CURVE):** {bl}")
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -718,7 +772,8 @@ def generate_handoff_state():
         session_word = "session" if n == 1 else "sessions"
 
         lines.append(f"### {ss.name}")
-        lines.append(f"**{n} {session_word}** &nbsp;·&nbsp; Last: {fmt_date(ld)} &nbsp;·&nbsp; Equipment: {fmt_equipment(eq)}")
+        next_seg = "" if ss.slug in CLOSED else f"Next run: {n + 1} &nbsp;·&nbsp; "
+        lines.append(f"**{n} {session_word}** &nbsp;·&nbsp; {next_seg}Last: {fmt_date(ld)} &nbsp;·&nbsp; Equipment: {fmt_equipment(eq)}")
         lines.append("")
         lines.append(f"**Next:** {ss.next_text}")
         lines.append("")
@@ -738,6 +793,7 @@ def generate_handoff_state():
 # ── WRITE ─────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    _check_pending_dabs(COMPLETED_RUNS)
     html = build_html()
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)
