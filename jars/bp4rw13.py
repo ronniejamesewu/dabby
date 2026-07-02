@@ -124,13 +124,28 @@ RUNS = [
         dab_notes='It was lighter load, golden swabs, depletion right near the end, harshness slight in the last third. Medium effect.',
         analysis='Run 6, same descent curve as Run 5 (440°F open → 420°F @30s → 400°F floor @60s), Rig 5, lighter load, single cycle, second dab of the day. This directly answers the question Run 5 left open: is intensity load-driven or curve-driven? Medium effect on a lighter load with an identical curve — down sharply from Run 5\'s overwhelming, memory-gap intensity — points at load as the primary lever, not the curve itself. Golden swab returns after Run 5\'s one-off brown, consistent with the swab-darkening pattern being duration/cycle-count driven rather than descent-curve-specific (documented cross-strain on FW106). Harshness stayed mild, appearing in the last third with depletion arriving right near session end — consistent with the harshness-preceding-depletion pattern seen on LHBH R3 (Rig 6), not a pure empty-insert signal. Fourth data point (with FW106 R23, WM R16, and this jar\'s own R5) supporting the descent shape\'s core finding: opening hot and moving immediately away from peak temperature front-loads the terpene bolus without sustained high-temp exposure. With load now controlled down, the curve itself reads as comfortably within range — Run 5\'s ceiling problem was the load, not the shape. Single comparison point; "lighter load → medium" isn\'t a mapped relationship yet, just one data point against Run 5\'s much bigger load.',
     ),
+    CompletedRun(
+        strain='Banana Punch #4 + Randy Watzon #13',
+        run_date=date(2026, 7, 1),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 1, 18, 18, 13, tzinfo=timezone.utc),
+        waypoints=BP4RW13_DESCENT_GENTLE,
+        equipment=RIG_5,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — same descent curve as Runs 5–6, load bigger than planned',
+        swab='amber to brown',
+        session_char='Citrus-bitter note draw 1, heavy terp load, coughing; mild harshness ~20s left draw 2, water sip ended cycle 1; cycle 2 draw 3 tasty/slightly toasty/thin vapor; draw 4 wispy, harshness returned, terminated; medium-high intensity',
+        intensity='medium-high',
+        dab_notes='Swabs were Amber to brown, normal amount of reclaim. Hits were tasty, bitter note present in first draw. Terp load was heavy, almost too much. Coughing after first hit. Second draw got into harshness around 20 seconds left. Mild. Exhale on that one was a lot of coughing and harshness in throat. Took a sip of water and the cycle ended. I ran another cycle and hit it third time, it tasty slightly toasty, and looked thin. Fourth one was wispy and harshness was back so I terminated. Medium high hit. Citrus bitter. Load size was a little bigger than normal. Hard to portion down.',
+        analysis='Run 7, same descent curve as Runs 5–6 (440°F open → 420°F @30s → 400°F floor @60s), Rig 5, first dab of the day. Load intended to replicate Run 6\'s lighter portion but landed a little bigger — the thumbprint\'s runniness made portioning down difficult again, the same problem documented across Runs 1–4. Two cycles, four draws.\n\nIntensity landed medium-high — between Run 6\'s medium (lighter load) and Run 5\'s overwhelming (big load). This is a third data point on this jar\'s own descent curve supporting load size as the primary intensity lever established in the R5/R6 comparison: bigger load, bigger effect, on an otherwise-identical curve.\n\nHarshness showed up twice — mild at ~20s left in cycle 1 (draw 2), water sip ended that cycle; then again on draw 4 as vapor thinned to wispy, prompting the stop. The second instance lines up with the draw-count-as-depletion-proxy framing documented elsewhere in the log (FW106, Watermellos): harshness arriving as the load visibly runs out rather than at a fixed time or temperature.\n\nAmber-to-brown swab sits between Run 6\'s golden (single cycle) and Run 5\'s brown (three cycles) — consistent with cycle count, not curve or load, driving the swab-darkening pattern already noted on Run 5 and cross-referenced to FW106\'s duration-driven swab behavior.\n\nFirst citrus-bitter note logged on this jar (draw 1) — limonene is inferred from Randy Watzon\'s Runtz/Wedding Crasher lineage, so this is directionally consistent with that inference, and joins the cross-strain bitter-citrus pattern documented in HANDOFF_WISDOM (MB9ZST, MBD, OC, FW106). Single occurrence on this strain; not yet a pattern here.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Banana Punch #4 + Randy Watzon #13',
     profile_anchor='#bp4rw13-profile',
-    next_text='Run 7: repeat same descent curve and similar lighter load — confirm reproducibility now that load size resolved Run 5\'s overwhelm',
+    next_text='Run 8: repeat the same descent curve — load size will keep varying here; that\'s a feature of the jar, not something to fix',
     accent=None,
     slug='bp4rw13',
     info=[
@@ -142,7 +157,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Repeat the same curve and a similar lighter load on Run 7 to confirm reproducibility before calling this the jar\'s working point — one clean comparison against Run 5\'s overwhelm isn\'t enough, especially given this thumbprint\'s documented run-to-run load variability (Runs 1–4 all fought portion control on the runny material). If Run 7 replicates clean and medium, this curve/load combination is the baseline going forward. If intensity swings again despite a deliberately controlled load, load control on this specific jar is as unreliable as it\'s looked all along, and the fix becomes weighing or eyeballing more carefully before starting rather than trusting the "lighter" instruction alone.',
+    next_ai_analysis='Run 8: repeat the same descent curve — load control isn\'t the lever to keep chasing on this jar. You\'re already loading as precisely as you can, and Run 7 still landed bigger than intended; that\'s consistent with this thumbprint\'s runniness making load size inherently hard to pin down, not a technique gap. Three points on this curve now — big (R5, overwhelming), light (R6, medium), bigger-than-intended (R7, medium-high) — consistently track load size to intensity, which is enough of a pattern to treat as background rather than something to keep isolating. Read Run 8, and future runs, with load-driven intensity swings as an expected feature of this jar, not a confound to eliminate.',
     next_waypoints=BP4RW13_DESCENT_GENTLE,
     jar_index='',
 )

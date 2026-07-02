@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: June 30, 2026 — Session 137
+## Last updated: July 1, 2026 — Session 138
 
 ---
 
@@ -155,6 +155,7 @@ Run logging assumes equipment continuity from the most recent run. The default e
 - Visual overhaul completed (Session 113). New CSS from designer (two iterations): functional/clean register, no green, single warm `--action` accent (`oklch(46% 0.095 38)`), oklch tokens throughout, mobile-first. Chart borderColor hardcoded in script blocks changed from `#1DB954` → `oklch(18% 0.01 250)`. Do not revert to forest green or re-introduce colored UI chrome. The generator's `#1DB954` references are gone — do not restore them.
 - Closed jars in strain browser (Session 113): pill links "→ Index" to `#{slug}-index` anchor when `jar_index` is populated; no pill when `jar_index` is empty. Active jars keep "→ Next". Driven by `slug in CLOSED` check in generator, using `from jar_manifest import load_all_jars, CLOSED`.
 - Design documentation restructured (Session 113): `DESIGN_BRIEF.md` created as the primary context doc for design sessions; `Dabby_UI_Principles.md` rewritten with explicit "Hard requirement / Current implementation" distinction. These are the source documents when briefing a design agent. `Dabby_UI_Principles.md` is now the structural source of truth — do not revert to the old version (it described a 3-element wireframe for a page with 8+ components).
+- bp4rw13 load size is not further correctable via more careful portioning — user confirmed already loading as precisely as possible on this runny thumbprint, and Run 7 still landed bigger than planned. Treat load variance as an inherent feature of this jar, not a technique gap. Do not recommend weighing or portioning-technique fixes for this jar again. Session 138.
 - App temperature readout cannot be used for precise insert temperature measurement (Session 132). The Dr. Dabber app is subject to Bluetooth lag, possible display of interpolated/controller-model values rather than raw IR thermometer readings, and screen refresh lag. A readout like "353°F at 30 seconds" cannot be trusted to 1°F precision or used to characterize sapphire lag against the programmed curve. Resolving insert lag against waypoints requires independent instrumentation (a direct IR measurement of the insert surface).
 
 ---
