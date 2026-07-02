@@ -766,14 +766,15 @@ def generate_handoff_state():
     lines.append("")
 
     for ss in active_strains:
+        if ss.slug in CLOSED:
+            continue  # closed jars render as one-liners below — full detail lives in the jar file
         n  = run_counts[ss.name]
         ld = last_dates.get(ss.name)
         eq = last_equipment.get(ss.name)
         session_word = "session" if n == 1 else "sessions"
 
         lines.append(f"### {ss.name}")
-        next_seg = "" if ss.slug in CLOSED else f"Next run: {n + 1} &nbsp;·&nbsp; "
-        lines.append(f"**{n} {session_word}** &nbsp;·&nbsp; {next_seg}Last: {fmt_date(ld)} &nbsp;·&nbsp; Equipment: {fmt_equipment(eq)}")
+        lines.append(f"**{n} {session_word}** &nbsp;·&nbsp; Next run: {n + 1} &nbsp;·&nbsp; Last: {fmt_date(ld)} &nbsp;·&nbsp; Equipment: {fmt_equipment(eq)}")
         lines.append("")
         lines.append(f"**Next:** {ss.next_text}")
         lines.append("")
@@ -786,6 +787,18 @@ def generate_handoff_state():
                 lines.append(f"- {wp.time_s}s → {wp.temp_f}°F — {wp.note}")
             lines.append("")
         lines.append("---")
+        lines.append("")
+
+    closed_with_runs = [ss for ss in active_strains if ss.slug in CLOSED]
+    if closed_with_runs:
+        lines.append("## Closed Jars")
+        lines.append("*One line each — non-actionable; full run history and analysis live in `jars/<slug>.py`.*")
+        lines.append("")
+        for ss in closed_with_runs:
+            n = run_counts[ss.name]
+            ld = last_dates.get(ss.name)
+            session_word = "session" if n == 1 else "sessions"
+            lines.append(f"- **{ss.name}** ({n} {session_word}, last {fmt_date(ld)}): {ss.next_text}")
         lines.append("")
 
     return "\n".join(lines)

@@ -15,52 +15,6 @@
 
 ## Strain Status
 
-### WW Z
-**9 sessions** &nbsp;·&nbsp; Last: May 21, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
-
-**Next:** Jar done — 9 runs. If it shows up again: fast ramp to 420°F is a reasonable starting point
-
-**AI Analysis:** Jar done. Equipment config is the more likely harshness driver — Runs 8–9 (small load, spinner) both produced harshness where Run 5 (same load class, Gemlock) was clean. The 420°F endpoint also sits near the harshness boundary regardless of config. If this strain shows up again, the fast ramp to 420°F (380→400@10s→420@20s, hold to 50s) is a reasonable starting point. Harshness on the spinner at that endpoint is a known risk — step down to 415°F if it persists, or test a joystick if one's available.
-
----
-
-### Mango Banana #9 + Z + Sour Tangie
-**6 sessions** &nbsp;·&nbsp; Last: May 17, 2026 &nbsp;·&nbsp; Equipment: Rig 2 — Dr. Dabber stock quartz · Gemcup Glass Gemlock joystick · Dr. Dabber stock bubbler
-
-**Next:** Jar finished — 6 runs, May 13–17, 2026
-
-**AI Analysis:** Jar finished. Six runs over five days, May 13–17, 2026. This was also the Gemlock joystick's debut jar — every data point in this strain's history was collected on the new rig, so the baseline cross-strain confound never resolved. Harshness appeared in the tail on all six runs across three endpoint temperatures (430°F, 420°F, 415°F) and two curve shapes. A clean tail was never achieved. The fastest ramp (Run 6) produced the best first-half character and the hardest hit — the right shape arrived on the last dab of the jar.
-
----
-
-### Fembot #3
-**2 sessions** &nbsp;·&nbsp; Last: May 9, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
-
-**Next:** Not my jar — closed after 2 runs. If it shows up again: try 420°F flat hold.
-
-**AI Analysis:** Not my jar — two dabs from Matt's. Both showed harshness at 430°F across a ramp and a flat hold. The 420°F flat hold was the logical next test but didn't happen. If this strain shows up again: start there.
-
-**Proposed Curve:**
-- 0s → 420°F — Steady hold — flat 420°F from session open
-- 60s → 420°F — Endpoint
-
----
-
-### Mango Starburst #23
-**1 session** &nbsp;·&nbsp; Last: May 9, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
-
-**Next:** Not my jar — closed after 1 run. If it shows up again: repeat the baseline.
-
-**AI Analysis:** Not my jar — one dab from Matt's. Clean swab, no harshness, pine-forward character noted. Single run; no confirmation. If this strain shows up again: repeat the baseline before changing anything.
-
-**Proposed Curve:**
-- 0s → 380°F — Session open
-- 15s → 390°F — Early ascent
-- 40s → 410°F — Mid ascent
-- 65s → 430°F — Endpoint
-
----
-
 ### Caramel Apple Gelato
 **1 session** &nbsp;·&nbsp; Next run: 2 &nbsp;·&nbsp; Last: unknown &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
@@ -253,3 +207,11 @@
 - 60s → 415°F — Floor — up 15°F from Run 7
 
 ---
+
+## Closed Jars
+*One line each — non-actionable; full run history and analysis live in `jars/<slug>.py`.*
+
+- **WW Z** (9 sessions, last May 21, 2026): Jar done — 9 runs. If it shows up again: fast ramp to 420°F is a reasonable starting point
+- **Mango Banana #9 + Z + Sour Tangie** (6 sessions, last May 17, 2026): Jar finished — 6 runs, May 13–17, 2026
+- **Fembot #3** (2 sessions, last May 9, 2026): Not my jar — closed after 2 runs. If it shows up again: try 420°F flat hold.
+- **Mango Starburst #23** (1 session, last May 9, 2026): Not my jar — closed after 1 run. If it shows up again: repeat the baseline.
