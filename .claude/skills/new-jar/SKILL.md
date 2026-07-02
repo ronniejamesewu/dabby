@@ -347,17 +347,21 @@ grep -h "'Producer'" jars/*.py
 ```
 
 **Step 2 subagent path — first live exercise July 2, 2026 (dogfood test,
-dbrb hide-and-recreate, PASS-WITH-FINDINGS):** both paths ran in the same
-test and their findings **agreed exactly** — content quality of the brief is
-confirmed on the real nested spawn, not just the inline substitution. The
-observed weakness is the handoff, not the research: the nested agent stalled
-repeatedly before returning (in a two-level test harness — agent testing an
-agent spawning an agent; a normal session has only one nesting level, so
-expect better but not guaranteed behavior). Operational rule: spawn the
-subagent per this skill, but if it hasn't returned by the time the rest of
-step 1/3 prep is done, start the inline `WebSearch`/`WebFetch` fallback with
-the same brief and stopping rule rather than idling — whichever completes
-first wins, and they should agree. Test note for the record: the recreated
-jar matched golden on shape, slug, boilerplate, and load-position caveat;
-lineage came back one generation shallower on one branch (Larry OG) and
-deeper on others — depth parity, not regression.
+dbrb hide-and-recreate, PASS-WITH-FINDINGS):** the nested spawn launched and
+its research visibly completed in its own transcript (user-observed), but
+the agent→agent handoff **never delivered the report back** despite repeated
+retrieval attempts. Caveat on the caveat: this was a two-level test harness
+(an agent testing an agent spawning an agent); a normal session has one less
+nesting level. The jar that graded PASS was built entirely from the inline
+`WebSearch`/`WebFetch` fallback with the same brief and stopping rule. (The
+nested agent's report did surface later, delivered to the top-level session
+after its parent completed — and its quality matched or exceeded the inline
+pass, with anchor-confirmed crosses and full thread accounting. So the brief
+produces good research on both paths; only the handoff timing is unreliable.)
+Operational rule: spawn the subagent per this skill, but once step 1/3 prep
+is done, start the inline fallback in parallel rather than idling on the
+handoff — first usable result wins. Test outcome for the record: recreated
+jar matched golden on info-table shape, slug, boilerplate, and the
+load-position caveat; tier labeling followed this skill's current guidance
+(the golden predates it); lineage landed one generation shallower on the
+Larry OG branch and deeper on branches the golden skips.
