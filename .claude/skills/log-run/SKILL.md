@@ -1,0 +1,222 @@
+---
+name: log-run
+description: Log a completed dab run into this Dabby project — the full pipeline from the user's report to a merged PR. Trigger when the user reports results of a dab ("that was intense, swabs were golden...", "ok here's how it went", "log it") or asks to log/record a run, including post-dated runs ("I dabbed twice yesterday"). Also trigger for reconciliation: when .pending_dabs.json holds party-mode captures waiting to be logged, or the generator's PENDING DABS tripwire fires. Covers the Beat 1/Beat 2 readback, drafting analysis for approval, writing the jar file, regenerating, and shipping the PR. A run is logged ONLY when the user initiates it — never from a captured timestamp, a planned next run, or a conversational mention alone.
+---
+
+# Log Run
+
+The pipeline from "here's how it went" to a merged, rendered run. The protocol
+content lives in `Dabby_Handoff_Notes.md` and `CLAUDE.md` — this skill is the
+assembly order and the gates, not a copy of the rules. Where a step says
+"apply the X rules", read that section live and apply it; don't work from
+memory of it.
+
+## Hard gates — read these before step 1
+
+- **Only the user initiates logging.** A pending capture, a "What to Try
+  Next" plan, or a strain mentioned in passing is never a reason to write a
+  run. If results haven't been reported and logging hasn't been asked for,
+  there is nothing to do here.
+- **`next_*` fields are advisory.** The user deviating from the planned run is
+  correct and appropriate — treat the deviation as data (and, per the
+  deviation rules in `Dabby_Handoff_Notes.md`, ask what drove it only if not
+  obvious, as a single Beat 2 question).
+- **`dab_notes` is verbatim.** The user's exact words, in the order said,
+  including hypotheses and asides. Paraphrasing this field is a documented
+  failure mode (Sessions 66, 69). Party-mode queue notes are already verbatim
+  — carry them over exactly and append anything the user adds at
+  reconciliation.
+- **Confirm before writing.** The readback (step 4) and the analysis drafts
+  (step 5) are approval gates. Writing files before the user approves is the
+  narrating-instead-of-proposing failure mode.
+
+## When NOT to use this skill
+
+- **No jar exists for the strain** — jar creation comes first and is the
+  new-jar skill; invoke it, then return here. Check `jar_manifest.py`'s
+  inline name comments (or grep `jars/*.py` for `STATUS.name`) before
+  concluding a jar is missing — and check open PRs too (a jar may exist on an
+  unmerged branch).
+- **Correcting an already-logged run** (wrong date, wrong equipment, wrong
+  swab) — that's a frozen-field correction by exception, not a new run. No
+  skill exists for it yet; follow the worked example in PR #206 and the
+  correction procedure recorded in the backlog entry in
+  `Dabby_Handoff_Notes.md`.
+- **Session-open / "about to dab"** — that's the dab skill (capture only).
+
+## Workflow
+
+**0. Session state.** If the session-open sequence hasn't run this session
+(git sync, the three handoff reads, the open-PR check), do it now — the dab
+skill's steps 2–5 define it. Never draft a readback from stale or unread
+state.
+
+**1. Timestamp — the queue is the source of truth.**
+
+```
+python pending_dab.py list
+```
+
+- **Entry exists for this dab** → `python pending_dab.py consume` and use its
+  printed `run_date=` / `utc_logged_at=` lines exactly as printed. Never run
+  `datetime.now()` for a dab that has a captured entry — recalculating at
+  reporting time is a documented, thrice-triggered failure mode (Sessions
+  121, 140 ×2). The entry clears itself once the run is written and the
+  generator runs.
+- **No entry, results just happened** → capture now (`python pending_dab.py
+  start`), then consume it. "Now" is legitimately `utc_logged_at` — the field
+  means time-of-logging.
+- **No entry, dab was earlier** (hours ago same day, or a prior day) → the
+  date/time protocol in `CLAUDE.md` governs, read it live — in short: a
+  user-stated clock time or relative offset converts to UTC and becomes
+  `utc_logged_at` (its rule 6); a post-date with no recallable time gets the
+  casual-register ask and `None` if unrecoverable (its rule 8). When in doubt
+  which branch applies, that protocol decides, not this list.
+- **Multiple entries (party queue)** → reconcile oldest-first, one run at a
+  time, each through this full workflow. The queue note is the verbatim
+  `dab_notes` foundation for its run; the capture time is that run's
+  `utc_logged_at` and its local date is the `run_date`. Ask the
+  hard-to-recall fields in the casual register ("do you happen to remember
+  the swab color on the first one?") — at a party, "Not recorded" is an
+  acceptable swab value; a genuinely empty swab field fails validation by
+  design.
+
+**2. Identify the jar and the run number.** Resolve strain → slug via
+`jar_manifest.py`; read `jars/<slug>.py` if not already read this session.
+Take the next run number and equipment default from `HANDOFF_STATE.md`'s
+generated facts (`Next run: N` on the strain's header; rig from the "Most
+recent run (all jars, by utc_logged_at)" line) — do not derive either from
+memory or list position. If the user's report mentions any equipment change,
+apply the equipment-change and new-rig rules in `Dabby_Handoff_Notes.md`.
+
+**3. Gather the content fields.** Apply the Session Logging Protocol in
+`Dabby_Handoff_Notes.md` — read it live. In particular: swab color and curve
+numbers cannot be logged vague (ask as many clarifying questions as needed);
+ask intensity ("How hard did it hit?") if not reported; compute
+`sessions_prior_today` silently (same `run_date`, earlier `utc_logged_at`,
+any jar — the validator cross-checks this, so a miscount fails the generate).
+
+**4. Beat 1 / Beat 2 readback.** Always, unconditionally: state the parsed
+facts — date and time (from step 1, never recomputed), strain, run number,
+curve, swab, equipment in full expansion on first mention, session order
+(first-of-day gets the celebratory energy the protocol calls for; otherwise
+matter-of-fact). Then Beat 2 per the protocol: at most one or two
+ambiguous-AND-consequential interpretation checks, clearly separated, the
+invitation as the last line. Wait for the user's response.
+
+**5. Draft `analysis` and `next_ai_analysis` in chat.** Apply the sourcing
+and confidence rules from `Dabby_Handoff_Notes.md` (`analysis` traces every
+claim to this session's report, this strain's history, or the wisdom layer;
+equipment differences between compared runs are confounds; user hypotheses
+enter at "user suggested X" weight) and the epistemic flags in `CLAUDE.md`.
+Check `HANDOFF_WISDOM.md` for cross-strain patterns before writing —
+abandoning established equipment framing for an improvised mechanism is a
+documented failure mode. `next_ai_analysis` is a concrete recommendation
+with brief reasoning, 4–5 sentences max, not a recap. Show both drafts and
+wait. Approval = an explicit go-ahead, corrections to apply, **or** "just
+log it" at any point — per the protocol's "user ends it anytime" rule, that
+means write as read, with unresolved prose vagueness logged verbatim rather
+than sharpened. Silence is not approval.
+
+**6. Write the jar file.** After approval, in one pass:
+- New curve → add a local waypoint constant to the jar (no confirmation
+  needed — mechanical step per `CLAUDE.md`); reused curve → reference the
+  jar's existing constant. Naming convention (from the live jars): uppercase
+  slug + endpoint temperature (`LHBH_425`, `BP4RW13_430`); descriptive suffix
+  for shapes (`BP4RW13_DESCENT_GENTLE`).
+- Run used the current baseline curve → **define a local constant anyway**
+  (`<SLUG>_420` at today's baseline), copying `BASELINE_CURVE`'s waypoints
+  verbatim from `Dabby_Core.py`. Context so the 8 existing
+  `waypoints=BASELINE_CURVE,` references in older jars don't read as
+  contradiction: those are valid — the rename-on-change protocol in
+  `HANDOFF_WISDOM.md`'s BASELINE_CURVE failure-mode row protects them when
+  the baseline changes — but the backlog ("Skill library — deferred second
+  pass", item 4, `Dabby_Handoff_Notes.md`) plans to ban new ones, so don't
+  add more.
+- Append the `CompletedRun` to `RUNS` — timestamp lines pasted from step 1,
+  `dab_notes` verbatim, `endpoint_note` per its convention in
+  `Dabby_Handoff_Notes.md` (never blank), `read`/`verdict` left empty
+  (validators enforce both).
+- Update `STATUS` — `next_text`, `next_dab_notes`, `next_ai_analysis`,
+  `next_waypoints`.
+- Keep personal identifying information out of every field except
+  `dab_notes`/`next_dab_notes` (the only non-rendered fields).
+
+**7. Generate and verify.** `python Dabby_Log_Generator.py`. It must end with
+`Written: index.html` / `Written: HANDOFF_STATE.md`. If it prints VALIDATION
+ERRORS or MANIFEST ERRORS: the message says exactly what to fix — fix the
+data it names, never the validator, and rerun. A PENDING DABS failure has two
+legitimate readings: an entry you *should* have consumed for the run you just
+wrote (fix the run's `utc_logged_at` to match), or entries for runs not yet
+reconciled — mid-queue, that second case is exactly what the sanctioned
+escape hatch is for: `DABBY_ALLOW_PENDING=1` for the intermediate generates
+(see the reconciliation loop below), never as a way to skip reconciliation
+entirely. The **final** generate of any session must pass clean, without the
+env var. Eyeball the rendered run section in `index.html` if anything about
+the edit was unusual.
+
+**8. Ship.** Feature branch — never commit to main; name it with the jar's
+slug or full strain words (`log-fw106-run30`), never a shorthand that reads
+as something else (the documented "fb" problem). Commit the jar file +
+`index.html` + `HANDOFF_STATE.md`, push, open the PR via the GitHub MCP
+`create_pull_request` tool (the `gh` CLI is not installed) with a
+plain-English description per `CLAUDE.md`'s example. If this session already
+has an open PR, push to that branch instead of opening another. Merging
+waits for the user unless they've said otherwise.
+
+**Reconciliation loop (multiple queue entries):** one run at a time through
+steps 1–7, oldest first. Intermediate generates use `DABBY_ALLOW_PENDING=1`
+(the written run's own entry auto-prunes; the still-unreconciled ones are the
+expected leftovers). Commit after each run — jar + regenerated outputs — so
+the history reads like the evening did. The last run's generate drops the env
+var and must pass clean: that's the proof the queue is fully drained. Then
+one branch, one PR, per step 8.
+
+## Recovery paths (don't improvise these)
+
+- **Edit fails on string mismatch twice** → stop retrying; Grep the exact
+  current bytes of the target region and re-read the file (required after any
+  branch switch, and after your own earlier edits).
+- **Validation error on generate** → the message is prescriptive; fix the
+  named data. A date error means recompute from `utc_logged_at`; a
+  sessions_prior_today error means recount across all jars.
+- **PR preview doesn't update** → check `mergeable_state`; if `dirty`, merge
+  main into the branch and push (documented failure mode — don't blame
+  propagation without checking the pipeline).
+- **Push rejected** → never force-push (blocked here, HTTP 403) and never
+  amend pushed commits; cut a fresh branch from `origin/main` and re-apply.
+
+## Provenance and maintenance
+
+Created 2026-07-02 against the Layer 0 mechanical floor (PR #207). Verify
+these still hold if the skill starts giving results that don't match reality:
+
+```
+# The queue tooling this skill leans on:
+python pending_dab.py --help
+grep -n "_check_pending_dabs" Dabby_Log_Generator.py
+
+# Generated facts used in step 2:
+grep -n "Most recent run\|Next run:" HANDOFF_STATE.md | head -5
+
+# The protocol sections steps 3-5 point at:
+grep -n "Session Logging Protocol\|Beat 1\|Equipment Protocol" Dabby_Handoff_Notes.md
+grep -n "endpoint_note\|deviates from the planned\|user ends it anytime" Dabby_Handoff_Notes.md
+
+# Recovery-path claims (PR preview staleness; PR #206 correction example):
+grep -n "mergeable_state" Dabby_Handoff_Notes.md
+git ls-remote origin refs/pull/206/head
+
+# Validators that backstop steps 3, 6, 7:
+grep -n "sessions_prior_today\|UTC-rollover\|superseded by analysis\|do not log without" Dabby_Core.py
+
+# The schema quick-reference for step 6:
+grep -n "Logging quick-reference" -A 3 Dabby_Core.py
+```
+
+Dogfood-test status: not yet run end-to-end in a live session. Test protocol:
+golden-run replay — strip a real run from its jar in an isolated worktree,
+replay the user's actual verbatim report, diff the written `CompletedRun`
+against `origin/main` (timestamps, swab, verbatim dab_notes, intensity,
+sessions_prior_today; analysis judged on sourcing discipline, not wording).
+Update this note after the first real test.
