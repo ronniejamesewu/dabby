@@ -15,27 +15,28 @@ equipment rig, or baseline curve is added.
 # 30 seconds. Don't leave a trap.
 #
 # Logging quick-reference (what a run-logging Claude needs):
-#   CompletedRun fields → line  81    (schema for new RUNS entries)
-#   StrainStatus fields  → line 114    (schema for STATUS blocks)
+#   CompletedRun fields → line  82    (schema for new RUNS entries)
+#   StrainStatus fields  → line 115    (schema for STATUS blocks)
 #
 # Full index:
-#   Line  42 — # ── DATACLASSES
-#   Line  45 — Waypoint
-#   Line  51 — Insert
-#   Line  57 — CarbCap
-#   Line  63 — Pearl
-#   Line  68 — EquipmentConfig
-#   Line  81 — CompletedRun
-#   Line 114 — StrainStatus
+#   Line  43 — # ── DATACLASSES
+#   Line  46 — Waypoint
+#   Line  52 — Insert
+#   Line  58 — CarbCap
+#   Line  64 — Pearl
+#   Line  69 — EquipmentConfig
+#   Line  82 — CompletedRun
+#   Line 115 — StrainStatus
 #   Line 134 — TerpeneEntry
 #   Line 144 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
 #   Line 173 — # ── EQUIPMENT (RIG_1 – RIG_6)
-#   Line 222 — # ── TERPENE REFERENCE
-#   Line 266 — # ── COLOR RESOLUTION
-#   Line 318 — # ── VALIDATION (validate, validate_accent_colors)
+#   Line 232 — # ── TERPENE REFERENCE
+#   Line 276 — # ── COLOR RESOLUTION
+#   Line 328 — # ── LOCAL TIME (denver_local, denver_local_date — hand-rolled US DST)
+#   Line 351 — # ── VALIDATION (validate, validate_accent_colors)
 # ─────────────────────────────────────────────────────────────────────────────
 
-from datetime import datetime, date, timezone
+from datetime import datetime, date, timezone, timedelta
 from dataclasses import dataclass
 from typing import Literal
 
@@ -324,6 +325,29 @@ def _resolve_accent_colors(strain_list):
         resolved[s.name] = s.accent if s.accent is not None else _hsl_to_hex(auto_hues[i], SAT, LGT)
     return resolved
 
+# ── LOCAL TIME (America/Denver) ──────────────────────────────────────────────
+# Hand-rolled US DST rule (2007+ law: second Sunday of March → first Sunday of
+# November) to keep the project dependency-free — Windows Python ships no tzdata
+# database, and this is the project's only timezone need. Precision near the
+# 2am transition boundary is ±1 hour twice a year, which is irrelevant for
+# calendar-date checks.
+
+def _denver_offset_hours(utc_dt):
+    approx = (utc_dt.replace(tzinfo=None) - timedelta(hours=7)).date()
+    march1 = date(approx.year, 3, 1)
+    dst_start = date(approx.year, 3, 8 + (6 - march1.weekday()) % 7)   # 2nd Sunday of March
+    nov1 = date(approx.year, 11, 1)
+    dst_end = date(approx.year, 11, 1 + (6 - nov1.weekday()) % 7)      # 1st Sunday of November
+    return 6 if dst_start <= approx < dst_end else 7
+
+def denver_local(utc_dt):
+    """Naive America/Denver datetime for a UTC datetime (aware or naive-UTC)."""
+    return utc_dt.replace(tzinfo=None) - timedelta(hours=_denver_offset_hours(utc_dt))
+
+def denver_local_date(utc_dt):
+    """America/Denver calendar date for a UTC datetime."""
+    return denver_local(utc_dt).date()
+
 # ── VALIDATION ───────────────────────────────────────────────────────────────
 
 def validate(runs, statuses):
@@ -395,6 +419,51 @@ def validate(runs, statuses):
                     f"{strain}: run dates out of order — "
                     f"{dates[i - 1]} followed by {dates[i]}"
                 )
+
+    # Date/time integrity — a dab cannot happen after it was logged. Catches the
+    # UTC-rollover failure mode (run_date written from the UTC clock after ~6pm
+    # Denver time). Post-dated runs (run_date earlier than logging date) pass.
+    for i, run in enumerate(runs):
+        if run.run_date is not None and run.utc_logged_at is not None:
+            local = denver_local_date(run.utc_logged_at)
+            if run.run_date > local:
+                errors.append(
+                    f"runs[{i}] ({run.strain}): run_date {run.run_date} is after the local "
+                    f"logging date {local} (America/Denver) — the UTC-rollover signature. "
+                    f"Fix: run_date must be the local calendar date derived from utc_logged_at."
+                )
+
+    # sessions_prior_today must equal the count of same-run_date runs logged
+    # earlier (by utc_logged_at) across ALL jars — not just this strain's.
+    dated = [r for r in runs if r.run_date is not None]
+    for i, run in enumerate(runs):
+        if run.run_date is None or run.sessions_prior_today is None or run.utc_logged_at is None:
+            continue
+        same_day = [r for r in dated if r is not run and r.run_date == run.run_date]
+        if any(r.utc_logged_at is None for r in same_day):
+            continue  # the day can't be ordered reliably — skip rather than guess
+        expected = sum(1 for r in same_day if r.utc_logged_at < run.utc_logged_at)
+        if run.sessions_prior_today != expected:
+            errors.append(
+                f"runs[{i}] ({run.strain}, {run.run_date}): sessions_prior_today="
+                f"{run.sessions_prior_today} but {expected} same-date run(s) were logged "
+                f"earlier across all jars. Fix: recount — same run_date, earlier "
+                f"utc_logged_at, any jar."
+            )
+
+    # Content-field invariants.
+    for i, run in enumerate(runs):
+        if (run.read and run.read.strip()) or (run.verdict and run.verdict.strip()):
+            errors.append(
+                f"runs[{i}] ({run.strain}): read/verdict are superseded by analysis "
+                f"(migration completed Session 49) — leave both empty on every run."
+            )
+        if not (run.swab and run.swab.strip()):
+            errors.append(
+                f"runs[{i}] ({run.strain}): swab is empty — protocol is 'do not log without "
+                f"the swab'. A swab is always taken; ask the user for the color. "
+                f"'Not recorded' is the value when the color wasn't noted."
+            )
 
     if errors:
         print("VALIDATION ERRORS:")
