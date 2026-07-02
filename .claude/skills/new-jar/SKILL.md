@@ -270,6 +270,13 @@ preflight allows), an empty waypoint-constants comment block, `RUNS = []`,
 and the `StrainStatus(...)` block with `profile_anchor='#<slug>-profile'`,
 `accent=None`, `next_waypoints=BASELINE_CURVE`, `jar_index=''`.
 
+Writing hazard: the profile prose is full of apostrophes and quotes — if any
+HTML lands in a field, use single-quote attributes (`style='...'`), never
+escaped double quotes; the Edit tool is documented to convert `\"` into
+backslash + curly quote, and the manifest preflight now rejects that
+signature. If it happens, fix by byte position with a Python script, not the
+Edit tool.
+
 **9. Add the slug to `jar_manifest.py`.** Append it to the end of the
 `ACTIVE` list. Per that file's own docstring, "list order within a tier is
 display order" — not alphabetical, and appending to the end is the existing
@@ -279,9 +286,12 @@ alphabetical order). Use the inline comment convention:
 
 **10. Validate.** Run the project's generate command (`python
 Dabby_Log_Generator.py` on Windows) and confirm it completes with no
-`VALIDATION ERRORS` or `MANIFEST ERRORS` output — this exercises both the
-manifest preflight and `validate()` against the full assembled set, not just
-the new jar in isolation.
+`VALIDATION ERRORS`, `MANIFEST ERRORS`, `TIER ERRORS`, or `PENDING DABS`
+output — this exercises the manifest preflight (including the curly-quote
+contamination scan) and `validate()` (including the Layer 0 date,
+sessions_prior_today, swab, and read/verdict checks — moot for an empty
+`RUNS = []` jar but enumerated here so an unexpected one isn't a surprise)
+against the full assembled set, not just the new jar in isolation.
 
 **11. Ship it.** Follow this repo's standard PR workflow from CLAUDE.md —
 feature branch (never commit straight to `main`), commit the new jar file,
@@ -336,13 +346,18 @@ ls .claude/skills/
 grep -h "'Producer'" jars/*.py
 ```
 
-**Open, not proven:** the step 2 lineage-research subagent has been
-validated in testing by substituting inline `WebSearch`/`WebFetch` calls for
-the actual nested `general-purpose` subagent spawn (a known nesting issue
-made testing the real nested-agent path unreliable — see git history around
-this file's creation for details). The subagent-spawning mechanism itself
-works when called directly from a top-level session (used successfully
-elsewhere in this project), but this skill's specific use of it has not yet
-been observed end-to-end in a live session. Treat step 2 as a candidate
-design, confirmed on content quality, not yet confirmed on the exact
-mechanism as written. Update this note the first time it runs for real.
+**Step 2 subagent path — first live exercise July 2, 2026 (dogfood test,
+dbrb hide-and-recreate, PASS-WITH-FINDINGS):** both paths ran in the same
+test and their findings **agreed exactly** — content quality of the brief is
+confirmed on the real nested spawn, not just the inline substitution. The
+observed weakness is the handoff, not the research: the nested agent stalled
+repeatedly before returning (in a two-level test harness — agent testing an
+agent spawning an agent; a normal session has only one nesting level, so
+expect better but not guaranteed behavior). Operational rule: spawn the
+subagent per this skill, but if it hasn't returned by the time the rest of
+step 1/3 prep is done, start the inline `WebSearch`/`WebFetch` fallback with
+the same brief and stopping rule rather than idling — whichever completes
+first wins, and they should agree. Test note for the record: the recreated
+jar matched golden on shape, slug, boilerplate, and load-position caveat;
+lineage came back one generation shallower on one branch (Larry OG) and
+deeper on others — depth parity, not regression.

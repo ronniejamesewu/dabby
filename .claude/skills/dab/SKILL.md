@@ -55,6 +55,8 @@ fragment that reads like capture-and-go ("FW, big load, harsh at 40 — party").
    python pending_dab.py start --note "<the user's exact words>"
    ```
 
+   Strip the mode-invocation syntax itself (`party mode:`, `/dab party`)
+   from the note — everything after it is the verbatim payload.
    "Verbatim" binds the note *content*, not the shell syntax — if the words
    contain quotes, `$`, or backticks, quote/escape however the shell needs
    (single quotes, here-string) so the exact text lands in the file. Verify
@@ -79,8 +81,10 @@ desk, not at the party.
 python pending_dab.py start
 ```
 
-Add `--note "<verbatim>"` if the announcement carried any observations worth
-keeping (load size, strain, intent). If the script errors (e.g. wrong cwd),
+Add `--note "<verbatim>"` when the message carries anything beyond bare
+intent — observations, load size, plans. A bare "grabbing a dab of X" needs
+no note (the capture time is the payload; the strain lives in your reply and
+the session context), though adding one is harmless. If the script errors (e.g. wrong cwd),
 fall back to capturing UTC by hand — `python -c "from datetime import
 datetime, timezone; print(datetime.now(timezone.utc))"` — and record it in
 your reply so it survives; then fix the script problem.
@@ -94,7 +98,9 @@ stale leftover branch the CLAUDE.md gate protects against). Name the branch
 you're staying on in your reply and continue there.
 
 **3. Mandatory reads.** All three, before replying: `HANDOFF_STATE.md`,
-`HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`. If the announcement names a
+`HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`. The wisdom file exceeds a
+single Read call — page through to the end; answering from page 1 is the
+exact failure the mandatory-reads gate exists to prevent. If the announcement names a
 strain, resolve it to its jar file — check the inline name comments in
 `jar_manifest.py`'s `ACTIVE`/`CLOSED` lists (or grep `jars/*.py` for the
 strain name itself; it appears in each jar's `name='...'` field) — and read
@@ -107,7 +113,9 @@ own instructions cover composing from this context).
 tool (owner/repo from `git remote -v`; the `gh` CLI is not installed here —
 `gh --version` fails). Active work may live on an unmerged branch; a strain's
 true current state may be ahead of what main says (documented failure mode,
-Session 86).
+Session 86). What to do with hits: a PR touching `jars/*.py` supersedes main
+for the affected strain — read its diff before your readback; infra-only PRs
+just get noted and skipped.
 
 **5. Equipment soft-check.** Apply the "Session-open soft check" in
 `Dabby_Handoff_Notes.md` — read it live for the current threshold and wording
@@ -165,8 +173,13 @@ gh --version  # expected: command not found
 grep -n "_check_pending_dabs" Dabby_Log_Generator.py
 ```
 
-Dogfood-test status: not yet run end-to-end in a live session. Test protocol:
-fresh agent in an isolated worktree, session-open prompt naming a real strain;
-verify capture happens first, the sequence runs in order, and no run gets
-logged. Party variant: terse fragment in, one line out, verbatim note in the
-queue. Update this note after the first real test.
+Dogfood-test status: **tested July 2, 2026 — PASS-WITH-FINDINGS on both
+scenarios, findings applied same day.** Protocol: fresh agent in an isolated
+worktree; normal mode ("grabbing a dab of The Hive #1") executed all six
+steps in order, capture first, correct Rig 6 default from the generated state
+line, no run logged; party mode produced a one-line reply and a byte-verbatim
+queue note. Findings that shaped the current text: the bare-announcement
+`--note` guidance, the two-Read-call warning on the wisdom file, the
+infra-PR-vs-jar-PR handling in step 4, and stripping the mode-invocation
+prefix from party notes. Re-run the same protocol after any structural change
+to the workflow steps.

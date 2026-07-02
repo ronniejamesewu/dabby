@@ -46,10 +46,13 @@ memory of it.
 
 ## Workflow
 
-**0. Session state.** If the session-open sequence hasn't run this session
-(git sync, the three handoff reads, the open-PR check), do it now — the dab
-skill's steps 2–5 define it. Never draft a readback from stale or unread
-state.
+**0. Session state.** If the session-open sequence hasn't run this session,
+do it now — in short: `git checkout main && git pull` (unless mid-work on a
+feature branch with uncommitted changes), read all three of
+`HANDOFF_STATE.md` / `HANDOFF_WISDOM.md` (it takes two Read calls) /
+`Dabby_Handoff_Notes.md`, and check open PRs. The dab skill's steps 2–5 are
+the full definition if anything here is unclear. Never draft a readback from
+stale or unread state.
 
 **1. Timestamp — the queue is the source of truth.**
 
@@ -86,7 +89,12 @@ python pending_dab.py list
 Take the next run number and equipment default from `HANDOFF_STATE.md`'s
 generated facts (`Next run: N` on the strain's header; rig from the "Most
 recent run (all jars, by utc_logged_at)" line) — do not derive either from
-memory or list position. If the user's report mentions any equipment change,
+memory or list position. Post-dated run caveat: that state line reflects
+*now*, but the default for a past dab is the most recent run logged **before
+this run's `utc_logged_at`** — if any run since the dab changed equipment,
+check the chronology across jars instead of trusting the line (this is the
+exact stale-default class that mislogged seven runs; see the Session 140
+failure mode). If the user's report mentions any equipment change,
 apply the equipment-change and new-rig rules in `Dabby_Handoff_Notes.md`.
 
 **3. Gather the content fields.** Apply the Session Logging Protocol in
@@ -95,6 +103,11 @@ numbers cannot be logged vague (ask as many clarifying questions as needed);
 ask intensity ("How hard did it hit?") if not reported; compute
 `sessions_prior_today` silently (same `run_date`, earlier `utc_logged_at`,
 any jar — the validator cross-checks this, so a miscount fails the generate).
+`duration_seconds`: the programmed curve's terminus unless the report
+suggests the session ended early — then ask when it stopped. On Beat 2
+candidates, reason through the physics first: two readings that describe the
+same physical event (a hot insert running out of material IS the temperature
+signal) are not an ambiguity worth a question.
 
 **4. Beat 1 / Beat 2 readback.** Always, unconditionally: state the parsed
 facts — date and time (from step 1, never recomputed), strain, run number,
@@ -104,7 +117,8 @@ matter-of-fact). Then Beat 2 per the protocol: at most one or two
 ambiguous-AND-consequential interpretation checks, clearly separated, the
 invitation as the last line. Wait for the user's response.
 
-**5. Draft `analysis` and `next_ai_analysis` in chat.** Apply the sourcing
+**5. Draft `analysis`, `next_ai_analysis`, and the new `next_text` one-liner
+in chat.** Apply the sourcing
 and confidence rules from `Dabby_Handoff_Notes.md` (`analysis` traces every
 claim to this session's report, this strain's history, or the wisdom layer;
 equipment differences between compared runs are confounds; user hypotheses
@@ -214,9 +228,17 @@ grep -n "sessions_prior_today\|UTC-rollover\|superseded by analysis\|do not log 
 grep -n "Logging quick-reference" -A 3 Dabby_Core.py
 ```
 
-Dogfood-test status: not yet run end-to-end in a live session. Test protocol:
-golden-run replay — strip a real run from its jar in an isolated worktree,
-replay the user's actual verbatim report, diff the written `CompletedRun`
-against `origin/main` (timestamps, swab, verbatim dab_notes, intensity,
-sessions_prior_today; analysis judged on sourcing discipline, not wording).
-Update this note after the first real test.
+Dogfood-test status: **tested July 2, 2026 — PASS-WITH-FINDINGS, findings
+applied same day.** Protocol: golden-run replay — Watermellos Run 18 stripped
+from its jar in an isolated worktree, the user's actual verbatim report
+replayed with canned answers. Result: every mechanical field exact-matched
+the golden run (run_date, sessions_prior_today, utc_logged_at from a stated
+clock time, waypoints constant, equipment, duration, endpoint_note, swab,
+verbatim dab_notes); analysis prose differed but every claim traced to its
+sources. Findings that shaped the current text: duration_seconds derivation,
+the post-dated equipment-default caveat in step 2, next_text joining the
+step 5 approval gate, and step 0's inline summary. Test-design note for
+re-runs: also revert the jar's STATUS next_* fields to their pre-run state,
+or the replayed analysis is partially anchored by the golden run's
+conclusions. Re-run the same protocol after any structural change to the
+workflow steps.
