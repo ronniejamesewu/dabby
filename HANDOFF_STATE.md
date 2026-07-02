@@ -196,7 +196,7 @@
 ---
 
 ### Watermellos
-**18 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
+**18 sessions** &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 19: same descent curve (440→420@30s→400@60s), first dab of day — confirm whether harshness ceiling at ~37s remaining is curve-driven
 
@@ -229,7 +229,7 @@
 
 **Next:** Run 10: repeat the same descent curve on Rig 6, first dab of the day, normal load — confirm whether the toasty/near-combustion flavor at 440°F open repeats or was session-order driven
 
-**AI Analysis:** Run 10: repeat this exact curve on Rig 6, normal load, first dab of the day — isolate whether the toasty/near-combustion flavor is repeatable at 440°F open on this rig, or was specific to being the third dab of the day (accumulated heat exposure is an unresolved confound here). If it recurs on a fresh start, pull the open point back — 430°F or 425°F — rather than touching the floor, since the flavor read as present early, not just at the hold. Also worth resolving before Run 10: how to handle R5–R8's disputed Rig 5 equipment field, since it's currently sitting as an open data question rather than a corrected one.
+**AI Analysis:** Run 10: repeat this exact curve on Rig 6, normal load, first dab of the day — isolate whether the toasty/near-combustion flavor is repeatable at 440°F open on this rig, or was specific to being the third dab of the day (accumulated heat exposure is an unresolved confound here). If it recurs on a fresh start, pull the open point back — 430°F or 425°F — rather than touching the floor, since the flavor read as present early, not just at the hold. With R5–R8's equipment corrected to Rig 6 (July 2, 2026), rig change is ruled out as the driver — session order and late-jar material state are what Run 10 discriminates between.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start
