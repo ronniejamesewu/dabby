@@ -125,7 +125,9 @@ Run logging assumes equipment continuity from the chronologically most recent ru
 
 **Session-open soft check:** If the run on `HANDOFF_STATE.md`'s "Most recent run (all jars, by utc_logged_at)" line is more than 3 days old, ask: "Last run was on [full expansion — same format as Beat 1]. Anything change since then?" Skip if the gap is shorter than 3 days.
 
-**Display convention:** Always "Rig 3" in user-facing text (chat, readbacks, log). Never echo the Python identifier `RIG_3` (with underscore) to the user. Same rule applies to all `RIG_N` identifiers.
+**Display convention:** Always "Rig 3" in user-facing text (chat, readbacks, log). Never echo a Python identifier to the user — `RIG_3`, a jar-local waypoint constant (`BP4RW13_DESCENT_GENTLE`, `FW106_DESCENT_GENTLE`), `BASELINE_CURVE`, or any other snake/upper-case constant name. Describe curves by their temperatures and shape instead (e.g. "the same 440°F→420°F→400°F descent curve as Runs 5–9"), never by the variable that holds them. Same rule applies to every `RIG_N` and every jar-local waypoint constant.
+
+**No procedural narration in readbacks:** State facts plainly. Don't explain why a step was skipped, why a question wasn't asked, or why a default applied ("no 'anything change?' needed," "matches the plan on file") unless the user asks — that's the protocol's own bookkeeping, not something the user needs relayed. If something is worth surfacing (a deviation from plan, a confound), state the fact itself, not the meta-reasoning about the step that produced it.
 
 ---
 
@@ -202,7 +204,9 @@ These are caught by code or encoded as explicit skill steps; kept as one-liners 
 
 - **Byte-comparing a Windows working copy against an LF-deployed file (false CRLF mismatch).** Windows working copies are CRLF; git stores and deploys LF. A raw byte comparison of the on-disk working file against a deployed artifact will report a false mismatch. Correct deployed-content verification: compare against `git show HEAD:<file>`, not the working copy.
 
-- **Echoing an internal `Dabby_Core.py` constant name to the user instead of resolving it.** Never echo `RIG_1` etc. — always "Rig 1". Constant names are an implementation detail.
+- **Echoing an internal Python constant name to the user instead of resolving it.** Never echo `RIG_1` etc., or a jar-local waypoint constant — always "Rig 1" and a plain-language curve description. Constant names are an implementation detail regardless of which file defines them (`Dabby_Core.py` or a jar). Session 142 instance: bp4rw13 Run 10's Beat 1 readback echoed `BP4RW13_DESCENT_GENTLE` verbatim instead of describing the curve in plain language.
+
+- **Narrating internal procedural reasoning in a readback instead of just stating the fact.** Explaining why a step was skipped or a default applied — "no 'anything change?' needed," "matches the plan on file" — surfaces the protocol's own bookkeeping instead of the fact the user actually needs. Session 142: the dab skill's session-open reply explained why the equipment soft-check didn't fire, when stating the working rig alone would have sufficed. State facts; keep the protocol's internal logic out of the reply unless asked.
 
 - **Writing `next_ai_analysis` that recaps instead of recommends.** The What to Try Next AI Analysis is a concrete recommendation with brief reasoning — not a summary of run history (that's what the run sections are for). If it takes more than 4–5 sentences to say what to try and why, it has too much noise.
 
