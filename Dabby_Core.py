@@ -305,7 +305,7 @@ def _hsl_to_hex(h, s, l):
 def _resolve_accent_colors(strain_list):
     # Distribute hues evenly across non-green space (0–89° and 166–359°, avoiding 90–165°).
     # Strains with an explicit accent hex in their StrainStatus use that color instead.
-    # The generator passes the combined (closed + paused + active) status list so colors
+    # The generator passes the combined (closed + active) status list so colors
     # resolve across the full set — there is no module-level STRAIN_STATUS to fall back to.
     NON_GREEN = [(0, 90), (166, 360)]
     total = sum(e - s for s, e in NON_GREEN)

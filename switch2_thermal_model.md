@@ -204,7 +204,7 @@ During a programmed descent, the PID lowers the setpoint and turns the heater of
 
 The PID has no authority over this: it can withhold heat but cannot actively cool. The insert's thermal mass becomes a resistor against descent.
 
-Sapphire's higher heat capacity (3.4 J/K vs quartz 2.2 J/K) means it stores more heat and feeds more back into the titanium, making descent slower relative to the programmed curve. This has been empirically observed on Rig 5.
+Sapphire's higher heat capacity (3.4 J/K vs quartz 2.2 J/K) means it stores more heat and feeds more back into the titanium, making descent slower relative to the programmed curve. This is consistent with the ~1°F/sec passive decay rate inferred on Rig 5 (Watermellos R9 — rate assumed from the curve shape, not measured); no programmed-descent run has been logged on Rig 5, so the lag-behind-the-programmed-curve effect itself is expected from the model, not yet empirically observed.
 
 During a draw on a descent curve: the draw extracts heat from the insert surface (cooling it) while the insert bulk is simultaneously feeding heat back into the titanium. The surface temperature during such a draw is the result of these two competing heat flows — more complex than a simple hold-phase draw.
 

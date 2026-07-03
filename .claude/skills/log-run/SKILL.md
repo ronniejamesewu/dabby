@@ -197,8 +197,10 @@ logged verbatim rather than sharpened. Silence is not approval.
   for shapes (`BP4RW13_DESCENT_GENTLE`).
 - Run used the current baseline curve → **define a local constant anyway**
   (`<SLUG>_420` at today's baseline), copying `BASELINE_CURVE`'s waypoints
-  verbatim from `Dabby_Core.py`. Context so the 8 existing
-  `waypoints=BASELINE_CURVE,` references in older jars don't read as
+  verbatim from `Dabby_Core.py`. Context so the existing
+  `waypoints=BASELINE_CURVE,` references in older jars (10 as of July 3, 2026
+  — count with the field-anchored grep `^\s*waypoints=BASELINE_CURVE,` over
+  `jars/*.py`) don't read as
   contradiction: those are valid — the rename-on-change protocol in
   `HANDOFF_WISDOM.md`'s BASELINE_CURVE failure-mode row protects them when
   the baseline changes — but the backlog ("Skill library — deferred second

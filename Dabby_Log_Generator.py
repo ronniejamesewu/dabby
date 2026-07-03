@@ -159,18 +159,19 @@ def dashboard_html():
     max_dabs_day   = max(date_counts.values()) if date_counts else 0
     unique_strains = len(run_counts)
 
-    MDT = timezone(timedelta(hours=-6))
+    # denver_local handles the MDT/MST split — a fixed UTC-6 offset silently
+    # shifts every winter run's clock time by an hour (audit, July 3, 2026).
     timed_runs = [r for r in COMPLETED_RUNS if r.utc_logged_at is not None]
     if timed_runs:
-        def _tod_min(r): local = r.utc_logged_at.astimezone(MDT); return local.hour * 60 + local.minute
-        earliest_str = min(timed_runs, key=_tod_min).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
-        latest_str   = max(timed_runs, key=_tod_min).utc_logged_at.astimezone(MDT).strftime('%I:%M %p').lstrip('0')
+        def _tod_min(r): local = denver_local(r.utc_logged_at); return local.hour * 60 + local.minute
+        earliest_str = denver_local(min(timed_runs, key=_tod_min).utc_logged_at).strftime('%I:%M %p').lstrip('0')
+        latest_str   = denver_local(max(timed_runs, key=_tod_min).utc_logged_at).strftime('%I:%M %p').lstrip('0')
         day_firsts = {}
         for r in timed_runs:
-            key = r.run_date if r.run_date is not None else r.utc_logged_at.astimezone(MDT).date()
+            key = r.run_date if r.run_date is not None else denver_local(r.utc_logged_at).date()
             if key not in day_firsts or r.utc_logged_at < day_firsts[key]:
                 day_firsts[key] = r.utc_logged_at
-        mins = [dt.astimezone(MDT).hour * 60 + dt.astimezone(MDT).minute for dt in day_firsts.values()]
+        mins = [denver_local(dt).hour * 60 + denver_local(dt).minute for dt in day_firsts.values()]
         avg_min = round(sum(mins) / len(mins))
         avg_h, avg_m = divmod(avg_min, 60)
         avg_h12 = avg_h % 12 or 12
@@ -184,9 +185,11 @@ def dashboard_html():
             if run.strain not in last_dates or run.run_date > last_dates[run.strain]:
                 last_dates[run.strain] = run.run_date
 
+    # All jars, zero-run ones included — the browser is the page's only
+    # navigation surface, so a jar it omits is unreachable (audit, July 3, 2026).
     sorted_strains = sorted(
-        [s for s in STRAIN_STATUS if run_counts.get(s.name, 0) > 0],
-        key=lambda s: run_counts[s.name], reverse=True
+        STRAIN_STATUS,
+        key=lambda s: run_counts.get(s.name, 0), reverse=True
     )
 
     cards = (
@@ -203,18 +206,20 @@ def dashboard_html():
         f'</div>'
     )
 
-    max_runs = run_counts[sorted_strains[0].name] if sorted_strains else 0
+    max_runs = run_counts.get(sorted_strains[0].name, 0) if sorted_strains else 0
     rows = ''
     for i, ss in enumerate(sorted_strains):
         strain       = ss.name
         anchor       = ss.profile_anchor
         slug         = ss.slug
         color        = _ACCENT_RESOLVED.get(strain, "#888888")
-        medal        = ' 🥇' if run_counts[strain] == max_runs else ''
-        n            = run_counts[strain]
+        n            = run_counts.get(strain, 0)
+        medal        = ' 🥇' if n == max_runs and n > 0 else ''
         session_word = 'session' if n == 1 else 'sessions'
         ld           = last_dates.get(strain)
-        if ld:
+        if n == 0:
+            meta = 'no runs yet'
+        elif ld:
             date_str = ld.strftime('%b %d').replace(' 0', ' ')
             meta = f'{n} {session_word} &middot; {"" if n == 1 else "last "}{date_str}'
         else:
@@ -614,7 +619,7 @@ def build_html():
     c += '<h3>Rationale</h3>'
     _bl_end = BASELINE_CURVE[-1].temp_f
     _bl_ramp = next(wp.time_s for wp in BASELINE_CURVE if wp.temp_f == _bl_end)
-    c += f'<p>{BASELINE_CURVE[0].temp_f}°F opening and fast {_bl_ramp}-second ramp reflect the shape that has performed best across strains in the log. {_bl_end}°F endpoint sits below the cross-strain harshness boundary (≥430°F produced tail harshness on seven strains). All waypoints are starting points — swab results drive adjustment.</p>'
+    c += f'<p>{BASELINE_CURVE[0].temp_f}°F opening and fast {_bl_ramp}-second ramp reflect the shape that has performed best across strains in the log. {_bl_end}°F endpoint sits below the cross-strain harshness boundary (≥430°F produced tail harshness on eight strains). All waypoints are starting points — swab results drive adjustment.</p>'
     sections.append(collapsible_section("baseline", "Baseline Curve", c, header_class="grey"))
 
     # Terpene Reference
@@ -624,12 +629,23 @@ def build_html():
     sections.append(rig_reference_html())
 
     # ── First-of-day detection ────────────────────────────────────────────────
-    _seen_dates = set()
-    _first_of_day = set()
+    # By data, not list position — COMPLETED_RUNS is manifest-ordered, not
+    # chronological (Session 140 failure mode; audit finding July 3, 2026).
+    # sessions_prior_today==0 is validator-cross-checked; min utc_logged_at
+    # decides for dates whose entries predate that field.
+    _by_date = {}
     for _r in COMPLETED_RUNS:
-        if _r.run_date is not None and _r.run_date not in _seen_dates:
-            _first_of_day.add(id(_r))
-            _seen_dates.add(_r.run_date)
+        if _r.run_date is not None:
+            _by_date.setdefault(_r.run_date, []).append(_r)
+    _first_of_day = set()
+    for _rs in _by_date.values():
+        _zero = [r for r in _rs if r.sessions_prior_today == 0]
+        if len(_zero) == 1:
+            _first_of_day.add(id(_zero[0]))
+        elif all(r.utc_logged_at is not None for r in _rs):
+            _first_of_day.add(id(min(_rs, key=lambda r: r.utc_logged_at)))
+        else:
+            _first_of_day.add(id(_rs[0]))  # legacy entries carry no ordering data
 
     # ── Strain sections (data-driven) ────────────────────────────────────────
     for _ss in STRAIN_STATUS:
@@ -640,7 +656,9 @@ def build_html():
 
     # ── Assemble ──────────────────────────────────────────────────────────────
     body = dash + ''.join(sections)
-    body += f'<div class="footer">Document last updated: {datetime.now().strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig</div>'
+    # Denver date, not the build machine's clock — deploy runs in a UTC CI
+    # runner, and bare datetime.now() there stamps tomorrow after ~6pm Denver.
+    body += f'<div class="footer">Document last updated: {denver_local(datetime.now(timezone.utc)).strftime("%B %d, %Y")} &nbsp;·&nbsp; Dabby the House Rig</div>'
 
     cover = '''<div class="cover">
         <h1>Dabby the House Rig</h1>
@@ -731,16 +749,22 @@ def generate_handoff_state():
     lines.append("## Strain Status")
     lines.append("")
 
-    for ss in active_strains:
+    # All non-closed jars, zero-run ones included — an ACTIVE jar with no runs
+    # yet must still surface its "Next run: 1" line and baseline plan here, or
+    # it is invisible to a fresh session (audit finding, July 3, 2026: dbrb).
+    for ss in STRAIN_STATUS:
         if ss.slug in CLOSED:
             continue  # closed jars render as one-liners below — full detail lives in the jar file
-        n  = run_counts[ss.name]
+        n  = run_counts.get(ss.name, 0)
         ld = last_dates.get(ss.name)
         eq = last_equipment.get(ss.name)
         session_word = "session" if n == 1 else "sessions"
 
         lines.append(f"### {ss.name}")
-        lines.append(f"**{n} {session_word}** &nbsp;·&nbsp; Next run: {n + 1} &nbsp;·&nbsp; Last: {fmt_date(ld)} &nbsp;·&nbsp; Equipment: {fmt_equipment(eq)}")
+        if n == 0:
+            lines.append(f"**No runs yet** &nbsp;·&nbsp; Next run: 1")
+        else:
+            lines.append(f"**{n} {session_word}** &nbsp;·&nbsp; Next run: {n + 1} &nbsp;·&nbsp; Last: {fmt_date(ld)} &nbsp;·&nbsp; Equipment: {fmt_equipment(eq)}")
         lines.append("")
         lines.append(f"**Next:** {ss.next_text}")
         lines.append("")
