@@ -211,13 +211,13 @@ gh --version  # expected: command not found
 grep -n "_check_pending_dabs" Dabby_Log_Generator.py
 ```
 
-Dogfood-test status: **tested July 2, 2026 — PASS-WITH-FINDINGS on both
-scenarios, findings applied same day.** Protocol: fresh agent in an isolated
-worktree; normal mode ("grabbing a dab of The Hive #1") executed all six
-steps in order, capture first, correct Rig 6 default from the generated state
-line, no run logged; party mode produced a one-line reply and a byte-verbatim
-queue note. Findings that shaped the current text: the bare-announcement
-`--note` guidance, the two-Read-call warning on the wisdom file, the
-infra-PR-vs-jar-PR handling in step 4, and stripping the mode-invocation
-prefix from party notes. Re-run the same protocol after any structural change
-to the workflow steps.
+Dogfood-test status: **re-tested July 3, 2026 — PASS** (Sonnet-class agent,
+isolated worktree, after the display-register mechanization: reply composed
+from `brief`'s printed facts; a leakage grep over the user-facing reply —
+constant names, slugs, raw field names, spoken step labels, tooling-internals
+words — returned zero findings). Prior run July 2, 2026: PASS-WITH-FINDINGS
+on both scenarios (normal + party mode), findings applied same day — the
+bare-announcement `--note` guidance, the two-Read-call warning on the wisdom
+file, the infra-PR-vs-jar-PR handling in step 4, and stripping the
+mode-invocation prefix from party notes. Re-run the same protocol (including
+the leakage grep) after any structural change to the workflow steps.

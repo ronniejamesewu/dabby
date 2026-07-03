@@ -179,6 +179,11 @@ Present the drafts under their settled display labels (Session 49 decision)
 > **AI Analysis** *(the What to Try Next reasoning)*
 > …the recommendation…
 
+The step 4 pre-send check applies here too. Register inside analysis prose:
+the strain being logged gets its full name; cross-strain run citations follow
+the log's established style as the wisdom layer writes them (e.g. "FW106 R26",
+"BB36 #2") — that shorthand is rendered convention, not a leak.
+
 Show both drafts and wait. Approval = an explicit go-ahead, corrections to
 apply, **or** "just log it" at any point — per the protocol's "user ends it
 anytime" rule, that means write as read, with unresolved prose vagueness
@@ -289,17 +294,22 @@ grep -n "sessions_prior_today\|UTC-rollover\|superseded by analysis\|do not log 
 grep -n "Logging quick-reference" -A 3 Dabby_Core.py
 ```
 
-Dogfood-test status: **tested July 2, 2026 — PASS-WITH-FINDINGS, findings
-applied same day.** Protocol: golden-run replay — Watermellos Run 18 stripped
-from its jar in an isolated worktree, the user's actual verbatim report
-replayed with canned answers. Result: every mechanical field exact-matched
-the golden run (run_date, sessions_prior_today, utc_logged_at from a stated
-clock time, waypoints constant, equipment, duration, endpoint_note, swab,
-verbatim dab_notes); analysis prose differed but every claim traced to its
-sources. Findings that shaped the current text: duration_seconds derivation,
-the post-dated equipment-default caveat in step 2, next_text joining the
-step 5 approval gate, and step 0's inline summary. Test-design note for
-re-runs: also revert the jar's STATUS next_* fields to their pre-run state,
-or the replayed analysis is partially anchored by the golden run's
-conclusions. Re-run the same protocol after any structural change to the
-workflow steps.
+Dogfood-test status: **re-tested July 3, 2026 — PASS-WITH-FINDINGS** after
+the display-register mechanization. Protocol variant: scripted fictional run
+(The Hive #1 Run 9, canned user turns) in an isolated worktree, register-
+focused — full pipeline through a clean no-env-var generate, validator
+cross-checks passed, queue entry auto-pruned. Leakage grep over the
+user-facing messages: readback, draft headers, and status line all clean —
+zero machine-side vocabulary (the Session 143 leak surfaces). Finding
+applied same day: analysis-draft citations use the wisdom layer's short-form
+register (step 5's register note is the fix). This variant did not re-verify
+golden-match field accuracy — for suspected mechanical-field regressions,
+re-run the July 2, 2026 golden-run replay (Watermellos Run 18 stripped from
+its jar, the user's actual verbatim report replayed; that run PASSED with
+every mechanical field exact-matched, and its findings — duration_seconds
+derivation, the post-dated equipment-default caveat in step 2, next_text in
+the step 5 gate, step 0's inline summary — are in the current text).
+Test-design note for golden re-runs: also revert the jar's STATUS next_*
+fields to their pre-run state, or the replayed analysis is partially
+anchored by the golden run's conclusions. Re-run after any structural change
+to the workflow steps, with the leakage grep as a pass/fail criterion.
