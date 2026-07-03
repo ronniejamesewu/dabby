@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 129 across 17 strains
+- **Total runs:** 130 across 17 strains
 - **Active since:** May 2, 2026 (62 days)
 - **Last run date:** July 2, 2026
-- **Most recent run (all jars, by utc_logged_at):** Banana Punch #4 + Randy Watzon #13 Run 10 — July 2, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Banana Punch #4 + Randy Watzon #13 Run 11 — July 2, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -181,11 +181,11 @@
 ---
 
 ### Banana Punch #4 + Randy Watzon #13
-**10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: July 2, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**11 sessions** &nbsp;·&nbsp; Next run: 12 &nbsp;·&nbsp; Last: July 2, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 11: same-day 2nd/3rd dab to test whether toasty flavor returns under session order — otherwise repeat first-dab conditions to confirm the clean two-cycle profile
+**Next:** Run 12: discuss extending the 440°F open phase of this curve (user's Run 11 note) — otherwise, third same-day dab if timing allows to complete the R9 toasty-flavor replication, or a fresh first-dab repeat with careful even portioning to test the depletion/load-distribution question
 
-**AI Analysis:** Run 11: if the next dab lands the same day as a prior one, run it as the 2nd or 3rd dab specifically — that's the direct test the R9→R10 comparison set up, and would confirm whether toasty flavor returns under accumulated heat exposure rather than staying an unresolved single-run signal. If the next dab is a fresh first-dab instead, repeat these exact conditions (same curve, normal load) to confirm the clean two-cycle, depletion-only profile replicates before treating it as this curve's new baseline on this jar.
+**AI Analysis:** Run 12: discuss extending the 440°F open phase before the descent to 420°F — the user's own flag from Run 11 — as a way to hold peak temperature longer without changing the ramp shape. Before deciding it, worth weighing against Run 11's own result: a larger load still depleted fast in cycle 2, so more time at 440°F might extract flavor faster rather than lengthen the session. If the next dab lands as a third same-day dab, that's the cleaner replication of Run 9's toasty-flavor condition than Run 11 provided (second dab, no toasty) — worth running deliberately as a third dab if the timing allows. Otherwise, a fresh first-dab repeat of this exact curve with a deliberately even-portioned load would help separate the depletion-timing question from the load-distribution confound (outer ring vs. center) flagged this run.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, descent start
