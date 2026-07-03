@@ -164,6 +164,21 @@
 
 ---
 
+### Donny Burger + Rainbow Belts
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**AI Analysis:** No runs yet. This is a two-strain Close Friends Persy Thumbprint — load position is not distinguishable by eye, so each run reflects whichever zone was loaded. Start from baseline curve (380°F open, 420°F in 8s, 60s session). Note nose and vapor character per run — it may help identify which strain contributed over time, but single-session flavor observations are noisy.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
 ### Lemon Heads + Blueberry Haze
 **7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: June 23, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 

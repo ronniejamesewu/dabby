@@ -22,7 +22,7 @@ Dr. Dabber Switch². All conclusions are working hypotheses grounded in physics 
 
 ## 2. Insert Materials
 
-| Property | Quartz (current) | Sapphire (not yet acquired) |
+| Property | Quartz | Sapphire (in use since May 22, 2026) |
 |---|---|---|
 | Thermal conductivity | ~1.4 W/m·K | ~25–35 W/m·K (~20x better) |
 | Heat capacity | Lower | Higher — more stable on material contact |
@@ -55,17 +55,14 @@ Material pre-loaded into cold insert before heating begins. Material and insert 
 
 ## 4. Terpene & Temperature Reference
 
-**Boiling points (standard pressure — orientation points, not hard switches):**
-
-| Terpene | Boiling Point |
-|---|---|
-| Caryophyllene | 266°F / 130°C |
-| Alpha-Pinene | 311°F / 155°C |
-| Myrcene | 334°F / 168°C |
-| Limonene | 349°F / 176°C |
-| Terpinolene | 367°F / 186°C |
-| Linalool | 388°F / 198°C |
-| THC onset | 315°F / 157°C (progressive to ~428°F / 220°C) |
+**Boiling points:** the single source of truth is `TERPENE_REFERENCE` in
+`Dabby_Core.py`, rendered as the Terpene Reference block on the log. This
+document no longer duplicates the table — a duplicated copy here drifted from
+the reference (Caryophyllene was listed at 266°F, the widely-copied internet
+error, vs. 493°F / 256°C in the reference; removed July 3, 2026 audit).
+Boiling points are orientation points at standard pressure, not hard switches.
+THC onset ~315°F / 157°C, progressive to ~428°F / 220°C — matches the THC band
+drawn on the run charts.
 
 **Terpene profile inference — hard limits:**
 - Profiles are inferred from strain genetics, not measured. Do not present as specifications.
@@ -138,6 +135,6 @@ Practical implications: flat opening phases deliver the most accurate temperatur
 6. Log result in session log with swab observation and any adjustments
 7. Each run informs the next — adjust based on swab result and session character, log the outcome.
 
-Swab result is the empirical ground truth. Terpene profile reasoning is a starting framework, not a prediction.
+Swab result and session character are the empirical ground truth (swab as floor indicator, session character for everything finer — see §4 limits). Terpene profile reasoning is a starting framework, not a prediction.
 
 **Timing precision:** The countdown timer within the cycle is the primary timing unit — when harshness onset or depletion is logged as "harshness at 22 seconds left," that comes from the app countdown and is reasonably precise. Draw count is a fallback when the countdown wasn't captured at the moment — useful for sequencing observations (harshness entered on draw 3) but lower-precision than timer-referenced events. Draw count without time reference cannot support precise cross-run comparison of onset timing.

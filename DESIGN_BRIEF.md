@@ -33,7 +33,7 @@ Context: mobile, quick reference, likely while relaxed. Low friction is a hard r
 
 The Dashboard must never visually dominate the Strain Browser. The Header must not resemble a hero section. Visual weight should align with user intent, not data volume.
 
-The four reference sections (Device Constants, Swab Color Reference, Baseline Curve, Terpene Reference) live as collapsible blocks on the main page — do not move them to a separate page.
+The five reference sections (Device Constants, Swab Color Reference, Baseline Curve, Terpene Reference, Rig Reference) live as collapsible blocks on the main page — do not move them to a separate page.
 
 ---
 
