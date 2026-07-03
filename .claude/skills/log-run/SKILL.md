@@ -29,6 +29,15 @@ memory of it.
 - **Confirm before writing.** The readback (step 4) and the analysis drafts
   (step 5) are approval gates. Writing files before the user approves is the
   narrating-instead-of-proposing failure mode.
+- **Two registers.** Field names (`utc_logged_at`, `sessions_prior_today`,
+  `analysis`), jar slugs, `RIG_N`-style constants, and this file's own step
+  names ("Beat 1", "Beat 2") are machine-side vocabulary — they never appear
+  in a message to the user. The user-facing register is the display forms:
+  what `pending_dab.py` prints under its "say it to the user" banner, "Rig N
+  — ..." expansions, curve tables, and the settled display labels in step 5.
+  Leaking machine-side vocabulary is a documented failure mode (Sessions
+  142–143); steps 1, 4, and 5 hand you the display forms — compose around
+  them instead of translating from memory.
 
 ## When NOT to use this skill
 
@@ -61,11 +70,15 @@ python pending_dab.py list
 ```
 
 - **Entry exists for this dab** → `python pending_dab.py consume` and use its
-  printed `run_date=` / `utc_logged_at=` lines exactly as printed. Never run
-  `datetime.now()` for a dab that has a captured entry — recalculating at
-  reporting time is a documented, thrice-triggered failure mode (Sessions
-  121, 140 ×2). The entry clears itself once the run is written and the
-  generator runs.
+  paste-ready lines exactly as printed — date, logging timestamp, and the
+  dab-of-the-day count are all computed for you. Never run `datetime.now()`
+  for a dab that has a captured entry — recalculating at reporting time is a
+  documented, thrice-triggered failure mode (Sessions 121, 140 ×2). The
+  say-it-to-the-user block underneath is the readback's factual skeleton:
+  local time, dab-of-the-day, and the equipment default *as of that entry's
+  timestamp* (per-entry, so post-dated reconciliation can't inherit a stale
+  rig). The entry clears itself once the run is written and the generator
+  runs.
 - **No entry, results just happened** → capture now (`python pending_dab.py
   start`), then consume it. "Now" is legitimately `utc_logged_at` — the field
   means time-of-logging.
@@ -86,23 +99,26 @@ python pending_dab.py list
 
 **2. Identify the jar and the run number.** Resolve strain → slug via
 `jar_manifest.py`; read `jars/<slug>.py` if not already read this session.
-Take the next run number and equipment default from `HANDOFF_STATE.md`'s
-generated facts (`Next run: N` on the strain's header; rig from the "Most
-recent run (all jars, by utc_logged_at)" line) — do not derive either from
-memory or list position. Post-dated run caveat: that state line reflects
-*now*, but the default for a past dab is the most recent run logged **before
-this run's `utc_logged_at`** — if any run since the dab changed equipment,
-check the chronology across jars instead of trusting the line (this is the
-exact stale-default class that mislogged seven runs; see the Session 140
-failure mode). If the user's report mentions any equipment change,
-apply the equipment-change and new-rig rules in `Dabby_Handoff_Notes.md`.
+Take the next run number from `HANDOFF_STATE.md`'s generated `Next run: N`
+on the strain's header — never from memory or list position. Equipment
+default: for a queue-backed run, `consume` already printed it, computed as of
+that entry's timestamp (this mechanizes the stale-default class that
+mislogged seven runs; see the Session 140 failure mode). Only a run that
+never had a queue entry needs the manual path: the "Most recent run (all
+jars, by utc_logged_at)" line in `HANDOFF_STATE.md` for a run being logged
+now; for a manual post-date, the most recent run logged **before** the run's
+logging timestamp — check the chronology across jars. If the user's report
+mentions any equipment change, apply the equipment-change and new-rig rules
+in `Dabby_Handoff_Notes.md`.
 
 **3. Gather the content fields.** Apply the Session Logging Protocol in
 `Dabby_Handoff_Notes.md` — read it live. In particular: swab color and curve
 numbers cannot be logged vague (ask as many clarifying questions as needed);
-ask intensity ("How hard did it hit?") if not reported; compute
-`sessions_prior_today` silently (same `run_date`, earlier `utc_logged_at`,
-any jar — the validator cross-checks this, so a miscount fails the generate).
+ask intensity ("How hard did it hit?") if not reported. The dab-of-the-day
+count comes printed from `consume` for queue-backed runs; compute it by hand
+only for a run that never had an entry (same `run_date`, earlier
+`utc_logged_at`, any jar — silently, no narration; the validator cross-checks
+the stored value either way, so a miscount fails the generate).
 `duration_seconds`: the programmed curve's terminus unless the report
 suggests the session ended early — then ask when it stopped. On Beat 2
 candidates, reason through the physics first: two readings that describe the
@@ -110,12 +126,36 @@ same physical event (a hot insert running out of material IS the temperature
 signal) are not an ambiguity worth a question.
 
 **4. Beat 1 / Beat 2 readback.** Always, unconditionally: state the parsed
-facts — date and time (from step 1, never recomputed), strain, run number,
-curve, swab, equipment in full expansion on first mention, session order
-(first-of-day gets the celebratory energy the protocol calls for; otherwise
-matter-of-fact). Then Beat 2 per the protocol: at most one or two
-ambiguous-AND-consequential interpretation checks, clearly separated, the
-invitation as the last line. Wait for the user's response.
+facts — date and time (from step 1's printed block, never recomputed), strain
+in full name, run number, curve as a table, swab, equipment in full expansion
+on first mention, session order (first-of-day gets the celebratory energy the
+protocol calls for; otherwise matter-of-fact). Then Beat 2 per the protocol:
+at most one or two ambiguous-AND-consequential interpretation checks, clearly
+separated, the invitation as the last line. Wait for the user's response.
+
+The readback never announces its own structure — "Beat 1", "Beat 2", and
+field names stay out of it; it's just facts, then questions. Worked example
+(shape and register, not sentences to recite):
+
+> Logging this as **Fire Water #106, Run 30** — July 2 at 8:14pm MDT, second
+> dab of the day. The gentle descent again:
+>
+> ```
+>    0s   440°F   Session open — hot open, gentle descent start
+>   30s   420°F   Gentle descent midpoint
+>   60s   400°F   Floor
+> ```
+>
+> Full 60 seconds, moderate load, swab golden. Rig 6 — Dr. Dabber Sapphire
+> Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber
+> stock bubbler.
+>
+> One thing to pin down before I write it: "harsh at the end" — end of the
+> last draw, or after the heater shut off? Different signals. Everything
+> else look right?
+
+Before sending: anything backticked, snake_case, ALL_CAPS, a jar slug, or a
+step label gets swapped for its display form.
 
 **5. Draft `analysis`, `next_ai_analysis`, and the new `next_text` one-liner
 in chat.** Apply the sourcing
@@ -126,11 +166,23 @@ enter at "user suggested X" weight) and the epistemic flags in `CLAUDE.md`.
 Check `HANDOFF_WISDOM.md` for cross-strain patterns before writing —
 abandoning established equipment framing for an improvised mechanism is a
 documented failure mode. `next_ai_analysis` is a concrete recommendation
-with brief reasoning, 4–5 sentences max, not a recap. Show both drafts and
-wait. Approval = an explicit go-ahead, corrections to apply, **or** "just
-log it" at any point — per the protocol's "user ends it anytime" rule, that
-means write as read, with unresolved prose vagueness logged verbatim rather
-than sharpened. Silence is not approval.
+with brief reasoning, 4–5 sentences max, not a recap.
+
+Present the drafts under their settled display labels (Session 49 decision)
+— never under the field names:
+
+> **AI Run Analysis** *(frozen with the run)*
+> …the run's synthesis…
+>
+> **What to Try Next:** …the one-liner…
+>
+> **AI Analysis** *(the What to Try Next reasoning)*
+> …the recommendation…
+
+Show both drafts and wait. Approval = an explicit go-ahead, corrections to
+apply, **or** "just log it" at any point — per the protocol's "user ends it
+anytime" rule, that means write as read, with unresolved prose vagueness
+logged verbatim rather than sharpened. Silence is not approval.
 
 **6. Write the jar file.** After approval, in one pass:
 - New curve → add a local waypoint constant to the jar (no confirmation
@@ -178,6 +230,11 @@ plain-English description per `CLAUDE.md`'s example. If this session already
 has an open PR, push to that branch instead of opening another. Merging
 waits for the user unless they've said otherwise.
 
+Status lines to the user are outcome language, one line, e.g. "Logged and
+rendered clean — nothing else to log tonight. PR's up: <link>." Never the
+tooling's own vocabulary for its internals, and no narration of steps that
+fired or didn't.
+
 **Reconciliation loop (multiple queue entries):** one run at a time through
 steps 1–7, oldest first. Intermediate generates use `DABBY_ALLOW_PENDING=1`
 (the written run's own entry auto-prunes; the still-unreconciled ones are the
@@ -206,12 +263,16 @@ Created 2026-07-02 against the Layer 0 mechanical floor (PR #207). Verify
 these still hold if the skill starts giving results that don't match reality:
 
 ```
-# The queue tooling this skill leans on:
+# The queue tooling this skill leans on (consume prints the paste block AND
+# the say-it-to-the-user block with the per-entry equipment default):
 python pending_dab.py --help
 grep -n "_check_pending_dabs" Dabby_Log_Generator.py
 
-# Generated facts used in step 2:
+# Generated facts used in step 2 (manual/non-queue path):
 grep -n "Most recent run\|Next run:" HANDOFF_STATE.md | head -5
+
+# The display helpers the say-blocks and curve tables come from:
+grep -n "fmt_curve_table\|_fmt_equipment_display" Dabby_Core.py | head -5
 
 # The protocol sections steps 3-5 point at:
 grep -n "Session Logging Protocol\|Beat 1\|Equipment Protocol" Dabby_Handoff_Notes.md

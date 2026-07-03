@@ -18,6 +18,15 @@ cannot. So capture comes first, before git, before reads, before any reply.
 | Party mode | Minimal-interaction capture for group settings: one command, one line back, zero questions. All judgment deferred to reconciliation (see log-run skill). |
 | Session-open sequence | The mandatory startup steps from `CLAUDE.md`: git sync, the three handoff reads, plus the open-PR check and equipment soft-check from `Dabby_Handoff_Notes.md`. |
 
+**Two registers.** Everything in this file — the Terms table, command names,
+field names, `RIG_N`-style constants, jar slugs, step numbers — is machine-side
+vocabulary and never appears in a reply to the user. The user-facing register
+is what `pending_dab.py` prints under its "say it to the user" banner, plus
+your own outcome language ("nothing else to log tonight", never "queue
+drained"). Leaking machine-side vocabulary into chat is a documented failure
+mode (Sessions 142–143); the fix is built into steps 5–6 — the facts arrive
+pre-rendered, so compose around them instead of translating from memory.
+
 ## Hard rules
 
 - **Capture ≠ logging.** A captured timestamp is not a mandate to write a run.
@@ -62,10 +71,11 @@ fragment that reads like capture-and-go ("FW, big load, harsh at 40 — party").
    (single quotes, here-string) so the exact text lands in the file. Verify
    with `python pending_dab.py list` if the fragment was gnarly.
 
-2. Reply with **one short line** confirming capture time, e.g.
-   `Got it — 7:42pm ✓`. Nothing else: no strain resolution, no rig talk, no
-   questions, no wit. If the strain is unknown or ambiguous, that's a
-   reconciliation problem for later, not a question for now.
+2. Reply with **one short line** confirming capture time — the script already
+   prints it in the right form (`Got it — 7:42pm MDT, July 2.`); echo or trim
+   it. Nothing else: no strain resolution, no rig talk, no questions, no wit.
+   If the strain is unknown or ambiguous, that's a reconciliation problem for
+   later, not a question for now.
 
 3. Repeat per dab. Entries stack; the queue is the record.
 
@@ -117,27 +127,55 @@ Session 86). What to do with hits: a PR touching `jars/*.py` supersedes main
 for the affected strain — read its diff before your readback; infra-only PRs
 just get noted and skipped.
 
-**5. Equipment soft-check.** Apply the "Session-open soft check" in
-`Dabby_Handoff_Notes.md` — read it live for the current threshold and wording
-rather than trusting any number remembered or written here. Its input is the
-"Most recent run (all jars, by utc_logged_at)" line in `HANDOFF_STATE.md`,
-generated precisely so this check never requires a cross-jar query. Whether
-or not the check fires, that line's rig is the working equipment default.
+**5. Facts.** Run:
 
-**6. Reply.** Confirm the capture time (local, from the script's output).
-State the working rig in full expansion on first mention (format per the
-Beat 1 readback expansion rules in `Dabby_Handoff_Notes.md`). If a jar was
-read, state its planned next run from `STATUS` — as the plan on file, not a
-prescription; the user deviating from it is normal and is itself data. Then
-get out of the way. Do not ask what they're going to do; do not start logging.
+```
+python pending_dab.py brief --strain "Fire Water #106"
+```
+
+(full strain name or any unambiguous fragment; omit `--strain` if none was
+named). Everything under its "say it to the user" banner is pre-rendered in
+display form: dab time, dab-of-the-day count, the plan on file with its curve
+table, and the working rig in full expansion — that rig line is the equipment
+default. Lines under the "for the assistant" banner are instructions to you,
+never quoted. If a note there flags a gap over the threshold, apply the
+"Session-open soft check" in `Dabby_Handoff_Notes.md` — read it live for the
+current wording.
+
+**6. Reply.** Build it from the printed facts: quote or lightly wrap the
+say-banner lines, add a sentence of your own voice. The plan on file is stated
+as the plan on file, not a prescription — the user deviating from it is normal
+and is itself data. Then get out of the way. Do not ask what they're going to
+do; do not start logging.
+
+Worked example — shape and register, not sentences to recite:
+
+> Got it — 7:42pm. First one of the day. Fire Water #106, Run 30 on deck —
+> plan on file is the gentle descent, first dab, moderate load:
+>
+> ```
+>    0s   440°F   Session open — hot open, gentle descent start
+>   30s   420°F   Gentle descent midpoint
+>   60s   400°F   Floor
+> ```
+>
+> Still on Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock —
+> .094" bore airflow) · Dr. Dabber stock bubbler. Fire when ready.
+
+Before sending, one check: anything backticked, snake_case, ALL_CAPS, a jar
+slug, or a protocol step name in the reply gets swapped for its display form
+— the printed facts already are the display forms, so this normally means
+"delete the improvisation, keep the printed line."
 
 **Mid-session re-invocation** ("grabbing another"): run step 1 always; skip
-steps 2–5 if they already ran this session; give a one-line confirmation. If
-you're a fresh context resuming a session and can't tell whether they ran,
-run them — repeated reads are cheap, a stale readback is not.
+steps 2–4 if they already ran this session, but re-run step 5's command for
+each new capture — the dab-of-the-day count moves with every dab. Give a
+one-line confirmation built from its output. If you're a fresh context
+resuming a session and can't tell whether steps 2–4 ran, run them — repeated
+reads are cheap, a stale readback is not.
 
-**No strain named** ("gonna dab something tonight"): steps 1–4 now; step 3's
-jar read waits until a strain is chosen.
+**No strain named** ("gonna dab something tonight"): steps 1–5 now, `brief`
+without `--strain`; step 3's jar read waits until a strain is chosen.
 
 ## Recovery paths (don't improvise these)
 
@@ -154,17 +192,17 @@ Created 2026-07-02 against the Layer 0 mechanical floor (PR #207). Verify
 these still hold if the skill starts giving results that don't match reality:
 
 ```
-# pending_dab.py exists and its commands are as described:
+# pending_dab.py exists and its commands (incl. brief, step 5) are as described:
 python pending_dab.py --help
 
-# The generated most-recent-run line (step 5) still exists:
-grep -n "Most recent run" HANDOFF_STATE.md
+# brief prints the say-banner facts in display form (safe to run — reads only):
+python pending_dab.py brief --strain "The Hive #1"
 
 # The mandatory-reads gate and its file list are still current:
 grep -n "MANDATORY" -A 8 CLAUDE.md
 
-# The equipment soft-check and Beat 1 expansion rules are where step 5-6 point:
-grep -n "Session-open soft check\|Beat 1 readback expansion" Dabby_Handoff_Notes.md
+# The equipment soft-check wording step 5 defers to:
+grep -n "Session-open soft check" Dabby_Handoff_Notes.md
 
 # "gh is not installed" (step 4) still true:
 gh --version  # expected: command not found

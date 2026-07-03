@@ -15,25 +15,26 @@ equipment rig, or baseline curve is added.
 # 30 seconds. Don't leave a trap.
 #
 # Logging quick-reference (what a run-logging Claude needs):
-#   CompletedRun fields → line  82    (schema for new RUNS entries)
-#   StrainStatus fields  → line 115    (schema for STATUS blocks)
+#   CompletedRun fields → line  83    (schema for new RUNS entries)
+#   StrainStatus fields  → line 116    (schema for STATUS blocks)
 #
 # Full index:
-#   Line  43 — # ── DATACLASSES
-#   Line  46 — Waypoint
-#   Line  52 — Insert
-#   Line  58 — CarbCap
-#   Line  64 — Pearl
-#   Line  69 — EquipmentConfig
-#   Line  82 — CompletedRun
-#   Line 115 — StrainStatus
-#   Line 134 — TerpeneEntry
-#   Line 144 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
-#   Line 173 — # ── EQUIPMENT (RIG_1 – RIG_6)
-#   Line 232 — # ── TERPENE REFERENCE
-#   Line 276 — # ── COLOR RESOLUTION
-#   Line 328 — # ── LOCAL TIME (denver_local, denver_local_date — hand-rolled US DST)
-#   Line 351 — # ── VALIDATION (validate, validate_accent_colors)
+#   Line  44 — # ── DATACLASSES
+#   Line  47 — Waypoint
+#   Line  53 — Insert
+#   Line  59 — CarbCap
+#   Line  65 — Pearl
+#   Line  70 — EquipmentConfig
+#   Line  83 — CompletedRun
+#   Line 116 — StrainStatus
+#   Line 135 — TerpeneEntry
+#   Line 145 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
+#   Line 174 — # ── EQUIPMENT (RIG_1 – RIG_6)
+#   Line 233 — # ── TERPENE REFERENCE
+#   Line 277 — # ── COLOR RESOLUTION
+#   Line 329 — # ── LOCAL TIME (denver_local, denver_local_date, denver_abbrev — hand-rolled US DST)
+#   Line 356 — # ── DISPLAY (_RIG_LABELS, _fmt_equipment_display, fmt_curve_table — identifier → user-facing form)
+#   Line 409 — # ── VALIDATION (validate, validate_accent_colors)
 # ─────────────────────────────────────────────────────────────────────────────
 
 from datetime import datetime, date, timezone, timedelta
@@ -347,6 +348,63 @@ def denver_local(utc_dt):
 def denver_local_date(utc_dt):
     """America/Denver calendar date for a UTC datetime."""
     return denver_local(utc_dt).date()
+
+def denver_abbrev(utc_dt):
+    """'MDT' or 'MST' for a UTC datetime — for stating times to the user."""
+    return "MDT" if _denver_offset_hours(utc_dt) == 6 else "MST"
+
+# ── DISPLAY (identifier → user-facing form) ──────────────────────────────────
+# The single home for rendering internal names into the display register: RIG_N
+# constants become "Rig N — insert · cap · pearls · glass", waypoint lists become
+# plain-language curve tables. Consumers: Dabby_Log_Generator.py (log rendering)
+# and pending_dab.py (chat-ready fact blocks). Anything stated to the user about
+# equipment or curves comes from these functions, never from echoing a constant
+# name (documented failure mode, Session 142).
+
+# Auto-discovered from this module's RIG_N constants — adding a new rig requires
+# no edit here (the Session 75 failure mode stays structurally impossible).
+_RIG_LABELS = sorted(
+    [(value, f"Rig {name[4:]}") for name, value in list(globals().items())
+     if name.startswith('RIG_') and name[4:].isdigit()],
+    key=lambda pair: int(pair[1].split()[1])
+)
+
+def _insert_label(ins):
+    """Insert as 'Brand stock material' (stock model) or 'Brand model'. Shared by the
+    run-line display and the Rig Reference table so the rule lives in one place."""
+    return f"{ins.brand} stock {ins.material}" if ins.model == "stock" else f"{ins.brand} {ins.model}"
+
+def _cap_label(cap):
+    """Carb cap base 'Brand model' plus the non-stock airflow string ('' when stock).
+    Callers wrap the airflow differently (inline parens vs. <small> line)."""
+    return f"{cap.brand} {cap.model}", ("" if cap.airflow == "stock" else cap.airflow)
+
+def _fmt_equipment_display(eq):
+    """Human-readable equipment string from EquipmentConfig. Format: 'Rig N — insert · cap · pearls · glass'."""
+    rig_label = next((label for rig, label in _RIG_LABELS if rig == eq), None)
+
+    insert_str = _insert_label(eq.insert)
+
+    cap_base, cap_airflow = _cap_label(eq.carb_cap)
+    cap_str = f"{cap_base} ({cap_airflow} airflow)" if cap_airflow else cap_base
+
+    pearl_parts = [f"{p.diameter_mm}mm {p.material} pearl" for p in eq.pearls]
+    segments = [insert_str, cap_str]
+    if pearl_parts:
+        segments.append(" + ".join(pearl_parts))
+    segments.append(eq.glass_top)
+
+    body = " \N{MIDDLE DOT} ".join(segments)
+    if rig_label:
+        return f"{rig_label} \N{EM DASH} {body}"
+    return body
+
+def fmt_curve_table(waypoints):
+    """A waypoint list as plain-language table lines — the display form whenever a
+    curve is stated to the user (chat readbacks, pending_dab fact blocks). One line
+    per waypoint: time, temperature, note."""
+    return "\n".join(f"  {wp.time_s:>4}s   {wp.temp_f}\N{DEGREE SIGN}F   {wp.note}"
+                     for wp in waypoints)
 
 # ── VALIDATION ───────────────────────────────────────────────────────────────
 
