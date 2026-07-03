@@ -162,13 +162,28 @@ RUNS = [
         dab_notes='Three draws in first cycle. Plenty of taste on first one. Second one had mild throat harshness show up at end of draw 2 (15 seconds left). Harshness seemed to resolve in short draw three. Going to run second cycle. Depleted during first draw on second cycle. Terminated at 48 seconds left. Very minimal amount of reclaim, golden in color on swabs. Intensity is medium. Right now at least. Load was slightly larger than normal or so I thought, we know this part is unreliable. This one never went above medium intensity.',
         analysis='Run 9 — first descent-curve run for this jar (all eight priors were ramp or flat-hold); an intentional swap from the planned 425°F ramp, not a confound.\n\nCycle 1 (3 draws): good flavor on draw 1, mild throat harshness at end of draw 2 (~45s mark, curve already down near 410°F), eased off on a short draw 3. Not fully clean like FW106 R23/WM R16/bp4rw13 R5 on this curve, but matches FW106 R26\'s late-cycle-1 harshness — this run lands inside the range the curve has already shown across four strains, not outside it. Harshness clearing on a short draw without water is new for the log; a shorter draw delivering less material is the simpler read than the threshold reversing on its own.\n\nCycle 2 depleted in one draw (terminated ~12s in) despite a load reported as slightly larger than normal — counterintuitive, and it matches bp4rw13 R11\'s identical pattern on this same curve and rig. Load self-report is acknowledged as imprecise, so treat it as directional. Golden swab, minimal reclaim: consistent with this jar\'s cycle-count pattern (Run 8: second cycle drives golden), not a new signal about curve or material.',
     ),
+    CompletedRun(
+        strain='The Hive #1',
+        run_date=date(2026, 7, 3),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 3, 18, 36, 11, tzinfo=timezone.utc),
+        waypoints=HIVE1_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent (440→420@30s→400@60s); same as Run 9',
+        swab='Golden — minimal reclaim.',
+        session_char='Cycle 1 (3 draws): mild throat-and-chest harshness end of draw 2 (~15s left), both eased by draw 3 — same timing as Run 9. Cycle 2 (deliberate second pull): 1.5 draws before depletion, no harshness on return, hint of toast. Golden swab, minimal reclaim. Moderate-to-high intensity (immediate read).',
+        intensity='Moderate to high (immediate read)',
+        dab_notes='Ok that was weird. Exact same pattern. Gonna fire a second cycle just to see… I got one and a half draws on second cycle before it depleted. Harshness never returned. Hint of toast. Yes on cycle 1. I also noticed some mild chest harshness alongside the throat. Both resolved in third draw. Swabs were golden and minimal. Moderate to high intensity. Let\'s see how it feels at the pool. That\'s a dumb read on the toast. It\'s likely from some sort of thermal process on whatever is still left at bottom of cycle.',
+        analysis='Run 10 repeats Run 9\'s curve and, in cycle 1, its timing almost exactly: 3 draws, mild harshness at end of draw 2 (~15s left), eased on a short draw 3. New: chest harshness alongside throat this time, both resolving by draw 3 — consistent with bp4rw13 R9/R11 (throat-and-chest, resolves) rather than papzp22 R7/bp4rw13 R8\'s chest-only/persists framing. A second strain now counters that original read.\n\nCycle 2 depleted fast — 1.5 draws — with a hint of toast on the return. More likely a thin residue scorching under continued heat once the bulk of the material was gone than any session-order signal — consistent with FW106 R11-12\'s degradation-flavor pattern from material sitting in a hot insert past clean vaporization.\n\nSwab (golden, minimal reclaim) matches Run 9 — expected, same second-cycle driver. Intensity stepped up to moderate-to-high from Run 9\'s medium despite being the second dab (tolerance usually cuts the other way) — extra cycle-2 draw time is the simpler explanation than session order. Load size wasn\'t pinned down, the live confound here.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='The Hive #1',
     profile_anchor='#hive1-profile',
-    next_text='Run 10: repeat the gentle descent (440°F→420°F@30s→400°F floor) — confirm whether the draw-2 harshness recurs',
+    next_text='Run 11: repeat the gentle descent (440°F→420°F@30s→400°F floor) as a first dab — remove the session-order variable and test whether harshness and toast hold',
     accent=None,
     slug='hive1',
     info=[
@@ -179,8 +194,8 @@ STATUS = StrainStatus(
         ('Nose', 'Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only).'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene and terpinolene inferred from tropical fruit character; Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios not inferable from genetics — standard palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Same gentle descent curve (440°F→420°F@30s→400°F floor), first dab of day if possible. Watch: does the mild draw-2 harshness (~45s mark) recur; track load size as precisely as possible.',
-    next_ai_analysis='One data point: mild, non-escalating cycle-1 harshness resolved without water, plus a fast cycle-2 depletion despite a larger load. Repeat the exact curve, same first-dab condition: recurrence near ~45s puts this jar closer to FW106 R26 than the fully-clean WM/bp4rw13 sessions; a clean repeat points to R9 as noise. The larger-load-fast-depletion pattern now has two strains (this jar, bp4rw13) — worth a third.',
+    next_dab_notes='Same gentle descent curve, first dab of day. Watch: does the mild throat/chest harshness (~45s mark) recur; does toast reappear even on a normally-depleting cycle 2, not just a fast one; pin down load size if possible.',
+    next_ai_analysis='Two runs in, cycle 1\'s signature looks consistent: mild throat-and-chest harshness at ~45s, resolving by draw 3. A first-dab repeat removes session order entirely and tests whether that timing holds without tolerance carryover. If toast recurs on a normally-depleting cycle 2 rather than only a fast one, that would push back toward something more than just residue-scorch.',
     next_waypoints=HIVE1_DESCENT_GENTLE,
     jar_index='',
 )

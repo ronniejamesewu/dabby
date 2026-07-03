@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 131 across 17 strains
+- **Total runs:** 132 across 17 strains
 - **Active since:** May 2, 2026 (63 days)
 - **Last run date:** July 3, 2026
-- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 9 — July 3, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 10 — July 3, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -32,11 +32,11 @@
 ---
 
 ### The Hive #1
-**9 sessions** &nbsp;·&nbsp; Next run: 10 &nbsp;·&nbsp; Last: July 3, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: July 3, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 10: repeat the gentle descent (440°F→420°F@30s→400°F floor) — confirm whether the draw-2 harshness recurs
+**Next:** Run 11: repeat the gentle descent (440°F→420°F@30s→400°F floor) as a first dab — remove the session-order variable and test whether harshness and toast hold
 
-**AI Analysis:** One data point: mild, non-escalating cycle-1 harshness resolved without water, plus a fast cycle-2 depletion despite a larger load. Repeat the exact curve, same first-dab condition: recurrence near ~45s puts this jar closer to FW106 R26 than the fully-clean WM/bp4rw13 sessions; a clean repeat points to R9 as noise. The larger-load-fast-depletion pattern now has two strains (this jar, bp4rw13) — worth a third.
+**AI Analysis:** Two runs in, cycle 1's signature looks consistent: mild throat-and-chest harshness at ~45s, resolving by draw 3. A first-dab repeat removes session order entirely and tests whether that timing holds without tolerance carryover. If toast recurs on a normally-depleting cycle 2 rather than only a fast one, that would push back toward something more than just residue-scorch.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, gentle descent start
