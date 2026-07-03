@@ -129,6 +129,8 @@ Run logging assumes equipment continuity from the chronologically most recent ru
 
 **No procedural narration in readbacks:** State facts plainly. Don't explain why a step was skipped, why a question wasn't asked, or why a default applied ("no 'anything change?' needed," "matches the plan on file") unless the user asks — that's the protocol's own bookkeeping, not something the user needs relayed. If something is worth surfacing (a deviation from plan, a confound), state the fact itself, not the meta-reasoning about the step that produced it.
 
+**No internal mechanism vocabulary in status text:** Words that name the tooling's own internals — "queue," "consume," "manifest," "tier," "capture" — are accurate but read as jargon in a status line. Say what happened in outcome terms instead: "nothing else to log tonight," not "queue drained." Exception: terms the user has coined themselves in conversation (e.g. "party mode") are shared vocabulary, not a leak.
+
 ---
 
 ## Decisions — Do Not Re-Litigate
@@ -207,6 +209,8 @@ These are caught by code or encoded as explicit skill steps; kept as one-liners 
 - **Echoing an internal Python constant name to the user instead of resolving it.** Never echo `RIG_1` etc., or a jar-local waypoint constant — always "Rig 1" and a plain-language curve description. Constant names are an implementation detail regardless of which file defines them (`Dabby_Core.py` or a jar). Session 142 instance: bp4rw13 Run 10's Beat 1 readback echoed `BP4RW13_DESCENT_GENTLE` verbatim instead of describing the curve in plain language.
 
 - **Narrating internal procedural reasoning in a readback instead of just stating the fact.** Explaining why a step was skipped or a default applied — "no 'anything change?' needed," "matches the plan on file" — surfaces the protocol's own bookkeeping instead of the fact the user actually needs. Session 142: the dab skill's session-open reply explained why the equipment soft-check didn't fire, when stating the working rig alone would have sufficed. State facts; keep the protocol's internal logic out of the reply unless asked.
+
+- **Using internal mechanism vocabulary in a status line instead of plain outcome language.** Terms like "queue," "consume," "manifest," "tier" are accurate but are the tooling's own internals, not shared vocabulary with the user — unless the user coined the term themselves (e.g. "party mode"). Session 142 instance: "Clean generate, queue drained. Now shipping..." should have said something like "nothing else to log tonight."
 
 - **Writing `next_ai_analysis` that recaps instead of recommends.** The What to Try Next AI Analysis is a concrete recommendation with brief reasoning — not a summary of run history (that's what the run sections are for). If it takes more than 4–5 sentences to say what to try and why, it has too much noise.
 
