@@ -9,48 +9,14 @@ To log a new run: edit the jar file in jars/ — no generator edits needed; the 
 from datetime import datetime, date, timezone, timedelta
 
 from Dabby_Core import *
-from Dabby_Core import _resolve_accent_colors  # underscore names are skipped by wildcard import
-import Dabby_Core
+# Underscore names are skipped by wildcard import; the display helpers moved to
+# Dabby_Core's DISPLAY section (shared with pending_dab.py) — import explicitly.
+from Dabby_Core import (_resolve_accent_colors, _RIG_LABELS,
+                        _insert_label, _cap_label, _fmt_equipment_display)
 
 from jar_manifest import load_all_jars, CLOSED
 COMPLETED_RUNS, STRAIN_STATUS = load_all_jars()   # closed first, then active, in render order
 _ACCENT_RESOLVED = _resolve_accent_colors(STRAIN_STATUS)
-
-_RIG_LABELS = sorted(
-    [(getattr(Dabby_Core, name), f"Rig {name[4:]}") for name in dir(Dabby_Core)
-     if name.startswith('RIG_') and name[4:].isdigit()],
-    key=lambda pair: int(pair[1].split()[1])
-)
-
-def _insert_label(ins):
-    """Insert as 'Brand stock material' (stock model) or 'Brand model'. Shared by the
-    run-line display and the Rig Reference table so the rule lives in one place."""
-    return f"{ins.brand} stock {ins.material}" if ins.model == "stock" else f"{ins.brand} {ins.model}"
-
-def _cap_label(cap):
-    """Carb cap base 'Brand model' plus the non-stock airflow string ('' when stock).
-    Callers wrap the airflow differently (inline parens vs. <small> line)."""
-    return f"{cap.brand} {cap.model}", ("" if cap.airflow == "stock" else cap.airflow)
-
-def _fmt_equipment_display(eq):
-    """Human-readable equipment string from EquipmentConfig. Format: 'Rig N — insert · cap · pearls · glass'."""
-    rig_label = next((label for rig, label in _RIG_LABELS if rig == eq), None)
-
-    insert_str = _insert_label(eq.insert)
-
-    cap_base, cap_airflow = _cap_label(eq.carb_cap)
-    cap_str = f"{cap_base} ({cap_airflow} airflow)" if cap_airflow else cap_base
-
-    pearl_parts = [f"{p.diameter_mm}mm {p.material} pearl" for p in eq.pearls]
-    segments = [insert_str, cap_str]
-    if pearl_parts:
-        segments.append(" + ".join(pearl_parts))
-    segments.append(eq.glass_top)
-
-    body = " \N{MIDDLE DOT} ".join(segments)
-    if rig_label:
-        return f"{rig_label} \N{EM DASH} {body}"
-    return body
 
 # ── PENDING DABS TRIPWIRE ────────────────────────────────────────────────────
 
