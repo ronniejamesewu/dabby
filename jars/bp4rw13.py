@@ -169,13 +169,28 @@ RUNS = [
         dab_notes='The headline is no depletion harshness, just toasty flavor growing. Swabs were dark golden. Two cycles, did two draws off second cycle then terminated. Normal load. A little bit in both throat and chest. Medium high and rising. Toasty is definitely a combusted flavor, not burning but almost. It resolved with sips of water.',
         analysis='Run 9, same descent curve as Runs 5–8 (440°F open → 420°F @30s → 400°F floor), third dab of the day. Originally logged as this jar\'s first Rig 6 run while R5–R8 sat disputed as Rig 5; resolved July 2, 2026 — R5–R8 were mislogged via a stale jar-local equipment default and corrected to Rig 6 (user confirmed the Piston has been in continuous use since June 17, 2026). Every descent run on this jar is Rig 6; rig change is ruled out as a variable within this jar\'s history.\n\nTwo cycles — full first cycle, two draws into the second before stopping — and notably the stop wasn\'t depletion-driven. That breaks from the draw-count-as-depletion-proxy pattern documented on FW106/Watermellos. Instead, a toasty, near-combustion flavor built through the session and read as the actual limiting factor — first time this jar has thrown that character. It parallels FW106 R11-12\'s toasty-flavor finding (Rig 5, above-ceiling degradation, swab staying light despite the flavor signal), but that was a different rig and different jar. With R5–R8 corrected to Rig 6, the rig-change explanation for the toasty flavor is ruled out — this same rig ran the same 440°F open on this jar four times without it. Session order (third dab, accumulated heat exposure) and late-jar material state are the live candidates; not resolvable from one run.\n\nHarshness was mild, throat and chest both — a departure from R8\'s chest-only, persisted-after-session-ended read — and resolved with water rather than lingering. This doesn\'t extend the papzp22 R7 / bp4rw13 R8 candidate pattern (chest-located, post-session persistence); if anything it argues against treating that as settled, since the same curve just produced a different location and different resolution behavior.\n\nDark golden swab sits consistent with this jar\'s cycle-count/swab-darkening pattern — between R6\'s golden (1 cycle) and R7\'s amber-to-brown (2 cycles), matching this run\'s ~2-cycle exposure. Medium-high, rising intensity on a normal load continues to track with the load-size-intensity relationship established across R5–R7.',
     ),
+    CompletedRun(
+        strain='Banana Punch #4 + Randy Watzon #13',
+        run_date=date(2026, 7, 2),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 2, 23, 58, 10, tzinfo=timezone.utc),
+        waypoints=BP4RW13_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — same descent curve as Runs 5–9, first dab of the day',
+        swab='brown',
+        session_char='No harshness either cycle; tasty and dense throughout; two full cycles; last draw wispy to depletion; medium-high intensity',
+        intensity='medium-high',
+        dab_notes='That was a really great dab. No harshness, tasty and dense all the way through. So good I ran a second session. And hit it all the way through, no harshness although last draw was wispy to point of being depleted. Swabs were brown. Effect was medium high. No toasty! And normal to slightly smaller load',
+        analysis='Run 10, same descent curve as Runs 5–9 (440°F open → 420°F @30s → 400°F floor), Rig 6, first dab of the day, normal-to-slightly-smaller load, two full 60s cycles.\n\nThis is the cleanest session this curve has produced on this jar. No harshness in either cycle — a first for this run series, which has otherwise ended via intensity overwhelm (R5), mild harshness (R6, R8), harshness escalating to a stop (R7), or a toasty flavor becoming the limiting factor (R9). R10 ran both cycles to completion and stopped only because the last draw went wispy to the point of depletion — the first genuinely clean depletion-driven end on this curve for this jar.\n\nDirectly resolves R9\'s open question: the toasty/near-combustion flavor did not recur. R9 was the third dab of the day; R10 is a fresh first-dab start on the same rig, same curve, same jar material (one day later, no material change in between). Since the flavor disappeared when session order reset but the material itself didn\'t change, this points at accumulated heat exposure / session order as the more likely driver of R9\'s toasty note, and against late-jar material state — the two candidates R9\'s writeup left open.\n\nBrown swab sits at the darker end of this jar\'s cycle-count/duration pattern (R6 1 cycle → golden, R8 1 cycle → amber, R7 2 cycles → amber-to-brown, R9 ~2 draws of cycle 2 → dark golden, R5 3 cycles → brown) — consistent with two full 60s cycles being more total heat exposure than R9\'s partial second cycle, reinforcing duration/cycle-count as the swab driver rather than curve or load.\n\nMedium-high intensity on a normal-to-slightly-smaller load is a touch higher than R6\'s medium on a lighter load — but R6 was a single cycle and R10 ran two full ones, so cycle count/total exposure is the more parsimonious explanation than load size here, not a break from the load-as-primary-lever pattern established in R5–R7.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Banana Punch #4 + Randy Watzon #13',
     profile_anchor='#bp4rw13-profile',
-    next_text='Run 10: repeat the same descent curve on Rig 6, first dab of the day, normal load — confirm whether the toasty/near-combustion flavor at 440°F open repeats or was session-order driven',
+    next_text='Run 11: same-day 2nd/3rd dab to test whether toasty flavor returns under session order — otherwise repeat first-dab conditions to confirm the clean two-cycle profile',
     accent=None,
     slug='bp4rw13',
     info=[
@@ -187,7 +202,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Run 10: repeat this exact curve on Rig 6, normal load, first dab of the day — isolate whether the toasty/near-combustion flavor is repeatable at 440°F open on this rig, or was specific to being the third dab of the day (accumulated heat exposure is an unresolved confound here). If it recurs on a fresh start, pull the open point back — 430°F or 425°F — rather than touching the floor, since the flavor read as present early, not just at the hold. With R5–R8\'s equipment corrected to Rig 6 (July 2, 2026), rig change is ruled out as the driver — session order and late-jar material state are what Run 10 discriminates between.',
+    next_ai_analysis='Run 11: if the next dab lands the same day as a prior one, run it as the 2nd or 3rd dab specifically — that\'s the direct test the R9→R10 comparison set up, and would confirm whether toasty flavor returns under accumulated heat exposure rather than staying an unresolved single-run signal. If the next dab is a fresh first-dab instead, repeat these exact conditions (same curve, normal load) to confirm the clean two-cycle, depletion-only profile replicates before treating it as this curve\'s new baseline on this jar.',
     next_waypoints=BP4RW13_DESCENT_GENTLE,
     jar_index='',
 )
