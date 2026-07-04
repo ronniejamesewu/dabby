@@ -24,6 +24,9 @@
 
 ## Catalog
 
+**Keep this current.** When a new skill is accepted, add it to the table
+and the handoff graph below.
+
 | Skill | Trigger | Hands off to |
 |---|---|---|
 | [dab](dab/SKILL.md) | User announces a dab starting — "about to hit it", "grabbing one", "party mode" | log-run (when user initiates logging) |
