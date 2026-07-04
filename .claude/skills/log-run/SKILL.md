@@ -47,10 +47,8 @@ memory of it.
   concluding a jar is missing — and check open PRs too (a jar may exist on an
   unmerged branch).
 - **Correcting an already-logged run** (wrong date, wrong equipment, wrong
-  swab) — that's a frozen-field correction by exception, not a new run. No
-  skill exists for it yet; follow the worked example in PR #206 and the
-  correction procedure recorded in the backlog entry in
-  `Dabby_Handoff_Notes.md`.
+  swab) — that's the correct-frozen-data skill
+  (`.claude/skills/correct-frozen-data/SKILL.md`).
 - **Session-open / "about to dab"** — that's the dab skill (capture only).
 
 ## Workflow
@@ -200,17 +198,14 @@ logged verbatim rather than sharpened. Silence is not approval.
   jar's existing constant. Naming convention (from the live jars): uppercase
   slug + endpoint temperature (`LHBH_425`, `BP4RW13_430`); descriptive suffix
   for shapes (`BP4RW13_DESCENT_GENTLE`).
-- Run used the current baseline curve → **define a local constant anyway**
-  (`<SLUG>_420` at today's baseline), copying `BASELINE_CURVE`'s waypoints
-  verbatim from `Dabby_Core.py`. Context so the existing
-  `waypoints=BASELINE_CURVE,` references in older jars (10 as of July 3, 2026
-  — count with the field-anchored grep `^\s*waypoints=BASELINE_CURVE,` over
-  `jars/*.py`) don't read as
-  contradiction: those are valid — the rename-on-change protocol in
-  `HANDOFF_WISDOM.md`'s BASELINE_CURVE failure-mode row protects them when
-  the baseline changes — but the backlog ("Skill library — deferred second
-  pass", item 4, `Dabby_Handoff_Notes.md`) plans to ban new ones, so don't
-  add more.
+- Run used the current baseline curve → **use `BASELINE_420`** (or whichever
+  frozen constant matches the current baseline endpoint). All run-level
+  references now use frozen constants — `waypoints=BASELINE_CURVE` inside
+  RUNS is banned by the preflight check in `jar_manifest.py` and will fail
+  the generate step. `next_waypoints=BASELINE_CURVE` in STATUS is correct
+  (it tracks the current recommendation). If the baseline itself changes,
+  that's the change-baseline skill
+  (`.claude/skills/change-baseline/SKILL.md`).
 - Append the `CompletedRun` to `RUNS` — timestamp lines pasted from step 1,
   `dab_notes` verbatim, `endpoint_note` per its convention in
   `Dabby_Handoff_Notes.md` (never blank), `read`/`verdict` left empty
