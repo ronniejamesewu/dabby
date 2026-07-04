@@ -166,7 +166,10 @@ enter at "user suggested X" weight) and the epistemic flags in `CLAUDE.md`.
 Check `HANDOFF_WISDOM.md` for cross-strain patterns before writing —
 abandoning established equipment framing for an improvised mechanism is a
 documented failure mode. `next_ai_analysis` is a concrete recommendation
-with brief reasoning, 4–5 sentences max, not a recap.
+with brief reasoning, 4–5 sentences max, not a recap — and it ends with the
+predict-before-running pair (one sentence of expected observation, one of
+what would surprise, written before the run exists; convention in
+`Dabby_Handoff_Notes.md`, What to Try Next — AI Analysis).
 
 Present the drafts under their settled display labels (Session 49 decision)
 — never under the field names:
@@ -177,7 +180,7 @@ Present the drafts under their settled display labels (Session 49 decision)
 > **What to Try Next:** …the one-liner…
 >
 > **AI Analysis** *(the What to Try Next reasoning)*
-> …the recommendation…
+> …the recommendation… Expected: …one sentence… Surprising: …one sentence…
 
 The step 4 pre-send check applies here too. Register inside analysis prose:
 the strain being logged gets its full name; cross-strain run citations follow

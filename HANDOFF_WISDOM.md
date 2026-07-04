@@ -7,7 +7,7 @@ Session-close checklist:
 
 **Before writing any new row to any table:** check whether an existing row should be updated instead. Evidence must cite specific runs with inline observations (e.g. "WW Z R5 (smaller load, no harshness, mild)") — never just run numbers or vague phrases like "multiple strains." Trim to the strongest examples; don't accumulate every confirming run.
 
-1. Did any new cross-strain pattern emerge or get confirmed?
+1. Did any new cross-strain pattern emerge or get confirmed? If any row's confidence rose this session (Low→Moderate, Moderate→High, or a wording change that functions as an upgrade), the same edit must state the strongest counter-reading of that evidence and why it fails — in the row's Notes or the PR description. A closing session that can't produce a counter-reading it believes in flags the promotion for user review (or a frontier-class session) instead of manufacturing one; a strawman written to satisfy the checklist is worse than skipping the upgrade.
 2. Did equipment configuration change or produce a new observation?
 3. Did a failure mode occur this session (data integrity / process)?
 4. Was any methodology position tested, confirmed, or revised?
