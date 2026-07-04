@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 132 across 17 strains
+- **Total runs:** 133 across 17 strains
 - **Active since:** May 2, 2026 (63 days)
 - **Last run date:** July 3, 2026
-- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 10 — July 3, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 11 — July 3, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -32,11 +32,11 @@
 ---
 
 ### The Hive #1
-**10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: July 3, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**11 sessions** &nbsp;·&nbsp; Next run: 12 &nbsp;·&nbsp; Last: July 3, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 11: repeat the gentle descent (440°F→420°F@30s→400°F floor) as a first dab — remove the session-order variable and test whether harshness and toast hold
+**Next:** Run 12: repeat the gentle descent as a genuine first dab on a fresh day — the session-order-clean test that still hasn't happened
 
-**AI Analysis:** Two runs in, cycle 1's signature looks consistent: mild throat-and-chest harshness at ~45s, resolving by draw 3. A first-dab repeat removes session order entirely and tests whether that timing holds without tolerance carryover. If toast recurs on a normally-depleting cycle 2 rather than only a fast one, that would push back toward something more than just residue-scorch.
+**AI Analysis:** Three same-day runs on the gentle descent now show harshness onset creeping earlier with each successive dab — R9 and R10 both ~15s remaining, R11 ~25s remaining — the clearest same-day session-order gradient the log has for this curve. The genuine test is still open: a first dab on a fresh day, free of today's accumulated exposure, to see whether cycle 1 comes back clean like FW106 R23 / WM R16 / bp4rw13 R5's first-dab descent runs, or whether ~15–25s-remaining harshness is a real ceiling for this curve independent of session order.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, gentle descent start
