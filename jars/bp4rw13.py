@@ -39,7 +39,7 @@ RUNS = [
         run_date=date(2026, 6, 16),
         sessions_prior_today=0,
         utc_logged_at=datetime(2026, 6, 16, 18, 38, 34, tzinfo=timezone.utc),
-        waypoints=BASELINE_CURVE,
+        waypoints=BASELINE_420,
         equipment=RIG_5,
         duration_seconds=60,
         endpoint_note='<strong>Endpoint:</strong> 420°F — baseline curve, inaugural run',

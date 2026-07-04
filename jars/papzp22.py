@@ -36,7 +36,7 @@ RUNS = [
         run_date=date(2026, 6, 14),
         sessions_prior_today=0,
         utc_logged_at=datetime(2026, 6, 14, 19, 17, 0, tzinfo=timezone.utc),
-        waypoints=BASELINE_CURVE,
+        waypoints=BASELINE_420,
         equipment=RIG_5,
         too_hot=False,
         duration_seconds=60,

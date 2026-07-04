@@ -164,6 +164,13 @@ BASELINE_416 = [
     Waypoint(time_s=50, temp_f=416, note="Hold"),
 ]
 
+BASELINE_420 = [
+    Waypoint(time_s=0,  temp_f=380, note="Session open"),
+    Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),
+    Waypoint(time_s=8,  temp_f=420, note="Endpoint"),
+    Waypoint(time_s=60, temp_f=420, note="Hold"),
+]
+
 BASELINE_CURVE = [
     Waypoint(time_s=0,  temp_f=380, note="Session open"),
     Waypoint(time_s=4,  temp_f=400, note="Steep early climb"),

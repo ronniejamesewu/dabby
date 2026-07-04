@@ -26,13 +26,10 @@ itself, not something that has to wait for the first session.
   not jar creation — check `jars/*.py` and `jar_manifest.py` first (see step
   1 of the mid-run-logging trigger below).
 - **Closing a jar** (moving a slug from `ACTIVE` to `CLOSED` in
-  `jar_manifest.py` and updating its prose to closed-jar framing) is a
-  different workflow this skill doesn't cover. No skill exists for it yet —
-  follow `Dabby_Handoff_Notes.md`'s lifecycle guidance directly.
-  Don't extend this skill to do it without a matching interview redesign
-  (closing a jar surfaces different questions than opening one).
-  Confirm this exception still holds before relying on it — search this
-  directory for a `close-jar` skill first (see Provenance below).
+  `jar_manifest.py` and updating its prose to closed-jar framing) is the
+  close-jar skill (`.claude/skills/close-jar/SKILL.md`).
+  Don't extend this skill to do it — closing a jar surfaces different
+  questions than opening one.
 - **Correcting an existing jar's profile** (a typo, an updated nose
   description, a corrected producer name) is a direct edit to the existing
   file, not a new-jar operation — don't run the full interview for a

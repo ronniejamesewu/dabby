@@ -1,4 +1,4 @@
-"""Jar manifest — tracks which lifecycle tier each jar is in.
+"""Jar manifest -- tracks which lifecycle tier each jar is in.
 
 The move primitive: relocate a slug between ACTIVE / CLOSED. The jar file
 itself is never touched. List order within a tier is display order; within
@@ -52,7 +52,7 @@ def _check_closed_tier(slug, runs, status):
             if int(m.group(1)) > run_count:
                 errors.append(
                     f"Closed jar '{slug}' ({run_count} runs): {field_name} "
-                    f"references Run {m.group(1)} — forward-looking, jar is closed"
+                    f"references Run {m.group(1)} -- forward-looking, jar is closed"
                 )
     return errors
 
@@ -60,7 +60,7 @@ def _check_closed_tier(slug, runs, status):
 
 def _validate_manifest_preflight():
     """Check for duplicate slugs, missing/orphan jar files, and disallowed imports BEFORE importing.
-    Raises SystemExit on any error — fail fast with clear diagnostics."""
+    Raises SystemExit on any error -- fail fast with clear diagnostics."""
     all_list = ACTIVE + CLOSED
     errors = []
 
@@ -77,6 +77,7 @@ def _validate_manifest_preflight():
             errors.append(f"Manifest slug '{slug}' has no jar file: {jar_path}")
             continue
         with open(jar_path, encoding='utf-8') as fh:
+            in_runs = False
             for lineno, line in enumerate(fh, 1):
                 stripped = line.strip()
                 if stripped.startswith(('import ', 'from ')) and not _ALLOWED_IMPORT_RE.match(stripped):
@@ -84,14 +85,26 @@ def _validate_manifest_preflight():
                         f"Jar '{slug}' line {lineno}: disallowed import: {stripped!r}"
                     )
                 # Edit-tool contamination signature: an escaped straight quote
-                # (\") converted to backslash + typographic quote — malforms any
+                # (\") converted to backslash + typographic quote -- malforms any
                 # HTML attribute it was escaping. Plain curly quotes in prose are
                 # fine; only the backslash pairing is the bug.
-                if '\\“' in line or '\\”' in line:
+                if '\“' in line or '\”' in line:
                     errors.append(
-                        f"Jar '{slug}' line {lineno}: backslash + curly quote — Edit-tool "
+                        f"Jar '{slug}' line {lineno}: backslash + curly quote -- Edit-tool "
                         f"contamination. Fix by byte position with a Python script, not the "
                         f"Edit tool (see HANDOFF_WISDOM.md failure modes)."
+                    )
+                if stripped.startswith('RUNS'):
+                    in_runs = True
+                elif stripped.startswith('STATUS'):
+                    in_runs = False
+                if in_runs and 'waypoints=BASELINE_CURVE' in stripped and not stripped.startswith('next_waypoints'):
+                    errors.append(
+                        f"Jar '{slug}' line {lineno}: waypoints=BASELINE_CURVE "
+                        f"inside RUNS -- use a frozen constant (BASELINE_420, "
+                        f"BASELINE_416, etc.) so historical runs are immune to "
+                        f"future baseline changes. See HANDOFF_WISDOM.md "
+                        f"'Changing BASELINE_CURVE' failure mode."
                     )
 
     if os.path.isdir(jar_dir):
@@ -121,7 +134,7 @@ def _load_jar(slug):
 
 def load_all_jars():
     """Load all jars across all tiers. Returns (all_runs, all_statuses).
-    Order: closed first, then active — closed jars render as historical archive."""
+    Order: closed first, then active -- closed jars render as historical archive."""
     _validate_manifest_preflight()
     all_runs = []
     all_statuses = []
