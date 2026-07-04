@@ -158,8 +158,10 @@ Before sending: anything backticked, snake_case, ALL_CAPS, a jar slug, or a
 step label gets swapped for its display form.
 
 **5. Draft `analysis`, `next_ai_analysis`, and the new `next_text` one-liner
-in chat.** Apply the sourcing
-and confidence rules from `Dabby_Handoff_Notes.md` (`analysis` traces every
+in chat.** Select the applicable recipes from the analysis-toolkit skill
+(`.claude/skills/analysis-toolkit/SKILL.md`) before drafting — scan the
+trigger conditions and apply every recipe that matches. Then apply the
+sourcing and confidence rules from `Dabby_Handoff_Notes.md` (`analysis` traces every
 claim to this session's report, this strain's history, or the wisdom layer;
 equipment differences between compared runs are confounds; user hypotheses
 enter at "user suggested X" weight) and the epistemic flags in `CLAUDE.md`.
