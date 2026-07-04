@@ -192,13 +192,28 @@ RUNS = [
         dab_notes='Ok! Single cycle, tasty. Bitter citrus note, something a little creamier in there. Around 25 seconds left there was mild harshness in throat. I felt it fade during third draw. Quick fourth draw at the end and it looked like it was depleted. Swabs had minimal reclaim, golden. Intensity medium to medium high. Cause it seemed depleted. Load size was slightly larger than normal but not big.',
         analysis='Run 11 continues the gentle descent curve for a third consecutive time this same day (R9 first dab, R10 second, R11 third) — the planned first-dab repeat from R10\'s note didn\'t happen since all three landed same-day; that clean test still hasn\'t run. Single cycle this time: a slightly-larger-than-normal load fully depleted across four draws, unlike R9 and R10, both of which left material for a deliberate second cycle. Harshness arrived at ~25s remaining (curve near 417°F) — earlier in session time than R9/R10\'s ~15s-remaining onset (curve near 410°F), despite the higher temperature at onset, and despite this being the day\'s third dab. That\'s directionally consistent with the accumulated-exposure question R10\'s analysis flagged as open, though device heat carried over from two prior dabs this session is an equally live candidate alongside airway exposure — a warmer-than-programmed insert could also explain the full single-cycle depletion on a slightly larger load. No toast this run, but there was no second cycle to produce the residue-scorch condition that generated toast on R10, so this isn\'t a counter-finding. Golden swab with minimal reclaim continues across all three descent runs — but R11 had no second cycle at all, which counters the cycle-count framing established at R8 (second cycle attributed as the golden driver); across this descent series golden may track with the curve or load rather than cycle count specifically. Bitter citrus with a creamier undertone is new for this jar (priors: spice, floral, mildew/fruit/savory-cheese) and, given Honey Banana × Papaya\'s inferred myrcene/terpinolene profile has no citrus association, this is a more surprising instance of the cross-strain bitter-citrus pattern (MB9ZST, MBD, OC, FW106, bp4rw13) than the citrus-genetics strains already in that group.',
     ),
+    CompletedRun(
+        strain='The Hive #1',
+        run_date=date(2026, 7, 3),
+        sessions_prior_today=3,
+        utc_logged_at=datetime(2026, 7, 4, 1, 33, 21, tzinfo=timezone.utc),
+        waypoints=HIVE1_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent (440→420@30s→400@60s); fourth consecutive same-day run on this curve',
+        swab='Golden — minimal reclaim.',
+        session_char='Golden, minimal-reclaim swab — matches Runs 9–11. Some harshness reported, location and onset timing not specified this run. Intensity read as very high on follow-up — strong enough that parts of the session are not clearly remembered. Fourth dab of the day.',
+        intensity='Very high — initial report said medium, revised on follow-up to intense enough that parts of the session are not clearly remembered.',
+        dab_notes='Swabs were golden and minimal. Inyensity was medium. Too high. Same curve. Too high to remember the dab. So high intensity also, a little harshness.',
+        analysis='Run 12 continues the same gentle descent curve for a fourth consecutive dab this same day (R9 first, R10 second, R11 third, R12 fourth) — the fresh-day first-dab repeat flagged after R10, and again after R11, still hasn\'t happened; four same-day dabs now separate this curve from that clean test.\n\nGolden, minimal-reclaim swab matches R9–R11 exactly. Per R11\'s finding, that swab pattern held even without a second cycle, so a fourth matching swab here doesn\'t distinguish cycle-count from curve/load as the driver — it just continues not to distinguish them.\n\nIntensity is the standout: the user\'s initial read was medium, revised on follow-up to intense enough that parts of the session aren\'t clearly remembered — the strongest intensity report this jar has logged. Across the day\'s four dabs, intensity climbed steadily (R9 medium, R10 moderate-to-high, R11 medium-to-medium-high, R12 very high with a memory gap), consistent with straightforward cumulative dose across four same-day sessions rather than anything curve- or strain-specific.\n\nSome harshness was reported ("a little") but without location or onset timing this run, so it can\'t be compared against R9–R11\'s ~15–25s-remaining onset pattern — logged as reported, not fit to the prior gradient.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='The Hive #1',
     profile_anchor='#hive1-profile',
-    next_text='Run 12: repeat the gentle descent as a genuine first dab on a fresh day — the session-order-clean test that still hasn\'t happened',
+    next_text='Run 13: the fresh first-dab repeat of the gentle descent — now four same-day dabs overdue — before drawing any conclusion about this curve\'s ceiling',
     accent=None,
     slug='hive1',
     info=[
@@ -209,8 +224,8 @@ STATUS = StrainStatus(
         ('Nose', 'Very fragrant at cold nose. Spice noticeable (consistent with caryophyllene — weak secondary signal only).'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene and terpinolene inferred from tropical fruit character; Honey Banana × Papaya lineage (Bloom Seed Co). Terpene ratios not inferable from genetics — standard palette as orientation only. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Genuine first dab of a fresh day, same gentle descent curve. Watch whether cycle 1 harshness onset moves back later (toward or past the ~45s-remaining mark seen on R9/R10) without today\'s accumulated exposure, or whether it still lands near ~25–35s remaining like R11.',
-    next_ai_analysis='Three same-day runs on the gentle descent now show harshness onset creeping earlier with each successive dab — R9 and R10 both ~15s remaining, R11 ~25s remaining — the clearest same-day session-order gradient the log has for this curve. The genuine test is still open: a first dab on a fresh day, free of today\'s accumulated exposure, to see whether cycle 1 comes back clean like FW106 R23 / WM R16 / bp4rw13 R5\'s first-dab descent runs, or whether ~15–25s-remaining harshness is a real ceiling for this curve independent of session order.',
+    next_dab_notes='Genuine first dab of a fresh day, same gentle descent curve. Watch whether cycle 1 harshness onset moves later than the ~15–25s-remaining window seen on R9–R12, and whether intensity reads closer to a first-dab baseline rather than R12\'s accumulated high.',
+    next_ai_analysis='The fresh-day first-dab test flagged after R10 is now more overdue, not less: four consecutive same-day dabs on this curve (R9-R12) show intensity climbing steadily to a memory-gap-level high on R12, most parsimoniously read as ordinary same-day dose accumulation rather than a curve effect. The harshness-onset question (R9/R10 ~15s remaining, R11 ~25s remaining, R12 unspecified) still needs a session-order-clean data point to separate curve ceiling from cumulative exposure. Expected: on a fresh day, cycle 1 harshness lands later than the ~15–25s-remaining window, and intensity reads closer to R9\'s medium baseline. Surprising: harshness still lands in that same window on a fresh day — that would point to the curve itself carrying a ceiling there, independent of session order.',
     next_waypoints=HIVE1_DESCENT_GENTLE,
     jar_index='',
 )
