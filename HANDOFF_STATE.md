@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 133 across 17 strains
+- **Total runs:** 134 across 17 strains
 - **Active since:** May 2, 2026 (63 days)
 - **Last run date:** July 3, 2026
-- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 11 — July 3, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 12 — July 3, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -32,11 +32,11 @@
 ---
 
 ### The Hive #1
-**11 sessions** &nbsp;·&nbsp; Next run: 12 &nbsp;·&nbsp; Last: July 3, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**12 sessions** &nbsp;·&nbsp; Next run: 13 &nbsp;·&nbsp; Last: July 3, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 12: repeat the gentle descent as a genuine first dab on a fresh day — the session-order-clean test that still hasn't happened
+**Next:** Run 13: the fresh first-dab repeat of the gentle descent — now four same-day dabs overdue — before drawing any conclusion about this curve's ceiling
 
-**AI Analysis:** Three same-day runs on the gentle descent now show harshness onset creeping earlier with each successive dab — R9 and R10 both ~15s remaining, R11 ~25s remaining — the clearest same-day session-order gradient the log has for this curve. The genuine test is still open: a first dab on a fresh day, free of today's accumulated exposure, to see whether cycle 1 comes back clean like FW106 R23 / WM R16 / bp4rw13 R5's first-dab descent runs, or whether ~15–25s-remaining harshness is a real ceiling for this curve independent of session order.
+**AI Analysis:** The fresh-day first-dab test flagged after R10 is now more overdue, not less: four consecutive same-day dabs on this curve (R9-R12) show intensity climbing steadily to a memory-gap-level high on R12, most parsimoniously read as ordinary same-day dose accumulation rather than a curve effect. The harshness-onset question (R9/R10 ~15s remaining, R11 ~25s remaining, R12 unspecified) still needs a session-order-clean data point to separate curve ceiling from cumulative exposure. Expected: on a fresh day, cycle 1 harshness lands later than the ~15–25s-remaining window, and intensity reads closer to R9's medium baseline. Surprising: harshness still lands in that same window on a fresh day — that would point to the curve itself carrying a ceiling there, independent of session order.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, gentle descent start
