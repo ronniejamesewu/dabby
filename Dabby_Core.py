@@ -409,8 +409,11 @@ def _fmt_equipment_display(eq):
 def fmt_curve_table(waypoints):
     """A waypoint list as plain-language table lines — the display form whenever a
     curve is stated to the user (chat readbacks, pending_dab fact blocks). One line
-    per waypoint: time, temperature, note."""
-    return "\n".join(f"  {wp.time_s:>4}s   {wp.temp_f}\N{DEGREE SIGN}F   {wp.note}"
+    per waypoint: time, temperature. Notes are omitted by design — this table is a
+    quick-reference for chat (frequently viewed on mobile, where a code block can't
+    wrap), not the historical record; full per-waypoint notes live in the rendered
+    log."""
+    return "\n".join(f"  {wp.time_s:>4}s   {wp.temp_f}\N{DEGREE SIGN}F"
                      for wp in waypoints)
 
 # ── VALIDATION ───────────────────────────────────────────────────────────────
