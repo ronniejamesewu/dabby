@@ -49,15 +49,35 @@ on what to try next — not a formal calibration program.
 - **Deploy is automatic:** push to `main` → `deploy.yml` regenerates and
   publishes to GitHub Pages. Each PR auto-gets a preview URL via `preview.yml`.
   Both share a `gh-pages` concurrency group to avoid a merge race.
+- **`pending_dab.py`** — mechanical timestamp capture and display-form facts
+  for run logging. Subcommands: `start` (capture now), `brief` (session-open
+  facts), `list` (show pending), `consume` (paste-ready fields for the oldest
+  entry), `discard N` (remove an entry that won't become a run). Storage is
+  `.pending_dabs.json` (gitignored, session-local). The generator refuses to
+  run while unmatched pending entries exist.
+
+## Skills
+
+Skills in `.claude/skills/` are the primary workflow mechanism for run logging
+and lifecycle operations. See `.claude/skills/README.md` for the full catalog,
+handoff graph, and authoring rules.
+
+The dab and log-run skills orchestrate the run-logging workflow end to end —
+from timestamp capture through analysis drafting to PR creation. Other skills
+handle lifecycle operations (new-jar, close-jar), equipment changes (new-rig),
+frozen-data corrections (correct-frozen-data), baseline changes
+(change-baseline), and per-run analysis discipline (analysis-toolkit).
+
+Skills sequence the mechanical steps; they don't replace judgment. The design
+principle: mechanize the floor so inference is freed for analysis.
 
 ## Architecture
 
 - **Per-jar architecture (Session 108).** Three layers: (1) `Dabby_Core.py` =
-  dataclasses (`Waypoint`, `Insert`, `CarbCap`, `Pearl`, `EquipmentConfig`,
-  `CompletedRun`, `StrainStatus`, `TerpeneEntry`), `GLOBAL_INFO`, `FIRST_RUN_DATE`,
-  `BASELINE_416`, `BASELINE_CURVE`, `RIG_1`–`RIG_5`, `TERPENE_REFERENCE`,
-  accent-color resolution, and the parameterized `validate(runs, statuses)` /
-  `validate_accent_colors(statuses, resolved)`. (2) `jars/<slug>.py` = one file per
+  shared stable layer (dataclasses, `RIG_N` constants, `BASELINE_*` curves,
+  `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, validators — see the
+  CONTENTS index at the top of the file for the full inventory with line numbers).
+  (2) `jars/<slug>.py` = one file per
   jar, each exporting `RUNS` (list of `CompletedRun`) and `STATUS` (a single
   `StrainStatus`), plus that jar's local waypoint constants; each imports only
   `datetime` and `from Dabby_Core import *`. (3) `jar_manifest.py` = `ACTIVE` /
@@ -97,12 +117,13 @@ on what to try next — not a formal calibration program.
 
 ## Updating the Log
 
-Adding or changing a run is data-only: edit the strain's `jars/<slug>.py` — add the
-local waypoint constant, add a `CompletedRun` to `RUNS` with all content fields, and
-update the jar's `STATUS` `next_*` fields. Then run `python3 Dabby_Log_Generator.py`
-to regenerate `index.html`. Commit the jar file and the regenerated output to a
-feature branch, then open a PR. `Dabby_Log_Generator.py` requires no edits for run
-logging.
+The dab and log-run skills orchestrate the full workflow — from timestamp capture
+through file edits, generation, and PR creation. The underlying file changes are
+data-only: edit the strain's `jars/<slug>.py` — add the local waypoint constant, add
+a `CompletedRun` to `RUNS` with all content fields, and update the jar's `STATUS`
+`next_*` fields. Then run `python3 Dabby_Log_Generator.py` to regenerate
+`index.html`. Commit the jar file and the regenerated output to a feature branch,
+then open a PR. `Dabby_Log_Generator.py` requires no edits for run logging.
 
 Never write `index.html` by hand — always run the generator and commit its output.
 
@@ -117,17 +138,22 @@ underlying run prose.
 
 ## Date and Time Logging
 
-User timezone: **America/Denver (MDT, UTC-6)**
+User timezone: **America/Denver (MDT/MST, UTC-6/UTC-7)**
 
-When logging a run:
-1. Capture `utc_logged_at = datetime.now(timezone.utc)` at logging time.
-2. Derive local time by subtracting 6 hours (MDT) from UTC.
-3. Confirm with the user before writing: "Logging this as [LOCAL DATE] at [LOCAL TIME] MDT ([UTC TIME] UTC) — correct the date or time if that's off."
-4. Only surface the date discrepancy if UTC and local dates differ (i.e. after ~6pm MDT when UTC has rolled over).
-5. Use the confirmed local date as `run_date` in the new `CompletedRun` entry (added to the jar's `RUNS` list).
-6. If the user corrects the time with a specific clock time ("it was at 8:30pm"), convert that to UTC and use it as `utc_logged_at` — not `datetime.now()`. If the user gives a relative offset ("about 10 minutes ago"), subtract from `datetime.now(timezone.utc)`. Either way, present the derived time in the confirmation prompt.
-7. The handoff's `## Last updated:` header must be the **local date derived from `utc_logged_at` of the last run logged this session** (UTC−6) — not the UTC date, and not `run_date` (which reflects when the dab happened, not when logging occurred). For sessions with no new runs, apply UTC−6 to the current time.
-8. For post-date runs, `utc_logged_at` can't be derived from `datetime.now()` — ask casually: "Do you have a sense of what time it was?" Use `None` if they don't know.
+`pending_dab.py` is the mechanical timestamp layer. The dab skill runs `start`
+at announcement time to capture `utc_logged_at`; `brief` and `consume` print
+all date, time, and dab-of-the-day facts in display form — no hand math. The
+log-run skill's fallback path covers runs that were never captured.
+
+Two rules that aren't fully mechanized:
+- **Handoff date:** The `## Last updated:` header in `Dabby_Handoff_Notes.md`
+  must be the **local date derived from `utc_logged_at` of the last run logged
+  this session** (Denver time) — not the UTC date, and not `run_date` (which
+  reflects when the dab happened, not when logging occurred). For sessions with
+  no new runs, apply the Denver offset to the current time.
+- **Post-date runs:** `utc_logged_at` can't be derived from `datetime.now()` —
+  ask casually: "Do you have a sense of what time it was?" Use `None` if they
+  don't know.
 
 ## Confirm Before Acting
 
