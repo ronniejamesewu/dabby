@@ -12,7 +12,6 @@ import re
 
 ACTIVE = [
     'cag',         # Caramel Apple Gelato
-    'hive1',       # The Hive #1
     'mbd',         # Maple Bacon Donut
     'rainfruit',   # Rain Fruit
     'bb361',       # Blueberry 36 #1
@@ -32,6 +31,7 @@ CLOSED = [
     'mb9zst',  # Mango Banana #9 + Z + Sour Tangie
     'fembot3', # Fembot #3
     'ms23',    # Mango Starburst #23
+    'hive1',   # The Hive #1
 ]
 
 # ── Validation helpers ────────────────────────────────────────────────────────
