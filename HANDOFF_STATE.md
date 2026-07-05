@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 135 across 17 strains
+- **Total runs:** 136 across 17 strains
 - **Active since:** May 2, 2026 (64 days)
 - **Last run date:** July 4, 2026
-- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 13 — July 4, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 14 — July 4, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -32,11 +32,11 @@
 ---
 
 ### The Hive #1
-**13 sessions** &nbsp;·&nbsp; Next run: 14 &nbsp;·&nbsp; Last: July 4, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**14 sessions** &nbsp;·&nbsp; Next run: 15 &nbsp;·&nbsp; Last: July 4, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 14: repeat the gentle descent as a fresh first dab again, with steady draw pacing (no delay before draw 2) — isolate whether R13's late harshness onset is a genuine accumulated-exposure signal or an artifact of the delayed second draw
+**Next:** Run 15: same gentle descent, try proactive water mid-session — two consecutive runs (R13, R14) have now shown post-session heartburn-like chest/throat discomfort; test whether water changes that
 
-**AI Analysis:** R13's session-order-matched comparison to R9 showed harshness onset shifting from ~15s to ~4s remaining — directional support for the R9-R12 escalation being same-day accumulation rather than a curve ceiling — but R13's delayed second draw could independently explain the later on-clock reading. Recommend Run 14: repeat the fresh first-dab test on this curve with draws paced consistently, to separate genuine accumulated-exposure timing from a pacing artifact; also worth a plain check-in on the new post-session chest/throat discomfort. Expected: onset still lands meaningfully later than R9-R11's 15–25s-remaining window under steady pacing, confirming accumulation over ceiling. Surprising: onset reverts to that same window once pacing is controlled — meaning R13's late reading was an artifact, not evidence against the curve having a ceiling there.
+**AI Analysis:** R14 adds a second consecutive same-day chest/throat heartburn-like report matching R13 exactly, upgrading this to a two-run signal within the jar — still same-day only, not yet cross-day confirmed. R14's harshness onset (~40s remaining) is also the earliest yet on this curve, but R13→R14's shift doesn't replicate the R9→R10 pair's flat result, so within-day accumulation isn't behaving consistently enough to call a driver yet. Recommend Run 15: same curve, take water proactively partway through, to test whether it affects the post-session heartburn-like discomfort, since neither R13 nor R14 tried it. Expected: water reduces or eliminates the post-session chest/throat discomfort, same as its established in-session harshness-reset role. Surprising: the discomfort persists even with water — that would separate this heartburn-like effect from the in-session harshness mechanism water is known to interrupt.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, gentle descent start
