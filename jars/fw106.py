@@ -50,6 +50,11 @@ FW106_DESCENT_GENTLE = [
     Waypoint(time_s=30, temp_f=420, note='Gentle descent midpoint'),
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
+FW106_DESCENT_SHORT_420 = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=20, temp_f=430, note='Slower descent — held higher, longer'),
+    Waypoint(time_s=40, temp_f=420, note='Floor — higher and shorter than the R26-R30 curve'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -489,13 +494,28 @@ RUNS = [
         dab_notes='Tasty hits, dense vapor, harshness around 30 second mark. Sip of water reduced it. Had a single draw from second cycle. Was still dense. Swabs were amber. Intensity was medium high.',
         analysis="Run 29, gentle descent, 2nd dab of day, moderate load. Harshness at ~30s — the second leg of the load comparison with session order held constant at 2nd dab:\n\n- R27: 2nd dab, larger load → ~16s\n- R29: 2nd dab, moderate load → ~30s\n\n14-second shift from load reduction alone, session order matched. Load is a confirmed modulator of harshness timing on the gentle descent for FW106 on Rig 6.\n\nThe cross-pairing is also notable: R28 (1st dab, too-large load) → ~32s; R29 (2nd dab, moderate load) → ~30s. Nearly identical timing despite different session order. The session-order penalty was approximately offset by the load reduction — directional for both having similar magnitude (~14–16s) of effect on harshness timing.\n\nSwab amber — consistent with the 60s Rig 6 pattern for FW106 regardless of load class; second cycle likely contributes. Intensity medium-high on the 2nd dab, consistent with session-order step-down from R28's very hard. Water reset reduced harshness — fifth Rig 6 instance across two strains.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 7, 5),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 6, 1, 51, 34, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — gentle descent (440→420@30s→400@60s); same as Runs 26–29',
+        swab='Golden — minimal reclaim.',
+        session_char='Very tasty, heavy terp-load coughing. Single 60s cycle; mild throat harshness ~40s remaining, faded by end of cycle, no water. Second cycle attempted — came back empty. Golden swab, minimal reclaim. Medium-high intensity.',
+        intensity='Medium-high',
+        dab_notes='super tasty! and a lot of terp coughing. one cycle, some mild throat harshness around 40 seconds left. but harshness kind of faded by end of cycle. tried to run a second cycle but it was gone. my theory is maybe try a slower descent down from 440, put endpoint around 420 and put time shorter. higher up front temp for longer maybe increases efficiency? swabs were golden and minimal. intensity was medium high. Moderate load.',
+        analysis="Run 30, second dab of the day, moderate load — the cleanest match yet to R29: same curve, same rig, same session order, same load class, all held constant. Harshness entered around 40s remaining (~20s elapsed), faded by cycle end without water. R29 under those identical matched conditions read onset at ~30s elapsed — a ~10s shift with every tracked variable equal, which sets a real noise floor for this curve before any future shift gets attributed to a cause. Second cycle came back completely empty, a step past R26–R29's pattern of at least a partial second pull — consistent with full consumption of a moderate load in one cycle. Golden swab, minimal reclaim, within the clean range for this series. User proposed a hypothesis for the next run (see What to Try Next), captured but not yet tested.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 30: gentle descent (440→420@30s→400@60s), first dab of day, moderate load — complete the session-order isolation against R29',
+    next_text='Run 31: test the user\'s slower-descent, higher-floor idea — 440°F open, slower drop to a ~420°F floor, shorter session (~40s).',
     accent=None,
     slug='fw106',
     info=[
@@ -505,8 +525,8 @@ STATUS = StrainStatus(
         ('Nose', 'Prominent berry; gassy underneath'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='',
-    next_ai_analysis="Load effect confirmed on the 2nd-dab axis: R27 (larger) → ~16s vs R29 (moderate) → ~30s. The remaining piece is first-dab moderate-load. Run 30: same curve, first dab of day, moderate load (same class as R29). If harshness holds near 50s, the gentle descent ceiling under controlled conditions is well-characterized. If it comes in at ~30s anyway, something beyond session order and load explains R26's late profile.",
-    next_waypoints=FW106_DESCENT_GENTLE,
+    next_dab_notes="Try the slower/higher-floor descent — 440°F open, ~430°F at 20s, ~420°F floor at 40s, shorter session overall.",
+    next_ai_analysis="User's own idea for R31: slow the descent, raise the floor to ~420°F (from 400°F), shorter session overall — theory being more time near the higher front-end temperature increases efficiency. Proposed: 440°F open → 430°F @20s → 420°F floor @40s. Worth flagging: R30's own second cycle came back completely empty, meaning the current curve already fully consumes a moderate load in one cycle — this isn't an extraction problem, so the change more likely shifts harshness or flavor than efficiency. Testing it anyway since it's the user's hypothesis, single-data-point weight either way. Expected: harshness at or after R30's ~20s-elapsed onset, since 420°F sits above this curve's roughest zone. Surprising: earlier or worse harshness despite the higher floor — that would point toward noise (R29→R30 already shifted ~10s with everything else held constant) over floor temperature as the lever.",
+    next_waypoints=FW106_DESCENT_SHORT_420,
     jar_index='',
 )
