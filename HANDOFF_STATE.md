@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 137 across 17 strains
+- **Total runs:** 138 across 17 strains
 - **Active since:** May 2, 2026 (65 days)
 - **Last run date:** July 5, 2026
-- **Most recent run (all jars, by utc_logged_at):** The Hive #1 Run 15 — July 5, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Fire Water #106 Run 30 — July 5, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -123,16 +123,16 @@
 ---
 
 ### Fire Water #106
-**29 sessions** &nbsp;·&nbsp; Next run: 30 &nbsp;·&nbsp; Last: June 29, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**30 sessions** &nbsp;·&nbsp; Next run: 31 &nbsp;·&nbsp; Last: July 5, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 30: gentle descent (440→420@30s→400@60s), first dab of day, moderate load — complete the session-order isolation against R29
+**Next:** Run 31: test the user's slower-descent, higher-floor idea — 440°F open, slower drop to a ~420°F floor, shorter session (~40s).
 
-**AI Analysis:** Load effect confirmed on the 2nd-dab axis: R27 (larger) → ~16s vs R29 (moderate) → ~30s. The remaining piece is first-dab moderate-load. Run 30: same curve, first dab of day, moderate load (same class as R29). If harshness holds near 50s, the gentle descent ceiling under controlled conditions is well-characterized. If it comes in at ~30s anyway, something beyond session order and load explains R26's late profile.
+**AI Analysis:** User's own idea for R31: slow the descent, raise the floor to ~420°F (from 400°F), shorter session overall — theory being more time near the higher front-end temperature increases efficiency. Proposed: 440°F open → 430°F @20s → 420°F floor @40s. Worth flagging: R30's own second cycle came back completely empty, meaning the current curve already fully consumes a moderate load in one cycle — this isn't an extraction problem, so the change more likely shifts harshness or flavor than efficiency. Testing it anyway since it's the user's hypothesis, single-data-point weight either way. Expected: harshness at or after R30's ~20s-elapsed onset, since 420°F sits above this curve's roughest zone. Surprising: earlier or worse harshness despite the higher floor — that would point toward noise (R29→R30 already shifted ~10s with everything else held constant) over floor temperature as the lever.
 
 **Proposed Curve:**
-- 0s → 440°F — Session open — hot open, gentle descent start
-- 30s → 420°F — Gentle descent midpoint
-- 60s → 400°F — Floor
+- 0s → 440°F — Session open — hot open
+- 20s → 430°F — Slower descent — held higher, longer
+- 40s → 420°F — Floor — higher and shorter than the R26-R30 curve
 
 ---
 
