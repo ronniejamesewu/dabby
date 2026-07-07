@@ -173,7 +173,7 @@ ceiling", "draw count as the primary harshness driver"). See
 `HANDOFF_WISDOM.md` Epistemic Calibration.
 
 **Worked example:** FW106 R7 (3 draws, large load — harsh on draw 3;
-golden swab, normal reclaim) vs. FW106 R8 (2 draws, smaller load — very
+golden swab, more reclaim than normal) vs. FW106 R8 (2 draws, smaller load — very
 little reclaim, harshness midway through draw 2, material spent before
 session end). R8 is the refinement: harshness tracked depletion, not
 draw count — material exhausted mid-draw-2, harshness followed regardless
@@ -436,7 +436,7 @@ Verify these still hold if a recipe's worked example doesn't match reality:
 grep -n "sessions_prior_today" jars/fw106.py | tail -8
 
 # Recipe 2 — equipment-confound check (the 7-run correction):
-grep -n "corrected.*Rig 6\|corrected July 2" jars/bp4rw13.py jars/wm.py
+grep -n "corrected.*Rig 6\|corrected July 2" jars/bp4rw13.py jars/watermellos.py
 
 # Recipe 3 — load-size direction split (wisdom row):
 grep -n "Load size influences" HANDOFF_WISDOM.md

@@ -7,7 +7,8 @@ description: Create a new RIG_N equipment constant in Dabby_Core.py when the use
 
 Creates a new `RIG_N` equipment constant in `Dabby_Core.py` when the
 user's reported equipment doesn't match any existing rig. The protocol
-is from `Dabby_Handoff_Notes.md` (lines 120-124), mechanized here.
+is from `Dabby_Handoff_Notes.md` (the "New rig creation" block under
+Equipment Protocol), mechanized here.
 
 Adding a new `RIG_N` constant requires no edits to the generator or
 display helpers -- `_RIG_LABELS` in `Dabby_Core.py` auto-discovers all
@@ -59,8 +60,13 @@ stock Dr. Dabber bubbler").
 **1. Identify what changed.**
 From the user's dab notes or explicit statement, determine which of the
 four equipment fields changed compared to their most recent run's
-equipment. Read `HANDOFF_STATE.md` for the "Most recent run" line to
-find the current rig.
+equipment. For a run being logged now, the current rig is
+`HANDOFF_STATE.md`'s "Most recent run" line. When invoked from the
+log-run skill for a queue-backed or post-dated run, use the equipment
+default log-run's step 2 already resolved (computed as of that entry's
+timestamp) -- the "Most recent run" line reflects now, not then, and a
+stale default is the exact mechanism that mislogged seven runs
+(Session 140).
 
 **2. Confirm all four fields.**
 Present the proposed config to the user, showing all four fields.
@@ -112,13 +118,17 @@ feature branch and open a PR.
 ## Recovery paths (don't improvise these)
 
 - **User is unsure about a field** -- use the prior run's value as
-  default and note it in the run's `dab_notes`. Can be corrected later
-  via correct-frozen-data if wrong.
+  default and state the assumption in the readback and the run's
+  `analysis` (never write AI-authored text into `dab_notes` -- that
+  field is the user's verbatim words only). Can be corrected later via
+  correct-frozen-data if wrong.
 - **The new constant breaks validation** -- check that the
   `EquipmentConfig` fields match the dataclass signatures in
   `Dabby_Core.py`. Common mistakes: `pearls` must be a list (even if
-  empty: `pearls=[]`), `glass_top` is a plain string, `airflow` on
-  `CarbCap` defaults to `"stock"`.
+  empty: `pearls=[]`), `glass_top` is a plain string, and `airflow` on
+  `CarbCap` is required — pass `airflow="stock"` explicitly unless a
+  variant is known (the source comment says "stock by default" but there
+  is no dataclass default; omitting it raises TypeError).
 - **Duplicate detection missed a match** -- if a run is logged with a
   new `RIG_N` that turns out to duplicate an existing one, the duplicate
   constant can be removed and the run's equipment corrected via
@@ -126,8 +136,8 @@ feature branch and open a PR.
 
 ## Provenance and maintenance
 
-Created 2026-07-04. Based on the 4-step protocol in
-`Dabby_Handoff_Notes.md` (lines 120-124).
+Created 2026-07-04. Based on the 4-step "New rig creation" protocol
+under Equipment Protocol in `Dabby_Handoff_Notes.md`.
 Verify these still hold if this skill starts giving results that don't
 match reality:
 

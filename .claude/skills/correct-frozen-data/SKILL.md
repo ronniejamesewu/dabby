@@ -96,11 +96,12 @@ For each affected run in `jars/<slug>.py`:
 - Change the incorrect field(s) to the correct value(s)
 - Append a dated by-exception note to the run's frozen `analysis` field.
   Convention from PR #206 -- append at the end of the existing analysis
-  text as a parenthetical:
+  text as a bracketed note (this is the form the actual corrected runs in
+  `jars/bp4rw13.py` use):
 
-  `" (Equipment corrected July 2, 2026 from Rig 5 to Rig 6 -- stale
-  jar-local default after a 15-day gap; see Dabby_Handoff_Notes.md
-  backlog.)"`
+  `"\n\n[Equipment corrected to Rig 6 on July 2, 2026 -- originally
+  logged Rig 5 via stale jar-local default after a 14-day gap; user
+  confirmed the Piston has been in continuous use since June 17, 2026.]"`
 
   Do not rewrite the rest of the analysis; only append the correction note.
 
@@ -118,6 +119,11 @@ the surrounding context, and determine whether the claim still holds with
 the corrected data. If not, revise the claim in the same pass. If a
 cross-rig claim collapses because corrected runs are now all on one rig,
 state that explicitly.
+
+Present the proposed wisdom/methodology/STATUS revisions to the user and
+wait for approval before writing them -- step 4's confirmation covered
+the data corrections, not these. Revising methodology is a substantive
+action under this project's confirm-before-acting rule.
 
 **7. Generate and verify.**
 `python Dabby_Log_Generator.py` -- must complete clean.
@@ -155,7 +161,6 @@ grep -rn "corrected.*202[0-9]" jars/*.py | head -10
 
 # The frozen-analysis rule this skill is the exception to:
 grep -n "correctable by exception" Dabby_Handoff_Notes.md
-grep -n "correctable by exception" CLAUDE.md
 
 # PR #206 as the worked example (confirm it exists):
 # Use GitHub MCP pull_request_read, owner: ronniejamesewu, repo: dabby, pr: 206

@@ -8,8 +8,8 @@ description: Change the BASELINE_CURVE starting-point recommendation in Dabby_Co
 Changes the `BASELINE_CURVE` starting-point recommendation. This is a
 rare, high-impact operation -- the baseline has changed once in project
 history (commit d5ab834, from 380-390-410-430 to 380-400-416). The
-5-step protocol is codified from `HANDOFF_WISDOM.md` (line 84, the
-"Changing BASELINE_CURVE" failure mode).
+5-step protocol is codified from the "Changing BASELINE_CURVE without
+renaming the retiring constant" failure-mode row in `HANDOFF_WISDOM.md`.
 
 The preflight ban in `jar_manifest.py` catches any `waypoints=BASELINE_CURVE`
 inside RUNS that slips through -- but the protocol here prevents the
@@ -59,6 +59,16 @@ or `fmt_curve_table()` tables.
 
 ## Workflow
 
+**0. Present the plan and wait for approval.**
+Before editing anything: run the step 2 grep read-only to count the
+run-level references, then present the full plan -- the retiring constant
+name, the migration count, the proposed new curve, and the methodology
+edit -- and wait for explicit approval. This skill's trigger can be
+AI-recognized ("accumulated evidence suggests..."), and editing core plus
+multiple jar files is a substantive action under this project's
+confirm-before-acting rule. Once approved, steps 1-5 are mechanical and
+need no further per-step confirmation.
+
 **1. Define the retiring constant.**
 In `Dabby_Core.py`, create a new constant named by the current
 `BASELINE_CURVE`'s endpoint temperature (e.g. if the current baseline
@@ -100,9 +110,16 @@ In `Dabby_Core.py`, replace the `BASELINE_CURVE` waypoints with the new
 recommended starting curve. Present the proposed new curve to the user
 for confirmation before writing.
 
-**4. Update `Dabby_Methodology.md`.**
+**4. Update `Dabby_Methodology.md` and sweep the skills.**
 Update the Section 5 curve table to reflect the new baseline. Read the
 current table first to understand its format.
+
+Then sweep `.claude/skills/` for copies of the retiring baseline: grep
+for the old endpoint temperature and the retiring constant's name (e.g.
+`grep -rn "420°F @8s\|BASELINE_420" .claude/skills/`) and update any hit
+-- log-run's step 6 names the current frozen constant, and other skills
+may reference the current curve. A skill carrying the retired baseline
+is a wrong runbook.
 
 **5. Generate, verify, and ship.**
 Run `python Dabby_Log_Generator.py` -- must complete clean.
@@ -130,10 +147,10 @@ how many run-level references were migrated.
 
 ## Provenance and maintenance
 
-Created 2026-07-04. Codified from the "Changing BASELINE_CURVE" failure
-mode in `HANDOFF_WISDOM.md` (line 84) and the migration completed in
-this session (July 4, 2026 -- `BASELINE_420` frozen, 10 run-level
-references migrated across 5 jars, preflight ban added to
+Created 2026-07-04. Codified from the "Changing BASELINE_CURVE without
+renaming the retiring constant" failure-mode row in `HANDOFF_WISDOM.md`
+and the migration completed July 4, 2026 (`BASELINE_420` frozen, 10
+run-level references migrated across 5 jars, preflight ban added to
 `jar_manifest.py`).
 
 Verify these still hold if this skill starts giving results that don't

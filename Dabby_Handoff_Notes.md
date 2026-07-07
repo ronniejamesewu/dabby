@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 5, 2026 — Session 149
+## Last updated: July 6, 2026 — Session 150
 
 ---
 
@@ -157,6 +157,7 @@ Run logging assumes equipment continuity from the chronologically most recent ru
 - Design documentation restructured (Session 113): `DESIGN_BRIEF.md` created as the primary context doc for design sessions; `Dabby_UI_Principles.md` rewritten with explicit "Hard requirement / Current implementation" distinction. These are the source documents when briefing a design agent. `Dabby_UI_Principles.md` is now the structural source of truth — do not revert to the old version (it described a 3-element wireframe for a page with 8+ components).
 - bp4rw13 load size is not further correctable via more careful portioning — user confirmed already loading as precisely as possible on this runny thumbprint, and Run 7 still landed bigger than planned. Treat load variance as an inherent feature of this jar, not a technique gap. Do not recommend weighing or portioning-technique fixes for this jar again. Session 138.
 - Failure modes migrate from "Live" to "Structurally resolved" (one line + pointer) when a validator or skill step mechanizes them — the two-subsection structure is deliberate in both Known Claude Failure Modes here and `HANDOFF_WISDOM.md`'s Failure Modes section (extended to wisdom July 3, 2026). Do not merge the lists back or re-expand resolved entries; the files get leaner as the project gets safer. Sessions 141, 146, 147.
+- Chat curve format locked (July 6, 2026, Session 150): a markdown table — bolded temperature column, time column — emitted directly by `fmt_curve_table()`; the dab and log-run skills paste the printed lines verbatim. No per-waypoint notes, no fenced code block (mobile overflow and fence-rendering history in `BACKLOG.md`'s completed curve-table item). Do not re-open fence-vs-prose per run; if the format is ever revisited, change `fmt_curve_table()` itself so the skills stay paste-verbatim.
 - App temperature readout cannot be used for precise insert temperature measurement (Session 132). The Dr. Dabber app is subject to Bluetooth lag, possible display of interpolated/controller-model values rather than raw IR thermometer readings, and screen refresh lag. A readout like "353°F at 30 seconds" cannot be trusted to 1°F precision or used to characterize sapphire lag against the programmed curve. Resolving insert lag against waypoints requires independent instrumentation (a direct IR measurement of the insert surface).
 
 ---
