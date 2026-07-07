@@ -8,6 +8,8 @@
 > 3. If the opening message names a strain, also read that strain's jar file in `jars/` (filename = the strain's slug — `Glob jars/*.py` to discover, or check `jar_manifest.py`).
 >
 > These are not optional. Do not respond first and read later. Do not answer from memory or summaries.
+>
+> Sole exception: party-mode capture (the dab skill). There, the timestamp capture and a one-line confirmation come before the reads — nothing is answered from project state and nothing is written to the repo — and this gate runs in full at reconciliation, before anything is logged.
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
