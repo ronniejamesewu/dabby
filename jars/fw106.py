@@ -55,6 +55,17 @@ FW106_DESCENT_SHORT_420 = [
     Waypoint(time_s=20, temp_f=430, note='Slower descent — held higher, longer'),
     Waypoint(time_s=40, temp_f=420, note='Floor — higher and shorter than the R26-R30 curve'),
 ]
+FW106_DESCENT_SLOW_420_50S = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=25, temp_f=430, note='Slow descent — as-run, stretched past the planned 20s'),
+    Waypoint(time_s=50, temp_f=420, note='Floor — effectively a sustained ~440°F per session character'),
+]
+FW106_HOLD10_DESCENT_GENTLE = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=10, temp_f=440, note='Hold at peak — one full draw at 440°F'),
+    Waypoint(time_s=35, temp_f=420, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor — proven R26-R30 operating point'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -509,13 +520,28 @@ RUNS = [
         dab_notes='super tasty! and a lot of terp coughing. one cycle, some mild throat harshness around 40 seconds left. but harshness kind of faded by end of cycle. tried to run a second cycle but it was gone. my theory is maybe try a slower descent down from 440, put endpoint around 420 and put time shorter. higher up front temp for longer maybe increases efficiency? swabs were golden and minimal. intensity was medium high. Moderate load.',
         analysis="Run 30, second dab of the day, moderate load — the cleanest match yet to R29: same curve, same rig, same session order, same load class, all held constant. Harshness entered around 40s remaining (~20s elapsed), faded by cycle end without water. R29 under those identical matched conditions read onset at ~30s elapsed — a ~10s shift with every tracked variable equal, which sets a real noise floor for this curve before any future shift gets attributed to a cause. Second cycle came back completely empty, a step past R26–R29's pattern of at least a partial second pull — consistent with full consumption of a moderate load in one cycle. Golden swab, minimal reclaim, within the clean range for this series. User proposed a hypothesis for the next run (see What to Try Next), captured but not yet tested.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 7, 6),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 7, 4, 9, 27, tzinfo=timezone.utc),
+        waypoints=FW106_DESCENT_SLOW_420_50S,
+        equipment=RIG_6,
+        duration_seconds=50,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 420°F — slow descent (440→430@25s→420@50s), stretched past the planned R31 curve; 50s cycle, run twice',
+        swab='Dark amber — heavy reclaim.',
+        session_char='Effectively a sustained ~440°F — near gag-inducing vapor density, coughing to tears. Mild-to-medium harshness from ~25s remaining, barely noticed under the coughing. Two draws on cycle 1 with long coughing pauses; second cycle after a break gave one dense hit, then a wispy draw, then depleted. Larger-than-normal load; early depletion with heavy dark amber reclaim.',
+        intensity='Very very intense — ~5 minutes knocked flat post-dab, then upbeat, creative, chatty.',
+        dab_notes="Jesus too gentle. That was like just doing a flat 440. I guess now I have a sense of what that's like! That was near my \"gag inducing\" level. Harshness in the mild to medium range starting at around 25 seconds left. But i didn't really notice it compared to the coughing. I was coughing so hard I had tears coming out of my eyes. So long pauses between dabs, maybe up to 5 seconds but that's a stoned guess. Anyway I only had two draws. And it was obvious there was more. But I was coughing for a while so I let it sit before I fired a second cycle. When I did I got one sense hit that made me cough again, and then a second draw that was wispy and then depleted. I was surprised because I thought I loaded a larger than normal dab, and when I swabbed it out there was a lot of dark amber reclaim. Effect was predictably very very intense. Upbeat and creative and chatty but Sarah isn't interested in chatting. But I had about a 5 minute period post dab of feeling knocked on my ass with tears. [Clarified: cycle ran 50 seconds, run twice with a little break in between; 'sense hit' = dense hit; the surprise is the early depletion with lots of reclaim, not heavy reclaim on a big load.]",
+        analysis="First dab of the day, testing the slower-descent/higher-floor idea — as-run it stretched past the plan: 440°F open → 430°F @25s → 420°F @50s, a 50s cycle run twice with a break between. User's own verdict: too gentle — effectively a sustained ~440°F, and now we know what that's like on this rig: near gag-inducing. The comfort limiter was vapor density, not harshness — coughing hard enough for tears buried the mild-to-medium harshness that started ~25s in. That onset zone roughly echoes the old flat-440 run on the spinner (R5, harsh ~28s), but the character is completely different on the joystick: density overwhelms before harshness registers. Two draws on cycle 1 with long pauses; cycle 2 gave one dense coughing hit, then a wispy draw and done.\n\nThe run's real puzzle: a larger-than-normal load 'depleted' early yet swabbed out dark amber with heavy reclaim — vapor production quit while plenty of material remained. Heavy reclaim on a big load is normal; heavy reclaim plus early depletion is not. The most parsimonious read is mass-conserving: at a sustained ~440°F the insert vaporizes material continuously whether or not anyone is drawing, and this session was mostly not-drawing — two sparse draws, coughing pauses, a between-cycle break with the insert still hot. Material that boiled off uninhaled condensed back onto the rig as reclaim. Under that read the load wasn't consumed early, it was relocated — and the efficiency theory this run was built to test pointed the wrong way: more time up top delivered less to the user, not more. Thermal degradation contributing to the dark amber (darker than the golden/amber of R26–R30) is a second, non-exclusive candidate; no toasty flavor was reported, which weighs against it. One run — plausible mechanism, not established.\n\nIntensity: very, very intense — ~5 minutes knocked flat with tears, then upbeat, creative, chatty. Consistent with the density story: what did get inhaled came in two very large boluses.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 31: test the user\'s slower-descent, higher-floor idea — 440°F open, slower drop to a ~420°F floor, shorter session (~40s).',
+    next_text='Run 32: user\'s design — 10s hold at 440°F, then the proven gentle descent to the 400°F floor (440@0s → 440@10s → 420@35s → 400@60s).',
     accent=None,
     slug='fw106',
     info=[
@@ -525,8 +551,8 @@ STATUS = StrainStatus(
         ('Nose', 'Prominent berry; gassy underneath'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes="Try the slower/higher-floor descent — 440°F open, ~430°F at 20s, ~420°F floor at 40s, shorter session overall.",
-    next_ai_analysis="User's own idea for R31: slow the descent, raise the floor to ~420°F (from 400°F), shorter session overall — theory being more time near the higher front-end temperature increases efficiency. Proposed: 440°F open → 430°F @20s → 420°F floor @40s. Worth flagging: R30's own second cycle came back completely empty, meaning the current curve already fully consumes a moderate load in one cycle — this isn't an extraction problem, so the change more likely shifts harshness or flavor than efficiency. Testing it anyway since it's the user's hypothesis, single-data-point weight either way. Expected: harshness at or after R30's ~20s-elapsed onset, since 420°F sits above this curve's roughest zone. Surprising: earlier or worse harshness despite the higher floor — that would point toward noise (R29→R30 already shifted ~10s with everything else held constant) over floor temperature as the lever.",
-    next_waypoints=FW106_DESCENT_SHORT_420,
+    next_dab_notes="Hold at 440 before dropping into the gentle descent to 400 — hold locked at 10 seconds.",
+    next_ai_analysis="R32 (user's design): 10s flat hold at 440°F, then drop into the proven 400°F-floor gentle descent. Intent: capture more of the 440°F-open bouquet (R23's draw-1 fireworks) on the first draw, then get off peak before the sustained-440 density punishment R31 delivered. This stays under R31's ceiling — that run sat near 440°F for ~25s and was too much; the hold bounds peak exposure to one draw's worth. Caveat: a short hold is a small perturbation of a curve that already opens at 440°F, so the flavor delta may sit inside run-to-run noise (R29→R30 moved ~10s with everything held constant). Also worth carrying forward from R31: keep drawing through the front end — material boils off uninhaled at peak temperature, so the hold only pays if draw 1 covers it. Expected: like R26/R30 — full session, mild self-resolving late harshness, possibly a bigger, more complex draw 1. Surprising: R31-grade coughing — that would say even one draw of true flat 440°F tips this rig into the density problem, and the open itself should come down.",
+    next_waypoints=FW106_HOLD10_DESCENT_GENTLE,
     jar_index='',
 )
