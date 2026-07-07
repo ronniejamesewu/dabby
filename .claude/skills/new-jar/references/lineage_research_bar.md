@@ -145,8 +145,11 @@ steps; both stopped when the evidence itself ran out.
 ## Provenance and maintenance
 
 Last verified against the repo: 2026-07-02. All three cases above are real
-outcomes from actual test runs against real jars in this log (`papzp22.py`,
-`oc.py`), not hypothetical illustrations — re-run the dogfood test pattern
+outcomes from actual research runs, not hypothetical illustrations. The
+710 Labs and Nikka T cases trace to real jars in this log (`papzp22.py`,
+`oc.py`); the Swollen Heads case (Papaya con Chamoy) was a live research
+exercise on a strain that is not a logged jar — there is no
+`jars/<slug>.py` to diff it against — re-run the dogfood test pattern
 (hide a real jar in an isolated worktree per `SKILL.md`'s data-safety
 protocol, run this skill fresh against a reconstructed prompt, diff the
 result against `git show origin/main:jars/<slug>.py`) against a new strain

@@ -61,8 +61,10 @@ logged yet, invoke the log-run skill first and return here after.
 Edit `jars/<slug>.py` -- the `STATUS = StrainStatus(...)` block. Four
 fields change:
 
-- `next_text`: Closed-jar framing. Convention (from `jars/wwz.py` and
-  `jars/mb9zst.py`):
+- `next_text`: Closed-jar framing. Convention (own-jar form from
+  `jars/wwz.py`; guest form from `jars/fembot3.py` and `jars/ms23.py` --
+  note `jars/mb9zst.py` predates the recommendation clause and matches
+  neither template, don't copy it):
   - User's own jar: `'Jar done -- N runs. If it shows up again: [one-
     sentence starting point recommendation]'`
   - Guest jar: `'Not my jar -- closed after N runs. If it shows up again:
@@ -83,6 +85,12 @@ fields change:
 **Do not touch** `RUNS`, `info`, `terpene_note`, `accent`, `name`, `slug`,
 `profile_anchor`, or `jar_index` (jar_index is written in step 5a, not
 here).
+
+Draft all four fields in chat and get the user's approval before editing
+the file -- the same gate as log-run's analysis drafts. Step 1's closure
+confirmation approved *closing the jar*, not this prose; the
+recommendation in `next_ai_analysis` is substantive AI judgment, not a
+mechanical reframe.
 
 **4. Move the slug in `jar_manifest.py`.**
 Read `jar_manifest.py` first to find the current list positions. Remove
@@ -145,9 +153,10 @@ Created 2026-07-04. Verify these still hold if this skill starts giving
 results that don't match reality:
 
 ```
-# Closed-jar prose examples (step 3):
+# Closed-jar prose examples (step 3 -- own-jar and guest forms):
 grep -n "next_text\|next_ai_analysis\|next_waypoints" jars/wwz.py | tail -5
-grep -n "next_text\|next_ai_analysis\|next_waypoints" jars/mb9zst.py | tail -5
+grep -n "next_text\|next_ai_analysis\|next_waypoints" jars/fembot3.py | tail -5
+grep -n "next_text\|next_ai_analysis\|next_waypoints" jars/ms23.py | tail -5
 
 # The _check_closed_tier validator (step 6):
 grep -n "_check_closed_tier" jar_manifest.py

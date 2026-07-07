@@ -29,22 +29,25 @@ and the handoff graph below.
 
 | Skill | Trigger | Hands off to |
 |---|---|---|
-| [dab](dab/SKILL.md) | User announces a dab starting — "about to hit it", "grabbing one", "party mode" | log-run (when user initiates logging) |
-| [log-run](log-run/SKILL.md) | User wants to log a completed run — "log it", "write that up" | new-jar (if no jar exists), new-rig (if equipment changed), analysis-toolkit (at step 5) |
+| [dab](dab/SKILL.md) | User announces a dab starting — "about to hit it", "grabbing one", "party mode" | log-run (when user initiates logging), new-jar (strain named with no jar) |
+| [log-run](log-run/SKILL.md) | User wants to log a completed run — "log it", "write that up" | new-jar (if no jar exists), new-rig (if equipment changed), analysis-toolkit (at step 5), close-jar (if user confirms the jar is done) |
 | [new-jar](new-jar/SKILL.md) | Strain has no jar file — "new jar", "starting a new jar for X" | log-run (after jar created) |
 | [analysis-toolkit](analysis-toolkit/SKILL.md) | Drafting per-run analysis at log-run step 5 | (returns to log-run) |
-| [close-jar](close-jar/SKILL.md) | Jar is finished — "jar's done", "that was the last one" | (terminal) |
+| [close-jar](close-jar/SKILL.md) | Jar is finished — "jar's done", "that was the last one" | log-run (first, if the final run isn't logged yet) |
 | [new-rig](new-rig/SKILL.md) | Equipment doesn't match any existing RIG_N | log-run (after constant created) |
-| [correct-frozen-data](correct-frozen-data/SKILL.md) | Error in a previously logged run — "that run had the wrong rig" | (standalone) |
+| [correct-frozen-data](correct-frozen-data/SKILL.md) | Error in a previously logged run — "that run had the wrong rig" | new-rig (if a correction reveals a novel equipment config) |
 | [change-baseline](change-baseline/SKILL.md) | BASELINE_CURVE recommendation changing — rare, high-impact | (standalone) |
 
 ### Handoff graph
 
 ```
 dab ──→ log-run ──→ new-jar (if no jar)
-                ──→ new-rig (if equipment changed)
-                ──→ analysis-toolkit (step 5)
-                ──→ close-jar (if user confirms closure after final run)
+    │           ──→ new-rig (if equipment changed)
+    │           ──→ analysis-toolkit (step 5)
+    │           ──→ close-jar (if user confirms closure after final run)
+    └──→ new-jar (strain named with no jar; user-initiated)
+
+close-jar ──→ log-run (first, if the final run isn't logged yet; then back)
 
 correct-frozen-data ──→ new-rig (if correction reveals novel equipment)
 

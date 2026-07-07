@@ -1,6 +1,6 @@
 ---
 name: dab
-description: Session-open ritual and dab-time capture for this Dabby project. Trigger whenever the user announces a dab is starting or imminent — "about to hit it", "grabbing one", "grabbing a dab of X", "we are gonna do a run", "warming up the rig", or any message naming a strain with dabbing intent — and ALSO on every additional dab announced mid-session ("grabbing another"). Trigger in party mode when the user says "party mode" or sends a terse strain-plus-observations fragment while socializing (e.g. "party mode: FW, normal load, harsh at 30") — party mode captures and replies in one line, nothing else. This skill captures the timestamp mechanically and performs the mandatory session-open sequence (git sync, handoff reads, open-PR check, equipment soft-check) — in normal mode; party mode captures only and explicitly defers that sequence to reconciliation. It never logs a run — logging is the log-run skill, and only the user initiates logging.
+description: Session-open ritual and dab-time capture for this Dabby project. Trigger whenever the user announces a dab is starting or imminent — "about to hit it", "grabbing one", "grabbing a dab of X", "we are gonna do a run", "warming up the rig", or any message naming a strain with dabbing intent — and ALSO on every additional dab announced mid-session ("grabbing another"). Trigger in party mode when the user says "party mode" or sends a terse strain-plus-observations fragment while socializing (e.g. "party mode — FW, normal load, harsh at 30") — party mode captures and replies in one line, nothing else. This skill captures the timestamp mechanically and performs the mandatory session-open sequence (git sync, handoff reads, open-PR check, equipment soft-check) — in normal mode; party mode captures only and explicitly defers that sequence to reconciliation. It never logs a run — logging is the log-run skill, and only the user initiates logging.
 ---
 
 # Dab
@@ -108,9 +108,10 @@ stale leftover branch the CLAUDE.md gate protects against). Name the branch
 you're staying on in your reply and continue there.
 
 **3. Mandatory reads.** All three, before replying: `HANDOFF_STATE.md`,
-`HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`. The wisdom file exceeds a
-single Read call — page through to the end; answering from page 1 is the
-exact failure the mandatory-reads gate exists to prevent. If the announcement names a
+`HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`. Read the wisdom file to the
+end — if the Read reports truncation, page through; answering from a
+partial read is the exact failure the mandatory-reads gate exists to
+prevent. If the announcement names a
 strain, resolve it to its jar file — check the inline name comments in
 `jar_manifest.py`'s `ACTIVE`/`CLOSED` lists (or grep `jars/*.py` for the
 strain name itself; it appears in each jar's `name='...'` field) — and read
@@ -153,14 +154,20 @@ Worked example — shape and register, not sentences to recite:
 > Got it — 7:42pm. First one of the day. Fire Water #106, Run 30 on deck —
 > plan on file is the gentle descent, first dab, moderate load:
 >
-> ```
->    0s   440°F   Session open — hot open, gentle descent start
->   30s   420°F   Gentle descent midpoint
->   60s   400°F   Floor
-> ```
+> **440°F @ 0s**
+> **420°F @ 30s**
+> **400°F @ 60s**
 >
 > Still on Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock —
 > .094" bore airflow) · Dr. Dabber stock bubbler. Fire when ready.
+
+Curve rendering in chat: two constraints are settled — **no per-waypoint
+notes** (`fmt_curve_table()` dropped them by design July 4, 2026) and **no
+fenced code block** (a mobile rendering bug mangles fences; documented in
+`BACKLOG.md`, "Curve table in the dab brief"). The bolded temp-first lines
+above are the current candidate format from that backlog item — check it
+live if this looks stale. Re-adding notes or a fence is a documented
+recurrence, not a style choice.
 
 Before sending, one check: anything backticked, snake_case, ALL_CAPS, a jar
 slug, or a protocol step name in the reply gets swapped for its display form

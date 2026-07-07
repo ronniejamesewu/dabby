@@ -1,6 +1,6 @@
 ---
 name: log-run
-description: Log a completed dab run into this Dabby project — the full pipeline from the user's report to a merged PR. Trigger when the user reports results of a dab ("that was intense, swabs were golden...", "ok here's how it went", "log it") or asks to log/record a run, including post-dated runs ("I dabbed twice yesterday"). Also trigger for reconciliation: when .pending_dabs.json holds party-mode captures waiting to be logged, or the generator's PENDING DABS tripwire fires. Covers the Beat 1/Beat 2 readback, drafting analysis for approval, writing the jar file, regenerating, and shipping the PR. A run is logged ONLY when the user initiates it — never from a captured timestamp, a planned next run, or a conversational mention alone.
+description: Log a completed dab run into this Dabby project — the full pipeline from the user's report to a merged PR. Trigger when the user reports results of a dab ("that was intense, swabs were golden...", "ok here's how it went", "log it") or asks to log/record a run, including post-dated runs ("I dabbed twice yesterday"). Also trigger for reconciliation — when .pending_dabs.json holds party-mode captures waiting to be logged, or the generator's PENDING DABS tripwire fires. Covers the Beat 1/Beat 2 readback, drafting analysis for approval, writing the jar file, regenerating, and shipping the PR. A run is logged ONLY when the user initiates it — never from a captured timestamp, a planned next run, or a conversational mention alone.
 ---
 
 # Log Run
@@ -50,14 +50,17 @@ memory of it.
   swab) — that's the correct-frozen-data skill
   (`.claude/skills/correct-frozen-data/SKILL.md`).
 - **Session-open / "about to dab"** — that's the dab skill (capture only).
+- **The user says this run finished the jar** — log the run here first, then
+  closure is the close-jar skill (`.claude/skills/close-jar/SKILL.md`); it
+  needs the user's explicit confirmation that the jar is done.
 
 ## Workflow
 
 **0. Session state.** If the session-open sequence hasn't run this session,
 do it now — in short: `git checkout main && git pull` (unless mid-work on a
 feature branch with uncommitted changes), read all three of
-`HANDOFF_STATE.md` / `HANDOFF_WISDOM.md` (it takes two Read calls) /
-`Dabby_Handoff_Notes.md`, and check open PRs. The dab skill's steps 2–5 are
+`HANDOFF_STATE.md` / `HANDOFF_WISDOM.md` (in full — page through if the
+Read reports truncation) / `Dabby_Handoff_Notes.md`, and check open PRs. The dab skill's steps 2–5 are
 the full definition if anything here is unclear. Never draft a readback from
 stale or unread state.
 
@@ -80,12 +83,13 @@ python pending_dab.py list
 - **No entry, results just happened** → capture now (`python pending_dab.py
   start`), then consume it. "Now" is legitimately `utc_logged_at` — the field
   means time-of-logging.
-- **No entry, dab was earlier** (hours ago same day, or a prior day) → the
-  date/time protocol in `CLAUDE.md` governs, read it live — in short: a
-  user-stated clock time or relative offset converts to UTC and becomes
-  `utc_logged_at` (its rule 6); a post-date with no recallable time gets the
-  casual-register ask and `None` if unrecoverable (its rule 8). When in doubt
-  which branch applies, that protocol decides, not this list.
+- **No entry, dab was earlier** (hours ago same day, or a prior day) → two
+  branches, and this skill is the normative home for the first: a user-stated
+  clock time or relative offset converts to UTC and becomes `utc_logged_at`;
+  a post-date with no recallable time gets the casual-register ask ("Do you
+  have a sense of what time it was?") and `None` if unrecoverable — that
+  second branch also lives in `CLAUDE.md`'s Date and Time Logging section
+  (unnumbered bullets; read it live for the current wording).
 - **Multiple entries (party queue)** → reconcile oldest-first, one run at a
   time, each through this full workflow. The queue note is the verbatim
   `dab_notes` foundation for its run; the capture time is that run's
@@ -138,11 +142,9 @@ field names stay out of it; it's just facts, then questions. Worked example
 > Logging this as **Fire Water #106, Run 30** — July 2 at 8:14pm MDT, second
 > dab of the day. The gentle descent again:
 >
-> ```
->    0s   440°F   Session open — hot open, gentle descent start
->   30s   420°F   Gentle descent midpoint
->   60s   400°F   Floor
-> ```
+> **440°F @ 0s**
+> **420°F @ 30s**
+> **400°F @ 60s**
 >
 > Full 60 seconds, moderate load, swab golden. Rig 6 — Dr. Dabber Sapphire
 > Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber

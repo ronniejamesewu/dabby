@@ -79,6 +79,13 @@ itself is usually right, but what's more likely to be stale is what that
 strain's own ancestry looks like beyond the first generation, which feeds
 both the terpene inference in step 4 and the cross-strain check in step 6.
 
+**Don't idle on the handoff.** The agent→agent report delivery has failed
+before (first live exercise, July 2, 2026 — the research completed but the
+report never came back; details in Provenance below). Once step 1's
+gathering and step 3's prep are done, start the inline `WebSearch`/`WebFetch`
+fallback in parallel with the same brief and stopping rule — first usable
+result wins.
+
 Before writing the brief, read
 [`references/lineage_research_bar.md`](references/lineage_research_bar.md).
 A real comparison against Perplexity on the same strain showed the gap
@@ -236,7 +243,9 @@ Avoid abbreviations that read as something else out of context (this
 project's failure-mode log specifically flags "fb" reading as Facebook).
 
 **6. Draft `next_ai_analysis`.** One to two sentences: confirm the starting
-point is `BASELINE_CURVE` (380°F open → 400°F @4s → 420°F @8s, hold to 60s),
+point is `BASELINE_CURVE` — read its current waypoints live from
+`Dabby_Core.py` (the provenance grep below is the command); never state the
+curve from a copy in this file or from memory —
 and note anything from `HANDOFF_WISDOM.md` that's genuinely relevant to a
 first run on this genetics/format combination (e.g. a multi-component jar
 needs the load-position caveat from step 3). If nothing specific applies,
@@ -308,10 +317,12 @@ missing. The output (an empty jar, committed via steps 8–11) is the same
 either way; only how much of step 1 (and whether step 2's search turns up
 anything new) requires fresh work changes.
 
-**Party-mode is not built yet.** Wherever this skill mentions a party-mode
-reconciliation pass calling into it, that's a planned composition, not a
-skill that currently exists in this repo — check
-`.claude/skills/` for a `party-mode` directory before assuming it does.
+**Where party mode lives:** capture is the dab skill
+(`.claude/skills/dab/SKILL.md`, "Party mode" section); reconciliation —
+the pass where a previously-unlogged strain surfaces and calls into this
+skill — is the log-run skill's reconciliation loop
+(`.claude/skills/log-run/SKILL.md`). There is no separate `party-mode`
+skill directory, by design.
 
 ## Provenance and maintenance
 
