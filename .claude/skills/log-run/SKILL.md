@@ -142,9 +142,11 @@ field names stay out of it; it's just facts, then questions. Worked example
 > Logging this as **Fire Water #106, Run 30** — July 2 at 8:14pm MDT, second
 > dab of the day. The gentle descent again:
 >
-> **440°F @ 0s**
-> **420°F @ 30s**
-> **400°F @ 60s**
+> | Temp | At |
+> |---|---|
+> | **440°F** | 0s |
+> | **420°F** | 30s |
+> | **400°F** | 60s |
 >
 > Full 60 seconds, moderate load, swab golden. Rig 6 — Dr. Dabber Sapphire
 > Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber

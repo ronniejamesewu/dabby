@@ -154,20 +154,19 @@ Worked example — shape and register, not sentences to recite:
 > Got it — 7:42pm. First one of the day. Fire Water #106, Run 30 on deck —
 > plan on file is the gentle descent, first dab, moderate load:
 >
-> **440°F @ 0s**
-> **420°F @ 30s**
-> **400°F @ 60s**
+> | Temp | At |
+> |---|---|
+> | **440°F** | 0s |
+> | **420°F** | 30s |
+> | **400°F** | 60s |
 >
 > Still on Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock —
 > .094" bore airflow) · Dr. Dabber stock bubbler. Fire when ready.
 
-Curve rendering in chat: two constraints are settled — **no per-waypoint
-notes** (`fmt_curve_table()` dropped them by design July 4, 2026) and **no
-fenced code block** (a mobile rendering bug mangles fences; documented in
-`BACKLOG.md`, "Curve table in the dab brief"). The bolded temp-first lines
-above are the current candidate format from that backlog item — check it
-live if this looks stale. Re-adding notes or a fence is a documented
-recurrence, not a style choice.
+Curve rendering in chat — locked July 6, 2026: a markdown table, exactly
+as `fmt_curve_table()` prints it — paste the printed lines verbatim. No
+per-waypoint notes, no fenced code block; both are documented recurrences
+(`BACKLOG.md`, "Curve table in the dab brief"), not style choices.
 
 Before sending, one check: anything backticked, snake_case, ALL_CAPS, a jar
 slug, or a protocol step name in the reply gets swapped for its display form

@@ -407,14 +407,17 @@ def _fmt_equipment_display(eq):
     return body
 
 def fmt_curve_table(waypoints):
-    """A waypoint list as plain-language table lines — the display form whenever a
-    curve is stated to the user (chat readbacks, pending_dab fact blocks). One line
-    per waypoint: time, temperature. Notes are omitted by design — this table is a
-    quick-reference for chat (frequently viewed on mobile, where a code block can't
-    wrap), not the historical record; full per-waypoint notes live in the rendered
+    """A waypoint list as a markdown table — the display form whenever a curve is
+    stated to the user (chat readbacks, pending_dab fact blocks). Format locked
+    July 6, 2026 (BACKLOG.md, "Curve table in the dab brief"): a rendered table
+    keeps its alignment on mobile, where whitespace-padded text in a code fence
+    did not. Temperature is bolded because it's the value keyed into the device.
+    Notes are omitted by design — full per-waypoint notes live in the rendered
     log."""
-    return "\n".join(f"  {wp.time_s:>4}s   {wp.temp_f}\N{DEGREE SIGN}F"
-                     for wp in waypoints)
+    lines = ["| Temp | At |", "|---|---|"]
+    lines += [f"| **{wp.temp_f}\N{DEGREE SIGN}F** | {wp.time_s}s |"
+              for wp in waypoints]
+    return "\n".join(lines)
 
 # ── VALIDATION ───────────────────────────────────────────────────────────────
 
