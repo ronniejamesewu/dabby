@@ -31,6 +31,13 @@ BP4RW13_DESCENT_GENTLE = [
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
 
+BP4RW13_HOLD10_DESCENT_GENTLE = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=10, temp_f=440, note='Hold at peak — one draw at 440°F'),
+    Waypoint(time_s=35, temp_f=420, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 
 RUNS = [
@@ -199,13 +206,28 @@ RUNS = [
         dab_notes='I ran two cycles, two sips of water in there, second cycle only two draws before depleted. Swabs were Amber.nothing too terpy, although tasty throughout. Bitter citrus in first rip, lemon pledge. Same curve. Make a note to next Claude to discuss extending the 440 in this curve. Medium high intensity. It was the larger side of normal which makes the depletion early interesting compared to last run. A tiny bit in the second cycle draws, but it was mild. In throat and chest',
         analysis='Run 11, same descent curve as Runs 5–10 (440°F open → 420°F @30s → 400°F floor), Rig 6, second dab of the day, larger-than-normal load, two cycles.\n\nMild harshness appeared on the second cycle\'s draws, located in throat and chest — the same dual-location read as Run 9\'s throat-and-chest mild harshness, and a departure from Run 8\'s chest-only, persisted-after-session-ended read. Unlike Run 9\'s harshness (which arrived alongside a toasty flavor as a limiting factor) or Run 7\'s (which escalated to a stopping condition), this run\'s harshness stayed mild and didn\'t end the session — the second cycle stopped because material depleted after only two draws, not because of harshness.\n\nThat depletion pattern is the run\'s most notable feature. The load was larger than normal, yet the second cycle ran out after just two draws — a sharper cutoff than Run 10, which used a normal-to-slightly-smaller load and completed two full 60-second cycles before the last draw went wispy. User flagged this contrast directly: bigger load, faster depletion is counterintuitive if load size maps linearly to session length. One plausible contributor, documented in this jar\'s own format notes: the persy thumbprint\'s outer ring is pure Banana Punch #4 while the center is blended, and the load zone isn\'t visually distinguishable — a larger scoop doesn\'t guarantee even distribution between the two rings, so cycle 2 may have been drawing from an already-thinner pocket rather than a uniformly bigger reserve. Speculative; not established by this one run.\n\nThis run was also the direct same-day-2nd-dab test that Run 10\'s writeup set up after Run 9\'s toasty-flavor question. Run 9 (third dab of the day) showed a toasty, near-combustion flavor; Run 10 (fresh first dab the next day) didn\'t, leaving accumulated heat exposure / session order as the more likely driver over material state. Run 11, at second dab (not third), also shows no toasty flavor — consistent with a session-order effect that requires more accumulated exposure than a single second dab provides, though this doesn\'t fully replicate Run 9\'s third-dab condition and isn\'t a clean resolution.\n\nBitter citrus on the first rip repeats Run 7\'s citrus-bitter note on this same jar — a second appearance, not a one-off, and consistent with the cross-strain bitter-citrus pattern in HANDOFF_WISDOM (MB9ZST, MBD, OC, FW106) as well as the limonene inference from Randy Watzon\'s Runtz/Wedding Crasher lineage. Amber swab sits in the middle of this jar\'s cycle-count/duration gradient — between Run 8\'s one-cycle amber and Run 10\'s two-full-cycle brown — consistent with two cycles where the second was cut short by depletion rather than run to term.',
     ),
+    CompletedRun(
+        strain='Banana Punch #4 + Randy Watzon #13',
+        run_date=date(2026, 7, 7),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 8, 3, 23, 22, tzinfo=timezone.utc),
+        waypoints=BP4RW13_HOLD10_DESCENT_GENTLE,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 10s hold at 440°F, then gentle descent; first hold-variant on this jar',
+        swab='amber',
+        session_char='Amber swab, light reclaim; single cycle depleted before session end on a normal load; mild harshness ~20s left, subordinate to terp throat-irritation; less coughing than the prior night; high, rising intensity — heavy body, pressure at the base of the skull and in the soles of the feet',
+        intensity='high',
+        dab_notes='Amber swabs, light amount of reclaim. Mild harshness started around 20 seconds left, wasn\'t too noticeable because the throat irritation from the terps was kicking. Not as intense as yesterday\'s coughing, only a little bit of crying. But the dab depleted before the cycle ended. I loaded what seemed like a normal amount. So we might hypothesize the the 440 hold for 10 seconds did its job in providing a larger amount vapor production, but of course one data point. Effect is intense, lots of body sensation, pressure under the base of the skull. And in soles of my feet. [A few minutes later:] Oh boy just got even bigger. [Confirmed: the Randy jar, ran the proposed 10s-440-hold curve.]',
+        analysis='Run 12, first hold-variant on this jar: 10s at 440°F, then the gentle descent to 400°F (440→440@10s→420@35s→400@60s) — the bounded-hold idea from the Run 11 note, capping peak to one draw\'s worth instead of lingering near it. Rig 6, first dab of the day, normal load, single cycle.\n\nAmber swab with light reclaim is among the lightest readings on this jar\'s descent runs, and a clean counterpoint to Fire Water #106 R31 the night before (same rig, unbounded near-440 slow descent → dark amber, heavy reclaim from material degrading in place). The bounded hold looks like it delivered vapor rather than cooking it — one run. Depleted before the 60s cycle ended on a normal load; the user\'s read (10s at 440 front-loaded vapor production) is mechanically coherent — 440 vaporizes faster than the plain descent\'s lower average, so a normal load empties sooner — but this jar runs thin early regardless (R7, R11) and the runny thumbprint can\'t be portioned precisely, so this is one observation at single-data-point weight, not the hold\'s fingerprint yet.\n\nHarshness mild at ~20s left, buried under the terp throat-irritation (the dense-vapor terp cough documented cross-strain, distinct from airway harshness) and not the limiting factor — depletion was. Intensity high and rising, heavy body with pressure at the base of the skull and in the soles of the feet — strong for a normal-load first dab, directionally consistent with a bigger front-loaded bolus but confounded with it, and with Randy Watzon\'s Runtz-lineage body character. First dab of the day clears the session-order confound off the intensity read.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Banana Punch #4 + Randy Watzon #13',
     profile_anchor='#bp4rw13-profile',
-    next_text='Run 12: discuss extending the 440°F open phase of this curve (user\'s Run 11 note) — otherwise, third same-day dab if timing allows to complete the R9 toasty-flavor replication, or a fresh first-dab repeat with careful even portioning to test the depletion/load-distribution question',
+    next_text='Run 13: rerun the 10s-440-hold curve (440→440@10s→420@35s→400@60s), first dab, normal load — does the front-load / early-depletion signature repeat, or is it jar variance?',
     accent=None,
     slug='bp4rw13',
     info=[
@@ -216,8 +238,8 @@ STATUS = StrainStatus(
         ('Nose', 'Fruity, hint of chem/gas (Run 1)'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Banana Punch #4 (Banana OG × Purple Punch — banana/sweet indica character); limonene and linalool inferred from Randy Watzon #13 (Runtz × Wedding Crasher — Runtz: Zkittlez × Gelato; Wedding Crasher: Wedding Cake × Purple Punch). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Make a note to next Claude to discuss extending the 440 in this curve.',
-    next_ai_analysis='Run 12: discuss extending the 440°F open phase before the descent to 420°F — the user\'s own flag from Run 11 — as a way to hold peak temperature longer without changing the ramp shape. Before deciding it, worth weighing against Run 11\'s own result: a larger load still depleted fast in cycle 2, so more time at 440°F might extract flavor faster rather than lengthen the session. If the next dab lands as a third same-day dab, that\'s the cleaner replication of Run 9\'s toasty-flavor condition than Run 11 provided (second dab, no toasty) — worth running deliberately as a third dab if the timing allows. Otherwise, a fresh first-dab repeat of this exact curve with a deliberately even-portioned load would help separate the depletion-timing question from the load-distribution confound (outer ring vs. center) flagged this run.',
-    next_waypoints=BP4RW13_DESCENT_GENTLE,
+    next_dab_notes='We might hypothesize the 440 hold for 10 seconds did its job in providing a larger amount vapor production, but of course one data point.',
+    next_ai_analysis='Run 13: same hold curve, first dab, normal load, everything held — does R12\'s signature repeat? Amber/light reclaim, strong effect, and pre-60s depletion all fit the hold front-loading productively, but one run can\'t beat this jar\'s variance. Expected: same again. Surprising: dark swab/heavy reclaim (cooking, like R31), or a clean full 60s — which would say the early depletion was load, not the hold.',
+    next_waypoints=BP4RW13_HOLD10_DESCENT_GENTLE,
     jar_index='',
 )

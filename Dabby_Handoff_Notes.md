@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 6, 2026 — Session 150
+## Last updated: July 7, 2026 — Session 151
 
 ---
 
@@ -251,6 +251,10 @@ These are caught by code or encoded as explicit skill steps; kept as one-liners 
 - **Treating two of three mandatory session-open reads as sufficient.** The dab skill's step 3 lists `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, and `Dabby_Handoff_Notes.md` as all-three-before-replying. Session 143: read the first and third, plus a targeted grep for the named strain, and treated that as enough to reply — `HANDOFF_WISDOM.md` went unread until a later instruction to run the session-close checklist forced it open. The grep found the jar; it didn't substitute for the wisdom-layer read the step requires. Read all three, every time, even when targeted searches already answered the immediate question.
 
 - **Reciting an unresolved conditional in `next_text`/`next_ai_analysis` instead of resolving it against known facts.** A jar's `next_ai_analysis` read "if the next dab lands the same day as a prior one, run it as the 2nd or 3rd dab... if the next dab is a fresh first-dab instead, repeat these exact conditions." Session 143: at capture time, `HANDOFF_STATE.md`'s most-recent-run line already showed the prior run on the same calendar date as the capture — the "if same-day" branch was already decided, not hypothetical — but the reply recited both branches verbatim instead of stating the resolved one. Same shape as "asking a question that could be reasoned through," just manifesting as an unresolved conditional instead of a question. Before reciting a same-day/first-dab branch from a jar's `next_*` fields, check it against the captured date and the most-recent-run date, and state the resolved branch.
+
+- **Running the session-open sequence before capturing the timestamp, even with the dab skill invoked.** July 7, 2026 (Session 151): on a bare dab-intent open ("Ready for a dab?"), the dab skill was invoked but its step 1 — capture immediately, ahead of git/reads/reply — was skipped; sync, the three reads, the PR check, and a full reply all ran first, and the time wasn't captured until the user asked "Did you grab the time?" Capture-first is the skill's first hard gate precisely because the timestamp is the one unreconstructable fact. The "structurally resolved" framing for this class assumes the AI actually executes step 1 first, but ordering inside the skill is still AI-followed, not mechanically enforced — so it can and did slip. Rule: on any dab-intent open, run `pending_dab.py start` as the literal first action before sync/reads/PR-check/reply — including the no-strain-named and bare-"ready?" openers, which are not exceptions.
+
+- **Not proactively surfacing the checklist when a failure mode occurred (recurrence of the Session 145 entry).** July 7, 2026 (Session 151): the capture-first miss above is a checklist item-3 "yes," yet the run was logged and the PR shipped ("enjoy the ride") with no offer of the session-close checklist — the user had to ask twice ("Were you supposed to ask...?"). Same shape as Session 145: the judgment-layer rule ("say so and offer the checklist the moment a question resolves yes mid-session") is demonstrably not self-triggering under model attention during active logging. This second instance is the concrete case for mechanizing the offer rather than trusting the AI to notice — see the enriched session-close-handoff skill spec in `BACKLOG.md`.
 
 ---
 
