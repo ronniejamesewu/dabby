@@ -217,8 +217,7 @@ def cmd_brief(args):
             done = sum(1 for r in runs if r.strain == status.name)
             say.append(f"Strain: {status.name} — {done} runs logged; next is Run {done + 1}")
             if done == 0:  # jar opener — the papzp22 R1 / dbrb R1 caution, mechanized
-                say.append("First run of this jar — potency unknown. Keep the load "
-                           "modest until the first session reads it.")
+                say.append("First run of this jar — potency unknown. Take it easy, tiger.")
             if status.slug in closed:
                 notes.append(f"This jar is CLOSED ({status.name}) — its guidance is "
                              f"if-it-shows-up-again framing, not an active plan.")
