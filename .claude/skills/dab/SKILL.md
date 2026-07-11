@@ -137,8 +137,8 @@ python pending_dab.py brief --strain "Fire Water #106"
 (full strain name or any unambiguous fragment; omit `--strain` if none was
 named). Everything under its "say it to the user" banner is pre-rendered in
 display form: dab time, dab-of-the-day count, the plan on file with its curve
-table, and the working rig in full expansion — that rig line is the equipment
-default. Lines under the "for the assistant" banner are instructions to you,
+table, a go-easy potency caution when the jar has no runs yet, and the
+working rig in full expansion — that rig line is the equipment default. Lines under the "for the assistant" banner are instructions to you,
 never quoted. If a note there flags a gap over the threshold, apply the
 "Session-open soft check" in `Dabby_Handoff_Notes.md` — read it live for the
 current wording.
@@ -181,7 +181,11 @@ resuming a session and can't tell whether steps 2–4 ran, run them — repeated
 reads are cheap, a stale readback is not.
 
 **No strain named** ("gonna dab something tonight"): steps 1–5 now, `brief`
-without `--strain`; step 3's jar read waits until a strain is chosen.
+without `--strain`; step 3's jar read waits until a strain is chosen. When
+the strain does get named — next message or later — re-run step 5's command
+with it before replying: the plan on file, its curve table, and the zero-run
+potency caution only print when the strain is named, and the caution is only
+useful before the dab, not at logging time.
 
 ## Recovery paths (don't improvise these)
 

@@ -155,6 +155,25 @@ def _resolve_strain(query, statuses):
 
 # ── commands ─────────────────────────────────────────────────────────────────
 
+def _first_run_caution(note):
+    """Best-effort party-mode guard: if the capture note names a jar with no
+    logged runs, return a go-easy clause for start's one-liner — the warning
+    is only useful before the dab, and party mode never runs `brief`. Capture
+    must never fail on jar data, so any problem here returns silence."""
+    if not note:
+        return ''
+    try:
+        runs, statuses, closed = _load_jar_data()
+        low = note.lower()
+        logged = {r.strain for r in runs}
+        for s in statuses:
+            if s.slug not in closed and s.name not in logged and s.name.lower() in low:
+                return " First run of this jar — potency unknown, go easy."
+        return ''
+    except Exception:
+        return ''
+
+
 def cmd_start(args):
     now = datetime.now(timezone.utc).replace(microsecond=0)
     entries = _load()
@@ -162,7 +181,7 @@ def cmd_start(args):
     _save(entries)
     waiting = (f" ({len(entries)} dabs waiting to be logged, including this one.)"
                if len(entries) > 1 else "")
-    print(f"Got it — {_say_time(now)}.{waiting}")
+    print(f"Got it — {_say_time(now)}.{waiting}{_first_run_caution(args.note or '')}")
 
 
 def cmd_brief(args):
@@ -197,6 +216,9 @@ def cmd_brief(args):
         else:
             done = sum(1 for r in runs if r.strain == status.name)
             say.append(f"Strain: {status.name} — {done} runs logged; next is Run {done + 1}")
+            if done == 0:  # jar opener — the papzp22 R1 / dbrb R1 caution, mechanized
+                say.append("First run of this jar — potency unknown. Keep the load "
+                           "modest until the first session reads it.")
             if status.slug in closed:
                 notes.append(f"This jar is CLOSED ({status.name}) — its guidance is "
                              f"if-it-shows-up-again framing, not an active plan.")
