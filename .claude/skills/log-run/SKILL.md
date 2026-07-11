@@ -186,6 +186,13 @@ Present the drafts under their settled display labels (Session 49 decision)
 > **AI Analysis** *(the What to Try Next reasoning)*
 > …the recommendation… Expected: …one sentence… Surprising: …one sentence…
 
+When the recommended next curve differs from the current one, show the
+proposed curve as a `fmt_curve_table()` table in this draft — the pinned
+waypoints are what land in `next_waypoints` and render as the log's Proposed
+Curve, so surface them for review here instead of describing the curve in
+prose (Session 154 — a next curve left as prose had to be pinned on user
+prompt).
+
 The step 4 pre-send check applies here too. Register inside analysis prose:
 the strain being logged gets its full name; cross-strain run citations follow
 the log's established style as the wisdom layer writes them (e.g. "FW106 R26",
