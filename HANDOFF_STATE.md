@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 143 across 19 strains
+- **Total runs:** 144 across 20 strains
 - **Active since:** May 2, 2026 (70 days)
 - **Last run date:** July 10, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 2 — July 10, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 1 — July 10, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -226,17 +226,17 @@
 ---
 
 ### LunarZ
-**No runs yet** &nbsp;·&nbsp; Next run: 1
+**1 session** &nbsp;·&nbsp; Next run: 2 &nbsp;·&nbsp; Last: July 10, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** No runs yet — start from baseline curve
+**Next:** Run 2: lower the hold to 430°F (same bounded-hold descent), first dab, modest load — test the "wants less heat" read on a cleaner setup
 
-**AI Analysis:** Start from the current baseline curve (380°F → 400°F @4s → 420°F @8s, hold to 60s). First run of a 710 Labs jar — keep the load modest until potency reads (same first-run caution as the recent dbrb opener). No direct effect data exists for LunarZ, but it shares Moonbow and Zkittlez ancestry with Rainbow Belts in the dbrb jar — worth watching whether similar Z-forward candy character shows up, though shared ancestry doesn't establish a mechanism.
+**AI Analysis:** Run 2: drop the hold from 440°F to 430°F, same bounded-hold-descent shape, first dab, modest load. Follows the user's Run 1 "wants less heat" read and backs off the 440°F open tied to the lingering chest harshness, while a first-dab modest load strips the 3rd-dab and larger-load confounds that muddy Run 1. One run in, so this is a first calibration step, not a confirmed direction. Expected: still delivers strong with flavor, chest harshness lighter or gone at the cooler open. Surprising: same chest harshness at 430°F — that would point at curve shape or rig over the 440°F peak.
 
 **Proposed Curve:**
-- 0s → 380°F — Session open
-- 4s → 400°F — Steep early climb
-- 8s → 420°F — Endpoint
-- 60s → 420°F — Hold
+- 0s → 430°F — Session open — hold at 430°F
+- 10s → 430°F — Hold at peak — one draw at 430°F
+- 35s → 415°F — Gentle descent midpoint
+- 60s → 400°F — Floor
 
 ---
 
