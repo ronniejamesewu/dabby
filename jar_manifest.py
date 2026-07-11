@@ -24,6 +24,8 @@ ACTIVE = [
     'lhbh',        # Lemon Heads + Blueberry Haze
     'bp4rw13',     # Banana Punch #4 + Randy Watzon #13
     'papzp22',     # Papaya + Z Pie #22
+    'sourtangie',  # Sour Tangie
+    'lunarz',      # LunarZ
 ]
 
 CLOSED = [
