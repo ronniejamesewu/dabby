@@ -37,6 +37,7 @@ and the handoff graph below.
 | [new-rig](new-rig/SKILL.md) | Equipment doesn't match any existing RIG_N | log-run (after constant created) |
 | [correct-frozen-data](correct-frozen-data/SKILL.md) | Error in a previously logged run — "that run had the wrong rig" | new-rig (if a correction reveals a novel equipment config) |
 | [change-baseline](change-baseline/SKILL.md) | BASELINE_CURVE recommendation changing — rare, high-impact | (standalone) |
+| [wisdom-audit](wisdom-audit/SKILL.md) | Re-audit HANDOFF_WISDOM.md against primary run data — rare, high-impact, user-initiated | correct-frozen-data (if the audit finds wrong frozen data) |
 
 ### Handoff graph
 
@@ -52,6 +53,9 @@ close-jar ──→ log-run (first, if the final run isn't logged yet; then back
 correct-frozen-data ──→ new-rig (if correction reveals novel equipment)
 
 change-baseline (standalone, rare)
+
+wisdom-audit ──→ correct-frozen-data (if the audit finds wrong frozen data)
+             (standalone, rare, user-initiated; proposes wisdom-row changes for triage)
 ```
 
 ## Skill template

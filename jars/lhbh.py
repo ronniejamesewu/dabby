@@ -137,7 +137,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from Lemon Heads (Lemon G × Face Off OG BX) — Lemon G is known for strong citrus/lemon character; myrcene and terpinolene inferred from Blueberry Haze (Blueberry × Haze). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Run 8: first dab, deliberate larger load, 420°F. The best flavor this jar has produced came on an accidentally large load — but that was second dab, so session order is an unresolved confound. A first-dab large-load run tests whether load size is the flavor lever without that confound. If lemon/fruit character opens up, load size is in play. If it\'s sparse again, the picture stays murky — thumbprint load composition and session-to-session variability are both uncontrolled.',
+    next_ai_analysis='Run 8: first dab, deliberate larger load, 420°F. The best flavor this jar has produced came on an accidentally large load — but that was second dab, so session order is an unresolved confound. A first-dab large-load run tests whether load size is the flavor lever without that confound. If lemon/fruit character opens up, load size is in play. If it\'s sparse again, the picture stays murky — thumbprint load composition and session-to-session variability are both uncontrolled. At the readback, state the load class out loud so it lands in the dab_notes verbatim record — the July 11, 2026 audit found load size, the log\'s most confound-cited variable, repeatedly surviving only in AI-authored fields; this run is the next deliberate load-axis data point and shouldn\'t repeat that.',
     next_waypoints=BASELINE_CURVE,
     jar_index='',
 )
