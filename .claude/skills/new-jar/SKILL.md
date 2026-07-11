@@ -242,10 +242,18 @@ proposed slug and get explicit confirmation; don't silently commit to it.
 Avoid abbreviations that read as something else out of context (this
 project's failure-mode log specifically flags "fb" reading as Facebook).
 
-**6. Draft `next_ai_analysis`.** One to two sentences: confirm the starting
+**6. Draft `next_ai_analysis`.** Two to three sentences: confirm the starting
 point is `BASELINE_CURVE` — read its current waypoints live from
 `Dabby_Core.py` (the provenance grep below is the command); never state the
 curve from a copy in this file or from memory —
+include the first-run potency caution — keep the load modest until the first
+session reads potency; every new jar gets this line, no exceptions
+(precedent: the Sour Tangie and LunarZ jars; the instances that earned it:
+papzp22 R1's packaging warning discovered post-hoc, dbrb R1's post-session
+dizziness after a heavy jar opener). `pending_dab.py brief` also prints this
+caution mechanically for any zero-run jar, but the jar copy renders in What
+to Try Next where the brief doesn't reach — write both, they're not
+redundant —
 and note anything from `HANDOFF_WISDOM.md` that's genuinely relevant to a
 first run on this genetics/format combination (e.g. a multi-component jar
 needs the load-position caveat from step 3). If nothing specific applies,
