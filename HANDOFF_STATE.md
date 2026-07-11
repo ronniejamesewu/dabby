@@ -210,6 +210,36 @@
 
 ---
 
+### Sour Tangie
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**AI Analysis:** Start from the current baseline curve (380°F → 400°F @4s → 420°F @8s, hold to 60s). First run of a 710 Labs jar — keep the load modest until the first session reads potency (the Donny Burger + Rainbow Belts opener ran heavy and produced post-session dizziness; 710's packaging flags first-run caution). Sour Tangie has prior data here: as a blend layer in the closed Mango Banana #9 + Z + Sour Tangie jar it read limonene-forward — bitter citrus with a tangerine edge — so watch whether that citrus signature shows up on its own.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
+### LunarZ
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**AI Analysis:** Start from the current baseline curve (380°F → 400°F @4s → 420°F @8s, hold to 60s). First run of a 710 Labs jar — keep the load modest until potency reads (same first-run caution as the recent dbrb opener). No direct effect data exists for LunarZ, but it shares Moonbow and Zkittlez ancestry with Rainbow Belts in the dbrb jar — worth watching whether similar Z-forward candy character shows up, though shared ancestry doesn't establish a mechanism.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
 ## Closed Jars
 *One line each — non-actionable; full run history and analysis live in `jars/<slug>.py`.*
 
