@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 145 across 20 strains
+- **Total runs:** 146 across 20 strains
 - **Active since:** May 2, 2026 (71 days)
 - **Last run date:** July 11, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 3 — July 11, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 4 — July 11, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -211,11 +211,11 @@
 ---
 
 ### Sour Tangie
-**3 sessions** &nbsp;·&nbsp; Next run: 4 &nbsp;·&nbsp; Last: July 11, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**4 sessions** &nbsp;·&nbsp; Next run: 5 &nbsp;·&nbsp; Last: July 11, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 4: baseline 420°F fast ramp, first dab, modest load — the still-pending cooler-endpoint reference point; tests whether the dark amber lightens off the hot curves
+**Next:** Run 5: baseline 420°F fast ramp, first dab, single cycle, modest load — the still-pending cooler-endpoint reference; tests whether the dark amber lightens off a single cool cycle
 
-**AI Analysis:** Three runs in, all hot curves (two 440-hold-descents and one 430 ascent), all strong, all dark amber with minimal reclaim, now one mild chest-and-throat harshness instance on Rig 6 — the jar delivers hard and clean, but there's still no cooler-endpoint data point to separate the jar's swab character from the hot open. Run 4: finally run the current baseline (380 → 400 @4s → 420 @8s, hold to 60s), first dab, modest load — single cycle, so the swab read isn't cycle-confounded like Run 3's. Keep it first-dab to dodge the session-order confound, and state the load class out loud at the readback so it lands in the record. Expected: still strong, swab lightening toward golden at 420°F on a single cycle if the color was heat/cycle-driven. Surprising: dark amber persists at 420°F single-cycle — that points to strain/material character over endpoint, meaning swab won't be a fine-calibration lever for this jar.
+**AI Analysis:** Four runs in, all hot curves, all strong, all dark amber — and the cooler-endpoint reference is still missing; four two-cycle hot runs can't say whether the dark swab is heat/cycle or strain character. Run 5: run the current baseline (380 → 400 @4s → 420 @8s, hold to 60s), first dab, single cycle, modest load — first-dab and single-cycle strip the session-order and second-cycle-darkening confounds. It's a measurement run, not a bet against the 440-hold-descent, which is already this jar's operating curve. Expected: swab lightens toward golden at 420°F single-cycle if the color was heat-driven. Surprising: dark amber persists single-cycle — then swab isn't a fine-calibration lever for this jar.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
