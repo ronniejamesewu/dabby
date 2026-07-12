@@ -1,6 +1,6 @@
 ---
 name: dab
-description: Session-open ritual and dab-time capture for this Dabby project. Trigger whenever the user announces a dab is starting or imminent — "about to hit it", "grabbing one", "grabbing a dab of X", "we are gonna do a run", "warming up the rig", or any message naming a strain with dabbing intent — and ALSO on every additional dab announced mid-session ("grabbing another"). Trigger in party mode when the user says "party mode" or sends a terse strain-plus-observations fragment while socializing (e.g. "party mode — FW, normal load, harsh at 30") — party mode captures and replies in one line, nothing else. This skill captures the timestamp mechanically and performs the mandatory session-open sequence (git sync, handoff reads, open-PR check, equipment soft-check) — in normal mode; party mode captures only and explicitly defers that sequence to reconciliation. It never logs a run — logging is the log-run skill, and only the user initiates logging.
+description: Session-open ritual and dab-time capture for this Dabby project. Trigger whenever the user announces a dab is starting or imminent — "about to hit it", "grabbing one", "grabbing a dab of X", "we are gonna do a run", "warming up the rig", or any message naming a strain with dabbing intent — and ALSO on every additional dab announced mid-session ("grabbing another"). Trigger in party mode when the user says "party mode" or sends a terse strain-plus-observations fragment while socializing (e.g. "party mode — FW, normal load, harsh at 30") — party mode captures and replies in one line, nothing else. This skill captures the timestamp mechanically and performs the mandatory session-open sequence (git sync, handoff reads, open-PR check, equipment soft-check) — in normal mode; party mode captures only and explicitly defers that sequence to reconciliation. It never logs a run — a finished-dab results report hands off to the log-run skill, whose readback confirms before anything is written.
 ---
 
 # Dab
@@ -29,9 +29,13 @@ pre-rendered, so compose around them instead of translating from memory.
 
 ## Hard rules
 
-- **Capture ≠ logging.** A captured timestamp is not a mandate to write a run.
-  Runs are logged only when the user initiates logging (reports results and
-  wants them recorded). Never propose logging a run the user didn't ask to log.
+- **Capture ≠ logging.** A captured timestamp, a planned next run, or a strain
+  mentioned in passing is never a mandate to write a run — never propose
+  logging from those alone. But a report of a finished dab's results is a
+  log-run trigger: hand off — the readback there is how "wants it recorded"
+  gets confirmed, and nothing is written before the user approves. (Rescoped
+  July 11, 2026 — the old wording's "and wants them recorded" read as a second
+  trigger condition and suppressed the readback on results reports.)
 - **Capture always comes first.** If the git pull hangs or the session derails,
   the true time must already be on disk.
 - **Party mode does nothing but capture.** No git, no reads, no readback, no
@@ -45,9 +49,10 @@ pre-rendered, so compose around them instead of translating from memory.
 
 ## When NOT to use this skill
 
-- **The user is reporting a finished dab and wants it logged now** — still run
-  step 1 (capture; the timestamp is legitimately `utc_logged_at`, which means
-  time-of-logging), then hand off to the log-run skill for everything else.
+- **The user is reporting a finished dab** — still run step 1 (capture; the
+  timestamp is legitimately `utc_logged_at`, which means time-of-logging),
+  then hand off to the log-run skill for everything else. The report itself
+  is the handoff signal — do not wait for a separate "log it".
 - **The user is asking a question, correcting data, or doing infra work** — no
   dab is happening; follow `CLAUDE.md`'s normal session-start instructions.
 - **A run is being written to a jar file** — that's log-run's job. This skill

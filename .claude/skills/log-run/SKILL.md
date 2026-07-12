@@ -1,6 +1,6 @@
 ---
 name: log-run
-description: Log a completed dab run into this Dabby project — the full pipeline from the user's report to a merged PR. Trigger when the user reports results of a dab ("that was intense, swabs were golden...", "ok here's how it went", "log it") or asks to log/record a run, including post-dated runs ("I dabbed twice yesterday"). Also trigger for reconciliation — when .pending_dabs.json holds party-mode captures waiting to be logged, or the generator's PENDING DABS tripwire fires. Covers the Beat 1/Beat 2 readback, drafting analysis for approval, writing the jar file, regenerating, and shipping the PR. A run is logged ONLY when the user initiates it — never from a captured timestamp, a planned next run, or a conversational mention alone.
+description: Log a completed dab run into this Dabby project — the full pipeline from the user's report to a merged PR. Trigger when the user reports results of a dab ("that was intense, swabs were golden...", "ok here's how it went", "log it") or asks to log/record a run, including post-dated runs ("I dabbed twice yesterday"). Also trigger for reconciliation — when .pending_dabs.json holds party-mode captures waiting to be logged, or the generator's PENDING DABS tripwire fires. Covers the Beat 1/Beat 2 readback, drafting analysis for approval, writing the jar file, regenerating, and shipping the PR. Firing this skill starts the readback, not the write — nothing lands in a jar file until the user confirms, so a results report always fires. What never starts a run on its own — a captured timestamp, a planned next run, or a passing mention with no results in it.
 ---
 
 # Log Run
@@ -13,10 +13,13 @@ memory of it.
 
 ## Hard gates — read these before step 1
 
-- **Only the user initiates logging.** A pending capture, a "What to Try
-  Next" plan, or a strain mentioned in passing is never a reason to write a
-  run. If results haven't been reported and logging hasn't been asked for,
-  there is nothing to do here.
+- **The write gate is the readback, not the trigger.** A results report is
+  reason enough to start the readback — that is how "wants it recorded" gets
+  confirmed; nothing is written until the user approves. A pending capture, a
+  "What to Try Next" plan, or a strain mentioned in passing is never a reason
+  to write a run. (Rescoped July 11, 2026 — the old "only the user initiates
+  logging" wording read as a trigger condition and suppressed the readback on
+  results reports.)
 - **`next_*` fields are advisory.** The user deviating from the planned run is
   correct and appropriate — treat the deviation as data (and, per the
   deviation rules in `Dabby_Handoff_Notes.md`, ask what drove it only if not
