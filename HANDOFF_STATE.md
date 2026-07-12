@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 146 across 20 strains
+- **Total runs:** 147 across 20 strains
 - **Active since:** May 2, 2026 (71 days)
 - **Last run date:** July 11, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 4 — July 11, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 2 — July 11, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -226,11 +226,11 @@
 ---
 
 ### LunarZ
-**1 session** &nbsp;·&nbsp; Next run: 2 &nbsp;·&nbsp; Last: July 10, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**2 sessions** &nbsp;·&nbsp; Next run: 3 &nbsp;·&nbsp; Last: July 11, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 2: lower the hold to 430°F (same bounded-hold descent), first dab, modest load — test the "wants less heat" read on a cleaner setup
+**Next:** Run 3: same 430°F bounded-hold descent, first dab, genuinely modest load — the clean test Run 2 didn't deliver
 
-**AI Analysis:** Run 2: drop the hold from 440°F to 430°F, same bounded-hold-descent shape, first dab, modest load. Follows the user's Run 1 "wants less heat" read and backs off the 440°F open tied to the lingering chest harshness, while a first-dab modest load strips the 3rd-dab and larger-load confounds that muddy Run 1. One run in, so this is a first calibration step, not a confirmed direction. Note the two separate signals from Run 1 for the readback: whether chest harshness shows up *during* the session (in-session chest-location row), and separately whether anything lingers or appears *after* it ends (post-session discomfort row) — LunarZ R1 is one of only two runs in the log with the chest-and-lingers conjunction, so a clean Run 2 either replicates it or isolates it as one-off. Expected: still delivers strong with flavor, chest harshness lighter or gone at the cooler open. Surprising: same chest harshness at 430°F — that would point at curve shape or rig over the 440°F peak.
+**AI Analysis:** Chest harshness has now shown on both a 440°F and a 430°F hold, but both were 3rd dabs with larger loads. Run 3 keeps this curve and strips the confounds: first dab, modest load, load class stated out loud at the readback. Clean run → load/order; third appearance → the curve or this strain on this rig. Water is technique, not a variable to withhold. Expected: chest harshness lighter or absent, load spent in about one cycle. Surprising: chest harshness anyway — that would say the bounded hold itself is what this strain objects to.
 
 **Proposed Curve:**
 - 0s → 430°F — Session open — hold at 430°F

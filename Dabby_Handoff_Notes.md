@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 11, 2026 — Session 157 (Sour Tangie Run 4; baseline-change proposal + brevity note; session-close sweep)
+## Last updated: July 11, 2026 — Session 158 (LunarZ Run 2; logging-gate rescope in dab/log-run skills; session-close sweep)
 
 ---
 
