@@ -17,6 +17,13 @@ SOURTANGIE_430 = [
     Waypoint(time_s=60, temp_f=430, note='Hold'),
 ]
 
+SOURTANGIE_HOLD10_DESCENT_GENTLE_430 = [
+    Waypoint(time_s=0,  temp_f=430, note='Session open — hot open'),
+    Waypoint(time_s=10, temp_f=430, note='Hold at peak — one draw at 430°F'),
+    Waypoint(time_s=35, temp_f=415, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -79,13 +86,28 @@ RUNS = [
         dab_notes='Wow, so good. I\'m going to be really interested in seeing the difference in this when it\'s cured. There\'s something really scrumptious to it as it is now. But so hard to load. I thought I loaded normal but it hit dense and flavorful all the way through first cycle and a bit draw of the second cycle. Second draw of second cycle it depleted at maybe 75% of a draw, and toast on the exhale of that one. So, a few thoughts. I loaded a bit more than the first run today. But I didn\'t mean to. It\'s just not easily controlled. So part of our question on how best to use this device expands to considering which curves balance performance with fault tolerance. [Swab:] that bbq sauce color, normal reclaim. Pretty high intensity. Still have a strong sense of "yummyness". [Effect:] This is definitely a yoga strain. I\'m glad I have 4 grams. If only it wasn\'t in taffy format.',
         analysis='Fourth hot-curve run, 2nd dab of the day, and the first clear load-overshoot — a bit more than the day\'s first dab, unintentional (the taffy resists portioning). The curve absorbed it: dense and flavorful through cycle 1 and most of a second, with toast only on the final cashed draw once material was spent — residue-scorch on depletion (same read as Hive #1 R10), not session order; the fast-depletion timing fits scorch before any accumulated-exposure framing. Reclaim came back normal, up from Runs 1–3\'s minimal, consistent with the bigger load leaving more residue; with the strong effect and dense vapor it still reads deliver-side, not cooked-in-place (contrast FW106 R31\'s dark amber with heavy reclaim from sustained peak). Swab dark amber / dark-BBQ-sauce again, but this was a two-cycle run and second cycles darken swabs independent of endpoint (bp4rw13 R5–R8, FW106 R27) — cycle-confounded like Run 3, and within-strain only. Strong and energetic (a "yoga strain"), matching Run 3\'s energetic/functional/racy read — two consistent daylight reads, directional for this jar running up rather than sedating; flavor delicious with the same fresh-press terpene impression, noted at weak-signal weight, so the inferred limonene/bitter-citrus still isn\'t specifically confirmed. No harshness this run, unlike Run 3\'s mild chest-and-throat. Same rig (Rig 6); against Runs 1/3 order and load both differ, so no isolation. As a single supporting observation, the over-load carrying into a second cycle rather than cooking is consistent with the descent-curve limiting-factor pattern and the load-fault-tolerance read — opening hot and descending puts peak heat where material is densest and the cool floor where depletion lands.',
     ),
+    CompletedRun(
+        strain='Sour Tangie',
+        run_date=date(2026, 7, 12),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 12, 20, 23, 14, tzinfo=timezone.utc),
+        waypoints=SOURTANGIE_HOLD10_DESCENT_GENTLE_430,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 430°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 10s hold at 430°F, then gentle descent (teal); cooler open than Runs 1/3/4, ran two cycles',
+        swab='dark golden, minimal',
+        session_char='Dark golden swab with minimal reclaim — the jar\'s first lighter read after four dark-amber runs; bigger-than-normal load (the taffy resists portioning), second dab of the day, two full 60s cycles. Terp-forward, tasty, dense vapor; strong. Harshness escalated mild→medium at the bottom of the throat and in the chest, and a water sip did not clear it. Stopped on a lot of hits plus the harshness turning unpleasant.',
+        intensity='strong',
+        dab_notes='Holy shit that first cycle was kicking. So much terps. [Going for another round.] Second cycle just kept delivering. Tasty hits dense vapor, mild and then medium harshness at bottom of throat and in chest. Water didn\'t mediate. I\'m stopping because I\'ve had a lot of hits and also the harshness is unpleasant. [Swab:] Swabs were dark golden, pretty minimal. [Load:] Bigger than normal load cause of the format.',
+        analysis='Run 5 is the jar\'s first teal run — the 430°F bounded-hold descent, a 10°F cooler open than the 440°F curve of Runs 1/3/4 — taken to test whether the persistent dark-amber swab is heat-driven or strain character. Not the clean measurement planned (first-dab, single-cycle baseline 420°F ramp): this was a 2nd dab, two full 60s cycles, bigger-than-normal load (the taffy resists portioning — Run 4\'s standing problem). The swab is the payoff: dark golden, minimal reclaim — the jar\'s first read lighter than its four dark-amber runs, and lighter despite being a two-cycle run, where second cycles darken independent of endpoint (bp4rw13 R5–R8, FW106 R27). That the darkening confound points the other way makes the lightening a real directional signal that the color is at least partly heat-driven — but it\'s one run, curve/order/load all differ from the amber runs, and swab is within-strain only, so it\'s an observation, not settled. Bigger load, minimal reclaim, strong, dense = deliver-side, not cooked — the descent absorbing an over-load, as on Run 4. Harshness escalated mild→medium at the bottom of the throat and chest, and a water sip didn\'t clear it — the log\'s first full water non-response (six prior were full resets, LunarZ R3 partial). Vapor density and cumulative exposure are the leading, inseparable candidates: the bigger load draws denser vapor, and 2nd dab + two cycles + a lot of hits is a session-long airway load a single sip wouldn\'t reset — the accumulation-over-thermal read the user flagged on Run 3, single-instance weight. Chest location adds to the hot-open Rig 6 group (papzp22 R7, bp4rw13 R8, LunarZ R1–R3, Sour Tangie R3), here at a 430°F open like LunarZ R2/R3; no persistence reported, so in-session location only, not the chest-and-lingers conjunction. Terp-forward and tasty, consistent with the R3–R4 fresh-press read (weak signal). Rig 6 throughout; strong.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Sour Tangie',
     profile_anchor='#sourtangie-profile',
-    next_text='Run 5: baseline 420°F fast ramp, first dab, single cycle, modest load — the still-pending cooler-endpoint reference; tests whether the dark amber lightens off a single cool cycle',
+    next_text='Run 6: teal 430°F bounded-hold descent again, first dab, single cycle, modest load — isolate whether the escalating chest harshness / water non-response was session load or the curve, and whether the dark-golden swab holds without the two-cycle darkening',
     accent=None,
     slug='sourtangie',
     info=[
@@ -96,7 +118,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from the Tangie side (California Orange × Skunk #1 — citrus/orange lineage); caryophyllene and myrcene from the Sour Diesel side (Chemdawg \'91 × Super Skunk — diesel/gas, though DNA hedges this cross and a competing "DNL" origin exists). Consistent with the limonene-forward bitter-citrus/tangerine character logged when Sour Tangie ran as a layer in the closed Mango Banana #9 + Z + Sour Tangie jar. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Four runs in, all hot curves, all strong, all dark amber — and the cooler-endpoint reference is still missing; four two-cycle hot runs can\'t say whether the dark swab is heat/cycle or strain character. Run 5: run the current baseline (380 → 400 @4s → 420 @8s, hold to 60s), first dab, single cycle, modest load — first-dab and single-cycle strip the session-order and second-cycle-darkening confounds. It\'s a measurement run, not a bet against the 440-hold-descent, which is already this jar\'s operating curve. Expected: swab lightens toward golden at 420°F single-cycle if the color was heat-driven. Surprising: dark amber persists single-cycle — then swab isn\'t a fine-calibration lever for this jar.',
-    next_waypoints=BASELINE_CURVE,
+    next_ai_analysis='The cooler 430°F open gave the jar\'s first lighter swab — dark golden, and lighter against the two-cycle darkening that usually pushes the other way — directional that the dark amber was at least partly heat-driven, but confounded by curve, 2nd-dab order, and a bigger-than-normal load. Same run threw escalating mild→medium chest-and-throat harshness a sip didn\'t clear (the log\'s first full water non-response), most parsimoniously vapor density plus cumulative exposure — bigger load, 2nd dab, two cycles, a lot of hits — not the curve. Run 6: repeat the teal 430°F hold-descent as a real first dab, single cycle, modest load — one run that strips load, order, and the two-cycle confound, giving both signals a clean read on the same curve. Worth more than jumping to the baseline 420°F ramp. Expected: mild-or-clean harshness a sip resets (or none), golden-ish swab — today\'s roughness was the load. Surprising: escalating chest harshness again on a clean first-dab single cycle — that indicts the 430°F curve or this jar on Rig 6, not load.',
+    next_waypoints=SOURTANGIE_HOLD10_DESCENT_GENTLE_430,
     jar_index='',
 )
