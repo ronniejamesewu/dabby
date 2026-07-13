@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 149 across 20 strains
+- **Total runs:** 150 across 20 strains
 - **Active since:** May 2, 2026 (72 days)
 - **Last run date:** July 12, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 5 — July 12, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 6 — July 12, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -211,17 +211,17 @@
 ---
 
 ### Sour Tangie
-**5 sessions** &nbsp;·&nbsp; Next run: 6 &nbsp;·&nbsp; Last: July 12, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**6 sessions** &nbsp;·&nbsp; Next run: 7 &nbsp;·&nbsp; Last: July 12, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 6: teal 430°F bounded-hold descent again, first dab, single cycle, modest load — isolate whether the escalating chest harshness / water non-response was session load or the curve, and whether the dark-golden swab holds without the two-cycle darkening
+**Next:** Run 7: 450°F bounded hold + shorter gentle descent (450→450@10s→425@30s→410@45s) — run it as a genuine first dab, single cycle, modest load, so the shorter cycle also delivers the clean-order read Runs 5–6 kept missing
 
-**AI Analysis:** The cooler 430°F open gave the jar's first lighter swab — dark golden, and lighter against the two-cycle darkening that usually pushes the other way — directional that the dark amber was at least partly heat-driven, but confounded by curve, 2nd-dab order, and a bigger-than-normal load. Same run threw escalating mild→medium chest-and-throat harshness a sip didn't clear (the log's first full water non-response), most parsimoniously vapor density plus cumulative exposure — bigger load, 2nd dab, two cycles, a lot of hits — not the curve. Run 6: repeat the teal 430°F hold-descent as a real first dab, single cycle, modest load — one run that strips load, order, and the two-cycle confound, giving both signals a clean read on the same curve. Worth more than jumping to the baseline 420°F ramp. Expected: mild-or-clean harshness a sip resets (or none), golden-ish swab — today's roughness was the load. Surprising: escalating chest harshness again on a clean first-dab single cycle — that indicts the 430°F curve or this jar on Rig 6, not load.
+**AI Analysis:** Follow the building intuition: a hotter 450°F bounded hold into a gentle descent, capped to a single shorter cycle. The shorter/single cycle directly targets what Runs 5 and 6 both indict — escalating chest-and-throat harshness that tracks cumulative exposure (later dab + two cycles), not open temperature — while the hotter open front-loads the terpene bolus this jar keeps delivering. Run it as a genuine first dab, modest load: that finally controls order and cycle count, turning the shorter-cycle idea into the clean read the last two runs kept missing. Keep the descent slope at or above the sapphire's ~1°F/s passive decay, or the PID just holds near 450 and cooks it (FW106 R31). Expected: strong terp-forward delivery, harshness mild-or-clean when the session ends before load accumulates, amber-to-dark-amber swab (hotter open darkens, but a single cycle drops the two-cycle darkening). Surprising: escalating chest harshness again on a clean short first-dab single cycle — that points at the curve or this jar on Rig 6, not load, and argues for dropping the peak rather than raising it.
 
 **Proposed Curve:**
-- 0s → 430°F — Session open — hot open
-- 10s → 430°F — Hold at peak — one draw at 430°F
-- 35s → 415°F — Gentle descent midpoint
-- 60s → 400°F — Floor
+- 0s → 450°F — Session open — hot open
+- 10s → 450°F — Hold at peak — one draw at 450°F
+- 30s → 425°F — Gentle descent midpoint
+- 45s → 410°F — Floor — shorter cycle
 
 ---
 
