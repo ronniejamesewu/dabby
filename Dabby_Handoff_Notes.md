@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 12, 2026 — Session 160 (Sour Tangie Run 5, teal 430°F bounded-hold descent; water-sip first-full-non-response + chest-location wisdom updates; color-code placement note, yoga-strain schema field, and "earning its keep" voice-ban added)
+## Last updated: July 12, 2026 — Session 161 (Sour Tangie Run 6, teal 430°F bounded-hold descent, 3rd dab; chest-location wisdom update; What to Try Next moved to a 450°F hold + shorter gentle descent)
 
 ---
 
