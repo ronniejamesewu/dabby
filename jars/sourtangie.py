@@ -24,6 +24,13 @@ SOURTANGIE_HOLD10_DESCENT_GENTLE_430 = [
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
 
+SOURTANGIE_HOLD_DESCENT_450 = [
+    Waypoint(time_s=0,  temp_f=450, note='Session open — hot open'),
+    Waypoint(time_s=10, temp_f=450, note='Hold at peak — one draw at 450°F'),
+    Waypoint(time_s=30, temp_f=425, note='Gentle descent midpoint'),
+    Waypoint(time_s=45, temp_f=410, note='Floor — shorter cycle'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -101,13 +108,28 @@ RUNS = [
         dab_notes='Holy shit that first cycle was kicking. So much terps. [Going for another round.] Second cycle just kept delivering. Tasty hits dense vapor, mild and then medium harshness at bottom of throat and in chest. Water didn\'t mediate. I\'m stopping because I\'ve had a lot of hits and also the harshness is unpleasant. [Swab:] Swabs were dark golden, pretty minimal. [Load:] Bigger than normal load cause of the format.',
         analysis='Run 5 is the jar\'s first teal run — the 430°F bounded-hold descent, a 10°F cooler open than the 440°F curve of Runs 1/3/4 — taken to test whether the persistent dark-amber swab is heat-driven or strain character. Not the clean measurement planned (first-dab, single-cycle baseline 420°F ramp): this was a 2nd dab, two full 60s cycles, bigger-than-normal load (the taffy resists portioning — Run 4\'s standing problem). The swab is the payoff: dark golden, minimal reclaim — the jar\'s first read lighter than its four dark-amber runs, and lighter despite being a two-cycle run, where second cycles darken independent of endpoint (bp4rw13 R5–R8, FW106 R27). That the darkening confound points the other way makes the lightening a real directional signal that the color is at least partly heat-driven — but it\'s one run, curve/order/load all differ from the amber runs, and swab is within-strain only, so it\'s an observation, not settled. Bigger load, minimal reclaim, strong, dense = deliver-side, not cooked — the descent absorbing an over-load, as on Run 4. Harshness escalated mild→medium at the bottom of the throat and chest, and a water sip didn\'t clear it — the log\'s first full water non-response (six prior were full resets, LunarZ R3 partial). Vapor density and cumulative exposure are the leading, inseparable candidates: the bigger load draws denser vapor, and 2nd dab + two cycles + a lot of hits is a session-long airway load a single sip wouldn\'t reset — the accumulation-over-thermal read the user flagged on Run 3, single-instance weight. Chest location adds to the hot-open Rig 6 group (papzp22 R7, bp4rw13 R8, LunarZ R1–R3, Sour Tangie R3), here at a 430°F open like LunarZ R2/R3; no persistence reported, so in-session location only, not the chest-and-lingers conjunction. Terp-forward and tasty, consistent with the R3–R4 fresh-press read (weak signal). Rig 6 throughout; strong.',
     ),
+    CompletedRun(
+        strain='Sour Tangie',
+        run_date=date(2026, 7, 12),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 7, 13, 1, 8, 4, tzinfo=timezone.utc),
+        waypoints=SOURTANGIE_HOLD10_DESCENT_GENTLE_430,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 430°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 10s hold at 430°F, then gentle descent (teal); same curve as Run 5, ran two cycles',
+        swab='amber, normal',
+        session_char='Amber swab with normal reclaim — lighter than the four 440°F-open runs (R1–R4) and in line with Run 5\'s dark-golden read at the same cooler open. Third dab of the day, full 60s cycle 1 into a second cycle stopped after the second draw; tasty and dense throughout, strong (quite high). Harshness built from ~20s left in cycle 1 to a solid medium by the second draw of cycle 2, throat-and-chest; no water taken. Stopped on the harshness.',
+        intensity='strong',
+        dab_notes='Ok, I did it. Tasty and dense throughout. It wasn\'t done at first cycle so did a second. Harshness building from maybe 20 seconds left in first cycle to a solid medium in second draw of second cycle. I stopped after that. Swabs are Amber, normal amount. Intensity is quite high. I think my intuition is building for shorter cycle at a 450 hold and gentle descent. [Harshness location:] both throat and chest. [Water:] no.',
+        analysis='Run 6 repeats the teal 430°F bounded-hold descent (same curve as Run 5), a 3rd dab of the day over two cycles — full 60s cycle 1 into a second cycle stopped after the second draw. Like Run 5, not the clean first-dab single-cycle isolation the plan called for; that read has now failed to happen two runs running. Swab amber with normal reclaim. Both 430°F-open runs (R5 dark golden, R6 amber) came in lighter than the four 440°F-open runs (R1–R4, all dark amber) — and R6 stayed lighter despite being a two-cycle run, where second cycles darken independent of endpoint (bp4rw13 R5–R8, FW106 R27). Two consistent runs with the darkening confound pointing the other way is directional, within this jar, that the swab color is at least partly heat-driven (cooler open → lighter swab); load and session order still differ across the amber and lighter runs, and swab is within-strain only, so directional, not settled. Normal reclaim with strong, dense vapor reads deliver-side, not cooked (contrast FW106 R31\'s dark amber with heavy reclaim from sustained peak). Harshness built from ~20s left in cycle 1 to a solid medium by the second draw of cycle 2, throat-and-chest; no water was taken. That escalation matches Run 5 (also 430 teal, later dab, two cycles, escalating mild→medium chest-and-throat) — two consistent runs now that this curve under heavy cumulative load throws escalating chest-and-throat harshness. Vapor density and cumulative exposure stay the leading, inseparable candidates: dense vapor plus a 3rd dab carried across two cycles is a session-long airway load. Because no water was taken, Run 6 doesn\'t extend Run 5\'s water non-response — whether a sip resets this curve under lighter load stays open. Chest location adds to the hot-open Rig 6 group (papzp22 R7, bp4rw13 R8, LunarZ R1–R3, Sour Tangie R3/R5), here at a 430°F open like LunarZ R2/R3 and Sour Tangie R5; no persistence reported, so in-session location only, not the chest-and-lingers conjunction. Tasty and dense throughout, consistent with the R3–R5 terp-forward reads (weak palate signal). Same rig (Rig 6); load not stated. Against Runs 1/3/4/5, order and cycle count differ — no clean isolation.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Sour Tangie',
     profile_anchor='#sourtangie-profile',
-    next_text='Run 6: teal 430°F bounded-hold descent again, first dab, single cycle, modest load — isolate whether the escalating chest harshness / water non-response was session load or the curve, and whether the dark-golden swab holds without the two-cycle darkening',
+    next_text='Run 7: 450°F bounded hold + shorter gentle descent (450→450@10s→425@30s→410@45s) — run it as a genuine first dab, single cycle, modest load, so the shorter cycle also delivers the clean-order read Runs 5–6 kept missing',
     accent=None,
     slug='sourtangie',
     info=[
@@ -118,7 +140,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from the Tangie side (California Orange × Skunk #1 — citrus/orange lineage); caryophyllene and myrcene from the Sour Diesel side (Chemdawg \'91 × Super Skunk — diesel/gas, though DNA hedges this cross and a competing "DNL" origin exists). Consistent with the limonene-forward bitter-citrus/tangerine character logged when Sour Tangie ran as a layer in the closed Mango Banana #9 + Z + Sour Tangie jar. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='The cooler 430°F open gave the jar\'s first lighter swab — dark golden, and lighter against the two-cycle darkening that usually pushes the other way — directional that the dark amber was at least partly heat-driven, but confounded by curve, 2nd-dab order, and a bigger-than-normal load. Same run threw escalating mild→medium chest-and-throat harshness a sip didn\'t clear (the log\'s first full water non-response), most parsimoniously vapor density plus cumulative exposure — bigger load, 2nd dab, two cycles, a lot of hits — not the curve. Run 6: repeat the teal 430°F hold-descent as a real first dab, single cycle, modest load — one run that strips load, order, and the two-cycle confound, giving both signals a clean read on the same curve. Worth more than jumping to the baseline 420°F ramp. Expected: mild-or-clean harshness a sip resets (or none), golden-ish swab — today\'s roughness was the load. Surprising: escalating chest harshness again on a clean first-dab single cycle — that indicts the 430°F curve or this jar on Rig 6, not load.',
-    next_waypoints=SOURTANGIE_HOLD10_DESCENT_GENTLE_430,
+    next_ai_analysis='Follow the building intuition: a hotter 450°F bounded hold into a gentle descent, capped to a single shorter cycle. The shorter/single cycle directly targets what Runs 5 and 6 both indict — escalating chest-and-throat harshness that tracks cumulative exposure (later dab + two cycles), not open temperature — while the hotter open front-loads the terpene bolus this jar keeps delivering. Run it as a genuine first dab, modest load: that finally controls order and cycle count, turning the shorter-cycle idea into the clean read the last two runs kept missing. Keep the descent slope at or above the sapphire\'s ~1°F/s passive decay, or the PID just holds near 450 and cooks it (FW106 R31). Expected: strong terp-forward delivery, harshness mild-or-clean when the session ends before load accumulates, amber-to-dark-amber swab (hotter open darkens, but a single cycle drops the two-cycle darkening). Surprising: escalating chest harshness again on a clean short first-dab single cycle — that points at the curve or this jar on Rig 6, not load, and argues for dropping the peak rather than raising it.',
+    next_waypoints=SOURTANGIE_HOLD_DESCENT_450,
     jar_index='',
 )
