@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 12, 2026 — Session 159 (LunarZ Run 3; water-sip/chest-harshness wisdom updates; session-close sweep)
+## Last updated: July 12, 2026 — Session 160 (Sour Tangie Run 5, teal 430°F bounded-hold descent; water-sip first-full-non-response + chest-location wisdom updates; color-code placement note, yoga-strain schema field, and "earning its keep" voice-ban added)
 
 ---
 
