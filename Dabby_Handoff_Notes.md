@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 13, 2026 — Session 162 (Sour Tangie Run 7, grey 450°F bounded-hold + shorter-descent debut, first dab; chest-location wisdom row +R7; log-run trigger-miss recurrence recorded; What to Try Next moved to shorter/higher-frequency draws on the same grey curve)
+## Last updated: July 13, 2026 — Session 163 (Sour Tangie Run 8, grey 450°F bounded-hold + shorter descent, 2nd dab, large load; heaviest reclaim the jar has logged; strain-agnostic full-clean reminder added to Before Next Session; backlog item added for a mechanical session-open reminder; What to Try Next held on the grey curve at a modest load + shorter draws)
 
 ---
 
@@ -264,6 +264,7 @@ These are caught by code or encoded as explicit skill steps; kept as one-liners 
 
 ## Before Next Session
 
+- **Full clean Rig 6's insert before the next run — any strain.** Sour Tangie R8 (July 13) threw the heaviest reclaim the jar has logged; the insert took four swabs to clear. This applies whatever's dabbed next, not just Sour Tangie — surface it at the next capture, before logging. One-shot: clear this line once the clean is done. (A mechanical version — a brief line that prints until cleared — is backlogged.)
 - *(after August 1, 2026)* Prune local branches — re-run the zero-commit scan from the July 2 pruning session.
 - *(after October 1, 2026)* Re-evaluate analysis preview step — still drafting both `analysis` and `next_ai_analysis` in chat for user review before writing? Reviewed June 4 and July 1, kept both times.
 
