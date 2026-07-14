@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 151 across 20 strains
+- **Total runs:** 152 across 20 strains
 - **Active since:** May 2, 2026 (73 days)
 - **Last run date:** July 13, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 7 — July 13, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 8 — July 13, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -211,11 +211,11 @@
 ---
 
 ### Sour Tangie
-**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: July 13, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**8 sessions** &nbsp;·&nbsp; Next run: 9 &nbsp;·&nbsp; Last: July 13, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 8: same grey 450°F bounded-hold + shorter descent, but shorter/higher-frequency draws and a modest load — empty the ~3-draw load in one 45s cycle to finally get the clean single-cycle first-dab read, and isolate draw technique
+**Next:** Run 9 — full clean Rig 6's insert first (heaviest reclaim yet on Run 8, four swabs; this applies whatever strain is next — see the Before Next Session note in the handoff). Then the same grey 450°F bounded-hold + shorter descent, but a genuinely modest load, first dab of the day, and shorter/higher-frequency draws — empty it in one clean 45s cycle to finally get the modest single-cycle first-dab read Runs 5–8 all missed, and isolate draw technique.
 
-**AI Analysis:** Hold the curve, move the draw pattern — the user's call, and the right order: technique before waypoints. Shorter, higher-frequency draws at a modest load target emptying the ~3-draw load inside a single 45s cycle, which finally delivers the clean single-cycle first-dab read Runs 5–7 all missed, and deliberately controls draw technique — one of the log's chronic uncontrolled confounds. It also tests the two-lever question R7 opened: if pacing alone lands one clean cycle, pacing was the lever; if it still spills, load is the binding constraint. Harshness caveat: R7 threw throat-and-chest harshness even as a first dab, so the 450°F peak and this jar on Rig 6 are already partly implicated independent of session order. Expected: fits one 45s cycle at modest load, strong terp-forward delivery, harshness mild-or-absent when exposure stays low, dark-golden-to-amber swab. Surprising: throat-and-chest harshness again on a genuinely clean short single-cycle first dab — that points at the 450°F peak or the jar, not cumulative load, and argues for dropping the open rather than holding it.
+**AI Analysis:** Run 9: clean the insert first — heaviest reclaim yet on R8, four swabs — then the same grey 450°F bounded-hold descent, but a genuinely modest load, first dab of the day, and shorter/higher-frequency draws to empty it in one 45s cycle. R8 doubly motivates the modest load: it validated shorter draws helping the terpene-load cough (observation weight), and showed a large load runs past the functional window while wasting the most material yet — modest serves both the clean read and the dose. The clean single-cycle first-dab read Runs 5–8 all missed is still the whole point; modest + first-dab + one cycle is the only way to get it. Watch the chest harshness — it's now on every hot open (R3/R5/R6/R7/R8), and R7 threw it as a clean first dab, so the 450°F peak and this jar on Rig 6 are already partly implicated independent of load and order. Expected: one 45s cycle empties a modest load, strong terp-forward delivery in the functional register, cough manageable on the shorter draws, golden-to-amber swab. Surprising: chest harshness again on a genuinely clean modest single-cycle first dab — that points at the 450°F peak over cumulative load, and argues for dropping the open (toward the teal 430°F or cooler) rather than holding it.
 
 **Proposed Curve:**
 - 0s → 450°F — Session open — hot open
