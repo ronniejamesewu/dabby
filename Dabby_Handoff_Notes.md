@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 12, 2026 — Session 161 (Sour Tangie Run 6, teal 430°F bounded-hold descent, 3rd dab; chest-location wisdom update; What to Try Next moved to a 450°F hold + shorter gentle descent)
+## Last updated: July 13, 2026 — Session 162 (Sour Tangie Run 7, grey 450°F bounded-hold + shorter-descent debut, first dab; chest-location wisdom row +R7; log-run trigger-miss recurrence recorded; What to Try Next moved to shorter/higher-frequency draws on the same grey curve)
 
 ---
 
