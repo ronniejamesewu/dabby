@@ -120,6 +120,24 @@ summary/detail drift re-enters; informing from git is how information dies.
     every existing trigger for free: every logging session, every handoff close, every
     CI run. No new commands to remember.
 
+## Session-open read policy (purpose-keyed gate — lands with the Phase 4 CLAUDE.md edit)
+
+13. **The mandatory session-start gate becomes two-tier.** Unconditional, every session,
+    before first reply: `WISDOM_BRIEF.md` + `Dabby_Handoff_Notes.md` (behavioral rules,
+    voice, live hazards, settled decisions — every-session material). Conditional:
+    `HANDOFF_STATE.md` joins when the opening message shows dab intent or names a
+    strain, or the moment any run/jar/state work starts mid-session. Reasoning: the
+    problem statement's cost function is context spent per session, and HANDOFF_STATE's
+    unique content (equipment default, next-run plans, per-strain status) is
+    logging-context material — an infra/design session pays ~9k tokens for it and never
+    uses it. The trigger is observable (message content, not inferred intent — the
+    write-gate failure-mode lesson), and the drift case is already skill-covered: the
+    dab and log-run skills mandate the state read in their own sequences, so the gate
+    is the backstop, not the only wall. Accepted residual risk: a session that starts
+    non-logging must notice the crossing into run work; exposure is small because the
+    crossing points are skill-triggered, and the failure is loud (can't log without the
+    equipment default) where the old failure (partial wisdom read) was silent.
+
 ## What future sessions must not do
 
 - Hand-edit `WISDOM_BRIEF.md` (generated; the generator overwrites it).
