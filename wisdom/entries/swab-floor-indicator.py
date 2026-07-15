@@ -37,7 +37,7 @@ ENTRY = WisdomEntry(
         Citation(
             source='wwz R6',
             role='confirms',
-            provenance='ai-authored',
+            provenance='user-verbatim',
             gist="Same curve, same equipment, same light golden swab as R5, but R6 "
                  "tail harshness/hard. Provenance untagged in source. (See position for "
                  "the R5-vs-R6 comparison.)",

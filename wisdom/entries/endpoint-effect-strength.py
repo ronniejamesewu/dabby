@@ -20,7 +20,7 @@ ENTRY = WisdomEntry(
         ),
         Citation(
             source='mb9zst R1',
-            role='counters',
+            role='context',
             provenance='ai-authored',
             gist="430°F Gemlock — strong effects noted but equipment confounded. "
                  "(provenance untagged in source)",
@@ -28,7 +28,7 @@ ENTRY = WisdomEntry(
         ),
         Citation(
             source='mb9zst R2',
-            role='counters',
+            role='context',
             provenance='ai-authored',
             gist="430°F Gemlock — strong effects noted but equipment confounded. "
                  "(provenance untagged in source)",

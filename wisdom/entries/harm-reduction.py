@@ -3,9 +3,7 @@ from wisdom_core import *
 ENTRY = WisdomEntry(
     key='harm-reduction',
     kind='theory',
-    claim="Degradation byproducts (benzene, methacrolein) from terpene thermolysis occur "
-          "at low ppb at conservative setpoints (375-440°F) — far below EPA allowable "
-          "levels. Not a meaningful harm-reduction lever at practiced temperatures.",
+    claim="Degradation byproducts (benzene, methacrolein) from terpene thermolysis were measured in low ppb even at the high study temperatures (500-550°C) — far below EPA allowable levels. Not a meaningful harm-reduction lever at practiced setpoints.",
     guidance="Do not invoke degradation byproducts as a harm reduction argument for "
              "temperature choices within 375–460°F. The thermal injury mechanism has the "
              "stronger evidence base.",
@@ -49,13 +47,6 @@ ENTRY = WisdomEntry(
                  "further discussion needed.",
         ),
     ],
-    counter_reading="The Session 57 correction is itself unverified — the paper was not "
-                    "re-read, so the low-ppb figures are a secondhand recollection, not a "
-                    "re-check of the source. If the recalled figures understate the "
-                    "study's actual byproduct levels, or if repeated high-frequency use "
-                    "accumulates exposure across sessions in a way single-session ppb "
-                    "figures don't capture, degradation byproducts could remain a live "
-                    "harm-reduction consideration within 375–460°F rather than a closed "
-                    "question.",
+    counter_reading="The Session 57 correction is itself unverified — the paper was not re-read, so the low-ppb figures rest on recollection. A re-read that contradicted them would reopen the question; absent that, the resolved 440-vs-460 ruling stands and is not re-litigated here.",
     updated='Session 57',
 )

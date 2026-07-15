@@ -3,10 +3,7 @@ from wisdom_core import *
 ENTRY = WisdomEntry(
     key='rig1-vs-rig2-gemlock',
     kind='equipment',
-    claim="Rig 1 (spinner + pearl) vs. Rig 2 (Gemlock, no pearl): lighter swabs than "
-          "spinner config. Visible vapor at lower temps than expected with prior "
-          "spinner setup. Spinner may produce more harshness at same endpoint and "
-          "load size.",
+    claim="Rig 1 (spinner+pearl) vs Rig 2 (Gemlock, no pearl): lighter swabs on Gemlock, visible vapor at lower temps. Spinner-as-harshness-contributor is directional only — the 'same endpoint, same load' framing was struck July 11, 2026.",
     guidance="Treat as a persistent confound when comparing Gemlock runs against "
              "spinner-era data; do not assume equivalence between configs in "
              "analysis.",

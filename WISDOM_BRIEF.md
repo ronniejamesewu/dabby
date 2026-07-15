@@ -6,7 +6,7 @@
 
 ### tail-harshness-430  [pattern | tested]
 **Claim:** Tail harshness appears at curve endpoints ≥430°F across both ramp and flat-hold shapes — it is the temperature, not the shape. Rig 1–5 era; unmapped on Rig 6.
-**Basis:** 8 strains, consistent across both ramp and flat-hold curve shapes; first-dab instances well represented.
+**Basis:** 8 strains, both curve shapes; first-dab instances represented. Provenance: only WW Z R3/R4/R6 and FW106 R5 are user-verbatim — no user-verbatim record exists for the pre-dab_notes era.
 **Guidance:** Treat endpoints ≥430°F as the harshness threshold on Rig 1–5. Do not extrapolate this row to Rig 6 without a deliberate test — the Rig 6 ceiling above 425°F is unmapped.
 **Watch:** A deliberate Rig 6 test above 425°F would map the ceiling and show whether the ≥430°F threshold holds off Rig 1–5.
 *22 citations (13 confirm / 2 counter / 7 struck) | jars: bb361, fembot3, fw106, hive1, mb9zst, mbd, oc, papzp22, rainfruit, sourtangie, wwz | upd Sessions 9–14; citations tightened and scope added July 11, 2026 audit.*
@@ -27,7 +27,7 @@
 **Claim:** Higher endpoint → stronger effect (larger bolus, faster peak).
 **Basis:** Low — 2 directional data points (OC R5 and papzp22 R6); others confounded.
 **Guidance:** Low confidence — only 2 of 3 cited data points are unconfounded (OC R5 and papzp22 R6); the MB9ZST leg is equipment-confounded. Do not treat this as more than directional.
-*4 citations (2 confirm / 2 counter) | jars: mb9zst, oc, papzp22 | upd Session ~10*
+*4 citations (2 confirm / 0 counter) | jars: mb9zst, oc, papzp22 | upd Session ~10*
 
 ### lower-ceiling-strains  [pattern | directional]
 **Claim:** MB9ZST and BB36#1: tail harshness persisting below 430°F — may need a lower ceiling.
@@ -105,7 +105,7 @@
 ## Equipment Observations
 
 ### rig1-vs-rig2-gemlock  [equipment | observation]
-**Claim:** Rig 1 (spinner + pearl) vs. Rig 2 (Gemlock, no pearl): lighter swabs than spinner config. Visible vapor at lower temps than expected with prior spinner setup. Spinner may produce more harshness at same endpoint and load size.
+**Claim:** Rig 1 (spinner+pearl) vs Rig 2 (Gemlock, no pearl): lighter swabs on Gemlock, visible vapor at lower temps. Spinner-as-harshness-contributor is directional only — the 'same endpoint, same load' framing was struck July 11, 2026.
 **Basis:** Low — cross-strain and cross-variable confounds persist
 **Guidance:** Treat as a persistent confound when comparing Gemlock runs against spinner-era data; do not assume equivalence between configs in analysis.
 *4 citations (3 confirm / 0 counter) | jars: mb9zst, wwz | upd May 21-22, 2026 (Gemlock era ended); July 11, 2026 audit (correction)*
@@ -118,9 +118,9 @@
 *5 citations (5 confirm / 0 counter) | jars: oc | upd May 22–23, 2026 (OC Runs 8–12)*
 
 ### rig4-sapphire-ruby  [equipment | observation]
-**Claim:** Rig 4 (sapphire insert + 5mm ruby pearl): full corundum pathway likely runs at higher effective temperature than sapphire + quartz pearl at the same setpoint; one pearl loses heat faster during a draw than two can sustain.
+**Claim:** Rig 4 (sapphire insert + 5mm ruby pearl): full corundum pathway likely runs at higher effective temperature than sapphire + quartz pearl at the same setpoint; single-pearl heat loss during a draw is directional, not settled.
 **Basis:** Five runs, two strains; first same-curve same-duration cross-rig swab comparison complete (dark gold matched); within-draw pattern comparison still open.
-**Guidance:** Treat Rig 4 as running hotter than a quartz-pearl setup at the same setpoint; do not assume equivalence when comparing. Whether the corundum pearl pushes harshness earlier or later, and the within-draw density pattern, remain unresolved — don't treat either as settled.
+**Guidance:** Rig 4 likely runs hotter than a quartz-pearl setup at the same setpoint — treat as a comparison confound, not a measured offset. Whether the corundum pearl pushes harshness earlier or later, and the within-draw density pattern, remain unresolved — don't treat either as settled.
 **Watch:** Pearl-count isolation at 420°F on Rig 5 (still open — FW106 R18 ran 425°F); within-draw density pattern vs Rig 5 at the same draw count.
 *5 citations (4 confirm / 0 counter) | jars: fw106, watermellos | upd May 24 – June 15, 2026*
 
@@ -134,7 +134,7 @@
 ### rig6-piston-joystick  [equipment | observation]
 **Claim:** Rig 6 (sapphire + Wym Stick Piston joystick, no pearls): directed airflow delivers more per draw than the spinner + dual ruby pearls at the same setpoint, harshness one draw earlier — consistent with higher per-draw efficiency.
 **Basis:** Low — six strains, nineteen runs.
-**Guidance:** Treat joystick efficiency as directional, not equivalence — rig and draw discipline often changed together and can't be isolated. Load size and session order are the operative harshness variables at 420°F. Read device/cap heat after two 430°F cycles as operational, not a ceiling signal.
+**Guidance:** Joystick efficiency is directional, not equivalence — rig and draw discipline changed together, not isolable. At 420°F load size separated Hive #1 R6 from R8, order matched (one pair); session order is a recurring confound, not settled. Device/cap heat after two 430°F cycles: operational, not a ceiling signal.
 **Watch:** The pending first-dab 420°F LHBH test (LHBH R6); whether water or the higher endpoint prevented papzp22 R6 harshness; recurrence of bp4rw13 R9's toasty near-combustion flavor.
 *5 citations (5 confirm / 0 counter) | jars: bp4rw13, fw106, hive1, lhbh, papzp22 | upd FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction.*
 
@@ -211,12 +211,12 @@
 
 ### sapphire-insert-model  [theory | observation]
 **Claim:** Sapphire insert theory: higher volumetric heat capacity (stabler at cold contact) and ~20x higher bulk conductivity (better surface uniformity) vs quartz — consistent with Reddit's 10–20°F lower-setpoint consensus.
-**Basis:** No sapphire runs logged yet — theoretical reasoning from material properties (heat capacity, conductivity) plus an external Reddit consensus anecdote, pending acquisition.
-**Guidance:** Do not scale sapphire setpoints from quartz curves. When a sapphire insert is acquired, calibrate empirically from scratch, treating the 10-20°F Reddit consensus as a consistent-with-the-model prior, not a target to hit.
+**Basis:** Section written pre-acquisition (material-properties reasoning + Reddit consensus). Sapphire has since been in use on Rigs 3-6; empirical calibration lives in the rig entries.
+**Guidance:** Do not scale sapphire setpoints from quartz curves — calibrate empirically from scratch (done for Rig 3: 415-417°F band mapped; see rig3-sapphire). Treat the 10-20°F Reddit consensus as consistent-with-the-model, not a target.
 *0 citations (0 confirm / 0 counter) | upd July 1, 2026 (thermal model doc)*
 
 ### harm-reduction  [theory | directional]
-**Claim:** Degradation byproducts (benzene, methacrolein) from terpene thermolysis occur at low ppb at conservative setpoints (375-440°F) — far below EPA allowable levels. Not a meaningful harm-reduction lever at practiced temperatures.
+**Claim:** Degradation byproducts (benzene, methacrolein) from terpene thermolysis were measured in low ppb even at the high study temperatures (500-550°C) — far below EPA allowable levels. Not a meaningful harm-reduction lever at practiced setpoints.
 **Basis:** Source: ACS Omega 2017 peer-reviewed study. Session 57 correction (user-reported, paper not re-read) downgraded the initial framing.
 **Guidance:** Do not invoke degradation byproducts as a harm reduction argument for temperature choices within 375–460°F. The thermal injury mechanism has the stronger evidence base.
 *2 citations (0 confirm / 1 counter) | upd Session 57*

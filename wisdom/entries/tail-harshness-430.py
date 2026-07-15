@@ -10,8 +10,7 @@ ENTRY = WisdomEntry(
              "Do not extrapolate this row to Rig 6 without a deliberate test — the "
              "Rig 6 ceiling above 425°F is unmapped.",
     grade='tested',
-    grade_basis="8 strains, consistent across both ramp and flat-hold curve shapes; "
-                "first-dab instances well represented.",
+    grade_basis="8 strains, both curve shapes; first-dab instances represented. Provenance: only WW Z R3/R4/R6 and FW106 R5 are user-verbatim — no user-verbatim record exists for the pre-dab_notes era.",
     evidence=[
         Citation(
             source='oc R7',

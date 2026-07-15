@@ -3,13 +3,8 @@ from wisdom_core import *
 ENTRY = WisdomEntry(
     key='rig4-sapphire-ruby',
     kind='equipment',
-    claim="Rig 4 (sapphire insert + 5mm ruby pearl): full corundum pathway likely "
-          "runs at higher effective temperature than sapphire + quartz pearl at the "
-          "same setpoint; one pearl loses heat faster during a draw than two can sustain.",
-    guidance="Treat Rig 4 as running hotter than a quartz-pearl setup at the same "
-             "setpoint; do not assume equivalence when comparing. Whether the corundum "
-             "pearl pushes harshness earlier or later, and the within-draw density "
-             "pattern, remain unresolved — don't treat either as settled.",
+    claim="Rig 4 (sapphire insert + 5mm ruby pearl): full corundum pathway likely runs at higher effective temperature than sapphire + quartz pearl at the same setpoint; single-pearl heat loss during a draw is directional, not settled.",
+    guidance="Rig 4 likely runs hotter than a quartz-pearl setup at the same setpoint — treat as a comparison confound, not a measured offset. Whether the corundum pearl pushes harshness earlier or later, and the within-draw density pattern, remain unresolved — don't treat either as settled.",
     grade='observation',
     grade_basis="Five runs, two strains; first same-curve same-duration cross-rig swab "
                 "comparison complete (dark gold matched); within-draw pattern comparison "

@@ -7,11 +7,7 @@ ENTRY = WisdomEntry(
           "airflow delivers more per draw than the spinner + dual ruby pearls at "
           "the same setpoint, harshness one draw earlier — consistent with higher "
           "per-draw efficiency.",
-    guidance="Treat joystick efficiency as directional, not equivalence — rig and "
-             "draw discipline often changed together and can't be isolated. Load "
-             "size and session order are the operative harshness variables at "
-             "420°F. Read device/cap heat after two 430°F cycles as operational, "
-             "not a ceiling signal.",
+    guidance="Joystick efficiency is directional, not equivalence — rig and draw discipline changed together, not isolable. At 420°F load size separated Hive #1 R6 from R8, order matched (one pair); session order is a recurring confound, not settled. Device/cap heat after two 430°F cycles: operational, not a ceiling signal.",
     grade='observation',
     grade_basis="Low — six strains, nineteen runs.",
     evidence=[

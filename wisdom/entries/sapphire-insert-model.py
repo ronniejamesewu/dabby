@@ -6,14 +6,9 @@ ENTRY = WisdomEntry(
     claim="Sapphire insert theory: higher volumetric heat capacity (stabler at cold "
           "contact) and ~20x higher bulk conductivity (better surface uniformity) vs "
           "quartz — consistent with Reddit's 10–20°F lower-setpoint consensus.",
-    guidance="Do not scale sapphire setpoints from quartz curves. When a sapphire "
-             "insert is acquired, calibrate empirically from scratch, treating the "
-             "10-20°F Reddit consensus as a consistent-with-the-model prior, not a "
-             "target to hit.",
+    guidance="Do not scale sapphire setpoints from quartz curves — calibrate empirically from scratch (done for Rig 3: 415-417°F band mapped; see rig3-sapphire). Treat the 10-20°F Reddit consensus as consistent-with-the-model, not a target.",
     grade='observation',
-    grade_basis="No sapphire runs logged yet — theoretical reasoning from material "
-                "properties (heat capacity, conductivity) plus an external Reddit "
-                "consensus anecdote, pending acquisition.",
+    grade_basis="Section written pre-acquisition (material-properties reasoning + Reddit consensus). Sapphire has since been in use on Rigs 3-6; empirical calibration lives in the rig entries.",
     evidence=[],
     positions=[
         Position(
@@ -27,6 +22,18 @@ ENTRY = WisdomEntry(
                  "faster when local vaporization creates cold spots. Reddit "
                  "consensus of 10–20°F lower setpoints for equivalent results is "
                  "consistent with this model.",
+        ),
+        Position(
+            stated='July 15, 2026 (migration correction)',
+            text="This section predates the sapphire acquisition — it was written as "
+                 "pre-purchase reasoning ('When acquired: fresh empirical calibration "
+                 "from scratch'). Sapphire inserts have since been in continuous use "
+                 "(Rigs 3-6, May 22, 2026 onward) and the calibration it called for "
+                 "happened: Rig 3 mapped the 415-417°F operating band (see "
+                 "rig3-sapphire). Retained as the background thermal model; both "
+                 "mechanisms remain the working explanation for sapphire's "
+                 "lower-setpoint behavior. Correction source: the external migration "
+                 "review caught the stale framing being presented as current.",
         ),
     ],
     updated='July 1, 2026 (thermal model doc)',
