@@ -8,8 +8,9 @@ description: Change the BASELINE_CURVE starting-point recommendation in Dabby_Co
 Changes the `BASELINE_CURVE` starting-point recommendation. This is a
 rare, high-impact operation -- the baseline has changed once in project
 history (commit d5ab834, from 380-390-410-430 to 380-400-416). The
-5-step protocol is codified from the "Changing BASELINE_CURVE without
-renaming the retiring constant" failure-mode row in `HANDOFF_WISDOM.md`.
+5-step protocol is codified from the `fm-baseline-change-protocol`
+failure-mode entry in `wisdom/entries/fm-baseline-change-protocol.py`
+(visible in `WISDOM_BRIEF.md` under that key).
 
 The preflight ban in `jar_manifest.py` catches any `waypoints=BASELINE_CURVE`
 inside RUNS that slips through -- but the protocol here prevents the
@@ -147,8 +148,8 @@ how many run-level references were migrated.
 
 ## Provenance and maintenance
 
-Created 2026-07-04. Codified from the "Changing BASELINE_CURVE without
-renaming the retiring constant" failure-mode row in `HANDOFF_WISDOM.md`
+Created 2026-07-04. Codified from the `fm-baseline-change-protocol`
+failure-mode entry in `wisdom/entries/fm-baseline-change-protocol.py`
 and the migration completed July 4, 2026 (`BASELINE_420` frozen, 10
 run-level references migrated across 5 jars, preflight ban added to
 `jar_manifest.py`).

@@ -40,6 +40,20 @@ session (or a fresh one) resuming this build on branch
   struck-vs-counters on tail-harshness-430, counters-vs-context on water-sip-reset,
   provenance judgment calls, the rig5 citation-collapse check).
 
+## Phase 3-4 complete (July 15, 2026, later same session)
+
+All three review streams triaged and fixed: ChatGPT frontier 7/7 verified/fixed;
+Gemini free-tier 0/4 (stream retired); internal 7 mediums + 8 lows fixed, dispositions
+in review-findings.md. New live failure mode recorded (invented specificity) with a
+gap-marking rule in the session-close checklist. Phase 4 rewire done: CLAUDE.md
+two-tier gate + wisdom-as-data architecture bullet; seven skills retargeted
+(dab, log-run, analysis-toolkit, wisdom-audit rewritten, change-baseline,
+correct-frozen-data, new-jar) + skills README; jar_manifest error strings;
+citecheck doc list; handoff-notes cross-refs; BACKLOG item resolved; CI stale-brief
+guard in deploy.yml + preview.yml; HANDOFF_WISDOM.md tombstoned (full file frozen at
+commit 4ae0674). Residual old-name mentions are deliberate history only (frozen
+decision prose, audit snapshots, dated incident entries).
+
 ## Remaining phases
 
 - **Phase 3 close:** triage internal findings + external findings with the user;

@@ -26,7 +26,7 @@ on every run — it is always applicable.
 ## When NOT to use
 
 - **Not a substitute for reading the jar.** The recipes constrain how you
-  write, not what you write. The run history, `HANDOFF_WISDOM.md`, and
+  write, not what you write. The run history, `WISDOM_BRIEF.md`, and
   `Dabby_Methodology.md` are still the primary inputs.
 - **Recipes license confidence language — they don't generate conclusions.**
   A recipe that fires does not mean you should write about that topic. It
@@ -99,8 +99,10 @@ analysis that references a prior run.
 bp4rw13 R5–R8 and WM R16–R18 were all logged as Rig 5 due to stale
 jar-local defaults after 14–15-day gaps; corrected to Rig 6 on July 2,
 2026. Cross-rig comparisons masqueraded as within-rig data. See the
-`HANDOFF_WISDOM.md` failure-mode row "Equipment default taken from
-`COMPLETED_RUNS` list position" and `Dabby_Handoff_Notes.md` Decisions.
+`fm-equipment-list-position` entry ("Equipment default taken from
+`COMPLETED_RUNS` list position" — check `WISDOM_BRIEF.md` for the claim,
+Read `wisdom/entries/fm-equipment-list-position.py` for the corrected-run
+detail) and `Dabby_Handoff_Notes.md` Decisions.
 
 **Worked example:** WM R16 (originally logged Rig 5, descent curve, clean
 first cycle) was cited as the first descent-curve data point on Rig 5.
@@ -116,8 +118,10 @@ five strains, all had downstream analytical claims revised.
 onset timing or intensity differs.
 
 **Steps:**
-1. Check the cross-strain load-size row in `HANDOFF_WISDOM.md` (read it
-   live — the evidence and direction count update with the log).
+1. Check `WISDOM_BRIEF.md` for the `load-size-effects` entry (claim,
+   grade, guidance, direction count — updates with the log); Read
+   `wisdom/entries/load-size-effects.py` before citing specific run
+   instances.
 2. Note the direction split: as of July 3, 2026, four strains show larger
    load → earlier/more harshness or intensity (WW Z, LHBH, FW106,
    bp4rw13); two show no change or less (BB36 #2, Hive #1).
@@ -157,8 +161,10 @@ when draw count is cited as a variable.
 2. Frame draw count as a proxy for cumulative exposure or depletion — not
    a boundary variable. "Harshness entered on draw 3" is data; "the
    3-draw ceiling" promotes a correlate to a causal variable.
-3. Cross-reference the `HANDOFF_WISDOM.md` "Draw count is a proxy for
-   material depletion" row for the current evidence state.
+3. Cross-reference the `draw-count-depletion-proxy` entry — check
+   `WISDOM_BRIEF.md` for the claim, then Read
+   `wisdom/entries/draw-count-depletion-proxy.py` for the current evidence
+   state before citing instance detail.
 
 **Licensed confidence language:**
 - "Harshness entered on draw N" (data)
@@ -169,8 +175,8 @@ when draw count is cited as a variable.
 
 **Guarded failure mode:** Session 99 epistemic audit — 38 analysis fields
 promoted draw count from a correlate to a boundary variable ("2-draw
-ceiling", "draw count as the primary harshness driver"). See
-`HANDOFF_WISDOM.md` Epistemic Calibration.
+ceiling", "draw count as the primary harshness driver"). See the
+`epistemic-calibration-s99` entry (`wisdom/entries/epistemic-calibration-s99.py`).
 
 **Worked example:** FW106 R7 (3 draws, large load — harsh on draw 3;
 golden swab, more reclaim than normal) vs. FW106 R8 (2 draws, smaller load — very
@@ -291,9 +297,9 @@ corrections required. Descent curve opened at 440°F; modest intensity on
 the second dab of the day was incorrectly attributed to a "narrow delivery
 window" and framed as selective terpene delivery excluding cannabinoids.
 At 440°F, terpenes and cannabinoids are all above their boiling points
-simultaneously. The honest read: session order (second dab). See
-`HANDOFF_WISDOM.md` "Applying fractional-distillation / selective-boiling
-reasoning" failure-mode row and `jars/fw106.py` R24.
+simultaneously. The honest read: session order (second dab). See the
+`fm-boiling-point-reasoning` entry (`wisdom/entries/fm-boiling-point-reasoning.py`)
+and `jars/fw106.py` R24.
 
 ---
 
@@ -318,23 +324,25 @@ reasoning" failure-mode row and `jars/fw106.py` R24.
    promotion for user review rather than manufacturing a strawman.
 4. Check for compression drift: if condensing or paraphrasing prior
    analysis, verify no confound clauses were dropped. Drift follows the
-   author's working narrative — see `HANDOFF_WISDOM.md` "Strength drift
-   during compression" failure mode.
+   author's working narrative — see `Dabby_Handoff_Notes.md` "Strength
+   drift during compression" (Session 146).
 
-**Licensed confidence language:** See the table above. The wisdom file's
+**Licensed confidence language:** See the table above. `WISDOM_BRIEF.md`'s
 lexicon is the closed set — do not introduce new certainty-language.
 
 **Guarded failure mode:** Over-claiming certainty in analysis language.
 Session 99 audit found 38 instances of "confirmed", "established", and
 "the data shows" for patterns that were merely consistent with hypotheses.
-See `HANDOFF_WISDOM.md` Epistemic Calibration and `CLAUDE.md` Epistemic
+See the `epistemic-calibration-s99` entry
+(`wisdom/entries/epistemic-calibration-s99.py`) and `CLAUDE.md` Epistemic
 Flags.
 
 **Worked example:** The cross-strain tail-harshness pattern at ≥430°F has
-8 strains and High confidence in the wisdom table — yet even this is
-framed "survives disconfirmation" (both ramp and flat-hold shapes show it;
-it is the temperature, not the shape). It is never "proven" or "the
-ceiling is 430°F." Each run updates priors; no run closes questions.
+8 strains and `tested` grade in `WISDOM_BRIEF.md` (`tail-harshness-430`
+entry) — yet even this is framed "survives disconfirmation" (both ramp
+and flat-hold shapes show it; it is the temperature, not the shape). It
+is never "proven" or "the ceiling is 430°F." Each run updates priors; no
+run closes questions.
 
 ---
 
@@ -416,16 +424,18 @@ suggests... maps to and extends the airway/thermal-dose hypothesis... mild
 directional support"). R15 (identical conditions, next day, no rest day):
 dramatically better result. If multi-day accumulation were the primary
 driver, R15 should have been similar or worse. Demoted from directional
-support to open speculation. See `jars/fw106.py` R14–R15 and
-`HANDOFF_WISDOM.md` Tail Harshness Mechanism → Airway sensitization.
+support to open speculation. See `jars/fw106.py` R14–R15 and the
+`tail-harshness-mechanism` entry (`wisdom/entries/tail-harshness-mechanism.py`)
+→ Airway sensitization candidate mechanism.
 
 ---
 
 ## Provenance and maintenance
 
 Created 2026-07-04 in a frontier-class session (Opus 4.6). Recipe content
-authored against `HANDOFF_WISDOM.md` (post-pass-3), `Dabby_Methodology.md`,
-and the failure-mode lists in both `HANDOFF_WISDOM.md` and
+authored against the wisdom layer (post-pass-3; that layer has since
+migrated to `WISDOM_BRIEF.md` + `wisdom/entries/`), `Dabby_Methodology.md`,
+and the failure-mode lists in both the wisdom layer and
 `Dabby_Handoff_Notes.md`. Every run citation was verified against the jar
 file before writing.
 
@@ -438,22 +448,22 @@ grep -n "sessions_prior_today" jars/fw106.py | tail -8
 # Recipe 2 — equipment-confound check (the 7-run correction):
 grep -n "corrected.*Rig 6\|corrected July 2" jars/bp4rw13.py jars/watermellos.py
 
-# Recipe 3 — load-size direction split (wisdom row):
-grep -n "Load size influences" HANDOFF_WISDOM.md
+# Recipe 3 — load-size direction split (wisdom entry):
+grep -n "load-size-effects" WISDOM_BRIEF.md
 
-# Recipe 4 — draw count as depletion proxy (wisdom row + epistemic audit):
-grep -n "Draw count is a proxy\|Epistemic Calibration" HANDOFF_WISDOM.md
+# Recipe 4 — draw count as depletion proxy (wisdom entry + epistemic audit):
+grep -n "draw-count-depletion-proxy\|epistemic-calibration-s99" WISDOM_BRIEF.md
 
-# Recipe 5 — swab as floor indicator (wisdom row):
-grep -n "Swab is a floor indicator" HANDOFF_WISDOM.md
+# Recipe 5 — swab as floor indicator (wisdom entry):
+grep -n "swab-floor-indicator" WISDOM_BRIEF.md
 
 # Recipe 6 — threshold-crossing (WW Z R3-R4 analyses):
 grep -n "414.*display\|420.*display" jars/wwz.py
 
-# Recipe 7 — fractional-distillation failure (wisdom failure-mode row):
-grep -n "fractional.distillation\|selective.boiling" HANDOFF_WISDOM.md
+# Recipe 7 — fractional-distillation failure (wisdom failure-mode entry):
+grep -n "fm-boiling-point-reasoning" WISDOM_BRIEF.md
 
-# Recipe 8 — confidence ladder (epistemic flags + wisdom lexicon):
+# Recipe 8 — confidence ladder (epistemic flags + brief lexicon):
 grep -n "Epistemic Flags\|Match confidence to evidence" CLAUDE.md
 
 # Recipe 9 — mechanism invention (BB36#2 R4 failure mode):

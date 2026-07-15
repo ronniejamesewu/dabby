@@ -16,7 +16,7 @@ worked out in PR #206 (the seven-run equipment correction, July 2, 2026).
 | Frozen data | Any field on a `CompletedRun` that has already been committed. Once written, these are historically stable -- correctable by exception when genuinely wrong, never casually overwritten. |
 | By-exception note | A dated parenthetical appended to a run's frozen `analysis` field marking what was corrected, when, and why. The traceable record that a correction happened. |
 | Error mechanism | The root cause of the error -- stale equipment defaults, UTC-rollover date bugs, typos. Determines whether the error is systemic (affecting multiple runs) or one-off. |
-| Derived claims | Statements in `HANDOFF_WISDOM.md`, `Dabby_Methodology.md`, or `StrainStatus` fields that cite the corrected run(s) and may need revision. |
+| Derived claims | Statements in `wisdom/entries/<key>.py` (surfaced in `WISDOM_BRIEF.md`), `Dabby_Methodology.md`, or `StrainStatus` fields that cite the corrected run(s) and may need revision. |
 
 **Two registers.** Field names (`utc_logged_at`, `equipment`, `analysis`),
 `RIG_N` constants, jar slugs, and this file's step names are machine-side
@@ -107,8 +107,12 @@ For each affected run in `jars/<slug>.py`:
 
 **6. Sweep every derived claim.**
 Corrections to run data can invalidate claims in three places:
-- `HANDOFF_WISDOM.md` -- cross-strain patterns, equipment observations,
-  failure modes that cite the corrected run(s)
+- `wisdom/entries/<key>.py` -- cross-strain patterns, equipment
+  observations, failure modes that cite the corrected run(s). Enumerate
+  candidate keys via `wisdom/manifest.py` (or scan `WISDOM_BRIEF.md`,
+  where every entry's claim and citations surface); an equivalent grep
+  over the entry files themselves is `grep -rn "<run ref>" wisdom/entries/`
+  (e.g. `grep -rn "WM R16" wisdom/entries/`)
 - `Dabby_Methodology.md` -- methodology positions that cite the corrected
   run(s)
 - `StrainStatus` fields (`next_ai_analysis`, `next_text`) in the affected
@@ -116,9 +120,12 @@ Corrections to run data can invalidate claims in three places:
 
 For each: grep for the run citation (e.g. "WM R16", "bp4rw13 R5"), read
 the surrounding context, and determine whether the claim still holds with
-the corrected data. If not, revise the claim in the same pass. If a
-cross-rig claim collapses because corrected runs are now all on one rig,
-state that explicitly.
+the corrected data. If not, revise the claim in the same pass -- for a
+wisdom entry, that means editing `wisdom/entries/<key>.py` directly
+(append a Citation or dated Position; update claim/guidance/grade in
+place), never `WISDOM_BRIEF.md`, which is generated. If a cross-rig claim
+collapses because corrected runs are now all on one rig, state that
+explicitly.
 
 Present the proposed wisdom/methodology/STATUS revisions to the user and
 wait for approval before writing them -- step 4's confirmation covered
@@ -126,7 +133,12 @@ the data corrections, not these. Revising methodology is a substantive
 action under this project's confirm-before-acting rule.
 
 **7. Generate and verify.**
-`python Dabby_Log_Generator.py` -- must complete clean.
+`python Dabby_Log_Generator.py` -- must complete clean. The generator's
+citation-integrity validator now fails the build if a correction changes
+a jar's run count in a way that orphans a wisdom citation (e.g. a
+citation pointing at "WM R16" when WM no longer has a 16th run) -- so a
+correction that breaks a citation is caught here even if step 6 missed
+it, rather than shipping silently.
 
 **8. Ship.**
 Single PR with all corrections, wisdom/methodology revisions, and
@@ -145,9 +157,9 @@ opening another.
   `index.html` diff after generating. Equipment changes should only affect
   the Equipment line in the run section; date changes affect the section
   title.
-- **A derived claim in HANDOFF_WISDOM.md cites many runs, only some
-  corrected** -- revise only the parts that depended on the corrected
-  data. Do not rewrite the entire claim.
+- **A derived claim in a wisdom entry (`wisdom/entries/<key>.py`) cites
+  many runs, only some corrected** -- revise only the parts that
+  depended on the corrected data. Do not rewrite the entire claim.
 
 ## Provenance and maintenance
 
@@ -165,8 +177,10 @@ grep -n "correctable by exception" Dabby_Handoff_Notes.md
 # PR #206 as the worked example (confirm it exists):
 # Use GitHub MCP pull_request_read, owner: ronniejamesewu, repo: dabby, pr: 206
 
-# The sweep targets (step 6):
-grep -n "Cross-Strain Patterns\|Equipment Observations\|Methodology State" HANDOFF_WISDOM.md | head -5
+# The sweep targets (step 6) -- entry keys live in the manifest, claims
+# surface in the generated brief:
+grep -n "^LIVE\|^COMPRESSED" wisdom/manifest.py
+grep -rln "<run ref>" wisdom/entries/ | head -5
 
 # Other skills this one cross-references:
 ls .claude/skills/

@@ -37,7 +37,7 @@ familiar. Weigh these and bring it up in pre-run discussion if the combination
 seems worth flagging."*
 Middle ground — structured inputs, unscripted output.
 
-**Option C: Documented pattern in HANDOFF_WISDOM**
+**Option C: Documented pattern as a wisdom entry**
 Don't add a protocol rule. Add a Cross-Strain Patterns row citing Run 5 as
 evidence: *"Big load on first run back after long jar gap → overwhelming session."*
 Future Claude picks it up as analytical context during pre-run synthesis,
