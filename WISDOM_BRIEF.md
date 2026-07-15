@@ -94,7 +94,7 @@
 **Basis:** Low — chest location documented on 9 hot-open Rig 6 runs; Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 2 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
 **Watch:** A clean chest+lingers replication to move the conjunction off two instances.
-*12 citations (9 confirm / 3 counter) | jars: bp4rw13, hive1, lunarz, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.*
+*14 citations (9 confirm / 5 counter) | jars: bp4rw13, hive1, lunarz, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.

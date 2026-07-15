@@ -137,6 +137,26 @@ ENTRY = WisdomEntry(
                  "untagged in source.",
             confounds="none noted",
         ),
+        Citation(
+            source='sourtangie R9',
+            role='counters',
+            provenance='ai-authored',
+            gist="July 14, 2026 — first hot-open Rig 6 run on this jar with no chest "
+                 "at all: a clean modest single-cycle first dab (450°F, beige swab). "
+                 "(provenance untagged in source)",
+            confounds="The draw-technique read is confounded — short draws co-vary "
+                      "with thinner vapor (density); modest load.",
+        ),
+        Citation(
+            source='sourtangie R10',
+            role='counters',
+            provenance='ai-authored',
+            gist="July 14, 2026 — bigger load over two cycles but short draws through "
+                 "the dense phase; still no chest. (provenance untagged in source)",
+            confounds="Short draws co-vary with thinner vapor (density); the "
+                      "hard-draw-on-a-full-load cell stays untested — R10's only long "
+                      "draw hit a spent insert.",
+        ),
     ],
     positions=[
         Position(
@@ -161,6 +181,23 @@ ENTRY = WisdomEntry(
                  "and R7 reported no persistence, so none cleanly adds to the "
                  "conjunction.",
         ),
+        Position(
+            stated='Session 164 (July 14, 2026)',
+            text="Sour Tangie R9/R10 (July 14, 2026) are the first hot-open Rig 6 runs "
+                 "on this jar with no chest at all — R9 a clean modest single-cycle "
+                 "first dab (450°F, beige swab), R10 a bigger load over two cycles but "
+                 "short draws through the dense phase; boundary condition — chest is "
+                 "not obligatory on a hot open, it is absent when the draws stay short. "
+                 "The chest/heartburn-quality component is now tracked against the "
+                 "participant's esophageal anatomy as candidate locus (mechanism kept "
+                 "out of rendered fields — see Do-Not-Re-Litigate in the handoff notes; "
+                 "detail in a separate private writeup). Counter-reading: the "
+                 "draw-technique read is confounded — short draws co-vary with thinner "
+                 "vapor (density), and the hard-draw-on-a-full-load cell stays untested "
+                 "(R10's only long draw hit a spent insert) — directional, not "
+                 "established. [Transposed verbatim from the Session 164 row update "
+                 "during the July 15 migration merge.]",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
@@ -169,6 +206,5 @@ ENTRY = WisdomEntry(
                     "itself — hot-open may be a proxy.",
     watch_for="A clean chest+lingers replication to move the conjunction off two "
               "instances.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, "
-            "159, 160, 161, 162.",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026",
 )
