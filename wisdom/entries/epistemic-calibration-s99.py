@@ -6,7 +6,7 @@ ENTRY = WisdomEntry(
     claim="Draw count was treated as a causal variable (\"2-draw ceiling,\" \"draw count "
           "as the primary harshness driver\") across ~38 analysis fields; Session 99 "
           "audited and reframed it as a correlate — the underlying mechanism remains "
-          "unresolved. (provenance untagged in source)",
+          "unresolved.",
     guidance="Do not treat draw count as the causal or boundary variable in analysis. "
              "\"Harshness entered on draw 3\" is data; \"the 2-draw ceiling\" promotes a "
              "correlate to a boundary variable. General epistemic calibration rules "
@@ -24,7 +24,7 @@ ENTRY = WisdomEntry(
                  "airway sensitization) is unresolved. \"Harshness entered on draw 3\" "
                  "is data; \"the 2-draw ceiling\" promotes a correlate to a boundary "
                  "variable. General epistemic calibration rules added to CLAUDE.md "
-                 "Epistemic Flags (general section).",
+                 "Epistemic Flags (general section). (provenance untagged in source)",
             confounds="none noted",
         ),
     ],

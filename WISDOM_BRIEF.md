@@ -32,7 +32,7 @@
 ### lower-ceiling-strains  [pattern | directional]
 **Claim:** MB9ZST and BB36#1: tail harshness persisting below 430°F — may need a lower ceiling.
 **Basis:** 2 strains, multiple confirming runs each.
-**Guidance:** For MB9ZST and BB36#1, tail harshness persists at 420°F and 415°F; these two strains appear to require a lower ceiling (~410°F or below). Do not generalize the lower-ceiling need beyond them — strain-specific vs equipment-related is unresolved (both Gemlock-era).
+**Guidance:** For MB9ZST and BB36#1, tail harshness persisted at 420°F (MB9ZST R3) and 415°F (MB9ZST R4; BB36#1 R2-3); these two strains appear to require a lower ceiling (~410°F or below). Do not generalize the lower-ceiling need beyond them — strain-specific vs equipment-related is unresolved (both Gemlock-era).
 *4 citations (4 confirm / 0 counter) | jars: bb361, mb9zst | upd Sessions 39–44*
 
 ### harshness-threshold-crossing  [pattern | observation]
@@ -85,7 +85,7 @@
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
 **Basis:** Low — four strains, all first-dab runs, all Rig 6; consistent direction, single-rig.
-**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety to end the session instead. Evidence is all Rig 6 and first-dab; treat cross-rig and load effects as untested.
+**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety to end the session instead. Evidence is all Rig 6 and first-dab; treat cross-rig effects as untested and load as varied but unresolved.
 **Watch:** A descent run on Rig 5 (none logged yet) would test cross-rig generalization; holding load constant would isolate the unresolved load variable.
 *4 citations (4 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026*
 
