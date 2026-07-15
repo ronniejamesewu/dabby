@@ -18,7 +18,7 @@
 *5 citations (2 confirm / 0 counter) | jars: hive1, oc | upd Session 14; scoped July 11, 2026 audit*
 
 ### swab-floor-indicator  [pattern | tested]
-**Claim:** Swab is a floor indicator, not a fine-grained calibration metric — dark/burnt residue reliably signals to reduce endpoint, but within the light-golden-to-amber range it cannot distinguish curve shapes or small endpoint differences.
+**Claim:** Swab is a floor indicator, not a fine-grained calibration metric — dark/burnt residue reliably signals to reduce endpoint, but within the light-golden-to-amber range it cannot reliably distinguish curve shapes or small endpoint differences.
 **Basis:** Four independent strain contexts; FW106 R11-12 extends the pattern to include thermal degradation flavor, not just harshness.
 **Guidance:** Treat dark/burnt residue as a reliable signal to reduce endpoint. Within the light-golden-to-amber range, read session character, not swab, for small endpoint or curve-shape differences. Before reading a warm swab as a floor signal, check cycle count — second cycles darken swabs independent of endpoint.
 *12 citations (6 confirm / 0 counter) | jars: bp4rw13, fw106, mb9zst, oc, watermellos, wwz | upd Ongoing; cycle-count caveat added July 11, 2026 audit.*
@@ -178,7 +178,7 @@
 ### fm-bamboo-swab-artifact  [failure-mode]
 **Claim:** Bamboo swab sticks produce false amber color through the cotton tip — reads warmer/darker than the actual material color; paper-stick swabs don't have this artifact.
 **Guidance:** With bamboo-stick swabs, discount amber spots and treat golden+amber as golden. Paper-stick swabs remain the reference. Note in any run logged with bamboo sticks that color reads may be slightly warmer than actual.
-*1 citations (1 confirm / 0 counter) | jars: fw106 | upd FW106 R21 era (June 2026)*
+*1 citations (1 confirm / 0 counter) | jars: fw106 | upd undated in source*
 
 ### fm-write-gate-doctrine  [failure-mode]
 **Claim:** Write-gate doctrine in a skill's trigger-visible description reads to the router as a firing condition; intent is unverifiable at trigger time, so the model errs toward not firing — the readback silently stops appearing on results reports.
@@ -193,7 +193,7 @@
 **Basis:** Physical/thermal reasoning (insert wall thickness ~1mm, ~1.4 W/m*K conductivity, contact geometry) plus retirement of the prior 15-35°F estimate — no per-run citations; not tested against logged runs.
 **Guidance:** Do not flag short flat tails — even 10 seconds — as inadequate for offset closure. Do not rebuild the 1D thermal resistance model; the eta interface-efficiency concept was developed and abandoned. Setpoints are reasonable proxies for material contact temperature — swab result is the ground truth.
 **Watch:** Vaporization cooling during active vaporization, and dynamic lag during steep ascent (titanium ahead of insert) — the two dominant uncertainties that could reopen the offset question.
-*0 citations (0 confirm / 0 counter) | upd July 1, 2026 (thermal model reasoning-review doc)*
+*0 citations (0 confirm / 0 counter) | upd undated in source*
 
 ### tail-harshness-mechanism  [theory | speculative]
 **Claim:** Tail-session harshness has four candidate mechanisms — vapor density, accumulated heat / depletion, airway sensitization, particle accumulation — none isolated with current data; several predict the same outcomes and can't be separated.

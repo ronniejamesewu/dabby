@@ -5,7 +5,7 @@ ENTRY = WisdomEntry(
     kind='pattern',
     claim="Swab is a floor indicator, not a fine-grained calibration metric — "
           "dark/burnt residue reliably signals to reduce endpoint, but within the "
-          "light-golden-to-amber range it cannot distinguish curve shapes or small "
+          "light-golden-to-amber range it cannot reliably distinguish curve shapes or small "
           "endpoint differences.",
     guidance="Treat dark/burnt residue as a reliable signal to reduce endpoint. "
              "Within the light-golden-to-amber range, read session character, not "
@@ -39,7 +39,7 @@ ENTRY = WisdomEntry(
             role='confirms',
             provenance='user-verbatim',
             gist="Same curve, same equipment, same light golden swab as R5, but R6 "
-                 "tail harshness/hard. Provenance untagged in source. (See position for "
+                 "tail harshness/hard. (user-verbatim per the tail-harshness row, line 28 — corrected at migration review) (See position for "
                  "the R5-vs-R6 comparison.)",
             confounds="Paired with R5; load size is the variable that moves session "
                       "character without moving swab.",

@@ -16,9 +16,8 @@ ENTRY = WisdomEntry(
             provenance='mixed',
             gist="Swab logged as \"golden with amber spots\" — confirmed as bamboo "
                  "artifact when compared against Run 22 and a dry test.",
-            confounds="None noted — the dry test (no material) reproducing the amber "
-                      "is what isolates the stick as the source.",
+            confounds="none noted",
         ),
     ],
-    updated='FW106 R21 era (June 2026)',
+    updated='undated in source',
 )

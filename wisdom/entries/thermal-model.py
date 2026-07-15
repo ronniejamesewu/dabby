@@ -19,7 +19,7 @@ ENTRY = WisdomEntry(
     evidence=[],
     positions=[
         Position(
-            stated='July 1, 2026 (thermal model reasoning-review)',
+            stated='undated in source (Methodology State)',
             text="The old 15-35°F titanium-to-insert offset estimate is retired. "
                  "Current position:\n\n"
                  "- Quartz insert wall is ~1mm thick at ~1.4 W/m·K conductivity — bulk "
@@ -54,5 +54,5 @@ ENTRY = WisdomEntry(
     watch_for="Vaporization cooling during active vaporization, and dynamic lag "
               "during steep ascent (titanium ahead of insert) — the two dominant "
               "uncertainties that could reopen the offset question.",
-    updated='July 1, 2026 (thermal model reasoning-review doc)',
+    updated='undated in source',
 )
