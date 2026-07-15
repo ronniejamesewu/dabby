@@ -98,12 +98,20 @@ summary/detail drift re-enters; informing from git is how information dies.
 
 ## Enforcement calls
 
-9. **Brief budget: 20k chars hard error, 16k warn.** ~7.5k tokens at this corpus's
-   density — single Read with >3x headroom against the 25k-token tool cap, and it cuts
-   wisdom's session-open cost from ~31k tokens to ~7k. The hard cap is the answer to the
-   July 2026 regrowth (63k → 84k in ten days, noticed only when a Read call paged): the
-   surface is generated from capped fields and counts, so instance growth *cannot* reach
-   it, and over-budget fails the generator the moment it happens.
+9. **Brief budget: 40k chars hard error, 36k warn — recalibrated once, pre-ship, against
+   measured blocks.** The accepted proposal guessed 20k assuming ~400-char entry blocks;
+   the migration measured reality: workers write capped fields TO the caps, so full
+   blocks average ~790 chars and the complete migrated corpus renders at ~33k chars
+   (~12.5k tokens — a single Read at ~50% of the 25k-token tool cap, 2.6x cheaper at
+   session open than the 84k-char file this replaced). The requirement was always
+   one-Read-with-headroom + no-instance-growth, not a specific number; the number was
+   repriced ONCE while the system was being built, with the measurement recorded here.
+   Post-ship these caps only ratchet DOWN — raising a cap the day it fires is how
+   tripwires die, and the July 2026 regrowth (63k → 84k in ten days, noticed only when
+   a Read call paged) is what this cap exists to make impossible. Also from the same
+   measurement: counter_reading is NOT brief-rendered (it is uncapped, and it matters
+   when changing a grade — an edit, which already requires opening the entry file), and
+   entries carry no per-entry file pointer (the header states the key→file rule once).
 
 10. **The entry-count warning (>40) counts full-block-rendered LIVE entries only** —
     patterns, equipment, theory, live failure modes — not one-line decisions. The

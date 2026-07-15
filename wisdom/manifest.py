@@ -13,12 +13,72 @@ import re
 
 LIVE = [
     # pattern
+    'tail-harshness-430',
+    'ramp-vs-flat-hold',
+    'swab-floor-indicator',
+    'endpoint-effect-strength',
+    'lower-ceiling-strains',
+    'harshness-threshold-crossing',
+    'load-size-effects',
+    'bitter-citrus-note',
+    'cold-cure-fridge-nose',
+    'draw-count-depletion-proxy',
     'bb36-retronasal-blueberry',
-    # failure-mode
+    'water-sip-reset',
+    'descent-limiting-factor',
+    'chest-harshness-hot-open',
+    'post-session-discomfort',
+    # equipment
+    'rig1-vs-rig2-gemlock',
+    'rig3-sapphire',
+    'rig4-sapphire-ruby',
+    'rig5-dual-ruby',
+    'rig6-piston-joystick',
+    # failure-mode (live)
+    'fm-push-files-content-loss',
+    'fm-device-capability-overassert',
+    'fm-direct-commit-jar-conflict',
+    'fm-doc-sweep-conceptual-miss',
+    'fm-baseline-change-protocol',
+    'fm-skill-frontmatter-yaml',
+    'fm-frozen-prose-not-promoted',
     'fm-bamboo-swab-artifact',
+    'fm-write-gate-doctrine',
+    # decision
+    'dec-curve-shape-classifier',
+    'dec-read-verdict-superseded',
+    'dec-read-maps-to-analysis',
+    'dec-rendering-labels',
+    'dec-end-of-jar-framing',
+    'dec-equipment-schema',
+    'dec-insert-display',
+    'dec-fw106-r4-session-order',
+    'dec-460-experiment-closed',
+    'dec-wm-dark-gold-second-cycle',
+    'dec-architecture-doc-deleted',
+    'dec-tail-harshness-pair-hunt-closed',
+    'dec-matrix-snapshots-frozen',
+    # theory
+    'thermal-model',
+    'tail-harshness-mechanism',
+    'baseline-philosophy',
+    'sapphire-insert-model',
+    'harm-reduction',
+    'thermal-injury-vapor-temp',
+    'curve-design-theory',
 ]
 
 COMPRESSED = [
+    'fm-utc-run-date',
+    'fm-deploy-race',
+    'fm-rig-labels',
+    'fm-curly-quotes',
+    'fm-plan-mode-before-pull',
+    'fm-sessions-prior-consistency',
+    'fm-closed-jar-prose',
+    'fm-equipment-list-position',
+    'fm-boiling-point-reasoning',
+    'epistemic-calibration-s99',
 ]
 
 # ── Preflight ────────────────────────────────────────────────────────────────

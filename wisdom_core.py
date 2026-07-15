@@ -105,8 +105,14 @@ _PROVENANCE = {'user-verbatim', 'ai-authored', 'mixed'}
 _FIELD_CAPS = {'claim': 240, 'guidance': 320, 'grade_basis': 200,
                'watch_for': 200, 'resolution': 200}
 
-BRIEF_HARD_CAP = 20_000   # chars; generator errors above this
-BRIEF_SOFT_CAP = 16_000   # chars; generator warns above this
+# Calibrated against MEASURED day-one blocks (July 15, 2026): 37 full-block LIVE
+# entries averaged ~790 chars (the field caps get written to, not under), putting the
+# migrated brief at ~33k chars ≈ 12.5k tokens — a single Read at ~50% of the tool cap,
+# and 2.6x cheaper at session open than the 84k-char file this replaced. The designer's
+# original 20k guess assumed ~400-char blocks; repriced ONCE pre-ship. Post-ship these
+# numbers only ratchet DOWN — raising a cap the day it fires is how tripwires die.
+BRIEF_HARD_CAP = 40_000   # chars; generator errors above this
+BRIEF_SOFT_CAP = 36_000   # chars; generator warns above this
 FULL_BLOCK_LIVE_WARN = 40  # full-block-rendered LIVE entries (decisions excluded)
 ENTRY_FILE_WARN = 20_000  # chars per entry file; warn with the pressure valves
 
@@ -222,9 +228,10 @@ def _entry_block(e):
     lines = [f"### {e.key}  [{e.kind}{grade_tag}]", f"**Claim:** {e.claim}"]
     if e.grade_basis:
         lines.append(f"**Basis:** {e.grade_basis}")
+    # counter_reading is deliberately NOT rendered: it is uncapped (the brief renders
+    # only capped or derived fields), and it matters when changing a grade — an edit,
+    # which already requires opening the entry file.
     lines.append(f"**Guidance:** {e.guidance}")
-    if e.counter_reading:
-        lines.append(f"**Counter-reading:** {e.counter_reading}")
     if e.watch_for:
         lines.append(f"**Watch:** {e.watch_for}")
     ev = f"{len(e.evidence)} citations ({n_confirm} confirm / {n_counter} counter"
@@ -234,7 +241,7 @@ def _entry_block(e):
         tail.append(f"jars: {', '.join(strains)}")
     if e.updated:
         tail.append(f"upd {e.updated}")
-    tail.append(f"detail: wisdom/entries/{e.key}.py")
+    # No per-entry file pointer: the header states the key->file rule once.
     lines.append(f"*{' | '.join(tail)}*")
     return "\n".join(lines)
 
