@@ -169,3 +169,33 @@ Formatting-only differences I confirmed are NOT findings: R22's italic \"*betwee
 
 ## Clean entries
 baseline-philosophy, bitter-citrus-note, chest-harshness-hot-open, cold-cure-fridge-nose, curve-design-theory, dec-460-experiment-closed, dec-architecture-doc-deleted, dec-curve-shape-classifier, dec-end-of-jar-framing, dec-equipment-schema, dec-fw106-r4-session-order, dec-insert-display, dec-matrix-snapshots-frozen, dec-read-maps-to-analysis, dec-read-verdict-superseded, dec-rendering-labels, dec-tail-harshness-pair-hunt-closed, dec-wm-dark-gold-second-cycle, draw-count-depletion-proxy, fm-baseline-change-protocol, fm-closed-jar-prose, fm-device-capability-overassert, fm-direct-commit-jar-conflict, fm-doc-sweep-conceptual-miss, fm-equipment-list-position, fm-frozen-prose-not-promoted, fm-plan-mode-before-pull, fm-push-files-content-loss, fm-rig-labels, fm-sessions-prior-consistency, fm-skill-frontmatter-yaml, fm-write-gate-doctrine, load-size-effects, post-session-discomfort, ramp-vs-flat-hold, rig3-sapphire, rig4-sapphire-ruby, rig5-dual-ruby, rig6-piston-joystick, thermal-injury-vapor-temp, water-sip-reset
+
+---
+
+# Triage dispositions (July 15, 2026)
+
+**External stream A (ChatGPT frontier, full bundle): 7/7 verified, 7 fixed** — harm-reduction
+claim+counter_reading; rig1-vs-rig2 claim; sapphire-insert-model basis/guidance + correction
+Position; rig4 hedges; rig6 guidance; tail-harshness-430 basis provenance qualifier; mb9zst
+roles counters->context.
+
+**External stream B (Gemini free tier, full bundle): 0/4 verified, 0 fixed, stream retired** —
+findings relied on fabricated schema fields, a misquoted confidence label, and source-verbatim
+text misattributed as migration drift; its checked-clean list also cleared an entry with
+verified defects. Recorded as calibration evidence for the verification-gate protocol.
+
+**Internal mediums: 7/7 verified, 7 fixed** — swab-floor wwz R6 provenance + claim hedge;
+thermal-model fabricated dating; fm-bamboo confound+date; fm-curly-quotes session anchor;
+fm-boiling-point claim/gist/role.
+
+**Internal lows: 8 fixed** (wwz R3/R4 provenance + notes, bb36 authored rig clause,
+descent-limiting-factor load qualifier, tail-harshness-mechanism R20 confound,
+epistemic-calibration + fm-deploy-race untagged notes, fm-utc authored guarantee,
+tail-430 struck-gist parenthetical, lower-ceiling per-strain attribution);
+**2 resolved by earlier fixes** (harm-reduction merge, tail-430 era clause);
+**1 kept as-is** (rig1 'undated in source' position — the gap-marking rule working);
+**remainder dismissed as reviewer-notes-grade** with reasoning in the entries above.
+
+Defect-class outcome: dominant class was invented specificity (fabricated dates, anchors,
+causal glosses), now recorded as a live failure mode in Dabby_Handoff_Notes.md with a
+gap-marking rule in the session-close checklist.

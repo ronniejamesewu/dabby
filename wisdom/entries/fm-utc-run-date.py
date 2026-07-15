@@ -7,7 +7,7 @@ ENTRY = WisdomEntry(
           "date instead of America/Denver local date.",
     guidance="validate() rejects any run_date later than the America/Denver calendar "
              "date of its utc_logged_at. Use pending_dab.py consume to print "
-             "paste-ready date/timestamp lines that convert correctly.",
+             "paste-ready date/timestamp lines.",
     evidence=[
         Citation(
             source='oc R6',

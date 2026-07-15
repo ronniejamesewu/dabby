@@ -45,8 +45,7 @@ ENTRY = WisdomEntry(
                  "earlier at the joystick's higher per-draw delivery — consistent with "
                  "more material per draw crossing the threshold one draw sooner. "
                  "(provenance untagged in source)",
-            confounds="New equipment (Rig 6, higher per-draw delivery) differs from the "
-                      "Rig 5 instances.",
+            confounds="none noted",
         ),
         # ── Accumulated heat exposure / material depletion ──
         Citation(

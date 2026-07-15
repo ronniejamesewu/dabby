@@ -25,8 +25,7 @@ ENTRY = WisdomEntry(
             provenance='ai-authored',
             gist="Retronasal blueberry ~10 minutes post-session from throat — first "
                  "run, baseline on Rig 6.",
-            confounds="Same seed pop; single run; different rig than the bb362 "
-                      "instance.",
+            confounds="Same seed pop; single run.",
         ),
     ],
     positions=[

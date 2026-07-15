@@ -160,7 +160,7 @@ ENTRY = WisdomEntry(
             source='mbd R3',
             role='struck',
             provenance='ai-authored',
-            gist="Showed mild harshness at 420°F (below the ≥430°F threshold) "
+            gist="Showed mild harshness at 420°F "
                  "— tightened out in the July 11, 2026 audit.",
             confounds="none noted",
         ),

@@ -5,7 +5,7 @@ ENTRY = WisdomEntry(
     kind='pattern',
     claim="MB9ZST and BB36#1: tail harshness persisting below 430°F — may need a lower "
           "ceiling.",
-    guidance="For MB9ZST and BB36#1, tail harshness persists at 420°F and 415°F; these two "
+    guidance="For MB9ZST and BB36#1, tail harshness persisted at 420°F (MB9ZST R3) and 415°F (MB9ZST R4; BB36#1 R2-3); these two "
              "strains appear to require a lower ceiling (~410°F or below). Do not generalize "
              "the lower-ceiling need beyond them — strain-specific vs equipment-related is "
              "unresolved (both Gemlock-era).",

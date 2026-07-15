@@ -17,15 +17,15 @@ ENTRY = WisdomEntry(
         Citation(
             source='wwz R3',
             role='confirms',
-            provenance='ai-authored',
-            gist="Same curve (430°F endpoint ramp) as R4; harshness appeared at 414°F.",
+            provenance='user-verbatim',
+            gist="Same curve (430°F endpoint ramp) as R4; harshness appeared at 414°F. (user-verbatim per the tail-harshness row, line 28 — corrected at migration review)",
             confounds="none noted",
         ),
         Citation(
             source='wwz R4',
             role='confirms',
-            provenance='ai-authored',
-            gist="Same curve (430°F endpoint ramp) as R3; harshness appeared at 420°F.",
+            provenance='user-verbatim',
+            gist="Same curve (430°F endpoint ramp) as R3; harshness appeared at 420°F. (user-verbatim per the tail-harshness row, line 28 — corrected at migration review)",
             confounds="none noted",
         ),
         Citation(

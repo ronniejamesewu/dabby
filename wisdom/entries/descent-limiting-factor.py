@@ -7,7 +7,7 @@ ENTRY = WisdomEntry(
     guidance="A descent curve (open hot, move off peak immediately) front-loads the "
              "terpene bolus and shifts the stopping condition off harshness — expect "
              "depletion, intensity, or satiety to end the session instead. Evidence is "
-             "all Rig 6 and first-dab; treat cross-rig and load effects as untested.",
+             "all Rig 6 and first-dab; treat cross-rig effects as untested and load as varied but unresolved.",
     grade='observation',
     grade_basis="Low — four strains, all first-dab runs, all Rig 6; consistent "
                 "direction, single-rig.",

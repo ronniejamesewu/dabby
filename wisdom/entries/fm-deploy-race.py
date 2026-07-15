@@ -10,7 +10,7 @@ ENTRY = WisdomEntry(
             source='session:91',
             role='confirms',
             provenance='ai-authored',
-            gist="Preview cleanup moved to the daily scheduled `cleanup-previews.yml`, so nothing competes with `deploy.yml` for the `gh-pages` concurrency slot.",
+            gist="Preview cleanup moved to the daily scheduled `cleanup-previews.yml`, so nothing competes with `deploy.yml` for the `gh-pages` concurrency slot. (provenance untagged in source)",
             confounds="none noted",
         ),
     ],
