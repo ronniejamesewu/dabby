@@ -71,6 +71,13 @@ an existing entry (or citation within one) should be updated instead of a new on
 Citations name a specific source with inline observations and explicit confounds — never
 vague phrases like "multiple strains." Trim to the strongest examples.
 
+**Mark gaps, never fill them.** When the underlying record is silent, write the silence:
+`none noted` for confounds, `undated in source` for dates/sessions, "provenance untagged"
+where tagging is unknown. Never supply a plausible date, session number, causal
+explanation, or document name the record doesn't state — invented specificity is this
+project's most documented drift class (see Known Claude Failure Modes), and it arrives
+in perfect form that no validator can catch.
+
 1. Did any cross-strain pattern emerge or get confirmed? A grade promotion
    (observation→directional, directional→tested, or wording that functions as one)
    requires updating `counter_reading` with the strongest counter-reading of the
