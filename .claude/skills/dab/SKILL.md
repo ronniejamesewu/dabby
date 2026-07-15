@@ -113,7 +113,7 @@ stale leftover branch the CLAUDE.md gate protects against). Name the branch
 you're staying on in your reply and continue there.
 
 **3. Mandatory reads.** All three, before replying: `HANDOFF_STATE.md`,
-`HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`. Read the wisdom file to the
+`WISDOM_BRIEF.md`, `Dabby_Handoff_Notes.md`. Read the brief to the
 end — if the Read reports truncation, page through; answering from a
 partial read is the exact failure the mandatory-reads gate exists to
 prevent. If the announcement names a
@@ -232,7 +232,7 @@ from `brief`'s printed facts; a leakage grep over the user-facing reply —
 constant names, slugs, raw field names, spoken step labels, tooling-internals
 words — returned zero findings). Prior run July 2, 2026: PASS-WITH-FINDINGS
 on both scenarios (normal + party mode), findings applied same day — the
-bare-announcement `--note` guidance, the two-Read-call warning on the wisdom
-file, the infra-PR-vs-jar-PR handling in step 4, and stripping the
+bare-announcement `--note` guidance, the two-Read-call warning on the brief,
+the infra-PR-vs-jar-PR handling in step 4, and stripping the
 mode-invocation prefix from party notes. Re-run the same protocol (including
 the leakage grep) after any structural change to the workflow steps.

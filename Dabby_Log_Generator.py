@@ -793,16 +793,49 @@ def generate_handoff_state():
 
     return "\n".join(lines)
 
+# ── WISDOM BRIEF ──────────────────────────────────────────────────────────────
+
+def generate_wisdom_brief():
+    """Validate the wisdom layer and return WISDOM_BRIEF.md content.
+
+    Same failure contract as validate(): errors print a block and exit 1, so a bad
+    wisdom edit fails the generate step instead of shipping a stale or broken brief.
+    Architecture: wisdom/design/DECISIONS.md.
+    """
+    from wisdom_core import validate_wisdom, render_brief, brief_size_problems
+    from wisdom.manifest import load_all_entries, jar_run_counts, LIVE, COMPRESSED
+
+    entries = load_all_entries()
+    errors = validate_wisdom(entries, LIVE, COMPRESSED, jar_run_counts())
+    brief = render_brief(entries, LIVE, COMPRESSED)
+    size_errors, warnings = brief_size_problems(brief, entries, LIVE)
+    errors.extend(size_errors)
+
+    for w in warnings:
+        print(f"WISDOM WARNING: {w}")
+    if errors:
+        print("WISDOM ERRORS:")
+        for e in errors:
+            print(f"  {e}")
+        raise SystemExit(1)
+    return brief
+
 # ── WRITE ─────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     _check_pending_dabs(COMPLETED_RUNS)
+    # Compute everything (all validation happens here) before writing anything,
+    # so a validation failure in any layer leaves no half-regenerated outputs.
     html = build_html()
+    state = generate_handoff_state()
+    brief = generate_wisdom_brief()
+
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)
     print("Written: index.html")
-
-    state = generate_handoff_state()
     with open("HANDOFF_STATE.md", "w", encoding="utf-8") as f:
         f.write(state)
     print("Written: HANDOFF_STATE.md")
+    with open("WISDOM_BRIEF.md", "w", encoding="utf-8") as f:
+        f.write(brief)
+    print("Written: WISDOM_BRIEF.md")

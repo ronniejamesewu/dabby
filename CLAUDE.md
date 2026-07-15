@@ -4,10 +4,11 @@
 >
 > At the start of every session, before producing any reply:
 > 1. `git checkout main && git pull origin main` — the working directory may be on a stale branch.
-> 2. Read all three: `HANDOFF_STATE.md`, `HANDOFF_WISDOM.md`, `Dabby_Handoff_Notes.md`.
-> 3. If the opening message names a strain, also read that strain's jar file in `jars/` (filename = the strain's slug — `Glob jars/*.py` to discover, or check `jar_manifest.py`).
+> 2. Read both: `WISDOM_BRIEF.md`, `Dabby_Handoff_Notes.md` — every session, any type.
+> 3. If the opening message shows dab intent or names a strain — or the moment any run, jar, or strain-state work starts mid-session — also read `HANDOFF_STATE.md`. (The dab and log-run skills mandate this read in their own sequences; this gate is the backstop.)
+> 4. If the opening message names a strain, also read that strain's jar file in `jars/` (filename = the strain's slug — `Glob jars/*.py` to discover, or check `jar_manifest.py`).
 >
-> These are not optional. Do not respond first and read later. Do not answer from memory or summaries.
+> These are not optional. Do not respond first and read later. Do not answer from memory or summaries. Instance-level wisdom claims (run details, confounds, provenance) may only be written from `wisdom/entries/<key>.py` or a jar file — never from the brief alone.
 >
 > Sole exception: party-mode capture (the dab skill). There, the timestamp capture and a one-line confirmation come before the reads — nothing is answered from project state and nothing is written to the repo — and this gate runs in full at reconciliation, before anything is logged.
 
@@ -17,14 +18,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Session-Start Reads
 
-The three mandatory files and what they contain:
-- `HANDOFF_STATE.md` — generated per-strain status: run counts, last dates, current equipment, current What to Try Next per strain. This is the working surface for run logging.
-- `HANDOFF_WISDOM.md` — accumulated cross-strain patterns, equipment observations, failure modes, and methodology state.
+Unconditional (every session, any type):
+- `WISDOM_BRIEF.md` — GENERATED summary of the wisdom layer: every entry's claim, confidence grade, guidance, and evidence counts, plus settled decisions, compressed one-liners, and the session-close checklist. Never edit by hand — the generator rewrites it. Anything deeper than what's on the page (instance evidence, confounds, provenance, position history) lives in `wisdom/entries/<key>.py`.
 - `Dabby_Handoff_Notes.md` — operational notes, session protocol, decisions made, known failure modes.
+
+Conditional on the session touching runs/jars/strain state (dab intent, a named strain, or run work starting mid-session):
+- `HANDOFF_STATE.md` — generated per-strain status: run counts, last dates, current equipment, current What to Try Next per strain. This is the working surface for run logging; a session that never touches a run never needs it.
 
 ## Conditional Reads
 
 Read these files when the session topic requires them:
+- `wisdom/entries/<key>.py` — one file per wisdom entry (keys visible in the brief): full evidence with per-citation role/provenance/confounds, dated positions, counter-readings, supersession history. Read before finalizing any analysis that cites, compares against, or would change that entry, and before any session-close edit to it. Tier lists and loader: `wisdom/manifest.py`; schema and validators: `wisdom_core.py`; design rationale: `wisdom/design/DECISIONS.md`.
 - `jars/<slug>.py` — one file per jar, holding that jar's runs (`RUNS`), status (`STATUS`), and local waypoint constants. This is the per-strain run data, status, waypoints. If the opening message names a strain, read its jar file before responding — not as a follow-up if questions get complex, but before the first reply. A Claude that hasn't read the jar file will answer confidently from `HANDOFF_STATE.md` summaries and hallucinate the run history behind them. Users won't catch it until something is wrong. Discover the slug via `Glob jars/*.py` or `jar_manifest.py`. Closed jars are jar files too (in the `CLOSED` tier) — not a separate archive file.
 - `Dabby_Core.py` — dataclasses, `RIG_N` constants, `BASELINE_*` curves, `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, `validate()`. Read for schema/equipment/baseline questions. If the named jar has `RUNS = []`, read this file at session start — use the CONTENTS index at the top to jump directly to `CompletedRun` and `StrainStatus`.
 - `jar_manifest.py` — the `ACTIVE` / `CLOSED` tier lists and the load function that assembles all jars. Read for lifecycle work.
@@ -41,8 +45,9 @@ on what to try next — not a formal calibration program.
 ## Commands
 
 - **Generate the log:** `python3 Dabby_Log_Generator.py` (Windows: `python
-  Dabby_Log_Generator.py`) — assembles the jar files via `jar_manifest.py`, writes
-  `index.html` and `HANDOFF_STATE.md`.
+  Dabby_Log_Generator.py`) — assembles the jar files via `jar_manifest.py` and the
+  wisdom entries via `wisdom/manifest.py`, writes `index.html`, `HANDOFF_STATE.md`,
+  and `WISDOM_BRIEF.md`.
 - `validate()` and `validate_accent_colors()` run automatically at the top of
   `build_html()`. A data error prints `VALIDATION ERRORS:` and exits 1 — a bad
   edit fails the generate step instead of producing a broken page.
@@ -76,6 +81,15 @@ principle: mechanize the floor so inference is freed for analysis.
 
 ## Architecture
 
+- **Wisdom-as-data (July 15, 2026).** The wisdom layer mirrors the jar architecture:
+  `wisdom_core.py` = schema (`WisdomEntry`/`Citation`/`Position`), validators (citation
+  integrity against jar files, promotion gate, field caps, brief budget), and the brief
+  renderer; `wisdom/entries/<key>.py` = one file per entry; `wisdom/manifest.py` =
+  `LIVE`/`COMPRESSED` tiers + loader. `WISDOM_BRIEF.md` is generated on every generator
+  run — never hand-edited — and is the mandatory session-open read. Compressing a
+  settled entry = move its key to `COMPRESSED` and set its `resolution` one-liner; the
+  entry file is untouched. Entry keys are stable identity — never renamed; splits
+  create new keys with lineage noted in prose. Design record: `wisdom/design/DECISIONS.md`.
 - **Per-jar architecture (Session 108).** Three layers: (1) `Dabby_Core.py` =
   shared stable layer (dataclasses, `RIG_N` constants, `BASELINE_*` curves,
   `GLOBAL_INFO`, `TERPENE_REFERENCE`, color resolution, validators — see the
@@ -132,12 +146,14 @@ Never write `index.html` by hand — always run the generator and commit its out
 
 Closed jars are jar files like any other (in the `CLOSED` tier of
 `jar_manifest.py`) — historical record, never edited. When writing `analysis` or
-`next_ai_analysis`, check `HANDOFF_WISDOM.md` first — most cross-strain patterns are
-summarized there with specific run citations. Read a closed jar's `jars/<slug>.py`
-only when: (a) a wisdom citation points to its runs and the summary feels thin for
-the analysis at hand, (b) a pattern is flagged as needing cross-strain confirmation
-and you want to search for it, or (c) a wisdom entry is vague and you need the
-underlying run prose.
+`next_ai_analysis`, check `WISDOM_BRIEF.md` (already read at session open) for
+relevant entry keys, then Read `wisdom/entries/<key>.py` for every entry the draft
+cites, compares against, or would change — instance-level claims come from entry
+files or jar files, never from the brief alone. Read a closed jar's `jars/<slug>.py`
+only when: (a) a wisdom citation points to its runs and the entry's account feels
+thin for the analysis at hand, (b) a pattern is flagged as needing cross-strain
+confirmation and you want to search for it, or (c) a wisdom entry is vague and you
+need the underlying run prose.
 
 ## Date and Time Logging
 
@@ -186,7 +202,7 @@ If work continues on an open PR across multiple commits or sessions, update the 
 description to reflect what's actually in it. Use the GitHub MCP tool to read the 
 current description first, then rewrite it to cover all changes to date.
 
-When the user asks for the handoff to be updated, treat it as a session-close signal. Run the checklist in `HANDOFF_WISDOM.md` (the questions at the top) — each "yes" produces one update to the relevant wisdom table or section (or to `BACKLOG.md`, for Q6). Then update `Dabby_Handoff_Notes.md` (header date) and run the generator to regenerate `HANDOFF_STATE.md`. Before writing, scan for known issues and inconsistencies between what was done and what the docs say. Propose these alongside the update so they can be bundled into the same PR.
+When the user asks for the handoff to be updated, treat it as a session-close signal. Run the checklist in `WISDOM_BRIEF.md`'s footer — each "yes" edits the relevant `wisdom/entries/<key>.py` file (Read it first; append a Citation or dated Position, or update claim/guidance/grade — promotions above 'observation' require a counter_reading or the build fails) or `BACKLOG.md` for Q6. Mark gaps, never fill them: when the record is silent, write `none noted` / `undated in source` — never a plausible date, session, or explanation. Then update `Dabby_Handoff_Notes.md` (header date) and run the generator — it validates everything and regenerates `HANDOFF_STATE.md` and `WISDOM_BRIEF.md`. Before writing, scan for known issues and inconsistencies between what was done and what the docs say. Propose these alongside the update so they can be bundled into the same PR.
 
 `HANDOFF_STATE.md` is always regenerated by running `python3 Dabby_Log_Generator.py` — never edit it by hand.
 

@@ -21,6 +21,10 @@ jobs:
           python-version: '3.x'
       - name: Generate log
         run: python3 Dabby_Log_Generator.py
+      - name: Stale wisdom brief guard
+        # WISDOM_BRIEF.md is generated and committed; a diff here means an entry
+        # was edited without rerunning the generator (or the brief was hand-edited).
+        run: git diff --exit-code WISDOM_BRIEF.md
       - name: Prepare
         run: |
           mkdir -p _site

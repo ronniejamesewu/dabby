@@ -94,7 +94,7 @@ def _validate_manifest_preflight():
                     errors.append(
                         f"Jar '{slug}' line {lineno}: backslash + curly quote -- Edit-tool "
                         f"contamination. Fix by byte position with a Python script, not the "
-                        f"Edit tool (see HANDOFF_WISDOM.md failure modes)."
+                        f"Edit tool (see the fm-curly-quotes wisdom entry)."
                     )
                 if stripped.startswith('RUNS'):
                     in_runs = True
@@ -105,8 +105,8 @@ def _validate_manifest_preflight():
                         f"Jar '{slug}' line {lineno}: waypoints=BASELINE_CURVE "
                         f"inside RUNS -- use a frozen constant (BASELINE_420, "
                         f"BASELINE_416, etc.) so historical runs are immune to "
-                        f"future baseline changes. See HANDOFF_WISDOM.md "
-                        f"'Changing BASELINE_CURVE' failure mode."
+                        f"future baseline changes. See the "
+                        f"fm-baseline-change-protocol wisdom entry."
                     )
 
     if os.path.isdir(jar_dir):
