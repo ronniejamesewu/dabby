@@ -38,6 +38,7 @@ and the handoff graph below.
 | [correct-frozen-data](correct-frozen-data/SKILL.md) | Error in a previously logged run — "that run had the wrong rig" | new-rig (if a correction reveals a novel equipment config) |
 | [change-baseline](change-baseline/SKILL.md) | BASELINE_CURVE recommendation changing — rare, high-impact | (standalone) |
 | [wisdom-audit](wisdom-audit/SKILL.md) | Re-audit the wisdom entries (`wisdom/entries/<key>.py`, tracked in `wisdom/manifest.py`; surfaced via generated `WISDOM_BRIEF.md`) against primary run data — rare, high-impact, user-initiated | correct-frozen-data (if the audit finds wrong frozen data) |
+| [wisdom-budget](wisdom-budget/SKILL.md) | Generator prints a wisdom budget warning (brief soft-cap, full-block LIVE count, or per-entry-file size), or user asks to compress/trim/split the wisdom layer | (standalone) |
 
 ### Handoff graph
 
@@ -56,6 +57,9 @@ change-baseline (standalone, rare)
 
 wisdom-audit ──→ correct-frozen-data (if the audit finds wrong frozen data)
              (standalone, rare, user-initiated; proposes wisdom-entry changes for triage)
+
+wisdom-budget (standalone; fires on a generator budget warning or a user ask; proposes
+              tier moves / splits / compactions for triage, same as wisdom-audit)
 ```
 
 ## Skill template

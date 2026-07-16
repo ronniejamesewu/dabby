@@ -315,10 +315,12 @@ def brief_size_problems(brief_text, entries, live_keys):
                       f"do NOT delete detail (it lives in entry files, not here)")
     elif n > BRIEF_SOFT_CAP:
         warnings.append(f"WISDOM_BRIEF.md is {n} chars (soft cap {BRIEF_SOFT_CAP}) — "
-                        f"consider compressing settled entries")
+                        f"consider compressing settled entries; run the wisdom-budget "
+                        f"skill (.claude/skills/wisdom-budget/SKILL.md)")
     by_key = {e.key: e for e in entries}
     full_block = [k for k in live_keys if by_key[k].kind != 'decision']
     if len(full_block) > FULL_BLOCK_LIVE_WARN:
         warnings.append(f"{len(full_block)} full-block LIVE entries "
-                        f"(warn at {FULL_BLOCK_LIVE_WARN}) — compress or merge")
+                        f"(warn at {FULL_BLOCK_LIVE_WARN}) — compress or merge; run the "
+                        f"wisdom-budget skill (.claude/skills/wisdom-budget/SKILL.md)")
     return errors, warnings
