@@ -1,0 +1,697 @@
+/* ═══════════════════════════════════════════════════════════════
+   Dabby Session Log — Stylesheet
+   ═══════════════════════════════════════════════════════════════
+
+   Token map
+   ─────────
+   Surface   --bg / --surface / --surface-sub
+   Text      --text / --text-2 / --text-3
+   Borders   --rule / --rule-2
+   Action    --action  (single warm accent — nav CTAs + focus only)
+   Swab      --swab-hot / --swab-severe / --swab-cool  (semantic, not decorative)
+   Type      --font / --font-mono
+   Layout    --max-width / --page-pad / --radius
+
+   Chart line color is set inline in Chart.js script blocks as
+   oklch(18% 0.01 250). CSS cannot reach those values —
+   change them in Dabby_Log_Generator.py.
+
+   Per-strain accent colors are set as --accent on each .strain-row
+   via inline style. They appear only as the 3px left border.
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Surface ─────────────────────────────────── */
+  --bg:           oklch(97% 0.006 240);   /* page background */
+  --surface:      #ffffff;               /* doc background  */
+  --surface-sub:  oklch(96% 0.005 240);  /* insets, table alternates, search bg */
+
+  /* ── Text ────────────────────────────────────── */
+  --text:         oklch(13% 0.015 250);  /* primary */
+  --text-2:       oklch(40% 0.010 250);  /* secondary / labels */
+  --text-3:       oklch(52% 0.008 250);  /* tertiary / meta (min contrast floor) */
+
+  /* ── Borders ─────────────────────────────────── */
+  --rule:         oklch(90% 0.004 250);  /* standard dividers */
+  --rule-2:       oklch(82% 0.006 250);  /* emphasis / outer borders */
+
+  /* ── Action accent ───────────────────────────── */
+  /* Used only on: → Next / → Index links, focus rings */
+  --action:       oklch(46% 0.095 38);
+
+  /* ── Swab semantic colors ────────────────────── */
+  /* Functional — not decorative. Do not repurpose. */
+  --swab-hot:     #B85C00;
+  --swab-severe:  #8B0000;
+  --swab-cool:    #2255AA;
+
+  /* ── Type ────────────────────────────────────── */
+  --font:         system-ui, -apple-system, sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  /* ── Layout ──────────────────────────────────── */
+  --max-width:    780px;
+  --page-pad:     2rem;
+  --radius:       3px;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* ── Doc wrapper ─────────────────────────────────────── */
+
+.doc {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--rule-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ── Cover / Header ──────────────────────────────────────
+   One-line identity. No background, no hero treatment.
+   h1 left, subtitle right, separated by a bottom rule.  */
+
+.cover {
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.85rem var(--page-pad);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--rule-2);
+}
+
+.cover h1 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: var(--text);
+  margin-bottom: 0;
+}
+
+.cover .subtitle {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 300;
+  color: var(--text-3);
+  letter-spacing: 0.04em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Sections ────────────────────────────────────────── */
+
+.section {
+  padding: 1.5rem var(--page-pad);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section:last-child { border-bottom: none; }
+
+/* ── Section header strip ────────────────────────────────
+   Label treatment — small uppercase, tertiary color.
+   Weight and rule carry the hierarchy, not the type size. */
+
+.section-header {
+  background: transparent;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-header.grey {
+  background: transparent;
+  border-bottom-color: var(--rule);
+}
+
+.section-header h2 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0;
+}
+
+.section-header.grey h2 { color: var(--text-3); }
+
+/* ── Info table ──────────────────────────────────────── */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.info-table tr { border-bottom: 1px solid var(--rule); }
+.info-table tr:last-child { border-bottom: none; }
+
+.info-table td {
+  padding: 0.55rem 0.75rem;
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  font-weight: 600;
+  color: var(--text-2);
+  width: 28%;
+  white-space: nowrap;
+}
+
+.info-table td:last-child { color: var(--text); }
+
+/* ── Curve table ─────────────────────────────────────── */
+
+.curve-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.curve-table th {
+  background: var(--surface-sub);
+  color: var(--text-2);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--rule-2);
+}
+
+.curve-table th.amber-header {
+  background: var(--surface-sub);
+  color: var(--action);
+}
+
+.curve-table td {
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+}
+
+.curve-table tr:nth-child(even) td { background: var(--surface-sub); }
+.curve-table tr:last-child td { border-bottom: none; }
+
+.curve-table td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.curve-table td:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* ── Swab table ──────────────────────────────────────── */
+
+.swab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.swab-table tr { border-bottom: 1px solid var(--rule); }
+.swab-table tr:last-child { border-bottom: none; }
+
+.swab-table td { padding: 0.55rem 0.75rem; vertical-align: top; }
+.swab-table td:first-child { font-weight: 700; width: 30%; }
+
+/* Swab key colors are semantic — retained as-is */
+.swab-key.target  { color: var(--text); }
+.swab-key.hot     { color: var(--swab-hot); }
+.swab-key.severe  { color: var(--swab-severe); }
+.swab-key.cool    { color: var(--swab-cool); }
+
+/* ── Result rows ─────────────────────────────────────── */
+
+.result-row { margin: 0.5rem 0; font-size: 0.875rem; }
+.result-row .label { font-weight: 700; color: var(--text-2); }
+.result-row.amber .label { color: var(--action); }
+
+/* ── Typography ──────────────────────────────────────── */
+
+h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-2);
+  margin: 1.2rem 0 0.5rem;
+}
+
+h3.amber { color: var(--action); }
+
+p {
+  font-size: 0.875rem;
+  color: var(--text);
+  margin: 0.5rem 0;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* Notes: structural left border, subtle inset — not decorative */
+.note {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin: 0.75rem 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--rule-2);
+  background: var(--surface-sub);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.meta {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--text-3);
+  margin-top: 0.3rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Strain browser ──────────────────────────────────── */
+
+.strain-browser {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 380px;
+  margin-bottom: 1rem;
+}
+
+.search-wrap {
+  flex-shrink: 0;
+  padding: 0.5rem;
+  background: var(--surface-sub);
+  border-bottom: 1px solid var(--rule);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-family: var(--font);
+  background: var(--surface);
+  color: var(--text);
+  -webkit-appearance: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.search-input::placeholder { color: var(--text-3); }
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--action);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--action) 14%, transparent);
+}
+
+.strain-list {
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.strain-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem 0.6rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  border-left: 3px solid var(--accent, var(--rule-2));
+  transition: background 0.1s;
+}
+
+.strain-row:last-child { border-bottom: none; }
+.strain-row:hover { background: var(--surface-sub); }
+.strain-row.hidden { display: none; }
+
+.strain-info { flex: 1; min-width: 0; }
+
+.strain-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.strain-name:hover { color: var(--action); }
+
+.strain-meta {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--text-3);
+  margin-top: 0.1rem;
+  letter-spacing: 0.01em;
+  display: block;
+}
+
+.strain-next {
+  font-size: 0.78rem;
+  color: var(--text-2);
+  margin-top: 0.12rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 1.4;
+}
+
+/* .next-pill restyled as plain text link — no pill shape */
+.next-pill {
+  display: inline;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--action);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+  transition: opacity 0.12s;
+}
+
+.next-pill:hover {
+  background: none;
+  transform: none;
+  opacity: 0.6;
+  color: var(--action);
+}
+
+.no-results {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  display: none;
+}
+
+/* ── Dashboard stats grid ────────────────────────────────
+   Data grid — no card backgrounds or decorative borders.
+   Mobile-first: 2-col; 3-col from 500px (see below).    */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-top: none !important;   /* override .c1–.c9 colored top borders */
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.6rem 0.8rem 0.55rem;
+  text-align: left;
+}
+
+/* 2-col: last column, last row */
+.stat-card:nth-child(2n) { border-right: none; }
+.stat-card:nth-child(8),
+.stat-card:nth-child(9)  { border-bottom: none; }
+.stat-card:nth-child(9)  { grid-column: span 2; border-right: none; }
+
+/* Nullify all c1–c9 accent top borders */
+.stat-card.c1, .stat-card.c2, .stat-card.c3,
+.stat-card.c4, .stat-card.c5, .stat-card.c6,
+.stat-card.c7, .stat-card.c8, .stat-card.c9 {
+  border-top: none !important;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+/* ── Collapsible sections ─────────────────────────────── */
+
+details.collapsible {
+  border-bottom: 1px solid var(--rule);
+}
+
+details.collapsible:last-child { border-bottom: none; }
+
+details.collapsible > summary {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  padding: 0.85rem var(--page-pad);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  transition: background 0.1s;
+}
+
+details.collapsible[open] > summary {
+  background: var(--surface-sub);
+  border-bottom-color: var(--rule);
+}
+
+details.collapsible.grey > summary       { background: transparent; }
+details.collapsible[open].grey > summary { background: var(--surface-sub); border-bottom-color: var(--rule); }
+
+details.collapsible > summary::-webkit-details-marker { display: none; }
+
+details.collapsible > summary h2 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  flex: 1;
+  margin: 0;
+}
+
+details.collapsible.grey > summary h2 { color: var(--text-3); }
+
+details.collapsible > summary::after {
+  content: '›';
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text-3);
+  line-height: 1;
+  transition: transform 0.18s ease;
+  display: inline-block;
+}
+
+details.collapsible[open] > summary::after { transform: rotate(90deg); }
+
+details.collapsible > .collapsible-body { padding: 1.5rem var(--page-pad); }
+
+/* ── Pill group ──────────────────────────────────────── */
+
+.pill-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* ── Terpene reference table ──────────────────────────── */
+
+.terp-ref-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+}
+
+.terp-ref-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.terp-ref-table th {
+  background: var(--surface-sub);
+  color: var(--text-2);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--rule-2);
+  white-space: nowrap;
+}
+
+.terp-ref-table td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.terp-ref-table tr:hover td { background: var(--surface-sub); }
+
+.terp-ref-table .band-row td {
+  background: var(--surface-sub);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0.3rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.terp-alias {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  display: block;
+}
+
+.bp-cell {
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-2);
+}
+
+.band-badge {
+  display: inline-block;
+  padding: 0.18rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Band badge colors are semantic (temperature bands) — retained */
+.band-low  { background: #D6EAF8; color: #1A4A6B; }
+.band-mid  { background: #FFF0CC; color: #8A6000; }
+.band-high { background: #FFE5CC; color: #7A3000; }
+
+/* ── Footer ──────────────────────────────────────────── */
+
+.footer {
+  padding: 1rem var(--page-pad);
+  background: var(--surface-sub);
+  font-size: 0.78rem;
+  color: var(--text-3);
+  font-style: italic;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Curve chart ─────────────────────────────────────── */
+
+.curve-chart-wrap {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.75rem 0.5rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.curve-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+
+.curve-chart-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-line {
+  width: 22px;
+  height: 2.5px;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+
+/* 3-col stats from 500px */
+@media (min-width: 500px) {
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Reset 2-col overrides */
+  .stat-card:nth-child(2n) { border-right: 1px solid var(--rule); }
+  .stat-card:nth-child(8)  { border-bottom: 1px solid var(--rule); }
+  .stat-card:nth-child(9)  { grid-column: auto; }
+
+  /* 3-col: right border off col 3, bottom border off last row */
+  .stat-card:nth-child(3n)        { border-right: none; }
+  .stat-card:nth-last-child(-n+3) { border-bottom: none; }
+}
+
+/* General mobile */
+@media (max-width: 600px) {
+  :root { --page-pad: 1rem; }
+  body { padding: 0.5rem; }
+  .info-table td:first-child { width: 35%; white-space: normal; }
+  .pill-group { flex-direction: column; gap: 0.3rem; align-items: flex-end; }
+}
+
+/* Full-bleed on small phones */
+@media (max-width: 480px) {
+  body { padding: 0; }
+  .doc { border-left: none; border-right: none; border-radius: 0; }
+}
