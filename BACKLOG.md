@@ -75,6 +75,102 @@ history in git).
 
 ---
 
+## Model-Tier Sort — dated snapshot (July 16, 2026, Session 166)
+
+A ranking of every item above by which model tier actually suits it, produced when
+the user asked "which items are most suitable for a Fable session" during the wisdom
+migration build. **This is a snapshot tied to the Open list as it stood on the date
+above — it goes stale the moment an item is added, resolved, or reworded.** A future
+Claude asked to re-sort should not assume this ordering still holds; re-derive it
+against the live Open list using the method below, and either replace this section or
+append a new dated one (whichever keeps the file more honest about drift).
+
+**Method.** The question is never "which model is smartest" — it's where judgment
+errors are expensive and hard to catch versus where the task is a well-specified
+floor. Concretely: (1) does the task require compressing or re-deriving something
+where drift is easy to produce and hard to self-catch (the project's most documented
+failure class)? (2) is it a design call with no existing spec — i.e. would a fresh
+session have to invent the shape of the solution, not just execute one? (3) is the
+task self-referential — designing a process that checks *this* project's own
+processes? Any "yes" pulls toward Fable. Where the item's own text already enumerates
+the design questions, options, and constraints, a senior-but-cheaper model can execute
+against that spec safely — the pre-digestion is what makes it safe, not the topic.
+Purely mechanical extraction, small schema additions with the questions already
+listed, and skill/doc edits are Sonnet. Anything the item's own text says needs no
+model ("no model needed," a script over existing data) is script-tier. Physical
+actions (weighing, cleaning, freezing, asking a friend a question) aren't AI work at
+any tier. A separate axis, orthogonal to all of this: several items are **trigger-gated
+and not ready regardless of tier** — they wait on a recurrence, a data threshold, or
+runs that don't exist yet; their tier assignment is for *when* they fire, not now.
+
+**Fable-suitable (compression-with-drift-risk, unspecified design, or
+self-referential process design):**
+- **Dabby as open-source companion spec** — voice-preserving compression with no
+  playbook; the failure mode (strip citations, keep unearned confidence) is exactly
+  the drift class self-review misses.
+- **Fix the pre-send register-leak check's syntactic blind spot** — the open question
+  is whether this class of leak can be mechanized *at all*; a blinded diagnostic
+  exercise is on file specifically for a fresh mind to test that question
+  independently.
+- **Baseline-change proposal** — *trigger-gated* (waiting on a session-order-matched
+  head-to-head that doesn't exist yet). The highest-stakes methodology call in the
+  project once the evidence lands — changes what every new jar defaults to, collides
+  with the first-run potency-safety caution. Fable when the data exists, not before.
+- **IRB sub-agent for What to Try Next review** — *trigger-gated* (deferred pending a
+  recurrence of the researcher-participant conflict). Designing a process that audits
+  this project's own recommendation process is the self-referential case.
+
+**Opus-with-a-good-spec (real judgment, but bounded by constraints already stated in
+the item):**
+- **Workflow simplification (PR-optional logging)** — designing a "rendered-diff gate
+  with teeth" against two logged silent-content-loss incidents; the safety bar is
+  real even though the item scopes it tightly.
+- **Build spec — session-close-handoff skill** — the checklist-wrapping spec is
+  already enriched; what's left is the mechanism call (real harness gate vs. prose
+  self-report) — a judgment question about tooling capability, not content.
+- **Lifecycle flag on `StrainStatus`** — *trigger-gated* (needs an actual manifest-move
+  miss Q7 didn't catch). When it fires: simultaneous edits to `Dabby_Core.py` and
+  ~17 jar files with no test suite — wants supervision even though the shape is
+  known.
+- **SessionStart hook to enforce required file reads** — *dormant* (revisit only if
+  skill-triggering proves unreliable in practice). The tradeoff analysis is already
+  done (Session 101) — this is a re-evaluate-the-premise task, not a build.
+
+**Sonnet-sized (spec is in the item, or the work is mechanical extraction /
+small schema addition / skill-doc edit):**
+`wisdom-budget` skill · `curve-design-theory` split-or-compact · CLAUDE.md User
+Configuration block · Jar-return check (pick between two pre-analyzed options) ·
+Check selected model at dab-skill start · Debug-deploy skill · Curve schema
+Switch profile-slot color code (design questions already enumerated, device facts
+already gathered) · Strain effect-character field ("yoga strain") · Load class into
+the verbatim record at logging · `sessions_prior_today` vs. continuous-session order
+(one narrow judgment call, not open-ended like the register-leak item) · Mechanical
+session-open equipment/clean reminder · Pre-dab tasting-notes / flavor prediction ·
+Visual distinction between What to Try Next and new-strain onboarding · Pearl-bearing
+Rig 6 variant (the schema half, once the physical bench-check is done). Strain-to-
+strain temperature variance on Rig 6 is a methodology conversation with the user, not
+a build — any capable model with the wisdom layer loaded handles it credibly.
+
+**Script, not a session:**
+- **Mechanical run-facts dump script** — the item's own text says "no model needed."
+
+**Not AI work at any tier (physical, or someone else's action):**
+- Session date backfill (user's memory) · Quantify "rice grain" load (a scale) ·
+  Control water temperature and change frequency (practice change) · Dab rig vs.
+  erig temperature ranges — Oliver consult (a friend) · Percolation glass as a
+  testable harshness variable (glassware + a run) · Fresh-press storage
+  portion-and-freeze (a freezer) · Draw velocity and cap-pearl dynamics (waiting on
+  a deliberate isolation run, not a session).
+
+**Headline, dated:** after the wisdom migration, the backlog is thin on Fable-shaped
+work — only the companion spec is genuinely ready for it today; the other three
+Fable-tier items are trigger-gated. Most of what remains is well-specified floor work
+because prior sessions already did the design thinking and left it in the item text —
+which is itself the thing to preserve when adding new items: a well-specified item is
+a gift to whichever model tier eventually picks it up.
+
+---
+
 ## Completed
 
 - ~~**Visual overhaul of the log**~~ — **COMPLETED Session 113.** New designer CSS; forest green retired.
