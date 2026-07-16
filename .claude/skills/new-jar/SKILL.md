@@ -254,7 +254,7 @@ dizziness after a heavy jar opener). `pending_dab.py brief` also prints this
 caution mechanically for any zero-run jar, but the jar copy renders in What
 to Try Next where the brief doesn't reach — write both, they're not
 redundant —
-and note anything from `HANDOFF_WISDOM.md` that's genuinely relevant to a
+and note anything from `WISDOM_BRIEF.md` (already read at session open) that's genuinely relevant to a
 first run on this genetics/format combination (e.g. a multi-component jar
 needs the load-position caveat from step 3). If nothing specific applies,
 say so plainly rather than padding — `next_text` stays the boilerplate `'No

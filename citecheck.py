@@ -30,7 +30,10 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 
 # Docs scanned for run citations (the charter's list):
-CITATION_DOCS = ['HANDOFF_WISDOM.md', 'Dabby_Handoff_Notes.md', 'Dabby_Methodology.md']
+# HANDOFF_WISDOM.md retired July 15, 2026 — wisdom citations now live in
+# wisdom/entries/*.py and are validated by the generator (citation-integrity
+# check in wisdom_core.validate_wisdom) on every run.
+CITATION_DOCS = ['Dabby_Handoff_Notes.md', 'Dabby_Methodology.md']
 # Docs scanned for filename / identifier mentions (wider prose+skills net):
 MENTION_DOCS = CITATION_DOCS + [
     'CLAUDE.md', 'Dabby_UI_Principles.md', 'DESIGN_BRIEF.md',

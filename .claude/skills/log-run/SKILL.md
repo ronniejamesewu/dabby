@@ -62,8 +62,9 @@ memory of it.
 **0. Session state.** If the session-open sequence hasn't run this session,
 do it now — in short: `git checkout main && git pull` (unless mid-work on a
 feature branch with uncommitted changes), read all three of
-`HANDOFF_STATE.md` / `HANDOFF_WISDOM.md` (in full — page through if the
-Read reports truncation) / `Dabby_Handoff_Notes.md`, and check open PRs. The dab skill's steps 2–5 are
+`HANDOFF_STATE.md` / `WISDOM_BRIEF.md` (one Read — the bounded, generated
+brief; never read all of `wisdom/entries/` at session open) /
+`Dabby_Handoff_Notes.md`, and check open PRs. The dab skill's steps 2–5 are
 the full definition if anything here is unclear. Never draft a readback from
 stale or unread state.
 
@@ -167,16 +168,22 @@ in chat.** Select the applicable recipes from the analysis-toolkit skill
 (`.claude/skills/analysis-toolkit/SKILL.md`) before drafting — scan the
 trigger conditions and apply every recipe that matches. Then apply the
 sourcing and confidence rules from `Dabby_Handoff_Notes.md` (`analysis` traces every
-claim to this session's report, this strain's history, or the wisdom layer;
+claim to this session's report, this strain's history, or the wisdom brief;
 equipment differences between compared runs are confounds; user hypotheses
 enter at "user suggested X" weight) and the epistemic flags in `CLAUDE.md`.
-Check `HANDOFF_WISDOM.md` for cross-strain patterns before writing —
+Check `WISDOM_BRIEF.md` for cross-strain patterns before writing —
 abandoning established equipment framing for an improvised mechanism is a
 documented failure mode. `next_ai_analysis` is a concrete recommendation
 with brief reasoning, 4–5 sentences max, not a recap — and it ends with the
 predict-before-running pair (one sentence of expected observation, one of
 what would surprise, written before the run exists; convention in
 `Dabby_Handoff_Notes.md`, What to Try Next — AI Analysis).
+
+Before finalizing `analysis` or `next_ai_analysis`: list every wisdom entry
+key the draft cites, compares against, or would change, and Read
+`wisdom/entries/<key>.py` for each one first. Instance-level claims (run
+details, confounds, provenance) may only be written from an entry file or a
+jar file — never from the brief.
 
 Present the drafts under their settled display labels (Session 49 decision)
 — never under the field names:
@@ -198,7 +205,7 @@ prompt).
 
 The step 4 pre-send check applies here too. Register inside analysis prose:
 the strain being logged gets its full name; cross-strain run citations follow
-the log's established style as the wisdom layer writes them (e.g. "FW106 R26",
+the log's established style as wisdom entries write them (e.g. "FW106 R26",
 "BB36 #2") — that shorthand is rendered convention, not a leak.
 
 Show both drafts and wait. Approval = an explicit go-ahead, corrections to
@@ -317,7 +324,7 @@ focused — full pipeline through a clean no-env-var generate, validator
 cross-checks passed, queue entry auto-pruned. Leakage grep over the
 user-facing messages: readback, draft headers, and status line all clean —
 zero machine-side vocabulary (the Session 143 leak surfaces). Finding
-applied same day: analysis-draft citations use the wisdom layer's short-form
+applied same day: analysis-draft citations use wisdom entries' short-form
 register (step 5's register note is the fix). This variant did not re-verify
 golden-match field accuracy — for suspected mechanical-field regressions,
 re-run the July 2, 2026 golden-run replay (Watermellos Run 18 stripped from
