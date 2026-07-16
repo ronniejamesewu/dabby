@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 14, 2026 — Session 164 (Sour Tangie Runs 9 and 10, grey 450°F bounded-hold + shorter descent, Rig 6; R9 the clean modest single-cycle first-dab read Runs 5–8 all missed — beige swab, mild, no chest; R10 bigger load and two cycles but short draws, still no chest. Chest/heartburn-quality harshness now tracked neutrally as the user's esophageal anatomy — mechanism in a separate private writeup, kept out of the rendered log. Retired the completed full-clean reminder; added the process-narration failure mode + 'meta' flag.)
+## Last updated: July 16, 2026 — Session 165 (Infra: wisdom layer rebuilt as data — HANDOFF_WISDOM.md retired for generated WISDOM_BRIEF.md + typed wisdom/entries/ with validators, PR #250; session-open gate now two-tier; four review streams triaged with all verified findings fixed; invented-specificity failure mode recorded; Session 164's chest-row delta transposed during the merge; notes-split design + pickup protocol archived pre-symptom, PR #251.)
 
 ---
 
@@ -269,6 +269,7 @@ These are caught by code or encoded as explicit skill steps; kept as one-liners 
 
 ## Before Next Session
 
+- *(after August 1, 2026)* Remove the HANDOFF_WISDOM.md tombstone (one release cycle elapsed; full file frozen at commit 4ae0674).
 - *(after August 1, 2026)* Prune local branches — re-run the zero-commit scan from the July 2 pruning session.
 - *(after October 1, 2026)* Re-evaluate analysis preview step — still drafting both `analysis` and `next_ai_analysis` in chat for user review before writing? Reviewed June 4 and July 1, kept both times.
 

@@ -44,6 +44,8 @@ LIVE = [
     'fm-frozen-prose-not-promoted',
     'fm-bamboo-swab-artifact',
     'fm-write-gate-doctrine',
+    'fm-piped-exit-code-masking',
+    'fm-cross-session-write-collision',
     # decision
     'dec-curve-shape-classifier',
     'dec-read-verdict-superseded',
