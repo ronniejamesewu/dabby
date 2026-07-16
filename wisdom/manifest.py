@@ -112,7 +112,8 @@ def _validate_manifest_preflight():
         if size > 20_000:
             print(f"WISDOM WARNING: entry '{key}' is {size} bytes (warn at 20000) — "
                   f"split the entry (new keys, lineage note in prose) or compact "
-                  f"fully-superseded positions to git with a pointer note.")
+                  f"fully-superseded positions to git with a pointer note; run the "
+                  f"wisdom-budget skill (.claude/skills/wisdom-budget/SKILL.md).")
         with open(path, encoding='utf-8') as fh:
             for lineno, line in enumerate(fh, 1):
                 stripped = line.strip()
