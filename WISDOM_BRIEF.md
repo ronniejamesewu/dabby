@@ -186,6 +186,16 @@
 **Watch:** Readback silently not firing on a clear results report, especially inside a rich analytical exchange around the dab where the turn reads as exploration, not a log signal.
 *2 citations (2 confirm / 0 counter) | upd Diagnosed Session 158 (July 6–11 regression); fixed July 11, 2026; recurred Session 162 (July 13, 2026)*
 
+### fm-piped-exit-code-masking  [failure-mode]
+**Claim:** Piping the generator's output (e.g. through tail) masks its exit code — a failing validation looks green to a shell chain keyed on the pipe's last command, and a broken state can be committed and pushed before anyone notices.
+**Guidance:** Check the generator's exit status explicitly — run it unpiped, or test its own status immediately — before any commit that includes its outputs. A red generator inside a green-looking pipeline has shipped once already.
+*1 citations (1 confirm / 0 counter) | upd Session 165 (July 16, 2026)*
+
+### fm-cross-session-write-collision  [failure-mode]
+**Claim:** Parallel sessions can both legitimately edit the same shared knowledge surface — a logging session's close and an open restructuring branch collided on the wisdom layer; the merge would have silently deleted the logging session's update.
+**Guidance:** Before merging any branch that restructures a shared surface, diff that surface against current main and transpose any concurrent delta explicitly — a session-scoped freeze cannot bind sessions that don't know about it. Per-entry sharding narrows the blast radius; same-entry edits still collide.
+*1 citations (1 confirm / 0 counter) | upd Session 165 (July 16, 2026)*
+
 ## Working Theory
 
 ### thermal-model  [theory | directional]
