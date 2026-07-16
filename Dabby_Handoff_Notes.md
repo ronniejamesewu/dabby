@@ -1,5 +1,5 @@
 # Dabby — Conversation Handoff Notes
-## Last updated: July 14, 2026 — Session 164 (Sour Tangie Runs 9 and 10, grey 450°F bounded-hold + shorter descent, Rig 6; R9 the clean modest single-cycle first-dab read Runs 5–8 all missed — beige swab, mild, no chest; R10 bigger load and two cycles but short draws, still no chest. Chest/heartburn-quality harshness now tracked neutrally as the user's esophageal anatomy — mechanism in a separate private writeup, kept out of the rendered log. Retired the completed full-clean reminder; added the process-narration failure mode + 'meta' flag.)
+## Last updated: July 15, 2026 — Session 165 (Sour Tangie Runs 11–13, grey 450°F bounded-hold + shorter descent, Rig 6; three same-day dabs. R11 the clean modest first dab that came back clean despite *long* draws (short draws forgotten) — weakening draw technique as the chest lever. R12 larger two-cycle load, throat-only; R13 third dab, throat building (day-accumulation). Chest leg now absent five straight (R9–R13) since the insert deep-clean and material curing began together — confounded, live candidate, no-provoke passive test as residue rebuilds. Within-day throat harshness escalated across the three. Wisdom row (A) updated.)
 
 ---
 
