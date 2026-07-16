@@ -157,6 +157,37 @@ ENTRY = WisdomEntry(
                       "hard-draw-on-a-full-load cell stays untested — R10's only long "
                       "draw hit a spent insert.",
         ),
+        Citation(
+            source='sourtangie R11',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 15, 2026 — grey 450°F bounded-hold + shorter descent, first "
+                 "dab, modest load, single cycle — clean, no chest, despite *long* "
+                 "draws (the short-draw plan was forgotten). The "
+                 "long-draw-through-a-present-modest-cycle cell R9/R10 never "
+                 "isolated; staying clean weakens draw length as what keeps chest "
+                 "away.",
+            confounds="Modest load, single cycle — a present cycle but not a full "
+                      "load; the hard-draw-on-a-full-load cell stays untested.",
+        ),
+        Citation(
+            source='sourtangie R12',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 15, 2026 — same grey 450°F curve, larger two-cycle load, "
+                 "throat-only mild harshness in the last third of cycle 1, no chest "
+                 "— sits in the R7/R8 load/cycle territory that threw chest and "
+                 "stayed chest-free.",
+            confounds="2nd dab, larger taffy load (imprecise portioning), two cycles.",
+        ),
+        Citation(
+            source='sourtangie R13',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 15, 2026 — same grey 450°F curve, normal load, throat "
+                 "harshness building (read as day-accumulation), no chest.",
+            confounds="3rd dab, two cycles (stopped one hit into the second).",
+        ),
     ],
     positions=[
         Position(
@@ -198,6 +229,24 @@ ENTRY = WisdomEntry(
                  "established. [Transposed verbatim from the Session 164 row update "
                  "during the July 15 migration merge.]",
         ),
+        Position(
+            stated='Session 165 (July 15, 2026)',
+            text="Sour Tangie R11–R13 extend the chest absence to five straight "
+                 "(R9–R13) across modest-to-larger loads and one/two cycles. R11 "
+                 "drew *long* through a present modest cycle and stayed clean, so "
+                 "draw length is no longer the leading explanation for the absence "
+                 "— the R9/R10 draw-technique read is weakened. What flipped at R9 "
+                 "and has held: the insert deep-clean and the material beginning to "
+                 "cure, two changes that moved together (confounded); intermittent "
+                 "chest is also consistent with noise (R4, pre-clean, was itself "
+                 "chest-free, so the boundary isn't absolute). The deep-clean/curing "
+                 "coincidence is the live candidate at observation weight; the "
+                 "no-provoke test is whether chest re-emerges as insert residue "
+                 "rebuilds before the next deep clean. Separately, within-day "
+                 "*throat* harshness (distinct from the chest facet) escalated R11 "
+                 "clean → R12 mild → R13 building, consistent with within-day "
+                 "cumulative exposure.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
@@ -206,5 +255,5 @@ ENTRY = WisdomEntry(
                     "itself — hot-open may be a proxy.",
     watch_for="A clean chest+lingers replication to move the conjunction off two "
               "instances.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026)",
 )
