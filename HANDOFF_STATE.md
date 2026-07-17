@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 159 across 20 strains
+- **Total runs:** 160 across 20 strains
 - **Active since:** May 2, 2026 (76 days)
 - **Last run date:** July 16, 2026
-- **Most recent run (all jars, by utc_logged_at):** Papaya + Z Pie #22 Run 8 — July 16, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Papaya + Z Pie #22 Run 9 — July 16, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -197,11 +197,11 @@
 ---
 
 ### Papaya + Z Pie #22
-**8 sessions** &nbsp;·&nbsp; Next run: 9 &nbsp;·&nbsp; Last: July 16, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**9 sessions** &nbsp;·&nbsp; Next run: 10 &nbsp;·&nbsp; Last: July 16, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 9: repeat the 450°F descent (450→450@10s→425@30s→410@45s), modest load, single cycle, as a first dab of the day — confirm the clean deliver and pull the session-order confound
+**Next:** Run 10: deep-clean the insert, then rerun the grey 450°F descent (450→450@10s→425@30s→410@45s) as a first-dab, modest, single cycle — isolate whether the toast is temperature or residue
 
-**AI Analysis:** The 450°F descent delivered clean first try — depleted at the floor, beige swab, no harshness, no chest — so it supersedes the 415°F-floor plan, which only existed to fix Run 7's leftover material. Repeat it exactly, modest load, single cycle, but as a genuine first dab of the day: this was a 2nd dab, and a first-dab replicate confirms the clean deliver and pulls the session-order confound off both intensity and the chest-absence. Keep the load modest — chest tracks load here and across Sour Tangie, and Run 7 (papz's one chest instance) was the larger-load descent; if you want more punch load is the lever, but that's a deliberate comfort tradeoff, not a clean-read move. Expected: clean again — light swab, no chest, depletes near the 45s floor, maybe a touch more punch as a first dab. Surprising: chest on a clean modest first dab — that moves papz's chest signal off load toward the hot open itself (as Sour Tangie R14 reopened it), or harshness before depletion, saying even a modest load hits a 450°F ceiling here.
+**AI Analysis:** Run 9's toast read is confounded — the insert was carrying days of reclaim, so cycle 2 coming clean at 430°F could be the cooler open or just the residue already burned off. Deep-clean first, then rerun the grey 450°F on a first-dab modest single cycle: a clean insert removes the residue variable, so toast-or-not reads cleanly as temperature. Hold the load modest and make it a first dab to also settle the unfinished clean-deliver confirmation — Run 8 was a 2nd dab, Run 9 a normal-load 3rd, so a modest first-dab replicate still hasn't happened. Expected: on a clean insert the 450°F open comes back toast-free, pinning Run 9's toast on accumulated reclaim, and the 450°F curve stays. Surprising: toast on the opening draw even with a deep-cleaned insert — that confirms 450°F is genuinely a touch hot here, and the next move is dropping the open to 440°F (the user's instinct), where Run 9's teal 430°F cycle says the flavor still lands.
 
 **Proposed Curve:**
 - 0s → 450°F — Session open — hot open
