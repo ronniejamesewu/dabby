@@ -212,6 +212,19 @@ ENTRY = WisdomEntry(
                       "negative rests on the throat-stated location plus the "
                       "logging-time ask (retroactive-ask provenance).",
         ),
+        Citation(
+            source='lhbh R8',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 17, 2026 — grey 450°F bounded-hold descent, this jar's "
+                 "first hot open — 'Throat harshness' when asked throat vs chest; "
+                 "no chest in-session on a big-load, 3.5-cycle first dab, the "
+                 "load/cycle territory that has thrown chest elsewhere. "
+                 "Post-session window asked but not answered — logged as not "
+                 "stated, not as a checked negative.",
+            confounds="First dab; big load; 3.5 cycles; heavy terpene-load "
+                      "coughing masked harshness reads.",
+        ),
     ],
     positions=[
         Position(
@@ -283,6 +296,14 @@ ENTRY = WisdomEntry(
                  "not the hot open itself); papz's own R7 chest instance was its "
                  "larger-load descent.",
         ),
+        Position(
+            stated='Session 170 (July 17, 2026)',
+            text="lhbh R8 puts the no-chest boundary on a third strain — a "
+                 "big-load, 3.5-cycle first dab at a 450°F open with throat-only "
+                 "harshness. Unlike papzp22 R9, the post-session window was asked "
+                 "and not answered, so it stays a location-only counter, not a "
+                 "checked negative.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
@@ -291,5 +312,5 @@ ENTRY = WisdomEntry(
                     "itself — hot-open may be a proxy.",
     watch_for="A clean chest+lingers replication to move the conjunction off two "
               "instances.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026)",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026)",
 )
