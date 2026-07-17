@@ -6,11 +6,13 @@ ENTRY = WisdomEntry(
     claim="Descent curve changes limiting factor from harshness to intensity.",
     guidance="A descent curve (open hot, move off peak immediately) front-loads the "
              "terpene bolus and shifts the stopping condition off harshness — expect "
-             "depletion, intensity, or satiety to end the session instead. Evidence is "
-             "all Rig 6 and first-dab; treat cross-rig effects as untested and load as varied but unresolved.",
+             "depletion, intensity, or satiety to end the session instead. All Rig 6; "
+             "no longer all first-dab (papzp22 R8/R9). Cross-rig untested; load "
+             "varied, unresolved.",
     grade='observation',
-    grade_basis="Low — four strains, all first-dab runs, all Rig 6; consistent "
-                "direction, single-rig.",
+    grade_basis="Low — five strains, all Rig 6; originally all first-dab — "
+                "papzp22 R8/R9 (July 16, 2026) add 2nd- and 3rd-dab instances on "
+                "the bounded-hold variant; consistent direction, single-rig.",
     evidence=[
         Citation(
             source='fw106 R23',
@@ -52,6 +54,29 @@ ENTRY = WisdomEntry(
                       "bounded-hold variant rather than the pure descent — shape isn't "
                       "identical across the four.",
         ),
+        Citation(
+            source='papzp22 R8',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 16, 2026 — grey 450°F bounded-hold + shorter descent, "
+                 "single cycle — 'no harshness'; session ended at depletion "
+                 "('Load was depleted by end of cycle'). First non-first-dab "
+                 "instance in the set.",
+            confounds="2nd dab; bounded-hold variant, not the pure descent; load "
+                      "per plan (modest) — not restated by user.",
+        ),
+        Citation(
+            source='papzp22 R9',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 16, 2026 — grey 450°F cycle 1 into teal 430°F cycle 2, "
+                 "normal load, 3rd dab — stopped with ~14s left on 'seemed wispy' "
+                 "and having had enough (satiety), not harshness; mild cycle-1 "
+                 "throat harshness appeared but wasn't limiting (dbrb R1-style "
+                 "caveat).",
+            confounds="3rd dab, two cycles, mid-dab curve switch; bounded-hold "
+                      "variant.",
+        ),
     ],
     positions=[
         Position(
@@ -75,5 +100,5 @@ ENTRY = WisdomEntry(
     watch_for="A descent run on Rig 5 (none logged yet) would test cross-rig "
               "generalization; holding load constant would isolate the unresolved load "
               "variable.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026',
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026)',
 )

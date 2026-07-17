@@ -188,6 +188,30 @@ ENTRY = WisdomEntry(
                  "harshness building (read as day-accumulation), no chest.",
             confounds="3rd dab, two cycles (stopped one hit into the second).",
         ),
+        Citation(
+            source='papzp22 R8',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 16, 2026 — grey 450°F bounded-hold descent, first run of "
+                 "this curve on the strain — 'no harshness' at all, and no chest "
+                 "during or after (post-session window confirmed at logging); the "
+                 "Sour Tangie R9/R11 clean modest-single-cycle cell reproducing on "
+                 "a second strain.",
+            confounds="2nd dab; load per plan (modest) — not restated by user.",
+        ),
+        Citation(
+            source='papzp22 R9',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 16, 2026 — grey 450°F cycle 1 into a teal 430°F cycle 2 — "
+                 "mild throat-only harshness, no chest during or after either of "
+                 "the day's sessions (asked at logging); normal load, two cycles, "
+                 "3rd dab — the load/cycle/order territory that has thrown chest "
+                 "elsewhere, staying chest-free.",
+            confounds="Chest not asked at session time — the during-session "
+                      "negative rests on the throat-stated location plus the "
+                      "logging-time ask (retroactive-ask provenance).",
+        ),
     ],
     positions=[
         Position(
@@ -247,6 +271,18 @@ ENTRY = WisdomEntry(
                  "clean → R12 mild → R13 building, consistent with within-day "
                  "cumulative exposure.",
         ),
+        Position(
+            stated='Session 169 (July 16, 2026)',
+            text="papzp22 R8/R9 (July 16, 2026) put the no-chest boundary on a "
+                 "second strain: the grey 450°F bounded-hold descent ran a modest "
+                 "single-cycle 2nd dab (R8) and a normal-load two-cycle 3rd dab "
+                 "(R9) with no chest during or after — R9's post-session window "
+                 "explicitly checked at logging, the first checked negative in the "
+                 "window where Sour Tangie R14's chest arrived. Consistent with "
+                 "the counter-reading (chest co-varies with load/cycle/residue, "
+                 "not the hot open itself); papz's own R7 chest instance was its "
+                 "larger-load descent.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
@@ -255,5 +291,5 @@ ENTRY = WisdomEntry(
                     "itself — hot-open may be a proxy.",
     watch_for="A clean chest+lingers replication to move the conjunction off two "
               "instances.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026)",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026)",
 )

@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 158 across 20 strains
+- **Total runs:** 160 across 20 strains
 - **Active since:** May 2, 2026 (76 days)
 - **Last run date:** July 16, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 14 — July 16, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Papaya + Z Pie #22 Run 9 — July 16, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -197,16 +197,17 @@
 ---
 
 ### Papaya + Z Pie #22
-**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: June 27, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**9 sessions** &nbsp;·&nbsp; Next run: 10 &nbsp;·&nbsp; Last: July 16, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 8: descent to 415°F — 440@0s → 428@30s → 415@60s, draw discipline, same load class
+**Next:** Run 10: rerun the grey 450°F descent (450→450@10s→425@30s→410@45s) as a first-dab, modest, single cycle — read toast and swab together (toast + pooled spot leans airflow pocket; toast + uniform swab leans temperature; neither, the 'maybe' was noise)
 
-**AI Analysis:** Raise the floor and tighten the midpoint: 440°F → 428°F @30s → 415°F @60s. The 400°F floor left material in the insert; 415°F puts the endpoint closer to this strain's demonstrated efficiency range on Rig 6. Same draw discipline, same load class. If the post-session hit disappears and vapor density holds through 60s, the floor was the variable. If the chest harshness location recurs on the descent shape, that's worth logging as a separate signal from the timing question. R7 is the founding chest-location instance — at the readback track two things separately: chest-vs-throat *during* the session, and whether anything appears or lingers *after* session end (R7 had chest location but no recorded post-session persistence; these are distinct rows now).
+**AI Analysis:** Run 9's toast note was 'maybe a hint,' and the two-curve session can't settle it. With the insert swabbed clean after every dab (user correction at logging), prior-dab residue drops out; the live candidates are the 450°F open itself, a same-dab pocket of material pooling outside the joystick airflow and scorching in place (the user's read of the dark-gold spot, extended one step — a possibility, not established), and the hedge — the note may simply not recur. Rerun the grey 450°F as a first-dab, modest, single cycle — which also finally supplies the modest first-dab replicate (Run 8 was a 2nd dab, Run 9 a normal-load 3rd) — and read toast and swab together: a toast note alongside another pooled spot leans airflow-pocket, toast on a uniform light swab leans temperature, neither and the 'maybe' was noise. At the readback, ask chest-vs-throat during the session and whether anything appears after it ends. Expected: no toast, uniform light swab, clean run. Surprising: toast with a uniform swab — that puts the 450°F open itself on the hook and makes the user's 440°F suggestion the next test.
 
 **Proposed Curve:**
-- 0s → 440°F — Session open — hot open, descent start
-- 30s → 428°F — Descent midpoint
-- 60s → 415°F — Floor — up 15°F from Run 7
+- 0s → 450°F — Session open — hot open
+- 10s → 450°F — Hold at peak — one draw at 450°F
+- 30s → 425°F — Gentle descent midpoint
+- 45s → 410°F — Floor — shorter cycle
 
 ---
 
