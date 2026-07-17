@@ -29,6 +29,15 @@ PAPZP22_DESCENT_415 = [
     Waypoint(time_s=60, temp_f=415, note="Floor — up 15°F from Run 7"),
 ]
 
+# Grey 450°F bounded-hold + shorter descent — ported from Sour Tangie (jar isolation:
+# local copy, not imported). First 450°F run on this strain.
+PAPZP22_HOLD_DESCENT_450 = [
+    Waypoint(time_s=0,  temp_f=450, note="Session open — hot open"),
+    Waypoint(time_s=10, temp_f=450, note="Hold at peak — one draw at 450°F"),
+    Waypoint(time_s=30, temp_f=425, note="Gentle descent midpoint"),
+    Waypoint(time_s=45, temp_f=410, note="Floor — shorter cycle"),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -143,13 +152,29 @@ RUNS = [
         dab_notes="Wow, super nice. Swabs were golden, normal amount of reclaim although I purposely loaded a bit large. It gave off powerful vapor the whole way through, never depleted, even took a dense hit on the still hot insert after the heating ended. So it maybe could have gone a bit hotter? Harshness I didn't notice until the end. It felt lower in my chest than my normal throat. Intensity is very high. [Beat 2 — chest vs. throat:] Location.",
         analysis="First descent curve on this strain, first dab of the day, larger load. Dense vapor throughout the full 60s and a productive hit on the still-hot insert at close — material was present when the heating cycle ended. That's the 400°F floor telling on itself: it's 25–30°F below where this strain has shown efficiency on Rig 6 (425–430°F). The larger load bought session density, but the residual material is the consequence of undershooting the floor, not a bonus.\n\nHarshness arrived at the end — late, and physically located in the chest rather than the usual throat. Two separable signals. Late onset relative to the 35–38s pattern on 425°F flat runs is consistent with the descent reducing cumulative hot-insert exposure as temps fall, or the larger load buffering the session, or first-dab session order, or all three. The chest location is new to this strain's history; single observation. One candidate: the 440°F open delivers hotter, denser aerosol that travels further into the airway before depositing. Not established — flagged for recurrence.\n\nGolden swab on a 60s Rig 6 session is duration-consistent. The 440°F open is the hottest this strain has seen; golden rather than darker tracks with FW106's pattern where session length drives swab color, not peak temperature.\n\nVery high intensity despite ending at 400°F — the hot open front-loads delivery even as the descent brings temps down. 'Maybe could have gone a bit hotter' and the productive post-session hit are the key signal: the descent shape works, the floor needs to come up.",
     ),
+    CompletedRun(
+        strain="Papaya + Z Pie #22",
+        run_date=date(2026, 7, 16),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 17, 2, 47, 20, tzinfo=timezone.utc),
+        waypoints=PAPZP22_HOLD_DESCENT_450,
+        equipment=RIG_6,
+        too_hot=False,
+        duration_seconds=45,
+        endpoint_note='<strong>Open:</strong> 450°F &nbsp;|&nbsp; <strong>Floor:</strong> 410°F — 10s hold at 450°F, then shorter gentle descent; ported from Sour Tangie, first 450°F run on this strain',
+        swab="beige, ultra clean",
+        session_char="Ported the grey 450°F bounded-hold + shorter descent from Sour Tangie; modest load, single cycle depleted right at the 45s floor. Ultra-clean beige swab. No harshness and no chest; a big terpene-load punch went up the sinus ('terp shudders'), which the user held distinct from harshness. Second dab of the day. Moderate intensity.",
+        intensity="moderate",
+        dab_notes="[Pre-dab:] Given all that we have learned about the 450 descent I want to try it on papz. [Confirmed modest load, single cycle.] [Report:] Ultra clean beige swabs, great run, no harshness except some vapor got up my sinus and now I have terp shudders happening. Load was depleted by end of cycle. [Intensity:] I'd say it was moderate. Sarah found her small dab very strong. So it's all relative. You're right on the terps.",
+        analysis="Run 8 ports Sour Tangie's grey 450°F bounded-hold + shorter descent onto this strain, over the plan-on-file 415°F-floor descent — and the deviation is the better run. It answers Run 7's 'maybe could have gone a bit hotter' directly, and the curve that carried eight Sour Tangie runs traveled clean: modest load, single cycle, depleted right at the 45s floor. No leftover material on a dead insert this time — the problem Run 7's 400°F floor produced, and the whole reason the 415°F plan existed. The 410°F floor plus the shorter cycle plus a modest load matched depletion without the fix, though the smaller load is confounded with the floor for why it cleared (Run 7 ran larger).\n\nNo harshness, and no chest. Run 7 is the strain's only prior descent and its only chest instance, but it moved load, open, floor, cycle count, and session order all at once against this run — no isolation. What holds: a modest single cycle came back chest-free, the same condition that kept Sour Tangie chest-free on this exact curve (Sour Tangie R9/R11) — directional support for the cross-strain read that chest tracks load/cycle/residue, not the hot open itself.\n\nThe 450°F open threw a big terpene-load punch up the sinus — 'terp shudders' — which the user separated from harshness, the distinction Sour Tangie has held since R7. At 450°F terpenes and cannabinoids are all above boiling, so that's the dense peak bolus, not selective delivery; the nasal route and the shudder are new to this strain, single instance.\n\nSwab ultra-clean beige, the lightest this jar has read since Run 4's beige (also Rig 6, single cycle) — within the clean range, within-strain only, not a floor signal.\n\nModerate intensity, down from Run 7's 'very high' and Run 6's 'pretty fucking hard.' The endpoint went up but intensity came down — most parsimoniously the modest load and the short, cleanly-depleted 45s session, not the temperature; second dab of the day is a further order confound.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Papaya + Z Pie #22',
     profile_anchor='#papzp22-profile',
-    next_text='Run 8: descent to 415°F — 440@0s → 428@30s → 415@60s, draw discipline, same load class',
+    next_text='Run 9: repeat the 450°F descent (450→450@10s→425@30s→410@45s), modest load, single cycle, as a first dab of the day — confirm the clean deliver and pull the session-order confound',
     accent=None,
     slug='papzp22',
     info=[
@@ -161,7 +186,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Terpinolene and ocimene inferred from Papaya (tropical clone-only cultivar); limonene and myrcene inferred from Z Pie #22 (Z × Georgia Pie — Zkittlez lineage: limonene/myrcene). Georgia Pie\'s own parentage is Gelatti × Kush Mints #11, consistent across multiple independent sources (no source found supports the "Gushers-adjacent" framing previously noted here); not producer-confirmed. Gelatti (Gelato-family) and Kush Mints contribute limonene/myrcene/caryophyllene generally. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='Nose at room temp (~few hours out of fridge): garlicky in a good way (June 14, 2026).',
-    next_ai_analysis='Raise the floor and tighten the midpoint: 440°F → 428°F @30s → 415°F @60s. The 400°F floor left material in the insert; 415°F puts the endpoint closer to this strain\'s demonstrated efficiency range on Rig 6. Same draw discipline, same load class. If the post-session hit disappears and vapor density holds through 60s, the floor was the variable. If the chest harshness location recurs on the descent shape, that\'s worth logging as a separate signal from the timing question. R7 is the founding chest-location instance — at the readback track two things separately: chest-vs-throat *during* the session, and whether anything appears or lingers *after* session end (R7 had chest location but no recorded post-session persistence; these are distinct rows now).',
-    next_waypoints=PAPZP22_DESCENT_415,
+    next_ai_analysis='The 450°F descent delivered clean first try — depleted at the floor, beige swab, no harshness, no chest — so it supersedes the 415°F-floor plan, which only existed to fix Run 7\'s leftover material. Repeat it exactly, modest load, single cycle, but as a genuine first dab of the day: this was a 2nd dab, and a first-dab replicate confirms the clean deliver and pulls the session-order confound off both intensity and the chest-absence. Keep the load modest — chest tracks load here and across Sour Tangie, and Run 7 (papz\'s one chest instance) was the larger-load descent; if you want more punch load is the lever, but that\'s a deliberate comfort tradeoff, not a clean-read move. Expected: clean again — light swab, no chest, depletes near the 45s floor, maybe a touch more punch as a first dab. Surprising: chest on a clean modest first dab — that moves papz\'s chest signal off load toward the hot open itself (as Sour Tangie R14 reopened it), or harshness before depletion, saying even a modest load hits a 450°F ceiling here.',
+    next_waypoints=PAPZP22_HOLD_DESCENT_450,
     jar_index='',
 )

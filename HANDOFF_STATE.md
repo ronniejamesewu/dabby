@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 158 across 20 strains
+- **Total runs:** 159 across 20 strains
 - **Active since:** May 2, 2026 (76 days)
 - **Last run date:** July 16, 2026
-- **Most recent run (all jars, by utc_logged_at):** Sour Tangie Run 14 — July 16, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Papaya + Z Pie #22 Run 8 — July 16, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -197,16 +197,17 @@
 ---
 
 ### Papaya + Z Pie #22
-**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: June 27, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**8 sessions** &nbsp;·&nbsp; Next run: 9 &nbsp;·&nbsp; Last: July 16, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 8: descent to 415°F — 440@0s → 428@30s → 415@60s, draw discipline, same load class
+**Next:** Run 9: repeat the 450°F descent (450→450@10s→425@30s→410@45s), modest load, single cycle, as a first dab of the day — confirm the clean deliver and pull the session-order confound
 
-**AI Analysis:** Raise the floor and tighten the midpoint: 440°F → 428°F @30s → 415°F @60s. The 400°F floor left material in the insert; 415°F puts the endpoint closer to this strain's demonstrated efficiency range on Rig 6. Same draw discipline, same load class. If the post-session hit disappears and vapor density holds through 60s, the floor was the variable. If the chest harshness location recurs on the descent shape, that's worth logging as a separate signal from the timing question. R7 is the founding chest-location instance — at the readback track two things separately: chest-vs-throat *during* the session, and whether anything appears or lingers *after* session end (R7 had chest location but no recorded post-session persistence; these are distinct rows now).
+**AI Analysis:** The 450°F descent delivered clean first try — depleted at the floor, beige swab, no harshness, no chest — so it supersedes the 415°F-floor plan, which only existed to fix Run 7's leftover material. Repeat it exactly, modest load, single cycle, but as a genuine first dab of the day: this was a 2nd dab, and a first-dab replicate confirms the clean deliver and pulls the session-order confound off both intensity and the chest-absence. Keep the load modest — chest tracks load here and across Sour Tangie, and Run 7 (papz's one chest instance) was the larger-load descent; if you want more punch load is the lever, but that's a deliberate comfort tradeoff, not a clean-read move. Expected: clean again — light swab, no chest, depletes near the 45s floor, maybe a touch more punch as a first dab. Surprising: chest on a clean modest first dab — that moves papz's chest signal off load toward the hot open itself (as Sour Tangie R14 reopened it), or harshness before depletion, saying even a modest load hits a 450°F ceiling here.
 
 **Proposed Curve:**
-- 0s → 440°F — Session open — hot open, descent start
-- 30s → 428°F — Descent midpoint
-- 60s → 415°F — Floor — up 15°F from Run 7
+- 0s → 450°F — Session open — hot open
+- 10s → 450°F — Hold at peak — one draw at 450°F
+- 30s → 425°F — Gentle descent midpoint
+- 45s → 410°F — Floor — shorter cycle
 
 ---
 
