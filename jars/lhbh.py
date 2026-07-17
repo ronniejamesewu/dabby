@@ -11,6 +11,13 @@ LHBH_425 = [
     Waypoint(time_s=60, temp_f=425, note='Hold'),
 ]
 
+LHBH_DESCENT_450 = [
+    Waypoint(time_s=0,  temp_f=450, note='Session open — hot open'),
+    Waypoint(time_s=10, temp_f=450, note='Hold at peak — one draw at 450°F'),
+    Waypoint(time_s=30, temp_f=425, note='Gentle descent midpoint'),
+    Waypoint(time_s=45, temp_f=410, note='Floor — shorter cycle'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 
 RUNS = [
@@ -119,13 +126,28 @@ RUNS = [
         dab_notes='Got two big draws on first cycle. First draw gave a ton of fruit, definitely got some lemon, maybe a hint of blueberry. Harshness in second draw and then the cycle was over. Second cycle: only took one medium length draw. Mild harshness but tasted toasty. Depletion doesn\'t make sense, swabs had a lot of reclaim, I must have accidentally loaded large. So the toasty could be the cooking effect of material being near 420 but not yet booking into vapor…eventually maybe the prolonged slow heat changes something. Swabs were golden with a few amber streaks. More reclaim than typical. Intensity medium-high.',
         analysis='Run 7\'s standout result is the flavor: lemon and fruit clearly on draw 1 — the most distinct character this jar has produced across all six prior runs. Both first-dab Rig 6 runs (R3 and R6) returned terpene-load cough with little specific flavor; the earlier lemon on Run 2 was also a second dab. This run is second dab and an accidentally large load, so session order and load size both changed from the first-dab reads simultaneously — can\'t isolate which drove it.\n\nHarshness arriving on draw 2 is earlier than Run 6\'s ~40s onset at the same endpoint and rig. Second-dab accumulated airway exposure is the most parsimonious explanation, consistent with the pattern across other strains.\n\nSecond cycle: toasty flavor, mild harshness, heavy reclaim. Depletion ruled out. User proposed a prolonged-heat mechanism — material near the insert at 420°F that isn\'t yet vaporizing undergoes slow thermal change over the extended session, altering flavor before going into vapor. One data point; logged as a user hypothesis at single-data-point weight.\n\nAmber component in the swab (golden with amber streaks) now appears across all three second-cycle runs in this jar — R4, R6, R7 all show amber where single-cycle runs don\'t. Amber appears to be a second-cycle marker for this strain, not a temperature signal.',
     ),
+    CompletedRun(
+        strain='Lemon Heads + Blueberry Haze',
+        run_date=date(2026, 7, 17),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 17, 19, 44, 50, tzinfo=timezone.utc),
+        waypoints=LHBH_DESCENT_450,
+        equipment=RIG_6,
+        duration_seconds=45,
+        endpoint_note='<strong>Open:</strong> 450°F &nbsp;|&nbsp; <strong>Floor:</strong> 410°F — 10s hold at 450°F then gentle descent; first hot open on this strain. 3.5 cycles on one large load; final cycle stopped about halfway.',
+        swab='dark golden',
+        session_char='Heavy terpene-load coughing throughout; flavor held across all 3.5 cycles. Throat harshness, hard to distinguish from the coughing. Deliberate big load; stopped halfway through the fourth cycle on satiety, reclaim suggesting material remained.',
+        intensity='Moderate — daytime, upright, functional character.',
+        dab_notes='This is a big load and I want to do it 450 descent. [Post-run:] Whoa that was a huge one. I coughed so much and it was so big that I had to run 3.5 cycles. Swabs weren\'t too dark though, dark golden. It never got less tasty. A bit of harshness but it was hard to distinguish from the term coughing. [Q: intensity; stopped early?] Moderate. For all that terp drama (and it did have nice flavor) it didn\'t deliver a ton of effect. Yes, stopped halfway through as I\'d had enough. Reclaim on the swab suggests I could have kept going. [Q: harshness location — throat or chest?] Throat harshness. This was the kind of high I was expecting from this jar. Very daytime energy, very upright and functional. I sometimes think I\'m not high at all but then something will happen to remind me I\'m very high.',
+        analysis='First hot open in this jar\'s history. Flavor held across 3.5 cycles — the longest it has held in eight runs — but the planned load isolation only half-ran: load and curve changed together (big load, 450°F descent instead of the 420°F ramp), so this run can\'t separate them. Pair-wise: Run 7\'s flavor came on a large load at the 420°F ramp (2nd dab); Run 8 on a large load at the 450°F descent (1st dab). Flavor has tracked load across two curves and two session orders — directional for load as the flavor lever, with curve shape the live confound. Intensity read moderate, with a daytime/functional character the user flags as easy to underread. Session ended on satiety with material remaining — consistent with the descent-curve pattern where the stopping condition moves off harshness; LHBH is a sixth strain context, first-dab instance. Harshness was throat-located and not limiting, hard to distinguish from terpene-load coughing (the same separation Sour Tangie R7 made at a 450°F open); no chest on this jar\'s first hot open, post-session window not stated. Dark golden swab after 3.5 cycles is not a floor signal — multi-cycle swabs darken independent of endpoint.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Lemon Heads + Blueberry Haze',
     profile_anchor='#lhbh-profile',
-    next_text='Run 8: 420°F on Rig 6, first dab, deliberate larger load — test whether load size is the flavor lever',
+    next_text='Run 9: same 450°F descent, first dab, deliberately modest load — finish the flavor-lever isolation with the curve held',
     accent=None,
     slug='lhbh',
     info=[
@@ -137,7 +159,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from Lemon Heads (Lemon G × Face Off OG BX) — Lemon G is known for strong citrus/lemon character; myrcene and terpinolene inferred from Blueberry Haze (Blueberry × Haze). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Run 8: first dab, deliberate larger load, 420°F. The best flavor this jar has produced came on an accidentally large load — but that was second dab, so session order is an unresolved confound. A first-dab large-load run tests whether load size is the flavor lever without that confound. If lemon/fruit character opens up, load size is in play. If it\'s sparse again, the picture stays murky — thumbprint load composition and session-to-session variability are both uncontrolled. At the readback, state the load class out loud so it lands in the dab_notes verbatim record — the July 11, 2026 audit found load size, the log\'s most confound-cited variable, repeatedly surviving only in AI-authored fields; this run is the next deliberate load-axis data point and shouldn\'t repeat that.',
-    next_waypoints=BASELINE_CURVE,
+    next_ai_analysis='Run 8 moved curve and load together. Run 9: same 450°F descent, first dab, deliberately modest load — holds curve, rig, and session order against Run 8 and varies only load. Sparse flavor points at load as the lever (consistent with Runs 7/8); rich flavor puts the descent shape in play. State the load class out loud at logging. A modest load should also keep it to one or two cycles, giving a cleaner swab read than Run 8\'s 3.5. Expected: thinner flavor and a shorter session. Surprising: full flavor on a modest load — that would make a small load on this curve the jar\'s cheapest flavor recipe.',
+    next_waypoints=LHBH_DESCENT_450,
     jar_index='',
 )
