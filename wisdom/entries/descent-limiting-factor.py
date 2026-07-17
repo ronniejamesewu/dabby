@@ -10,7 +10,7 @@ ENTRY = WisdomEntry(
              "no longer all first-dab (papzp22 R8/R9). Cross-rig untested; load "
              "varied, unresolved.",
     grade='observation',
-    grade_basis="Low — five strains, all Rig 6; originally all first-dab — "
+    grade_basis="Low — six strains, all Rig 6; originally all first-dab — "
                 "papzp22 R8/R9 (July 16, 2026) add 2nd- and 3rd-dab instances on "
                 "the bounded-hold variant; consistent direction, single-rig.",
     evidence=[
@@ -66,6 +66,19 @@ ENTRY = WisdomEntry(
                       "per plan (modest) — not restated by user.",
         ),
         Citation(
+            source='lhbh R8',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 17, 2026 — grey 450°F bounded-hold descent, first dab, big "
+                 "deliberate load, 3.5 cycles — session ended on satiety with "
+                 "material remaining ('stopped halfway through as I'd had enough. "
+                 "Reclaim on the swab suggests I could have kept going'); throat "
+                 "harshness present but not limiting (dbrb R1-style caveat), hard "
+                 "to distinguish from terpene-load coughing.",
+            confounds="Big load; 3.5 cycles; bounded-hold variant, not the pure "
+                      "descent.",
+        ),
+        Citation(
             source='papzp22 R9',
             role='confirms',
             provenance='user-verbatim',
@@ -100,5 +113,5 @@ ENTRY = WisdomEntry(
     watch_for="A descent run on Rig 5 (none logged yet) would test cross-rig "
               "generalization; holding load constant would isolate the unresolved load "
               "variable.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026)',
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026)',
 )
