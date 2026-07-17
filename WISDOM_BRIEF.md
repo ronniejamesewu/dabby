@@ -84,17 +84,17 @@
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
-**Basis:** Low — four strains, all first-dab runs, all Rig 6; consistent direction, single-rig.
-**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety to end the session instead. Evidence is all Rig 6 and first-dab; treat cross-rig effects as untested and load as varied but unresolved.
+**Basis:** Low — five strains, all Rig 6; originally all first-dab — papzp22 R8/R9 (July 16, 2026) add 2nd- and 3rd-dab instances on the bounded-hold variant; consistent direction, single-rig.
+**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety to end the session instead. All Rig 6; no longer all first-dab (papzp22 R8/R9). Cross-rig untested; load varied, unresolved.
 **Watch:** A descent run on Rig 5 (none logged yet) would test cross-rig generalization; holding load constant would isolate the unresolved load variable.
-*4 citations (4 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026*
+*6 citations (6 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026)*
 
 ### chest-harshness-hot-open  [pattern | observation]
 **Claim:** In-session chest-located harshness on hot-open curves, Rig 6 — chest location documented across 9 hot-open runs; the chest-and-lingers conjunction is tracked separately (row B) and still rests on only 2 instances.
 **Basis:** Low — chest location documented on 9 hot-open Rig 6 runs; Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 2 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
 **Watch:** A clean chest+lingers replication to move the conjunction off two instances.
-*17 citations (9 confirm / 8 counter) | jars: bp4rw13, hive1, lunarz, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026)*
+*19 citations (9 confirm / 10 counter) | jars: bp4rw13, hive1, lunarz, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026)*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.
@@ -134,9 +134,9 @@
 ### rig6-piston-joystick  [equipment | observation]
 **Claim:** Rig 6 (sapphire + Wym Stick Piston joystick, no pearls): directed airflow delivers more per draw than the spinner + dual ruby pearls at the same setpoint, harshness one draw earlier — consistent with higher per-draw efficiency.
 **Basis:** Low — six strains, nineteen runs.
-**Guidance:** Joystick efficiency is directional, not equivalence — rig and draw discipline changed together, not isolable. At 420°F load size separated Hive #1 R6 from R8, order matched (one pair); session order is a recurring confound, not settled. Device/cap heat after two 430°F cycles: operational, not a ceiling signal.
+**Guidance:** Joystick efficiency is directional, not equivalence — rig and draw discipline changed together; session order and load are recurring confounds. Localized dark swab spots can be same-dab material pooled in the airflow dead zone, not a floor or insert signal (papzp22 R9). Cap heat after 430°F cycles: operational.
 **Watch:** The pending first-dab 420°F LHBH test (LHBH R6); whether water or the higher endpoint prevented papzp22 R6 harshness; recurrence of bp4rw13 R9's toasty near-combustion flavor.
-*5 citations (5 confirm / 0 counter) | jars: bp4rw13, fw106, hive1, lhbh, papzp22 | upd FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction.*
+*6 citations (6 confirm / 0 counter) | jars: bp4rw13, fw106, hive1, lhbh, papzp22 | upd FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction; airflow dead-zone observation Session 169 (July 16, 2026).*
 
 ## Live Failure Modes
 

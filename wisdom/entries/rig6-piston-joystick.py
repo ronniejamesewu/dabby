@@ -7,7 +7,7 @@ ENTRY = WisdomEntry(
           "airflow delivers more per draw than the spinner + dual ruby pearls at "
           "the same setpoint, harshness one draw earlier — consistent with higher "
           "per-draw efficiency.",
-    guidance="Joystick efficiency is directional, not equivalence — rig and draw discipline changed together, not isolable. At 420°F load size separated Hive #1 R6 from R8, order matched (one pair); session order is a recurring confound, not settled. Device/cap heat after two 430°F cycles: operational, not a ceiling signal.",
+    guidance="Joystick efficiency is directional, not equivalence — rig and draw discipline changed together; session order and load are recurring confounds. Localized dark swab spots can be same-dab material pooled in the airflow dead zone, not a floor or insert signal (papzp22 R9). Cap heat after 430°F cycles: operational.",
     grade='observation',
     grade_basis="Low — six strains, nineteen runs.",
     evidence=[
@@ -52,6 +52,19 @@ ENTRY = WisdomEntry(
                  "condition). [provenance untagged in source]",
             confounds="Equipment corrected to Rig 6 on July 2, 2026 from mislogged "
                       "Rig 5 (stale jar-local defaults after 14–15-day jar gaps).",
+        ),
+        Citation(
+            source='papzp22 R9',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 16, 2026 — beige swab with a localized dark-gold spot on a "
+                 "per-dab-swabbed insert; user correction at logging: 'pooled "
+                 "reclaim FROM THE DAB THATS BEING CLEANED... an airflow issue "
+                 "with the joystick technique rather than leftover reclaim in the "
+                 "insert.' Same-dab material outside the directed airflow degrades "
+                 "in place — airflow-gated vaporization at spot scale.",
+            confounds="One instance; whether joystick sweep technique eliminates "
+                      "the dead zone is untested.",
         ),
         Citation(
             source='lhbh R3',
@@ -120,5 +133,5 @@ ENTRY = WisdomEntry(
     watch_for="The pending first-dab 420°F LHBH test (LHBH R6); whether water or "
               "the higher endpoint prevented papzp22 R6 harshness; recurrence of "
               "bp4rw13 R9's toasty near-combustion flavor.",
-    updated='FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction.',
+    updated='FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction; airflow dead-zone observation Session 169 (July 16, 2026).',
 )
