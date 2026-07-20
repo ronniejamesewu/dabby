@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 163 across 20 strains
+- **Total runs:** 164 across 20 strains
 - **Active since:** May 2, 2026 (79 days)
 - **Last run date:** July 19, 2026
-- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 4 — July 19, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 5 — July 19, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -227,11 +227,11 @@
 ---
 
 ### LunarZ
-**4 sessions** &nbsp;·&nbsp; Next run: 5 &nbsp;·&nbsp; Last: July 19, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**5 sessions** &nbsp;·&nbsp; Next run: 6 &nbsp;·&nbsp; Last: July 19, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 5 — the clean test still owed: genuine first dab of the day, modest load, single cycle, holding the purple 15s hold so it sits against R4 minus the load/cycle/order confounds.
+**Next:** Run 6 — the clean test still owed: genuine first dab of the day, modest load, single cycle on the purple 15s hold, to see if chest still comes with the day's accumulation stripped out.
 
-**AI Analysis:** Run 5 finally earns the clean read Runs 1–4 all missed: a genuine first dab of the day, modest load, single cycle — holding the purple 15s hold so it sits directly against R4 with only load, cycle count, and session order stripped out. Chest showed on the three earlier heavier/later runs and was absent on R4's heavy purple session, but every run so far is confounded, so a clean modest purple run is the first that can actually say whether the curve/strain throws chest on its own. Keep water as technique — it reset the throat dryness here — not a withheld variable. Expected: no chest, at most light throat/dry, the cleanest run yet. Surprising: chest/heartburn back on a clean modest first-dab single cycle — that puts the curve or strain on the hook rather than load/order, and the next move is dropping the hold length or the 430°F open itself.
+**AI Analysis:** Two purple runs today — R4 (2nd dab, large, no chest) and R5 (3rd dab, normal, chest back) — put chest on the later dab slot, not the bigger load: within-day cumulative exposure over per-dab load. But R1–R5 are all 2nd-dab-or-later, so it's still confounded. Run 6: genuine first dab, modest load, single cycle, purple hold — the one cell that strips the day's accumulation out. Keep water as technique. Expected: chest absent or light on a true first dab. Surprising: chest on a clean first dab — that hangs it on the curve or the 430°F open, and the next move is shortening the hold or dropping to 420°F.
 
 **Proposed Curve:**
 - 0s → 430°F — Session open — hold at 430°F

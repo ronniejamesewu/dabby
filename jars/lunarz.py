@@ -86,13 +86,28 @@ RUNS = [
         dab_notes='I used the 430 extended hold curve and a large load. it was really good. [Swab:] swabs were very minimal amount, and dark golden. [Preset:] the curve is now purple on presets. if you had a different curve for purple this supersedes that. [Intensity / cycles:] it hit medium high. 3 cycles, i coughed so much i couldnt keep up with the cycle timer. [Harshness:] heartburn wasnt an issue, but it did get kind of harsh in my throat, it felt super dry. a sip of water helped.',
         analysis='Run 4 ran the 430 extended-hold descent — a 15-second hold at 430°F before the drop to 400°F, longer than Runs 2–3\'s 10-second teal hold — on a preset now colored purple, the curve borrowed from an OC run. Heavy session and a stack of deviations from the owed clean test: 2nd dab of the day, large load, three cycles (coughing heavy enough that the cycle timer was unusable), so like Runs 2–3 it isolates nothing — a fourth confounded point, as flagged. The headline is what didn\'t happen: no chest/heartburn harshness, the first LunarZ run of four without it (R1 lingered, R2 cleared with water, R3 partially cleared). Instead the harshness was throat-located and "super dry" — the mucosal/airway signal tracked separately from the chest facet — and a water sip helped, another Rig 6 water-reset instance. Read carefully, though: the chest\'s absence is confounded — the curve changed (longer hold), and a wall of terpene-load coughing can mask a harshness read (LHBH R8) — so it\'s mild, not clean, counter-evidence to load/cumulative exposure driving LunarZ\'s chest, since a large-load three-cycle session is exactly where that hypothesis predicts chest and it didn\'t come. The heavy coughing is the terpene-load cough mechanism, distinct from harshness (the Sour Tangie R7 distinction). Swab dark golden, very minimal reclaim — LunarZ four-for-four dark golden, a within-strain baseline, not a floor signal; very minimal reclaim despite a large load and three cycles reads as strong delivery, material consumed rather than cooked. Medium-high intensity, matching R1. Rig 6 throughout.',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 7, 19),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 7, 20, 1, 58, 31, tzinfo=timezone.utc),
+        waypoints=LUNARZ_HOLD15_DESCENT_430,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 430°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold at 430°F ("purple" preset), same curve as Run 4',
+        swab='golden',
+        session_char='Golden swab with minimal reclaim; normal load, 3rd dab of the day, two and a half cycles on the purple 15s-hold 430°F descent — stayed tasty throughout, stopped a draw into the third as it thinned and satiety hit. Hit very hard (strong). Bottom-of-throat harshness plus some heartburn — the chest facet back after Run 4 had none; no persistence reported.',
+        intensity='strong',
+        dab_notes='purple curve, normal load. [Report:] Golden, minimal reclaim on the swabs, two and a half cycles it stayed tasty all the way, I stopped after first draw of third I had enough and it was starting to thin a bit. Hit very hard! Harshness in bottom of throat and some heartburn.',
+        analysis='Run 5 — same purple 15s-hold 430°F descent as Run 4, 3rd dab of the day, normal load, two and a half cycles (stopped a draw into the third as it thinned and satiety hit). Stayed tasty the whole way — good retention across 2.5 cycles on a normal load. Hit very hard, strong — up from R4\'s medium-high despite the lighter load, so the day\'s cumulative dosing is the likelier driver than this dab alone. The read that matters: chest/heartburn came back (bottom-of-throat harshness plus some heartburn) where R4 — earlier today, larger load, more cycles — had none. Two purple runs back-to-back, same curve and rig, and the chest tracked the later 3rd-dab slot, not the bigger load: within-day cumulative exposure fits the chest better than per-dab load here, consistent with the standing counter-reading that chest co-varies with cumulative session exposure rather than the hot open itself (and with Sour Tangie\'s within-day throat escalation). Confounds remain — R4\'s wall of coughing may have masked its chest, and neither run is the clean first-dab test — so directional, not settled. No persistence reported, so chest-location in-session, not the chest-and-lingers conjunction. Swab golden, minimal reclaim — the first LunarZ read called lighter than dark golden, but golden-vs-dark-golden sits inside this project\'s uncalibrated color-call noise (and R5 ran fewer material-cycles than R4), so it\'s noted, not a floor signal. Rig 6 throughout.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='LunarZ',
     profile_anchor='#lunarz-profile',
-    next_text='Run 5 — the clean test still owed: genuine first dab of the day, modest load, single cycle, holding the purple 15s hold so it sits against R4 minus the load/cycle/order confounds.',
+    next_text='Run 6 — the clean test still owed: genuine first dab of the day, modest load, single cycle on the purple 15s hold, to see if chest still comes with the day\'s accumulation stripped out.',
     accent=None,
     slug='lunarz',
     info=[
@@ -103,7 +118,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene and caryophyllene inferred dominant from the Zkittlez × Do-Si-Dos / Sherbadough stack (Zkittlez, Do-Si-Dos, Sunset Sherbert) — sweet candy-fruit ("Z") over a gas/OG underside; linalool plausible from the Do-Si-Dos/Sherbert side. Only the immediate Moonbow × Planet Purple cross is 710 Labs-anchored; the parent generations and below are corroborated across independent sources, not producer-confirmed. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Run 5 finally earns the clean read Runs 1–4 all missed: a genuine first dab of the day, modest load, single cycle — holding the purple 15s hold so it sits directly against R4 with only load, cycle count, and session order stripped out. Chest showed on the three earlier heavier/later runs and was absent on R4\'s heavy purple session, but every run so far is confounded, so a clean modest purple run is the first that can actually say whether the curve/strain throws chest on its own. Keep water as technique — it reset the throat dryness here — not a withheld variable. Expected: no chest, at most light throat/dry, the cleanest run yet. Surprising: chest/heartburn back on a clean modest first-dab single cycle — that puts the curve or strain on the hook rather than load/order, and the next move is dropping the hold length or the 430°F open itself.',
+    next_ai_analysis='Two purple runs today — R4 (2nd dab, large, no chest) and R5 (3rd dab, normal, chest back) — put chest on the later dab slot, not the bigger load: within-day cumulative exposure over per-dab load. But R1–R5 are all 2nd-dab-or-later, so it\'s still confounded. Run 6: genuine first dab, modest load, single cycle, purple hold — the one cell that strips the day\'s accumulation out. Keep water as technique. Expected: chest absent or light on a true first dab. Surprising: chest on a clean first dab — that hangs it on the curve or the 430°F open, and the next move is shortening the hold or dropping to 420°F.',
     next_waypoints=LUNARZ_HOLD15_DESCENT_430,
     jar_index='',
 )
