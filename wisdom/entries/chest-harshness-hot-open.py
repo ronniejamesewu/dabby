@@ -4,16 +4,15 @@ ENTRY = WisdomEntry(
     key='chest-harshness-hot-open',
     kind='pattern',
     claim="In-session chest-located harshness on hot-open curves, Rig 6 — chest "
-          "location documented across 9 hot-open runs; the chest-and-lingers "
-          "conjunction is tracked separately (row B) and still rests on only 2 "
-          "instances.",
+          "location documented across 11 hot-open runs; the chest-and-lingers "
+          "conjunction is tracked separately (row B) and now rests on 3 instances.",
     guidance="Chest location is the tracked signal here; persistence is tracked "
              "separately in row (B) — do not fold them together. Do not treat the "
              "chest-and-lingers conjunction as more than its 2 instances. Mechanism "
              "unresolved; the hot-open-delivers-deeper-aerosol reading is speculative "
              "— do not promote it to cause.",
     grade='observation',
-    grade_basis="Low — chest location documented on 9 hot-open Rig 6 runs; Sour "
+    grade_basis="Low — chest location documented on 11 hot-open Rig 6 runs; Sour "
                 "Tangie R3 the weakest (mild, resolved in-session), R7 the hottest "
                 "open at 450°F and a first-dab instance.",
     evidence=[
@@ -225,6 +224,44 @@ ENTRY = WisdomEntry(
             confounds="First dab; big load; 3.5 cycles; heavy terpene-load "
                       "coughing masked harshness reads.",
         ),
+        Citation(
+            source='sourtangie R15',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 19, 2026 — grey 450°F bounded-hold descent, first dab, normal "
+                 "load, single cycle — \"slight heartburn about halfway through\" and, "
+                 "asked, \"in session and after\": chest/heartburn present in-session "
+                 "AND persisting past session end. The 3rd chest-and-lingers "
+                 "conjunction instance (after bp4rw13 R8, LunarZ R1) and the "
+                 "least-confounded of the three — the clean replication the watch_for "
+                 "called for.",
+            confounds="First dab, normal load, single cycle — the cleanest conjunction "
+                      "instance yet; heavy terpene coughing alongside.",
+        ),
+        Citation(
+            source='lunarz R4',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 19, 2026 — 430°F 15s extended-hold descent (\"purple\"), 2nd "
+                 "dab, large load, three cycles — no chest/heartburn at all, the first "
+                 "LunarZ run of four without it; throat-only \"super dry\" harshness "
+                 "that a water sip reset. A no-chest instance on a large load, where "
+                 "the load-drives-chest read predicts chest.",
+            confounds="2nd dab, large load, three cycles; heavy terpene coughing may "
+                      "have masked a harshness read (LHBH R8 precedent).",
+        ),
+        Citation(
+            source='lunarz R5',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 19, 2026 — same purple 430°F 15s extended-hold descent, 3rd "
+                 "dab, normal load, 2.5 cycles — chest/heartburn plus "
+                 "bottom-of-throat harshness, in-session, no persistence reported → "
+                 "chest-location only. Paired with R4 same day/curve/rig: chest on the "
+                 "later normal-load dab, absent on the earlier large-load dab.",
+            confounds="3rd dab, normal load, 2.5 cycles; persistence not "
+                      "asked/reported.",
+        ),
     ],
     positions=[
         Position(
@@ -304,13 +341,30 @@ ENTRY = WisdomEntry(
                  "and not answered, so it stays a location-only counter, not a "
                  "checked negative.",
         ),
+        Position(
+            stated='Session 171 (July 19, 2026)',
+            text="Sour Tangie R15 is the clean chest-and-lingers replication the "
+                 "watch_for called for — the conjunction moves from 2 to 3 instances "
+                 "(bp4rw13 R8, LunarZ R1, Sour Tangie R15), and R15 is the "
+                 "least-confounded of the three (first dab, normal load, single "
+                 "cycle). Held at observation regardless: n=3 is still thin and the "
+                 "mechanism is unresolved. Separately, LunarZ R4/R5 are a within-day "
+                 "pair on the same purple 430°F 15s extended-hold descent, same rig: "
+                 "chest absent on R4 (2nd dab, large load) and present on R5 (3rd dab, "
+                 "normal load) — chest tracked the later dab slot / cumulative "
+                 "day-exposure, not the bigger load, supporting the counter-reading "
+                 "that chest co-varies with cumulative session exposure rather than "
+                 "the hot open or per-dab load. Confound: R4's heavy terpene coughing "
+                 "may have masked its chest.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
                     "instance leave open that chest location co-varies with "
                     "within-session cumulative exposure rather than the hot open "
                     "itself — hot-open may be a proxy.",
-    watch_for="A clean chest+lingers replication to move the conjunction off two "
-              "instances.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026)",
+    watch_for="Further chest-and-lingers conjunction instances to firm up the thin "
+              "n=3; a clean first-dab modest single-cycle LunarZ run to isolate the "
+              "purple 430°F hold from cumulative day-exposure.",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026)",
 )
