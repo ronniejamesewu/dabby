@@ -8,11 +8,11 @@ ENTRY = WisdomEntry(
           "guaranteed.",
     guidance="Water mid-session usually resets mid-session harshness on Rig 6, but the "
              "reset is not guaranteed — six full resets plus LunarZ R4 (helped, "
-             "full-vs-partial unstated), LunarZ R3 the one partial reduction, and Sour "
-             "Tangie R5 the first outright non-response. Whether it generalizes to "
-             "other rigs is untested.",
+             "full-vs-partial unstated), two partial reductions (LunarZ R3, OC R15), "
+             "and Sour Tangie R5 the first outright non-response. Whether it "
+             "generalizes to other rigs is untested.",
     grade='observation',
-    grade_basis="Nine instances, four strains, all on Rig 6; not yet cross-rig.",
+    grade_basis="Ten instances, five strains, all on Rig 6; not yet cross-rig.",
     evidence=[
         Citation(
             source='hive1 R6',
@@ -98,22 +98,34 @@ ENTRY = WisdomEntry(
                       "harshness may have been past a resettable threshold, single-run "
                       "weight.",
         ),
+        Citation(
+            source='oc R15',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 17, 2026 — \"purple\" 430°F 15s-hold descent, chest/heartburn "
+                 "harshness: a water sip between hits softened it but it returned to "
+                 "prior level by the end of cycle 2 — a partial, temporary reduction "
+                 "like LunarZ R3, not a full reset. The second partial-only response "
+                 "in the log.",
+            confounds="2nd dab, big (~double) load, two cycles; chest-located "
+                      "harshness under heavy cumulative exposure, single-run weight.",
+        ),
     ],
     positions=[
         Position(
-            stated='Sessions 123, updated 136, 158, 159, 160, 171',
-            text="Mechanism unresolved across all nine instances — particulate load, "
+            stated='Sessions 123, updated 136, 158, 159, 160, 171, 172',
+            text="Mechanism unresolved across all ten instances — particulate load, "
                  "mucosal sensitization, and thermal sensitization are all consistent. "
                  "What water reset (and how quickly) is not distinguishable from these "
                  "data. Operationally: water mid-session usually resets mid-session "
                  "harshness on Rig 6, but the reset is not guaranteed — six full resets "
-                 "plus LunarZ R4 (helped, full-vs-partial unstated), LunarZ R3 the one "
-                 "partial reduction, and Sour Tangie R5 the first outright non-response "
-                 "(under a heavy cumulative load). Whether it generalizes to other rigs "
-                 "is untested.",
+                 "plus LunarZ R4 (helped, full-vs-partial unstated), two partial "
+                 "reductions (LunarZ R3, OC R15), and Sour Tangie R5 the first outright "
+                 "non-response (under a heavy cumulative load). Whether it generalizes "
+                 "to other rigs is untested.",
         ),
     ],
-    watch_for="Cross-rig instances — all nine are Rig 6; generalization to other rigs "
+    watch_for="Cross-rig instances — all ten are Rig 6; generalization to other rigs "
               "is untested.",
-    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026)',
+    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026)',
 )
