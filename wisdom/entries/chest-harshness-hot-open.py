@@ -4,7 +4,7 @@ ENTRY = WisdomEntry(
     key='chest-harshness-hot-open',
     kind='pattern',
     claim="In-session chest-located harshness on hot-open curves, Rig 6 — chest "
-          "location documented across 11 hot-open runs; the chest-and-lingers "
+          "location documented across 12 hot-open runs; the chest-and-lingers "
           "conjunction is tracked separately (row B) and now rests on 3 instances.",
     guidance="Chest location is the tracked signal here; persistence is tracked "
              "separately in row (B) — do not fold them together. Do not treat the "
@@ -12,7 +12,7 @@ ENTRY = WisdomEntry(
              "unresolved; the hot-open-delivers-deeper-aerosol reading is speculative "
              "— do not promote it to cause.",
     grade='observation',
-    grade_basis="Low — chest location documented on 11 hot-open Rig 6 runs; Sour "
+    grade_basis="Low — chest location documented on 12 hot-open Rig 6 runs; Sour "
                 "Tangie R3 the weakest (mild, resolved in-session), R7 the hottest "
                 "open at 450°F and a first-dab instance.",
     evidence=[
@@ -262,6 +262,20 @@ ENTRY = WisdomEntry(
             confounds="3rd dab, normal load, 2.5 cycles; persistence not "
                       "asked/reported.",
         ),
+        Citation(
+            source='fw106 R32',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 20, 2026 — grey 450°F bounded-hold descent, FW106's debut on "
+                 "the curve and its first chest instance — heartburn set in after "
+                 "cycle 1 during gag-level terpene coughing; hottest open FW106 has "
+                 "run. A new strain in the group, confirming occurrence without "
+                 "isolating the open as cause.",
+            confounds="First dab, large load, two cycles — the cumulative-exposure "
+                      "territory the counter-reading names; post-cycle onset during "
+                      "violent coughing (cough-provoked reflux not excluded); "
+                      "cough-vs-heat asked at logging, not disambiguated.",
+        ),
     ],
     positions=[
         Position(
@@ -357,6 +371,21 @@ ENTRY = WisdomEntry(
                  "the hot open or per-dab load. Confound: R4's heavy terpene coughing "
                  "may have masked its chest.",
         ),
+        Position(
+            stated='Session 172 (July 20, 2026)',
+            text="FW106 R32 puts a new strain in the hot-open chest group — its first "
+                 "chest/heartburn instance, on the grey 450°F curve's FW106 debut. It "
+                 "confirms occurrence on a new strain but isolates nothing: large load "
+                 "+ two cycles is exactly the cumulative-exposure territory the "
+                 "counter-reading names, onset was post-cycle-1 during gag-level "
+                 "coughing (cough-provoked reflux not excluded), and the cough-vs-heat "
+                 "question was asked at logging and left undisambiguated. Not a "
+                 "conjunction instance — persistence past session end wasn't "
+                 "established, so the n=3 chest-and-lingers count is unchanged. Held at "
+                 "observation. The next FW106 run repeats the curve as a first-dab "
+                 "modest single cycle — the clean isolation that shed chest on Sour "
+                 "Tangie R9/R11 and papzp22 R8.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
@@ -366,5 +395,5 @@ ENTRY = WisdomEntry(
     watch_for="Further chest-and-lingers conjunction instances to firm up the thin "
               "n=3; a clean first-dab modest single-cycle LunarZ run to isolate the "
               "purple 430°F hold from cumulative day-exposure.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026)",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); Session 172 (July 20, 2026)",
 )

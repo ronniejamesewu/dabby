@@ -90,11 +90,11 @@
 *7 citations (7 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026)*
 
 ### chest-harshness-hot-open  [pattern | observation]
-**Claim:** In-session chest-located harshness on hot-open curves, Rig 6 — chest location documented across 11 hot-open runs; the chest-and-lingers conjunction is tracked separately (row B) and now rests on 3 instances.
-**Basis:** Low — chest location documented on 11 hot-open Rig 6 runs; Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
+**Claim:** In-session chest-located harshness on hot-open curves, Rig 6 — chest location documented across 12 hot-open runs; the chest-and-lingers conjunction is tracked separately (row B) and now rests on 3 instances.
+**Basis:** Low — chest location documented on 12 hot-open Rig 6 runs; Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 2 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
 **Watch:** Further chest-and-lingers conjunction instances to firm up the thin n=3; a clean first-dab modest single-cycle LunarZ run to isolate the purple 430°F hold from cumulative day-exposure.
-*23 citations (11 confirm / 12 counter) | jars: bp4rw13, hive1, lhbh, lunarz, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026)*
+*24 citations (12 confirm / 12 counter) | jars: bp4rw13, fw106, hive1, lhbh, lunarz, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); Session 172 (July 20, 2026)*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.
