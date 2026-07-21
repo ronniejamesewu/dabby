@@ -67,6 +67,12 @@ OC_RUN14 = [
     Waypoint(time_s=8, temp_f=420, note='Endpoint — 8s ramp; up 4°F from baseline'),
     Waypoint(time_s=40, temp_f=420, note='Hold'),
 ]
+OC_RUN15 = [
+    Waypoint(time_s=0, temp_f=430, note='Session open — hot open, hold at 430°F ("purple")'),
+    Waypoint(time_s=15, temp_f=430, note='Hold at peak — one draw-plus at 430°F'),
+    Waypoint(time_s=37, temp_f=415, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor — proven 400°F landing'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -278,13 +284,28 @@ RUNS = [
         dab_notes="I suspect I loaded a light load without meaning to. Vapor ran out even before the 40 seconds curve. Very very mild harshness in second hit towards the end, a point for depletion theory. Very beige and minimal reclaim on swabs. Maybe effect is going to grow but I'd say medium intensity right now. Without the finicky business of measuring out the loads, I'm not sure how we will ever isolate this particular variable well enough. Effect is medium to high right now, so it rose up. Got the very clear orange rind note again on first draw.",
         analysis="OC Run 14 on Rig 5, 8s ramp to 420°F, 40s session — first dab of the day. Two variables changed from Run 13 simultaneously: ramp speed (20s→8s) and endpoint (416→420°F), same situation as BB362 Run 6. The swab and session pattern shifted clearly in the same direction as BB362 Run 6: very beige with minimal reclaim vs. Run 13's dark golden and material remaining at 50s requiring a second cycle. These signals match the BB362 pattern on a second strain. Harshness: very very mild in the second draw toward the end, user-attributed to depletion — the load ran out before 40s, and harshness arrived at session end consistent with hot insert contact after the material was spent. User noted suspecting a lighter-than-intended load. This is distinct from OC's Rig 3 pattern, where 417°F produced immediate harshness on endpoint arrival (temperature threshold, not depletion). The depletion read is plausible; a fuller load that fills the 40s session would confirm it. Intensity built from medium to medium-to-high as a first dab. Direct comparison to Run 13's 'very very very stoned' is confounded — Run 13 included a second cycle and this run had a lighter load. Both ramp speed and endpoint changed simultaneously; neither can be isolated as the driver of the swab and vapor shift. Orange rind note appeared again on the first draw — second consecutive run showing this character after Run 13's first instance; too few runs to call it consistent but tracking in the same direction.",
     ),
+    CompletedRun(
+        strain='Orange Candy',
+        run_date=date(2026, 7, 17),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 18, 0, 16, 12, tzinfo=timezone.utc),
+        waypoints=OC_RUN15,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 430°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold then gentle descent ("purple") &nbsp;|&nbsp; <strong>Jar closer</strong>',
+        swab='Uniform amber-to-brown, minimal amount.',
+        session_char='Fireworks on the first cycle. No throat harshness. Chest/heartburn present but did not climb — softened with water between hits, returned to prior level by end of cycle 2, resolved post-session. Big (~double) load, two cycles, stopped on satiety with material remaining.',
+        intensity='Moderate.',
+        dab_notes="Large load, maybe double normal. This curve is the new purple [430°F open, 15s hold, descend to 400°F floor]. Goddamn fireworks in the first cycle. But some heartburn feeling too. No throat harshness. I'm gonna run a second. It seems like there might be more in there but it's I don't want more. Amber to brown swabs, minimal amount! which is interesting given the big load (snicker) and also my sense that there was more. Heartburn didn't climb per se, but it softened in between hits via some water and it got back to where it had been by end of second cycle. It has resolved now. Moderate and uniform.",
+        analysis="OC Run 15 — the jar closer, and OC's first descent in fifteen runs (all prior were ramps or flat holds). Purple: 430°F open, 15s hold, descent to a 400°F floor; Rig 6, big (~double) load, two cycles, stopped on satiety with material left. The satiety stop and cycle-1 'fireworks' are descent-limiting-factor on a new strain — a hot open front-loads the terpene bolus and shifts the stop off harshness (as in FW106 R23, bp4rw13 R5, dbrb R1, papzp22 R8/R9, LHBH R8). The big load carried the intensity at 430°F — moderate, no 450°F needed — consistent with OC's higher-endpoint-means-stronger history. Chest/heartburn harshness, no throat, didn't climb, resolved post-session (in-session only): OC is a new chest-location strain for chest-harshness-hot-open — but on a 430°F open under a big two-cycle load, which fits that entry's counter-reading that chest tracks cumulative load/cycle exposure, not the hot open (430°F isn't hot; the day's modest and single-cycle runs stayed chest-free). Water between hits softened the chest but it returned by cycle 2 — a partial reduction like LunarZ R3, not a full reset. Swab uniform amber-to-brown, minimal: darker than OC's light-golden norm, but two cycles darken a swab independent of endpoint, and no throat harshness or toast corroborates a 430°F floor — cycle count, not ceiling. Uniform coverage rules out dead-zone pooling; minimal residue under a big load points to efficient vaporization, not a hot floor.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Orange Candy',
     profile_anchor='#oc-profile',
-    next_text='Run 15: repeat 8s ramp to 420°F with normal load — clean read on temperature ceiling',
+    next_text='Jar done — 15 runs. If it shows up again: the 415–416°F sapphire ramp is the proven clean operating point; the purple bounded-hold descent (430°F→400°F) delivers a bigger flavor bolus on a modest load.',
     accent=None,
     slug='oc',
     info=[
@@ -295,8 +316,8 @@ STATUS = StrainStatus(
         ('Nose', 'Strong orange note at cold nose'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from orange/citrus character. Lineage: the Naran J × Tropimango cross and Tropimango\'s own parentage (Somango S1, self-pollination) are both confirmed per Philosopher Seeds\' own product listings. Naran J\'s own parentage (NYC Diesel × Morning Glory, attributed to Reggae Seeds) is not independently confirmed — sources repeating this claim trace back to Philosopher Seeds\' own description, not an independent Reggae Seeds source. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes="I suspect I loaded a light load without meaning to. Vapor ran out even before the 40 seconds curve. Very very mild harshness in second hit towards the end, a point for depletion theory. Very beige and minimal reclaim on swabs. Maybe effect is going to grow but I'd say medium intensity right now. Without the finicky business of measuring out the loads, I'm not sure how we will ever isolate this particular variable well enough. Effect is medium to high right now, so it rose up.",
-    next_ai_analysis='Before isolating ramp speed from endpoint, repeat this exact curve (8s to 420°F, 40s session) with a deliberate normal or slightly heavier load. A load that fills the session gives a clean temperature-ceiling read — if harshness stays absent or depletion-only through 40s, 420°F is within range on Rig 5 for OC. That unlocks variable isolation: hold 420°F and try the baseline 20s ramp to separate endpoint from ramp speed.',
-    next_waypoints=OC_RUN14,
-    jar_index='',
+    next_dab_notes="Run 15 (purple, the jar closer): big double load, 430°F bounded-hold descent to 400°F, two cycles, fireworks on cycle 1, moderate effect, chest/heartburn that water partly eased and that resolved after. Amber-to-brown minimal swab. Last dab of an older jar that mostly kept its flavor restrained. Jar done.",
+    next_ai_analysis="Jar done at 15 runs. OC's cleanest, most-mapped operating point was the sapphire 415–417°F band on Rig 3 — 415°F clean, 416°F mild, 417°F immediate harshness, the tightest endpoint gradient in the log. Flavor stayed restrained across most of the jar (user believed it was already old when acquired); the closest-to-name orange-peel note only surfaced twice, late, on Rig 5 around 416°F. If it shows up again, start at the 415–416°F sapphire ramp for a clean read — or run the purple bounded-hold descent (430°F→400°F) that closed the jar for a bigger cycle-1 flavor bolus and moderate effect, but keep the load modest: the double load is what brought the chest/heartburn harshness.",
+    next_waypoints=None,
+    jar_index="<div style='text-align:center;margin-top:1em;'><strong>Runs on the jar:</strong> 15<br><strong>Months the jar stayed in rotation:</strong> May through July<br><strong>Distinct rigs the jar rode through, Rig 1 to Rig 6:</strong> 4<br><strong>Adjacent Fahrenheit degrees on the sapphire that each gave a different answer — 415 clean, 416 mild, 417 harsh:</strong> 3<br><strong>Runs on which the orange the jar is named for showed up in the cold nose:</strong> most<br><strong>Runs on which it showed up in the actual vapor:</strong> 2<br><strong>Suspected age of the jar at purchase:</strong> already old<br><strong>Times the user vowed to stop being precious about vaporizing every last bit of expensive hash:</strong> several<br><strong>Times that vow held:</strong> 0<br><strong>Descent curves in the first fourteen runs:</strong> 0<br><strong>Descent curves on the fifteenth:</strong> 1<br><strong>Device presets christened on a jar's dying dab:</strong> 1 <em>(purple)</em><br><strong>Remaining dabs:</strong> 0</div>",
 )

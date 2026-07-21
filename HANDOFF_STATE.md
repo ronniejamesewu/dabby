@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 164 across 20 strains
+- **Total runs:** 165 across 20 strains
 - **Active since:** May 2, 2026 (79 days)
 - **Last run date:** July 19, 2026
 - **Most recent run (all jars, by utc_logged_at):** LunarZ Run 5 — July 19, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
@@ -74,21 +74,6 @@
 - 25s → 400°F — Mid climb
 - 45s → 410°F — Endpoint — down 5°F from Run 3
 - 65s → 410°F — Hold at 410°F
-
----
-
-### Orange Candy
-**14 sessions** &nbsp;·&nbsp; Next run: 15 &nbsp;·&nbsp; Last: June 4, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
-
-**Next:** Run 15: repeat 8s ramp to 420°F with normal load — clean read on temperature ceiling
-
-**AI Analysis:** Before isolating ramp speed from endpoint, repeat this exact curve (8s to 420°F, 40s session) with a deliberate normal or slightly heavier load. A load that fills the session gives a clean temperature-ceiling read — if harshness stays absent or depletion-only through 40s, 420°F is within range on Rig 5 for OC. That unlocks variable isolation: hold 420°F and try the baseline 20s ramp to separate endpoint from ramp speed.
-
-**Proposed Curve:**
-- 0s → 380°F — Session open
-- 4s → 400°F — Steep early climb
-- 8s → 420°F — Endpoint — 8s ramp; up 4°F from baseline
-- 40s → 420°F — Hold
 
 ---
 
@@ -249,3 +234,4 @@
 - **Fembot #3** (2 sessions, last May 9, 2026): Not my jar — closed after 2 runs. If it shows up again: try 420°F flat hold.
 - **Mango Starburst #23** (1 session, last May 9, 2026): Not my jar — closed after 1 run. If it shows up again: repeat the baseline.
 - **The Hive #1** (15 sessions, last July 5, 2026): Jar done — 15 runs. If it shows up again: the gentle descent (440°F→420°F@30s→400°F@60s) on Rig 6 is a reasonable starting point — it produced consistent mild, self-resolving harshness and strong flavor across six runs.
+- **Orange Candy** (15 sessions, last July 17, 2026): Jar done — 15 runs. If it shows up again: the 415–416°F sapphire ramp is the proven clean operating point; the purple bounded-hold descent (430°F→400°F) delivers a bigger flavor bolus on a modest load.
