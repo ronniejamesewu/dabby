@@ -10,9 +10,10 @@ ENTRY = WisdomEntry(
              "no longer all first-dab (papzp22 R8/R9). Cross-rig untested; load "
              "varied, unresolved.",
     grade='observation',
-    grade_basis="Low — six strains, all Rig 6; originally all first-dab — "
+    grade_basis="Low — seven strains, all Rig 6; originally all first-dab — "
                 "papzp22 R8/R9 (July 16, 2026) add 2nd- and 3rd-dab instances on "
-                "the bounded-hold variant; consistent direction, single-rig.",
+                "the bounded-hold variant, oc R15 a 2nd-dab; consistent direction, "
+                "single-rig.",
     evidence=[
         Citation(
             source='fw106 R23',
@@ -90,6 +91,19 @@ ENTRY = WisdomEntry(
             confounds="3rd dab, two cycles, mid-dab curve switch; bounded-hold "
                       "variant.",
         ),
+        Citation(
+            source='oc R15',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 17, 2026 — \"purple\" 430°F open, 15s hold, gentle descent to "
+                 "a 400°F floor, big (~double) load, two cycles — cycle-1 "
+                 "\"fireworks\" (front-loaded terpene bolus), stopped on satiety with "
+                 "material still in the load (\"there might be more in there but I "
+                 "don't want more\"), not harshness. OC's first descent curve in 15 "
+                 "runs; seventh strain, and the set's first sub-440°F open (430°F).",
+            confounds="2nd dab; big load; two cycles; bounded-hold variant, not the "
+                      "pure descent.",
+        ),
     ],
     positions=[
         Position(
@@ -109,9 +123,16 @@ ENTRY = WisdomEntry(
                  "its curve was the bounded-hold variant rather than the pure descent — "
                  "shape isn't identical across the four.",
         ),
+        Position(
+            stated='Session 172 (July 17, 2026)',
+            text="oc R15 adds a seventh strain and the set's first sub-440°F open — a "
+                 "430°F 15s-hold descent that still front-loaded a cycle-1 bolus and "
+                 "stopped on satiety with material remaining, not harshness. "
+                 "Consistent direction; still all Rig 6, load varied.",
+        ),
     ],
     watch_for="A descent run on Rig 5 (none logged yet) would test cross-rig "
               "generalization; holding load constant would isolate the unresolved load "
               "variable.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026)',
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026)',
 )
