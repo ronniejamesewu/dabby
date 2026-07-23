@@ -77,10 +77,10 @@
 
 ### water-sip-reset  [pattern | observation]
 **Claim:** Water sip clears mid-session harshness — threshold reset, not suppression. Usually resets mid-session harshness on Rig 6, but the reset is not guaranteed.
-**Basis:** Ten instances, five strains, all on Rig 6; not yet cross-rig.
-**Guidance:** Water mid-session usually resets mid-session harshness on Rig 6, but the reset is not guaranteed — six full resets plus LunarZ R4 (helped, full-vs-partial unstated), two partial reductions (LunarZ R3, OC R15), and Sour Tangie R5 the first outright non-response. Whether it generalizes to other rigs is untested.
-**Watch:** Cross-rig instances — all ten are Rig 6; generalization to other rigs is untested.
-*10 citations (7 confirm / 3 counter) | jars: fw106, hive1, lunarz, oc, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026)*
+**Basis:** Eleven instances, five strains — ten Rig 6, one Rig 7 (papzp22 R10, a partial reduction); first cross-rig datum.
+**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets, LunarZ R4 (helped, degree unstated), three partials (LunarZ R3, OC R15, papzp22 R10), and Sour Tangie R5 the lone non-response. papzp22 R10 (Rig 7) is the first cross-rig datum, a partial; generalization untested.
+**Watch:** More cross-rig instances — the first (papzp22 R10, Rig 7) was a partial reduction; clean cross-rig generalization is still untested.
+*11 citations (7 confirm / 4 counter) | jars: fw106, hive1, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 173 (July 22, 2026)*
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
@@ -90,11 +90,11 @@
 *8 citations (8 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026)*
 
 ### chest-harshness-hot-open  [pattern | observation]
-**Claim:** In-session chest-located harshness on hot-open curves, Rig 6 — chest location documented across 12 hot-open runs; the chest-and-lingers conjunction is tracked separately (row B) and now rests on 3 instances.
+**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 13 hot-open runs (12 Rig 6, 1 Rig 7); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
 **Basis:** Low — chest location documented on 12 hot-open Rig 6 runs; Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 3 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
 **Watch:** Further chest-and-lingers conjunction instances to firm up the thin n=3; a clean first-dab modest single-cycle LunarZ run to isolate the purple 430°F hold from cumulative day-exposure.
-*24 citations (12 confirm / 12 counter) | jars: bp4rw13, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026)*
+*25 citations (13 confirm / 12 counter) | jars: bp4rw13, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 173 (July 22, 2026)*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.
@@ -137,6 +137,13 @@
 **Guidance:** Joystick efficiency is directional, not equivalence — rig and draw discipline changed together; session order and load are recurring confounds. Localized dark swab spots can be same-dab material pooled in the airflow dead zone, not a floor or insert signal (papzp22 R9). Cap heat after 430°F cycles: operational.
 **Watch:** The pending first-dab 420°F LHBH test (LHBH R6); whether water or the higher endpoint prevented papzp22 R6 harshness; recurrence of bp4rw13 R9's toasty near-combustion flavor.
 *6 citations (6 confirm / 0 counter) | jars: bp4rw13, fw106, hive1, lhbh, papzp22 | upd FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction; airflow dead-zone observation Session 169 (July 16, 2026).*
+
+### rig7-saml-rbr  [equipment | observation]
+**Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top, replacing the stock bubbler): the recycler mutes taste and conditions/cools the vapor harder; it did not reduce the chest/heartburn facet. One run.
+**Basis:** Single run (papzp22 R10, July 22, 2026); everything is confounded by load, a fresh deep clean, posture, and two cycles.
+**Guidance:** Single run. Muted taste is the cleanest signal — expect a terpene cost. Do not credit the RBR with preserving potency (R10's big effect rode a large, unisolated load). As the first non-bubbler top it removes the forced slouch, making posture a variable — see chest-harshness-hot-open, thermal-injury-vapor-temp.
+**Watch:** A modest-load matched-curve RBR run to clean up taste and open the potency question; the upright-vs-slouched test (papzp22 R11) tying the chest change to posture, not the top.
+*1 citations (1 confirm / 0 counter) | jars: papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut.*
 
 ## Live Failure Modes
 
@@ -235,8 +242,8 @@
 **Claim:** Working theory: if harshness tracks hot vapor hitting tissue (per maté esophageal cancer research), it may be a harm-reduction signal, not just an experience signal. Throat vapor temperature is unmeasured; a working concern, not resolved.
 **Basis:** Single session (57); external research (maté/IARC) applied by analogy; no direct measurement of vapor temperature at the throat.
 **Guidance:** Hold as a working concern, not a resolved finding. Do not treat harshness as purely an experience metric until throat vapor temperature is known. The water-cooling-vs-efficiency tradeoff is flagged but not yet discussed further.
-**Watch:** Actual throat vapor temperature (unmeasured); whether fast-ramp/dense vapor arrives warmer at the throat than slow-ramp; resolution of the cooling-vs-efficiency tradeoff (not yet discussed).
-*1 citations (0 confirm / 0 counter) | upd Session 57*
+**Watch:** Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives warmer than slow-ramp; the cooling-vs-efficiency tradeoff; whether the RBR chest counter holds once posture is isolated.
+*2 citations (0 confirm / 1 counter) | jars: papzp22 | upd Session 57; papzp22 R10 Session 173 (July 22, 2026)*
 
 ### curve-design-theory  [theory | directional]
 **Claim:** Higher endpoint + shorter session stopped at the depletion signal; fastest ascent with no staged ascent waypoints; fast ramp trades staging for density; bounded-hold descent curves are viable on the Switch² and deliver rather than cook.

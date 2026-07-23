@@ -3,9 +3,10 @@ from wisdom_core import *
 ENTRY = WisdomEntry(
     key='chest-harshness-hot-open',
     kind='pattern',
-    claim="In-session chest-located harshness on hot-open curves, Rig 6 — chest "
-          "location documented across 12 hot-open runs; the chest-and-lingers "
-          "conjunction is tracked separately (row B) and now rests on 3 instances.",
+    claim="In-session chest-located harshness on hot-open curves — chest "
+          "location documented across 13 hot-open runs (12 Rig 6, 1 Rig 7); the "
+          "chest-and-lingers conjunction is tracked separately (row B) and rests on "
+          "3 instances.",
     guidance="Chest location is the tracked signal here; persistence is tracked "
              "separately in row (B) — do not fold them together. Do not treat the "
              "chest-and-lingers conjunction as more than its 3 instances. Mechanism "
@@ -277,6 +278,23 @@ ENTRY = WisdomEntry(
                       "run; load×cycle cumulative exposure is the common thread with "
                       "the other below-440 instances.",
         ),
+        Citation(
+            source='papzp22 R10',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 22, 2026 — grey 450°F bounded-hold descent, Rig 7 (SAML RBR wet "
+                 "top) debut, first dab, large load, two cycles — chest/heartburn onset "
+                 "early (~8s, at the 450°F peak, the jar's earliest) and lingering after "
+                 "session end; a water sip only partially reduced it. First chest "
+                 "instance on a non-bubbler top, and the first where posture varied "
+                 "within the session: cycle 1 in the old slouch threw the heartburn, "
+                 "cycle 2 deliberately upright showed next to no added heartburn.",
+            confounds="New rig/top (RBR debut) and posture both introduced this run; "
+                      "large load, two cycles; cycle-2 relief confounds posture with "
+                      "water and cycle depletion. Technically satisfies chest-and-lingers "
+                      "but is the most confounded such instance — not firmed into the "
+                      "conjunction.",
+        ),
     ],
     positions=[
         Position(
@@ -382,6 +400,31 @@ ENTRY = WisdomEntry(
                  "exposure reconciles both. 430°F isn't hot, so this stays consistent "
                  "with the counter-reading that hot-open is a proxy for exposure.",
         ),
+        Position(
+            stated='Session 173 (July 22, 2026)',
+            text="papzp22 R10 is the first chest instance on a non-bubbler top (Rig 7, "
+                 "SAML RBR wet top). Two updates. (1) The RBR cools/conditions the vapor "
+                 "harder than the bubbler, yet chest/heartburn came earlier (~8s, at the "
+                 "450°F peak — the jar's earliest chest onset) and lingered — the "
+                 "opposite of what a hot-vapor-on-tissue driver predicts (see "
+                 "thermal-injury-vapor-temp). (2) Posture surfaced as a newly-visible "
+                 "candidate: every prior chest instance across this jar, Sour Tangie, and "
+                 "LunarZ ran on the stock bubbler, which forces a slouched, chin-down "
+                 "posture — posture was a hidden constant, never a variable. On the RBR "
+                 "the user need not hunch; cycle 1 in the old body-memory slouch threw "
+                 "the heartburn, cycle 2 deliberately upright showed next to none. The "
+                 "user's mechanism: slouching keeps some of the draw from fully reaching "
+                 "the lungs, routing vapor toward the esophageal/chest locus already "
+                 "tracked as the candidate site. One heavily-confounded session (new top, "
+                 "posture, water, and cycle depletion all moved together) — a direction, "
+                 "not a finding. R10 also technically satisfies chest-and-lingers but is "
+                 "the most confounded such instance, so the conjunction stays at 3. Held "
+                 "at observation. Discriminating test (papzp22 R11, next_ai_analysis): "
+                 "posture should beat temperature and load — an upright, breath-conscious "
+                 "grey run on the RBR with no water should come back chest-free; a "
+                 "deliberately slouched run at a lower, cooler endpoint should bring it "
+                 "back.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
@@ -391,5 +434,5 @@ ENTRY = WisdomEntry(
     watch_for="Further chest-and-lingers conjunction instances to firm up the thin "
               "n=3; a clean first-dab modest single-cycle LunarZ run to isolate the "
               "purple 430°F hold from cumulative day-exposure.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026)",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 173 (July 22, 2026)",
 )

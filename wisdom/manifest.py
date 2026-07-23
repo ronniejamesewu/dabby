@@ -34,6 +34,7 @@ LIVE = [
     'rig4-sapphire-ruby',
     'rig5-dual-ruby',
     'rig6-piston-joystick',
+    'rig7-saml-rbr',
     # failure-mode (live)
     'fm-push-files-content-loss',
     'fm-device-capability-overassert',
