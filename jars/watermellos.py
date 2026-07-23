@@ -37,6 +37,18 @@ WM_RUN17_NEXT = [
     Waypoint(time_s=30, temp_f=420, note='Gentle descent'),
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
+WM_HOLD10_DESCENT_440 = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=10, temp_f=440, note='Hold at peak — one draw at 440°F'),
+    Waypoint(time_s=35, temp_f=420, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
+WM_HOLD15_DESCENT_430 = [
+    Waypoint(time_s=0,  temp_f=430, note='Session open — hot open'),
+    Waypoint(time_s=15, temp_f=430, note='Hold at peak — extended 15s hold'),
+    Waypoint(time_s=37, temp_f=415, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -310,13 +322,28 @@ RUNS = [
         dab_notes='Mild harshness starting around 37 seconds left. Dense vapor throughout, lots of terps lots of flavor. Medium and building intensity. Swabs were golden and minimal reclaim. Very efficient, tried a second cycle and there was nothing there.',
         analysis="Descent curve Run 2 on Rig 6, third dab of the day. Dense vapor throughout, strong terp and flavor presence — the strongest flavor description in this jar's history. Golden swab, minimal reclaim, second cycle empty: material ran cleanly through the 60s single cycle. The 400°F floor is confirmed right — R16's 350°F floor killed vaporization with ~10s remaining and forced recovery cycles; R17 and R18 both depleted naturally within the single cycle.\n\nMild harshness starting at ~37s remaining (~23s in). R17 (second dab) had harshness appear somewhere between 42s and 30s remaining on draw 2 — similar window. The timing held despite an additional session of accumulated airway exposure. That's directional for the curve having a ceiling there rather than session order driving it — same threshold reached at roughly the same clock time under heavier airway load. Both runs are still confounded (R17 second dab, R18 third dab); a first-dab run is needed to close it. Golden swab consistent with the single-cycle pattern: 2x2 sessions (Runs 11–14) → dark gold; single 60s cycles (Runs 15, 17, 18) → golden or beige.\n\n[Equipment corrected to Rig 6 on July 2, 2026 — originally logged Rig 5 via stale jar-local default; user confirmed the Piston has been in continuous use since June 17, 2026.]",
     ),
+    CompletedRun(
+        strain='Watermellos',
+        run_date=date(2026, 7, 21),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 21, 22, 21, 7, tzinfo=timezone.utc),
+        waypoints=WM_HOLD10_DESCENT_440,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 10s hold at 440°F, then gentle descent (bounded-hold variant); second recovery cycle gave one short draw',
+        swab='Golden, normal reclaim.',
+        session_char='Golden swab, normal reclaim; bounded-hold descent (440°F open, 10s hold, gentle descent to a 400°F floor), normal load, first dab of the day. Full 60s first cycle, then a second recovery cycle that gave one short draw before depleting. Mildew on draw 1, otherwise subtle flavors drifting; oddly the most flavor came on the spent second-cycle draw. No toasty flavor despite ~20s combined at 440°F across the two cycles. In-session clean of harshness; throat harshness onset a few minutes after stopping (post-session, not in-session). Medium intensity but heavier than expected — a lie-down body high.',
+        intensity='Medium — heavier than expected; a lie-down body high.',
+        dab_notes='[Pre-dab: normal load. I think next dab on this jar will be last.] Only real taste note that showed up was the mildew in the first draw. Otherwise subtle flavors drifting through. This one had throat harshness show up a few minutes after stopping. I ran a second cycle and only got one short draw before it depleted. Oddly that draw had the most flavor. Never tasted toasty, despite seeing a combined 20 seconds at 440. [Swab / intensity:] Swabs golden, normal amount of reclaim. I\'d say the intensity is a medium, but it\'s heavier than I remembered. Definitely a body high, I want to go lay down.',
+        analysis='Run 19 — the bounded-hold descent (440°F open, 10s hold, then gentle descent to a 400°F floor), first dab of the day, normal load — a deliberate deviation from the planned gentle-descent ceiling test to chase flavor by extending the 440°F peak window. The chase didn\'t land: mildew on draw 1 (the jar\'s recurring draw-exhale note across R5–R8, R10, R12), otherwise subtle flavors drifting, and — oddly — the most flavor on the spent second-cycle draw. That last point is one uncontrolled observation and hard to read (cooler, depleted material, weak palate signal); no selective-delivery mechanism is implied, since at the 400°F floor terpenes and cannabinoids are all above boiling. The muted-vapor character held even on the curve built to exploit the jar\'s one bright spot (R17\'s "ton of flavor" 440°F open draw) — consistent with the standing read that Watermellos\' great cold nose just doesn\'t translate to vapor; flavor here is strain character, not a curve-shape lever. Golden swab, normal reclaim, and no toasty flavor despite ~20s combined at 440°F across the two cycles: delivered, not cooked — a within-jar (non-opener) confirming instance for the bounded-hold-delivers read, which had mostly rested on jar-openers. In-session was clean of harshness; the run went the full 60s first cycle and ended on depletion (one short second-cycle draw before it ran dry) — another descent-limiting-factor instance, bounded-hold variant, first dab. Same rig throughout (Rig 6). Because this swapped in the bounded hold, the ~37s harshness-ceiling question open since R17/R18 stays open — R19\'s clean in-session read can\'t speak to it, since both curve and session order differ from those runs. The throat harshness a few minutes after stopping is a post-session-discomfort instance — 440°F bounded-hold open, Rig 6, first dab, normal load, with the second recovery cycle as the main added-exposure confound. Read against that entry\'s confounds: opening temperature is explicitly not the tracking variable (WM R10\'s 380°F open had no post-session soreness), so this isn\'t "the hot open did it." It\'s the throat/mucosal leg — no chest or heartburn-quality component, so this hot-open Rig 6 run stayed clear of the chest thread. Intensity medium but heavier than expected, a lie-down body high — consistent with Watermellos hitting harder than its swab and flavor would suggest.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Watermellos',
     profile_anchor='#watermellos-profile',
-    next_text='Run 19: same descent curve (440→420@30s→400@60s), first dab of day — confirm whether harshness ceiling at ~37s remaining is curve-driven',
+    next_text='Run 20 (likely the jar\'s last): the "purple" curve — 430°F open, 15s hold, gentle descent to a 400°F floor — a cooler, longer-hold swing at the flavor the 440°F bounded hold couldn\'t pull, first dab.',
     accent=None,
     slug='watermellos',
     info=[
@@ -327,8 +354,8 @@ STATUS = StrainStatus(
         ('Flavor', 'Cold nose does not translate to vapor — flavor in vapor notably muted relative to cold nose intensity.'),
     ],
     terpene_note='<strong>Terpene profile:</strong> Alpha-pinene and beta-pinene label-reported as dominant; caryophyllene label-reported secondary. Label-reported terps are not measured from this batch — treat as directional. Myrcene and limonene inferred from Melonade and Gushers lineage. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes='Mild harshness starting around 37 seconds left. Dense vapor throughout, lots of terps lots of flavor. Medium and building intensity. Swabs were golden and minimal reclaim. Very efficient, tried a second cycle and there was nothing there.',
-    next_ai_analysis="Harshness onset (~37s remaining) held consistent across R17 (second dab) and R18 (third dab) — same timing under increasing airway load is directional for the curve having a ceiling there, not session order. Run 19: same curve, first dab of day. If harshness still appears in the 30–40s remaining window, the curve has a real ceiling at that threshold. If it's clean or substantially later, session order was carrying more weight than the timing consistency implies.",
-    next_waypoints=WM_RUN17_NEXT,
+    next_dab_notes='',
+    next_ai_analysis="Likely the jar's last run. Run the \"purple\" curve — 430°F open, 15s hold, gentle descent to a 400°F floor (borrowed from LunarZ/OC, duplicated locally) — as a first dab. The extended holds that front-loaded a big terpene bolus without cooking were the cooler 430°F purple runs (LunarZ R4/R5, OC R15 \"fireworks\"), and since R19's 440°F bounded hold came back golden but flavorless, a cooler-but-longer hold is the other lever left for the flavor this jar never gave up — and Watermellos has never run a sub-440°F descent, so it's new ground. It won't test the ~37s harshness ceiling (different curve), but that's a fair trade on a send-off. Expected: a bigger front-loaded bolus than R19 on the held draws, golden swab, medium-plus intensity ending on satiety or depletion, flavor still muted. Surprising: genuinely rich flavor — the jar's first flavor unlock, which would make the cooler-longer hold the recipe — or a dark swab / heavy reclaim / toast, which would say even a sustained 430°F cooks this material.",
+    next_waypoints=WM_HOLD15_DESCENT_430,
     jar_index='',
 )
