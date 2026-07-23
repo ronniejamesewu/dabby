@@ -24,6 +24,19 @@ ENTRY = WisdomEntry(
                  "harshness.",
             confounds="none noted",
         ),
+        Citation(
+            source='papzp22 R10',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 22, 2026 — grey 450°F on Rig 7 (SAML RBR wet top), which cools "
+                 "vapor harder than the bubbler: chest/heartburn came earlier (~8s, at "
+                 "the 450°F peak) and lingered rather than softening — against a "
+                 "hot-vapor-on-tissue driver for the chest facet. Posture-responsive "
+                 "within the same session (upright cycle 2 nearly cleared it).",
+            confounds="New top, posture, water, and cycle depletion all moved together; "
+                      "throat vapor temperature unmeasured; speaks to the chest facet "
+                      "only, not throat harshness generally.",
+        ),
     ],
     positions=[
         Position(
@@ -63,9 +76,27 @@ ENTRY = WisdomEntry(
                  "— a real tradeoff between harm reduction and delivery "
                  "efficiency. Not yet discussed.",
         ),
+        Position(
+            stated='Session 174 (July 22, 2026)',
+            text="First empirical datum bearing on this theory, from equipment rather "
+                 "than measurement. papzp22 R10 ran the grey 450°F curve on Rig 7 (SAML "
+                 "RBR wet top), which cools and conditions the vapor harder than the "
+                 "stock bubbler used for every prior chest instance. If chest/heartburn "
+                 "tracked hot vapor on tissue, more cooling should have softened it; "
+                 "instead the chest signal came earlier (~8s, at the 450°F peak) and "
+                 "lingered — the opposite direction. This cuts against vapor temperature "
+                 "as the chest driver and is consistent with a mechanical, "
+                 "posture-dependent route (see chest-harshness-hot-open, Session 173): "
+                 "the same run's cycle-2 upright posture nearly eliminated the heartburn. "
+                 "One heavily-confounded session (new top, posture, water, cycle "
+                 "depletion all moved together); throat vapor temperature is still "
+                 "unmeasured, so this narrows a candidate rather than resolving the "
+                 "theory, and it speaks to the chest/heartburn facet only, not throat "
+                 "harshness generally.",
+        ),
     ],
-    watch_for="Actual throat vapor temperature (unmeasured); whether fast-ramp/dense "
-              "vapor arrives warmer at the throat than slow-ramp; resolution of the "
-              "cooling-vs-efficiency tradeoff (not yet discussed).",
-    updated='Session 57',
+    watch_for="Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives "
+              "warmer than slow-ramp; the cooling-vs-efficiency tradeoff; whether the "
+              "RBR chest counter holds once posture is isolated.",
+    updated='Session 57; papzp22 R10 Session 174 (July 22, 2026)',
 )

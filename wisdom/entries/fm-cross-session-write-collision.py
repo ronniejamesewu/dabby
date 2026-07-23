@@ -42,6 +42,26 @@ ENTRY = WisdomEntry(
                  "resolving, not by the conflict markers.",
             confounds="none noted",
         ),
+        Citation(
+            source='session:173-fw106-vs-174-papz-2026-07-22',
+            role='confirms',
+            provenance='ai-authored',
+            gist="Immediate recurrence, same entry, one session later. Session 174 "
+                 "(papzp22 R10, Rig 7 RBR debut) closed while #265 (FW106 R32 — itself "
+                 "the instance directly above) had just merged to main. Both had added a "
+                 "Citation + a Position to wisdom/entries/chest-harshness-hot-open.py "
+                 "and both independently bumped the run-count to 13 — the exact "
+                 "count-field auto-merge trap #265 had just documented. This time the "
+                 "claim line did surface a conflict (the two sides' count phrasings "
+                 "differed), but grade_basis — which I left unchanged — auto-merged "
+                 "silently to #265's edit with no marker; here that value was right for "
+                 "the Rig-6 count, but it is the same invisible-merge mechanism that "
+                 "produced the wrong 12 in the #265 instance. Both deltas transposed, "
+                 "total set to 14 (13 Rig 6 + 1 Rig 7), session renumbered 173→174. The "
+                 "chest-harshness-hot-open entry is a standing collision magnet — every "
+                 "hot-open logging session appends a chest citation to it.",
+            confounds="none noted",
+        ),
     ],
-    updated='Session 165 (July 16, 2026); Session 173 (July 20, 2026)',
+    updated='Session 165 (July 16, 2026); Session 173 (July 20, 2026); Session 174 (July 22, 2026)',
 )

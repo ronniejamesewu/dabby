@@ -6,13 +6,14 @@ ENTRY = WisdomEntry(
     claim="Water sip clears mid-session harshness — threshold reset, not suppression. "
           "Usually resets mid-session harshness on Rig 6, but the reset is not "
           "guaranteed.",
-    guidance="Water mid-session usually resets mid-session harshness on Rig 6, but the "
-             "reset is not guaranteed — six full resets plus LunarZ R4 (helped, "
-             "full-vs-partial unstated), two partial reductions (LunarZ R3, OC R15), "
-             "and Sour Tangie R5 the first outright non-response. Whether it "
-             "generalizes to other rigs is untested.",
+    guidance="Water usually resets mid-session harshness on Rig 6, but not reliably — "
+             "six full resets, LunarZ R4 (helped, degree unstated), three partials "
+             "(LunarZ R3, OC R15, papzp22 R10), and Sour Tangie R5 the lone "
+             "non-response. papzp22 R10 (Rig 7) is the first cross-rig datum, a partial; "
+             "generalization untested.",
     grade='observation',
-    grade_basis="Ten instances, five strains, all on Rig 6; not yet cross-rig.",
+    grade_basis="Eleven instances, five strains — ten Rig 6, one Rig 7 (papzp22 R10, a "
+                "partial reduction); first cross-rig datum.",
     evidence=[
         Citation(
             source='hive1 R6',
@@ -110,6 +111,19 @@ ENTRY = WisdomEntry(
             confounds="2nd dab, big (~double) load, two cycles; chest-located "
                       "harshness under heavy cumulative exposure, single-run weight.",
         ),
+        Citation(
+            source='papzp22 R10',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 22, 2026 — grey 450°F, Rig 7 (SAML RBR wet top) debut — a water "
+                 "sip brought the chest/heartburn down 'somewhat' but did not clear it; "
+                 "a partial reduction like LunarZ R3 and OC R15, the third partial-only "
+                 "response in the log, and the first instance on a rig other than Rig 6.",
+            confounds="First non-Rig-6 instance (the cross-rig watch_for), but heavily "
+                      "confounded — RBR debut, large load, chest-located harshness, "
+                      "upright-posture change in cycle 2; degree ('somewhat') not "
+                      "quantified.",
+        ),
     ],
     positions=[
         Position(
@@ -124,8 +138,18 @@ ENTRY = WisdomEntry(
                  "non-response (under a heavy cumulative load). Whether it generalizes "
                  "to other rigs is untested.",
         ),
+        Position(
+            stated='Session 174 (July 22, 2026)',
+            text="papzp22 R10 is the first non-Rig-6 instance (Rig 7, SAML RBR wet top) "
+                 "and a partial reduction — the third partial-only response (with LunarZ "
+                 "R3, OC R15), so partial-not-full now has three instances against six "
+                 "full resets. It touches the cross-rig watch_for but does not answer it: "
+                 "one partial datum on a new top, itself confounded by the RBR debut, a "
+                 "large load, chest-located harshness, and a within-session posture "
+                 "change — not clean cross-rig generalization. Held at observation.",
+        ),
     ],
-    watch_for="Cross-rig instances — all ten are Rig 6; generalization to other rigs "
-              "is untested.",
-    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026)',
+    watch_for="More cross-rig instances — the first (papzp22 R10, Rig 7) was a partial "
+              "reduction; clean cross-rig generalization is still untested.",
+    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026)',
 )
