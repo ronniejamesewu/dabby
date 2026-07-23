@@ -34,7 +34,7 @@ ENTRY = WisdomEntry(
     ],
     positions=[
         Position(
-            stated='Session 173 (July 22, 2026)',
+            stated='Session 174 (July 22, 2026)',
             text="RBR debut. The wet top delivered on its design bet — muted taste, the "
                  "cleanest read available because R8/R9 ran this exact grey 450°F curve "
                  "on the stock bubbler with loud flavor, so the constant-curve / "

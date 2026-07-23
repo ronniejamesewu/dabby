@@ -80,7 +80,7 @@
 **Basis:** Eleven instances, five strains — ten Rig 6, one Rig 7 (papzp22 R10, a partial reduction); first cross-rig datum.
 **Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets, LunarZ R4 (helped, degree unstated), three partials (LunarZ R3, OC R15, papzp22 R10), and Sour Tangie R5 the lone non-response. papzp22 R10 (Rig 7) is the first cross-rig datum, a partial; generalization untested.
 **Watch:** More cross-rig instances — the first (papzp22 R10, Rig 7) was a partial reduction; clean cross-rig generalization is still untested.
-*11 citations (7 confirm / 4 counter) | jars: fw106, hive1, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 173 (July 22, 2026)*
+*11 citations (7 confirm / 4 counter) | jars: fw106, hive1, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026)*
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
@@ -90,11 +90,11 @@
 *8 citations (8 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026)*
 
 ### chest-harshness-hot-open  [pattern | observation]
-**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 13 hot-open runs (12 Rig 6, 1 Rig 7); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
-**Basis:** Low — chest location documented on 12 hot-open Rig 6 runs; Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
+**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 14 hot-open runs (13 Rig 6, 1 Rig 7); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
+**Basis:** Low — chest location documented on 13 hot-open Rig 6 runs plus 1 on Rig 7 (papzp22 R10); Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 3 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
 **Watch:** Further chest-and-lingers conjunction instances to firm up the thin n=3; a clean first-dab modest single-cycle LunarZ run to isolate the purple 430°F hold from cumulative day-exposure.
-*25 citations (13 confirm / 12 counter) | jars: bp4rw13, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 173 (July 22, 2026)*
+*26 citations (14 confirm / 12 counter) | jars: bp4rw13, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026)*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.
@@ -201,7 +201,7 @@
 ### fm-cross-session-write-collision  [failure-mode]
 **Claim:** Parallel sessions can both legitimately edit the same shared knowledge surface — a logging session's close and an open restructuring branch collided on the wisdom layer; the merge would have silently deleted the logging session's update.
 **Guidance:** Before merging any branch that restructures a shared surface, diff that surface against current main and transpose any concurrent delta explicitly — a session-scoped freeze cannot bind sessions that don't know about it. Per-entry sharding narrows the blast radius; same-entry edits still collide.
-*1 citations (1 confirm / 0 counter) | upd Session 165 (July 16, 2026)*
+*3 citations (3 confirm / 0 counter) | upd Session 165 (July 16, 2026); Session 173 (July 20, 2026); Session 174 (July 22, 2026)*
 
 ## Working Theory
 
@@ -243,7 +243,7 @@
 **Basis:** Single session (57); external research (maté/IARC) applied by analogy; no direct measurement of vapor temperature at the throat.
 **Guidance:** Hold as a working concern, not a resolved finding. Do not treat harshness as purely an experience metric until throat vapor temperature is known. The water-cooling-vs-efficiency tradeoff is flagged but not yet discussed further.
 **Watch:** Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives warmer than slow-ramp; the cooling-vs-efficiency tradeoff; whether the RBR chest counter holds once posture is isolated.
-*2 citations (0 confirm / 1 counter) | jars: papzp22 | upd Session 57; papzp22 R10 Session 173 (July 22, 2026)*
+*2 citations (0 confirm / 1 counter) | jars: papzp22 | upd Session 57; papzp22 R10 Session 174 (July 22, 2026)*
 
 ### curve-design-theory  [theory | directional]
 **Claim:** Higher endpoint + shorter session stopped at the depletion signal; fastest ascent with no staged ascent waypoints; fast ramp trades staging for density; bounded-hold descent curves are viable on the Switch² and deliver rather than cook.

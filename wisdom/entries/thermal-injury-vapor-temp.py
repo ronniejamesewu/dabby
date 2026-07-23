@@ -77,7 +77,7 @@ ENTRY = WisdomEntry(
                  "efficiency. Not yet discussed.",
         ),
         Position(
-            stated='Session 173 (July 22, 2026)',
+            stated='Session 174 (July 22, 2026)',
             text="First empirical datum bearing on this theory, from equipment rather "
                  "than measurement. papzp22 R10 ran the grey 450°F curve on Rig 7 (SAML "
                  "RBR wet top), which cools and conditions the vapor harder than the "
@@ -98,5 +98,5 @@ ENTRY = WisdomEntry(
     watch_for="Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives "
               "warmer than slow-ramp; the cooling-vs-efficiency tradeoff; whether the "
               "RBR chest counter holds once posture is isolated.",
-    updated='Session 57; papzp22 R10 Session 173 (July 22, 2026)',
+    updated='Session 57; papzp22 R10 Session 174 (July 22, 2026)',
 )

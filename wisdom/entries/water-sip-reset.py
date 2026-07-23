@@ -139,7 +139,7 @@ ENTRY = WisdomEntry(
                  "to other rigs is untested.",
         ),
         Position(
-            stated='Session 173 (July 22, 2026)',
+            stated='Session 174 (July 22, 2026)',
             text="papzp22 R10 is the first non-Rig-6 instance (Rig 7, SAML RBR wet top) "
                  "and a partial reduction — the third partial-only response (with LunarZ "
                  "R3, OC R15), so partial-not-full now has three instances against six "
@@ -151,5 +151,5 @@ ENTRY = WisdomEntry(
     ],
     watch_for="More cross-rig instances — the first (papzp22 R10, Rig 7) was a partial "
               "reduction; clean cross-rig generalization is still untested.",
-    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 173 (July 22, 2026)',
+    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026)',
 )
