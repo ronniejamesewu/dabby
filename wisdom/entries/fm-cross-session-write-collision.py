@@ -26,6 +26,22 @@ ENTRY = WisdomEntry(
                  "No data lost; the loss was one unreviewed merge away.",
             confounds="none noted",
         ),
+        Citation(
+            source='session:172-oc-vs-173-fw106-2026-07-20',
+            role='confirms',
+            provenance='ai-authored',
+            gist="Session 173 (FW106 R32) and the concurrently-merged OC R15 work "
+                 "(Sessions 172, PR #262–264) both added a Citation + a Position to "
+                 "wisdom/entries/chest-harshness-hot-open.py at session close. New "
+                 "wrinkle beyond the 164 case: both independently bumped the same "
+                 "run-count field 11→12, so git saw textually-identical changes and "
+                 "auto-merged to a silent, semantically-wrong 12 — no conflict marker "
+                 "on that line. Both citations and both positions were kept and the "
+                 "count hand-corrected to 13; sessions renumbered 172→173 to break the "
+                 "duplicate label. Caught by reading main's version of the entry before "
+                 "resolving, not by the conflict markers.",
+            confounds="none noted",
+        ),
     ],
-    updated='Session 165 (July 16, 2026)',
+    updated='Session 165 (July 16, 2026); Session 173 (July 20, 2026)',
 )

@@ -4,15 +4,15 @@ ENTRY = WisdomEntry(
     key='chest-harshness-hot-open',
     kind='pattern',
     claim="In-session chest-located harshness on hot-open curves, Rig 6 — chest "
-          "location documented across 12 hot-open runs; the chest-and-lingers "
+          "location documented across 13 hot-open runs; the chest-and-lingers "
           "conjunction is tracked separately (row B) and now rests on 3 instances.",
     guidance="Chest location is the tracked signal here; persistence is tracked "
              "separately in row (B) — do not fold them together. Do not treat the "
-             "chest-and-lingers conjunction as more than its 2 instances. Mechanism "
+             "chest-and-lingers conjunction as more than its 3 instances. Mechanism "
              "unresolved; the hot-open-delivers-deeper-aerosol reading is speculative "
              "— do not promote it to cause.",
     grade='observation',
-    grade_basis="Low — chest location documented on 12 hot-open Rig 6 runs; Sour "
+    grade_basis="Low — chest location documented on 13 hot-open Rig 6 runs; Sour "
                 "Tangie R3 the weakest (mild, resolved in-session), R7 the hottest "
                 "open at 450°F and a first-dab instance.",
     evidence=[
@@ -263,6 +263,21 @@ ENTRY = WisdomEntry(
                       "asked/reported.",
         ),
         Citation(
+            source='oc R15',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 17, 2026 — \"purple\" 430°F 15s-hold descent, big (~double) "
+                 "load, two cycles, 2nd dab — chest/heartburn present with no throat "
+                 "component, did not climb, softened partially with water and resolved "
+                 "post-session (in-session only, no persistence → chest-location only, "
+                 "does not add to the conjunction). A new strain (OC's first "
+                 "descent/hot-open ever) and a below-440 chest instance like LunarZ "
+                 "R2/R3/R5 and Sour Tangie R5/R6.",
+            confounds="2nd dab, big load, two cycles — chest on a 2nd-dab big-load "
+                      "run; load×cycle cumulative exposure is the common thread with "
+                      "the other below-440 instances.",
+        ),
+        Citation(
             source='fw106 R32',
             role='confirms',
             provenance='user-verbatim',
@@ -372,7 +387,17 @@ ENTRY = WisdomEntry(
                  "may have masked its chest.",
         ),
         Position(
-            stated='Session 172 (July 20, 2026)',
+            stated='Session 172 (July 17, 2026)',
+            text="oc R15 adds Orange Candy as a new chest-location strain (430°F "
+                 "15s-hold \"purple\" descent, 2nd dab, big load, two cycles; chest "
+                 "with no throat, in-session only — does not add to the conjunction). "
+                 "A 2nd-dab big-load run throwing chest cuts mildly against the "
+                 "LunarZ R4/R5 day-position-not-load read; cumulative load×cycle "
+                 "exposure reconciles both. 430°F isn't hot, so this stays consistent "
+                 "with the counter-reading that hot-open is a proxy for exposure.",
+        ),
+        Position(
+            stated='Session 173 (July 20, 2026)',
             text="FW106 R32 puts a new strain in the hot-open chest group — its first "
                  "chest/heartburn instance, on the grey 450°F curve's FW106 debut. It "
                  "confirms occurrence on a new strain but isolates nothing: large load "
@@ -395,5 +420,5 @@ ENTRY = WisdomEntry(
     watch_for="Further chest-and-lingers conjunction instances to firm up the thin "
               "n=3; a clean first-dab modest single-cycle LunarZ run to isolate the "
               "purple 430°F hold from cumulative day-exposure.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); Session 172 (July 20, 2026)",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026)",
 )
