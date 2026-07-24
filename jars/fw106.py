@@ -72,6 +72,12 @@ FW106_HOLD_DESCENT_450 = [
     Waypoint(time_s=30, temp_f=425, note='Gentle descent midpoint'),
     Waypoint(time_s=45, temp_f=410, note='Floor — shorter cycle'),
 ]
+FW106_HOLD_DESCENT_430 = [
+    Waypoint(time_s=0,  temp_f=430, note='Session open — hot open, purple curve'),
+    Waypoint(time_s=15, temp_f=430, note='Hold at peak — extended 15s hold'),
+    Waypoint(time_s=37, temp_f=415, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -556,13 +562,58 @@ RUNS = [
         dab_notes="So terpy! Mouth watering, eye watering, coughing so hard you might gag. And heartburn started after the cycle while I was coughing. I'm going to run second cycle just to see what's left. [Second cycle, ~7:08pm MDT, ~22 min after the open:] Wow that was tasty to the very end, maybe 3 seconds before depletion it tasted toasty, then it was gone. [Swab/intensity/load:] Not too dark surprisingly, I'd say dark golden. And a lot of reclaim which kind of doesn't fit it depleting. It hit very hard. And it was a large load. [Heartburn — cough-provoked vs chest, asked at logging:] not disambiguated.",
         analysis="Run 32 — the grey 450°F bounded-hold descent's FW106 debut (450→450@10s→425@30s→410@45s), deviating from the planned 440-open hold; brought over from the curve's run on Sour Tangie, papzp22, LHBH, and LunarZ. First dab, large load, two ~45s cycles, ~22-min pause between. The 450°F open — FW106's hottest — delivered the bouquet hard: mouth- and eye-watering terpiness and a gag-level terpene-load cough (dense vapor, distinct from harshness), reproducing the Sour Tangie grey-450 signature (R7). Toast timing is the key flavor read: tasty end-to-end, toasty only ~3s before cycle 2 depleted. FW106's only prior toast (R11–R12) was early and throughout, from genuinely over-ceiling material; this was the depletion-edge hot-insert signal, not degradation — the open captured full flavor without cooking the bulk. Heavy reclaim on a large load contradicts the depletion feel only if vaporization is read as continuous; draw-gated (the R31 correction) it fits — two sparse, cough-interrupted cycles can't clear a large load, so the bulk stays as reclaim while drawable vapor tails off. Same as R31 and Sour Tangie R8. Swab dark golden, light for the hottest open and two cycles — cycle count drives swab over endpoint here (Sour Tangie's lightest swabs were also 450°F); floor signal only. Chest/heartburn is FW106's first, set in after cycle 1 during the coughing — a new strain in the hot-open chest group. But it sits in the confounded zone the pattern's counter-reading names: large load plus two cycles is the cumulative-exposure territory chest co-varies with, so it confirms occurrence on a new strain without isolating the open as cause. Post-cycle onset and onset-during-violent-coughing (reflux can be cough-provoked) keep the mechanism open — asked at logging, not disambiguated. First dab removes session order. Tracked against the user's esophageal anatomy as candidate locus; mechanism not promoted. Session limiter was density/depletion across two cycles, not tail harshness (descent-limiting-factor) — the chest facet is a separate signal.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 7, 23),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 23, 17, 10, 28, tzinfo=timezone.utc),
+        waypoints=FW106_HOLD_DESCENT_450,
+        equipment=RIG_6,
+        duration_seconds=45,
+        endpoint_note='<strong>Open:</strong> 450°F &nbsp;|&nbsp; <strong>Floor:</strong> 410°F — grey 450 bounded-hold descent (450→450@10s→425@30s→410@45s); big load, many cycles &nbsp;|&nbsp; <strong>Note:</strong> party session, coarse recall',
+        swab='Golden.',
+        session_char='Golden swab, heavy reclaim — big load, not finished. Many cycles. Hit very hard.',
+        intensity='Very hard — "fucked me up."',
+        dab_notes="[Party-mode capture:] fire water — first 450 bounded dab, big load, many cycles. Rig 6 (not 7). [Reconciliation:] Big load and as many cycles as needed, 450 bounded is the curve. Swab golden, a lot of reclaim — I don't think I finished the big load. 450 fucked me up. [Chest/heartburn asked at logging:] Nothing I can remember, it was a good party.",
+        analysis="Run 33, first dab of the day — the grey 450°F bounded-hold descent that Run 33 was slotted for, but deviating from the plan on load and cycle count (the plan was modest load, single cycle, to isolate chest). Instead: big load, many cycles, at a party. Golden swab with heavy reclaim, and the user's own read that the big load wasn't finished — draw-gated depletion (the R31 correction) fits cleanly: a big load worked over many cycles at a party gets sparse, distracted draws, so the bulk stays behind as reclaim while drawable vapor tails off. Same shape as R31/R32. Golden swab at FW106's hottest open across many cycles is consistent with the cycle-count-over-endpoint swab reading already noted on R32. Intensity very hard — consistent with the 450°F open plus a big load. The chest-isolation the plan wanted still didn't happen: big load plus many cycles is exactly the confounded cumulative-exposure territory R32 already sat in, and party recall was too coarse to even confirm whether chest showed — logged as not recalled, not a clean absence. One party run; nothing isolated.",
+    ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 7, 23),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 23, 19, 0, 0, tzinfo=timezone.utc),
+        waypoints=FW106_HOLD_DESCENT_450,
+        equipment=RIG_6,
+        duration_seconds=45,
+        endpoint_note='<strong>Open:</strong> 450°F &nbsp;|&nbsp; <strong>Floor:</strong> 410°F — grey 450 bounded-hold descent; same as Run 33 &nbsp;|&nbsp; <strong>Note:</strong> time ~1pm approximate; party session, coarse recall',
+        swab='Golden.',
+        session_char='Golden swab, minimal reclaim. Hit very hard.',
+        intensity='Very hard — "fucked me up."',
+        dab_notes="[Party-mode capture: second fw dab on 450 bounded curve; ~1pm MDT approximate, capture was late; Rig 6 not 7.] Swab golden, not a lot of reclaim. 450 fucked me up. [Chest asked at logging: nothing recalled, good party.]",
+        analysis="Run 34, second dab of the day — the grey 450°F curve again, ~1pm (time approximate; the capture was late and reconstructed at reconciliation). Golden swab with minimal reclaim, in contrast to Run 33's heavy reclaim earlier the same day on the same curve and rig. Load wasn't stated separately, but the light reclaim points to either a smaller load or more complete draws than R33's unfinished big load — reclaim is the only load-proxy on record for this one. Hit very hard, same 'fucked me up' read as R33; second-dab session order confounds any intensity comparison between them, but both 450 opens landed hard. A same-day 450 repeat with the reclaim swinging from heavy to minimal is the useful contrast — the curve held, the load/draw completeness moved.",
+    ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 7, 23),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 7, 23, 22, 28, 40, tzinfo=timezone.utc),
+        waypoints=FW106_HOLD_DESCENT_430,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 430°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — purple 430 bounded-hold descent (430→430@15s→415@37s→400@60s); FW106\'s first purple run &nbsp;|&nbsp; <strong>Note:</strong> party session, coarse recall',
+        swab='Golden.',
+        session_char='Golden swab, minimal reclaim. Notably more pleasant than the day\'s two 450°F opens.',
+        intensity='Milder — more pleasant than the 450s.',
+        dab_notes="[Party-mode capture: fw on purple curve; Rig 6 not 7.] Swab golden, not a lot of reclaim. 430 was much more pleasant than 450 but 450 fucked me up. [Chest asked at logging: nothing recalled, good party.]",
+        analysis="Run 35, third dab of the day — FW106's first run on the purple curve (430°F open, 15s hold, gentle descent to a 400°F floor), borrowed from the OC/LunarZ purple preset and duplicated locally per jar isolation. Golden swab, minimal reclaim. The headline is the user's direct comparison: the 430 open was 'much more pleasant' than the day's two 450 opens, which 'fucked me up' — a same-day, same-rig, same-material read of the cooler open trading intensity for comfort, directionally consistent with the higher-open-hits-harder direction (endpoint-effect-strength) and the descent family's general character. The confound is session order: this was the 3rd dab, so accumulated day-mellowness rides along with the cooler open — the pleasant read can't be pinned on the 430 open alone from this run. Chest not recalled across any of the three (party recall, not a clean absence). Establishes purple 430 as a viable, gentler FW106 mode; a clean first-dab read is what isolates whether the open or the session order carried the comfort.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 33: repeat the grey 450°F curve (450→450@10s→425@30s→410@45s), first dab, modest load, single cycle — clean isolation on the chest/heartburn plus a clean swab and flavor read.',
+    next_text='Run 36: clean purple 430°F curve (430→430@15s→415@37s→400@60s), first dab, modest load, single cycle — confirm the "much more pleasant" read without the 3rd-dab confound and get a clean chest read on the cooler open.',
     accent=None,
     slug='fw106',
     info=[
@@ -572,8 +623,8 @@ STATUS = StrainStatus(
         ('Nose', 'Prominent berry; gassy underneath'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes="Grey 450°F curve again — first dab, modest load, single cycle. Say the load class out loud at logging.",
-    next_ai_analysis="R32 moved curve, load, and cycle count from the plan at once, so both the chest/heartburn and the heavy reclaim sit in confounded territory. Run 33: same grey 450°F curve, first dab, modest load, single cycle — the isolation Sour Tangie R9/R11 and papzp22 R8 all ran, each shedding chest at the same 450°F peak, which points chest toward load/cycle/exposure over the open itself. It also buys a clean swab and a drawable-material-matched session, so the reclaim puzzle doesn't recur. State the load class at logging. Expected: lighter swab, full flavor with toast only at the tail, chest absent or much lighter. Surprising: chest on a clean modest first-dab single cycle — that hangs it on the 450°F peak and makes dropping the open to 440 the next move.",
-    next_waypoints=FW106_HOLD_DESCENT_450,
+    next_dab_notes="Purple 430°F curve — first dab, modest load, single cycle. Say the load class out loud at logging.",
+    next_ai_analysis="The July 23 party gave a strong subjective read — the purple 430 open was \"much more pleasant\" than the day's two 450 opens (\"450 fucked me up\") — but it's confounded: the 430 was the 3rd dab, so accumulated day-mellowness rides along with the cooler open. Run 36: clean purple 430, first dab, modest load, single cycle — isolates whether the cooler open itself is the gentler ride, and finally gets the clean chest read that R32/R33 kept deferring under big-load/many-cycle sessions (party recall this round was too coarse to even confirm chest presence). State the load class at logging. Expected: pleasant/smooth confirmed, chest absent or light, golden swab. Surprising: chest on the cooler 430 open too — that points chest away from the 450 peak and toward load, cumulative exposure, or posture.",
+    next_waypoints=FW106_HOLD_DESCENT_430,
     jar_index='',
 )
