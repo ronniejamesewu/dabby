@@ -10,6 +10,15 @@ BB36_2_RUN6 = [
     Waypoint(time_s=40, temp_f=420, note='Hold'),
 ]
 
+# "Purple" preset — 430°F 15s bounded hold then gentle descent to a 400°F floor
+# (borrowed from an OC run, jar-isolation-duplicated locally). Run 7 only.
+BB36_2_PURPLE_430 = [
+    Waypoint(time_s=0, temp_f=430, note='Session open — hot open, purple curve'),
+    Waypoint(time_s=15, temp_f=430, note='Hold at peak — extended 15s hold'),
+    Waypoint(time_s=37, temp_f=415, note='Gentle descent midpoint'),
+    Waypoint(time_s=60, temp_f=400, note='Floor'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -102,13 +111,28 @@ RUNS = [
         dab_notes="Swabs were beige, very clean. And not a lot of reclaim. Vapor was thick from the start. Flavor was nice. Harshness at end of second draw, didn't increase a lot on short third draw. Never tasted toasted. Big effect after the OC earlier. I'm feeling rocked right now. Switching strains seems to lead to bigger effect than returning to same strain.",
         analysis="Two variables changed simultaneously — 8s ramp (vs baseline's 20s) and 420°F endpoint (vs 416°F) — so neither can be isolated as the driver. The results shifted clearly on three dimensions: swab went from dark golden on every prior run to beige, reclaim dropped from 'lots' to 'not a lot,' and vapor was thick from the start rather than wispy. All three prior-run patterns reversed in the same direction. The draw-2 harshness persisted — end of second draw, didn't escalate much on a short third — consistent with all five prior runs. No floor signal at 420°F (never tasted toasted). Intensity was big, but this was the second dab after OC on a different strain — the cross-strain confound is the user's own framing, held appropriately loosely.",
     ),
+    CompletedRun(
+        strain='Blueberry 36 #2',
+        run_date=date(2026, 7, 23),
+        sessions_prior_today=3,
+        utc_logged_at=datetime(2026, 7, 24, 3, 34, 38, tzinfo=timezone.utc),
+        waypoints=BB36_2_PURPLE_430,
+        equipment=RIG_7,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 430°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — "purple" 15s hold at 430°F then gentle descent; Rig 7 (SAML RBR wet top); the jar\'s only descent curve and only run off Rig 5',
+        swab='Light golden, lots of reclaim.',
+        session_char='The jar\'s send-off — its only descent curve and first run off Rig 5: the purple 430°F 15s bounded-hold descent on Rig 7 (SAML RBR wet top), 4th dab of the day, two cycles. Cycle 1: two draws, great flavor, a tiny throat harshness that turned to heartburn after a water sip. Cycle 2 seemed depleted in its last 10s, but the swab came back light golden with lots of reclaim — stopped on wispy vapor with another cycle available. Great flavor throughout, with a clear retronasal blueberry coughing up the throat minutes post-session. Extremely hard.',
+        intensity='Extremely hard — as every BB36 #2 run has hit; the sibling pheno jars hit hard too (lineage potency).',
+        dab_notes="[Plan:] I want to do 430 15s bound descent with rig 7. [Cycle 1:] First cycle, I got 2 runs, no issue with flavor at all. Tiny bit of throat harshness that turned into heartburn after I drank some water. Going for second cycle. [Cycle 2:] It seemed depleted in last 10 seconds of second cycle. But swabs say otherwise, light golden and a lot of reclaim. I maybe could have fired another cycle but it seemed wispy to me. Great flavor but a lot of heartburn. This was the first jar where I was able to taste a clear blueberry note, coughing it up my throat many minutes after doing it. [Intensity:] hit extremely hard as this jar always did. We have two other bb36 pheno jars in the fridge they also hit hard. [Water:] it almost felt as if I washed the harshness further down my esophagus with the water.",
+        analysis="Run 7 is the jar's send-off and a clean break from its history: the purple 430°F 15s bounded-hold descent on Rig 7 (SAML RBR wet top), where Runs 1–6 ran 416–420°F ramps on Rig 5. Curve, rig, and top all changed at once, on the 4th dab of the day — nothing isolates against prior runs, and it isn't meant to. Flavor held big throughout, including the clear retronasal blueberry up the throat minutes later — the jar's second instance after Run 1, a within-lineage BB36 recurrence (also bb364 R1). It's also the second run on the RBR, whose debut (papzp22 R10) read taste 'definitely muted'; this doesn't refute that — different strain, cooler open, heavy terpene load all favor flavor surviving regardless of top — but the recycler plainly didn't cost this jar its flavor. Chest/heartburn: a tiny cycle-1 throat harshness turned to heartburn after a water sip, the user's read being that the water 'washed the harshness further down the esophagus.' Consistent with the chest-harshness-hot-open thread, on the 4th-dab cumulative-exposure slot the counter-reading names. Two notes: it's the second chest instance on the non-bubbler top (after papzp22 R10), where posture isn't forced into a slouch; and the water didn't reset it — the opposite of the usual Rig 6 pattern, on the user's read carrying it down toward the chest/esophageal locus. One vivid instance at single-point weight, lining up with the esophageal-locus candidate and the R10 vapor-routing framing. Direction, not mechanism. Depletion vs. swab: cycle 2 'seemed depleted' in its last 10s, but the swab was light golden with lots of reclaim and the stop came on wispy vapor with another cycle available — drawable material spent, not the load (light golden is within the clean range, no floor signal). Extremely hard, like every BB36 #2 run; the sibling pheno jars hit hard too — lineage potency, not a curve or rig signal (the 4th-dab slot confounds intensity regardless).",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Blueberry 36 #2',
     profile_anchor='#bb362-profile',
-    next_text='Run 7: repeat 8s ramp to 420°F — confirm Run 6 swab and vapor improvement',
+    next_text='Jar done — 7 runs (May 31 – July 23, 2026). If this pheno shows up again: a flavor-forward, hard-hitting blueberry that ran clean at 416–420°F throughout.',
     accent=None,
     slug='bb362',
     info=[
@@ -122,8 +146,8 @@ STATUS = StrainStatus(
         ('Flavor', "Top-tier — user rates vapor flavor among the best hash rosin they've had"),
     ],
     terpene_note='<strong>Terpene inference:</strong> Myrcene inferred from Blueberry-type character (lineage unconfirmed — Higher Ground Seed Bank, not DJ Short confirmed); caryophyllene and alpha-pinene as secondaries. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes="Swabs were beige, very clean. And not a lot of reclaim. Vapor was thick from the start. Flavor was nice. Harshness at end of second draw, didn't increase a lot on short third draw. Never tasted toasted. Big effect after the OC earlier. I'm feeling rocked right now. Switching strains seems to lead to bigger effect than returning to same strain.",
-    next_ai_analysis="Repeat this exact curve (8s ramp to 420°F, 40s session) to replicate before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 replicates, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.",
+    next_dab_notes="First cycle, I got 2 runs, no issue with flavor at all. Tiny bit of throat harshness that turned into heartburn after I drank some water. It seemed depleted in last 10 seconds of second cycle, but swabs say otherwise — light golden and a lot of reclaim. Great flavor but a lot of heartburn. First jar where I could taste a clear blueberry note, coughing it up my throat many minutes after. Hit extremely hard as this jar always did.",
+    next_ai_analysis="Never had a floor or harshness problem across seven runs — only a mild, load-independent draw-2 harshness that never escalated (Runs 4/5 showed load didn't move it). Run 6's 8s ramp to 420°F on Rig 5 was the cleanest single run — beige swab, thick vapor from the start — the restart point if this pheno returns. The purple 430°F descent (Run 7) gave the flavor and the signature retronasal blueberry but brought chest/heartburn on a 4th dab; chase that curve only as a first-dab modest single cycle. Expect extreme potency from the first dab — a BB36-lineage trait the sibling jars share.",
     next_waypoints=BB36_2_RUN6,
-    jar_index='',
+    jar_index="<div style='text-align:center;margin-top:1em;'><strong>Runs on the jar:</strong> 7<br><strong>Days from first dab to last:</strong> 53<br><strong>Consecutive runs on Rig 5 before the send-off:</strong> 6<br><strong>Rigs the send-off used instead:</strong> a seventh, plus a wet top the jar had never met<br><strong>Swabs that came back dark golden:</strong> 4<br><strong>Times a dark swab meant anything:</strong> 0 <em>(phenotype, not floor)</em><br><strong>Draw on which harshness reliably arrived:</strong> 2<br><strong>Runs on which changing the load moved it:</strong> 0<br><strong>Variables cleanly isolated in seven tries:</strong> 0 <em>(the badder was too gooey to portion)</em><br><strong>User's verdict on the flavor:</strong> &quot;as good as any top-tier rosin I've had, maybe better&quot;<br><strong>Way the blueberry finally announced itself:</strong> up the throat, many minutes late<br><strong>Remaining dabs:</strong> 0</div>",
 )

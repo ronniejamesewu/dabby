@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 170 across 20 strains
+- **Total runs:** 171 across 20 strains
 - **Active since:** May 2, 2026 (83 days)
 - **Last run date:** July 23, 2026
-- **Most recent run (all jars, by utc_logged_at):** Fire Water #106 Run 35 — July 23, 2026, Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+- **Most recent run (all jars, by utc_logged_at):** Blueberry 36 #2 Run 7 — July 23, 2026, Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -74,21 +74,6 @@
 - 25s → 400°F — Mid climb
 - 45s → 410°F — Endpoint — down 5°F from Run 3
 - 65s → 410°F — Hold at 410°F
-
----
-
-### Blueberry 36 #2
-**6 sessions** &nbsp;·&nbsp; Next run: 7 &nbsp;·&nbsp; Last: June 3, 2026 &nbsp;·&nbsp; Equipment: Rig 5 — Dr. Dabber Sapphire Plus (v2) · Cloud Vortex 21.0 · 5mm synthetic ruby pearl + 5mm synthetic ruby pearl · Dr. Dabber stock bubbler
-
-**Next:** Run 7: repeat 8s ramp to 420°F — confirm Run 6 swab and vapor improvement
-
-**AI Analysis:** Repeat this exact curve (8s ramp to 420°F, 40s session) to replicate before isolating variables. The swab shift (dark gold → beige) and vapor density reversal are large signals, but BB36 #2 has documented run-to-run variability — one clean run doesn't close the thread. If Run 7 replicates, then run the baseline 20s ramp at 420°F to separate the endpoint bump from the steeper front end.
-
-**Proposed Curve:**
-- 0s → 380°F — Session open
-- 4s → 400°F — Steep early climb
-- 8s → 420°F — Endpoint — 8s ramp; up 4°F from baseline
-- 40s → 420°F — Hold
 
 ---
 
@@ -235,3 +220,4 @@
 - **Mango Starburst #23** (1 session, last May 9, 2026): Not my jar — closed after 1 run. If it shows up again: repeat the baseline.
 - **The Hive #1** (15 sessions, last July 5, 2026): Jar done — 15 runs. If it shows up again: the gentle descent (440°F→420°F@30s→400°F@60s) on Rig 6 is a reasonable starting point — it produced consistent mild, self-resolving harshness and strong flavor across six runs.
 - **Orange Candy** (15 sessions, last July 17, 2026): Jar done — 15 runs. If it shows up again: the 415–416°F sapphire ramp is the proven clean operating point; the purple bounded-hold descent (430°F→400°F) delivers a bigger flavor bolus on a modest load.
+- **Blueberry 36 #2** (7 sessions, last July 23, 2026): Jar done — 7 runs (May 31 – July 23, 2026). If this pheno shows up again: a flavor-forward, hard-hitting blueberry that ran clean at 416–420°F throughout.
