@@ -70,17 +70,17 @@
 
 ### bb36-retronasal-blueberry  [pattern | observation]
 **Claim:** BB36 family retronasal blueberry — delayed post-session olfaction from the throat, minutes after the dab.
-**Basis:** Two jars, same seed pop, one run each; within-lineage pattern only.
+**Basis:** Two jars, same seed pop — bb362 now twice (R1, R7), bb364 once; within-lineage pattern only.
 **Guidance:** Not actionable for curve design. Watch for recurrence on subsequent BB36 runs and on unrelated strains.
-**Watch:** Recurrence on later BB36 runs, or on any strain outside the seed pop — the latter would make this a general phenomenon, not a lineage quirk.
-*2 citations (2 confirm / 0 counter) | jars: bb362, bb364 | upd Session 121*
+**Watch:** Recurrence on a strain outside the seed pop — that would make this a general phenomenon, not a lineage quirk. Within-lineage recurrence is now seen both across the siblings and within bb362 (R1, R7).
+*3 citations (3 confirm / 0 counter) | jars: bb362, bb364 | upd Session 121; bb362 R7 July 23, 2026*
 
 ### water-sip-reset  [pattern | observation]
 **Claim:** Water sip clears mid-session harshness — threshold reset, not suppression. Usually resets mid-session harshness on Rig 6, but the reset is not guaranteed.
-**Basis:** Eleven instances, five strains — ten Rig 6, one Rig 7 (papzp22 R10, a partial reduction); first cross-rig datum.
-**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets, LunarZ R4 (helped, degree unstated), three partials (LunarZ R3, OC R15, papzp22 R10), and Sour Tangie R5 the lone non-response. papzp22 R10 (Rig 7) is the first cross-rig datum, a partial; generalization untested.
-**Watch:** More cross-rig instances — the first (papzp22 R10, Rig 7) was a partial reduction; clean cross-rig generalization is still untested.
-*11 citations (7 confirm / 4 counter) | jars: fw106, hive1, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026)*
+**Basis:** Twelve instances, six strains — ten Rig 6, two Rig 7 (papzp22 R10 partial, bb362 R7 a non-reset read as relocation); neither cross-rig instance is a clean reset.
+**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets against three partials, Sour Tangie R5 a full non-response, and bb362 R7 (Rig 7) a non-reset read as relocation toward the chest. Both Rig 7 instances failed the clean Rig 6 reset; cross-rig looks worse, not just untested.
+**Watch:** A clean Rig 6-style full reset reproducing off Rig 6 — both Rig 7 instances so far have failed it; and whether the bb362 R7 relocation reading recurs.
+*12 citations (7 confirm / 5 counter) | jars: bb362, fw106, hive1, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026*
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
@@ -139,11 +139,11 @@
 *6 citations (6 confirm / 0 counter) | jars: bp4rw13, fw106, hive1, lhbh, papzp22 | upd FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction; airflow dead-zone observation Session 169 (July 16, 2026).*
 
 ### rig7-saml-rbr  [equipment | observation]
-**Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top, replacing the stock bubbler): the recycler mutes taste and conditions/cools the vapor harder; it did not reduce the chest/heartburn facet. One run.
-**Basis:** Single run (papzp22 R10, July 22, 2026); everything is confounded by load, a fresh deep clean, posture, and two cycles.
-**Guidance:** Single run. Muted taste is the cleanest signal — expect a terpene cost. Do not credit the RBR with preserving potency (R10's big effect rode a large, unisolated load). As the first non-bubbler top it removes the forced slouch, making posture a variable — see chest-harshness-hot-open, thermal-injury-vapor-temp.
+**Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools vapor harder and didn't reduce the chest/heartburn facet across two runs; taste read splits (muted on R10, held on R7), no matched comparison.
+**Basis:** Two runs (papzp22 R10, bb362 R7), two strains, two curves — the taste reads split across them and no matched comparison exists; everything still confounded by load, clean state, posture, and strain.
+**Guidance:** Two runs, taste read unresolved — muted on R10, held on R7; the matched-load matched-curve test is still owed. Don't credit the RBR with preserving or costing taste as settled. As the first non-bubbler top it removes the forced slouch, making posture a variable — see chest-harshness-hot-open, thermal-injury-vapor-temp.
 **Watch:** A modest-load matched-curve RBR run to clean up taste and open the potency question; the upright-vs-slouched test (papzp22 R11) tying the chest change to posture, not the top.
-*1 citations (1 confirm / 0 counter) | jars: papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut.*
+*2 citations (1 confirm / 1 counter) | jars: bb362, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held.*
 
 ## Live Failure Modes
 

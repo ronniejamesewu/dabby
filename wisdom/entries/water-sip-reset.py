@@ -7,13 +7,14 @@ ENTRY = WisdomEntry(
           "Usually resets mid-session harshness on Rig 6, but the reset is not "
           "guaranteed.",
     guidance="Water usually resets mid-session harshness on Rig 6, but not reliably — "
-             "six full resets, LunarZ R4 (helped, degree unstated), three partials "
-             "(LunarZ R3, OC R15, papzp22 R10), and Sour Tangie R5 the lone "
-             "non-response. papzp22 R10 (Rig 7) is the first cross-rig datum, a partial; "
-             "generalization untested.",
+             "six full resets against three partials, Sour Tangie R5 a full "
+             "non-response, and bb362 R7 (Rig 7) a non-reset read as relocation toward "
+             "the chest. Both Rig 7 instances failed the clean Rig 6 reset; cross-rig "
+             "looks worse, not just untested.",
     grade='observation',
-    grade_basis="Eleven instances, five strains — ten Rig 6, one Rig 7 (papzp22 R10, a "
-                "partial reduction); first cross-rig datum.",
+    grade_basis="Twelve instances, six strains — ten Rig 6, two Rig 7 (papzp22 R10 "
+                "partial, bb362 R7 a non-reset read as relocation); neither cross-rig "
+                "instance is a clean reset.",
     evidence=[
         Citation(
             source='hive1 R6',
@@ -124,6 +125,21 @@ ENTRY = WisdomEntry(
                       "upright-posture change in cycle 2; degree ('somewhat') not "
                       "quantified.",
         ),
+        Citation(
+            source='bb362 R7',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 23, 2026 — purple 430°F descent, Rig 7 (SAML RBR wet top), 4th "
+                 "dab — a small cycle-1 throat harshness did not reset on a water sip; "
+                 "on the user's read the water \"washed the harshness further down the "
+                 "esophagus,\" turning it to heartburn. Not a reduction at all — the "
+                 "log's first instance of water apparently relocating harshness toward "
+                 "the chest rather than clearing it. Second Rig 7 datum (after papzp22 "
+                 "R10).",
+            confounds="4th dab (heavy cumulative exposure); Rig 7 / RBR top; "
+                      "chest-located outcome; single vivid instance at the user's-read "
+                      "weight — relocation is a sensation report, not a measured route.",
+        ),
     ],
     positions=[
         Position(
@@ -148,8 +164,21 @@ ENTRY = WisdomEntry(
                  "large load, chest-located harshness, and a within-session posture "
                  "change — not clean cross-rig generalization. Held at observation.",
         ),
+        Position(
+            stated='July 23, 2026 (bb362 R7)',
+            text="Second non-Rig-6 instance and the log's first apparent relocation: on "
+                 "the RBR wet top (Rig 7) a water sip did not reset a cycle-1 throat "
+                 "harshness — the user's read was that it washed the harshness further "
+                 "down toward the esophagus, turning it to heartburn. With papzp22 R10 "
+                 "(also Rig 7, partial-only), both cross-rig instances have now failed "
+                 "the clean Rig 6 reset. Confounded (4th dab, chest-located, RBR top, "
+                 "user's-sensation weight), so it does not establish a rig mechanism — "
+                 "but it moves the cross-rig read from 'untested' toward 'looks worse.' "
+                 "Held at observation.",
+        ),
     ],
-    watch_for="More cross-rig instances — the first (papzp22 R10, Rig 7) was a partial "
-              "reduction; clean cross-rig generalization is still untested.",
-    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026)',
+    watch_for="A clean Rig 6-style full reset reproducing off Rig 6 — both Rig 7 "
+              "instances so far have failed it; and whether the bb362 R7 relocation "
+              "reading recurs.",
+    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026',
 )
