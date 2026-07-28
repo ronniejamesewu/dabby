@@ -5,7 +5,7 @@
 ---
 
 ## Summary
-- **Total runs:** 171 across 20 strains
+- **Total runs:** 172 across 20 strains
 - **Active since:** May 2, 2026 (83 days)
 - **Last run date:** July 23, 2026
 - **Most recent run (all jars, by utc_logged_at):** Blueberry 36 #2 Run 7 — July 23, 2026, Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
@@ -108,15 +108,16 @@
 ---
 
 ### Watermellos
-**18 sessions** &nbsp;·&nbsp; Next run: 19 &nbsp;·&nbsp; Last: June 26, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
+**19 sessions** &nbsp;·&nbsp; Next run: 20 &nbsp;·&nbsp; Last: July 21, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
-**Next:** Run 19: same descent curve (440→420@30s→400@60s), first dab of day — confirm whether harshness ceiling at ~37s remaining is curve-driven
+**Next:** Run 20 (likely the jar's last): the "purple" curve — 430°F open, 15s hold, gentle descent to a 400°F floor — a cooler, longer-hold swing at the flavor the 440°F bounded hold couldn't pull, first dab.
 
-**AI Analysis:** Harshness onset (~37s remaining) held consistent across R17 (second dab) and R18 (third dab) — same timing under increasing airway load is directional for the curve having a ceiling there, not session order. Run 19: same curve, first dab of day. If harshness still appears in the 30–40s remaining window, the curve has a real ceiling at that threshold. If it's clean or substantially later, session order was carrying more weight than the timing consistency implies.
+**AI Analysis:** Likely the jar's last run. Run the "purple" curve — 430°F open, 15s hold, gentle descent to a 400°F floor (borrowed from LunarZ/OC, duplicated locally) — as a first dab. The extended holds that front-loaded a big terpene bolus without cooking were the cooler 430°F purple runs (LunarZ R4/R5, OC R15 "fireworks"), and since R19's 440°F bounded hold came back golden but flavorless, a cooler-but-longer hold is the other lever left for the flavor this jar never gave up — and Watermellos has never run a sub-440°F descent, so it's new ground. It won't test the ~37s harshness ceiling (different curve), but that's a fair trade on a send-off. Expected: a bigger front-loaded bolus than R19 on the held draws, golden swab, medium-plus intensity ending on satiety or depletion, flavor still muted. Surprising: genuinely rich flavor — the jar's first flavor unlock, which would make the cooler-longer hold the recipe — or a dark swab / heavy reclaim / toast, which would say even a sustained 430°F cooks this material.
 
 **Proposed Curve:**
-- 0s → 440°F — Session open — hot open
-- 30s → 420°F — Gentle descent
+- 0s → 430°F — Session open — hot open
+- 15s → 430°F — Hold at peak — extended 15s hold
+- 37s → 415°F — Gentle descent midpoint
 - 60s → 400°F — Floor
 
 ---
