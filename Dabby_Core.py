@@ -249,6 +249,24 @@ RIG_7 = EquipmentConfig(
     glass_top="SAML RBR (Refined Bell Recycler)",
 )
 
+# Rig 8: Sapphire insert, no pearls, Wym Stick Piston joystick, Calibear Fab
+# Recycler wet top. Dr. Dabber Sapphire Plus (v2) insert; Wym Stick Piston
+# titanium joystick (.094" bore, stock airflow); no pearls; Calibear Fab
+# Recycler — a recycler top acquired to test recycler / multi-path straight-flow
+# function against the RBR's bell design; an obsolete design still in stock,
+# bought as a cheap read before committing to a better one.
+# HANDLING: this top has a known design defect that allows water flowback
+# toward the insert. The risk is not data quality — it is thermal shock to a
+# thin machined sapphire insert at operating temperature. Handle deliberately
+# on every run; the defect is a condition of running this rig hot at all.
+# In use as of July 28, 2026.
+RIG_8 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Wym Stick", model="Piston", airflow='stock — .094" bore'),
+    pearls=[],
+    glass_top="Calibear Fab Recycler",
+)
+
 # ── TERPENE REFERENCE ────────────────────────────────────────────────────────
 
 TERPENE_REFERENCE = [
