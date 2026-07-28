@@ -15,7 +15,6 @@ ACTIVE = [
     'mbd',         # Maple Bacon Donut
     'rainfruit',   # Rain Fruit
     'bb361',       # Blueberry 36 #1
-    'bb362',       # Blueberry 36 #2
     'bb364',       # Blueberry 36 #4
     'fw106',       # Fire Water #106
     'watermellos', # Watermellos
@@ -34,6 +33,7 @@ CLOSED = [
     'ms23',    # Mango Starburst #23
     'hive1',   # The Hive #1
     'oc',      # Orange Candy
+    'bb362',   # Blueberry 36 #2
 ]
 
 # ── Validation helpers ────────────────────────────────────────────────────────

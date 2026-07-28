@@ -237,6 +237,18 @@ RIG_6 = EquipmentConfig(
     glass_top="Dr. Dabber stock bubbler",
 )
 
+# Rig 7: Sapphire insert, no pearls, Wym Stick Piston joystick, SAML RBR wet top.
+# Dr. Dabber Sapphire Plus (v2) insert; Wym Stick Piston titanium joystick
+# (.094" bore, stock airflow); no pearls; SAML RBR (Refined Bell Recycler) —
+# more vapor cooling/conditioning than the stock bubbler, possibly at the cost
+# of terps. In use as of July 22, 2026.
+RIG_7 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Wym Stick", model="Piston", airflow='stock — .094" bore'),
+    pearls=[],
+    glass_top="SAML RBR (Refined Bell Recycler)",
+)
+
 # ── TERPENE REFERENCE ────────────────────────────────────────────────────────
 
 TERPENE_REFERENCE = [
