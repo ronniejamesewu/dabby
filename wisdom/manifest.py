@@ -35,6 +35,7 @@ LIVE = [
     'rig5-dual-ruby',
     'rig6-piston-joystick',
     'rig7-saml-rbr',
+    'rig8-calibear-fab-recycler',
     # failure-mode (live)
     'fm-push-files-content-loss',
     'fm-device-capability-overassert',

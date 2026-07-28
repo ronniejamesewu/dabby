@@ -161,6 +161,24 @@ ENTRY = WisdomEntry(
             confounds="Same curve, same rig (Rig 6), session-order matched; both load "
                       "classes AI-recorded (endpoint_note/analysis), neither in dab_notes.",
         ),
+        Citation(
+            source='lhbh R9',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 28, 2026 — 440°F 15s bounded hold descending to a 400°F floor, "
+                 "Rig 8, first dab, load \"maybe a tad larger than normal\" (stated "
+                 "out loud per the process fix), three cycles. No harshness at all, "
+                 "throat or chest, during or after — against this strain's own "
+                 "confirming pair (R3 ~40s / R4 ~30s at 425°F), where the larger load "
+                 "brought harshness earlier. Within-strain counter on the direction "
+                 "this jar previously supplied.",
+            confounds="Curve shape moved with the load — R3/R4 were 425°F ramps, R9 a "
+                      "440°F bounded-hold descent, so this does not isolate load; the "
+                      "run was also a rig debut (Rig 8, first run on a new top). The "
+                      "honest reading is that the jar's load signal came from ramps "
+                      "and may not carry to bounded-hold descents, not that load "
+                      "stopped mattering.",
+        ),
     ],
     positions=[
         Position(
@@ -199,6 +217,9 @@ ENTRY = WisdomEntry(
                     "across very different loads, and Hive1 R6/R8 show less harshness on "
                     "the larger load — and every confirming pair carries an order or "
                     "provenance weakness, so the split may be noise rather than a real "
-                    "load effect.",
-    updated='Sessions 59, 122, 124, updated Sessions 136, 138; July 11, 2026 audit',
+                    "load effect. LHBH now counters itself (R9, July 28, 2026), which "
+                    "sharpens the doubt: if the same strain points both ways once the "
+                    "curve shape changes, load may be reading as a proxy for whatever "
+                    "the curve is doing rather than acting on its own.",
+    updated='Sessions 59, 122, 124, updated Sessions 136, 138; July 11, 2026 audit; lhbh R9 July 28, 2026 — within-strain counter',
 )

@@ -6,14 +6,13 @@ ENTRY = WisdomEntry(
     claim="Descent curve changes limiting factor from harshness to intensity.",
     guidance="A descent curve (open hot, move off peak immediately) front-loads the "
              "terpene bolus and shifts the stopping condition off harshness — expect "
-             "depletion, intensity, or satiety to end the session instead. All Rig 6; "
-             "no longer all first-dab (papzp22 R8/R9). Cross-rig untested; load "
+             "depletion, intensity, or satiety instead. No longer all first-dab, and "
+             "no longer single-rig: lhbh R9 is the first instance off Rig 6. Load "
              "varied, unresolved.",
     grade='observation',
-    grade_basis="Low — seven strains, all Rig 6; originally all first-dab — "
-                "papzp22 R8/R9 (July 16, 2026) add 2nd- and 3rd-dab instances on "
-                "the bounded-hold variant, oc R15 a 2nd-dab; consistent direction, "
-                "single-rig.",
+    grade_basis="Low — seven strains; all Rig 6 except lhbh R9 (Rig 8); 2nd- and "
+                "3rd-dab instances added by papzp22 R8/R9 and oc R15; consistent "
+                "direction, near-single-rig.",
     evidence=[
         Citation(
             source='fw106 R23',
@@ -104,6 +103,21 @@ ENTRY = WisdomEntry(
             confounds="2nd dab; big load; two cycles; bounded-hold variant, not the "
                       "pure descent.",
         ),
+        Citation(
+            source='lhbh R9',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 28, 2026 — 440°F 15s bounded hold descending through 430°F at "
+                 "35s to a 400°F floor, first dab, slightly larger than normal load, "
+                 "three cycles on Rig 8 (Calibear Fab Recycler debut). Session ended "
+                 "on thinning vapor across cycle 3 (\"one more nice but thin hit\"), "
+                 "not harshness — and harshness was absent entirely, throat and "
+                 "chest, during and after. First instance in the set off Rig 6 and "
+                 "Rig 7; second instance for this strain after R8.",
+            confounds="Rig debut (Rig 8) with a top new to the log; curve new to the "
+                      "jar; slightly large load; three cycles; bounded-hold variant, "
+                      "not the pure descent.",
+        ),
     ],
     positions=[
         Position(
@@ -130,9 +144,23 @@ ENTRY = WisdomEntry(
                  "stopped on satiety with material remaining, not harshness. "
                  "Consistent direction; still all Rig 6, load varied.",
         ),
+        Position(
+            stated='July 28, 2026 (lhbh R9)',
+            text="First instance in the set off Rig 6 — a 440°F 15s bounded hold on "
+                 "Rig 8 (Calibear Fab Recycler debut) that ended on thinning vapor "
+                 "across cycle 3 rather than harshness, with harshness absent "
+                 "entirely in both the throat and chest windows. The single-rig limit "
+                 "named since Session 130 now has one exception, which is a crack in "
+                 "it rather than a cross-rig result: the run is a rig debut carrying "
+                 "a curve new to the jar and a slightly large load, so it cannot "
+                 "isolate the descent shape from any of them. The watch_for asking "
+                 "for a Rig 5 descent is unchanged — Rig 5 remains the untested case, "
+                 "and its sapphire-plus-pearls geometry is the one that motivated the "
+                 "question. Held at observation.",
+        ),
     ],
-    watch_for="A descent run on Rig 5 (none logged yet) would test cross-rig "
-              "generalization; holding load constant would isolate the unresolved load "
-              "variable.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026)',
+    watch_for="A descent run on Rig 5 (none logged) would test cross-rig "
+              "generalization — lhbh R9's Rig 8 instance is a confounded debut; "
+              "holding load constant would isolate load.",
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6',
 )

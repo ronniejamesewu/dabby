@@ -62,6 +62,27 @@ ENTRY = WisdomEntry(
                  "hot-open logging session appends a chest citation to it.",
             confounds="none noted",
         ),
+        Citation(
+            source='session:177-pr267-generated-file-merge-2026-07-28',
+            role='confirms',
+            provenance='ai-authored',
+            gist="Benign variant on a different surface class. A run-logging branch "
+                 "(Watermellos R19, cut July 21) sat unmerged while two later "
+                 "run-logging PRs merged past it; on merge, jars/watermellos.py merged "
+                 "cleanly but both generated files (index.html, HANDOFF_STATE.md) "
+                 "conflicted. Because the collision surface was generator output, the "
+                 "resolution was mechanical rather than judgmental — merge main into "
+                 "the branch, regenerate over the merged source, verify both sides "
+                 "survive (Watermellos at 19 and Fire Water at 35 in the same "
+                 "regenerated state). No transposition decision was required, unlike "
+                 "every wisdom-entry instance above.",
+            confounds="Not a data-loss event, and recorded as a near-miss rather than "
+                      "an incident. The mechanical resolution is only safe while the "
+                      "conflicting files are genuinely generated; a hand-edited file "
+                      "in the same position would still need transposition. The "
+                      "generalizable exposure is branch age, not the file type — this "
+                      "branch was seven days stale.",
+        ),
     ],
-    updated='Session 165 (July 16, 2026); Session 173 (July 20, 2026); Session 174 (July 22, 2026)',
+    updated='Session 165 (July 16, 2026); Session 173 (July 20, 2026); Session 174 (July 22, 2026); PR #267 merge July 28, 2026 — generated-file variant',
 )

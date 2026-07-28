@@ -46,7 +46,7 @@
 **Claim:** Load size may influence both harshness and effect strength, but the cross-strain direction is split and unresolved.
 **Basis:** Low — 6 strains; WW Z, LHBH, FW106, and bp4rw13 show larger load → earlier/more harshness or intensity; BB36 #2 and Hive1 counter; direction split, unresolved
 **Guidance:** Do not treat load size as a settled harshness driver across strains. Process fix going forward: state the load class out loud at logging so it lands in dab_notes verbatim.
-*16 citations (11 confirm / 4 counter / 1 struck) | jars: bb362, bp4rw13, fw106, hive1, lhbh, wwz | upd Sessions 59, 122, 124, updated Sessions 136, 138; July 11, 2026 audit*
+*17 citations (11 confirm / 5 counter / 1 struck) | jars: bb362, bp4rw13, fw106, hive1, lhbh, wwz | upd Sessions 59, 122, 124, updated Sessions 136, 138; July 11, 2026 audit; lhbh R9 July 28, 2026 — within-strain counter*
 
 ### bitter-citrus-note  [pattern | observation]
 **Claim:** Bitter citrus / citrus rind note recurs across strains.
@@ -84,10 +84,10 @@
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
-**Basis:** Low — seven strains, all Rig 6; originally all first-dab — papzp22 R8/R9 (July 16, 2026) add 2nd- and 3rd-dab instances on the bounded-hold variant, oc R15 a 2nd-dab; consistent direction, single-rig.
-**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety to end the session instead. All Rig 6; no longer all first-dab (papzp22 R8/R9). Cross-rig untested; load varied, unresolved.
-**Watch:** A descent run on Rig 5 (none logged yet) would test cross-rig generalization; holding load constant would isolate the unresolved load variable.
-*8 citations (8 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026)*
+**Basis:** Low — seven strains; all Rig 6 except lhbh R9 (Rig 8); 2nd- and 3rd-dab instances added by papzp22 R8/R9 and oc R15; consistent direction, near-single-rig.
+**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab, and no longer single-rig: lhbh R9 is the first instance off Rig 6. Load varied, unresolved.
+**Watch:** A descent run on Rig 5 (none logged) would test cross-rig generalization — lhbh R9's Rig 8 instance is a confounded debut; holding load constant would isolate load.
+*9 citations (9 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6*
 
 ### chest-harshness-hot-open  [pattern | observation]
 **Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 14 hot-open runs (13 Rig 6, 1 Rig 7); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
@@ -145,6 +145,13 @@
 **Watch:** A modest-load matched-curve RBR run to clean up taste and open the potency question; the upright-vs-slouched test (papzp22 R11) tying the chest change to posture, not the top.
 *2 citations (1 confirm / 1 counter) | jars: bb362, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held.*
 
+### rig8-calibear-fab-recycler  [equipment | observation]
+**Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): one run — heavier pull, better flavor than the RBR, no harshness at all, nothing matched. Carries a water-flowback defect that is a hardware-safety condition.
+**Basis:** One run (lhbh R9), one strain, one curve, on a rig debut — load ran slightly larger than normal and the curve was new to the jar, so nothing about the top is isolated from anything else.
+**Guidance:** One run. Do not credit the recycler with the flavor or the clean harshness read — the RBR runs are other strains, other curves. Three tops now in rotation, no matched comparison between any pair. OPERATIONAL: the flowback defect risks thermal shock to the insert — handle deliberately whenever running hot.
+**Watch:** A matched-load matched-curve rerun on this top (lhbh R10); whether the heavier-pull read reproduces off new glass; any flowback reaching the insert.
+*1 citations (1 confirm / 0 counter) | jars: lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut.*
+
 ## Live Failure Modes
 
 ### fm-push-files-content-loss  [failure-mode]
@@ -201,7 +208,7 @@
 ### fm-cross-session-write-collision  [failure-mode]
 **Claim:** Parallel sessions can both legitimately edit the same shared knowledge surface — a logging session's close and an open restructuring branch collided on the wisdom layer; the merge would have silently deleted the logging session's update.
 **Guidance:** Before merging any branch that restructures a shared surface, diff that surface against current main and transpose any concurrent delta explicitly — a session-scoped freeze cannot bind sessions that don't know about it. Per-entry sharding narrows the blast radius; same-entry edits still collide.
-*3 citations (3 confirm / 0 counter) | upd Session 165 (July 16, 2026); Session 173 (July 20, 2026); Session 174 (July 22, 2026)*
+*4 citations (4 confirm / 0 counter) | upd Session 165 (July 16, 2026); Session 173 (July 20, 2026); Session 174 (July 22, 2026); PR #267 merge July 28, 2026 — generated-file variant*
 
 ## Working Theory
 
