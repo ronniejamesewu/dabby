@@ -10,9 +10,9 @@ ENTRY = WisdomEntry(
              "no longer single-rig: lhbh R9 is the first instance off Rig 6. Load "
              "varied, unresolved.",
     grade='observation',
-    grade_basis="Low — seven strains; all Rig 6 except lhbh R9 (Rig 8); 2nd- and "
-                "3rd-dab instances added by papzp22 R8/R9 and oc R15; consistent "
-                "direction, near-single-rig.",
+    grade_basis="Low — seven strains; all Rig 6 except lhbh R9/R10 (Rig 8); 2nd- and "
+                "3rd-dab instances added by papzp22 R8/R9, oc R15 and lhbh R10; "
+                "consistent direction, near-single-rig.",
     evidence=[
         Citation(
             source='fw106 R23',
@@ -118,6 +118,22 @@ ENTRY = WisdomEntry(
                       "jar; slightly large load; three cycles; bounded-hold variant, "
                       "not the pure descent.",
         ),
+        Citation(
+            source='lhbh R10',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 28, 2026 — the same 440°F 15s bounded hold and Rig 8 as R9, "
+                 "second dab, moderate load, single cycle. Session ended on material "
+                 "depletion (\"It was depleted by about 12 seconds left\"), not "
+                 "harshness — harshness absent entirely, throat and chest, asked in "
+                 "both windows. Second Rig 8 instance and the second in the set to end "
+                 "on clean depletion rather than satiety.",
+            confounds="Second dab, so not session-order matched to R9; bounded-hold "
+                      "variant, not the pure descent. Fewer confounds than most in the "
+                      "set — single cycle, moderate load, curve and rig both held from "
+                      "the prior run — but the load moved with the session order, so it "
+                      "isolates neither.",
+        ),
     ],
     positions=[
         Position(
@@ -158,9 +174,19 @@ ENTRY = WisdomEntry(
                  "and its sapphire-plus-pearls geometry is the one that motivated the "
                  "question. Held at observation.",
         ),
+        Position(
+            stated='July 28, 2026 (lhbh R10)',
+            text="Rig 8's second instance, and one of the least confounded in the set: "
+                 "curve and rig held from R9, single cycle, moderate load, ending on "
+                 "clean material depletion with the curve still running. It does not "
+                 "fix R9's debut problem — load moved with session order, so nothing is "
+                 "isolated — but it removes the rig-debut objection from the Rig 8 leg, "
+                 "since the top is no longer new. Rig 5 remains the untested case the "
+                 "watch_for wants. Held at observation.",
+        ),
     ],
     watch_for="A descent run on Rig 5 (none logged) would test cross-rig "
-              "generalization — lhbh R9's Rig 8 instance is a confounded debut; "
-              "holding load constant would isolate load.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6',
+              "generalization — the Rig 8 leg (lhbh R9/R10) is one strain on one "
+              "curve; holding load constant would isolate load.",
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026',
 )

@@ -84,10 +84,10 @@
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
-**Basis:** Low — seven strains; all Rig 6 except lhbh R9 (Rig 8); 2nd- and 3rd-dab instances added by papzp22 R8/R9 and oc R15; consistent direction, near-single-rig.
+**Basis:** Low — seven strains; all Rig 6 except lhbh R9/R10 (Rig 8); 2nd- and 3rd-dab instances added by papzp22 R8/R9, oc R15 and lhbh R10; consistent direction, near-single-rig.
 **Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab, and no longer single-rig: lhbh R9 is the first instance off Rig 6. Load varied, unresolved.
-**Watch:** A descent run on Rig 5 (none logged) would test cross-rig generalization — lhbh R9's Rig 8 instance is a confounded debut; holding load constant would isolate load.
-*9 citations (9 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6*
+**Watch:** A descent run on Rig 5 (none logged) would test cross-rig generalization — the Rig 8 leg (lhbh R9/R10) is one strain on one curve; holding load constant would isolate load.
+*10 citations (10 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026*
 
 ### chest-harshness-hot-open  [pattern | observation]
 **Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 14 hot-open runs (13 Rig 6, 1 Rig 7); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
@@ -146,11 +146,11 @@
 *2 citations (1 confirm / 1 counter) | jars: bb362, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held.*
 
 ### rig8-calibear-fab-recycler  [equipment | observation]
-**Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): one run — heavier pull, better flavor than the RBR, no harshness at all, nothing matched. Carries a water-flowback defect that is a hardware-safety condition.
-**Basis:** One run (lhbh R9), one strain, one curve, on a rig debut — load ran slightly larger than normal and the curve was new to the jar, so nothing about the top is isolated from anything else.
-**Guidance:** One run. Do not credit the recycler with the flavor or the clean harshness read — the RBR runs are other strains, other curves. Three tops now in rotation, no matched comparison between any pair. OPERATIONAL: the flowback defect risks thermal shock to the insert — handle deliberately whenever running hot.
-**Watch:** A matched-load matched-curve rerun on this top (lhbh R10); whether the heavier-pull read reproduces off new glass; any flowback reaching the insert.
-*1 citations (1 confirm / 0 counter) | jars: lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut.*
+**Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): two runs, one strain, one curve — heavier pull and better flavor than the RBR on the user's read, no harshness on either, nothing matched. Flowback defect is a hardware-safety condition.
+**Basis:** Two runs (lhbh R9, R10), one strain, one curve. R9 a rig debut on a new curve and large-ish load; R10 held curve and rig but moved load and session order together. Neither isolates the top.
+**Guidance:** Two runs, both lhbh on one 440°F bounded hold. Do not credit the recycler with the flavor or the clean harshness read — the RBR runs are other strains and curves, and their taste read splits. Three tops, no matched pair. OPERATIONAL: flowback risks thermal shock to the insert — handle deliberately when hot.
+**Watch:** The matched comparison, still owed: same strain and curve on the RBR (Rig 7) — lhbh R11 is set up for it. Whether the heavier pull reproduces off new glass. Any flowback reaching the insert.
+*2 citations (2 confirm / 0 counter) | jars: lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet.*
 
 ## Live Failure Modes
 
@@ -256,8 +256,8 @@
 **Claim:** Higher endpoint + shorter session stopped at the depletion signal; fastest ascent with no staged ascent waypoints; fast ramp trades staging for density; bounded-hold descent curves are viable on the Switch² and deliver rather than cook.
 **Basis:** Session 91 reasoning, refined by descent-curve runs across five strains — all Rig 6, three of five jar-openers; directional and single-rig, toasty-flavor mechanism unresolved.
 **Guidance:** Run higher-and-shorter, stopping when vapor drops, not the timer. Don't stage ascent waypoints (set target at 0s). Bounded-hold descents: cap peak to ~one draw, then descend at/above sapphire passive decay (gentler slope re-creates flat-440). Before blaming session-order for a toasty note, check it didn't deplete fast.
-**Watch:** A descent run off Rig 6 would test cross-rig generalization; a deliberate third-same-day dab on the descent curve is the cleanest remaining toasty/session-order test.
-*13 citations (6 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, hive1, lunarz, papzp22, sourtangie, watermellos | upd Session 91; descent revisits June 25–July 7, 2026; rig corrections July 2, 2026; R31 mechanism correction July 7, 2026*
+**Watch:** Cross-rig cracked but untested — lhbh R9/R10 are one strain on one curve off Rig 6; a second strain off Rig 6 would test it. A third same-day dab on the descent is the cleanest toasty test.
+*13 citations (6 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, hive1, lunarz, papzp22, sourtangie, watermellos | upd Session 91; descent revisits June 25–July 7, 2026; rig corrections July 2, 2026; R31 mechanism correction July 7, 2026; lhbh R9/R10 July 28, 2026 — passive-decay case observed live, tail shown load-gated*
 
 ## Decisions — Do Not Re-Litigate
 *Rationale lives in each entry file.*

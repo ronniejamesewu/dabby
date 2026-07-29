@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 173 across 20 strains
+- **Total runs:** 174 across 20 strains
 - **Active since:** May 2, 2026 (88 days)
 - **Last run date:** July 28, 2026
-- **Most recent run (all jars, by utc_logged_at):** Lemon Heads + Blueberry Haze Run 9 — July 28, 2026, Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
+- **Most recent run (all jars, by utc_logged_at):** Lemon Heads + Blueberry Haze Run 10 — July 28, 2026, Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -138,11 +138,11 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**9 sessions** &nbsp;·&nbsp; Next run: 10 &nbsp;·&nbsp; Last: July 28, 2026 &nbsp;·&nbsp; Equipment: Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
+**10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: July 28, 2026 &nbsp;·&nbsp; Equipment: Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 
-**Next:** Run 10: rerun Run 9's exact 440°F bounded-hold descent on Rig 8, first dab, deliberately modest load — the load isolation, a second no-harshness read, and a second look at the new top in one run
+**Next:** Run 11: same 440°F bounded-hold descent, moderate load, second dab — but with the SAML RBR back on (Rig 7), so the glass is the only thing that moves
 
-**AI Analysis:** Run 10: rerun Run 9's exact curve and rig, first dab, deliberately modest load — the load isolation this jar has now dodged twice, plus a second read on both the no-harshness result and the new top. Holding curve, rig, and session order makes load the only moving input, and a modest load should cut the session to one or two cycles, giving a cleaner residue read than three. Save the smoothed variant — 415°F at 37s, matching the purple curve's tail — for Run 11; smoothing now would move the curve before there is a two-run baseline to move it from. Expected: no harshness again, thinner flavor, shorter session, light swab. Surprising: full flavor on the modest load — that puts flavor on the curve or the top rather than load, and makes this the jar's cheapest recipe.
+**AI Analysis:** Another Rig 8 rerun buys a load data point on a question this jar keeps confounding, while the live decision — whether the recycler function is worth a better piece — has no matched evidence at all. Run 11: same strain, curve, load class and dab slot as Run 10, with the SAML RBR back on. That would be the first pair in this log differing only by the top. Drop the 415°F-at-37s smoothing — a moderate load never survives to that part of the curve. Expected: the heavier pull and better flavor don't reproduce on the RBR, harshness absent either way. Surprising: the RBR reads identical on both — which puts Runs 9 and 10 on the curve and the load rather than the glass, and kills the case for upgrading.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open

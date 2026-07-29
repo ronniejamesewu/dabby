@@ -368,6 +368,23 @@ ENTRY = WisdomEntry(
                  "pattern (single rig; three of the five are jar-openers with no within-jar "
                  "reference point).",
         ),
+        Position(
+            stated='July 28, 2026 (lhbh R9 / R10)',
+            text="**The descent tail is load-gated.** lhbh R9 is the passive-decay rule "
+                 "observed live: its 440→430 leg spans 20s (0.5°F/s), below the "
+                 "sapphire's ~1°F/s free decay, so the controller held heat through it "
+                 "and the run effectively sat at or above 430°F for 35s per cycle rather "
+                 "than the nominal 15s hold — and came back clean. R10 the same day, "
+                 "same curve and rig on a moderate load, adds the constraint that "
+                 "matters for designing the rest of the curve: the material ran out at "
+                 "~48s, before the run ever left the 430°F leg, so the 400°F floor and "
+                 "the whole approach to it were never used. Tail design only buys "
+                 "anything on loads that survive to the tail; on a modest load the "
+                 "back half of a 60s descent is decoration, and smoothing it is not a "
+                 "change to what the session actually experiences. Two runs, one strain, "
+                 "one curve — an observation about curve geometry versus load, not a "
+                 "pattern.",
+        ),
     ],
     counter_reading="All descent / bounded-hold evidence is single-rig (Rig 6) and mostly "
                     "jar-openers with no within-jar reference; deliver-vs-cook rests on one "
@@ -376,9 +393,10 @@ ENTRY = WisdomEntry(
                     "harshness on the deliver side. A skeptic reads the descent \"deliver\" "
                     "as unconfirmed — possibly a session-order or load effect rather than a "
                     "curve-shape one — and the whole set as directional, not a pattern.",
-    watch_for="A descent run off Rig 6 would test cross-rig generalization; a deliberate "
-              "third-same-day dab on the descent curve is the cleanest remaining "
-              "toasty/session-order test.",
+    watch_for="Cross-rig cracked but untested — lhbh R9/R10 are one strain on one curve "
+              "off Rig 6; a second strain off Rig 6 would test it. A third same-day dab "
+              "on the descent is the cleanest toasty test.",
     updated='Session 91; descent revisits June 25–July 7, 2026; rig corrections July 2, '
-            '2026; R31 mechanism correction July 7, 2026',
+            '2026; R31 mechanism correction July 7, 2026; lhbh R9/R10 July 28, 2026 — '
+            'passive-decay case observed live, tail shown load-gated',
 )
