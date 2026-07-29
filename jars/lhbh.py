@@ -25,6 +25,13 @@ LHBH_HOLD15_DESCENT_440 = [
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
 
+LHBH_HOLD15_DESCENT_440_SMOOTH = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=15, temp_f=440, note='Hold at peak — extended 15s hold'),
+    Waypoint(time_s=38, temp_f=420, note='Descent midpoint — sits on the line, no slope change'),
+    Waypoint(time_s=60, temp_f=400, note='Floor — single constant ~0.9°F/s descent throughout'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 
 RUNS = [
@@ -178,13 +185,28 @@ RUNS = [
         dab_notes='ok that was a good one, moderate load. It was depleted by about 12 seconds left. Delicious but not too terpy. No coughing. No harshness. I Fredrick creeping up to a medium. Swabs were beige and next to no reclaim. I hate to say it because this is cheap lazy glass but the function might be my favorite so far. Too early to say without trying other strains. Maybe it makes it taste better when there\'s a fear that it will blow up your insert at any moment [Q: stopped at the dry point or rode the cycle to 60; single cycle only?] Yes stopped. But I\'m curious why that\'s interesting to you? And yes no harshness, even in chest',
         analysis='Curve and rig held from Run 9; load moved down to moderate but session order moved with it — second dab against Run 9\'s first, so the load isolation this jar has dodged three times is still not clean.\n\nIt is the jar\'s first second-or-later dab with no harshness anywhere. Runs 2, 4, 5 and 7 all produced it, at lower endpoints. Two clean runs on the 440°F bounded hold, one first dab and one second, is directional for the curve — against which Run 10 was the milder run in every other dimension: one cycle, less material, and it went dry before the descent reached its floor.\n\nFlavor split in a way worth recording: "delicious but not too terpy," no coughing at all, against heavy terpene-load coughing on Runs 8 and 9. Quality held, volume dropped. Terpene volume has now tracked load in the same direction across Runs 7 through 10 — directional for load as the volume lever, silent on quality.\n\nBeige swab off a single cycle is expected, not a result — cycle count drives swab color independent of endpoint. Minimal reclaim is close to tautological here: the material ran out at ~48s, and that is what a spent load looks like. Run 9\'s minimal residue after three cycles remains the informative version.\n\nSession ended on depletion, not harshness — the descent pattern\'s second instance on Rig 8. The material was gone before the run left the 430°F leg, so the floor and any smoothing of it went unused. Rig 8\'s second run and the user\'s read strengthened ("the function might be my favorite so far"), with their own hedge attached that it is too early without other strains; both Rig 8 runs are this strain on this curve, so nothing yet isolates the glass. Intensity at a creeping medium against Run 9\'s big, with load and session order both moving that way.',
     ),
+    CompletedRun(
+        strain='Lemon Heads + Blueberry Haze',
+        run_date=date(2026, 7, 28),
+        sessions_prior_today=2,
+        utc_logged_at=datetime(2026, 7, 29, 0, 50, 48, tzinfo=timezone.utc),
+        waypoints=LHBH_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_8,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold at 440°F, then a single constant-slope descent (~0.9°F/s) to the floor; Runs 9–10\'s curve with the 35s corner removed. Two cycles.',
+        swab='dark golden',
+        session_char='Great rips across two cycles. Chest/heartburn-quality harshness at the end of cycle 1, dampened by a water sip and back again on cycle 2; no throat harshness at any point. Faded slowly after the session ended. Dark golden swab with a normal amount of reclaim. Larger-than-normal load.',
+        intensity='High',
+        dab_notes='[Pre-dab:] A, saved as orange. Running rig 8 with a larger than normal load. [Post-run:] Great tips across two cycles. But heartburn feeling was there at end of first cycle, dampened by sip of water, second cycle brought it back. Swabs were dark golden. I wonder if I got different strain from previous runs. Intensity is high. [Q: throat harshness too, or chest only — and what set off the different-strain hunch?] Only heartburn and only the backward guess, nothing in the flavor [Q: did the heartburn fade when you stopped or stick around after; how much reclaim?] Faded slowly after session. Normal amount.',
+        analysis='Run 11 is the jar\'s first chest/heartburn, and it landed on the coolest version of this curve. Smoothing removed the 35s corner — a single ~0.9°F/s slope from the hold, crossing 430°F near 26s instead of holding up there to 35s, and less total time above 400°F than Runs 9 or 10. A heat-driven read of chest predicts the opposite of what happened. What moved alongside is the problem: 3rd dab, against Run 9\'s first and Run 10\'s second, on a larger-than-normal load — exactly the cumulative-exposure territory the standing counter-reading on the chest pattern names. Across the three Rig 8 runs the ordering is at least suggestive: same rig, dab slots 1/2/3, chest only on the third, and the one variable deliberately changed moved cooler. That makes the curve the least likely of the three candidates, and leaves load and dab slot unseparated, as they have been all jar.\n\nChest with no throat at all is new for this jar — Runs 2 through 8 put harshness in the throat when it appeared. The water sip dampened it and cycle 2 brought it back: the same partial-then-return shape as OC R15, the fourth non-full response in the log, and the first on Rig 8. Three tops off Rig 6 have now failed to reproduce the clean Rig 6 reset. Worth flagging as a confound rather than a rig finding — every one of those failures was chest-located, and chest harshness may simply be less resettable than throat harshness independent of the glass, though LunarZ R2 fully reset a chest instance and keeps that from being clean either. The heartburn outlasted the session and faded slowly on its own — the same resolve-after-the-fact shape as OC R15, which was not counted as a lingering instance; recorded here the same way rather than as a fourth.\n\nDark golden with a normal amount of reclaim puts the swab back in the range this jar occupied for its first eight runs — dark golden on Runs 1, 3 and 8. Runs 9 and 10, beige-to-light-golden and beige, are the two lightest in the jar\'s history, and Run 11 says those were the outliers rather than a new Rig 8 baseline. Normal residue on a larger load after two cycles is not a floor signal on a curve that ran cooler than either of them, and Run 9\'s minimal residue after three cycles stays the more informative point.\n\nOn the different-strain question: the format makes it live — outer-ring Lemon Heads badder against center Blueberry Haze jam, load position not reliably distinguishable — and this jar has read position off flavor before (Run 3\'s mostly-lemon read, Run 7\'s lemon with a hint of blueberry). Flavor is the only discriminator the format offers and it did not move, and the hunch ran backward from the swab and the heartburn, both of which have simpler explanations in load, cycle count and dab slot. Not ruled out, since the mechanism is unobservable — just not evidenced.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Lemon Heads + Blueberry Haze',
     profile_anchor='#lhbh-profile',
-    next_text='Run 11: same 440°F bounded-hold descent, moderate load, second dab — but with the SAML RBR back on (Rig 7), so the glass is the only thing that moves',
+    next_text='Run 12: the matched glass pair, finally — same smoothed 440°F curve, same larger load, same 3rd-dab slot as Run 11, with the SAML RBR back on (Rig 7), so the top is the only thing that moves',
     accent=None,
     slug='lhbh',
     info=[
@@ -196,7 +218,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred dominant from Lemon Heads (Lemon G × Face Off OG BX) — Lemon G is known for strong citrus/lemon character; myrcene and terpinolene inferred from Blueberry Haze (Blueberry × Haze). Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Another Rig 8 rerun buys a load data point on a question this jar keeps confounding, while the live decision — whether the recycler function is worth a better piece — has no matched evidence at all. Run 11: same strain, curve, load class and dab slot as Run 10, with the SAML RBR back on. That would be the first pair in this log differing only by the top. Drop the 415°F-at-37s smoothing — a moderate load never survives to that part of the curve. Expected: the heavier pull and better flavor don\'t reproduce on the RBR, harshness absent either way. Surprising: the RBR reads identical on both — which puts Runs 9 and 10 on the curve and the load rather than the glass, and kills the case for upgrading.',
-    next_waypoints=LHBH_HOLD15_DESCENT_440,
+    next_ai_analysis='Run 11 hands the glass comparison a cell worth matching: a curve, a load class and a dab slot that just produced a documented result. Rerun it exactly on the SAML RBR and it becomes the first pair in this log differing only by the top — reading on the live purchase question and on chest at the same time, since the RBR is the one non-bubbler top that already has a chest instance (papzp22 R10). Keep the water sip; a failure to fully reset is data either way. Expected: the heavier pull and better flavor don\'t reproduce on the RBR, and chest shows up anyway at the 3rd-dab slot. Surprising: chest absent on the RBR at matched load and slot — that would put the signal on the glass, which nothing in the log suggests, and would make Rig 8\'s flowback risk a real cost rather than a handling quirk.',
+    next_waypoints=LHBH_HOLD15_DESCENT_440_SMOOTH,
     jar_index='',
 )

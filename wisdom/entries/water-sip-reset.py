@@ -7,14 +7,14 @@ ENTRY = WisdomEntry(
           "Usually resets mid-session harshness on Rig 6, but the reset is not "
           "guaranteed.",
     guidance="Water usually resets mid-session harshness on Rig 6, but not reliably — "
-             "six full resets against three partials, Sour Tangie R5 a full "
-             "non-response, and bb362 R7 (Rig 7) a non-reset read as relocation toward "
-             "the chest. Both Rig 7 instances failed the clean Rig 6 reset; cross-rig "
-             "looks worse, not just untested.",
+             "six full resets against four partials, one full non-response, one "
+             "non-reset read as relocation. All three non-Rig-6 instances failed the "
+             "clean reset, but each was chest-located, so top and location are not yet "
+             "separable.",
     grade='observation',
-    grade_basis="Twelve instances, six strains — ten Rig 6, two Rig 7 (papzp22 R10 "
-                "partial, bb362 R7 a non-reset read as relocation); neither cross-rig "
-                "instance is a clean reset.",
+    grade_basis="Thirteen instances, eight strains — ten Rig 6, two Rig 7, one Rig 8; "
+                "no non-Rig-6 instance is a clean reset. Strain count corrected from "
+                "six July 28, 2026.",
     evidence=[
         Citation(
             source='hive1 R6',
@@ -140,6 +140,21 @@ ENTRY = WisdomEntry(
                       "chest-located outcome; single vivid instance at the user's-read "
                       "weight — relocation is a sensation report, not a measured route.",
         ),
+        Citation(
+            source='lhbh R11',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 28, 2026 — smoothed 440°F bounded-hold descent, Rig 8 (Calibear "
+                 "Fab Recycler wet top), 3rd dab — chest/heartburn at the end of cycle "
+                 "1: a water sip \"dampened\" it and the \"second cycle brought it "
+                 "back,\" the same partial-then-return shape as OC R15. Fourth non-full "
+                 "response in the log and the first on Rig 8 — a third top off Rig 6.",
+            confounds="3rd dab of the day (heavy cumulative exposure), "
+                      "larger-than-normal load, two cycles, chest-located; degree "
+                      "(\"dampened\") not quantified. Rig and harshness location are "
+                      "fully confounded across the non-Rig-6 set — papzp22 R10, bb362 "
+                      "R7 and this run were all chest-located.",
+        ),
     ],
     positions=[
         Position(
@@ -176,9 +191,23 @@ ENTRY = WisdomEntry(
                  "but it moves the cross-rig read from 'untested' toward 'looks worse.' "
                  "Held at observation.",
         ),
+        Position(
+            stated='July 28, 2026 (lhbh R11)',
+            text="Third consecutive non-Rig-6 instance to fail the clean Rig 6 reset — "
+                 "papzp22 R10 and bb362 R7 on the RBR, now lhbh R11 on the Calibear "
+                 "recycler — so the failing set is three tops, not three rigs. It does "
+                 "not firm up a rig mechanism, because the confound is now visible and "
+                 "total: every non-Rig-6 instance was chest-located, and chest-located "
+                 "harshness may simply be less resettable than the throat harshness "
+                 "that supplied most of the full resets. LunarZ R2 is the one chest "
+                 "instance that did fully reset, and it was on Rig 6 — so location "
+                 "alone does not explain it either. Location and top have never varied "
+                 "independently in this set; separating them needs a throat-only "
+                 "harshness instance off Rig 6. Held at observation.",
+        ),
     ],
-    watch_for="A clean Rig 6-style full reset reproducing off Rig 6 — both Rig 7 "
-              "instances so far have failed it; and whether the bb362 R7 relocation "
-              "reading recurs.",
-    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026',
+    watch_for="A clean full reset off Rig 6 — all three non-Rig-6 instances failed, but "
+              "each was chest-located; a throat-only instance off Rig 6 separates top "
+              "from location. Whether the relocation reading recurs.",
+    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026; lhbh R11 July 28, 2026 — first Rig 8 instance',
 )

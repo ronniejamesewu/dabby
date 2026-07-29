@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 174 across 20 strains
+- **Total runs:** 175 across 20 strains
 - **Active since:** May 2, 2026 (88 days)
 - **Last run date:** July 28, 2026
-- **Most recent run (all jars, by utc_logged_at):** Lemon Heads + Blueberry Haze Run 10 — July 28, 2026, Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
+- **Most recent run (all jars, by utc_logged_at):** Lemon Heads + Blueberry Haze Run 11 — July 28, 2026, Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -138,17 +138,17 @@
 ---
 
 ### Lemon Heads + Blueberry Haze
-**10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: July 28, 2026 &nbsp;·&nbsp; Equipment: Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
+**11 sessions** &nbsp;·&nbsp; Next run: 12 &nbsp;·&nbsp; Last: July 28, 2026 &nbsp;·&nbsp; Equipment: Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 
-**Next:** Run 11: same 440°F bounded-hold descent, moderate load, second dab — but with the SAML RBR back on (Rig 7), so the glass is the only thing that moves
+**Next:** Run 12: the matched glass pair, finally — same smoothed 440°F curve, same larger load, same 3rd-dab slot as Run 11, with the SAML RBR back on (Rig 7), so the top is the only thing that moves
 
-**AI Analysis:** Another Rig 8 rerun buys a load data point on a question this jar keeps confounding, while the live decision — whether the recycler function is worth a better piece — has no matched evidence at all. Run 11: same strain, curve, load class and dab slot as Run 10, with the SAML RBR back on. That would be the first pair in this log differing only by the top. Drop the 415°F-at-37s smoothing — a moderate load never survives to that part of the curve. Expected: the heavier pull and better flavor don't reproduce on the RBR, harshness absent either way. Surprising: the RBR reads identical on both — which puts Runs 9 and 10 on the curve and the load rather than the glass, and kills the case for upgrading.
+**AI Analysis:** Run 11 hands the glass comparison a cell worth matching: a curve, a load class and a dab slot that just produced a documented result. Rerun it exactly on the SAML RBR and it becomes the first pair in this log differing only by the top — reading on the live purchase question and on chest at the same time, since the RBR is the one non-bubbler top that already has a chest instance (papzp22 R10). Keep the water sip; a failure to fully reset is data either way. Expected: the heavier pull and better flavor don't reproduce on the RBR, and chest shows up anyway at the 3rd-dab slot. Surprising: chest absent on the RBR at matched load and slot — that would put the signal on the glass, which nothing in the log suggests, and would make Rig 8's flowback risk a real cost rather than a handling quirk.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
 - 15s → 440°F — Hold at peak — extended 15s hold
-- 35s → 430°F — Shallow first descent leg — below sapphire passive decay
-- 60s → 400°F — Floor
+- 38s → 420°F — Descent midpoint — sits on the line, no slope change
+- 60s → 400°F — Floor — single constant ~0.9°F/s descent throughout
 
 ---
 
