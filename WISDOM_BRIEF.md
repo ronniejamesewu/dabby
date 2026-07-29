@@ -77,10 +77,10 @@
 
 ### water-sip-reset  [pattern | observation]
 **Claim:** Water sip clears mid-session harshness — threshold reset, not suppression. Usually resets mid-session harshness on Rig 6, but the reset is not guaranteed.
-**Basis:** Twelve instances, six strains — ten Rig 6, two Rig 7 (papzp22 R10 partial, bb362 R7 a non-reset read as relocation); neither cross-rig instance is a clean reset.
-**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets against three partials, Sour Tangie R5 a full non-response, and bb362 R7 (Rig 7) a non-reset read as relocation toward the chest. Both Rig 7 instances failed the clean Rig 6 reset; cross-rig looks worse, not just untested.
-**Watch:** A clean Rig 6-style full reset reproducing off Rig 6 — both Rig 7 instances so far have failed it; and whether the bb362 R7 relocation reading recurs.
-*12 citations (7 confirm / 5 counter) | jars: bb362, fw106, hive1, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026*
+**Basis:** Thirteen instances, eight strains — ten Rig 6, two Rig 7, one Rig 8; no non-Rig-6 instance is a clean reset. Strain count corrected from six July 28, 2026.
+**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets against four partials, one full non-response, one non-reset read as relocation. All three non-Rig-6 instances failed the clean reset, but each was chest-located, so top and location are not yet separable.
+**Watch:** A clean full reset off Rig 6 — all three non-Rig-6 instances failed, but each was chest-located; a throat-only instance off Rig 6 separates top from location. Whether the relocation reading recurs.
+*13 citations (7 confirm / 6 counter) | jars: bb362, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026; lhbh R11 July 28, 2026 — first Rig 8 instance*
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
@@ -90,11 +90,11 @@
 *10 citations (10 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026*
 
 ### chest-harshness-hot-open  [pattern | observation]
-**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 14 hot-open runs (13 Rig 6, 1 Rig 7); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
-**Basis:** Low — chest location documented on 13 hot-open Rig 6 runs plus 1 on Rig 7 (papzp22 R10); Sour Tangie R3 the weakest (mild, resolved in-session), R7 the hottest open at 450°F and a first-dab instance.
+**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 15 hot-open runs (13 Rig 6, 1 Rig 7, 1 Rig 8); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
+**Basis:** Low — chest location on 13 hot-open Rig 6 runs plus 1 on Rig 7 (papzp22 R10) and 1 on Rig 8 (lhbh R11); Sour Tangie R3 the weakest, R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 3 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
-**Watch:** Further chest-and-lingers conjunction instances to firm up the thin n=3; a clean first-dab modest single-cycle LunarZ run to isolate the purple 430°F hold from cumulative day-exposure.
-*26 citations (14 confirm / 12 counter) | jars: bp4rw13, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026)*
+**Watch:** More chest-and-lingers instances to firm the thin n=3; a clean first-dab modest single-cycle LunarZ run; a first-dab run on the smoothed 440°F curve to tell dab slot from curve on lhbh R11.
+*27 citations (15 confirm / 12 counter) | jars: bp4rw13, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.
@@ -146,11 +146,11 @@
 *2 citations (1 confirm / 1 counter) | jars: bb362, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held.*
 
 ### rig8-calibear-fab-recycler  [equipment | observation]
-**Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): two runs, one strain, one curve — heavier pull and better flavor than the RBR on the user's read, no harshness on either, nothing matched. Flowback defect is a hardware-safety condition.
-**Basis:** Two runs (lhbh R9, R10), one strain, one curve. R9 a rig debut on a new curve and large-ish load; R10 held curve and rig but moved load and session order together. Neither isolates the top.
-**Guidance:** Two runs, both lhbh on one 440°F bounded hold. Do not credit the recycler with the flavor or the clean harshness read — the RBR runs are other strains and curves, and their taste read splits. Three tops, no matched pair. OPERATIONAL: flowback risks thermal shock to the insert — handle deliberately when hot.
-**Watch:** The matched comparison, still owed: same strain and curve on the RBR (Rig 7) — lhbh R11 is set up for it. Whether the heavier pull reproduces off new glass. Any flowback reaching the insert.
-*2 citations (2 confirm / 0 counter) | jars: lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet.*
+**Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): three runs, one strain, two curves — heavier pull and better flavor than the RBR on the user's read, clean on two runs and chest on the third, nothing matched.
+**Basis:** Three runs (lhbh R9, R10, R11), one strain, two curves. R9 a rig debut on a new curve; R10 moved load and session order; R11 moved curve, load and dab slot at once. None isolates the top.
+**Guidance:** Three runs, all lhbh, on two versions of one 440°F bounded hold. Do not credit the recycler with the flavor — the RBR runs are other strains and curves. The clean-harshness read died on R11, so do not carry it forward. Three tops, no matched pair. OPERATIONAL: flowback risks thermal shock to the insert.
+**Watch:** The matched comparison, owed three runs and dodged each time: same strain, curve, load class and dab slot on the RBR — lhbh R12 is set against R11's cell. Any flowback reaching the insert.
+*2 citations (2 confirm / 0 counter) | jars: lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top, retiring the no-chest reading.*
 
 ## Live Failure Modes
 

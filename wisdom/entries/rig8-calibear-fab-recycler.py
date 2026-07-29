@@ -3,19 +3,18 @@ from wisdom_core import *
 ENTRY = WisdomEntry(
     key='rig8-calibear-fab-recycler',
     kind='equipment',
-    claim="Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): two runs, one strain, "
-          "one curve — heavier pull and better flavor than the RBR on the user's read, "
-          "no harshness on either, nothing matched. Flowback defect is a "
-          "hardware-safety condition.",
-    guidance="Two runs, both lhbh on one 440°F bounded hold. Do not credit the recycler "
-             "with the flavor or the clean harshness read — the RBR runs are other "
-             "strains and curves, and their taste read splits. Three tops, no matched "
-             "pair. OPERATIONAL: flowback risks thermal shock to the insert — handle "
-             "deliberately when hot.",
+    claim="Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): three runs, one "
+          "strain, two curves — heavier pull and better flavor than the RBR on the "
+          "user's read, clean on two runs and chest on the third, nothing matched.",
+    guidance="Three runs, all lhbh, on two versions of one 440°F bounded hold. Do not "
+             "credit the recycler with the flavor — the RBR runs are other strains and "
+             "curves. The clean-harshness read died on R11, so do not carry it forward. "
+             "Three tops, no matched pair. OPERATIONAL: flowback risks thermal shock to "
+             "the insert.",
     grade='observation',
-    grade_basis="Two runs (lhbh R9, R10), one strain, one curve. R9 a rig debut on a "
-                "new curve and large-ish load; R10 held curve and rig but moved load "
-                "and session order together. Neither isolates the top.",
+    grade_basis="Three runs (lhbh R9, R10, R11), one strain, two curves. R9 a rig debut "
+                "on a new curve; R10 moved load and session order; R11 moved curve, "
+                "load and dab slot at once. None isolates the top.",
     evidence=[
         Citation(
             source='lhbh R9',
@@ -91,6 +90,26 @@ ENTRY = WisdomEntry(
                  "on this jar to sit beside them. Two runs is not two data points on "
                  "the top. Held at observation.",
         ),
+        Position(
+            stated='July 28, 2026 (lhbh R11)',
+            text="Third run, and the first thing on Rig 8 that is not clean: "
+                 "chest/heartburn at the end of cycle 1, no throat harshness, a water "
+                 "sip that only dampened it, and a return on cycle 2. This retires the "
+                 "one claim the R9 position made independent of the flavor question — "
+                 "that a third airpath and posture condition threw no chest signal in "
+                 "either window. It held for two runs and did not survive the third. It "
+                 "is not evidence against the top either: R11 was the 3rd dab of the "
+                 "day on a larger load and ran a different (smoothed) curve, so the "
+                 "cumulative-exposure reading covers it at least as well — see "
+                 "chest-harshness-hot-open, where this run is the counter-reading's "
+                 "strongest within-jar support. Separately the swab picture narrows: "
+                 "R9 and R10's beige swabs looked like they might be a Rig 8 "
+                 "signature, and R11's dark golden with normal reclaim puts the swab "
+                 "back in the range this jar occupied for its first eight runs — the "
+                 "two light swabs were the outliers, not a baseline. Three runs, one "
+                 "strain, two curves, still no matched pair against either other top. "
+                 "Held at observation.",
+        ),
     ],
     counter_reading="Everything attributed to the top is equally explained by the curve "
                     "(this jar's only 440°F bounded hold), the load, or session order — "
@@ -98,12 +117,13 @@ ENTRY = WisdomEntry(
                     "runs on other strains whose taste read already splits. R10 does not "
                     "answer this: it repeats the same strain on the same curve, so it "
                     "confirms the pairing is reproducible without showing the top caused "
-                    "any of it. A skeptic reads both Rig 8 runs as good runs on a good "
-                    "curve, with the glass contributing nothing demonstrable — a reading "
-                    "the user's own hedge (\"too early to say without trying other "
-                    "strains\") anticipates.",
-    watch_for="The matched comparison, still owed: same strain and curve on the RBR "
-              "(Rig 7) — lhbh R11 is set up for it. Whether the heavier pull reproduces "
-              "off new glass. Any flowback reaching the insert.",
-    updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet.',
+                    "any of it. A skeptic reads all three Rig 8 runs as ordinary runs on "
+                    "one curve family — two good, one with chest at the 3rd-dab slot — "
+                    "with the glass contributing nothing demonstrable in either "
+                    "direction; a reading the user's own hedge (\"too early to say "
+                    "without trying other strains\") anticipates.",
+    watch_for="The matched comparison, owed three runs and dodged each time: same "
+              "strain, curve, load class and dab slot on the RBR — lhbh R12 is set "
+              "against R11's cell. Any flowback reaching the insert.",
+    updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top, retiring the no-chest reading.',
 )

@@ -4,8 +4,8 @@ ENTRY = WisdomEntry(
     key='chest-harshness-hot-open',
     kind='pattern',
     claim="In-session chest-located harshness on hot-open curves — chest "
-          "location documented across 14 hot-open runs (13 Rig 6, 1 Rig 7); the "
-          "chest-and-lingers conjunction is tracked separately (row B) and rests on "
+          "location documented across 15 hot-open runs (13 Rig 6, 1 Rig 7, 1 Rig 8); "
+          "the chest-and-lingers conjunction is tracked separately (row B) and rests on "
           "3 instances.",
     guidance="Chest location is the tracked signal here; persistence is tracked "
              "separately in row (B) — do not fold them together. Do not treat the "
@@ -13,9 +13,9 @@ ENTRY = WisdomEntry(
              "unresolved; the hot-open-delivers-deeper-aerosol reading is speculative "
              "— do not promote it to cause.",
     grade='observation',
-    grade_basis="Low — chest location documented on 13 hot-open Rig 6 runs plus 1 on "
-                "Rig 7 (papzp22 R10); Sour Tangie R3 the weakest (mild, resolved "
-                "in-session), R7 the hottest open at 450°F and a first-dab instance.",
+    grade_basis="Low — chest location on 13 hot-open Rig 6 runs plus 1 on Rig 7 "
+                "(papzp22 R10) and 1 on Rig 8 (lhbh R11); Sour Tangie R3 the weakest, "
+                "R7 the hottest open at 450°F and a first-dab instance.",
     evidence=[
         Citation(
             source='papzp22 R7',
@@ -309,6 +309,25 @@ ENTRY = WisdomEntry(
                       "but is the most confounded such instance — not firmed into the "
                       "conjunction.",
         ),
+        Citation(
+            source='lhbh R11',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 28, 2026 — smoothed 440°F bounded-hold descent (the 35s corner "
+                 "removed, so a cooler middle than Runs 9–10), Rig 8 (Calibear Fab "
+                 "Recycler wet top), 3rd dab, larger-than-normal load, two cycles. "
+                 "Chest/heartburn at the end of cycle 1, no throat harshness at any "
+                 "point; a water sip dampened it and cycle 2 brought it back; \"faded "
+                 "slowly after session.\" This jar's first chest instance in eleven "
+                 "runs and the first on a third airpath/posture condition (neither the "
+                 "stock bubbler nor the RBR).",
+            confounds="3rd dab of the day and a larger-than-normal load both moved "
+                      "toward this run — squarely the cumulative-exposure territory the "
+                      "counter-reading names. Post-session read is a slow fade rather "
+                      "than persistence, the same shape as OC R15, which was not "
+                      "counted toward the conjunction — not counted here either, so "
+                      "n=3 is unchanged.",
+        ),
     ],
     positions=[
         Position(
@@ -454,14 +473,33 @@ ENTRY = WisdomEntry(
                  "deliberately slouched run at a lower, cooler endpoint should bring it "
                  "back.",
         ),
+        Position(
+            stated='July 28, 2026 (lhbh R11)',
+            text="The strongest within-jar support the counter-reading has yet drawn, "
+                 "and it comes from the curve moving the wrong way. lhbh R9, R10 and "
+                 "R11 are three consecutive runs on the same rig (Rig 8) at dab slots "
+                 "1, 2 and 3; chest appeared only on the third — and R11 ran the "
+                 "*cooler* curve, the smoothed 440°F descent whose corner removal cut "
+                 "roughly nine seconds off the time at or above 430°F per cycle and "
+                 "lowered the integrated time above 400°F below both R9 and R10. A "
+                 "hot-open or peak-dwell driver predicts the opposite ordering. Load "
+                 "also rose on R11, so dab slot and load remain unseparated (as they "
+                 "have all jar), but the curve — the one variable deliberately changed "
+                 "— is the least likely of the three. Chest location count 14 → 15; "
+                 "first instance on a third airpath/posture condition, which also means "
+                 "the Rig 8 entry's \"no chest in either window\" reading from R9/R10 no "
+                 "longer holds for the top. Conjunction unchanged at 3: the "
+                 "post-session read was a slow fade, the OC R15 shape, not persistence. "
+                 "Held at observation.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
                     "instance leave open that chest location co-varies with "
                     "within-session cumulative exposure rather than the hot open "
                     "itself — hot-open may be a proxy.",
-    watch_for="Further chest-and-lingers conjunction instances to firm up the thin "
-              "n=3; a clean first-dab modest single-cycle LunarZ run to isolate the "
-              "purple 430°F hold from cumulative day-exposure.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026)",
+    watch_for="More chest-and-lingers instances to firm the thin n=3; a clean first-dab "
+              "modest single-cycle LunarZ run; a first-dab run on the smoothed 440°F "
+              "curve to tell dab slot from curve on lhbh R11.",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15",
 )
