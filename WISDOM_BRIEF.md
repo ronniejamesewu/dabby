@@ -84,10 +84,10 @@
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
-**Basis:** Low — eight strains; all Rig 6 except lhbh R9/R10 (Rig 8) and lunarz R6 (Rig 7); 2nd- and 3rd-dab instances added by papzp22 R8/R9, oc R15 and lhbh R10; consistent direction across three tops.
+**Basis:** Low — nine strains; all Rig 6 except lhbh R9/R10 and fw106 R36 (Rig 8) and lunarz R6/R7 (Rig 7); later-dab instances from papzp22 R8/R9, oc R15, lhbh R10; three tops, Rig 8 now two strains.
 **Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab or single-rig: three instances sit off Rig 6 across two tops. Load varied, unresolved.
-**Watch:** A descent run on Rig 5 — the last untested rig; off-Rig-6 evidence is now two tops. Holding load constant would isolate load; lunarz R6/R7 came closest and still moved cycles too.
-*12 citations (12 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, lunarz, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set*
+**Watch:** A descent run on Rig 5 — the last untested rig; off-Rig-6 is two tops, and Rig 8 is now two strains. Holding load constant would isolate load; lunarz R6/R7 came closest and still moved cycles.
+*13 citations (13 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, lunarz, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set; fw106 R36 July 30, 2026 — ninth strain*
 
 ### chest-harshness-hot-open  [pattern | observation]
 **Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 16 hot-open runs (13 Rig 6, 2 Rig 7, 1 Rig 8); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
@@ -142,15 +142,15 @@
 **Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools vapor harder; chest on three of four runs, absent on the one modest single cycle; taste read unsettled; no comparison against another top.
 **Basis:** Four runs (papzp22 R10, bb362 R7, lunarz R6, lunarz R7), three strains, three curves; taste split, and the only matched pair holds the top constant.
 **Guidance:** Four runs, taste unresolved — muted once, held twice, different strain and curve each time. Chest hit the three large-or-larger multi-cycle runs and skipped the modest single cycle, so it tracks exposure, not the top. First non-bubbler top, so posture is a variable — see chest-harshness-hot-open.
-**Watch:** The comparison against another top at matched curve and load, owed since the debut — lunarz R8 puts R6/R7's curve back on the stock bubbler. The upright-vs-slouched test (papzp22 R11).
+**Watch:** lunarz R8 puts R6/R7's curve back on the stock bubbler — the matched-top comparison owed since the debut. The upright-vs-slouched test (papzp22 R11). Sort taste reads by kind (July 30 position).
 *4 citations (1 confirm / 3 counter) | jars: bb362, lunarz, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance.*
 
 ### rig8-calibear-fab-recycler  [equipment | observation]
-**Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): three runs, one strain, two curves — heavier pull and better flavor than the RBR on the user's read, clean on two runs and chest on the third, nothing matched.
-**Basis:** Three runs (lhbh R9, R10, R11), one strain, two curves. R9 a rig debut on a new curve; R10 moved load and session order; R11 moved curve, load and dab slot at once. None isolates the top.
-**Guidance:** Three runs, all lhbh, on two versions of one 440°F bounded hold. Do not credit the recycler with the flavor — the RBR runs are other strains and curves. The clean-harshness read died on R11, so do not carry it forward. Three tops, no matched pair. OPERATIONAL: flowback risks thermal shock to the insert.
-**Watch:** The matched comparison, owed three runs and dodged each time: same strain, curve, load class and dab slot on the RBR — lhbh R12 is set against R11's cell. Any flowback reaching the insert.
-*2 citations (2 confirm / 0 counter) | jars: lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top, retiring the no-chest reading.*
+**Claim:** Rig 8 (Calibear Fab Recycler wet top): four runs, two strains. Read better than the RBR on lhbh; the one strain outside lhbh read flavor down against its own bubbler baseline. Chest on one of four. No matched pair.
+**Basis:** Four runs (lhbh R9/R10/R11, fw106 R36), two strains, two curves. R36 brings the second strain and the first comparative flavor read but ran a curve new to that jar. None isolates the top.
+**Guidance:** Do not credit this top with flavor: the only bubbler comparison on it (fw106 R36) reads down, converging with papzp22 R10 on the RBR. Keep comparative and absolute reads apart — the "still tasty" runs had no bubbler beside them. Four runs, three tops, no matched pair. OPERATIONAL: flowback risks thermal shock.
+**Watch:** The matched comparison, dodged four times: fw106 R37 puts R36's curve and slot back on the bubbler; lhbh R12 sits against R11's cell on the RBR. Any flowback reaching the insert.
+*3 citations (2 confirm / 1 counter) | jars: fw106, lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler.*
 
 ## Live Failure Modes
 
