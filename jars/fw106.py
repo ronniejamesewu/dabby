@@ -78,6 +78,12 @@ FW106_HOLD_DESCENT_430 = [
     Waypoint(time_s=37, temp_f=415, note='Gentle descent midpoint'),
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
+FW106_HOLD15_DESCENT_440_SMOOTH = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open, orange curve'),
+    Waypoint(time_s=15, temp_f=440, note='Hold at peak — extended 15s hold'),
+    Waypoint(time_s=38, temp_f=420, note='Descent midpoint — sits on the line, no slope change'),
+    Waypoint(time_s=60, temp_f=400, note='Floor — single constant ~0.9°F/s descent throughout'),
+]
 
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
@@ -607,13 +613,28 @@ RUNS = [
         dab_notes="[Party-mode capture: fw on purple curve; Rig 6 not 7.] Swab golden, not a lot of reclaim. 430 was much more pleasant than 450 but 450 fucked me up. [Chest asked at logging: nothing recalled, good party.]",
         analysis="Run 35, third dab of the day — FW106's first run on the purple curve (430°F open, 15s hold, gentle descent to a 400°F floor), borrowed from the OC/LunarZ purple preset and duplicated locally per jar isolation. Golden swab, minimal reclaim. The headline is the user's direct comparison: the 430 open was 'much more pleasant' than the day's two 450 opens, which 'fucked me up' — a same-day, same-rig, same-material read of the cooler open trading intensity for comfort, directionally consistent with the higher-open-hits-harder direction (endpoint-effect-strength) and the descent family's general character. The confound is session order: this was the 3rd dab, so accumulated day-mellowness rides along with the cooler open — the pleasant read can't be pinned on the 430 open alone from this run. Chest not recalled across any of the three (party recall, not a clean absence). Establishes purple 430 as a viable, gentler FW106 mode; a clean first-dab read is what isolates whether the open or the session order carried the comfort.",
     ),
+    CompletedRun(
+        strain='Fire Water #106',
+        run_date=date(2026, 7, 30),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 30, 20, 17, 8, tzinfo=timezone.utc),
+        waypoints=FW106_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_8,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — orange smoothed 440°F bounded-hold descent (440→440@15s→420@38s→400@60s); FW106\'s first orange run &nbsp;|&nbsp; <strong>Equipment:</strong> First FW106 run on Rig 8 (Calibear Fab Recycler)',
+        swab='Beige to light gold — minimal reclaim.',
+        session_char='Nice hits, but noticeably less flavor than on the stock bubbler — same character, just less of it. Very small base-of-throat harshness about three-quarters through, not the stopping condition. Single cycle; the load and the 60s cycle ran out together. Beige-to-light-gold swab, minimal reclaim.',
+        intensity='Medium-high.',
+        dab_notes="Gonna dab a fw dab on the orange curve. [Equipment:] Rig 8. Beige to light gold swabs, minimal amount of reclaim. Nice hits, although noticeably less flavor than with stock bubbler. The load almost perfectly matched the cycle time. Medium-high intensity. A tiny bit of base of throat harshness but very small. Difficult to say on flavor, just less of whatever was there. [Harshness timing, asked at logging:] During, about 3/4 way through. [Load class not stated.]",
+        analysis="Run 36 — the orange smoothed 440°F bounded hold (440→440@15s→420@38s→400@60s), FW106's first, and its first run on any top but the stock bubbler. First dab, single cycle, load and cycle running out together at 60s.\n\nFlavor down from the bubbler, same character, just less of it. That is a comparative read against a baseline this jar has thirty-five runs of, offered unprompted — and the log's only other one, papzp22 R10 ('definitely muted' against R8/R9's loud flavor on the same curve), points the same way. The runs usually set against that read (BB36 #2 R7, LunarZ R6/R7) are absolute reads, not bubbler comparisons. Two strains, two recycler tops, same direction whenever someone actually compares; directional, not settled. Curve confound: orange is new here, but it holds 440°F fifteen seconds longer than the R26–R30 gentle descents that read 'very tasty' with the key lime note — so it should front-load more terpene, not less.\n\nVery small throat harshness three-quarters through, not the stopping condition — load and cycle ran out together, the descent set's depletion-ending shape (FW106 R23, LHBH R9/R10, LunarZ R7). No chest where Rig 8's last run (LHBH R11) had it, but a first dab on one cycle is the exposure-light zone that reading already predicts. Beige-to-light-gold swab off a single cycle, and medium-high on a first dab with load class unstated, are both unremarkable.",
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='Fire Water #106',
     profile_anchor='#fw106-profile',
-    next_text='Run 36: clean purple 430°F curve (430→430@15s→415@37s→400@60s), first dab, modest load, single cycle — confirm the "much more pleasant" read without the 3rd-dab confound and get a clean chest read on the cooler open.',
+    next_text='Run 37: same orange 440°F curve (440→440@15s→420@38s→400@60s), back on the stock bubbler (Rig 6), first dab, normal load — the matched pair on the flavor read.',
     accent=None,
     slug='fw106',
     info=[
@@ -623,8 +644,8 @@ STATUS = StrainStatus(
         ('Nose', 'Prominent berry; gassy underneath'),
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene inferred from Key Limeade lineage (citrus character); caryophyllene inferred secondary, consistent with gassy nose; myrcene inferred (earthy, berry character); linalool minor — possible berry note contributor. Firewood parent not well-documented; inferences lean on Key Limeade side. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
-    next_dab_notes="Purple 430°F curve — first dab, modest load, single cycle. Say the load class out loud at logging.",
-    next_ai_analysis="The July 23 party gave a strong subjective read — the purple 430 open was \"much more pleasant\" than the day's two 450 opens (\"450 fucked me up\") — but it's confounded: the 430 was the 3rd dab, so accumulated day-mellowness rides along with the cooler open. Run 36: clean purple 430, first dab, modest load, single cycle — isolates whether the cooler open itself is the gentler ride, and finally gets the clean chest read that R32/R33 kept deferring under big-load/many-cycle sessions (party recall this round was too coarse to even confirm chest presence). State the load class at logging. Expected: pleasant/smooth confirmed, chest absent or light, golden swab. Surprising: chest on the cooler 430 open too — that points chest away from the 450 peak and toward load, cumulative exposure, or posture.",
-    next_waypoints=FW106_HOLD_DESCENT_430,
+    next_dab_notes="Orange 440°F curve on the stock bubbler — first dab, normal load. Say the load class out loud at logging.",
+    next_ai_analysis="Both comparative flavor reads in the log say a recycler top costs flavor; neither has a matched pair behind it. Run 37 builds one — same curve, same first-dab slot, normal load, bubbler back on, top the only variable — which is the comparison the glass entries have owed since the RBR debut, on a session worth having anyway. Say the load class at logging. Expected: flavor louder than Run 36, key lime note back. Surprising: no better on the bubbler — that puts Run 36's read on the curve or on variance.",
+    next_waypoints=FW106_HOLD15_DESCENT_440_SMOOTH,
     jar_index='',
 )

@@ -153,6 +153,25 @@ ENTRY = WisdomEntry(
                  "entry exists to answer. LunarZ R8 is set against that gap: the same "
                  "curve on the stock bubbler. Held at observation.",
         ),
+        Position(
+            stated='July 30, 2026 (no new RBR run — sorting note from fw106 R36 on Rig 8)',
+            text="This entry has been counting its taste evidence wrong, and the fix "
+                 "arrived from the other recycler. fw106 R36 put the Calibear top against "
+                 "that jar's own thirty-five-run bubbler baseline and read flavor down — "
+                 "the same shape as papzp22 R10 here, and the second time anyone has made "
+                 "that comparison at all. Set beside each other, the reads this entry "
+                 "treats as three-against-one are not the same kind of claim: R10 is "
+                 "comparative, taken against R8/R9 on the same curve and the stock bubbler, "
+                 "while bb362 R7 and lunarz R6 are absolute — the material tasted good — on "
+                 "jars that have never run a comparison. \"Flavor held\" and \"flavor was "
+                 "lower than the bubbler\" can both be true of the same run, so outvoting "
+                 "the second with the first was never valid. Sorted by kind, every "
+                 "comparative read in the log says a recycler top reads quieter than the "
+                 "bubbler: two strains, two tops, no matched pair behind either. That is "
+                 "directional and thin, and it does not move this entry's grade — what it "
+                 "moves is how the existing citations should be read. lunarz R8 is still "
+                 "the run that would settle it here. Held at observation.",
+        ),
     ],
     counter_reading="All four runs are confounded and none compares tops: R10's muted "
                     "taste could carry a thumbprint load-zone component, bb362 R7's and "
@@ -163,8 +182,8 @@ ENTRY = WisdomEntry(
                     "single cycle — the exposure territory that throws chest on the "
                     "bubbler too, so the split may have nothing to do with the top. "
                     "Direction only.",
-    watch_for="The comparison against another top at matched curve and load, owed since "
-              "the debut — lunarz R8 puts R6/R7's curve back on the stock bubbler. The "
-              "upright-vs-slouched test (papzp22 R11).",
+    watch_for="lunarz R8 puts R6/R7's curve back on the stock bubbler — the matched-top "
+              "comparison owed since the debut. The upright-vs-slouched test (papzp22 "
+              "R11). Sort taste reads by kind (July 30 position).",
     updated='papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance.',
 )
