@@ -77,24 +77,24 @@
 
 ### water-sip-reset  [pattern | observation]
 **Claim:** Water sip clears mid-session harshness — threshold reset, not suppression. Usually resets mid-session harshness on Rig 6, but the reset is not guaranteed.
-**Basis:** Thirteen instances, eight strains — ten Rig 6, two Rig 7, one Rig 8; no non-Rig-6 instance is a clean reset. Strain count corrected from six July 28, 2026.
-**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets against four partials, one full non-response, one non-reset read as relocation. All three non-Rig-6 instances failed the clean reset, but each was chest-located, so top and location are not yet separable.
-**Watch:** A clean full reset off Rig 6 — all three non-Rig-6 instances failed, but each was chest-located; a throat-only instance off Rig 6 separates top from location. Whether the relocation reading recurs.
-*13 citations (7 confirm / 6 counter) | jars: bb362, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026; lhbh R11 July 28, 2026 — first Rig 8 instance*
+**Basis:** Fourteen instances, eight strains — ten Rig 6, three Rig 7, one Rig 8; no non-Rig-6 instance is a clean single-sip reset. Strain count corrected from six July 28, 2026.
+**Guidance:** Water usually resets mid-session harshness on Rig 6, but not reliably — six full resets against five partials, one non-response, one relocation. All four non-Rig-6 instances failed a single-sip reset; lunarz R6 was the first throat-only one, so chest location no longer explains that alone.
+**Watch:** A clean full reset off Rig 6 — lunarz R6 removed chest location as the sole explanation. Dose is newly visible: sip vs. repeated drinks. Whether the relocation reading recurs.
+*14 citations (7 confirm / 7 counter) | jars: bb362, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026; lhbh R11 July 28, 2026 — first Rig 8 instance; lunarz R6 July 29, 2026 — first throat-only instance off Rig 6*
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
-**Basis:** Low — seven strains; all Rig 6 except lhbh R9/R10 (Rig 8); 2nd- and 3rd-dab instances added by papzp22 R8/R9, oc R15 and lhbh R10; consistent direction, near-single-rig.
-**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab, and no longer single-rig: lhbh R9 is the first instance off Rig 6. Load varied, unresolved.
-**Watch:** A descent run on Rig 5 (none logged) would test cross-rig generalization — the Rig 8 leg (lhbh R9/R10) is one strain on one curve; holding load constant would isolate load.
-*10 citations (10 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026*
+**Basis:** Low — eight strains; all Rig 6 except lhbh R9/R10 (Rig 8) and lunarz R6 (Rig 7); 2nd- and 3rd-dab instances added by papzp22 R8/R9, oc R15 and lhbh R10; consistent direction across three tops.
+**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab or single-rig: three instances sit off Rig 6 across two tops. Load varied, unresolved.
+**Watch:** A descent run on Rig 5 — the last untested rig; off-Rig-6 evidence is now two tops. Holding load constant would isolate load.
+*11 citations (11 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, lunarz, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance*
 
 ### chest-harshness-hot-open  [pattern | observation]
-**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 15 hot-open runs (13 Rig 6, 1 Rig 7, 1 Rig 8); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
-**Basis:** Low — chest location on 13 hot-open Rig 6 runs plus 1 on Rig 7 (papzp22 R10) and 1 on Rig 8 (lhbh R11); Sour Tangie R3 the weakest, R7 the hottest open at 450°F and a first-dab instance.
+**Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 16 hot-open runs (13 Rig 6, 2 Rig 7, 1 Rig 8); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
+**Basis:** Low — chest location on 13 hot-open Rig 6 runs plus 2 on Rig 7 (papzp22 R10, lunarz R6) and 1 on Rig 8 (lhbh R11); Sour Tangie R3 the weakest, R7 the hottest open at 450°F and a first-dab instance.
 **Guidance:** Chest location is the tracked signal here; persistence is tracked separately in row (B) — do not fold them together. Do not treat the chest-and-lingers conjunction as more than its 3 instances. Mechanism unresolved; the hot-open-delivers-deeper-aerosol reading is speculative — do not promote it to cause.
-**Watch:** More chest-and-lingers instances to firm the thin n=3; a clean first-dab modest single-cycle LunarZ run; a first-dab run on the smoothed 440°F curve to tell dab slot from curve on lhbh R11.
-*27 citations (15 confirm / 12 counter) | jars: bp4rw13, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15*
+**Watch:** More chest-and-lingers instances to firm n=3; a first-dab modest single-cycle LunarZ run (lunarz R6 gave the first dab, not the single cycle); a first-dab smoothed-440°F run within lhbh.
+*28 citations (16 confirm / 12 counter) | jars: bp4rw13, fw106, hive1, lhbh, lunarz, oc, papzp22, sourtangie | upd Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15; lunarz R6 July 29, 2026 — chest location 15 → 16, first-dab instance retires the day-slot reading*
 
 ### post-session-discomfort  [pattern | observation]
 **Claim:** Post-session airway discomfort (onset or persistence after session end) recurs cross-curve and cross-rig. Occurs on 380°F opens as well as hot opens, so opening temperature is one candidate among several, not the tracking variable.
@@ -139,11 +139,11 @@
 *6 citations (6 confirm / 0 counter) | jars: bp4rw13, fw106, hive1, lhbh, papzp22 | upd FW106 R20 (June 17, 2026) through July 2, 2026 equipment correction; airflow dead-zone observation Session 169 (July 16, 2026).*
 
 ### rig7-saml-rbr  [equipment | observation]
-**Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools vapor harder and didn't reduce the chest/heartburn facet across two runs; taste read splits (muted on R10, held on R7), no matched comparison.
-**Basis:** Two runs (papzp22 R10, bb362 R7), two strains, two curves — the taste reads split across them and no matched comparison exists; everything still confounded by load, clean state, posture, and strain.
-**Guidance:** Two runs, taste read unresolved — muted on R10, held on R7; the matched-load matched-curve test is still owed. Don't credit the RBR with preserving or costing taste as settled. As the first non-bubbler top it removes the forced slouch, making posture a variable — see chest-harshness-hot-open, thermal-injury-vapor-temp.
-**Watch:** A modest-load matched-curve RBR run to clean up taste and open the potency question; the upright-vs-slouched test (papzp22 R11) tying the chest change to posture, not the top.
-*2 citations (1 confirm / 1 counter) | jars: bb362, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held.*
+**Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools vapor harder; chest/heartburn present on all three runs; taste read unsettled (muted once, held twice), no matched comparison.
+**Basis:** Three runs (papzp22 R10, bb362 R7, lunarz R6), three strains, three curves — taste reads split, no matched comparison; confounded by load, clean state, posture, strain.
+**Guidance:** Three runs, taste unresolved — muted once, held twice, each a different strain and curve; the matched-load matched-curve test is owed. Chest/heartburn appeared on all three, so this top does not shed that facet. As the first non-bubbler top it makes posture a variable — see chest-harshness-hot-open.
+**Watch:** A modest-load matched-curve RBR run — still owed at three runs, all carrying large-or-larger loads; the upright-vs-slouched test (papzp22 R11).
+*3 citations (1 confirm / 2 counter) | jars: bb362, lunarz, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, flavor held again, chest three-for-three.*
 
 ### rig8-calibear-fab-recycler  [equipment | observation]
 **Claim:** Rig 8 (Rig 6/7 base + Calibear Fab Recycler wet top): three runs, one strain, two curves — heavier pull and better flavor than the RBR on the user's read, clean on two runs and chest on the third, nothing matched.

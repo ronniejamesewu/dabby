@@ -4,17 +4,17 @@ ENTRY = WisdomEntry(
     key='rig7-saml-rbr',
     kind='equipment',
     claim="Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools "
-          "vapor harder and didn't reduce the chest/heartburn facet across two runs; "
-          "taste read splits (muted on R10, held on R7), no matched comparison.",
-    guidance="Two runs, taste read unresolved — muted on R10, held on R7; the "
-             "matched-load matched-curve test is still owed. Don't credit the RBR with "
-             "preserving or costing taste as settled. As the first non-bubbler top it "
-             "removes the forced slouch, making posture a variable — see "
-             "chest-harshness-hot-open, thermal-injury-vapor-temp.",
+          "vapor harder; chest/heartburn present on all three runs; taste read unsettled "
+          "(muted once, held twice), no matched comparison.",
+    guidance="Three runs, taste unresolved — muted once, held twice, each a different "
+             "strain and curve; the matched-load matched-curve test is owed. "
+             "Chest/heartburn appeared on all three, so this top does not shed that "
+             "facet. As the first non-bubbler top it makes posture a variable — see "
+             "chest-harshness-hot-open.",
     grade='observation',
-    grade_basis="Two runs (papzp22 R10, bb362 R7), two strains, two curves — the taste "
-                "reads split across them and no matched comparison exists; everything "
-                "still confounded by load, clean state, posture, and strain.",
+    grade_basis="Three runs (papzp22 R10, bb362 R7, lunarz R6), three strains, three "
+                "curves — taste reads split, no matched comparison; confounded by load, "
+                "clean state, posture, strain.",
     evidence=[
         Citation(
             source='papzp22 R10',
@@ -49,6 +49,25 @@ ENTRY = WisdomEntry(
                       "flavor-standout jar, so flavor surviving is expected regardless "
                       "of top; 4th dab.",
         ),
+        Citation(
+            source='lunarz R6',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 29, 2026 — third RBR run (LunarZ's first off Rig 6): smoothed "
+                 "440°F bounded-hold descent (\"orange\"), first dab of the day, "
+                 "larger-than-normal load, two cycles. Cycle 1 \"super tasty\" — a second "
+                 "run where flavor held rather than muted, so the papzp22 R10 mute read is "
+                 "now the minority of three, each on a different strain and curve. "
+                 "Chest/heartburn present again (cycle 2), making it three for three that "
+                 "this top does not shed the facet. Very high intensity, the strongest read "
+                 "in the LunarZ jar and its first on a first dab — but the larger load and "
+                 "the 440°F open are both available, so still no potency read on the top.",
+            confounds="Different strain and curve again — no matched-load matched-curve "
+                      "comparison across the tops yet, three runs in. Larger-than-normal "
+                      "load and a 440°F open both cut toward flavor and intensity "
+                      "surviving regardless of top; LunarZ has read tasty on every run of "
+                      "the jar, including all five on the bubbler. Posture not stated.",
+        ),
     ],
     positions=[
         Position(
@@ -77,13 +96,31 @@ ENTRY = WisdomEntry(
                  "tops; the muted-taste claim is now strain/curve-confounded rather than "
                  "a single clean signal. Held at observation.",
         ),
+        Position(
+            stated='July 29, 2026 (lunarz R6)',
+            text="Third run, third strain, third curve — and the muted-taste read is now "
+                 "outvoted rather than refuted. LunarZ R6 came back \"super tasty\" through "
+                 "cycle 1, joining bb362 R7 against papzp22 R10's \"definitely muted,\" but "
+                 "it earns no more weight than R7 did: a larger-than-normal load and a "
+                 "440°F open both favor flavor surviving, and LunarZ read tasty on all five "
+                 "of its bubbler runs, so there is nothing here the top can be credited "
+                 "with. The one thing accumulating cleanly is the negative: chest/heartburn "
+                 "has appeared on all three RBR runs, so whatever the extra conditioning "
+                 "does to the vapor, it does not shed that facet — consistent across three "
+                 "strains and three curves now. Still no matched-load matched-curve "
+                 "comparison against the bubbler or the Calibear, which is the same test "
+                 "this entry has owed since the debut. Held at observation.",
+        ),
     ],
-    counter_reading="Both runs are confounded and unmatched: R10's muted taste could "
-                    "carry a thumbprint load-zone component, R7's held flavor is a "
-                    "different strain at a cooler open, and the potency question is "
-                    "unanswerable with loads unmatched. Direction only.",
-    watch_for="A modest-load matched-curve RBR run to clean up taste and open the "
-              "potency question; the upright-vs-slouched test (papzp22 R11) tying the "
-              "chest change to posture, not the top.",
-    updated='papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held.',
+    counter_reading="All three runs are confounded and unmatched: R10's muted taste could "
+                    "carry a thumbprint load-zone component, bb362 R7's and lunarz R6's "
+                    "held flavor are different strains at different opens on loads that "
+                    "favor flavor, and the potency question is unanswerable with loads "
+                    "unmatched. Even the chest three-for-three is a set of large-or-larger "
+                    "loads and multi-cycle sessions, the exposure territory that throws "
+                    "chest on the bubbler too. Direction only.",
+    watch_for="A modest-load matched-curve RBR run — still owed at three runs, all "
+              "carrying large-or-larger loads; the upright-vs-slouched test (papzp22 "
+              "R11).",
+    updated='papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, flavor held again, chest three-for-three.',
 )

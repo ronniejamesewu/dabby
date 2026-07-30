@@ -7,14 +7,13 @@ ENTRY = WisdomEntry(
           "Usually resets mid-session harshness on Rig 6, but the reset is not "
           "guaranteed.",
     guidance="Water usually resets mid-session harshness on Rig 6, but not reliably — "
-             "six full resets against four partials, one full non-response, one "
-             "non-reset read as relocation. All three non-Rig-6 instances failed the "
-             "clean reset, but each was chest-located, so top and location are not yet "
-             "separable.",
+             "six full resets against five partials, one non-response, one relocation. "
+             "All four non-Rig-6 instances failed a single-sip reset; lunarz R6 was the "
+             "first throat-only one, so chest location no longer explains that alone.",
     grade='observation',
-    grade_basis="Thirteen instances, eight strains — ten Rig 6, two Rig 7, one Rig 8; "
-                "no non-Rig-6 instance is a clean reset. Strain count corrected from "
-                "six July 28, 2026.",
+    grade_basis="Fourteen instances, eight strains — ten Rig 6, three Rig 7, one Rig 8; "
+                "no non-Rig-6 instance is a clean single-sip reset. Strain count "
+                "corrected from six July 28, 2026.",
     evidence=[
         Citation(
             source='hive1 R6',
@@ -155,6 +154,25 @@ ENTRY = WisdomEntry(
                       "fully confounded across the non-Rig-6 set — papzp22 R10, bb362 "
                       "R7 and this run were all chest-located.",
         ),
+        Citation(
+            source='lunarz R6',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 29, 2026 — smoothed 440°F bounded-hold descent (\"orange\"), Rig 7 "
+                 "(SAML RBR wet top), first dab of the day, larger-than-normal load, two "
+                 "cycles. Two water events in one run. (1) Cycle 1 harshness was "
+                 "throat-only and explicitly not chest (\"tiny bit of harshness at base "
+                 "of throat. Hasn't gone to chest\"): \"Water lessened but didn't clear\" "
+                 "— the fifth non-full response, and the first throat-only instance off "
+                 "Rig 6, which is the cell the watch_for asked for. (2) Heartburn arriving "
+                 "during cycle 2 was \"gone after a few drinks of water\" — a chest-located "
+                 "harshness off Rig 6 that did clear, on repeated drinks rather than a "
+                 "single sip.",
+            confounds="Larger-than-normal load, two cycles. The two events differ in dose "
+                      "(one sip vs. several drinks) and in timing relative to session end, "
+                      "neither controlled, so the throat-partial and the chest-clear are "
+                      "not a matched pair. Curve and top both new to this strain.",
+        ),
     ],
     positions=[
         Position(
@@ -205,9 +223,26 @@ ENTRY = WisdomEntry(
                  "independently in this set; separating them needs a throat-only "
                  "harshness instance off Rig 6. Held at observation.",
         ),
+        Position(
+            stated='July 29, 2026 (lunarz R6)',
+            text="The throat-only-off-Rig-6 instance the watch_for asked for, and it "
+                 "cuts both ways inside one run. On the throat half it does what the "
+                 "entry was waiting to see: harshness explicitly throat-located and not "
+                 "chest, on the RBR, and a sip lessened without clearing it — so "
+                 "chest location is no longer sufficient to explain why every off-Rig-6 "
+                 "instance has failed the clean sip reset. That moves the top (or "
+                 "something else common to the non-bubbler runs) up as a candidate. But "
+                 "the same run's cycle-2 heartburn was gone after a few drinks of water "
+                 "— the first chest-located harshness off Rig 6 to clear at all — which "
+                 "cuts against a clean top story. The two events are not a matched pair: "
+                 "one sip against several drinks, and mid-session against near or after "
+                 "session end, neither controlled. Net: the location confound is weakened "
+                 "and dose emerges as a variable the entry has never tracked (every prior "
+                 "instance is recorded as a sip). Held at observation.",
+        ),
     ],
-    watch_for="A clean full reset off Rig 6 — all three non-Rig-6 instances failed, but "
-              "each was chest-located; a throat-only instance off Rig 6 separates top "
-              "from location. Whether the relocation reading recurs.",
-    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026; lhbh R11 July 28, 2026 — first Rig 8 instance',
+    watch_for="A clean full reset off Rig 6 — lunarz R6 removed chest location as the "
+              "sole explanation. Dose is newly visible: sip vs. repeated drinks. Whether "
+              "the relocation reading recurs.",
+    updated='Sessions 123, 136, 158, 159, 160, 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); papzp22 R10 Session 174 (July 22, 2026); bb362 R7 July 23, 2026; lhbh R11 July 28, 2026 — first Rig 8 instance; lunarz R6 July 29, 2026 — first throat-only instance off Rig 6',
 )
