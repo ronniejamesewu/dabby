@@ -24,6 +24,15 @@ LUNARZ_HOLD15_DESCENT_430 = [
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
 
+# "Orange" preset — the smoothed 440°F bounded hold borrowed from Lemon Heads +
+# Blueberry Haze; waypoints duplicated locally per the jar-isolation invariant.
+LUNARZ_HOLD15_DESCENT_440_SMOOTH = [
+    Waypoint(time_s=0,  temp_f=440, note='Session open — hot open'),
+    Waypoint(time_s=15, temp_f=440, note='Hold at peak — extended 15s hold'),
+    Waypoint(time_s=38, temp_f=420, note='Descent midpoint — sits on the line, no slope change'),
+    Waypoint(time_s=60, temp_f=400, note='Floor — single constant ~0.9°F/s descent throughout'),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -101,13 +110,28 @@ RUNS = [
         dab_notes='purple curve, normal load. [Report:] Golden, minimal reclaim on the swabs, two and a half cycles it stayed tasty all the way, I stopped after first draw of third I had enough and it was starting to thin a bit. Hit very hard! Harshness in bottom of throat and some heartburn.',
         analysis='Run 5 — same purple 15s-hold 430°F descent as Run 4, 3rd dab of the day, normal load, two and a half cycles (stopped a draw into the third as it thinned and satiety hit). Stayed tasty the whole way — good retention across 2.5 cycles on a normal load. Hit very hard, strong — up from R4\'s medium-high despite the lighter load, so the day\'s cumulative dosing is the likelier driver than this dab alone. The read that matters: chest/heartburn came back (bottom-of-throat harshness plus some heartburn) where R4 — earlier today, larger load, more cycles — had none. Two purple runs back-to-back, same curve and rig, and the chest tracked the later 3rd-dab slot, not the bigger load: within-day cumulative exposure fits the chest better than per-dab load here, consistent with the standing counter-reading that chest co-varies with cumulative session exposure rather than the hot open itself (and with Sour Tangie\'s within-day throat escalation). Confounds remain — R4\'s wall of coughing may have masked its chest, and neither run is the clean first-dab test — so directional, not settled. No persistence reported, so chest-location in-session, not the chest-and-lingers conjunction. Swab golden, minimal reclaim — the first LunarZ read called lighter than dark golden, but golden-vs-dark-golden sits inside this project\'s uncalibrated color-call noise (and R5 ran fewer material-cycles than R4), so it\'s noted, not a floor signal. Rig 6 throughout.',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 7, 29),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 7, 29, 21, 44, 51, tzinfo=timezone.utc),
+        waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_7,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold at 440°F into a single constant ~0.9°F/s descent ("orange" preset), borrowed from Lemon Heads + Blueberry Haze; first 440°F open since Run 1',
+        swab='dark golden',
+        session_char='Dark golden swab with plentiful reclaim; larger-than-normal load, first dab of the day, two cycles on the smoothed 440°F bounded hold ("orange") — the jar\'s first run off Rig 6 and its first 440°F open since Run 1. Cycle 1 super tasty with heavy terpene coughing and a tiny bit of harshness at the base of the throat, no chest; a water sip lessened it but did not clear it. Heartburn arrived during cycle 2 alongside the throat harshness and cleared after a few drinks of water. Very high intensity. Second cycle stopped with 15s left on the curve — wispy vapor and satiety, material remaining.',
+        intensity='very high',
+        dab_notes='[Pre-dab:] Let\'s do the lunarz experiment on rig 7. Except let\'s do it on the orange curve. [Cycle 1:] First cycle, super tasty, tiny bit of harshness at base of throat. Hasn\'t gone to chest. Lots of terp coughing. [Report:] Water lessened but didn\'t clear. After second cycle it\'s both heartburn and base of throat now. Very high intensity. Swabs dark golden. Second cycle terminated with 15 seconds left, it was wispy and I had enough. [Load / reclaim / heartburn timing and persistence:] Load was larger than normal. Reclaim was plentiful. During cycle two, gone after a few drinks of water.',
+        analysis='Curve, top and load all moved off the plan, so nothing isolates. But this was the jar\'s first genuine first dab, and chest/heartburn still came — Runs 1–5 were all 2nd-dab-or-later, and the R4/R5 pair had put chest on the later dab slot. Day accumulation isn\'t it. Onset was cycle 2 after a throat-only cycle 1, same as Run 1 (the only other 440°F open), so within-session exposure survives. The water result is the sharper one and splits inside the run. All three prior non-Rig-6 instances failed the clean reset but were all chest-located, so top and location had never varied independently; a throat-only instance off Rig 6 was the cell that separates them. This is it — sip lessened, didn\'t clear. Then the cycle-2 heartburn cleared after a few drinks. One datum toward the top, one against. Third RBR run, chest on all three (papzp22 R10, BB36 #2 R7, here) — occurrence, not mechanism; "super tasty" leaves that top\'s taste read unsettled. Very high intensity, the jar\'s strongest and first on a first dab, with load and the 440°F open both unseparable. Heavy coughing again, as Run 4. Dark golden five of six — within-strain baseline; plentiful reclaim tracks the larger two-cycle load. Ended wispy on satiety with material left, not on harshness.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='LunarZ',
     profile_anchor='#lunarz-profile',
-    next_text='Run 6 — the clean test still owed: genuine first dab of the day, modest load, single cycle on the purple 15s hold, to see if chest still comes with the day\'s accumulation stripped out.',
+    next_text='Run 7: same orange 440°F curve on Rig 7, first dab, modest load, single cycle — stop before the cycle that brought chest in on Run 6.',
     accent=None,
     slug='lunarz',
     info=[
@@ -118,7 +142,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene and caryophyllene inferred dominant from the Zkittlez × Do-Si-Dos / Sherbadough stack (Zkittlez, Do-Si-Dos, Sunset Sherbert) — sweet candy-fruit ("Z") over a gas/OG underside; linalool plausible from the Do-Si-Dos/Sherbert side. Only the immediate Moonbow × Planet Purple cross is 710 Labs-anchored; the parent generations and below are corroborated across independent sources, not producer-confirmed. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Two purple runs today — R4 (2nd dab, large, no chest) and R5 (3rd dab, normal, chest back) — put chest on the later dab slot, not the bigger load: within-day cumulative exposure over per-dab load. But R1–R5 are all 2nd-dab-or-later, so it\'s still confounded. Run 6: genuine first dab, modest load, single cycle, purple hold — the one cell that strips the day\'s accumulation out. Keep water as technique. Expected: chest absent or light on a true first dab. Surprising: chest on a clean first dab — that hangs it on the curve or the 430°F open, and the next move is shortening the hold or dropping to 420°F.',
-    next_waypoints=LUNARZ_HOLD15_DESCENT_430,
+    next_ai_analysis='Chest on a first dab kills day accumulation as the driver; arriving in cycle 2 leaves within-session exposure. Run 7 cuts that and nothing else — same curve, same glass, first dab, modest load, single cycle, stopped when vapor thins. Shorter is also the protective direction. Keep water and note whether a sip fully clears throat harshness; Run 6\'s partial is the log\'s only throat-only off-Rig-6 datum. Expected: chest absent at one cycle. Surprising: chest inside cycle 1 — that puts it on the 440°F open or the top, and the next move is the 430°F purple hold on this glass.',
+    next_waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
     jar_index='',
 )

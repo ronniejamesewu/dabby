@@ -4,7 +4,7 @@ ENTRY = WisdomEntry(
     key='chest-harshness-hot-open',
     kind='pattern',
     claim="In-session chest-located harshness on hot-open curves — chest "
-          "location documented across 15 hot-open runs (13 Rig 6, 1 Rig 7, 1 Rig 8); "
+          "location documented across 16 hot-open runs (13 Rig 6, 2 Rig 7, 1 Rig 8); "
           "the chest-and-lingers conjunction is tracked separately (row B) and rests on "
           "3 instances.",
     guidance="Chest location is the tracked signal here; persistence is tracked "
@@ -13,9 +13,9 @@ ENTRY = WisdomEntry(
              "unresolved; the hot-open-delivers-deeper-aerosol reading is speculative "
              "— do not promote it to cause.",
     grade='observation',
-    grade_basis="Low — chest location on 13 hot-open Rig 6 runs plus 1 on Rig 7 "
-                "(papzp22 R10) and 1 on Rig 8 (lhbh R11); Sour Tangie R3 the weakest, "
-                "R7 the hottest open at 450°F and a first-dab instance.",
+    grade_basis="Low — chest location on 13 hot-open Rig 6 runs plus 2 on Rig 7 "
+                "(papzp22 R10, lunarz R6) and 1 on Rig 8 (lhbh R11); Sour Tangie R3 the "
+                "weakest, R7 the hottest open at 450°F and a first-dab instance.",
     evidence=[
         Citation(
             source='papzp22 R7',
@@ -328,6 +328,30 @@ ENTRY = WisdomEntry(
                       "counted toward the conjunction — not counted here either, so "
                       "n=3 is unchanged.",
         ),
+        Citation(
+            source='lunarz R6',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 29, 2026 — smoothed 440°F bounded-hold descent (\"orange\"), Rig 7 "
+                 "(SAML RBR wet top), FIRST dab of the day, larger-than-normal load, two "
+                 "cycles. Cycle 1 throat-only and explicitly not chest (\"tiny bit of "
+                 "harshness at base of throat. Hasn't gone to chest\"); heartburn arrived "
+                 "during cycle 2 alongside the throat harshness and cleared after a few "
+                 "drinks of water. This jar's first genuine first dab in six runs — Runs "
+                 "1–5 were all 2nd-dab-or-later — and chest came anyway, removing "
+                 "between-dab day accumulation as the explanation the R4/R5 pair pointed "
+                 "at. Cycle-2 onset after a chest-free cycle 1 leaves within-session "
+                 "cumulative exposure intact. Also a first-dab instance on the smoothed "
+                 "440°F curve, though on a different strain and top than lhbh R11.",
+            confounds="Three variables moved off the planned test at once — curve "
+                      "(smoothed 440°F rather than the purple 430°F), top (Rig 7 rather "
+                      "than Rig 6), and load (larger-than-normal rather than modest) — so "
+                      "the 440°F open is neither implicated nor cleared, and this is not "
+                      "the clean modest single-cycle LunarZ run the watch_for asked for. "
+                      "Two cycles and a larger load keep within-session exposure live. "
+                      "Heavy terpene coughing again (as lunarz R4), here during the "
+                      "chest-free cycle 1.",
+        ),
     ],
     positions=[
         Position(
@@ -492,14 +516,34 @@ ENTRY = WisdomEntry(
                  "post-session read was a slow fade, the OC R15 shape, not persistence. "
                  "Held at observation.",
         ),
+        Position(
+            stated='July 29, 2026 (lunarz R6)',
+            text="The dab-slot reading this entry drew from LunarZ R4/R5 does not "
+                 "survive its own jar. R6 is LunarZ's first genuine first dab in six "
+                 "runs — R1–R5 were all 2nd-dab-or-later, which is why the Session 171 "
+                 "position could read chest as tracking the later slot / within-day "
+                 "cumulative exposure — and chest came anyway. Between-dab day "
+                 "accumulation is therefore not necessary for chest on this strain. What "
+                 "survives is the narrower within-session version of the counter-reading: "
+                 "cycle 1 was throat-only and explicitly chest-free, and the heartburn "
+                 "arrived during cycle 2 on a larger-than-normal load, so exposure "
+                 "accumulating inside the session still fits. Three variables moved off "
+                 "the planned test together (curve, top, load), so the 440°F open is "
+                 "neither implicated nor cleared, and this is not the clean modest "
+                 "single-cycle run the watch_for wanted — that cell is still owed and is "
+                 "now what LunarZ R7 is set against, cut to a single cycle. Chest "
+                 "location count 15 → 16; second Rig 7 instance. Conjunction unchanged at "
+                 "3: the chest cleared with water rather than persisting. Held at "
+                 "observation.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
                     "instance leave open that chest location co-varies with "
                     "within-session cumulative exposure rather than the hot open "
                     "itself — hot-open may be a proxy.",
-    watch_for="More chest-and-lingers instances to firm the thin n=3; a clean first-dab "
-              "modest single-cycle LunarZ run; a first-dab run on the smoothed 440°F "
-              "curve to tell dab slot from curve on lhbh R11.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15",
+    watch_for="More chest-and-lingers instances to firm n=3; a first-dab modest "
+              "single-cycle LunarZ run (lunarz R6 gave the first dab, not the single "
+              "cycle); a first-dab smoothed-440°F run within lhbh.",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15; lunarz R6 July 29, 2026 — chest location 15 → 16, first-dab instance retires the day-slot reading",
 )

@@ -6,13 +6,13 @@ ENTRY = WisdomEntry(
     claim="Descent curve changes limiting factor from harshness to intensity.",
     guidance="A descent curve (open hot, move off peak immediately) front-loads the "
              "terpene bolus and shifts the stopping condition off harshness — expect "
-             "depletion, intensity, or satiety instead. No longer all first-dab, and "
-             "no longer single-rig: lhbh R9 is the first instance off Rig 6. Load "
-             "varied, unresolved.",
+             "depletion, intensity, or satiety instead. No longer all first-dab or "
+             "single-rig: three instances sit off Rig 6 across two tops. Load varied, "
+             "unresolved.",
     grade='observation',
-    grade_basis="Low — seven strains; all Rig 6 except lhbh R9/R10 (Rig 8); 2nd- and "
-                "3rd-dab instances added by papzp22 R8/R9, oc R15 and lhbh R10; "
-                "consistent direction, near-single-rig.",
+    grade_basis="Low — eight strains; all Rig 6 except lhbh R9/R10 (Rig 8) and lunarz R6 "
+                "(Rig 7); 2nd- and 3rd-dab instances added by papzp22 R8/R9, oc R15 and "
+                "lhbh R10; consistent direction across three tops.",
     evidence=[
         Citation(
             source='fw106 R23',
@@ -134,6 +134,23 @@ ENTRY = WisdomEntry(
                       "the prior run — but the load moved with the session order, so it "
                       "isolates neither.",
         ),
+        Citation(
+            source='lunarz R6',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 29, 2026 — the same smoothed 440°F 15s bounded hold as lhbh R11, "
+                 "run on Rig 7 (SAML RBR wet top), first dab, larger-than-normal load, "
+                 "two cycles. Cycle 2 stopped with 15s left on the curve — \"it was wispy "
+                 "and I had enough\" — satiety on thinning vapor with material left "
+                 "(reclaim \"plentiful\"), not harshness. Eighth strain and the set's "
+                 "first Rig 7 instance, so the off-Rig-6 leg is now two tops rather than "
+                 "one.",
+            confounds="Larger-than-normal load; two cycles; bounded-hold variant, not the "
+                      "pure descent; curve and top both new to this strain. Harshness was "
+                      "present and not limiting (the dbrb R1-style caveat) — throat in "
+                      "cycle 1, chest in cycle 2 — so this is a stopping-condition "
+                      "instance, not a no-harshness one.",
+        ),
     ],
     positions=[
         Position(
@@ -184,9 +201,23 @@ ENTRY = WisdomEntry(
                  "since the top is no longer new. Rig 5 remains the untested case the "
                  "watch_for wants. Held at observation.",
         ),
+        Position(
+            stated='July 29, 2026 (lunarz R6)',
+            text="Eighth strain, and the off-Rig-6 leg widens from one top to two: the "
+                 "same smoothed 440°F bounded hold that lhbh R9–R11 ran on Rig 8, now on "
+                 "Rig 7's RBR, stopping on thinning vapor and satiety with material still "
+                 "in the load. That answers the narrower objection to the Rig 8 leg — one "
+                 "strain on one curve on one top — without touching the Rig 5 case the "
+                 "watch_for actually wants. Worth recording that harshness was present "
+                 "here and simply not the stopping condition (throat in cycle 1, chest in "
+                 "cycle 2), the dbrb R1 / lhbh R8 shape rather than the clean "
+                 "no-harshness shape of lhbh R9/R10 — the pattern is about what ends the "
+                 "session, and this run is a cleaner example of that distinction than the "
+                 "runs where harshness was simply absent. Load and cycle count both moved "
+                 "from the plan, so load remains unisolated. Held at observation.",
+        ),
     ],
-    watch_for="A descent run on Rig 5 (none logged) would test cross-rig "
-              "generalization — the Rig 8 leg (lhbh R9/R10) is one strain on one "
-              "curve; holding load constant would isolate load.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026',
+    watch_for="A descent run on Rig 5 — the last untested rig; off-Rig-6 evidence is now "
+              "two tops. Holding load constant would isolate load.",
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance',
 )
