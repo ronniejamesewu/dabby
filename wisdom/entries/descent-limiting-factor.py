@@ -151,6 +151,23 @@ ENTRY = WisdomEntry(
                       "cycle 1, chest in cycle 2 — so this is a stopping-condition "
                       "instance, not a no-harshness one.",
         ),
+        Citation(
+            source='lunarz R7',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 29, 2026 — the same smoothed 440°F bounded hold on the same Rig 7 "
+                 "RBR as lunarz R6, modest load, single cycle, 2nd dab. Stopped with under "
+                 "10 seconds left on thinning vapor; \"no harshness\" anywhere, throat or "
+                 "chest. The least-confounded instance in the set: curve, rig and strain "
+                 "all held from the immediately preceding run, so nothing about the setup "
+                 "moved except load and cycle count. Second Rig 7 instance, and the "
+                 "clean-no-harshness shape (lhbh R9/R10) rather than R6's "
+                 "harshness-present-but-not-limiting shape.",
+            confounds="Same strain as R6, so no new strain. Load and cycle count moved "
+                      "together. 2nd dab. Bounded-hold variant, not the pure descent. A "
+                      "single modest cycle is a short session by construction, so ending "
+                      "before harshness is the low bar of the pattern, not its hard case.",
+        ),
     ],
     positions=[
         Position(
@@ -216,8 +233,26 @@ ENTRY = WisdomEntry(
                  "runs where harshness was simply absent. Load and cycle count both moved "
                  "from the plan, so load remains unisolated. Held at observation.",
         ),
+        Position(
+            stated='July 29, 2026 (lunarz R7)',
+            text="The set's least-confounded instance, and it arrives as a same-evening "
+                 "repeat of R6 with the setup untouched: same strain, same smoothed 440°F "
+                 "curve, same Rig 7 top, only load and cycle count moved down. Stopped on "
+                 "thinning vapor with under ten seconds left, harshness absent entirely — "
+                 "the clean shape of lhbh R9/R10 rather than R6's harshness-present-but-"
+                 "not-limiting shape, which means this jar has now produced both shapes on "
+                 "the same curve and rig within one evening. That is worth more to the "
+                 "entry than another strain would be: the pattern's weak point has always "
+                 "been that its instances change several things at once, and this pair "
+                 "changes almost nothing. The honest deflation is that a modest single "
+                 "cycle is the pattern's easy case — a short session ending before "
+                 "harshness is close to what a short session means — so R7 confirms the "
+                 "direction without stressing it. Rig 5 remains the untested rig the "
+                 "watch_for wants. Held at observation.",
+        ),
     ],
     watch_for="A descent run on Rig 5 — the last untested rig; off-Rig-6 evidence is now "
-              "two tops. Holding load constant would isolate load.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance',
+              "two tops. Holding load constant would isolate load; lunarz R6/R7 came "
+              "closest and still moved cycles too.",
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set',
 )

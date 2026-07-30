@@ -125,13 +125,28 @@ RUNS = [
         dab_notes='[Pre-dab:] Let\'s do the lunarz experiment on rig 7. Except let\'s do it on the orange curve. [Cycle 1:] First cycle, super tasty, tiny bit of harshness at base of throat. Hasn\'t gone to chest. Lots of terp coughing. [Report:] Water lessened but didn\'t clear. After second cycle it\'s both heartburn and base of throat now. Very high intensity. Swabs dark golden. Second cycle terminated with 15 seconds left, it was wispy and I had enough. [Load / reclaim / heartburn timing and persistence:] Load was larger than normal. Reclaim was plentiful. During cycle two, gone after a few drinks of water.',
         analysis='Curve, top and load all moved off the plan, so nothing isolates. But this was the jar\'s first genuine first dab, and chest/heartburn still came — Runs 1–5 were all 2nd-dab-or-later, and the R4/R5 pair had put chest on the later dab slot. Day accumulation isn\'t it. Onset was cycle 2 after a throat-only cycle 1, same as Run 1 (the only other 440°F open), so within-session exposure survives. The water result is the sharper one and splits inside the run. All three prior non-Rig-6 instances failed the clean reset but were all chest-located, so top and location had never varied independently; a throat-only instance off Rig 6 was the cell that separates them. This is it — sip lessened, didn\'t clear. Then the cycle-2 heartburn cleared after a few drinks. One datum toward the top, one against. Third RBR run, chest on all three (papzp22 R10, BB36 #2 R7, here) — occurrence, not mechanism; "super tasty" leaves that top\'s taste read unsettled. Very high intensity, the jar\'s strongest and first on a first dab, with load and the 440°F open both unseparable. Heavy coughing again, as Run 4. Dark golden five of six — within-strain baseline; plentiful reclaim tracks the larger two-cycle load. Ended wispy on satiety with material left, not on harshness.',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 7, 29),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 30, 1, 43, 29, tzinfo=timezone.utc),
+        waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_7,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold at 440°F into a single constant ~0.9°F/s descent ("orange" preset), same curve as Run 6',
+        swab='beige to light gold',
+        session_char='Beige-to-light-gold swab; modest load, 2nd dab of the day, a single cycle on the smoothed 440°F bounded hold ("orange") — same curve and same top as Run 6. No harshness anywhere, throat or chest: the jar\'s first fully clean run in seven. Very strong intensity. Stopped with under 10 seconds left on the curve as the vapor thinned.',
+        intensity='very strong',
+        dab_notes='[Pre-dab:] Let\'s tee up the next lunarz dab. [Report:] Very nice, very strong. I kind of wonder how terpy it would be without the rbr. Swabs were beige to light gold. [Curve / cycles / load / harshness:] Orange, one cycle. Load was modest. No harshness. [Stop point:] stopped with less than 10 seconds left.',
+        analysis='The jar\'s first clean run in seven — no harshness, throat or chest, on a modest single cycle. Same strain, curve and top as Run 6, which put throat in cycle 1 and heartburn in cycle 2; what moved down was load and cycle count, and this ran at the later dab slot (2nd, against R6\'s first). That is the closest matched pair LunarZ has, and it points at within-session exposure — the narrower reading Run 6 left standing when chest on a first dab killed day accumulation. Load and cycles moved together, so neither is isolated on its own. Very strong on the least material and fewest cycles the jar has run: Runs 5 and 6 hit strong and very high carrying a normal-to-larger load or a full day behind them, and this carried neither — one run, but intensity is not tracking load here. Fourth run on the recycler and the first without chest, also the first on a modest load, the run that top has owed since its debut; chest goes three of four there, broken by the exposure-light run, which is what the cumulative-exposure reading predicts rather than anything about the glass. User wondered whether it would be terpier without the recycler — nothing here tests that, and LunarZ has read tasty on all seven runs, five of them on the bubbler. Beige-to-light-gold swab, the jar\'s lightest, is what a single cycle produces. Stopped on thinning vapor with under 10 seconds left: satiety, not harshness.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='LunarZ',
     profile_anchor='#lunarz-profile',
-    next_text='Run 7: same orange 440°F curve on Rig 7, first dab, modest load, single cycle — stop before the cycle that brought chest in on Run 6.',
+    next_text='Run 8: same orange 440°F curve, back on the stock bubbler (Rig 6), first dab, normal load — the flavor read against the recycler runs, on a session worth having.',
     accent=None,
     slug='lunarz',
     info=[
@@ -142,7 +157,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene and caryophyllene inferred dominant from the Zkittlez × Do-Si-Dos / Sherbadough stack (Zkittlez, Do-Si-Dos, Sunset Sherbert) — sweet candy-fruit ("Z") over a gas/OG underside; linalool plausible from the Do-Si-Dos/Sherbert side. Only the immediate Moonbow × Planet Purple cross is 710 Labs-anchored; the parent generations and below are corroborated across independent sources, not producer-confirmed. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='Chest on a first dab kills day accumulation as the driver; arriving in cycle 2 leaves within-session exposure. Run 7 cuts that and nothing else — same curve, same glass, first dab, modest load, single cycle, stopped when vapor thins. Shorter is also the protective direction. Keep water and note whether a sip fully clears throat harshness; Run 6\'s partial is the log\'s only throat-only off-Rig-6 datum. Expected: chest absent at one cycle. Surprising: chest inside cycle 1 — that puts it on the 440°F open or the top, and the next move is the 430°F purple hold on this glass.',
+    next_ai_analysis='The glass comparison is worth running, not worth engineering — same curve and the same jar is enough to make the flavor read mean something, and a first dab on a normal load is where flavor is legible at all. Chest comes along confounded by dab slot and load, which is fine; Runs 6 and 7 already did the exposure work inside this jar, so Run 8 does not have to carry it. Expected: flavor at least as loud as on the recycler, and harshness back if a second cycle happens. Surprising: noticeably thinner flavor on the bubbler — that would put the recycler\'s conditioning on the credit side rather than the cost side.',
     next_waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
     jar_index='',
 )

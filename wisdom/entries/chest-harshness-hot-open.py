@@ -352,6 +352,26 @@ ENTRY = WisdomEntry(
                       "Heavy terpene coughing again (as lunarz R4), here during the "
                       "chest-free cycle 1.",
         ),
+        Citation(
+            source='lunarz R7',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 29, 2026 — the same smoothed 440°F bounded hold (\"orange\") on the "
+                 "same Rig 7 RBR as R6, three and a half hours later: modest load, single "
+                 "cycle, 2nd dab of the day. \"No harshness\" — none anywhere, throat or "
+                 "chest, asked directly. The closest matched pair this entry holds: strain, "
+                 "curve and top all held from the immediately preceding run, with only load "
+                 "and cycle count moved down — and the dab slot moved the *wrong* way for a "
+                 "cumulative-day reading, since R6 threw chest on a first dab and R7 stayed "
+                 "clean on a second. Supplies the modest-single-cycle half of the cell the "
+                 "watch_for asked for.",
+            confounds="Load and cycle count moved together, so neither is isolated. Not the "
+                      "first-dab modest single cycle the watch_for wants — R6 gave the "
+                      "first dab, R7 gives the modest single cycle, and no run has given "
+                      "both. Single cycle also means low within-session exposure by "
+                      "construction, which is the counter-reading's own prediction rather "
+                      "than an independent test of it.",
+        ),
     ],
     positions=[
         Position(
@@ -536,14 +556,40 @@ ENTRY = WisdomEntry(
                  "3: the chest cleared with water rather than persisting. Held at "
                  "observation.",
         ),
+        Position(
+            stated='July 29, 2026 (lunarz R7)',
+            text="The cleanest support the counter-reading has drawn anywhere in the log, "
+                 "and it arrived the same evening as R6. R6 and R7 are the same strain, the "
+                 "same smoothed 440°F curve and the same Rig 7 top, three and a half hours "
+                 "apart: R6 threw chest in cycle 2 on a larger-than-normal load, R7 came "
+                 "back with no harshness at all on a modest load and a single cycle. Every "
+                 "other pair this entry cites moves curve, strain, top or rig alongside the "
+                 "condition of interest; this one does not. Two readings die on it and one "
+                 "survives. Dab slot dies — the later dab was the clean one, which R6 had "
+                 "already weakened by throwing chest on a first dab and R7 now closes from "
+                 "the other side. The 440°F open dies as sufficient — the identical open "
+                 "ran chest-free. What survives is within-session cumulative exposure, "
+                 "which is the only variable that moved in the direction the outcome did. "
+                 "Held at observation, and the honest limit is that load and cycle count "
+                 "moved together, so the pair points at exposure without resolving whether "
+                 "it is the material, the time at temperature, or the number of draws. "
+                 "Chest-location count unchanged at 16. The watch_for cell is still not "
+                 "whole: R6 supplied the first dab, R7 supplied the modest single cycle, "
+                 "and no LunarZ run has yet supplied both. Worth generalizing beyond this "
+                 "jar: a same-evening repeat holding strain, curve and top fixed and "
+                 "moving only load and cycle count is the shape that produced this, and it "
+                 "is cheap to reproduce in any jar — most of the entry's twenty-eight "
+                 "citations would have been worth more if they had been half of a pair "
+                 "like it.",
+        ),
     ],
     counter_reading="The throat-and-chest counters (bp4rw13 R9/R11, Hive #1 R10) and "
                     "the load / dab-order / cycle confounds carried on nearly every "
                     "instance leave open that chest location co-varies with "
                     "within-session cumulative exposure rather than the hot open "
                     "itself — hot-open may be a proxy.",
-    watch_for="More chest-and-lingers instances to firm n=3; a first-dab modest "
-              "single-cycle LunarZ run (lunarz R6 gave the first dab, not the single "
-              "cycle); a first-dab smoothed-440°F run within lhbh.",
-    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15; lunarz R6 July 29, 2026 — chest location 15 → 16, first-dab instance retires the day-slot reading",
+    watch_for="More chest-and-lingers instances to firm n=3; a LunarZ run that is both a "
+              "first dab and a modest single cycle — R6 and R7 each gave one half; a "
+              "first-dab smoothed-440°F run within lhbh.",
+    updated="Sessions 137, 139; split July 11, 2026 audit; updated Sessions 158, 159, 160, 161, 162.; Session 164 merged July 15, 2026; Session 165 (July 15, 2026); Session 169 (July 16, 2026); Session 170 (July 17, 2026); Session 171 (July 19, 2026); oc R15 Session 172 (July 17, 2026); fw106 R32 Session 173 (July 20, 2026); papzp22 R10 Session 174 (July 22, 2026); lhbh R11 July 28, 2026 — chest location 14 → 15; lunarz R6 July 29, 2026 — chest location 15 → 16, first-dab instance retires the day-slot reading; lunarz R7 July 29, 2026 — counter, the R6/R7 matched pair",
 )
