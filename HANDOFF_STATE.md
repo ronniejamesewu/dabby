@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 176 across 20 strains
+- **Total runs:** 177 across 20 strains
 - **Active since:** May 2, 2026 (89 days)
 - **Last run date:** July 29, 2026
-- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 6 — July 29, 2026, Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
+- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 7 — July 29, 2026, Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -198,11 +198,11 @@
 ---
 
 ### LunarZ
-**6 sessions** &nbsp;·&nbsp; Next run: 7 &nbsp;·&nbsp; Last: July 29, 2026 &nbsp;·&nbsp; Equipment: Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
+**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: July 29, 2026 &nbsp;·&nbsp; Equipment: Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
 
-**Next:** Run 7: same orange 440°F curve on Rig 7, first dab, modest load, single cycle — stop before the cycle that brought chest in on Run 6.
+**Next:** Run 8: same orange 440°F curve, back on the stock bubbler (Rig 6), first dab, normal load — the flavor read against the recycler runs, on a session worth having.
 
-**AI Analysis:** Chest on a first dab kills day accumulation as the driver; arriving in cycle 2 leaves within-session exposure. Run 7 cuts that and nothing else — same curve, same glass, first dab, modest load, single cycle, stopped when vapor thins. Shorter is also the protective direction. Keep water and note whether a sip fully clears throat harshness; Run 6's partial is the log's only throat-only off-Rig-6 datum. Expected: chest absent at one cycle. Surprising: chest inside cycle 1 — that puts it on the 440°F open or the top, and the next move is the 430°F purple hold on this glass.
+**AI Analysis:** The glass comparison is worth running, not worth engineering — same curve and the same jar is enough to make the flavor read mean something, and a first dab on a normal load is where flavor is legible at all. Chest comes along confounded by dab slot and load, which is fine; Runs 6 and 7 already did the exposure work inside this jar, so Run 8 does not have to carry it. Expected: flavor at least as loud as on the recycler, and harshness back if a second cycle happens. Surprising: noticeably thinner flavor on the bubbler — that would put the recycler's conditioning on the credit side rather than the cost side.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
