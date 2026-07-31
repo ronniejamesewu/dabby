@@ -84,10 +84,10 @@
 
 ### descent-limiting-factor  [pattern | observation]
 **Claim:** Descent curve changes limiting factor from harshness to intensity.
-**Basis:** Low — nine strains; all Rig 6 except lhbh R9/R10 and fw106 R36 (Rig 8) and lunarz R6/R7 (Rig 7); later-dab instances from papzp22 R8/R9, oc R15, lhbh R10; three tops, Rig 8 now two strains.
-**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab or single-rig: three instances sit off Rig 6 across two tops. Load varied, unresolved.
-**Watch:** A descent run on Rig 5 — the last untested rig; off-Rig-6 is two tops, and Rig 8 is now two strains. Holding load constant would isolate load; lunarz R6/R7 came closest and still moved cycles.
-*13 citations (13 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, lunarz, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set; fw106 R36 July 30, 2026 — ninth strain*
+**Basis:** Low — nine strains; all Rig 6 except lhbh R9/R10, fw106 R36, lunarz R8 (Rig 8) and lunarz R6/R7 (Rig 7); later-dab instances from papzp22 R8/R9, oc R15, lhbh R10; three tops, Rig 8 three strains.
+**Guidance:** A descent curve (open hot, move off peak immediately) front-loads the terpene bolus and shifts the stopping condition off harshness — expect depletion, intensity, or satiety instead. No longer all first-dab or single-rig: six instances sit off Rig 6 across two tops. Load varied, unresolved.
+**Watch:** A descent run on Rig 5 — the last untested rig; off-Rig-6 is two tops, and Rig 8 is now three strains. Holding load constant would isolate load; lunarz R6/R7 came closest and still moved cycles.
+*14 citations (14 confirm / 0 counter) | jars: bp4rw13, dbrb, fw106, lhbh, lunarz, oc, papzp22, watermellos | upd Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set; fw106 R36 July 30, 2026 — ninth strain; lunarz R8 July 30, 2026 — third Rig 8 strain*
 
 ### chest-harshness-hot-open  [pattern | observation]
 **Claim:** In-session chest-located harshness on hot-open curves — chest location documented across 16 hot-open runs (13 Rig 6, 2 Rig 7, 1 Rig 8); the chest-and-lingers conjunction is tracked separately (row B) and rests on 3 instances.
@@ -142,15 +142,15 @@
 **Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools vapor harder; chest on three of four runs, absent on the one modest single cycle; taste read unsettled; no comparison against another top.
 **Basis:** Four runs (papzp22 R10, bb362 R7, lunarz R6, lunarz R7), three strains, three curves; taste split, and the only matched pair holds the top constant.
 **Guidance:** Four runs, taste unresolved — muted once, held twice, different strain and curve each time. Chest hit the three large-or-larger multi-cycle runs and skipped the modest single cycle, so it tracks exposure, not the top. First non-bubbler top, so posture is a variable — see chest-harshness-hot-open.
-**Watch:** lunarz R8 puts R6/R7's curve back on the stock bubbler — the matched-top comparison owed since the debut. The upright-vs-slouched test (papzp22 R11). Sort taste reads by kind (July 30 position).
-*4 citations (1 confirm / 3 counter) | jars: bb362, lunarz, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance.*
+**Watch:** lunarz R9 now carries the owed bubbler comparison — R8 went to the Calibear instead. The upright-vs-slouched test (papzp22 R11). Sort taste reads by kind.
+*4 citations (1 confirm / 3 counter) | jars: bb362, lunarz, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance; lunarz R8 (July 30, 2026) — no RBR run; R7/R8 reads this top louder than the Calibear.*
 
 ### rig8-calibear-fab-recycler  [equipment | observation]
-**Claim:** Rig 8 (Calibear Fab Recycler wet top): four runs, two strains. Read better than the RBR on lhbh; the one strain outside lhbh read flavor down against its own bubbler baseline. Chest on one of four. No matched pair.
-**Basis:** Four runs (lhbh R9/R10/R11, fw106 R36), two strains, two curves. R36 brings the second strain and the first comparative flavor read but ran a curve new to that jar. None isolates the top.
-**Guidance:** Do not credit this top with flavor: the only bubbler comparison on it (fw106 R36) reads down, converging with papzp22 R10 on the RBR. Keep comparative and absolute reads apart — the "still tasty" runs had no bubbler beside them. Four runs, three tops, no matched pair. OPERATIONAL: flowback risks thermal shock.
-**Watch:** The matched comparison, dodged four times: fw106 R37 puts R36's curve and slot back on the bubbler; lhbh R12 sits against R11's cell on the RBR. Any flowback reaching the insert.
-*3 citations (2 confirm / 1 counter) | jars: fw106, lhbh | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler.*
+**Claim:** Rig 8 (Calibear Fab Recycler wet top): five runs, three strains. Both comparative flavor reads against a bubbler baseline read down. Chest on one of five. First matched top pair in the log — lunarz R7/R8, against the RBR.
+**Basis:** Five runs (lhbh R9/R10/R11, fw106 R36, lunarz R8), three strains, two curves. lunarz R8 is the log's first matched top pair — same curve, jar, slot, cycles — but against the RBR, not the bubbler.
+**Guidance:** Do not credit this top with flavor: both bubbler comparisons on it read down (fw106 R36, lunarz R8), converging with papzp22 R10 on the RBR. Keep comparative and absolute reads apart. lunarz R7/R8 is the log's first matched top pair and reads this top quieter than the RBR. OPERATIONAL: flowback risks thermal shock.
+**Watch:** The bubbler comparison, still unmade: lunarz R9 and fw106 R37 both put this curve back on the stock bubbler. Any flowback reaching the insert.
+*4 citations (2 confirm / 2 counter) | jars: fw106, lhbh, lunarz | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair.*
 
 ## Live Failure Modes
 
@@ -249,8 +249,8 @@
 **Claim:** Working theory: if harshness tracks hot vapor hitting tissue (per maté esophageal cancer research), it may be a harm-reduction signal, not just an experience signal. Throat vapor temperature is unmeasured; a working concern, not resolved.
 **Basis:** Single session (57); external research (maté/IARC) applied by analogy; no direct measurement of vapor temperature at the throat.
 **Guidance:** Hold as a working concern, not a resolved finding. Do not treat harshness as purely an experience metric until throat vapor temperature is known. The water-cooling-vs-efficiency tradeoff is flagged but not yet discussed further.
-**Watch:** Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives warmer than slow-ramp; the cooling-vs-efficiency tradeoff; whether the RBR chest counter holds once posture is isolated.
-*2 citations (0 confirm / 1 counter) | jars: papzp22 | upd Session 57; papzp22 R10 Session 174 (July 22, 2026)*
+**Watch:** Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives warmer than slow-ramp; the cooling-vs-flavor tradeoff, now named user-side; whether the RBR chest counter holds under posture.
+*3 citations (1 confirm / 1 counter) | jars: lunarz, papzp22 | upd Session 57; papzp22 R10 Session 174 (July 22, 2026); lunarz R8 July 30, 2026 — first confirming datum*
 
 ### curve-design-theory  [theory | directional]
 **Claim:** Higher endpoint + shorter session stopped at the depletion signal; fastest ascent with no staged ascent waypoints; fast ramp trades staging for density; bounded-hold descent curves are viable on the Switch² and deliver rather than cook.

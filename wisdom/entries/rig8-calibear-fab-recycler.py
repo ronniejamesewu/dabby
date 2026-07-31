@@ -3,18 +3,18 @@ from wisdom_core import *
 ENTRY = WisdomEntry(
     key='rig8-calibear-fab-recycler',
     kind='equipment',
-    claim="Rig 8 (Calibear Fab Recycler wet top): four runs, two strains. Read better than "
-          "the RBR on lhbh; the one strain outside lhbh read flavor down against its own "
-          "bubbler baseline. Chest on one of four. No matched pair.",
-    guidance="Do not credit this top with flavor: the only bubbler comparison on it (fw106 "
-             "R36) reads down, converging with papzp22 R10 on the RBR. Keep comparative and "
-             "absolute reads apart — the \"still tasty\" runs had no bubbler beside them. "
-             "Four runs, three tops, no matched pair. OPERATIONAL: flowback risks thermal "
-             "shock.",
+    claim="Rig 8 (Calibear Fab Recycler wet top): five runs, three strains. Both "
+          "comparative flavor reads against a bubbler baseline read down. Chest on one of "
+          "five. First matched top pair in the log — lunarz R7/R8, against the RBR.",
+    guidance="Do not credit this top with flavor: both bubbler comparisons on it read down "
+             "(fw106 R36, lunarz R8), converging with papzp22 R10 on the RBR. Keep "
+             "comparative and absolute reads apart. lunarz R7/R8 is the log's first matched "
+             "top pair and reads this top quieter than the RBR. OPERATIONAL: flowback risks "
+             "thermal shock.",
     grade='observation',
-    grade_basis="Four runs (lhbh R9/R10/R11, fw106 R36), two strains, two curves. R36 "
-                "brings the second strain and the first comparative flavor read but ran a "
-                "curve new to that jar. None isolates the top.",
+    grade_basis="Five runs (lhbh R9/R10/R11, fw106 R36, lunarz R8), three strains, two "
+                "curves. lunarz R8 is the log's first matched top pair — same curve, jar, "
+                "slot, cycles — but against the RBR, not the bubbler.",
     evidence=[
         Citation(
             source='lhbh R9',
@@ -81,6 +81,28 @@ ENTRY = WisdomEntry(
                       "single cycle, so the no-chest result sits in exposure-light "
                       "territory and discriminates nothing. Flavor is a subjective read on "
                       "a self-described non-discerning palate.",
+        ),
+        Citation(
+            source='lunarz R8',
+            role='counters',
+            provenance='user-verbatim',
+            gist="July 30, 2026 — third strain on this top, and the log's first matched "
+                 "top-against-top pair: the same orange smoothed 440°F bounded hold, same "
+                 "jar, same 2nd-dab slot and same single cycle as lunarz R7 on the RBR, "
+                 "with load moving modest→normal. Flavor \"nice but muted\"; asked what the "
+                 "comparison was, the user named the jar's five stock-bubbler runs. Second "
+                 "comparative read in two days to go against a recycler top. No harshness "
+                 "anywhere; golden very-minimal swab; mild-to-medium effect; load depleted "
+                 "with ~10s left on the curve. User volunteered, unprompted, that \"the two "
+                 "recycler tops are definitely smoother.\"",
+            confounds="Load moved with the top across the R7/R8 pair, so the pair does not "
+                      "isolate glass either — and the bubbler comparators are this jar's "
+                      "Runs 1–5 on three different curves, none matched to the orange hold. "
+                      "The intensity drop from R7 is covered by day-stacking (R7 followed a "
+                      "very-high larger two-cycle dab, R8 a medium-high single), not the "
+                      "top. Flavor is a subjective read on a self-described non-discerning "
+                      "palate. A normal-load single cycle is exposure-light, so the clean "
+                      "harshness result discriminates nothing on its own.",
         ),
     ],
     positions=[
@@ -157,6 +179,35 @@ ENTRY = WisdomEntry(
                  "favour; the heavier pull is the impression still standing unchallenged. "
                  "Held at observation.",
         ),
+        Position(
+            stated='July 30, 2026 (lunarz R8)',
+            text="Two things land at once, and the second is the one this entry has been "
+                 "asking for in every position since the debut. The smaller: a third strain "
+                 "made the bubbler comparison and it went down again — LunarZ read \"nice "
+                 "but muted,\" and when asked what the comparison was, the user named the "
+                 "jar's own five stock-bubbler runs unprompted. That is two comparative "
+                 "reads out of two on this top and three out of three across both recycler "
+                 "tops. The larger: the matched pair exists now. lunarz R7 and R8 hold "
+                 "strain, curve, dab slot and cycle count constant and change the top from "
+                 "the RBR to this one, which is the first time in the log any two runs have "
+                 "done that — so the sentence four prior positions carried, that no matched "
+                 "pair exists, has to come out. What the pair says is not what the entry "
+                 "was set up to hear: it reads this top *quieter than the other recycler*, "
+                 "not quieter than the bubbler, which is still uncompared at matched "
+                 "conditions. Deflations, and they are real. Load moved with the top, so "
+                 "the pair isolates glass no better than it isolates load. The bubbler "
+                 "baseline it is judged against is five runs on three other curves. And the "
+                 "intensity drop across the pair should not be read as the glass at all — "
+                 "R7 stacked on a very-high two-cycle dab three and a half hours earlier "
+                 "where R8 followed a medium-high single, which is the day-stacking reading "
+                 "this jar already used on Run 5. Separately, the user volunteered that "
+                 "both recycler tops are \"definitely smoother.\" That is the first "
+                 "user-side statement of a tradeoff this entry has only been able to see "
+                 "one half of, and it is consistent with the harshness record here — four "
+                 "of five clean — but every clean run on either recycler was also "
+                 "exposure-light, so exposure and glass have never varied independently. "
+                 "Held at observation.",
+        ),
     ],
     counter_reading="Everything attributed to the top is equally explained by the curve "
                     "(this jar's only 440°F bounded hold), the load, or session order — "
@@ -173,9 +224,11 @@ ENTRY = WisdomEntry(
                     "neither matched, and fw106 R36 ran a curve new to its jar against "
                     "bubbler comparators on a different curve — so \"every comparison says "
                     "the recycler is quieter\" may just mean nobody has made a real "
-                    "comparison yet.",
-    watch_for="The matched comparison, dodged four times: fw106 R37 puts R36's curve and "
-              "slot back on the bubbler; lhbh R12 sits against R11's cell on the RBR. Any "
-              "flowback reaching the insert.",
-    updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler.',
+                    "comparison yet. And the lunarz R7/R8 pair, real as it is, moved load "
+                    "alongside the top and compares this top only against the other "
+                    "recycler — so the bubbler question it was built to answer is still "
+                    "untouched.",
+    watch_for="The bubbler comparison, still unmade: lunarz R9 and fw106 R37 both put this "
+              "curve back on the stock bubbler. Any flowback reaching the insert.",
+    updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair.',
 )

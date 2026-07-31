@@ -140,13 +140,28 @@ RUNS = [
         dab_notes='[Pre-dab:] Let\'s tee up the next lunarz dab. [Report:] Very nice, very strong. I kind of wonder how terpy it would be without the rbr. Swabs were beige to light gold. [Curve / cycles / load / harshness:] Orange, one cycle. Load was modest. No harshness. [Stop point:] stopped with less than 10 seconds left.',
         analysis='The jar\'s first clean run in seven — no harshness, throat or chest, on a modest single cycle. Same strain, curve and top as Run 6, which put throat in cycle 1 and heartburn in cycle 2; what moved down was load and cycle count, and this ran at the later dab slot (2nd, against R6\'s first). That is the closest matched pair LunarZ has, and it points at within-session exposure — the narrower reading Run 6 left standing when chest on a first dab killed day accumulation. Load and cycles moved together, so neither is isolated on its own. Very strong on the least material and fewest cycles the jar has run: Runs 5 and 6 hit strong and very high carrying a normal-to-larger load or a full day behind them, and this carried neither — one run, but intensity is not tracking load here. Fourth run on the recycler and the first without chest, also the first on a modest load, the run that top has owed since its debut; chest goes three of four there, broken by the exposure-light run, which is what the cumulative-exposure reading predicts rather than anything about the glass. User wondered whether it would be terpier without the recycler — nothing here tests that, and LunarZ has read tasty on all seven runs, five of them on the bubbler. Beige-to-light-gold swab, the jar\'s lightest, is what a single cycle produces. Stopped on thinning vapor with under 10 seconds left: satiety, not harshness.',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 7, 30),
+        sessions_prior_today=1,
+        utc_logged_at=datetime(2026, 7, 31, 3, 23, 11, tzinfo=timezone.utc),
+        waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_8,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold at 440°F into a single constant ~0.9°F/s descent ("orange" preset), same curve as Runs 6–7; the jar\'s first run on the Calibear Fab Recycler top',
+        swab='golden',
+        session_char='Golden swab, very minimal; normal load, 2nd dab of the day, a single cycle on the smoothed 440°F bounded hold ("orange") — same curve as Runs 6–7, on a third glass top. Load depleted with about 10 seconds left on the curve. No harshness anywhere. Mild-to-medium effect. Flavor nice but muted against the jar\'s stock-bubbler runs.',
+        intensity='mild to medium',
+        dab_notes='[Pre-dab:] Keeping rig 8, lets gooooooo [Report:] Sean\'s golden, very minimal. Load depleted before end of cycle, about 10 seconds left. Effect mild to medium. Flavor was nice but muted. No harshness [Muted against what:] The stock bubbler runs [Unprompted:] The two recycler tops are definitely smoother [Load / cycles:] Load was normal, one cycle',
+        analysis='Flavor down against this jar\'s own bubbler runs — the log\'s third comparative read, and the first inside a jar that\'s run all three tops. It splits the two recyclers rather than grouping them: LunarZ read super tasty on the RBR against that same baseline, though nobody asked it to compare. Runs 7 and 8 are the log\'s tightest top-against-top pair — same jar, curve, dab slot and single cycle, load modest→normal, RBR→Calibear. Flavor and intensity both down on more material, but the intensity is day-stacking: R7 followed a very-high two-cycle dab, this followed a medium-high single. Four clean of five on the Calibear now, and the user reads both recyclers as smoother. Still exposure-confounded — every harshness instance on either top carried a bigger load or more cycles. Golden and minimal off one cycle is expected; ended on depletion with curve left, the descent shape again.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='LunarZ',
     profile_anchor='#lunarz-profile',
-    next_text='Run 8: same orange 440°F curve, back on the stock bubbler (Rig 6), first dab, normal load — the flavor read against the recycler runs, on a session worth having.',
+    next_text='Run 9: the orange 440°F curve back on the stock bubbler (Rig 6), normal load — closes the three-top set inside one jar.',
     accent=None,
     slug='lunarz',
     info=[
@@ -157,7 +172,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene and caryophyllene inferred dominant from the Zkittlez × Do-Si-Dos / Sherbadough stack (Zkittlez, Do-Si-Dos, Sunset Sherbert) — sweet candy-fruit ("Z") over a gas/OG underside; linalool plausible from the Do-Si-Dos/Sherbert side. Only the immediate Moonbow × Planet Purple cross is 710 Labs-anchored; the parent generations and below are corroborated across independent sources, not producer-confirmed. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='The glass comparison is worth running, not worth engineering — same curve and the same jar is enough to make the flavor read mean something, and a first dab on a normal load is where flavor is legible at all. Chest comes along confounded by dab slot and load, which is fine; Runs 6 and 7 already did the exposure work inside this jar, so Run 8 does not have to carry it. Expected: flavor at least as loud as on the recycler, and harshness back if a second cycle happens. Surprising: noticeably thinner flavor on the bubbler — that would put the recycler\'s conditioning on the credit side rather than the cost side.',
+    next_ai_analysis='LunarZ is the only jar that can complete the set: five bubbler runs, two on the RBR, one on the Calibear. Run 9 puts the orange curve back on the stock bubbler at a normal load, dab slot wherever it falls — closing the three-top comparison and testing the smoothness-costs-flavor read from both ends. Expected: flavor louder than Run 8, harshness back if it goes past one cycle. Surprising: no better on the bubbler, which puts Run 8\'s muted read on the material or the night.',
     next_waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
     jar_index='',
 )

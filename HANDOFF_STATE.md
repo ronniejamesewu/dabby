@@ -5,10 +5,10 @@
 ---
 
 ## Summary
-- **Total runs:** 178 across 20 strains
+- **Total runs:** 179 across 20 strains
 - **Active since:** May 2, 2026 (90 days)
 - **Last run date:** July 30, 2026
-- **Most recent run (all jars, by utc_logged_at):** Fire Water #106 Run 36 — July 30, 2026, Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
+- **Most recent run (all jars, by utc_logged_at):** LunarZ Run 8 — July 30, 2026, Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 - **Canonical baseline curve (BASELINE_CURVE):** 380°F@0s → 400°F@4s → 420°F@8s → 420°F@60s
 
 ---
@@ -198,11 +198,11 @@
 ---
 
 ### LunarZ
-**7 sessions** &nbsp;·&nbsp; Next run: 8 &nbsp;·&nbsp; Last: July 29, 2026 &nbsp;·&nbsp; Equipment: Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
+**8 sessions** &nbsp;·&nbsp; Next run: 9 &nbsp;·&nbsp; Last: July 30, 2026 &nbsp;·&nbsp; Equipment: Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 
-**Next:** Run 8: same orange 440°F curve, back on the stock bubbler (Rig 6), first dab, normal load — the flavor read against the recycler runs, on a session worth having.
+**Next:** Run 9: the orange 440°F curve back on the stock bubbler (Rig 6), normal load — closes the three-top set inside one jar.
 
-**AI Analysis:** The glass comparison is worth running, not worth engineering — same curve and the same jar is enough to make the flavor read mean something, and a first dab on a normal load is where flavor is legible at all. Chest comes along confounded by dab slot and load, which is fine; Runs 6 and 7 already did the exposure work inside this jar, so Run 8 does not have to carry it. Expected: flavor at least as loud as on the recycler, and harshness back if a second cycle happens. Surprising: noticeably thinner flavor on the bubbler — that would put the recycler's conditioning on the credit side rather than the cost side.
+**AI Analysis:** LunarZ is the only jar that can complete the set: five bubbler runs, two on the RBR, one on the Calibear. Run 9 puts the orange curve back on the stock bubbler at a normal load, dab slot wherever it falls — closing the three-top comparison and testing the smoothness-costs-flavor read from both ends. Expected: flavor louder than Run 8, harshness back if it goes past one cycle. Surprising: no better on the bubbler, which puts Run 8's muted read on the material or the night.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open

@@ -172,6 +172,27 @@ ENTRY = WisdomEntry(
                  "moves is how the existing citations should be read. lunarz R8 is still "
                  "the run that would settle it here. Held at observation.",
         ),
+        Position(
+            stated='July 30, 2026 (no new RBR run — the matched pair arrived from lunarz R8 on Rig 8)',
+            text="The comparison this entry has asked for in every position since the debut "
+                 "landed, and it is not the one that was set up. lunarz R8 was supposed to "
+                 "put R6/R7's curve back on the stock bubbler; it went to the Calibear "
+                 "instead, holding strain, curve, dab slot and cycle count constant against "
+                 "R7 and changing only the top and the load. That is the log's first matched "
+                 "top-against-top pair, and this top wins it: R7 read \"very nice\" where R8 "
+                 "read \"nice but muted\" against the same jar's bubbler history. Worth being "
+                 "precise about what that buys, because it is easy to overread. It does not "
+                 "make the RBR a flavor-positive top — R8's read is comparative and R7's was "
+                 "absolute, the exact distinction the July 30 sorting position drew, so the "
+                 "pair says the Calibear reads quieter than this one, not that this one reads "
+                 "as loud as the bubbler. Nobody has yet compared this top against the bubbler "
+                 "at matched conditions in either direction. Load also moved across the pair. "
+                 "What does carry forward: the user, unprompted, called both recycler tops "
+                 "\"definitely smoother\" than the bubbler — the first user-side statement of "
+                 "the tradeoff, and it fits this entry's own record only loosely, since chest "
+                 "showed on three of four runs here against one of five on the Calibear. "
+                 "lunarz R9 now carries the owed bubbler comparison. Held at observation.",
+        ),
     ],
     counter_reading="All four runs are confounded and none compares tops: R10's muted "
                     "taste could carry a thumbprint load-zone component, bb362 R7's and "
@@ -182,8 +203,8 @@ ENTRY = WisdomEntry(
                     "single cycle — the exposure territory that throws chest on the "
                     "bubbler too, so the split may have nothing to do with the top. "
                     "Direction only.",
-    watch_for="lunarz R8 puts R6/R7's curve back on the stock bubbler — the matched-top "
-              "comparison owed since the debut. The upright-vs-slouched test (papzp22 "
-              "R11). Sort taste reads by kind (July 30 position).",
-    updated='papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance.',
+    watch_for="lunarz R9 now carries the owed bubbler comparison — R8 went to the Calibear "
+              "instead. The upright-vs-slouched test (papzp22 R11). Sort taste reads by "
+              "kind.",
+    updated='papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance; lunarz R8 (July 30, 2026) — no RBR run; R7/R8 reads this top louder than the Calibear.',
 )

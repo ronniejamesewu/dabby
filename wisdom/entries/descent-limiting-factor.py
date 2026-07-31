@@ -7,12 +7,12 @@ ENTRY = WisdomEntry(
     guidance="A descent curve (open hot, move off peak immediately) front-loads the "
              "terpene bolus and shifts the stopping condition off harshness — expect "
              "depletion, intensity, or satiety instead. No longer all first-dab or "
-             "single-rig: three instances sit off Rig 6 across two tops. Load varied, "
+             "single-rig: six instances sit off Rig 6 across two tops. Load varied, "
              "unresolved.",
     grade='observation',
-    grade_basis="Low — nine strains; all Rig 6 except lhbh R9/R10 and fw106 R36 (Rig 8) "
-                "and lunarz R6/R7 (Rig 7); later-dab instances from papzp22 R8/R9, oc R15, "
-                "lhbh R10; three tops, Rig 8 now two strains.",
+    grade_basis="Low — nine strains; all Rig 6 except lhbh R9/R10, fw106 R36, lunarz R8 "
+                "(Rig 8) and lunarz R6/R7 (Rig 7); later-dab instances from papzp22 R8/R9, "
+                "oc R15, lhbh R10; three tops, Rig 8 three strains.",
     evidence=[
         Citation(
             source='fw106 R23',
@@ -187,6 +187,22 @@ ENTRY = WisdomEntry(
                       "terminus makes the stopping condition slightly ambiguous between "
                       "material and clock.",
         ),
+        Citation(
+            source='lunarz R8',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 30, 2026 — the same smoothed 440°F bounded hold as lunarz R6/R7 and "
+                 "fw106 R36, on Rig 8, 2nd dab, normal load, single cycle. \"Load depleted "
+                 "before end of cycle, about 10 seconds left\" — material ran out with the "
+                 "curve still running, and no harshness appeared at all. Third strain on "
+                 "the Rig 8 leg, which was lhbh and fw106 until now; fourth consecutive run "
+                 "on this curve across three strains to end on depletion or satiety.",
+            confounds="2nd dab; bounded-hold variant, not the pure descent; a single cycle "
+                      "is the pattern's easy case, the same caveat lunarz R7 and fw106 R36 "
+                      "carry. Adds a strain to the Rig 8 leg and nothing else — the curve, "
+                      "the shape and the stopping condition are all ones the set already "
+                      "has several instances of.",
+        ),
     ],
     positions=[
         Position(
@@ -285,9 +301,22 @@ ENTRY = WisdomEntry(
                  "curve still running. Rig 5 remains the untested rig the watch_for wants. "
                  "Held at observation.",
         ),
+        Position(
+            stated='July 30, 2026 (lunarz R8)',
+            text="A third strain on the Rig 8 leg, and that is the whole of it. The "
+                 "instance is ordinary — normal load, single cycle, material gone about ten "
+                 "seconds before the curve was, harshness absent entirely — and it is the "
+                 "fourth consecutive run on the orange 440°F hold across three strains to "
+                 "stop on depletion or satiety rather than harshness, which is the "
+                 "curve-level consistency the pattern predicts. It stresses nothing: a "
+                 "single cycle is the easy case, the caveat lunarz R7 and fw106 R36 already "
+                 "carry, and this run adds a third of them rather than the hard case the "
+                 "set still lacks. Rig 5 remains the untested rig the watch_for wants, and "
+                 "no instance yet holds load constant. Held at observation.",
+        ),
     ],
     watch_for="A descent run on Rig 5 — the last untested rig; off-Rig-6 is two tops, and "
-              "Rig 8 is now two strains. Holding load constant would isolate load; lunarz "
+              "Rig 8 is now three strains. Holding load constant would isolate load; lunarz "
               "R6/R7 came closest and still moved cycles.",
-    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set; fw106 R36 July 30, 2026 — ninth strain',
+    updated='Sessions 130, 131, 137, 152; rig corrections July 2, 2026; dbrb R1 July 9, 2026; papzp22 R8/R9 Session 169 (July 16, 2026); lhbh R8 Session 170 (July 17, 2026); oc R15 Session 172 (July 17, 2026); lhbh R9 July 28, 2026 — first instance off Rig 6; lhbh R10 July 28, 2026; lunarz R6 July 29, 2026 — eighth strain, first Rig 7 instance; lunarz R7 July 29, 2026 — least-confounded instance in the set; fw106 R36 July 30, 2026 — ninth strain; lunarz R8 July 30, 2026 — third Rig 8 strain',
 )
