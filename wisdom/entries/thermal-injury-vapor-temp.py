@@ -37,6 +37,26 @@ ENTRY = WisdomEntry(
                       "throat vapor temperature unmeasured; speaks to the chest facet "
                       "only, not throat harshness generally.",
         ),
+        Citation(
+            source='lunarz R8',
+            role='confirms',
+            provenance='user-verbatim',
+            gist="July 30, 2026 — asked nothing about vapor temperature, the user "
+                 "volunteered that \"the two recycler tops are definitely smoother\" than "
+                 "the stock bubbler. Both recycler tops condition and cool the vapor harder "
+                 "than the bubbler, so a user-side report that they feel smoother is the "
+                 "direction a hot-vapor-on-tissue driver predicts — the first datum in this "
+                 "entry pointing that way, and the first bearing on the throat facet rather "
+                 "than the chest one. Same run: no harshness anywhere on a 440°F open.",
+            confounds="Subjective impression across many runs, not a controlled comparison, "
+                      "and stated as an accumulated read rather than tied to one session. "
+                      "Every clean-harshness run on either recycler top was also "
+                      "exposure-light (modest-or-normal load, single cycle), so cooling and "
+                      "exposure have never varied independently. Throat vapor temperature "
+                      "still unmeasured. Cuts the opposite way from papzp22 R10 above, "
+                      "which is the chest facet — the two are not in direct conflict but "
+                      "they are not mutually supporting either.",
+        ),
     ],
     positions=[
         Position(
@@ -94,9 +114,30 @@ ENTRY = WisdomEntry(
                  "theory, and it speaks to the chest/heartburn facet only, not throat "
                  "harshness generally.",
         ),
+        Position(
+            stated='July 30, 2026 (lunarz R8)',
+            text="The theory's first supporting datum, and it splits from the countering "
+                 "one along the facet line rather than contradicting it. Unprompted, the "
+                 "user said both recycler tops are \"definitely smoother\" than the stock "
+                 "bubbler. Both cool and condition the vapor harder, so smoother-feeling is "
+                 "what a hot-vapor-on-tissue driver predicts — where papzp22 R10 gave the "
+                 "opposite result for chest/heartburn on one of those same tops. Read "
+                 "together, the pair is consistent with vapor temperature mattering for "
+                 "throat harshness while the chest facet runs on something else, which is "
+                 "the split chest-harshness-hot-open already tracks for other reasons. That "
+                 "is a coherent story and it is not evidence for itself: it is one "
+                 "subjective accumulated impression against one confounded run, throat "
+                 "vapor temperature is still unmeasured, and the confound that undercuts it "
+                 "is structural — every clean-harshness run on either recycler was also "
+                 "exposure-light, so cooling has never varied independently of exposure. "
+                 "The user's framing also names the tradeoff this entry flagged in Session "
+                 "57 and never revisited: they read the same tops as quieter on flavor, "
+                 "which is the cooling-vs-delivery cost stated from the other side. Held at "
+                 "speculative.",
+        ),
     ],
     watch_for="Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives "
-              "warmer than slow-ramp; the cooling-vs-efficiency tradeoff; whether the "
-              "RBR chest counter holds once posture is isolated.",
-    updated='Session 57; papzp22 R10 Session 174 (July 22, 2026)',
+              "warmer than slow-ramp; the cooling-vs-flavor tradeoff, now named user-side; "
+              "whether the RBR chest counter holds under posture.",
+    updated='Session 57; papzp22 R10 Session 174 (July 22, 2026); lunarz R8 July 30, 2026 — first confirming datum',
 )
