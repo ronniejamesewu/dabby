@@ -267,6 +267,27 @@ RIG_8 = EquipmentConfig(
     glass_top="Calibear Fab Recycler",
 )
 
+# Rig 9: Sapphire insert, Cloud Vortex 21.0 spinner, single ruby pearl, Calibear
+# Fab Recycler wet top. Dr. Dabber Sapphire Plus (v2) insert; Cloud Vortex 21.0
+# spinner (stock airflow); 5mm synthetic ruby pearl; Calibear Fab Recycler.
+# Identical to Rig 4 except the top. The operative property is airflow
+# restriction, not the spinner: the Wym Stick Piston's .094" bore does not pass
+# enough air at this user's draw for the Calibear's recycler function to work;
+# any lower-restriction cap would serve, and a larger-bore joystick is the
+# expected better answer (joystick efficiency + recycler airflow). The pearl is
+# a passenger — present because the spinner wants one, not a deliberate
+# thermal-mass change. Do not read Rig 8 → Rig 9 comparisons as
+# spinner-vs-joystick: cap, pearl, and recycler function level move together.
+# HANDLING: the Calibear's water-flowback defect applies as on Rig 8 — thermal
+# shock risk to a thin machined sapphire insert at operating temperature.
+# In use as of August 3, 2026.
+RIG_9 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Cloud Vortex", model="21.0", airflow="stock"),
+    pearls=[Pearl(diameter_mm=5, material="synthetic ruby")],
+    glass_top="Calibear Fab Recycler",
+)
+
 # ── TERPENE REFERENCE ────────────────────────────────────────────────────────
 
 TERPENE_REFERENCE = [

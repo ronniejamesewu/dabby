@@ -135,9 +135,33 @@ ENTRY = WisdomEntry(
                  "which is the cooling-vs-delivery cost stated from the other side. Held at "
                  "speculative.",
         ),
+        Position(
+            stated='August 3, 2026 (Session 184, no run)',
+            text="The cooling-vs-flavor tradeoff flagged in Session 57 got its discussion, "
+                 "and it reframes this entry's evidence. The user's mechanism read: a "
+                 "recycler top's smoothing and its flavor mute are one physical event — "
+                 "more function means more vapor-to-water contact, and what condenses out "
+                 "is simultaneously the flavor and, on their reading, the irritant — which "
+                 "they take as tacit support for harshness as accumulated terpene matter "
+                 "rather than vapor temperature. The calibration that survives scrutiny: in "
+                 "a wet top, cooling and scrubbing are the same physical moment, so "
+                 "smooth-and-muted together cannot vote between a thermal driver and a "
+                 "particulate one — both predict the pair. That means lunarz R8, this "
+                 "entry's first confirming citation, is co-claimed by the particulate "
+                 "reading; it supports this theory only as strongly as it supports the "
+                 "rival. Discriminators identified, neither yet run: a same-piece "
+                 "water-temperature comparison (hot tap water ~120–130°F keeps the bubble "
+                 "scrubbing intact while cutting the cooling — a thermal driver predicts "
+                 "noticeably harsher, a particulate one predicts still-smooth), and a cold "
+                 "dry path (cooling without bubble contact; cold-wall condensation is a "
+                 "light residual strip, not zero). An active dry-cooling device (The Box, "
+                 "Lidavel, $600) was evaluated as the cleanest instrument; deferred pending "
+                 "the free water-temperature test and engineering specs. No run this "
+                 "session; no citation.",
+        ),
     ],
     watch_for="Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives "
-              "warmer than slow-ramp; the cooling-vs-flavor tradeoff, now named user-side; "
+              "warmer than slow-ramp; the same-piece hot-vs-cold water test; "
               "whether the RBR chest counter holds under posture.",
-    updated='Session 57; papzp22 R10 Session 174 (July 22, 2026); lunarz R8 July 30, 2026 — first confirming datum',
+    updated='Session 57; papzp22 R10 Session 174 (July 22, 2026); lunarz R8 July 30, 2026 — first confirming datum; cooling-vs-scrub fork Aug 3, 2026',
 )

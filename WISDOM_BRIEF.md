@@ -150,7 +150,7 @@
 **Basis:** Five runs (lhbh R9/R10/R11, fw106 R36, lunarz R8), three strains, two curves. lunarz R8 is the log's first matched top pair — same curve, jar, slot, cycles — but against the RBR, not the bubbler.
 **Guidance:** Do not credit this top with flavor: both bubbler comparisons on it read down (fw106 R36, lunarz R8), converging with papzp22 R10 on the RBR. Keep comparative and absolute reads apart. lunarz R7/R8 is the log's first matched top pair and reads this top quieter than the RBR. OPERATIONAL: flowback risks thermal shock.
 **Watch:** The bubbler comparison, still unmade: lunarz R9 and fw106 R37 both put this curve back on the stock bubbler. Any flowback reaching the insert.
-*4 citations (2 confirm / 2 counter) | jars: fw106, lhbh, lunarz | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair.*
+*4 citations (2 confirm / 2 counter) | jars: fw106, lhbh, lunarz | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair; airflow gate Aug 3, 2026 (no run).*
 
 ## Live Failure Modes
 
@@ -249,8 +249,8 @@
 **Claim:** Working theory: if harshness tracks hot vapor hitting tissue (per maté esophageal cancer research), it may be a harm-reduction signal, not just an experience signal. Throat vapor temperature is unmeasured; a working concern, not resolved.
 **Basis:** Single session (57); external research (maté/IARC) applied by analogy; no direct measurement of vapor temperature at the throat.
 **Guidance:** Hold as a working concern, not a resolved finding. Do not treat harshness as purely an experience metric until throat vapor temperature is known. The water-cooling-vs-efficiency tradeoff is flagged but not yet discussed further.
-**Watch:** Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives warmer than slow-ramp; the cooling-vs-flavor tradeoff, now named user-side; whether the RBR chest counter holds under posture.
-*3 citations (1 confirm / 1 counter) | jars: lunarz, papzp22 | upd Session 57; papzp22 R10 Session 174 (July 22, 2026); lunarz R8 July 30, 2026 — first confirming datum*
+**Watch:** Throat vapor temperature (unmeasured); whether fast-ramp vapor arrives warmer than slow-ramp; the same-piece hot-vs-cold water test; whether the RBR chest counter holds under posture.
+*3 citations (1 confirm / 1 counter) | jars: lunarz, papzp22 | upd Session 57; papzp22 R10 Session 174 (July 22, 2026); lunarz R8 July 30, 2026 — first confirming datum; cooling-vs-scrub fork Aug 3, 2026*
 
 ### curve-design-theory  [theory | directional]
 **Claim:** Higher endpoint + shorter session stopped at the depletion signal; fastest ascent with no staged ascent waypoints; fast ramp trades staging for density; bounded-hold descent curves are viable on the Switch² and deliver rather than cook.
