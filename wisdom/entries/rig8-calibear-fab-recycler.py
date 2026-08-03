@@ -208,6 +208,24 @@ ENTRY = WisdomEntry(
                  "exposure-light, so exposure and glass have never varied independently. "
                  "Held at observation.",
         ),
+        Position(
+            stated='August 3, 2026 (Session 184, no run)',
+            text="An equipment fact surfaced in conversation that the schema's four "
+                 "independent fields had no way to represent: glass function is "
+                 "airflow-gated. The user's account — the Calibear's recycler function "
+                 "wants more air than the Wym joystick's .094\" bore passes at their draw; "
+                 "the Cloud Vortex cap passes more, so the top functions properly under "
+                 "it; anything passing enough air would work, and a larger-bore joystick "
+                 "is the expected best-of-both. Rig 9 exists for this reason (CV spinner + "
+                 "single 5mm ruby + this top), with the restriction-not-spinner framing in "
+                 "the rig comment. Consequence for this entry: all five runs here ran the "
+                 "joystick, so on the user's account the recycler function was under-driven "
+                 "on every one of them, and any Rig 8-vs-Rig 9 comparison moves cap, pearl "
+                 "and function level together — not a top-vs-top read. Also stated by the "
+                 "user, bearing on the flavor tally: the mute is water contact by design — "
+                 "the cost of the smoothing, not a defect the right cap fixes (see "
+                 "thermal-injury-vapor-temp for the fork this opens). No run; no citation.",
+        ),
     ],
     counter_reading="Everything attributed to the top is equally explained by the curve "
                     "(this jar's only 440°F bounded hold), the load, or session order — "
@@ -230,5 +248,5 @@ ENTRY = WisdomEntry(
                     "untouched.",
     watch_for="The bubbler comparison, still unmade: lunarz R9 and fw106 R37 both put this "
               "curve back on the stock bubbler. Any flowback reaching the insert.",
-    updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair.',
+    updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair; airflow gate Aug 3, 2026 (no run).',
 )
