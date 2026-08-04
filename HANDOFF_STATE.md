@@ -212,6 +212,36 @@
 
 ---
 
+### Blueberry 36 #4 (No Till, 3rd+4th Wash)
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**AI Analysis:** Start from the baseline curve on Rig 6 — this jar carries the water-temperature test. Run 1, normal room-temp fill: control leg, this jar's own baseline harshness read, and the potency read — modest load. Treat this material as distantly related to the original Blueberry 36 #4 jar: nothing from that jar's run carries as a prior beyond weak family character. Run 2 repeats curve, load class, and dab slot with a hot fill (~120–130°F, poured right before the run), water temperature the only deliberate mover. Watch for the family's delayed retronasal blueberry. Expected: Run 1 clean at 420°F — a weak prior from the seed pop's record, nothing more. Surprising: harshness at baseline on a modest load — that would mark this material as expressing differently from the whole family and reset the test design.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
+### Blueberry 36 #4 (No Till, 1st+2nd Wash)
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**AI Analysis:** Start from the baseline curve. Open with a modest load until the first session reads potency — new harvest, and the BB36 family hits hard. Treat this material as distantly related to the original Blueberry 36 #4 jar: same cut, different medium, harvest, and wash tier, so nothing from that jar's run carries as a prior beyond weak family character. Watch for the family's delayed retronasal blueberry, seen across the seed pop. Expected: a clean baseline run and light golden swab, per the family record — a weak prior. Surprising: harshness at baseline on a modest load — that would mark this material as expressing differently from the whole family.
+
+**Proposed Curve:**
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
 ## Closed Jars
 *One line each — non-actionable; full run history and analysis live in `jars/<slug>.py`.*
 
