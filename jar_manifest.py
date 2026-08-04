@@ -24,6 +24,8 @@ ACTIVE = [
     'papzp22',     # Papaya + Z Pie #22
     'sourtangie',  # Sour Tangie
     'lunarz',      # LunarZ
+    'bb364nt34',   # Blueberry 36 #4 (No Till, 3rd+4th Wash)
+    'bb364nt12',   # Blueberry 36 #4 (No Till, 1st+2nd Wash)
 ]
 
 CLOSED = [
