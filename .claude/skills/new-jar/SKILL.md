@@ -73,18 +73,30 @@ language standing in for a physical description," not any specific word.
 **2. Look up the lineage.** A single search-and-skim tends to surface thin,
 unreliable snippets for this kind of niche genealogy — worse than not
 searching at all if a weak result gets written up as if it were solid. Spawn
-a `general-purpose` subagent instead, once per new jar, even when the user
+a `general-purpose` subagent instead — pass `model: sonnet` explicitly,
+never let it silently inherit the session model (Sonnet is the tier the
+August 28, 2026 comparison test ran on; see Provenance) — once per new jar,
+even when the user
 gave a lineage confidently (e.g. off the jar label) — the claimed cross
 itself is usually right, but what's more likely to be stale is what that
 strain's own ancestry looks like beyond the first generation, which feeds
 both the terpene inference in step 4 and the cross-strain check in step 6.
 
+**Anchor sources are often login-gated.** For dispensary-market brands, the
+producer's own Instagram (drop menus, collab announcements) is frequently
+the only anchor-tier source that states lineages at all — and it's
+login-walled, so the subagent can't reach it. That read happens in the main
+session via the user's logged-in browser, with the user supplying or
+approving the account/post to read. Treat a subagent's "no anchor found" as
+provisional until an Instagram pass has been offered.
+
 **Don't idle on the handoff.** The agent→agent report delivery has failed
 before (first live exercise, July 2, 2026 — the research completed but the
 report never came back; details in Provenance below). Once step 1's
-gathering and step 3's prep are done, start the inline `WebSearch`/`WebFetch`
-fallback in parallel with the same brief and stopping rule — first usable
-result wins.
+gathering and step 3's prep are done, start the inline fallback in parallel
+— `WebSearch` for discovery plus browser raw reads, under the same
+retrieval-tooling rules as the brief below — with the same brief and
+stopping rule — first usable result wins.
 
 Before writing the brief, read
 [`references/lineage_research_bar.md`](references/lineage_research_bar.md).
@@ -143,8 +155,21 @@ Brief the subagent with something like:
 > [paste in the stopping rule, accountability check, and worked example from
 > references/lineage_research_bar.md here]
 >
-> Fetch and actually read the most promising pages with WebFetch rather than
-> trusting search snippets. Report back in under 500 words: the ancestry
+> Retrieval tooling — follow exactly: use WebSearch for discovery only;
+> snippets are leads, never evidence. WebFetch is BANNED — do not call it
+> once. It returns a small model's summary of a page, not the page — an
+> inference layer inside the retrieval step, and it has demonstrably missed
+> JS-rendered producer and dispensary pages while reporting them as read.
+> To actually read a page, use the in-app browser tools (if deferred, load
+> via ToolSearch with query "select:mcp__Claude_Browser__tabs_create,
+> mcp__Claude_Browser__navigate,mcp__Claude_Browser__get_page_text"): call
+> tabs_create once and note the returned tabId, then for each page call
+> navigate then get_page_text with that tabId, and read the raw text
+> yourself. Pass tabId on every call so you don't disturb other tabs. If a
+> page fails to load, bot-walls, or returns empty text, note it and move on
+> — never fall back to WebFetch.
+>
+> Report back in under 500 words: the ancestry
 > tree as far as it's reliably sourced, which tier each claim came from,
 > your confidence per generation, any unresolved disagreement, and the
 > thread-accounting list (every named entity/claim you encountered, pursued
@@ -376,7 +401,24 @@ pass, with anchor-confirmed crosses and full thread accounting. So the brief
 produces good research on both paths; only the handoff timing is unreliable.)
 Operational rule: spawn the subagent per this skill, but once step 1/3 prep
 is done, start the inline fallback in parallel rather than idling on the
-handoff — first usable result wins. Test outcome for the record: recreated
+handoff — first usable result wins.
+
+**Retrieval-tooling change — August 28, 2026 (A/B comparison, Red Pebbles,
+Erva × In House):** two Sonnet subagents ran this skill's research brief on
+the same strain, identical except the reading layer — one on the original
+WebFetch instruction, one on raw browser reads with WebFetch banned. Both
+reached the same honest "no public lineage" verdict, but the WebFetch agent's
+own methods note flagged two of its eight reads as likely incomplete
+(JS-rendered producer/dispensary pages returning image filenames or
+boilerplate), while the raw-read agent read those same pages fine (19 reads,
+no bot-walls) and went materially deeper: it found a second confirmed breeder
+partner (Three's Genetic Reserve) and the only public lineage claim for the
+strain (Terp Fountain Genetics, correctly left unadopted as a single
+non-anchor source) — a lead the producer's own Instagram menu later
+confirmed almost verbatim (Fruity Pebbles OG × Red Piegasm). Cost: ~1.6×
+tokens, ~2.2× wall time — accepted. That comparison is why the brief now
+bans WebFetch, why the model is pinned to Sonnet (the tested tier), and why
+the login-gated-Instagram note exists in step 2. Test outcome for the record: recreated
 jar matched golden on info-table shape, slug, boilerplate, and the
 load-position caveat; tier labeling followed this skill's current guidance
 (the golden predates it); lineage landed one generation shallower on the
