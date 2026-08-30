@@ -15,6 +15,10 @@ reason for the In House collab, stated by Eric Aug 2026). Stellar
 cultivation rep (user-direct). Publishes lineage-rich IG drop menus —
 anchor surface. "Erva" = "herb" in Portuguese (their own menu footer).
 Reciprocal-cross-level precision on menus (Rainbow Colonel vs Rainbow Chem).
+**Stated breeder roster** (Erva's own credit comment, 8.7.26 drop post,
+anchor): Three's Genetic Reserve / @jlsmonster, Fruitfull Seeds, Elemental
+Seeds, Bloom Seed Co, Purple City (Europe handle). Terp Fountain absent
+from that comment but corroborated separately via Red Pebbles.
 
 ### In House / In House Melts (@inhousemelts, theinhousellc.com)
 Processor + grower. CO licensed (403R-00250), family-owned. Historically
@@ -49,6 +53,8 @@ IG private.
 
 | Brand | Roles / model | Channel | Notes |
 |---|---|---|---|
+| Fruitfull Seeds | Breeder (KY hashmaker, Mr. Autogrow); on Erva's stated roster | — | Own catalog at fruitfullseeds.com/genetics with dated, pheno-numbered formulas — anchor surface |
+| Dying Breed Seeds | Breeder (Zkittlez family, "The Original Z"); not on Erva's stated roster but their releases (Peach Oz, Peach Ringz, OZ Kush) circulate in the In House/Bloom supply chain | — | Catalog reachable via SeedFinder's Dying Breed pages |
 | 710 Labs | Vertical at scale (assumed own-flower — quality-at-scale reasoning, undisclosed per-jar) | Licensed, multi-state | Publishes per-strain genetics pages; log's most common producer |
 | Three Blind Trichs | Grower + contract washer (same model as In House, smaller) | Traditional | Provenance user-direct (Matt & Oliver grows, BB36 family) |
 | Myxed Up | Washer ("washed and pressed", The Hive #1) | Traditional | Reputation-policed market |

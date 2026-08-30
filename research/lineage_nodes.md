@@ -50,8 +50,12 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 ## In House orbit (non-Bloom parents)
 
 - **Honey Banana** = Strawberry Banana × Honey Boo Boo — stated (DNA
-  Genetics' own site; overrules Elemental-Seeds and Honey Boo Boo ×
-  Banana OG mis-attributions). Honey Boo Boo = Bubba Kush × Captain
+  Genetics' own site) AND stated (Erva's 8.7.26 drop menu — producer-menu
+  corroboration of the anchor; overrules the Honey Boo Boo × Banana OG
+  mis-attribution. The "Elemental Seeds" attribution once dismissed as
+  wrong gains a wrinkle: Elemental appears in Erva's stated breeder
+  roster, so their involvement in the supply chain is real even if the
+  breeding credit belongs to DNA). Honey Boo Boo = Bubba Kush × Captain
   Krypt OG (Captain Krypt OG thinly documented — exhausted).
 - **Pinesoul** = Green Bodhi's pheno of Goji OG (Nepali OG × Snow Lotus,
   Bodhi Seeds) — corroborated; a pheno selection, not a cross. Lestoil
@@ -104,6 +108,44 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   Grape Koolada, Sugar Spin #46, Grape Spree #76 all cite it. Top IG-pass
   target.
 
+## Dogfood-pass nodes (Aug 31, 2026)
+
+- **Watermelon** (base cultivar) — DOCUMENTED DEAD-END: tagged
+  unknown/clone-only across two independent sources; parent in dozens of
+  unrelated crosses. WHICH Watermelon Erva's "Watermelon × Zkittles"
+  means is ambiguous — Barneys Farm's Watermelon Zkittlez formula
+  (Watermelon × The Original Z) matches literally but Barneys is not on
+  Erva's roster; Dying Breed's "Watermelon Zkittlez aka Watermelon Z" is
+  a different formula (Watermelon Zum Zum × OG Eddy, "probably"-tagged).
+  Neither Bloom nor TGR carries a Watermelon. Base cultivar terminates
+  as undocumented under every reading.
+- **White OG** = The White × SFV OG Kush BX2 — near-anchor (Karma
+  Genetics' own breeder text via SeedFinder) → OG Kush / Afghani
+  classics; The White = famous clone-only, unknown parentage
+  (corroborated ×4) — dead-end. Lower-tier conflict: one source says The
+  White (Krome cut) × Triple Kush — recorded, not favored. Note naming:
+  Erva's menu prints "The White OG," In House's storefront and Bloom's
+  catalog print "White OG" — same reference.
+- **Grape Rainbow Pie** (#17) — Fruitfull Seeds' own in-house line
+  (founder Mr. Autogrow, KY hashmaker); own parentage undisclosed on
+  their site and SeedFinder — evidence exhausted. Erva's menu shortens
+  it to "Rainbow Pie" (Fruitfull's own catalog states Rainbow Juice =
+  Garlic Juice #2 × Grape Rainbow Pie #17, anchor). Unrelated
+  "Rainbow Pie" cultivars exist (GreenFire, Zephyr) — not merged.
+- **Garlic Juice** = GMO × Papaya — corroborated (Oni Seed Co; multiple
+  convergent sources; Fruitfull's catalog uses "Garlic Juice #2") →
+  GMO classics; Papaya (Oni) undocumented origin — dead-end. Lead, not
+  chased to primary: three sources say originally bred by Harry Palms —
+  the later Bloom Seed Co founder, already on Erva's roster.
+- **OZ Kush** = OG Eddy Lepp × The Original Z (Zkittlez) — corroborated
+  (Dying Breed Seeds catalog via SeedFinder) → OG Eddy Lepp = OG Kush ×
+  Grape Ape — all classics, terminates.
+- **Peach Ringz** = Marionberry × Eddy OG — corroborated (Dying Breed
+  catalog) → Eddy OG = OG Kush × Grape Ape (classics); Marionberry =
+  Raspberry Kush (undocumented — dead-end) × Space Queen (→ Romulan ×
+  C-99 → Northern Lights #5 / Haze / Skunk #1 / Afghani / Hawaiian —
+  classics/landraces, terminates).
+
 ## Erva / TGR / Terp Fountain orbit
 
 - **Crashglow** — real TGR line (named parent on TGR's own Orange Colonel
@@ -111,8 +153,12 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   UNPUBLISHED. Ontario "Qwest Crash Glow" = likely unrelated name-alike.
 - **Colonel Chem** — real TGR line (named parent on TGR's Colonel Crasher
   page); own parentage UNPUBLISHED. "Chem" is a name observation only.
-- **Uncle Lazer** = Rainbow Colonel × Lazer Jet — stated (Maikoh
-  dispensary listing quoting the product, July 2026).
+- **Uncle Lazer** — PARENT-ORDER CONFLICT, recorded verbatim: Erva's own
+  8.7.26 drop menu prints "Lazer Jet x Rainbow Colonel"; the Maikoh
+  dispensary listing (July 2026) printed "Rainbow Colonel x Lazer Jet."
+  Producer menu outranks dispensary listing, but given Erva's
+  demonstrated reciprocal-cross precision the discrepancy is noted, not
+  dismissed as sloppiness.
 - **Red Piegasm** — Terp Fountain line ("Home of the Piegasm" bio).
   CONFLICTED directionality: AllBud says Red Piegasm = Red Smoothie ×
   Piegasm; SeedFinder's Red Smoothie genealogy says Red Smoothie =
