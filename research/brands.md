@@ -6,7 +6,7 @@ Brand-level metadata. Fields: **Roles** (grower / processor / breeder),
 posture: believe what a brand states, weighted by earned trust; mark what
 they don't state as unknown — never infer provenance nobody stated.
 
-## Colorado ecosystem (current jars)
+## Colorado ecosystem (research targets — none acquired as of Aug 30, 2026)
 
 ### Erva (@ervacolorado)
 Grower + breeder-adjacent (works with TGR/Terp Fountain lines). Licensed
