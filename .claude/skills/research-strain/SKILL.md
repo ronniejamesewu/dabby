@@ -150,7 +150,15 @@ ls research/README.md research/strains/ research/lineage_nodes.md research/brand
 grep -n "research-strain" .claude/skills/new-jar/SKILL.md
 ```
 
-Dogfood-test status: **Skill-as-written not yet executed end-to-end. Its
-components (raw-read contract, worker briefs, recursion, IG pass, catalog
-schema) were validated live in the founding campaign that produced the
-current catalog.**
+Dogfood-test status: **Executed end-to-end Aug 31, 2026** — 10 strains
+(Erva/In House drop menus), same session as authoring. Result: all ten
+anchored; 1 strain fully terminated at entry from existing shared nodes
+(Blockberry); 2 identified as repackaged breeder releases (Garlic Drip =
+Bloom's, Peach OZ = Dying Breed's); 1 worker instead of the founding
+campaign's 8. Findings folded back: steps 3/5 may reorder when the
+session already knows which anchor surface holds the answer (IG-first is
+correct when the producer's menus are the known source); producer
+credit-comments are an anchor class (now in SOURCES.md); menu-image
+archiving remains aspirational — no save_to_disk archive was captured
+this run either (renderer flake + flow cost), so `archive pending`
+accumulates as debt.
