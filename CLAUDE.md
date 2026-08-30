@@ -36,6 +36,11 @@ Read these files when the session topic requires them:
 - `Dabby_Log_Generator.py` — for generator/rendering work.
 - `Dabby_Methodology.md` — for curve design or methodology questions.
 - `Dabby_UI_Principles.md` — for UI/layout changes.
+- `research/` — pre-jar strain-lineage catalog (per-strain entries, shared
+  ancestry nodes, brand metadata, source atlas; conventions in
+  `research/README.md`). Read at shopping-time strain questions and at
+  new-jar step 2; written only via the research-strain skill. Not touched
+  by the generator.
 
 This project logs sessions on a Dr. Dabber Switch² nicknamed "Dabby the House Rig."
 All material is hash rosin (ice water extracted, solventless) unless explicitly 

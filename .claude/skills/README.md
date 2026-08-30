@@ -31,7 +31,8 @@ and the handoff graph below.
 |---|---|---|
 | [dab](dab/SKILL.md) | User announces a dab starting — "about to hit it", "grabbing one", "party mode" | log-run (when user initiates logging), new-jar (strain named with no jar) |
 | [log-run](log-run/SKILL.md) | User wants to log a completed run — "log it", "write that up" | new-jar (if no jar exists), new-rig (if equipment changed), analysis-toolkit (at step 5), close-jar (if user confirms the jar is done) |
-| [new-jar](new-jar/SKILL.md) | Strain has no jar file — "new jar", "starting a new jar for X" | log-run (after jar created) |
+| [new-jar](new-jar/SKILL.md) | Strain has no jar file — "new jar", "starting a new jar for X" | research-strain (if no research/ catalog entry), log-run (after jar created) |
+| [research-strain](research-strain/SKILL.md) | Shopping-time or pre-jar lineage research — "thinking about grabbing X", "what's this strain about", "research this drop"; also invoked by new-jar | new-jar (if the user then buys/creates the jar) |
 | [analysis-toolkit](analysis-toolkit/SKILL.md) | Drafting per-run analysis at log-run step 5 | (returns to log-run) |
 | [close-jar](close-jar/SKILL.md) | Jar is finished — "jar's done", "that was the last one" | log-run (first, if the final run isn't logged yet) |
 | [new-rig](new-rig/SKILL.md) | Equipment doesn't match any existing RIG_N | log-run (after constant created) |
@@ -48,6 +49,10 @@ dab ──→ log-run ──→ new-jar (if no jar)
     │           ──→ analysis-toolkit (step 5)
     │           ──→ close-jar (if user confirms closure after final run)
     └──→ new-jar (strain named with no jar; user-initiated)
+
+research-strain ⇄ new-jar (new-jar invokes it when no research/ catalog
+                entry exists; standalone at shopping time — writes the
+                research/ catalog either way)
 
 close-jar ──→ log-run (first, if the final run isn't logged yet; then back)
 
