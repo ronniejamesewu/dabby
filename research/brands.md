@@ -56,9 +56,9 @@ IG private.
 | Fruitfull Seeds | Breeder (KY hashmaker, Mr. Autogrow); on Erva's stated roster | — | Own catalog at fruitfullseeds.com/genetics with dated, pheno-numbered formulas — anchor surface |
 | Dying Breed Seeds | Breeder (Zkittlez family, "The Original Z"); not on Erva's stated roster but their releases (Peach Oz, Peach Ringz, OZ Kush) circulate in the In House/Bloom supply chain | — | Catalog reachable via SeedFinder's Dying Breed pages |
 | 710 Labs | Vertical at scale (assumed own-flower — quality-at-scale reasoning, undisclosed per-jar) | Licensed, multi-state | Publishes per-strain genetics pages; log's most common producer |
-| Three Blind Trichs | Grower + contract washer (same model as In House, smaller) | Traditional | Provenance user-direct (Matt & Oliver grows, BB36 family) |
+| Three Blind Trichs | Grower + contract washer (same model as In House, smaller) | Traditional | Provenance user-direct (BB36 family) |
 | Myxed Up | Washer ("washed and pressed", The Hive #1) | Traditional | Reputation-policed market |
-| Malek's Melts | Washer (Watermellos) | Traditional | Grower unknown |
+| Malek's Melts | Washer (Watermellos) | Licensed dispensary (user-direct) | Grower unknown |
 | Quasi Farms (MI) | Producer (WW Z, Crystal A Gelato, MBD, Rainfruit) | — | No documented link between their "WW Z" and Bloom's World War Z (checked Aug 30 2026) |
 | Nikka T / Essential Extracts | Washer, award-winning pioneer (Orange Candy) | — | |
 | Soiku Bano | Pure processor — zero cultivation, washes others' flower (user-direct) | — | Cautionary example: label indistinguishable from vertical |
