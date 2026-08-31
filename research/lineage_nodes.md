@@ -50,12 +50,10 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 ## In House orbit (non-Bloom parents)
 
 - **Honey Banana** = Strawberry Banana × Honey Boo Boo — stated (DNA
-  Genetics' own site) AND stated (Erva's 8.7.26 drop menu — producer-menu
-  corroboration of the anchor; overrules the Honey Boo Boo × Banana OG
-  mis-attribution. The "Elemental Seeds" attribution once dismissed as
-  wrong gains a wrinkle: Elemental appears in Erva's stated breeder
-  roster, so their involvement in the supply chain is real even if the
-  breeding credit belongs to DNA). Honey Boo Boo = Bubba Kush × Captain
+  Genetics' own site) and stated (Erva's 8.7.26 drop menu). Overrules the
+  Honey Boo Boo × Banana OG mis-attribution. Elemental Seeds appears in
+  Erva's stated roster, so a supply-chain role is plausible even though
+  the breeding credit is DNA's. Honey Boo Boo = Bubba Kush × Captain
   Krypt OG (Captain Krypt OG thinly documented — exhausted).
 - **Pinesoul** = Green Bodhi's pheno of Goji OG (Nepali OG × Snow Lotus,
   Bodhi Seeds) — corroborated; a pheno selection, not a cross. Lestoil
@@ -156,9 +154,7 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Uncle Lazer** — PARENT-ORDER CONFLICT, recorded verbatim: Erva's own
   8.7.26 drop menu prints "Lazer Jet x Rainbow Colonel"; the Maikoh
   dispensary listing (July 2026) printed "Rainbow Colonel x Lazer Jet."
-  Producer menu outranks dispensary listing, but given Erva's
-  demonstrated reciprocal-cross precision the discrepancy is noted, not
-  dismissed as sloppiness.
+  Producer menu outranks the dispensary listing; discrepancy recorded.
 - **Red Piegasm** — Terp Fountain line ("Home of the Piegasm" bio).
   CONFLICTED directionality: AllBud says Red Piegasm = Red Smoothie ×
   Piegasm; SeedFinder's Red Smoothie genealogy says Red Smoothie =

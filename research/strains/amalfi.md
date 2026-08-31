@@ -7,8 +7,8 @@
 ## Component chains
 Both components are phenos (#9, #6) of the same cross (TMZ × Orange Mints) — so Amalfi is a blend of two sibling selections of one cross. See [perle-di-sole.md](perle-di-sole.md), [zcrewdriver.md](zcrewdriver.md).
 
-## Record of a corrected inference
-The web pass reasonably inferred "Amalfi" = Bloom's "Amalfi Coast" (Biscotti × Sherbanger) — corroborated-tier, correctly never promoted. In House's own menu overturned it. Kept here as the canonical example of why plausible catalog-adjacency fills stay unadopted until an anchor speaks.
+## Note
+- Not Bloom's "Amalfi Coast" (Biscotti × Sherbanger) — that identification was inferred from catalog adjacency and overruled by In House's own menu. Referenced by the research-strain skill as the standing example against adopting name-match inferences.
 
 ## Sources
 - https://www.instagram.com/p/Db8kFLyNntD/ (archive pending)

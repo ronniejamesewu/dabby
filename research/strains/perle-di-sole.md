@@ -9,7 +9,7 @@
 - Orange Mints → DEAD-END, deliberate non-disclosure by Bloom. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- **Sibling pheno of Zcrewdriver (#6)** — same cross, two selections sold as two strains. Bloom's tasting note: "pineapple, Z and OG."
+- Sibling pheno of Zcrewdriver (#6) — same cross, different selection. Bloom's tasting note: "pineapple, Z and OG."
 - Bloom credited the cross's hash debut to "bobrosin" (IG lead).
 - Component of the Amalfi blend.
 

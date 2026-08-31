@@ -9,7 +9,7 @@
 - Orange Mints → Bloom's deliberate dead-end. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- Sibling selection: Guava Glaze = Guava Push Pop #59 (same menu) — another pheno-pair marketed as two products.
+- Sibling selection: Guava Glaze = Guava Push Pop #59 (same menu).
 
 ## Sources
 - In House 6.5.26 drop menu (post in @inhousemelts grid; URL not captured — archive pending) · bloomseed.co/cultivars

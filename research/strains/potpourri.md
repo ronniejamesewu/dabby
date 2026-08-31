@@ -5,12 +5,11 @@
 
 ## Lineage
 Not a strain: a wash of mixed phenos. No component list published; no
-lineage exists to trace. The name is the description.
+lineage to trace.
 
 ## Notes
-- At new-jar time this is a special component-count case — components
-  unknown by design. Terpene inference from genetics is unavailable;
-  treat as its own thing.
+- Components unknown by design; no genetics-based terpene inference
+  available.
 
 ## Sources
 - https://www.instagram.com/p/Db8kFLyNntD/ (archive pending)

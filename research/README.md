@@ -45,6 +45,13 @@ here renders into `index.html`.
   a clean web not-found was overturned by one IG menu).
 - **No name inference, ever.** A lineage guessed from a strain name is
   worse than no answer.
+- **Database register.** Entries read like a genetics database, not a
+  blog: facts, source, date. No editorializing, no narrating the
+  catalog's own process or cleverness, no scene-flavor commentary, no
+  demand/hype notes. Inference gets at most one short labeled line
+  ("Inference: … Not measured.") — fuller interest reads happen in
+  conversation, not in these files. Open questions state the gap, not
+  the story of finding it.
 - **Image archiving:** cited IG posts should have their menu slides
   screenshot-archived at capture time (posts and accounts vanish).
   Entries citing unarchived posts say `archive pending`.

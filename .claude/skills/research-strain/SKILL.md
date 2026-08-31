@@ -45,6 +45,11 @@ inference.
   on the user's account — surface it as a suggestion, never do it.
 - **Found lineages persist; not-found verdicts expire.** An undisclosed
   verdict records what was searched and when.
+- **Database register in catalog files.** Entries are public and read by
+  a terse community: facts, source, date — no editorializing, no process
+  narration, no hype/demand notes, inference as one short labeled line
+  at most (see the register rule in `research/README.md`). Analysis and
+  interest reads belong in conversation, never in the entries.
 - Catalog writes go through the standard PR workflow — never straight to
   main.
 

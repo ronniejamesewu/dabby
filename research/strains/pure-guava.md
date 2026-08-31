@@ -9,7 +9,7 @@
 - Chunky Diesel → only documented cross is Deep Chunk × Sour Diesel (Ganja Rebel/Cresco, corroborated ×6) — but no CO/In House connection found: possible name-alike, flagged. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- Not Guava Gelato-family — the name-collision warning was vindicated on this one's research.
+- Not Guava Gelato-family.
 - Parent across Bloom's guava line (Cranberry/Death/Fire Guava etc.); its own parentage never appears in Bloom's catalog.
 
 ## Sources

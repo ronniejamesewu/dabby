@@ -9,7 +9,7 @@
 - Pomelo Punch #5 → Pomelo Punch = Orange Mints × Papaya (stated, Bloom) → both documented dead-ends (Orange Mints undisclosed by Bloom; Papaya "Mystery/Clone Only" per 710 Labs). See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- Component of the Fuzzy Navel and Bellini blends. Scene hype signal (timing only): loudest comment reactions on the 8.29 drop post.
+- Component of the Fuzzy Navel and Bellini blends.
 
 ## Sources
 - https://www.instagram.com/p/Dci4mpoNj2a/ (archive pending)

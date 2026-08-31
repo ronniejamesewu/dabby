@@ -10,7 +10,7 @@
 - White OG → The White × SFV OG Kush BX2 (near-anchor, Karma Genetics' own text) → OG Kush / Afghani classics on one side, The White clone-only dead-end on the other — see [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- VSC expectation: GMO parent → volatile-sulfur garlic/gas territory; The White contributes resin more than flavor if the clone-cut reading holds. One scene report (lead tier): an IG commenter on the 8.25 drop called the rubber/gas notes among the strongest — direction consistent with the genetics.
+- Inference: GMO parent → gas/garlic (VSC) lean. Not measured.
 
 ## Sources
 - https://www.instagram.com/p/DcbpZF1EUi_/ · https://www.instagram.com/p/Da8N1onuO8U/ (archives pending)

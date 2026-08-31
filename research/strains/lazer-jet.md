@@ -9,8 +9,8 @@
 - Jet Fuel Gelato → Jet Fuel × Gelato (stated, Compound Genetics); Jet Fuel/G6 → Aspen OG × High Country Diesel (corroborated, 303 Seeds) — terminates
 
 ## Notes
-- Parent of Uncle Lazer (× Rainbow Colonel) and a Lazer Glow component — upstream node of Erva's "Lazer" family.
-- VSC expectation: GMO parent puts this in volatile-sulfur (garlic/gas) territory, a separate chemical class from the terpene reference.
+- Parent of Uncle Lazer and a Lazer Glow component.
+- Inference: GMO parent → gas/garlic (VSC) lean. Not measured.
 
 ## Sources
 - https://www.instagram.com/p/Da8N1onuO8U/ · https://www.instagram.com/p/DcbpZF1EUi_/ (archives pending)

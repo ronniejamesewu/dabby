@@ -12,7 +12,7 @@
 - Which "Watermelon" cut Erva runs — roster breeders carry none, so the source is outside the stated roster or a private cut.
 
 ## Notes
-- Parent of Rainbow Rind (× Rainbow Juice). Scene demand signal (timing only): commenters on the 8.25 drop post were queuing for this one by name.
+- Parent of Rainbow Rind (× Rainbow Juice).
 
 ## Sources
 - https://www.instagram.com/p/DcbpZF1EUi_/ (archive pending)

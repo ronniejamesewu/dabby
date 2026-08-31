@@ -8,7 +8,7 @@
 Identical nodes to [perle-di-sole.md](perle-di-sole.md): TMZ chain terminates at Zkittlez/Sunset Sherbert/Headbanger; Orange Mints is Bloom's deliberate dead-end.
 
 ## Notes
-- **Sibling pheno of Perle di Sole (#9)** — the pheno-pair phenomenon: same cross, two selections, two names. The Z-family name-reading ("Zcrewdriver") turned out true via sourcing, not name inference.
+- Sibling pheno of Perle di Sole (#9) — same cross, different selection.
 - Component of the Amalfi and Happy Hour blends.
 
 ## Sources

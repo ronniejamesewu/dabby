@@ -10,8 +10,8 @@
 - Rainbow Belts 3.0 → Rainbow Belts #20 × Moonbow 112 F2 #60 (stated, Archive Seed Bank, per-hop anchor) → Zkittlez / Do-Si-Dos — terminates
 
 ## Notes
-- **Reciprocal-cross pair with Rainbow Chem** (same parents, opposite order, both on Erva's own menu). Seed-parent-first convention makes these different breeding events — do not merge, do not normalize order. Buying both and comparing is the geek move.
-- Rainbow Colonel #1 (a pheno) is itself a parent of Orange Colonel.
+- Reciprocal-cross pair with Rainbow Chem — same parents, opposite order, both per Erva's own menus.
+- Rainbow Colonel #1 (a pheno) is a parent of Orange Colonel.
 
 ## Sources
 - https://www.instagram.com/p/Da8N1onuO8U/ (archive pending) · threesgeneticreserve.com product pages

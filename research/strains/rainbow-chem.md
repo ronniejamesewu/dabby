@@ -11,7 +11,7 @@ Same nodes as [rainbow-colonel.md](rainbow-colonel.md), opposite cross direction
 - Colonel Chem → UNPUBLISHED (TGR dead-end) — see [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- **Reciprocal-cross pair with Rainbow Colonel** — here the Rainbow Belts 3.0 side is the seed parent. Order is data; never normalize.
+- Reciprocal-cross pair with Rainbow Colonel — here Rainbow Belts 3.0 is the seed parent.
 
 ## Sources
 - https://www.instagram.com/p/DcbpZF1EUi_/ (archive pending)

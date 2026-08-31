@@ -9,7 +9,7 @@
 - Peach OZ → see [peach-oz.md](peach-oz.md)
 
 ## Notes
-- A blend of parent and child (Peach OZ is Peach Pineapple's seed parent) — the peach line folded onto itself.
+- Blend of parent and child: Peach OZ is Peach Pineapple's seed parent.
 
 ## Sources
 - https://www.instagram.com/p/Dci4mpoNj2a/ (archive pending)

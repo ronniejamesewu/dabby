@@ -10,7 +10,7 @@
 - Red Piegasm → conflicted/undisclosed — see node
 
 ## Open questions
-- **FPOG vs FPOZ:** Terp Fountain's retail listing (Terpy Seeds) says the cross uses FPOZ (= FPOG × Zkittlez, a distinct Terp Fountain cultivar) where Erva's menu says FPOG straight. Anchor-for-the-jar is Erva's menu, but the discrepancy is real and unresolved (Aug 30 2026). One extra Zkittlez infusion rides on it.
+- **FPOG vs FPOZ:** Terp Fountain's retail listing (Terpy Seeds) says the cross uses FPOZ (= FPOG × Zkittlez, a distinct Terp Fountain cultivar) where Erva's menu says FPOG straight. Erva's menu governs for this jar; discrepancy unresolved (Aug 30 2026).
 
 ## Sources
 - Erva collab menu: https://www.instagram.com/p/Da8N1onuO8U/ (archive pending)

@@ -9,8 +9,8 @@
 - GMO → Chem D × GSC (corroborated; classics) — terminates
 
 ## Notes
-- TGR's catalog matches the name family (cohort research noted Modified Mousse among TGR-matching In House/Erva strain names) — breeder plausibly TGR, unconfirmed (lead).
-- VSC expectation: GMO parent → garlic/gas territory over an Afghan-indica base.
+- Breeder plausibly TGR (name-family match in their catalog) — lead, unconfirmed.
+- Inference: GMO parent → gas/garlic (VSC) lean over an Afghan-indica base. Not measured.
 
 ## Sources
 - https://www.instagram.com/p/Da8N1onuO8U/ (archive pending)

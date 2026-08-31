@@ -9,10 +9,8 @@
 - Honey Limez → see [honey-limez.md](honey-limez.md)
 
 ## Notes
-- The name is marketing, not genetics: no Gorilla Glue ancestry, and no
-  established relation to Bloom's "The Hive" (Honey Banana × Papaya) —
-  though Honey Limez shares the Honey Banana parent, which may be the
-  name's wink. Observation only.
+- No Gorilla Glue ancestry; no established relation to Bloom's "The
+  Hive" (name observation only).
 
 ## Sources
 - https://www.instagram.com/p/DbZbm59gG67/ (archive pending)
