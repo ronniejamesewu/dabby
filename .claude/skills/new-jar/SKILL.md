@@ -1,6 +1,6 @@
 ---
 name: new-jar
-description: Create a new jar file for a strain that doesn't have one yet in this Dabby project — the two-file edit (jars/<slug>.py boilerplate + slug added to jar_manifest.py's ACTIVE tier), including a web-search lineage check and correctly handling any number of physical strain components (single strain, two-strain blends, three-strain blends, whatever a given producer calls them). Trigger this whenever the user says things like "new jar", "add a strain", "starting a new jar for X", "got a new jar today", or names a strain they haven't logged before. Also trigger it implicitly any time a run is being logged for a strain whose name doesn't match any existing STATUS.name across jars/*.py — a jar must exist before that run can be logged, so jar creation is a required sub-step, not an optional one. Also invoke this skill when another skill or workflow (e.g. a party-mode run-capture reconciliation pass) needs to create a jar for a previously-unlogged strain.
+description: Create a new jar file for a strain that doesn't have one yet in this Dabby project — the two-file edit (jars/<slug>.py boilerplate + slug added to jar_manifest.py's ACTIVE tier), consuming the research/ lineage catalog (invoking the research-strain skill when no entry exists) and correctly handling any number of physical strain components (single strain, two-strain blends, three-strain blends, whatever a given producer calls them). Trigger this whenever the user says things like "new jar", "add a strain", "starting a new jar for X", "got a new jar today", or names a strain they haven't logged before. Also trigger it implicitly any time a run is being logged for a strain whose name doesn't match any existing STATUS.name across jars/*.py — a jar must exist before that run can be logged, so jar creation is a required sub-step, not an optional one. Also invoke this skill when another skill or workflow (e.g. a party-mode run-capture reconciliation pass) needs to create a jar for a previously-unlogged strain.
 ---
 
 # New Jar
@@ -70,93 +70,29 @@ word into a consistency/format field, and don't assume you've seen every
 producer's version of this word before. The pattern to catch is "grade
 language standing in for a physical description," not any specific word.
 
-**2. Look up the lineage.** A single search-and-skim tends to surface thin,
-unreliable snippets for this kind of niche genealogy — worse than not
-searching at all if a weak result gets written up as if it were solid. Spawn
-a `general-purpose` subagent instead, once per new jar, even when the user
-gave a lineage confidently (e.g. off the jar label) — the claimed cross
-itself is usually right, but what's more likely to be stale is what that
-strain's own ancestry looks like beyond the first generation, which feeds
-both the terpene inference in step 4 and the cross-strain check in step 6.
+**2. Get the lineage from the research catalog.** Lineage research is
+owned by the research-strain skill
+(`.claude/skills/research-strain/SKILL.md`) and its output lives in the
+`research/` catalog. In order:
 
-**Don't idle on the handoff.** The agent→agent report delivery has failed
-before (first live exercise, July 2, 2026 — the research completed but the
-report never came back; details in Provenance below). Once step 1's
-gathering and step 3's prep are done, start the inline `WebSearch`/`WebFetch`
-fallback in parallel with the same brief and stopping rule — first usable
-result wins.
+1. `Glob research/strains/*.md` for the strain (kebab-case of the full
+   name). Also read `research/lineage_nodes.md` for any parent the entry
+   references — shared ancestry lives there, never duplicated per strain.
+2. **Entry exists with a found lineage** → consume it: cite its claims at
+   their recorded evidence tier ("per Erva's own menu, July 2026"), carry
+   its open questions into the terpene note rather than resolving them,
+   and check its `Type:` line — a `+` co-press blend or a pheno wash
+   changes the component count that drives step 3's table shape.
+3. **Entry is a not-found verdict, stale, or missing** → invoke the
+   research-strain skill now (it researches, then writes the entry), and
+   consume the result. Do not re-implement research inline here.
 
-Before writing the brief, read
-[`references/lineage_research_bar.md`](references/lineage_research_bar.md).
-A real comparison against Perplexity on the same strain showed the gap
-wasn't a missing step — it was that the research stopped after a few
-generic searches instead of following what they turned up. A longer
-checklist doesn't fix that; a subagent can satisfy any fixed list of steps
-just as mechanically as it satisfied "run several searches" the first time.
-What actually needs conveying is a disposition (keep pulling threads until
-that stops teaching you anything) and an accountability mechanism (account
-for every thread you didn't chase) — not more boxes to check. Include that
-file's stopping rule and accountability check in the subagent's brief
-verbatim, along with the worked example, not a summary of them.
-
-Brief the subagent with something like:
-
-> "Research the genetic lineage of the cannabis strain '<strain name>' for a
-> session-logging project. The user reports it's <claimed lineage, if any> —
-> verify this and trace the ancestry tree as deep as sourcing stays reliable
-> (parents, grandparents, further if well-documented), stopping and saying
-> so explicitly once sourcing thins out rather than guessing further back.
->
-> Source hierarchy — two tiers, not many: the producer's or breeder's own
-> site, or a dispensary page clearly quoting them directly, is the sole
-> anchor. Everything else — Leafly, AllBud, seed-bank listings, forums,
-> wikis, casual mentions — is not evidence on its own, no matter how
-> official-looking the site is. Treat every claim from a non-anchor source as
-> a lead to verify, not a fact to report: if it names something the anchor
-> doesn't cover, or there's no anchor at all, run a follow-up search on that
-> specific claim rather than either discarding it for looking unofficial or
-> accepting it for looking official. Confidence scales like this: an anchor
-> source confirming a claim is solid; multiple independent non-anchor sources
-> converging on the same claim (with no anchor available) is corroborated but
-> still attributed, not solid; a single non-anchor mention is a lead, not a
-> claim, until something else confirms it. If a non-anchor source conflicts
-> with the anchor, the anchor wins and the conflict gets reported, not
-> averaged away.
->
-> This is not a checklist to satisfy — running the minimum searches implied
-> and stopping is exactly the failure mode this brief exists to prevent.
-> Search for the producer's/breeder's own page specifically (`site:<their
-> domain> <strain>`, `"<producer name>" genetics <strain>`) as your first
-> move, not a fallback. Producers in this project range from a large,
-> well-documented company (710 Labs, this log's single most common producer)
-> to small, one-person operations with no web presence at all — don't assume
-> either way from the name; let what you actually find set your confidence.
-> Finding nothing for a small producer is a normal, complete outcome, not a
-> sign to try harder or feel apologetic about it. Stop searching only when
-> two searches or fetches in a row add nothing
-> you didn't already know — not after a fixed number of queries, and not
-> after a fixed number either way regardless of whether that point arrives
-> at search 2 (nothing published) or search 12 (a lot published). When a
-> result mentions a name, claim, or detail you didn't expect, decide
-> explicitly whether to chase it rather than noting it and moving on.
->
-> [paste in the stopping rule, accountability check, and worked example from
-> references/lineage_research_bar.md here]
->
-> Fetch and actually read the most promising pages with WebFetch rather than
-> trusting search snippets. Report back in under 500 words: the ancestry
-> tree as far as it's reliably sourced, which tier each claim came from,
-> your confidence per generation, any unresolved disagreement, and the
-> thread-accounting list (every named entity/claim you encountered, pursued
-> or not, and why)."
-
-Take whatever the subagent returns as an attributed claim ("per 710 Labs'
-own listing, as of this search"), not an established fact — lineage claims
-in this industry are frequently disputed or revised, and this project's
-epistemic standard already treats genetics-derived terpene inference as a
-hedge, not a measurement. If the subagent reports the lineage as unconfirmed
-past a certain generation, say so plainly in the terpene note rather than
-inferring terpenes from a shaky premise.
+Treat everything consumed as attributed claims, not established facts —
+lineage claims in this industry are frequently disputed or revised, and
+this project's epistemic standard already treats genetics-derived terpene
+inference as a hedge, not a measurement. If the entry reports the lineage
+as unconfirmed past a certain generation, say so plainly in the terpene
+note rather than inferring terpenes from a shaky premise.
 
 **3. Pick the info table shape.** Driven by the component count from step 1,
 never by the producer's product name:
@@ -376,7 +312,29 @@ pass, with anchor-confirmed crosses and full thread accounting. So the brief
 produces good research on both paths; only the handoff timing is unreliable.)
 Operational rule: spawn the subagent per this skill, but once step 1/3 prep
 is done, start the inline fallback in parallel rather than idling on the
-handoff — first usable result wins. Test outcome for the record: recreated
+handoff — first usable result wins.
+
+**Retrieval-tooling change — August 28, 2026 (A/B comparison, Red Pebbles,
+Erva × In House):** two Sonnet subagents ran this skill's research brief on
+the same strain, identical except the reading layer — one on the original
+WebFetch instruction, one on raw browser reads with WebFetch banned. Both
+reached the same honest "no public lineage" verdict, but the WebFetch agent's
+own methods note flagged two of its eight reads as likely incomplete
+(JS-rendered producer/dispensary pages returning image filenames or
+boilerplate), while the raw-read agent read those same pages fine (19 reads,
+no bot-walls) and went materially deeper: it found a second confirmed breeder
+partner (Three's Genetic Reserve) and the only public lineage claim for the
+strain (Terp Fountain Genetics, correctly left unadopted as a single
+non-anchor source) — a lead the producer's own Instagram menu later
+confirmed almost verbatim (Fruity Pebbles OG × Red Piegasm). Cost: ~1.6×
+tokens, ~2.2× wall time — accepted. That comparison drove the WebFetch ban,
+the Sonnet pin, and the login-gated-Instagram protocol.
+
+**Research moved out — August 30, 2026:** the lineage-research procedure
+(and `references/lineage_research_bar.md`) now lives in the research-strain
+skill (`.claude/skills/research-strain/SKILL.md`); step 2 here consumes the
+`research/` catalog and delegates fresh research to that skill. The July 2,
+2026 dogfood account below describes the old inline path — kept as history. Test outcome for the record: recreated
 jar matched golden on info-table shape, slug, boilerplate, and the
 load-position caveat; tier labeling followed this skill's current guidance
 (the golden predates it); lineage landed one generation shallower on the

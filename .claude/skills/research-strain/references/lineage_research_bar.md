@@ -1,5 +1,9 @@
 # What good lineage research actually looks like
 
+*(Moved from `.claude/skills/new-jar/references/` Aug 30, 2026 when the
+research workflow became the research-strain skill; content unchanged
+below except this note.)*
+
 This exists because a real research pass on "Papaya + Z Pie #22" (a 710 Labs
 jar) undershot badly compared to the same question run through Perplexity —
 not because the source-hierarchy design was wrong, but because the research
@@ -144,19 +148,16 @@ steps; both stopped when the evidence itself ran out.
 
 ## Provenance and maintenance
 
-Last verified against the repo: 2026-07-02. All three cases above are real
-outcomes from actual research runs, not hypothetical illustrations. The
-710 Labs and Nikka T cases trace to real jars in this log (`papzp22.py`,
-`oc.py`); the Swollen Heads case (Papaya con Chamoy) was a live research
-exercise on a strain that is not a logged jar — there is no
-`jars/<slug>.py` to diff it against — re-run the dogfood test pattern
-(hide a real jar in an isolated worktree per `SKILL.md`'s data-safety
-protocol, run this skill fresh against a reconstructed prompt, diff the
-result against `git show origin/main:jars/<slug>.py`) against a new strain
-if this file's guidance stops producing results this good.
+Last verified against the repo: 2026-07-02 (original); moved here
+2026-08-30. All three cases above are real outcomes from actual research
+runs, not hypothetical illustrations. The 710 Labs and Nikka T cases trace
+to real jars in this log (`papzp22.py`, `oc.py`); the Swollen Heads case
+(Papaya con Chamoy) was a live research exercise on a strain that is not a
+logged jar. The founding 27-strain campaign (Aug 2026) re-validated the
+disposition at fan-out scale — see the research-strain SKILL.md provenance.
 
 The "most producers here are small" claim is a fact about this project's
-actual jar log as of the date above, not a permanent property — re-check it
+actual jar log as of the original date, not a permanent property — re-check
 periodically:
 
 ```
