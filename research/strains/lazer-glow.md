@@ -1,7 +1,8 @@
 # Lazer Glow
 
 - **Grower:** Erva (stated) · **Processor:** In House (stated)
-- **Type:** listed with `+` — "Cuties + Lazer Jet + Uncle Lazer" — stated by Erva (8.25.26 drop menu). Whether that means a three-way cross or an In House-style co-press is NOT stated on the Erva menu; In House's `+` convention suggests blend, but Erva's menus haven't been confirmed to use the same convention — recorded as open.
+- **Type:** listed with `+` — cross vs co-press blend unresolved. Whether that means a three-way cross or an In House-style co-press is NOT stated on the Erva menu; In House's `+` convention suggests blend, but Erva's menus haven't been confirmed to use the same convention — recorded as open.
+- **Composition:** Cuties + Lazer Jet + Uncle Lazer — stated by Erva (8.25.26 drop menu), `+` verbatim; blend-vs-cross open (see Open questions)
 
 ## Component chains (all resolve)
 - Cuties → G.M.O × Mimosa (stated, Erva menu) → Chem D / GSC / Clementine / Purple Punch — terminates

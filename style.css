@@ -695,3 +695,179 @@ details.collapsible > .collapsible-body { padding: 1.5rem var(--page-pad); }
   body { padding: 0; }
   .doc { border-left: none; border-right: none; border-radius: 0; }
 }
+
+/* ── Research catalog (research.html) ────────────────────
+   Cards over the same tokens as the log. Rendered by
+   Dabby_Research_Renderer.py — no CDN, no fonts fetched. */
+
+.research-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: none;
+}
+
+.research-search .search-input { flex: 1; }
+
+.rc-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.research-list {
+  border: 1px solid var(--rule);
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+}
+
+.research-card { border-bottom: 1px solid var(--rule); }
+.research-card:last-of-type { border-bottom: none; }
+.research-card.hidden { display: none; }
+
+.research-card > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.6rem 0.85rem 0.6rem 0.7rem;
+  border-left: 3px solid var(--rule-2);
+  transition: background 0.1s;
+}
+
+.research-card > summary::-webkit-details-marker { display: none; }
+.research-card > summary:hover { background: var(--surface-sub); }
+.research-card[open] > summary { background: var(--surface-sub); border-left-color: var(--action); }
+
+.rc-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rc-name { font-weight: 600; font-size: 0.875rem; color: var(--text); }
+
+.rc-badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule-2);
+  color: var(--text-2);
+}
+
+.rc-blend      { background: #FFF0CC; color: #8A6000; border-color: transparent; }
+.rc-cross      { background: #D6EAF8; color: #1A4A6B; border-color: transparent; }
+.rc-wash       { background: var(--surface-sub); color: var(--text-2); }
+.rc-unresolved { background: transparent; color: var(--text-3); border-style: dashed; }
+
+.rc-status {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.rs-open::before { content: '○ '; }
+.rs-done::before { content: '● '; }
+.rs-none::before { content: '– '; }
+
+.rc-formula {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+
+.rc-ev {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--text-3);
+  letter-spacing: 0.03em;
+  margin-left: 0.25rem;
+}
+
+.rc-axes {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  margin-top: 0.1rem;
+  letter-spacing: 0.01em;
+}
+
+.rc-body, .research-doc {
+  padding: 0.85rem 1rem 1rem 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  border-top: 1px solid var(--rule);
+  overflow-wrap: anywhere;
+}
+
+.research-doc { padding: 0; border-top: none; }
+
+.rc-body h2, .research-doc h2 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin: 1rem 0 0.4rem;
+}
+
+.rc-body h2:first-child, .research-doc h2:first-child { margin-top: 0; }
+
+.research-doc h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 1rem 0 0.35rem;
+}
+
+.rc-body p, .research-doc p { margin: 0.4rem 0; }
+.rc-body ul, .research-doc ul { margin: 0.3rem 0 0.5rem 1.1rem; }
+.rc-body li, .research-doc li { margin: 0.2rem 0; }
+
+.rc-body a, .research-doc a { color: var(--action); text-decoration: none; }
+.rc-body a:hover, .research-doc a:hover { text-decoration: underline; }
+
+.rc-body code, .research-doc code {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  background: var(--surface-sub);
+  padding: 0 0.25rem;
+  border-radius: 2px;
+}
+
+.research-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin: 0.5rem 0 1rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.research-doc th, .research-doc td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.research-doc th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  background: var(--surface-sub);
+}
+
+.cover .subtitle a { color: var(--text-3); text-decoration: none; }
+.cover .subtitle a:hover { color: var(--action); }
