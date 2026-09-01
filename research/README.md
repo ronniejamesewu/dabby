@@ -17,8 +17,10 @@ here renders into `index.html`.
 
 ## Conventions (breaking these corrupts the record)
 
-- **Evidence words** — every claim carries exactly one: `user-direct`
-  (told to Eric directly — top tier) · `stated` (the named party published
+- **Evidence words** — every claim carries exactly one: `measured` (a
+  COA / lab panel — batch number and date required; the only tier above
+  a statement) · `user-direct`
+  (told to Eric directly — top tier for provenance) · `stated` (the named party published
   it; anchor) · `corroborated` (multiple independent non-anchor sources
   converge; attributed) · `lead` (single non-anchor mention) · `assumed`
   (reasoned default; the reasoning is named) · `undisclosed` (searched,
@@ -52,6 +54,9 @@ here renders into `index.html`.
   ("Inference: … Not measured.") — fuller interest reads happen in
   conversation, not in these files. Open questions state the gap, not
   the story of finding it.
+- **Every jar encounter is a capture event** (bought or not): label
+  photo plus the COA QR if the label carries one. Label claims are a new
+  claimant to diff against the entry; COA panels are `measured` data.
 - **Image archiving:** cited IG posts should have their menu slides
   screenshot-archived at capture time (posts and accounts vanish).
   Entries citing unarchived posts say `archive pending`.

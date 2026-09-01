@@ -67,8 +67,12 @@ inference.
 
 **1. Catalog check.** `Glob research/strains/*.md` and read any entry for
 the target (and `research/lineage_nodes.md` for its parents). Fresh found
-entry → skip to step 6. Not-found entry → note what was already searched;
-re-run only the gaps. Missing → continue.
+entry → skip to step 6 — unless there is an offer in hand (a jar, a
+label, a menu line, a seller's claim), in which case the hit is a
+**diff, not an answer**: the offer is a new claimant; report what it
+adds, what it agrees with, and what it conflicts with, and record the
+new claims. Not-found entry → note what was already searched; re-run
+only the gaps. Missing → continue.
 
 **2. Context gathering.** Producer/grower/washer as the user knows them
 (their wording, e.g. "grown by X, washed by Y", is the axes). Read
@@ -123,6 +127,20 @@ per the conventions; shared parents into `lineage_nodes.md` (never
 duplicated into strain files); brand deltas into `brands.md`; newly
 discovered productive surfaces appended to `SOURCES.md`. Then feature
 branch, commit, PR per CLAUDE.md.
+
+## Live mode — in-store or offered a jar
+
+Social latency is the constraint: a person is waiting. Two speeds, not
+two forks:
+- **Glance (seconds):** the rendered catalog on the phone. No session.
+- **Conversation (minutes):** jar/label photo in → catalog diff out (step
+  1's diff rule) → tensions and provenance. Aim the live answer at
+  **provenance triage and brand trust** (who washed, who grew, does
+  `brands.md` and the private reputation layer know them) — never at
+  live lineage research for an unknown strain; rushed lookups in a
+  name-collision field are where confident-wrong happens. Strain research
+  is homework from the captured photo, after.
+- Capture regardless of purchase: label photo + COA QR (`measured` tier).
 
 ## Recovery paths (don't improvise these)
 

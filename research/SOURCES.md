@@ -38,6 +38,25 @@ chatter is a timing signal only, never a quality input.
 | Seed retailers (Terpy Seeds, DC Seed Exchange, etc.) | Sometimes the only listing tying a breeder to a cultivar |
 | Forums (THCFarmer, Rollitup) | Occasionally the real story (Death Star); always attribute |
 
+## Open datasets and APIs (assessed Aug 31, 2026)
+
+| Source | Verdict |
+|---|---|
+| demarily "Cannabis Strains API" (api.demarily.dev/bud; 43k names from Hytiva/Leafly/AllBud/SeedFinder/Weedmaps; free 100 req/day) | Lineage/breeder fields hollow on known-answer probes (Sherbanger, Rainbow Belts → "Unknown"). BUT: variant-preserving name index (pheno #s and crosses kept as separate records), per-record `source_url` router, and Dutchie-image records with menu THC = retail-circulation signal. Use as collision/variant index + discovery router. Re-probe lineage fields ~Oct 2026 |
+| Goddard / Loyal9 cannabis-intelligence-database (GitHub; 15.7k strains CSV, MIT, Zenodo DOI) | Scraped seed-retailer product copy, regex-"AI" extracted; cultivation/retail fields, weak on parentage. Candidate local name-collision index only — check columns first |
+| Loyal9 grow_data (2.8k strains, Wikileaf scrape, categorical THC/CBD) | No lineage. Skip |
+| strain-database.com (claims 51.7k strains, "open-access") | GitHub org is an empty shell (profile README only); site Cloudflare-blocks automated access; never surfaced in any research pass. Treat as look-alike, not a source |
+| Strain Diary (iOS beta, straindiary.com) | Personal jar-level journal, not a data source. Relevant for its capture UX: label / COA-QR scan auto-fills entries — the pattern the capture protocol borrows |
+
+## Menu platforms (planned-trip adapters)
+
+| Platform | Read pattern |
+|---|---|
+| Dutchie embed | Wrapper pages are consent-gated iframes; the store id is in the `dutchie.com/api/v2/embedded-menu/<id>.js` script tag; read `dutchie.com/embedded-menu/<id>/products/<category>` directly — plain text. Multi-location wrappers carry one id per location |
+| Dutchie via WordPress (IgadI `cp-dutchie` plugin) | Server-rendered product pages; readable, but descriptions are boilerplate |
+| Weedmaps brand/dispensary pages | Readable; category filters are client-side (URL params ignored) |
+| Jane / iheartjane | Client-side search over an alphabetically paginated full list — load all, then filter |
+
 ## Known hazards
 
 - **"In House Genetics" (WA seed breeder, Branden Bond)** ≠ In House /
