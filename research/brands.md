@@ -1,18 +1,19 @@
 # Brands
 
-Brand-level metadata. Fields: **Roles** (grower / processor / breeder),
+Brand-level facts only: **Roles** (grower / processor / breeder),
 **Model**, **Channel** (licensed dispensary vs traditional market),
-**Trust notes** (claims track record; quality per Eric's jars). Trust
-posture: believe what a brand states, weighted by earned trust; mark what
-they don't state as unknown — never infer provenance nobody stated.
+stated partnerships, key surfaces. Reputation, watchlist status, and
+opinions are never recorded here — they live in the private memory
+layer. Posture: believe what a brand states; mark what they don't state
+as unknown — never infer provenance nobody stated.
 
 ## Colorado ecosystem (research targets — none acquired as of Aug 30, 2026)
 
 ### Erva (@ervacolorado)
 Grower + breeder-adjacent (works with TGR/Terp Fountain lines). Licensed
 CO cultivation only — no MIP license, cannot process own flower (structural
-reason for the In House collab, stated by Eric Aug 2026). Stellar
-cultivation rep (user-direct). Publishes lineage-rich IG drop menus —
+reason for the In House collab, stated by Eric Aug 2026). Publishes
+lineage-rich IG drop menus —
 anchor surface. "Erva" = "herb" in Portuguese (their own menu footer).
 Reciprocal-cross-level precision on menus (Rainbow Colonel vs Rainbow Chem).
 **Stated breeder roster** (Erva's own credit comment, 8.7.26 drop post,
