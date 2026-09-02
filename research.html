@@ -1055,11 +1055,11 @@ chatter is a timing signal only, never a quality input.</p>
 <tbody>
 <tr>
 <td>Dutchie embed</td>
-<td>Wrapper pages are consent-gated iframes; the store id is in the <code>dutchie.com/api/v2/embedded-menu/&lt;id&gt;.js</code> script tag; read <code>dutchie.com/embedded-menu/&lt;id&gt;/products/&lt;category&gt;</code> directly — plain text. Multi-location wrappers carry one id per location</td>
+<td>dutchie.com itself returns 403 (Cloudflare) to scripts — read via browser only, or via a WordPress proxy (next row). Wrapper pages are consent-gated iframes; the store id is in the <code>dutchie.com/api/v2/embedded-menu/&lt;id&gt;.js</code> script tag; read <code>dutchie.com/embedded-menu/&lt;id&gt;/products/&lt;category&gt;</code> directly — plain text. Multi-location wrappers carry one id per location</td>
 </tr>
 <tr>
 <td>Dutchie via WordPress (IgadI <code>cp-dutchie</code> plugin)</td>
-<td>Server-rendered product pages; readable, but descriptions are boilerplate</td>
+<td>Listing is filled client-side, but the plugin proxies Dutchie's GraphQL at <code>&lt;site&gt;/wp-json/cannaplanners/v1/graphql/</code> — no Cloudflare wall, arbitrary Dutchie Plus queries accepted; per-location retailer ids sit in the shop page as <code>data-retailer-id</code>. This is the <code>menu_fetch.py</code> adapter (<code>dutchie-wp</code>, Sept 2 2026). Descriptions are boilerplate</td>
 </tr>
 <tr>
 <td>Weedmaps brand/dispensary pages</td>
@@ -1080,6 +1080,10 @@ chatter is a timing signal only, never a quality input.</p>
 <li>Private IG accounts (@jlsmonster, @terpfountaingenetics as of Aug 30
   2026) — bios readable, grids need a follow (user's call, user's account).</li>
 <li>Cloudflare walls: strainly.io. Age-gate JS: maikohholistics.com.</li>
+<li>Dutchie's brand records are platform-wide and collide: the "ERVA" brand
+  object on IgadI's menu carries a Massachusetts hemp company's description
+  while the products are Erva Colorado's. Product names, not brand
+  descriptions, identify the producer (Sept 2 2026).</li>
 <li>Content farms (JointCommerce) — AI-generated strain pages; never a
   corroboration vote on their own.</li>
 </ul></div></details><details class="collapsible grey" id="conventions"><summary><h2>Conventions</h2></summary><div class="collapsible-body research-doc"><p>Pre-jar knowledge layer: what is known about strains <em>before</em> (and independent
@@ -1176,7 +1180,7 @@ questions</code> heading marks the card open. Regenerate after any catalog edit.
 workers on the raw-read contract plus logged-in Instagram menu reads.
 Campaign record lives in the session transcript; per-claim provenance
 lives in each entry.</p></div></details>
-<div class="footer">Document last updated: September 01, 2026 &nbsp;·&nbsp; 37 entries &nbsp;·&nbsp; Dabby the House Rig</div>
+<div class="footer">Document last updated: September 02, 2026 &nbsp;·&nbsp; 37 entries &nbsp;·&nbsp; Dabby the House Rig</div>
 </div>
 <script>
 (function(){
