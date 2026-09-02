@@ -4,3 +4,7 @@ __pycache__/
 .claude/settings.local.json
 .claude/worktrees/
 run_facts/
+
+# shopping layer: fetched menu rows and browser dumps are ephemeral
+shopping/rows/
+shopping/BUILD_SPEC_tmp.md

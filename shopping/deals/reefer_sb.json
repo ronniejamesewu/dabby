@@ -1,0 +1,305 @@
+{
+  "store": "reefer_sb",
+  "captured": "2026-09-02",
+  "source": "reefermadnessdenver.com",
+  "deals": [
+    {
+      "id": "reefer_inhousemelts_mon",
+      "name": "In-House Melts 25% off (most products)",
+      "source": "posted",
+      "kind": "percent",
+      "value": 25,
+      "brand": "In House Melts",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        1
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "exclusions unstated"
+    },
+    {
+      "id": "reefer_trichomecollective_tue",
+      "name": "Trichome Collective 15%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 15,
+      "brand": "Trichome Collective",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        2
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "none noted"
+    },
+    {
+      "id": "reefer_wyldgoodtide_wed",
+      "name": "Wyld/Good Tide gummies 20%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 20,
+      "brand": "Wyld",
+      "scope": "brand",
+      "category": "gummies",
+      "days": [
+        3
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "Gummies, not concentrate; kept for completeness. Also covers Good Tide (separate brand text, same tier)."
+    },
+    {
+      "id": "reefer_edun_wed",
+      "name": "Edun 15%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 15,
+      "brand": "Edun",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        3
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "none noted"
+    },
+    {
+      "id": "reefer_singlesource_thu",
+      "name": "Single Source Thursdays 15% off ALL products",
+      "source": "posted",
+      "kind": "percent",
+      "value": 15,
+      "brand": null,
+      "scope": "store",
+      "category": null,
+      "days": [
+        4
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "Storewide, all products, Thursdays."
+    },
+    {
+      "id": "reefer_goodtrees_premium_fri",
+      "name": "Good Trees 20% premium rosin",
+      "source": "posted",
+      "kind": "percent",
+      "value": 20,
+      "brand": "Good Trees",
+      "scope": "brand",
+      "category": "premium rosin",
+      "days": [
+        5
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [
+        "(?i)full spec"
+      ],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "Premium tier; the 15% full-spec tier is a separate entry (reefer_goodtrees_fullspec_fri)."
+    },
+    {
+      "id": "reefer_goodtrees_fullspec_fri",
+      "name": "Good Trees 15% full spec rosin",
+      "source": "posted",
+      "kind": "percent",
+      "value": 15,
+      "brand": "Good Trees",
+      "scope": "brand",
+      "category": "full spec rosin",
+      "days": [
+        5
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": [
+        "(?i)full spec"
+      ],
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "Full-spec tier; the 20% premium tier is a separate entry (reefer_goodtrees_premium_fri)."
+    },
+    {
+      "id": "reefer_goodtrees_edibles_fri",
+      "name": "Good Trees 10% edibles",
+      "source": "posted",
+      "kind": "percent",
+      "value": 10,
+      "brand": "Good Trees",
+      "scope": "brand",
+      "category": "edibles",
+      "days": [
+        5
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "Edibles, not concentrate; kept for completeness."
+    },
+    {
+      "id": "reefer_nattyrems_flower_fri",
+      "name": "Natty Rems flower 15%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 15,
+      "brand": "Natty Rems",
+      "scope": "brand",
+      "category": "flower",
+      "days": [
+        5
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "Flower, not concentrate; kept for completeness."
+    },
+    {
+      "id": "reefer_soikubano_sat",
+      "name": "Soiku Bano 20%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 20,
+      "brand": "Soiku Bano",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        6
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "none noted"
+    },
+    {
+      "id": "reefer_dialedin_sat",
+      "name": "Dialed In 20%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 20,
+      "brand": "Dialed In",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        6
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "none noted"
+    },
+    {
+      "id": "reefer_dosd_sat",
+      "name": "DOS'D 20% (med)",
+      "source": "posted",
+      "kind": "percent",
+      "value": 20,
+      "brand": "DOS'D",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        6
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "med",
+      "stack": "unknown",
+      "notes": "Medical menu only; will not match rec rows."
+    },
+    {
+      "id": "reefer_seedandsmith_sun",
+      "name": "Seed & Smith 15% (live resin carts + dabs)",
+      "source": "posted",
+      "kind": "percent",
+      "value": 15,
+      "brand": "Seed & Smith",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        0
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "none noted"
+    },
+    {
+      "id": "reefer_sunshine_sun",
+      "name": "Sunshine 10%",
+      "source": "posted",
+      "kind": "percent",
+      "value": 10,
+      "brand": "Sunshine",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        0
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "unknown",
+      "notes": "none noted"
+    }
+  ]
+}

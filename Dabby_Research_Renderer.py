@@ -50,6 +50,17 @@ TYPE_BADGES = (
 )
 NO_FORMULA_BADGES = {"wash"}
 
+# A pheno number stated on the Type line but not carried into the formula
+# bullet itself — e.g. "single cultivar, pheno **#9**" — Perle di Sole and
+# Zcrewdriver share an identical formula and are distinguished only by this.
+PHENO_TYPE_RE = re.compile(r"pheno\s+#(\d+)")
+
+# Node-name bullets in lineage_nodes.md: "- **Name** = ..." or "- **Name** — ...".
+NODE_BULLET_RE = re.compile(r"^- \*\*(.+?)\*\*", re.M)
+
+# A parent list split on the verbatim cross (×) / co-press (+) symbols.
+PARENT_SPLIT_RE = re.compile(r"(\s[×+]\s)")
+
 
 # ── Parsing ───────────────────────────────────────────────────────────────────
 
@@ -144,6 +155,49 @@ def evidence_word(val):
     return m.group(1) if m else ""
 
 
+def kebab(name):
+    """'TMZ (Too Much Zkittlez)' -> 'tmz'; 'Guava'z' -> 'guava-z'. Drops any
+    parenthetical before kebabbing so pheno-count asides ('(phenos #74/#62)')
+    and mid-name parentheticals normalize the same way."""
+    name = re.sub(r"\([^)]*\)", "", name)
+    name = re.sub(r"[^a-z0-9]+", "-", name.lower())
+    return name.strip("-")
+
+
+def parse_node_ids(nodes_md):
+    """Every '- **Node Name** ...' bullet in lineage_nodes.md -> its kebab id."""
+    return {kebab(m) for m in NODE_BULLET_RE.findall(nodes_md)}
+
+
+def link_formula(formula, node_ids):
+    """Escape a formula line, linking any × / + separated parent whose kebab
+    matches a lineage-node id to '#node-<id>'."""
+    parts = PARENT_SPLIT_RE.split(formula)
+    out = []
+    for part in parts:
+        if PARENT_SPLIT_RE.fullmatch(part):
+            out.append(esc(part))
+            continue
+        nid = kebab(part)
+        if nid in node_ids:
+            out.append(f'<a href="#node-{nid}">{esc(part)}</a>')
+        else:
+            out.append(esc(part))
+    return "".join(out)
+
+
+LI_STRONG_RE = re.compile(r"<li><strong>(.*?)</strong>")
+
+
+def add_node_ids(nodes_html):
+    """Give each lineage-node <li> (one whose first child is <strong>) an
+    id="node-<kebab>" so strain-card formulas can link straight to it."""
+    def repl(m):
+        nid = kebab(m.group(1))
+        return f'<li id="node-{nid}"><strong>{m.group(1)}</strong>'
+    return LI_STRONG_RE.sub(repl, nodes_html)
+
+
 # ── Markdown rendering ────────────────────────────────────────────────────────
 
 LINK_RE = re.compile(r"\]\(((?:\.\./)?)([A-Za-z0-9_-]+)\.md\)")
@@ -176,7 +230,7 @@ def esc(s):
 
 # ── Page assembly ─────────────────────────────────────────────────────────────
 
-def card_html(e):
+def card_html(e, node_ids):
     f = e["fields"]
     grower = short_axis(f.get("Grower", "—"))
     proc = short_axis(f.get("Processor", "—"))
@@ -186,6 +240,15 @@ def card_html(e):
     else:
         formula = strip_md(f.get("Type", ""))
         ev = evidence_word(f.get("Type", ""))
+    formula_html = link_formula(formula, node_ids)
+    # A pheno number stated on the Type line but absent from the formula
+    # itself distinguishes otherwise-identical formulas (e.g. Perle di Sole
+    # vs Zcrewdriver, both "TMZ × Orange Mints"). Appended as plain text —
+    # never folded into the linked formula above.
+    if "#" not in formula:
+        pheno_m = PHENO_TYPE_RE.search(strip_md(f.get("Type", "")))
+        if pheno_m:
+            formula_html += f" #{pheno_m.group(1)}"
     search = " ".join([e["title"], formula, grower, proc, e["badge"], f.get("Breeder", ""), f.get("Spelling", "")]).lower()
     status_cls = {"open": "rs-open", "terminated": "rs-done", "none noted": "rs-none"}[e["status"]]
     status_txt = {"open": "open questions", "terminated": "chain terminated", "none noted": "no open questions"}[e["status"]]
@@ -198,7 +261,7 @@ def card_html(e):
         f'<span class="rc-badge rc-{e["badge"]}">{esc(e["badge"])}</span>'
         f'<span class="rc-status {status_cls}">{status_txt}</span>'
         f'</div>'
-        f'<div class="rc-formula">{esc(formula)} {ev_html}</div>'
+        f'<div class="rc-formula">{formula_html} {ev_html}</div>'
         f'<div class="rc-axes">grower: {esc(grower)} &nbsp;·&nbsp; processor: {esc(proc)}</div>'
         f'</summary>'
         f'<div class="rc-body">{md_to_html(e["markdown"])}</div>'
@@ -230,17 +293,20 @@ count.textContent=v+" of "+cards.length;
 inp.addEventListener("input",apply);apply();
 })();
 (function(){
-function openTarget(hash){if(!hash)return;var el=document.querySelector(hash);if(el&&el.tagName==="DETAILS")el.open=true;}
+function openAncestors(el){while(el){if(el.tagName==="DETAILS")el.open=true;el=el.parentElement;}}
+function openTarget(hash){if(!hash)return;openAncestors(document.querySelector(hash));}
 openTarget(window.location.hash);
 window.addEventListener("hashchange",function(){openTarget(window.location.hash);});
 document.querySelectorAll("a[href^='#']").forEach(function(a){a.addEventListener("click",function(){
-var t=document.querySelector(this.getAttribute("href"));if(t&&t.tagName==="DETAILS")t.open=true;});});
+openAncestors(document.querySelector(this.getAttribute("href")));});});
 })();
 </script>"""
 
 
 def build_html(entries):
-    cards = "".join(card_html(e) for e in entries)
+    nodes_md = (RESEARCH / "lineage_nodes.md").read_text(encoding="utf-8")
+    node_ids = parse_node_ids(nodes_md)
+    cards = "".join(card_html(e, node_ids) for e in entries)
     browser = (
         '<div class="section" id="catalog">'
         '<div class="section-header"><h2>Strain Catalog</h2></div>'
@@ -255,7 +321,7 @@ def build_html(entries):
         '</div>'
     )
 
-    nodes = md_to_html((RESEARCH / "lineage_nodes.md").read_text(encoding="utf-8"))
+    nodes = add_node_ids(md_to_html(nodes_md))
     brands = md_to_html((RESEARCH / "brands.md").read_text(encoding="utf-8"))
     sources = md_to_html((RESEARCH / "SOURCES.md").read_text(encoding="utf-8"))
     conventions = md_to_html((RESEARCH / "README.md").read_text(encoding="utf-8"))

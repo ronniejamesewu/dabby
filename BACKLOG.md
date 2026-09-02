@@ -9,13 +9,26 @@ history in git).
 
 - **Research layer display & shopping workflow** — plan in
   `research/design/SHOPPING_PLAN.md`. Build 1 (`research.html` via
-  `Dabby_Research_Renderer.py`, doubles as catalog validator) and the first
-  Build 3 adapter (`menu_fetch.py`, dutchie-wp proxy, IgadI registered)
-  shipped Sept 2, 2026. Remaining: more adapters only when a trip exposes
-  friction (Weedmaps, Jane, direct Dutchie needs a browser read); cross-shop
-  summary (same jar across locations) is near-free on the existing rows;
-  bookmark trip page parked; trip sheets by email-to-self; menu-image
-  archiving still aspirational. Reputation stays in the private memory layer.
+  `Dabby_Research_Renderer.py`, doubles as catalog validator) shipped Sept
+  2, 2026; card node-anchors and pheno-in-formula display shipped Sept 2,
+  2026. Build 3 (`menu_fetch.py`) grew from one adapter to five platforms
+  across a seven-store survey Sept 2, 2026: dutchie-wp (IgadI, script),
+  dutchie-embed (Lightshade Federal Heights, Magnolia Road Broomfield,
+  Reefer Madness ND/SB — browser pane only), dispense (The Dab Broomfield,
+  script), weedmaps (Maikoh Boulder + Denver, script), sweed (Krystaleaves
+  Denver, script) — plus `join`/`snippet`/`fixtures` and the jar/entry/
+  node/classic join tiers. Build 4 (`menu_price.py`: price, forecast,
+  deals fetch; `shopping/deals/*.json` schema) shipped the same date.
+  Remaining: tax-basis receipts still needed for Reefer Madness (ND/SB),
+  Krystaleaves, and Maikoh (all recorded `unknown`); the Reefer Madness
+  stacking rule is unresolved (store config says compounding, individual
+  specials say non-stacking — both recorded, not reconciled); Maikoh's
+  promo codes have no schedule to key deals off of; cross-shop summary
+  (same jar across locations) is keyed on parsed strain name only, not yet
+  exercised at scale; Jane and direct (non-embed) Dutchie stay parked for
+  when a trip exposes friction there; bookmark trip page parked; trip
+  sheets by email-to-self; menu-image archiving still aspirational.
+  Reputation stays in the private memory layer.
 
 - **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed in Sessions 15, 27, 94, 95, 100, and 101. Session 98 partial fix: CLAUDE.md restructured to split session-start reads into always-reads and conditional reads. Session 101: mandatory reads moved to a blockquoted gate at the top of CLAUDE.md, before any project context, with explicit "do not respond first and read later" language. Hook approach evaluated in depth Session 101 and deferred — downsides (staleness within session from one-time injection, double reads if CLAUDE.md still triggers Read calls, unconditional context loading on every session, Windows/PowerShell platform friction, invisible injection making debugging harder) outweigh the benefit over a stronger CLAUDE.md gate. If the Session 101 gate still fails, revisit the hook — the evaluation and tradeoffs are documented here. Session 141 update: the dab skill is now the primary mechanism — it triggers on dab intent (the exact condition under which the gate historically failed) and sequences the reads, with `/dab` as a deterministic manual path; the CLAUDE.md gate remains the backstop for non-dab sessions. Revisit the hook only if skill triggering proves unreliable in practice.
 

@@ -1,0 +1,66 @@
+{
+  "store": "thedab_broomfield",
+  "captured": "2026-09-02",
+  "source": "thedab_broomfield feed (live fetch)",
+  "deals": [
+    {
+      "id": "thedab_broomfield_disc_0",
+      "name": "Fat Grams (Glacier) 25%",
+      "kind": "percent",
+      "value": 25.0,
+      "brand": "Fat Grams (Glacier)",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        3
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "no",
+      "notes": "aggregated from per-product discounts[] (type PERCENT only)"
+    },
+    {
+      "id": "thedab_broomfield_disc_1",
+      "name": "Harmony 24%",
+      "kind": "percent",
+      "value": 24.0,
+      "brand": "Harmony",
+      "scope": "brand",
+      "category": null,
+      "days": [
+        2,
+        3
+      ],
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "no",
+      "notes": "aggregated from per-product discounts[] (type PERCENT only)"
+    },
+    {
+      "id": "thedab_broomfield_disc_2",
+      "name": "Leiffa 25%",
+      "kind": "percent",
+      "value": 25.0,
+      "brand": "Leiffa",
+      "scope": "brand",
+      "category": null,
+      "days": null,
+      "start": null,
+      "end": null,
+      "hours": null,
+      "excludes": [],
+      "includes": null,
+      "menu_type": "rec",
+      "stack": "no",
+      "notes": "aggregated from per-product discounts[] (type PERCENT only)"
+    }
+  ]
+}

@@ -73,6 +73,13 @@ named cultivar) unless the Type is a wash / mix / hunt. The card's badge
 reads the Type designation (text before the first ` — `); an `## Open
 questions` heading marks the card open. Regenerate after any catalog edit.
 
+Each `lineage_nodes.md` bullet renders with an `id="node-<kebab-of-name>"`
+on its `<li>`, and a strain card's formula line links any `×`/`+`-joined
+parent whose kebab matches a node id straight to it. A pheno number
+stated only on the Type line (not carried into the formula bullet) is
+appended to the card's formula display so two phenos of the same cross
+(e.g. Perle di Sole #9 / Zcrewdriver #6) don't render identical cards.
+
 ## Provenance
 
 Created Aug 30, 2026 from the founding research campaign: 27 strains
