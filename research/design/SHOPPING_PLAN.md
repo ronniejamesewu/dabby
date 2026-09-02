@@ -49,13 +49,25 @@ adjective.
 
 ## Build 3 — menu adapters (planned-trip workflow)
 
+**Built Sept 2, 2026** as `menu_fetch.py` (`list` / `discover` / `fetch`).
+First adapter is `dutchie-wp`: dutchie.com blocks scripts outright
+(Cloudflare 403), but sites on the cp-dutchie WordPress plugin proxy
+Dutchie's GraphQL unauthenticated — the script sends the plugin's own
+menu query, paginates, normalizes variants to rows (location, brand,
+strain, form, subcategory, size, price, special, qty, THC), joins the
+strain segment of the product name against catalog entry titles and
+lineage-node names, and prints the rundown table. Filters: subcategory,
+brand substring, in-stock only by default. IgadI's eight locations are
+registered; `discover <shop url>` reads retailer ids off any cp-dutchie
+site. Watchlist filtering stays in conversation (private layer).
+
 - `menu_fetch` script with per-platform adapters producing a normalized
   in-stock concentrate list (brand, product, size, price, promo).
   Platforms seen: Dutchie (direct
   `dutchie.com/embedded-menu/<store-id>/products/<category>` is raw-
   readable; store id sits in the dispensary page's embed-script tag;
   wrappers are consent-gated), Dutchie-via-WordPress (IgadI's
-  `cp-dutchie` plugin renders server-side), Weedmaps brand/dispensary
+  `cp-dutchie` plugin proxies GraphQL — see above), Weedmaps brand/dispensary
   pages (readable), Jane (client-side search, load-all-then-filter).
 - Workflow: name dispensaries → script pulls stock → filter to watchlist
   brands → join against catalog (known → card; unknown → research-strain
@@ -95,4 +107,6 @@ adjective.
 1. Bookkeeping (this doc, atlas, skill amendments) — done Aug 31, 2026.
 2. Build 1 renderer, own PR.
 3. Build 2 memory file — done alongside bookkeeping.
-4. Build 3 adapters — after first planned trip exposes real friction.
+4. Build 3 adapters — first adapter (dutchie-wp) built Sept 2, 2026 ahead
+   of a trip; further adapters (Weedmaps, Jane, direct Dutchie via browser)
+   wait for real friction.

@@ -52,8 +52,8 @@ chatter is a timing signal only, never a quality input.
 
 | Platform | Read pattern |
 |---|---|
-| Dutchie embed | Wrapper pages are consent-gated iframes; the store id is in the `dutchie.com/api/v2/embedded-menu/<id>.js` script tag; read `dutchie.com/embedded-menu/<id>/products/<category>` directly — plain text. Multi-location wrappers carry one id per location |
-| Dutchie via WordPress (IgadI `cp-dutchie` plugin) | Server-rendered product pages; readable, but descriptions are boilerplate |
+| Dutchie embed | dutchie.com itself returns 403 (Cloudflare) to scripts — read via browser only, or via a WordPress proxy (next row). Wrapper pages are consent-gated iframes; the store id is in the `dutchie.com/api/v2/embedded-menu/<id>.js` script tag; read `dutchie.com/embedded-menu/<id>/products/<category>` directly — plain text. Multi-location wrappers carry one id per location |
+| Dutchie via WordPress (IgadI `cp-dutchie` plugin) | Listing is filled client-side, but the plugin proxies Dutchie's GraphQL at `<site>/wp-json/cannaplanners/v1/graphql/` — no Cloudflare wall, arbitrary Dutchie Plus queries accepted; per-location retailer ids sit in the shop page as `data-retailer-id`. This is the `menu_fetch.py` adapter (`dutchie-wp`, Sept 2 2026). Descriptions are boilerplate |
 | Weedmaps brand/dispensary pages | Readable; category filters are client-side (URL params ignored) |
 | Jane / iheartjane | Client-side search over an alphabetically paginated full list — load all, then filter |
 
@@ -66,5 +66,9 @@ chatter is a timing signal only, never a quality input.
 - Private IG accounts (@jlsmonster, @terpfountaingenetics as of Aug 30
   2026) — bios readable, grids need a follow (user's call, user's account).
 - Cloudflare walls: strainly.io. Age-gate JS: maikohholistics.com.
+- Dutchie's brand records are platform-wide and collide: the "ERVA" brand
+  object on IgadI's menu carries a Massachusetts hemp company's description
+  while the products are Erva Colorado's. Product names, not brand
+  descriptions, identify the producer (Sept 2 2026).
 - Content farms (JointCommerce) — AI-generated strain pages; never a
   corroboration vote on their own.

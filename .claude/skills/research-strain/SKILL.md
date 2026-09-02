@@ -128,6 +128,19 @@ duplicated into strain files); brand deltas into `brands.md`; newly
 discovered productive surfaces appended to `SOURCES.md`. Then feature
 branch, commit, PR per CLAUDE.md.
 
+## Planned trip — desktop, before leaving
+
+Retrieval is code: `python menu_fetch.py fetch <source>:<location>[,...]
+[--sub ROSIN,HASH] [--brands "In House,Erva"]` (`list` shows registered
+locations; `discover <shop url>` reads retailer ids off a new cp-dutchie
+site). The table it prints is the rundown — rows already joined to the
+catalog (`entry: <slug>` / `lineage node` / `unknown`). From there:
+filter to the watchlist (private memory layer, never a script flag in the
+repo), open the catalog cards for known rows, run step 1's diff rule on
+anything whose menu line adds a claim, and send unknown strains through
+steps 2–7 only if they are actually candidates. Stock and prices never
+enter the repo; the trip sheet goes by email-to-self.
+
 ## Live mode — in-store or offered a jar
 
 Social latency is the constraint: a person is waiting. Two speeds, not

@@ -8,13 +8,14 @@ history in git).
 ## Open
 
 - **Research layer display & shopping workflow** — plan in
-  `research/design/SHOPPING_PLAN.md` (Aug 31, 2026). Build order: (1)
-  `research.html` renderer as its own PR — standalone script, cards +
-  expandable entries, doubles as catalog validator, existing CSS, no CDN;
-  (2) menu-adapter script for planned trips (Dutchie direct-URL pattern
-  proven), after a first real trip exposes the friction; cross-shop and a
-  bookmark trip page parked. Trip sheets go by email-to-self. Reputation
-  lives in the private memory layer, never the repo.
+  `research/design/SHOPPING_PLAN.md`. Build 1 (`research.html` via
+  `Dabby_Research_Renderer.py`, doubles as catalog validator) and the first
+  Build 3 adapter (`menu_fetch.py`, dutchie-wp proxy, IgadI registered)
+  shipped Sept 2, 2026. Remaining: more adapters only when a trip exposes
+  friction (Weedmaps, Jane, direct Dutchie needs a browser read); cross-shop
+  summary (same jar across locations) is near-free on the existing rows;
+  bookmark trip page parked; trip sheets by email-to-self; menu-image
+  archiving still aspirational. Reputation stays in the private memory layer.
 
 - **SessionStart hook to enforce required file reads** — CLAUDE.md instructions alone have failed in Sessions 15, 27, 94, 95, 100, and 101. Session 98 partial fix: CLAUDE.md restructured to split session-start reads into always-reads and conditional reads. Session 101: mandatory reads moved to a blockquoted gate at the top of CLAUDE.md, before any project context, with explicit "do not respond first and read later" language. Hook approach evaluated in depth Session 101 and deferred — downsides (staleness within session from one-time injection, double reads if CLAUDE.md still triggers Read calls, unconditional context loading on every session, Windows/PowerShell platform friction, invisible injection making debugging harder) outweigh the benefit over a stronger CLAUDE.md gate. If the Session 101 gate still fails, revisit the hook — the evaluation and tradeoffs are documented here. Session 141 update: the dab skill is now the primary mechanism — it triggers on dab intent (the exact condition under which the gate historically failed) and sequences the reads, with `/dab` as a deterministic manual path; the CLAUDE.md gate remains the backstop for non-dab sessions. Revisit the hook only if skill triggering proves unreliable in practice.
 
