@@ -194,3 +194,50 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   Palms for Bloom Seed Co, later refined/released by Oni as F2).
 - **Mazar** = Skunk #1 × Afghani (Dutch Passion's own page, anchor);
   Erva's specific cut unpinned — industry-standard usage assumed.
+
+## Erva 9.5.26 drop and ONI pass (Sept 2–3, 2026)
+
+- **Banana Shack** = Honey Bananas × JOMO — stated (Farmhouse Studio
+  Genetics / Shwale, own storefront shwale.com/product/banana-shack/,
+  Sept 3 2026). Honey Bananas = the Honey Banana node above.
+- **JOMO** = GMO Cookies × Sugar Shack — corroborated (SeedFinder,
+  Farmhouse Genetics entry; breeder page not read for this node). Name
+  expansion "Joy Of Missing Out" — lead (search snippet). Sugar Shack →
+  Sugar Coat × Baker's Dozen (SeedFinder only) → classics per
+  SeedFinder's render — not independently re-verified.
+- **Diamond Glands** = Sugar Coat backcrossed with JOMO — stated
+  (Shwale's own blog, June 6 2026: "when we 'grandma' backcrossed 'Sugar
+  Coat' with 'JOMO'"). SeedFinder's shorthand "Sugar Coat x Jomo" drops
+  the backcross detail — the breeder's wording is kept.
+- **Sugar Coat** = Glazed Donuts F1 × The Truth — lead (SeedFinder only)
+  → Purple Punch / Larry OG / GDP / Wedding Cake / GSC per SeedFinder's
+  render. Not cross-checked at a second source.
+- **Biscotti Chunks** — undisclosed for Erva's cultivar (Rainbow Sundae).
+  Not on Erva's stated roster: Bloom's full catalog, Fruitfull's
+  library, TGR site search all negative (Sept 3 2026). Lead: Cannarado's
+  "Biscotti Chunks" — grower Local Grove states "GMO x Legend OG with
+  Biscotti Sundae" (localgrove.com) — not tied to Erva. Collision:
+  Torus Culture's own "Rainbow Sundae" = Fatso Biscotti × Rainbow Belts
+  3.0 (torusculture.com) — a different cultivar sharing the child's name.
+- **Certified Jelly** — undisclosed (Garlic Hard-Scarf parent). Searched
+  Sept 3 2026: general web, roster-breeder site searches, Colorado menu
+  searches. Only unrelated "Jelly" cultivars surface. Re-run.
+- **Cosmic Z** — undisclosed (Cosmic Juice component). Searched Sept 3
+  2026; only an unrelated California retail listing with no breeder
+  stated. Re-run.
+- **Trophy Wife (Surfr Seeds)** = Triangle Mints × Triangle Mints F2 —
+  corroborated (SeedFinder's Surfr entry, converging with Surfr's own
+  Point Break page naming the parent; Sept 2 2026). Collisions, not
+  merged: Trophy Wife (Unknown or Legendary) = The Wife × Cherry Wine
+  (CBD line); Trophy Wife (7 East Genetics) BX2 = (Mac1 × BlueBerry
+  Dragon Fire) × DreamCoat.
+- **Triangle Mints** = Triangle Kush × Animal Mints — corroborated
+  (SeedFinder). Triangle Kush → Emerald Triangle unknown × Hindu Kush
+  (landrace terminal); Animal Mints → Animal Cookies × SinMint Cookies →
+  GSC (×2), OG Kush (Fire cut), Blueberry via Blue Power / White
+  Moonshine — terminates.
+- **Original Diesel** (the Daywrecker / Headband cut, not 707 Headband)
+  = Chemdawg × (Mass Super Skunk × Sensi NL) — corroborated (SeedFinder,
+  three breeder entries all resolving to this cut; Sept 2 2026). Whether
+  ONI's "Original Diesel" jar is this cut is undisclosed — see
+  [strains/original-diesel.md](strains/original-diesel.md).
