@@ -20,12 +20,14 @@ jobs:
           python-version: '3.x'
       - name: Generate log
         run: python3 Dabby_Log_Generator.py
+      - name: Render research catalog
+        run: pip install markdown && python3 Dabby_Research_Renderer.py
       - name: Stale wisdom brief guard
         # WISDOM_BRIEF.md is generated and committed; a diff here means an entry
         # was edited without rerunning the generator (or the brief was hand-edited).
         run: git diff --exit-code WISDOM_BRIEF.md
       - name: Prepare
-        run: mkdir -p _site && cp index.html style.css _site/
+        run: mkdir -p _site && cp index.html research.html style.css _site/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

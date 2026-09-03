@@ -128,6 +128,42 @@ duplicated into strain files); brand deltas into `brands.md`; newly
 discovered productive surfaces appended to `SOURCES.md`. Then feature
 branch, commit, PR per CLAUDE.md.
 
+## Planned trip — desktop, before leaving
+
+Retrieval is code. Script-fetchable stores (dutchie-wp, dispense,
+weedmaps, sweed): `python menu_fetch.py fetch <keys|all-script> [--sub
+ROSIN,HASH] [--brands "In House,Erva"] [--json out]` (`list` shows
+registered stores; `discover <shop url>` reads retailer ids off a new
+cp-dutchie site). Dutchie-embed stores (Lightshade, Magnolia, Reefer
+Madness — dutchie.com Cloudflare-walls scripts): `menu_fetch.py snippet
+<store_key>` prints the browser JS, run it in the browser pane against
+that store's `embedded-menu` page, then `menu_fetch.py join --json
+<dump.json>` joins the pane's result the same way. Either path's table is
+the rundown — rows already joined to the catalog (`jar` / `entry` /
+`node` / `classic` / unmatched), never joined on a platform's own POS
+strain field.
+
+Weekly posted deals (store-published text, not the feed) are read
+separately: Reefer Madness is script-scraped from
+reefermadnessdenver.com; Lightshade's are read only through the user's
+Chrome (r/LightshadeDispensary and the weekly r/COents thread — not the
+browser pane, not a script). Write each store's read to
+`shopping/deals/<store>.json` per the schema in
+`research/design/SHOPPING_PLAN.md` Build 4, with a capture date.
+Exclusions (`excludes` regexes) are applied to the raw product name
+**before** any percent is computed — never sequenced after.
+
+`python menu_price.py price "<strain>" [--json rows.json] [--day
+YYYY-MM-DD]` and `menu_price.py forecast "<strain>" --days 7` read the
+joined rows plus the deals files to print current and forecast pricing.
+From the rundown: filter to the watchlist (private memory layer, never a
+script flag in the repo), open the catalog cards for known rows, run
+step 1's diff rule on anything whose menu line adds a claim, and send
+unknown strains through steps 2–7 only if they are actually candidates.
+Stock and prices never enter the repo (`shopping/rows/` is gitignored);
+`shopping/deals/*.json` is committed (public facts, dated); the trip
+sheet goes by email-to-self.
+
 ## Live mode — in-store or offered a jar
 
 Social latency is the constraint: a person is waiting. Two speeds, not

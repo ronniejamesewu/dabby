@@ -1,7 +1,8 @@
 # Pink Slip
 
 - **Grower:** undisclosed (cultivar is Bloom-orbit) · **Processor:** In House (stated)
-- **Type:** single cultivar, pheno selection — **Guava Push Pop #82** — stated (In House IG menu, 6.5.26 drop)
+- **Type:** single cultivar, pheno selection
+- **Selection:** Guava Push Pop #82 — stated (In House IG menu, 6.5.26 drop)
 
 ## Chain to classics
 - Guava Push Pop → Rainbow Guava 5 × Orange Mints (stated, Bloom catalog)

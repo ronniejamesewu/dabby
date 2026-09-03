@@ -61,6 +61,25 @@ here renders into `index.html`.
   screenshot-archived at capture time (posts and accounts vanish).
   Entries citing unarchived posts say `archive pending`.
 
+## Rendered view
+
+`Dabby_Research_Renderer.py` renders this directory to `research.html`
+(deployed beside `index.html`; linked from the log's header). It is also
+the catalog validator — the build fails on an entry missing any of:
+H1 title, `**Grower:**`, `**Processor:**`, `**Type:**`, a `## Sources`
+section, and a formula bullet (`**Cross:**` for a single cultivar,
+`**Composition:**` for a `+` blend, `**Selection:**` for a pheno pick of a
+named cultivar) unless the Type is a wash / mix / hunt. The card's badge
+reads the Type designation (text before the first ` — `); an `## Open
+questions` heading marks the card open. Regenerate after any catalog edit.
+
+Each `lineage_nodes.md` bullet renders with an `id="node-<kebab-of-name>"`
+on its `<li>`, and a strain card's formula line links any `×`/`+`-joined
+parent whose kebab matches a node id straight to it. A pheno number
+stated only on the Type line (not carried into the formula bullet) is
+appended to the card's formula display so two phenos of the same cross
+(e.g. Perle di Sole #9 / Zcrewdriver #6) don't render identical cards.
+
 ## Provenance
 
 Created Aug 30, 2026 from the founding research campaign: 27 strains

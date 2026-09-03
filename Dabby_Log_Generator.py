@@ -662,7 +662,7 @@ def build_html():
 
     cover = '''<div class="cover">
         <h1>Dabby the House Rig</h1>
-        <p class="subtitle">Session Log</p>
+        <p class="subtitle">Session Log &nbsp;·&nbsp; <a href="research.html">Research</a></p>
     </div>'''
 
     html = f"""<!DOCTYPE html>
