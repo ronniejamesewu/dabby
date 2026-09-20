@@ -165,6 +165,17 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **FPOZ** = FPOG × Zkittlez — corroborated (Third Shift Resin's strain
   page); named in Terp Fountain's own bio as theirs. DISTINCT from FPOG —
   see Red Pebbles' open question.
+- **Planet Purple** (Archive) — F1 = Sherbidos (Sunset Sherbert × Dosidos)
+  × MoonBow #75 — stated (Archive's Planet Purple Hybrids collection
+  page, read Sept 20 2026). F2 #144 is Archive's breeding male (Moon
+  Glow, Planet Sherb, NFS…). V2 Feminized = Sherbadough × Moonbow #112
+  (stated, same page). Terminates at classics.
+- **Sherbadough / Sherbidos** = Sunset Sherbert × Dosidos — stated
+  (Archive, same page; both spellings appear there). Leafly's Archive
+  feature specifies Dosidos #8 — lead. Classics.
+- **Moon Glow** (Archive) = Moonbow #112 × Planet Purple F2 #144 — stated
+  (Archive product page). 710 Labs' LunarZ is a seed-hunted selection of
+  this cross.
 - **Rainbow Belts 3.0** = Rainbow Belts #20 × Moonbow 112 F2 #60 — stated
   (Archive Seed Bank's own pages; corrects loose scene consensus).
   Rainbow Belts = Zkittlez × Moonbow #75 (stated, Archive). Moonbow #112
