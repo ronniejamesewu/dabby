@@ -300,3 +300,14 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Zoids** — undisclosed (Zomps parent; In House IG menu 9.12.26). Not
   in Bloom's catalog or In House's Weedmaps storefront; nothing published
   under this name (searched Sept 21 2026). Re-run.
+- **Black Cherry Pie** (cultivar) — the parent named in Black Cherry
+  Punch's formula (In House Genetics WA). Parentage not researched in
+  this catalog. NOT Erva's 9.19.26 co-press of the same name — see
+  [strains/black-cherry-pie.md](strains/black-cherry-pie.md).
+- **Grape Pie Wedding Crasher** (GPWC — not a cultivar name) = Grape Pie
+  × Wedding Crasher — an unnamed cross referred to by its parents.
+  Stated (Bloom's catalog writes "(Grape Pie x Wedding Crasher)" in Dulce
+  de Uva and abbreviates the pair "GPWC" in Strawberry Pie; Sept 21
+  2026). Erva's 8.7.26 menu prints "Grape Pie Wedding Crasher" with no
+  × between the names — assumed a dropped symbol, since the formula
+  otherwise matches Bloom's Strawberry Pie exactly. Both classics.

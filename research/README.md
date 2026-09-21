@@ -80,6 +80,16 @@ stated only on the Type line (not carried into the formula bullet) is
 appended to the card's formula display so two phenos of the same cross
 (e.g. Perle di Sole #9 / Zcrewdriver #6) don't render identical cards.
 
+Each card also draws its **lineage tree** as inline SVG, assembled from
+the formula bullets here and the `= A × B` lines in `lineage_nodes.md`
+(`lineage_tree(slug)` in the renderer). Resolution order for a parent
+name: alias → classics stop-list → lineage node → strain entry — so a
+node outranks a same-named strain entry (the Black Cherry Pie homonym).
+A node bullet with no head formula draws as a leaf (dead-end if its first
+sentence says so, otherwise open); nothing is guessed. The build prints
+a **Lineage gaps** list — parent names that match no classic, node, or
+entry — as a research to-do, not an error.
+
 ## Provenance
 
 Created Aug 30, 2026 from the founding research campaign: 27 strains
