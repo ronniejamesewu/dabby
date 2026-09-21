@@ -84,6 +84,22 @@ Diamond Glands, June 6 2026) — anchor surface; site search
 (`shwale.com/?s=<term>`) is the direct route. Erva's BOP is Farmhouse's
 formula verbatim (9.5.26 menu). Not on Erva's Aug 7 2026 stated roster.
 
+### Soiku Bano (soikubano.com; @soiku.bano, backup @soikubano)
+Processor only. Own site states: "Soiku Bano is NOT vertically integrated,
+allowing the sourcing of only the highest quality flower from multiple
+cultivators" (About Us, read Sept 21 2026) — consistent with the
+user-direct account (pure processor, washes others' flower). No grower
+is named for any current jar on the site, the Instagram grid, or
+dispensary listings; per-jar grower = undisclosed unless a label says
+otherwise. Label tiers as sold: Black Label (cold cure) and Purple Label.
+Past grower partners per Westword (Aug 4 2023, reporter's narration):
+Hi-Fuel, Meraki, So Good — dated; the same article says Soiku Bano
+partners "with new or different growers every few months." An Instagram highlight from ~2020 shows per-strain
+grower tags (@malehs_premium_cannabis / #LarryOG, @indicocoloradoinc /
+#LostCause, @bloom_countycolorado / #JellyBreath). Publishes no lineage lines. Hash maker's account
+@theduboy carries the batch reels. Cautionary example: the label is
+indistinguishable from a vertical producer's.
+
 ## Other producers in the jar log
 
 | Brand | Roles / model | Channel | Notes |
@@ -96,7 +112,7 @@ formula verbatim (9.5.26 menu). Not on Erva's Aug 7 2026 stated roster.
 | Malek's Melts | Washer (Watermellos) | Licensed dispensary (user-direct) | Grower unknown |
 | Quasi Farms (MI) | Producer (WW Z, Crystal A Gelato, MBD, Rainfruit) | — | No documented link between their "WW Z" and Bloom's World War Z (checked Aug 30 2026) |
 | Nikka T / Essential Extracts | Washer, award-winning pioneer (Orange Candy) | — | |
-| Soiku Bano | Pure processor — zero cultivation, washes others' flower (user-direct) | — | Cautionary example: label indistinguishable from vertical |
+| Soiku Bano | See section above | Licensed dispensary (Lightshade Federal Heights menu, Sept 21 2026) | — |
 
 ## Channel facts (Colorado, verified Aug 2026)
 

@@ -13,5 +13,8 @@ Same nodes as [rainbow-colonel.md](rainbow-colonel.md), opposite cross direction
 ## Notes
 - Reciprocal-cross pair with Rainbow Colonel — here Rainbow Belts 3.0 is the seed parent.
 
+## Other jars under this name
+- **Soiku Bano** sells a Rainbow Chem (Black Label Cold Cure Live Rosin 2g, Lightshade Federal Heights, Sept 21 2026). No formula or grower published for that jar (soikubano.com, Instagram, general web; Sept 21 2026). Not established as Erva-grown or as this cross.
+
 ## Sources
 - https://www.instagram.com/p/DcbpZF1EUi_/ (archive pending)
