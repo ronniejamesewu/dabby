@@ -18,6 +18,7 @@ content while reporting the page as read (validated by A/B test, Aug 28 2026).
 | fruitfullseeds.com/genetics | Fruitfull Seeds' own catalog with dated releases and full pheno-numbered formulas (e.g. Rainbow Juice = Garlic Juice #2 × Grape Rainbow Pie #17) | Discovered Aug 31 2026; Erva-roster breeder, KY hashmaker Mr. Autogrow |
 | ONI seed catalog (seedfinder.eu/en/database/breeder/oni-seed-co) | 43-cultivar list — the anchor for what the seed line contains; the ONI rosin SKUs on Colorado menus are largely absent from it | Read Sept 2 2026 |
 | bloomseed.co/cultivars (single page) | The whole 356-cultivar list as name + cross text on one page — text-searchable in one read; also shows which names Bloom uses only as parents (Zangria) and Bloom's shorthand (GPWC = Grape Pie × Wedding Crasher) | Noted Sept 21 2026 |
+| Dialed In Gummies batch pages (dialedingummies.com/batch-info/…) | Per-batch page naming the rosin collaborator and strain, a printed "Lineage" line, and cannabinoid/terpene reports for that batch | Third-party (not the grower or processor); figures as printed, no COA. One page read (Soiku Bano Blockberry, Batch #1969). Site search does not find batch pages — reach them by URL or web search. Discovered Sept 21 2026 |
 | Dispensary product pages | Product existence + spelling; igadiltd.com carries NO lineage text (generic boilerplate; menus load via JS embeds) | Existence confirmation only |
 
 **Menu-post index (anchor reads, chronological):** Erva×InHouse collab
@@ -88,6 +89,9 @@ chatter is a timing signal only, never a quality input.
   — a brand with no IG menu surface has no anchor for per-SKU claims.
 - Dutchie product pages for ONI carry brand boilerplate only, repeated
   verbatim across SKUs — existence confirmation, never lineage.
+- Search-result summaries are not reads: a worker's Sour Zoda parentage and a second Lipsmackerz
+  attribution came from result snippets, not opened pages (caught Sept 21 2026 by asking for exact
+  URLs) — a claim with no openable URL is not recorded.
 - Content farms (JointCommerce) — AI-generated strain pages; never a
   corroboration vote on their own.
 - Dutchie potency fields read ~7% on rosin at two unrelated stores
