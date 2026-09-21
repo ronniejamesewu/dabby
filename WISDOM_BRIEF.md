@@ -142,14 +142,14 @@
 **Claim:** Rig 7 (Rig 6 + SAML RBR 'Refined Bell Recycler' wet top): conditions/cools vapor harder; chest on three of four runs, absent on the one modest single cycle; taste read unsettled; no comparison against another top.
 **Basis:** Four runs (papzp22 R10, bb362 R7, lunarz R6, lunarz R7), three strains, three curves; taste split, and the only matched pair holds the top constant.
 **Guidance:** Four runs, taste unresolved — muted once, held twice, different strain and curve each time. Chest hit the three large-or-larger multi-cycle runs and skipped the modest single cycle, so it tracks exposure, not the top. First non-bubbler top, so posture is a variable — see chest-harshness-hot-open.
-**Watch:** lunarz R9 now carries the owed bubbler comparison — R8 went to the Calibear instead. The upright-vs-slouched test (papzp22 R11). Sort taste reads by kind.
+**Watch:** Bubbler flavor comparison still owed — lunarz R9 lost its flavor read and changed joystick. The upright-vs-slouched test (papzp22 R11). Sort taste reads by kind.
 *4 citations (1 confirm / 3 counter) | jars: bb362, lunarz, papzp22 | upd papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance; lunarz R8 (July 30, 2026) — no RBR run; R7/R8 reads this top louder than the Calibear.*
 
 ### rig8-calibear-fab-recycler  [equipment | observation]
 **Claim:** Rig 8 (Calibear Fab Recycler wet top): five runs, three strains. Both comparative flavor reads against a bubbler baseline read down. Chest on one of five. First matched top pair in the log — lunarz R7/R8, against the RBR.
 **Basis:** Five runs (lhbh R9/R10/R11, fw106 R36, lunarz R8), three strains, two curves. lunarz R8 is the log's first matched top pair — same curve, jar, slot, cycles — but against the RBR, not the bubbler.
 **Guidance:** Do not credit this top with flavor: both bubbler comparisons on it read down (fw106 R36, lunarz R8), converging with papzp22 R10 on the RBR. Keep comparative and absolute reads apart. lunarz R7/R8 is the log's first matched top pair and reads this top quieter than the RBR. OPERATIONAL: flowback risks thermal shock.
-**Watch:** The bubbler comparison, still unmade: lunarz R9 and fw106 R37 both put this curve back on the stock bubbler. Any flowback reaching the insert.
+**Watch:** The bubbler flavor comparison, still unmade: lunarz R9 lost its flavor read (new joystick too); fw106 R37 still owed. Any flowback reaching the insert.
 *4 citations (2 confirm / 2 counter) | jars: fw106, lhbh, lunarz | upd lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair; airflow gate Aug 3, 2026 (no run).*
 
 ## Live Failure Modes

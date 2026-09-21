@@ -246,7 +246,7 @@ ENTRY = WisdomEntry(
                     "alongside the top and compares this top only against the other "
                     "recycler — so the bubbler question it was built to answer is still "
                     "untouched.",
-    watch_for="The bubbler comparison, still unmade: lunarz R9 and fw106 R37 both put this "
-              "curve back on the stock bubbler. Any flowback reaching the insert.",
+    watch_for="The bubbler flavor comparison, still unmade: lunarz R9 lost its flavor read "
+              "(new joystick too); fw106 R37 still owed. Any flowback reaching the insert.",
     updated='lhbh R9 (July 28, 2026) — Rig 8 debut; lhbh R10 (July 28, 2026) — second run, no matched comparison yet; lhbh R11 (July 28, 2026) — first chest instance on this top; fw106 R36 (July 30, 2026) — second strain, flavor down vs bubbler; lunarz R8 (July 30, 2026) — third strain, first matched top pair; airflow gate Aug 3, 2026 (no run).',
 )
