@@ -785,6 +785,44 @@ details.collapsible > .collapsible-body { padding: 1.5rem var(--page-pad); }
   line-height: 1.4;
 }
 
+/* Lineage tree: fit-to-card by default; the checkbox toggles a full-size overlay. */
+.rc-tree { padding: 0.5rem 0.9rem 0.2rem; }
+.rc-zoom { display: block; cursor: zoom-in; }
+.rc-zoom-x { display: none; }
+.rc-zoom-hint {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--text-3);
+  margin-top: 0.15rem;
+}
+.rc-zoom-toggle:checked + .rc-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(20, 19, 17, 0.86);
+  padding: 3rem 1rem 1rem;
+  cursor: zoom-out;
+}
+.rc-zoom-toggle:checked + .rc-zoom svg {
+  max-width: none !important;
+  width: var(--tree-w);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.rc-zoom-toggle:checked + .rc-zoom .rc-zoom-x {
+  display: block;
+  position: fixed;
+  top: 0.4rem;
+  right: 1rem;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: #fff;
+}
+.rc-zoom-toggle:checked ~ .rc-zoom-hint { display: none; }
+
 .rc-ev {
   font-family: var(--font-mono);
   font-size: 0.66rem;
@@ -799,6 +837,14 @@ details.collapsible > .collapsible-body { padding: 1.5rem var(--page-pad); }
   color: var(--text-3);
   margin-top: 0.1rem;
   letter-spacing: 0.01em;
+}
+
+.rc-lean {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
+  padding: 0 0.9rem 0.5rem;
 }
 
 .rc-body, .research-doc {
