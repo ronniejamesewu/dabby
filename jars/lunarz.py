@@ -155,13 +155,28 @@ RUNS = [
         dab_notes='[Pre-dab:] Keeping rig 8, lets gooooooo [Report:] Sean\'s golden, very minimal. Load depleted before end of cycle, about 10 seconds left. Effect mild to medium. Flavor was nice but muted. No harshness [Muted against what:] The stock bubbler runs [Unprompted:] The two recycler tops are definitely smoother [Load / cycles:] Load was normal, one cycle',
         analysis='Flavor down against this jar\'s own bubbler runs — the log\'s third comparative read, and the first inside a jar that\'s run all three tops. It splits the two recyclers rather than grouping them: LunarZ read super tasty on the RBR against that same baseline, though nobody asked it to compare. Runs 7 and 8 are the log\'s tightest top-against-top pair — same jar, curve, dab slot and single cycle, load modest→normal, RBR→Calibear. Flavor and intensity both down on more material, but the intensity is day-stacking: R7 followed a very-high two-cycle dab, this followed a medium-high single. Four clean of five on the Calibear now, and the user reads both recyclers as smoother. Still exposure-confounded — every harshness instance on either top carried a bigger load or more cycles. Golden and minimal off one cycle is expected; ended on depletion with curve left, the descent shape again.',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 9, 21),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 9, 21, 22, 52, 20, tzinfo=timezone.utc),
+        waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_10,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F — 15s hold at 440°F into a single constant ~0.9°F/s descent ("orange" preset), same curve as Runs 6–8; back on the stock bubbler, first run on the Honeycomb joystick',
+        swab='golden',
+        session_char='Golden swab with a fair amount of reclaim — the user noted it spread further up the walls with the new joystick; normal load, first dab of the day, a cycle and a half on the smoothed 440°F bounded hold ("orange") to depletion — the plan on file, run exactly, except for a new wider-bore joystick. Some terpene coughing up front with eye-watering; no harshness reported. Flavor not recalled — "pleasant enough." More coughing than on the recycler tops. Pretty big body high with creative, chatty energy.',
+        intensity='pretty big — body high with creative energy and insight, chatty; "a light couch locked chatty"',
+        dab_notes="i'm on a dab of lunarz right now, so let's oberved. pretty big body high, but pretty creative energy and insight. chatty. so maybe like a light couch locked chatty. [After the plan on file was read back:] holy shit! that's EXACTLY what i ran, with exception of a new joystick, a wym designs honeycomb with a .140 bore. crazy. ok, so i've been dabbing plenty over the past 53 days, i just got bored with the labor of logging them. we just kind of stumbled into logging this one, and 30 minutes ago i did the exact run that past me left instructions to do. [Swab / cycles / harshness / flavor:] swabs were golden, fair amount, the .140 seems to spread reclaim further up the walls. 1.5 cycles, depleted. some terp coughing up front, eye watering. i dont recall the flavor, it's pleasant enough. definitely more coughing with the stock glass. everything else looks good",
+        analysis='The run the three-top comparison was waiting on, and it came back without the read it was run for: flavor was not recalled beyond "pleasant enough," so the smoothness-costs-flavor question stays open from the bubbler end. What did land is the other half — more coughing on the stock bubbler than on either recycler, the second user statement in that direction after Run 8\'s unprompted "the two recycler tops are definitely smoother." Directional, and a user comparison from memory rather than a matched pair. The joystick is new: the Honeycomb\'s .140" bore against the .094" Piston every earlier run used, so nothing here compares cleanly against Runs 1–8 — the top went back to the bubbler as planned, but the cap moved with it. The user suggested the wider bore spreads reclaim further up the walls; one observation, first run on the cap. Golden swab with a fair amount of reclaim over a cycle and a half sits in the clean range, no floor signal. Up-front terpene coughing with eye-watering is the cough this jar showed on Runs 4 and 6, distinct from harshness; none was reported, and the run ended on depletion. Fifty-three days of unlogged dabs sit between Run 8 and this one — first dab of the day by the record, with the jar\'s state and recent tolerance off the books.',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='LunarZ',
     profile_anchor='#lunarz-profile',
-    next_text='Run 9: the orange 440°F curve back on the stock bubbler (Rig 6), normal load — closes the three-top set inside one jar.',
+    next_text='Run 10: same orange 440°F curve on Rig 10 (Honeycomb joystick, stock bubbler), normal load — one-word flavor read taken right after the first draw.',
     accent=None,
     slug='lunarz',
     info=[
@@ -172,7 +187,7 @@ STATUS = StrainStatus(
     ],
     terpene_note='<strong>Terpene inference:</strong> Limonene and caryophyllene inferred dominant from the Zkittlez × Do-Si-Dos / Sherbadough stack (Zkittlez, Do-Si-Dos, Sunset Sherbert) — sweet candy-fruit ("Z") over a gas/OG underside; linalool plausible from the Do-Si-Dos/Sherbert side. Only the immediate Moonbow × Planet Purple cross is 710 Labs-anchored; the parent generations and below are corroborated across independent sources, not producer-confirmed. Not measured. See <a href="#terpene-ref">Terpene Reference</a>.',
     next_dab_notes='',
-    next_ai_analysis='LunarZ is the only jar that can complete the set: five bubbler runs, two on the RBR, one on the Calibear. Run 9 puts the orange curve back on the stock bubbler at a normal load, dab slot wherever it falls — closing the three-top comparison and testing the smoothness-costs-flavor read from both ends. Expected: flavor louder than Run 8, harshness back if it goes past one cycle. Surprising: no better on the bubbler, which puts Run 8\'s muted read on the material or the night.',
+    next_ai_analysis='Run it again exactly as Run 9 and change one habit: say a word about flavor right after the first draw, before the effects arrive. The three-top set has its bubbler run now, but the flavor read — the whole point — was lost to memory, and a repeat on the same cap is the cheapest way to get it. The Honeycomb\'s wider bore is a confound against every earlier run, so the useful comparison is Run 10 against Run 9, not against the recycler runs. Normal load, dab slot wherever it falls. Expected: flavor reads louder than Run 8\'s "nice but muted," with the up-front coughing back. Surprising: flavor no better on the bubbler — that would put Run 8\'s muted read on the material or the night rather than the glass.',
     next_waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
     jar_index='',
 )

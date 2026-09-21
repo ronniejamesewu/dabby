@@ -288,6 +288,21 @@ RIG_9 = EquipmentConfig(
     glass_top="Calibear Fab Recycler",
 )
 
+# Rig 10: Sapphire insert, no pearls, Wym Designs Honeycomb joystick, stock
+# bubbler. Dr. Dabber Sapphire Plus (v2) insert; Wym Designs Honeycomb joystick
+# (.140" bore airflow — roughly 50% wider than the Wym Stick Piston's .094");
+# Dr. Dabber stock bubbler. Identical to Rig 6 except the joystick. A
+# larger-bore joystick of the kind Rig 9's note anticipated; first logged on the
+# stock bubbler, not the Calibear. Every run from Rig 6 through Rig 8 used the
+# .094" Piston, so Rig 10 comparisons against them carry the bore as a confound.
+# In use as of September 21, 2026 (LunarZ Run 9).
+RIG_10 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Wym Designs", model="Honeycomb", airflow='.140" bore'),
+    pearls=[],
+    glass_top="Dr. Dabber stock bubbler",
+)
+
 # ── TERPENE REFERENCE ────────────────────────────────────────────────────────
 
 TERPENE_REFERENCE = [
