@@ -575,16 +575,21 @@ def _get_classics():
     return _CLASSICS_CACHE
 
 
-def _resolve_child(token, depth, seen, drawn):
+def _resolve_child(token, depth, seen, drawn, collapse_repeats=True):
     """Resolve one parent token into a lineage_tree() node. `seen` holds
     identities of ancestors already expanded on this same root-to-here
-    path, in this same tree -- a repeat becomes a leaf instead of
-    re-drawing its subtree."""
+    path, in this same tree -- a repeat on that path becomes a leaf
+    instead of re-drawing its subtree (an infinite-recursion guard that
+    always applies). `drawn` holds every identity expanded anywhere else
+    in the tree; when `collapse_repeats` is True (the default, used for
+    the drawn SVG), a name repeated anywhere also collapses to a leaf --
+    when False (used by lineage_lean, which must count every occurrence),
+    only the `seen` path guard is consulted."""
     if is_fully_parenthesized(token):
         inner = token.strip()[1:-1].strip()
         if depth > LINEAGE_DEPTH_CAP:
             return {"name": inner, "status": "depth-cap", "children": [], "evidence": "", "raw": inner}
-        children = [_resolve_child(t, depth + 1, seen, drawn) for t in split_formula(inner)]
+        children = [_resolve_child(t, depth + 1, seen, drawn, collapse_repeats) for t in split_formula(inner)]
         return {"name": inner, "status": "cross", "children": children, "evidence": "", "raw": inner}
 
     disp = re.sub(r"\s+", " ", token).strip()
@@ -614,12 +619,12 @@ def _resolve_child(token, depth, seen, drawn):
             status = "dead-end" if (DEAD_KEYWORDS_RE.search(head_clause)
                                     and not rec.get("embedded")) else "open"
             return {"name": disp, "status": status, "children": [], "evidence": rec["evidence"], "raw": rec["raw"]}
-        if identity in seen or identity in drawn:
+        if identity in seen or (collapse_repeats and identity in drawn):
             return {"name": disp, "status": "repeat", "children": [], "evidence": "", "raw": rec["raw"]}
         if depth > LINEAGE_DEPTH_CAP:
             return {"name": disp, "status": "depth-cap", "children": [], "evidence": rec["evidence"], "raw": rec["raw"]}
         drawn.add(identity)
-        children = [_resolve_child(t, depth + 1, seen | {identity}, drawn) for t in split_formula(rec["formula"])]
+        children = [_resolve_child(t, depth + 1, seen | {identity}, drawn, collapse_repeats) for t in split_formula(rec["formula"])]
         return {"name": disp, "status": "cross", "children": children, "evidence": rec["evidence"], "raw": rec["raw"]}
 
     strain_idx = _get_strain_index()
@@ -635,25 +640,31 @@ def _resolve_child(token, depth, seen, drawn):
         f_only = formula_only(raw_value)
         if f_only.strip().lower().startswith("undisclosed"):
             return {"name": disp, "status": "open", "children": [], "evidence": "undisclosed", "raw": raw}
-        if identity in seen or identity in drawn:
+        if identity in seen or (collapse_repeats and identity in drawn):
             return {"name": disp, "status": "repeat", "children": [], "evidence": "", "raw": raw}
         if depth > LINEAGE_DEPTH_CAP:
             return {"name": disp, "status": "depth-cap", "children": [], "evidence": "", "raw": raw}
         ev = _field_evidence_caption(raw_value)
         drawn.add(identity)
-        children = [_resolve_child(t, depth + 1, seen | {identity}, drawn) for t in split_formula(f_only)]
+        children = [_resolve_child(t, depth + 1, seen | {identity}, drawn, collapse_repeats) for t in split_formula(f_only)]
         return {"name": disp, "status": "cross", "children": children, "evidence": ev, "raw": raw}
 
     return {"name": disp, "status": "unresolved", "children": [], "evidence": "", "raw": disp}
 
 
-def lineage_tree(slug):
+def lineage_tree(slug, collapse_repeats=True):
     """Nested lineage-tree dict for research/strains/<slug>.md:
       {"name": str, "status": str, "children": [...], "evidence": str, "raw": str}
     Status vocabulary -- root only: cross, blend, wash, undisclosed; non-root
     interior: cross; leaves: classic, dead-end, open, unresolved, repeat,
     depth-cap. Pure and read-only: rebuilds its lookup indexes from disk on
     each call, writes and prints nothing.
+
+    `collapse_repeats` (default True, what render_tree_svg draws): a name
+    repeated anywhere else in the tree collapses to a "repeat" leaf instead
+    of redrawing its subtree. Pass False (as lineage_lean does) to draw
+    every occurrence in full -- an ancestor-path cycle still collapses to
+    "repeat" either way, since that guard is unconditional.
     """
     e = parse_entry(STRAINS / f"{slug}.md")
     fields, fkey = e["fields"], e["formula_key"]
@@ -670,7 +681,7 @@ def lineage_tree(slug):
 
     status = "blend" if e["badge"] == "blend" else "cross"
     seen = {"strain:" + normalize_basic(e["title"])}
-    children = [_resolve_child(t, 1, seen, set()) for t in split_formula(f_only)]
+    children = [_resolve_child(t, 1, seen, set(), collapse_repeats) for t in split_formula(f_only)]
     return {"name": e["title"], "status": status, "children": children,
             "evidence": _field_evidence_caption(raw_value), "raw": raw}
 
@@ -680,6 +691,170 @@ def _walk_unresolved(tree, out):
         out.append(tree["name"])
     for c in tree["children"]:
         _walk_unresolved(c, out)
+
+
+# ── Lineage lean ─────────────────────────────────────────────────────────────
+#
+# lineage_lean(slug) walks the same tree lineage_tree() builds (undrawn --
+# collapse_repeats=False, so a name repeated in the pedigree is counted at
+# every occurrence) and splits the jar's share among daytime/heavy-tagged
+# ancestors, untagged known names, and unknowns. Tags come from
+# research/effects_priors.md; see that file for the rules this enforces.
+
+EFFECTS_PRIORS_PATH = RESEARCH / "effects_priors.md"
+
+_LEAN_TAGS = ("daytime", "heavy", "none")
+_PRIORS_TABLE_CACHE = None
+
+
+def _load_effects_priors():
+    """{normalized_name: 'daytime'|'heavy'|'none'} from effects_priors.md's
+    table -- the row's Name plus each ';'-separated 'Also matches' spelling,
+    each registered under the row's own lean. Cached. Missing file -> {}
+    (lineage_lean degrades gracefully rather than crashing the build)."""
+    global _PRIORS_TABLE_CACHE
+    if _PRIORS_TABLE_CACHE is not None:
+        return _PRIORS_TABLE_CACHE
+    index = {}
+    if EFFECTS_PRIORS_PATH.exists():
+        for line in EFFECTS_PRIORS_PATH.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line.startswith("|"):
+                continue
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if len(cells) < 2:
+                continue
+            name, lean = cells[0], cells[1].lower()
+            also = cells[2] if len(cells) > 2 else ""
+            # Header row ("Name"/"Lean"/...) and the '|---|---|' separator
+            # row both fail this check harmlessly -- neither cell reads as
+            # a real tag -- so no separate header/separator detection is
+            # needed.
+            if not name or lean not in _LEAN_TAGS:
+                continue
+            # The row's own Name displays canonically (so "G.M.O" and "GMO"
+            # merge on the page); an Also-matches spelling is a distinct cut
+            # or line and displays as written.
+            for i, spelling in enumerate([name] + [a.strip() for a in also.split(";") if a.strip()]):
+                key = normalize_basic(spelling)
+                if key:
+                    index.setdefault(key, (lean, name if i == 0 else None))
+    _PRIORS_TABLE_CACHE = index
+    return index
+
+
+def _tag_for_name(name):
+    """'daytime'/'heavy'/'none'/None for a lineage-tree node's display name,
+    via the same alias-resolution + pheno-stripping candidate list
+    _resolve_child uses (lookup_candidates), checked against the priors
+    table's Name and Also-matches spellings. Exact match only."""
+    priors = _load_effects_priors()
+    for k in lookup_candidates(name):
+        if k in priors:
+            return priors[k]
+    return None, None
+
+
+def _lean_walk(node, share, buckets, ancestors, root=False):
+    if not root:
+        tag, canonical = _tag_for_name(node["name"])
+        if tag == "daytime" or tag == "heavy":
+            buckets[tag] += share
+            ancestors.append({"name": canonical or node["name"], "lean": tag, "share": share})
+            return
+        if tag == "none":
+            buckets["untagged"] += share
+            return
+    children = node["children"]
+    if children:
+        each = share / len(children)
+        for c in children:
+            _lean_walk(c, each, buckets, ancestors, root=False)
+        return
+    # Leaf, untagged: a stop-list classic counts as a known-but-untagged
+    # name; every other leaf status (dead-end, open, unresolved, depth-cap,
+    # and repeat -- which past this point only ever means a true ancestor-
+    # path cycle, since collapse_repeats=False turns off the tree-wide
+    # collapse) is an unknown.
+    if node["status"] == "classic":
+        buckets["untagged"] += share
+    else:
+        buckets["unknown"] += share
+
+
+def lineage_lean(slug):
+    """{"daytime": float, "heavy": float, "untagged": float, "unknown": float,
+    "ancestors": [{"name", "lean", "share"}, ...]} -- see module docstring
+    above and research/effects_priors.md for the rules. None for a root with
+    no pedigree to split (status wash/undisclosed)."""
+    tree = lineage_tree(slug, collapse_repeats=False)
+    if tree["status"] in ("wash", "undisclosed"):
+        return None
+    buckets = {"daytime": 0.0, "heavy": 0.0, "untagged": 0.0, "unknown": 0.0}
+    ancestors = []
+    _lean_walk(tree, 1.0, buckets, ancestors, root=True)
+    buckets["ancestors"] = ancestors
+    return buckets
+
+
+_FRACTION_DENOMS = (1, 2, 3, 4, 6, 8, 12, 16, 32, 64)
+
+
+def _fmt_share(share):
+    """A share as 'n/d' when it lands exactly on a power-of-two or
+    thirds/sixths/twelfths denominator <= 64 (smallest such denominator
+    wins, so the result is already reduced); otherwise a rounded percent."""
+    for d in _FRACTION_DENOMS:
+        nd = share * d
+        n = round(nd)
+        if 0 < n < d + 1 and abs(nd - n) < 1e-9 and n != d:
+            return f"{n}/{d}"
+    return f"{round(share * 100)}%"
+
+
+def _bucket_ancestors(ancestors, lean):
+    return [a for a in ancestors if a["lean"] == lean]
+
+
+def _format_ancestor_list(items, max_shown=4):
+    """Ancestors merged by name (shares summed), largest first, capped at
+    `max_shown` with a trailing '…'."""
+    merged, order = {}, []
+    for a in items:
+        if a["name"] not in merged:
+            merged[a["name"]] = 0.0
+            order.append(a["name"])
+        merged[a["name"]] += a["share"]
+    ranked = sorted(order, key=lambda n: -merged[n])
+    parts = [f"{n} {_fmt_share(merged[n])}" for n in ranked[:max_shown]]
+    if len(ranked) > max_shown:
+        parts.append("…")
+    return ", ".join(parts)
+
+
+def _collect_all_names(node, out):
+    out.add(node["name"].lower())
+    for c in node["children"]:
+        _collect_all_names(c, out)
+
+
+def lean_line_html(lean, is_blend):
+    """The card's one-line lean summary, or '' when `lean` is None."""
+    if lean is None:
+        return ""
+    segments = []
+    for bucket in ("daytime", "heavy", "untagged", "unknown"):
+        pct = round(lean[bucket] * 100)
+        seg = f"{bucket} {pct}%"
+        if bucket in ("daytime", "heavy"):
+            named = _bucket_ancestors(lean["ancestors"], bucket)
+            if named:
+                seg += f" ({_format_ancestor_list(named)})"
+        segments.append(seg)
+    line = "Lineage lean — " + " · ".join(segments)
+    if is_blend:
+        line += " · blend split equally (ratio unpublished)"
+    return f'<div class="rc-lean">{esc(line)}</div>'
 
 
 # SVG layout constants and rendering.
@@ -861,6 +1036,7 @@ def card_html(e, node_ids, gaps):
     ev_html = f'<span class="rc-ev">{esc(ev)}</span>' if ev else ""
     tree = lineage_tree(e["slug"])
     tree_html = ""
+    lean_html = ""
     if tree["status"] in ("cross", "blend"):
         # Tap-to-enlarge without script: a hidden checkbox toggles the label
         # (which holds the one copy of the SVG) between fit-to-card and a
@@ -876,6 +1052,21 @@ def card_html(e, node_ids, gaps):
         _walk_unresolved(tree, unresolved)
         for name in unresolved:
             gaps.setdefault(name, set()).add(e["title"])
+        # Lineage lean: same root-status gate as the tree above (cross/blend
+        # is exactly "not wash/undisclosed"), so lineage_lean() is never None
+        # here. Search gets every distinct ancestor name from the FULL
+        # (un-collapsed) tree, not just the tagged ones the lean line shows.
+        lean = lineage_lean(e["slug"])
+        if lean is not None:
+            full_tree = lineage_tree(e["slug"], collapse_repeats=False)
+            names = set()
+            _collect_all_names(full_tree, names)
+            search += " " + " ".join(sorted(names))
+            if lean["daytime"] > 0:
+                search += " daytime"
+            if lean["heavy"] > 0:
+                search += " heavy"
+            lean_html = lean_line_html(lean, tree["status"] == "blend")
     return (
         f'<details class="research-card" id="{esc(e["slug"])}" data-search="{esc(search)}">'
         f'<summary>'
@@ -888,6 +1079,7 @@ def card_html(e, node_ids, gaps):
         f'<div class="rc-axes">grower: {esc(grower)} &nbsp;·&nbsp; processor: {esc(proc)}</div>'
         f'</summary>'
         f'{tree_html}'
+        f'{lean_html}'
         f'<div class="rc-body">{md_to_html(e["markdown"])}</div>'
         f'</details>'
     )
@@ -900,6 +1092,66 @@ def collapsible(section_id, title, inner):
         f'<div class="collapsible-body research-doc">{inner}</div>'
         f'</details>'
     )
+
+
+_LEAN_READ_FIRST = (
+    '<ul class="lean-read-first">'
+    '<li>Shares are pedigree odds, not doses — traits segregate rather than average, so a jar '
+    'with a quarter of its pedigree in a name has odds of expressing it, not a quarter of it.</li>'
+    '<li>Tags are cultivar reputations — mostly unverified scene consensus, listed with their '
+    'source in effects_priors.md.</li>'
+    '<li>Blend ratios are unpublished, so a blend\'s components are always split equally.</li>'
+    '<li>The jar log outranks all of this — a jar actually run overrides its own lineage read.</li>'
+    '</ul>'
+)
+
+
+LEAN_TABLE_FLOOR = 0.10  # share below which a jar stays off the ranked tables
+
+
+def _lean_table_rows(entries):
+    """(slug, title, lean-dict) for every entry with a pedigree to split."""
+    out = []
+    for e in entries:
+        lean = lineage_lean(e["slug"])
+        if lean is not None:
+            out.append((e["slug"], e["title"], lean))
+    return out
+
+
+def _lean_table_html(rows, bucket, title):
+    # A floor keeps a single deep ancestor (Headbanger at 1/16 sits in most
+    # Bloom-line trees) from filling the table; every card still shows its line.
+    items = [(slug, name, lean) for slug, name, lean in rows if lean[bucket] >= LEAN_TABLE_FLOOR]
+    items.sort(key=lambda t: (-t[2][bucket], t[2]["unknown"], t[1].lower()))
+    items = items[:15]
+    body = []
+    for slug, name, lean in items:
+        named = _bucket_ancestors(lean["ancestors"], bucket)
+        anc_txt = _format_ancestor_list(named) if named else ""
+        body.append(
+            '<tr>'
+            f'<td><a href="#{esc(slug)}">{esc(name)}</a></td>'
+            f'<td>{round(lean[bucket] * 100)}%</td>'
+            f'<td>{esc(anc_txt)}</td>'
+            f'<td>{round(lean["unknown"] * 100)}%</td>'
+            '</tr>'
+        )
+    return (
+        f'<h3>{esc(title)} <small>(share of 10% or more)</small></h3>'
+        '<table><thead><tr><th>Jar</th><th>Share</th><th>Tagged ancestors</th><th>Unknown</th></tr></thead>'
+        f'<tbody>{"".join(body)}</tbody></table>'
+    )
+
+
+def lineage_lean_section(entries):
+    rows = _lean_table_rows(entries)
+    inner = (
+        _LEAN_READ_FIRST
+        + _lean_table_html(rows, "daytime", "Most daytime-tagged pedigree")
+        + _lean_table_html(rows, "heavy", "Most heavy-tagged pedigree")
+    )
+    return collapsible("lineage-lean", "Lineage lean", inner)
 
 
 # Trees narrower than this fit a card at full size on most screens -- no hint.
@@ -956,7 +1208,8 @@ def build_html(entries, gaps):
     conventions = md_to_html((RESEARCH / "README.md").read_text(encoding="utf-8"))
 
     sections = (
-        collapsible("lineage-nodes", "Lineage Nodes", nodes)
+        lineage_lean_section(entries)
+        + collapsible("lineage-nodes", "Lineage Nodes", nodes)
         + collapsible("brands", "Brands", brands)
         + collapsible("sources", "Source Atlas", sources)
         + collapsible("conventions", "Conventions", conventions)
