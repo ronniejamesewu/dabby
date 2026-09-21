@@ -78,6 +78,20 @@ _IGADI_LOCATIONS = {  # discovered Sept 2, 2026 via `discover https://igadiltd.c
 
 _IGADI_TAX = {"basis": "pre-tax", "rate": None, "source": "specials text (rate unknown)", "date": "2026-09-02"}
 _IGADI_STACKING = {"rule": "none", "source": "specials text", "date": "2026-09-02"}
+# Per-location rates -- tax is set by each store's city/county, so one IgadI
+# location's rate never transfers to another. Unlisted locations stay unknown.
+_IGADI_TAX_BY_LOCATION = {
+    "northglenn": {
+        "basis": "pre-tax", "rate": 0.2485,
+        "source": "summed stack: 15% state retail marijuana + 4% Northglenn marijuana tax (muni code 5-18-3) "
+                  "+ 4% Northglenn city sales + 0.75% Adams County + 1% RTD + 0.1% SCFD. County/RTD/SCFD list no "
+                  "retail-marijuana exemption (Q) in DR 1002, Jan 2026; FYI Sales 93 says local taxes may apply. "
+                  "Equals the 24.85% 'Cannabis + Sales Tax' line in Dutchie's taxConfig for the retired "
+                  "'DNU - IgadI (Northglenn)' listing. Unverified piece: the city's regular 4% applying to "
+                  "marijuana (home-rule, not in DR 1002's exemption table) -- no receipt yet",
+        "date": "2026-09-21",
+    },
+}
 
 STORES = {}
 
@@ -91,7 +105,7 @@ for _loc, _rid in _IGADI_LOCATIONS.items():
             "retailer_id": _rid,
         },
         "grammar": "igadi",
-        "tax": _IGADI_TAX,
+        "tax": _IGADI_TAX_BY_LOCATION.get(_loc, _IGADI_TAX),
         "stacking": _IGADI_STACKING,
         "retrieval": "script",
     }

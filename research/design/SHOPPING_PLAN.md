@@ -176,7 +176,9 @@ grammar and join work.
   24.25% cannabis (Dutchie `taxConfig` states compound, but menu prices ×
   1.324 land on round dollars, consistent with cumulative in practice;
   both readings recorded). IgadI (dutchie-wp) — pre-tax (stated in the
-  specials text); rate unknown. The Dab (Dispense) — out-the-door
+  specials text); rate unknown except Northglenn, 24.85% (six-part summed
+  stack — state 15, city marijuana 4, city sales 4, county 0.75, RTD 1,
+  SCFD 0.1 — Sept 21 2026; sources in the `menu_fetch.py` registry). The Dab (Dispense) — out-the-door
   (inferred: venue `salesTax`/`cannabisTax` both read 0, and the site
   states "Listed Prices Include Tax"). Reefer Madness (ND/SB),
   Krystaleaves, Maikoh — unknown; no tax field found on any surface
