@@ -14,7 +14,9 @@ content while reporting the page as read (validated by A/B test, Aug 28 2026).
 | Brand storefronts (Weedmaps/Jane brand pages) | Brand-controlled SKU listings; In House's carry "=" lineage formulas (~250 SKUs, 6 pages: weedmaps.com/brands/in-house-llc/products) | Generalizes: ANY brand's own storefront listing is anchor-controlled. Discovered Aug 29 2026 |
 | Breeder catalogs | Full cultivar lists, sometimes multi-generation trees | bloomseed.co/cultivars (356 names, 4 tiers; product pages have lineage-tree widgets); threesgeneticreserve.com (~30 SKUs, JS-heavy — use /search or /collections/all); archiveseedbank.com (pheno-numbered precision); dnagenetics.com; skunktek.com |
 | Deep brand libraries | Per-strain genetics pages from brands with long catalogs | 710labs.com genetics pages (e.g. Papaya: "Mystery / Clone Only") |
+| Breeder storefronts with per-product crosses | surfrseeds.surf (Surfr Seeds: exact cut names, e.g. "Tropicanna Cookies MTN Cut x Trophy Wife"); shwale.com (Farmhouse Studio Genetics: product pages + breeding-note blog; `?s=<term>` search) | Discovered Sept 2–3 2026 |
 | fruitfullseeds.com/genetics | Fruitfull Seeds' own catalog with dated releases and full pheno-numbered formulas (e.g. Rainbow Juice = Garlic Juice #2 × Grape Rainbow Pie #17) | Discovered Aug 31 2026; Erva-roster breeder, KY hashmaker Mr. Autogrow |
+| ONI seed catalog (seedfinder.eu/en/database/breeder/oni-seed-co) | 43-cultivar list — the anchor for what the seed line contains; the ONI rosin SKUs on Colorado menus are largely absent from it | Read Sept 2 2026 |
 | Dispensary product pages | Product existence + spelling; igadiltd.com carries NO lineage text (generic boilerplate; menus load via JS embeds) | Existence confirmation only |
 
 **Menu-post index (anchor reads, chronological):** Erva×InHouse collab
@@ -24,7 +26,9 @@ comment); In House 8.15.26 (instagram.com/p/Db8kFLyNntD/); Erva 8.25.26
 (instagram.com/p/DcbpZF1EUi_/); In House peach drop 8.29.26
 (instagram.com/p/Dci4mpoNj2a/); In House 7.3.26
 (instagram.com/p/DaQEmPgtGld/); In House 7.31.26
-(instagram.com/p/DbZbm59gG67/); In House 6.5.26 menu (URL not captured).
+(instagram.com/p/DbZbm59gG67/); In House 6.5.26 menu (URL not captured); Erva 9.5.26 drop
+(instagram.com/p/Dcy_mibPT8k/ — posted Sept 2 2026; caption credits
+@inhousemelts as processor; no breeder-credit comment).
 Drop-post comment sections carry breeder credits and demand chatter —
 credits are anchor when posted by the producer's own account; demand
 chatter is a timing signal only, never a quality input.
@@ -75,6 +79,11 @@ chatter is a timing signal only, never a quality input.
   object on IgadI's menu carries a Massachusetts hemp company's description
   while the products are Erva Colorado's. Product names, not brand
   descriptions, identify the producer (Sept 2 2026).
+- Brand Instagram accounts vanish after acquisitions: Oni Seed Co's
+  @oni_seed_co is gone and @oniseedco is a one-post shell (Sept 3 2026)
+  — a brand with no IG menu surface has no anchor for per-SKU claims.
+- Dutchie product pages for ONI carry brand boilerplate only, repeated
+  verbatim across SKUs — existence confirmation, never lineage.
 - Content farms (JointCommerce) — AI-generated strain pages; never a
   corroboration vote on their own.
 - Dutchie potency fields read ~7% on rosin at two unrelated stores

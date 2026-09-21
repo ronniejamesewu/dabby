@@ -50,6 +50,37 @@ Likely source of Erva's Red Pebbles cross. Michigan-associated with CO
 hash history. No official catalog site found; retail via Terpy Seeds.
 IG private.
 
+### ONI / Oni Seed Co (oniofficial.com; @oniseedco)
+Breeder → licensed brand. Oni Seed Co founded 2016 (PR Newswire, Mar 15
+2022: breeder Nicholas Handler; Zachary "Doc" Victor joined 2019);
+SeedFinder's breeder page instead credits "Harrrypalms and Oninoodles"
+— conflicted, recorded verbatim. Catalog: Tropicanna Cookies (F2),
+Papaya, Garlic Juice, Tropicana Banana, Strawpicanna, Zahiti Lime and
+~40 others (SeedFinder breeder page, anchor surface for the seed line).
+**IP sold**: Praetorian Global, Inc. (Miami) acquired all Oni Seed Co IP
+assets Mar 2022 (PR Newswire, stated); ONI word mark filed Sept 12 2022
+by Praetorian (USPTO serial 97587557). Praetorian's stated model is
+licensing IP to partners per market; Colorado was ONI's "2024 debut"
+(Praetorian / Planet 13 release, Nov 19 2025). **Colorado grower and
+processor: undisclosed** — no source names the licensee who grows,
+washes, or presses the Colorado ONI jars (searched Sept 2 2026). Retail
+boilerplate on Dutchie product pages states an in-house "cultivation
+team ... of legacy growers" — brand-wide copy, not a named entity.
+Process claim (Planet 13 Florida blog, June 25 2026, brand-wide): fresh-
+frozen at harvest, low-temperature press, cold-cured, hand-whipped.
+Rosin SKUs carry pheno numbers (Limestone #44, Garlic Juice #24); the
+Reefer Madness jars (Limestone #44, Original Diesel, Point Break) are
+not in the seed catalog. Instagram: @oni_seed_co is gone; @oniseedco is
+a one-post shell (Mar 19 2022, the acquisition announcement) — no menu
+surface (checked Sept 3 2026). Leafly brand page 404.
+
+### Farmhouse Studio Genetics (Shwale; shwale.com)
+Breeder. Own storefront states crosses per product (BOP, Banana Shack,
+Diamond Glands) and a blog with breeding notes (backcross detail for
+Diamond Glands, June 6 2026) — anchor surface; site search
+(`shwale.com/?s=<term>`) is the direct route. Erva's BOP is Farmhouse's
+formula verbatim (9.5.26 menu). Not on Erva's Aug 7 2026 stated roster.
+
 ## Other producers in the jar log
 
 | Brand | Roles / model | Channel | Notes |
