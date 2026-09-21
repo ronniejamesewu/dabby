@@ -20,6 +20,9 @@ Reciprocal-cross-level precision on menus (Rainbow Colonel vs Rainbow Chem).
 anchor): Three's Genetic Reserve / @jlsmonster, Fruitfull Seeds, Elemental
 Seeds, Bloom Seed Co, Purple City (Europe handle). Terp Fountain absent
 from that comment but corroborated separately via Red Pebbles.
+Off-roster formulas on the 9.19.26 menu: Intergalactic matches an Exotic
+Genetix release, Gold Fronts' Sour Papaya is an Oni Seed Co line
+(leads — Erva credits neither; Sept 21 2026).
 
 ### In House / In House Melts (@inhousemelts, theinhousellc.com)
 Processor + grower. CO licensed (403R-00250), family-owned. Historically

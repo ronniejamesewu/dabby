@@ -233,7 +233,7 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Certified Jelly** — undisclosed (Garlic Hard-Scarf parent). Searched
   Sept 3 2026: general web, roster-breeder site searches, Colorado menu
   searches. Only unrelated "Jelly" cultivars surface. Re-run.
-- **Cosmic Z** — undisclosed (Cosmic Juice component). Searched Sept 3
+- **Cosmic Z** — undisclosed (Cosmic Juice and Cosmic Chunkz component). Searched Sept 3
   2026; only an unrelated California retail listing with no breeder
   stated. Re-run.
 - **Trophy Wife (Surfr Seeds)** = Triangle Mints × Triangle Mints F2 —
@@ -252,3 +252,51 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   three breeder entries all resolving to this cut; Sept 2 2026). Whether
   ONI's "Original Diesel" jar is this cut is undisclosed — see
   [strains/original-diesel.md](strains/original-diesel.md).
+
+## Erva 9.19.26 drop and In House 9.12.26 drop (Sept 21, 2026)
+
+- **Strawberry Pie** = Strawnana × Grape Pie Wedding Crasher — stated
+  (Erva IG menu 8.7.26, verbatim); Bloom's catalog lists "Strawberry Pie
+  — Strawberry Banana x GPWC" (stated, bloomseed.co/cultivars, Sept 21
+  2026). Strawberry Banana, Grape Pie, Wedding Crasher — all classics.
+- **Black Cherry Guava** = Black Cherry Jelly × StrawGuava — stated (Erva
+  IG menu 8.7.26, verbatim). Breeder undisclosed; not in Bloom's catalog
+  (Sept 21 2026). StrawGuava read as Strawberry Guava (Bloom) — Erva's
+  menu does not expand the abbreviation.
+- **Black Cherry Jelly** — undisclosed for Erva's line. Lead: a Black
+  Cherry Jelly grown by Zero Group (OK Gazette review, Sept 2021, no
+  lineage stated); aggregator copy gives Black Cherry Pie × Jelly Breath
+  — single non-anchor cluster, not tied to Erva; Zero Group's site not
+  readable (Sept 21 2026). Jelly Breath = Mendo Breath × Do-Si-Dos
+  (corroborated, Leafly + AllBud; In House Genetics WA).
+- **Canal Street Runtz** = Pre-64 Runtz × THC Bomb — stated (Erva IG menu
+  8.7.26). Lead on breeder: SeedFinder's Purple City Genetics page gives
+  the same cross, "a hash plant from the El Krem line" (Sept 21 2026);
+  PCG is on Erva's stated roster.
+- **Pre-64 Runtz** = The Original Z × Gelato — lead (SeedFinder, PCG
+  entry). A generic aggregation gives "Gelato 33 x Zkittles" — reversed
+  order, recorded verbatim. Both classics either way.
+- **THC Bomb** (Bomb Seeds) — DOCUMENTED DEAD-END: parentage not
+  disclosed by the breeder; SeedFinder lists "Unknown Strain" (Sept 21
+  2026).
+- **Constantine** = Orange Valley OG × The Cube — corroborated
+  (SeedFinder genealogy + AllBud; Exotic Genetix). Orange Valley OG = 818
+  Pure SFV OG S1 × Agent Orange — lead (SeedFinder only) → OG Kush /
+  Skunk #1.
+- **The Cube** = Starfighter F1 × Starfighter IX2 — corroborated
+  (SeedFinder + Leafly; Exotic Genetix). Deeper SeedFinder render reaches
+  Tahoe Alien / Chemdog via Lemon Alien Dawg — lead, single source.
+- **Zangria** — UNATTRIBUTED for Erva's Gold Fronts parent. Competing
+  same-name claims, recorded verbatim: Fiya Farmer's Zangria (SeedFinder,
+  clone-only) = The Original Z × GSC Thin Mints; other sources credit the
+  name to Wizard Trees, Greenpoint Seeds, Frosteez Farmz. Bloom's catalog
+  uses Zangria as a parent (Zangria × TMZ; Rainbow Zangria × TMZ) without
+  stating its parentage (Sept 21 2026). None tied to Erva.
+- **Sour Papaya** = Sour Diesel × Papaya — corroborated (SeedFinder,
+  Speakeasy Seedbank, The Highest Critic; Oni Seed Co). Sour Diesel
+  classic; Papaya dead-end. SeedFinder traces Oni's Papaya to Nirvana's
+  Citral × Ice — differs from 710 Labs' "Mystery / Clone Only"; recorded,
+  terminal either way.
+- **Zoids** — undisclosed (Zomps parent; In House IG menu 9.12.26). Not
+  in Bloom's catalog or In House's Weedmaps storefront; nothing published
+  under this name (searched Sept 21 2026). Re-run.
