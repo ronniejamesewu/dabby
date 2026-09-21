@@ -90,6 +90,20 @@ sentence says so, otherwise open); nothing is guessed. The build prints
 a **Lineage gaps** list — parent names that match no classic, node, or
 entry — as a research to-do, not an error.
 
+Each card also prints a **lineage lean** line (`rc-lean`) under the tree:
+the share of the jar's pedigree tracing to `daytime`- and `heavy`-tagged
+names against `effects_priors.md`, plus untagged-known and unknown shares,
+with the tagged ancestors named (`lineage_lean(slug)` in the renderer; a
+reputation-odds read, not an effects forecast — the line and the
+precomputed section both say so). Every ancestor name in the card's full,
+un-collapsed pedigree feeds the search box too, alongside the literal
+tokens `daytime`/`heavy` when the jar has a nonzero share of either, so
+the existing search field finds a jar by parentage or by lean with no new
+controls. A precomputed **Lineage lean** section (above Lineage Nodes)
+ranks the top 15 jars by daytime share and by heavy share. `menu_fetch.py`
+appends the same read as a `Lean` column on its shelf rundown for any row
+matched to a catalog entry.
+
 ## Provenance
 
 Created Aug 30, 2026 from the founding research campaign: 27 strains

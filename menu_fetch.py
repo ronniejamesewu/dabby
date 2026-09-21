@@ -983,14 +983,43 @@ def _potency_label(row):
     return s
 
 
+def _lean_label(lean):
+    return f"day {round(lean['daytime'] * 100)}% · heavy {round(lean['heavy'] * 100)}% · unk {round(lean['unknown'] * 100)}%"
+
+
 def rundown_table(rows):
-    head = "| Store | Brand | Strain | Form | Size | Price | Special | Qty | Potency | Match |\n|---|---|---|---|---|---|---|---|---|---|"
+    # Imported lazily and only here, so `--help` and script-only paths (which
+    # never print a table) don't pay for Dabby_Research_Renderer's own import
+    # cost (it requires the 'markdown' package and can sys.exit(1) without
+    # it) -- an import failure degrades the new column to blank rather than
+    # crashing the rundown.
+    lineage_lean_fn = None
+    try:
+        from Dabby_Research_Renderer import lineage_lean as lineage_lean_fn
+    except Exception as e:
+        print(f"! lineage_lean unavailable, Lean column left blank: {e}", file=sys.stderr)
+    except SystemExit as e:
+        print(f"! lineage_lean unavailable, Lean column left blank: {e}", file=sys.stderr)
+
+    lean_cache = {}
+    head = ("| Store | Brand | Strain | Form | Size | Price | Special | Qty | Potency | Match | Lean |\n"
+            "|---|---|---|---|---|---|---|---|---|---|---|")
     lines = [head]
     for r in rows:
+        lean = None
+        if lineage_lean_fn is not None and r.get("match_tier") == "entry" and r.get("match_slug"):
+            slug = r["match_slug"]
+            if slug not in lean_cache:
+                try:
+                    lean_cache[slug] = lineage_lean_fn(slug)
+                except Exception:
+                    lean_cache[slug] = None
+            lean = lean_cache[slug]
+        r["lean"] = lean
         lines.append(
             f"| {r['store_name']} | {r['brand']} | {r['strain']} | {r['form']} | {r['size_label']} | "
             f"{money(r['price'])} | {money(r['special_price'])} | {r['qty'] if r['qty'] is not None else ''} | "
-            f"{_potency_label(r)} | {_match_label(r)} |"
+            f"{_potency_label(r)} | {_match_label(r)} | {_lean_label(lean) if lean is not None else ''} |"
         )
     return "\n".join(lines)
 
