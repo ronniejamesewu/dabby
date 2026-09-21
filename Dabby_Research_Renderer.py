@@ -862,7 +862,16 @@ def card_html(e, node_ids, gaps):
     tree = lineage_tree(e["slug"])
     tree_html = ""
     if tree["status"] in ("cross", "blend"):
-        tree_html = f'<div class="rc-tree">{render_tree_svg(tree)}</div>'
+        # Tap-to-enlarge without script: a hidden checkbox toggles the label
+        # (which holds the one copy of the SVG) between fit-to-card and a
+        # full-size, scrollable overlay. --tree-w is the SVG's natural width.
+        svg = render_tree_svg(tree)
+        tree_w = int(re.search(r'viewBox="0 0 (\d+) ', svg).group(1))
+        zid = f'zoom-{esc(e["slug"])}'
+        hint = '<div class="rc-zoom-hint">tap tree to enlarge</div>' if tree_w > ZOOM_HINT_MIN_W else ""
+        tree_html = (f'<div class="rc-tree"><input type="checkbox" class="rc-zoom-toggle" id="{zid}" hidden>'
+                     f'<label class="rc-zoom" for="{zid}" style="--tree-w:{tree_w}px">{svg}'
+                     f'<span class="rc-zoom-x" aria-hidden="true">×</span></label>{hint}</div>')
         unresolved = []
         _walk_unresolved(tree, unresolved)
         for name in unresolved:
@@ -893,6 +902,9 @@ def collapsible(section_id, title, inner):
     )
 
 
+# Trees narrower than this fit a card at full size on most screens -- no hint.
+ZOOM_HINT_MIN_W = 440
+
 JS = """<script>
 (function(){
 var inp=document.getElementById("researchSearch");
@@ -915,6 +927,8 @@ window.addEventListener("hashchange",function(){openTarget(window.location.hash)
 document.querySelectorAll("a[href^='#']").forEach(function(a){a.addEventListener("click",function(){
 openAncestors(document.querySelector(this.getAttribute("href")));});});
 })();
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"){
+document.querySelectorAll(".rc-zoom-toggle:checked").forEach(function(c){c.checked=false;});}});
 </script>"""
 
 
