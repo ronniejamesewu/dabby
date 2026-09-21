@@ -203,8 +203,8 @@ ENTRY = WisdomEntry(
                     "single cycle — the exposure territory that throws chest on the "
                     "bubbler too, so the split may have nothing to do with the top. "
                     "Direction only.",
-    watch_for="lunarz R9 now carries the owed bubbler comparison — R8 went to the Calibear "
-              "instead. The upright-vs-slouched test (papzp22 R11). Sort taste reads by "
-              "kind.",
+    watch_for="Bubbler flavor comparison still owed — lunarz R9 lost its flavor read and "
+              "changed joystick. The upright-vs-slouched test (papzp22 R11). Sort taste "
+              "reads by kind.",
     updated='papzp22 R10 (July 22, 2026) — RBR debut; bb362 R7 (July 23, 2026) — second run, flavor held; lunarz R6 (July 29, 2026) — third run, chest three-for-three; lunarz R7 (July 29, 2026) — fourth run, the owed modest-load cell, first no-chest instance; lunarz R8 (July 30, 2026) — no RBR run; R7/R8 reads this top louder than the Calibear.',
 )
