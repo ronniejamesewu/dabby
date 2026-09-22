@@ -31,6 +31,14 @@ SOURTANGIE_HOLD_DESCENT_450 = [
     Waypoint(time_s=45, temp_f=410, note='Floor — shorter cycle'),
 ]
 
+# "Orange" Switch slot — copied from PRESETS['orange'] in Dabby_Core.py.
+SOURTANGIE_ORANGE_440 = [
+    Waypoint(time_s=0,  temp_f=440, note="Session open — hot open"),
+    Waypoint(time_s=15, temp_f=440, note="Hold at peak — extended 15s hold"),
+    Waypoint(time_s=38, temp_f=420, note="Descent midpoint"),
+    Waypoint(time_s=60, temp_f=400, note="Floor"),
+]
+
 # ── Runs (chronological; run numbers assigned positionally by the generator) ──
 RUNS = [
     CompletedRun(
@@ -257,6 +265,21 @@ RUNS = [
         intensity='medium',
         dab_notes='Great hit, perfect throughout. Lots of terps and taste, lots of coughing, slight heartburn about halfway through. And intensity was medium. [Heartburn timing:] In session and after. [Swab, load, cycle, curve:] Swab was golden, minimal. Load size was normal, 1 curve, yep 450. [Normal load vs. planned modest:] Hard to portion.',
         analysis='Run 15 — grey 450°F bounded-hold + shorter descent, first dab of the day, single cycle, full 45s. The plan called for a modest load to give a clean read against Run 14; it came in normal instead, the taffy\'s standing portioning problem recurring rather than a deliberate choice. Golden, minimal swab — consistent with the jar\'s established read that cycle count, not endpoint, drives swab color (single-cycle runs read lighter; bp4rw13 R5–R8, FW106 R27 the cross-strain instances). Medium intensity, perfect flavor throughout, lots of terps and taste, heavy terpene-load coughing (the R7-established mechanism, distinct from harshness). The chest came back for a second straight run, but this time both in-session (about halfway through) and persisting after the session ended — this jar\'s first clean instance of the chest-and-lingers conjunction the wisdom layer has been tracking since bp4rw13 R8 and LunarZ R1 (both user-verbatim; this makes a third). Against Run 14, load moved down while insert residue state didn\'t change (unclean since the Run 9 deep-clean) — a small point toward residue over load as the driver, though load wasn\'t at the plan\'s modest target so this isn\'t clean isolation. Also notable: this is a first dab of a new day and still threw chest, which cuts against same-day cumulative exposure as sufficient — Run 13\'s 3rd-dab normal load stayed chest-free. Tracked against the user\'s esophageal anatomy as candidate locus; mechanism otherwise unresolved. Rig 6.',
+    ),
+    CompletedRun(
+        strain='Sour Tangie',
+        run_date=date(2026, 9, 22),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 9, 22, 22, 9, 44, tzinfo=timezone.utc),
+        waypoints=SOURTANGIE_ORANGE_440,
+        equipment=RIG_10,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F',
+        swab='Not recorded',
+        session_char='',
+        intensity=None,
+        dab_notes='Interesting flavor, this jar cured from sticky fresh press rosin to crumbly dry texture, Oliver thinks I opened it cold too many times and that caused the extra dry cure. It still has some flavor and plenty of effect, but not like it did.',
+        analysis='',
     ),
 ]
 
