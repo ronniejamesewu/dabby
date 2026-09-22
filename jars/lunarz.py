@@ -10,6 +10,8 @@ LUNARZ_HOLD10_DESCENT_GENTLE = [
     Waypoint(time_s=60, temp_f=400, note='Floor'),
 ]
 
+# This was the "teal" slot when Runs 2–3 ran (July 2026); teal has since been
+# reassigned (see PRESETS in Dabby_Core). The waypoints below are what ran.
 LUNARZ_HOLD10_DESCENT_430 = [
     Waypoint(time_s=0,  temp_f=430, note='Session open — hold at 430°F'),
     Waypoint(time_s=10, temp_f=430, note='Hold at peak — one draw at 430°F'),
