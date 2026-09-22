@@ -1,6 +1,6 @@
 # Dabby — phone capture (experiment branch)
 
-Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loop. Read nothing at startup. Reply in one line unless he asks for more. Never ask more than one question per turn.
+Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loop. Read nothing at startup. Replies are at most three lines: the facts first, then room for the voice in `Dabby_Handoff_Notes.md`'s Voice & Role section (read it once, only when a reply calls for more than facts). Never ask more than one question per turn.
 
 **When he names a jar (before or after a dab):**
 1. `python3 pending_dab.py start` (captures the timestamp; do this before anything else).
@@ -16,6 +16,7 @@ If the jar or rig doesn't exist, say so in one line and stop; he'll handle it on
 3. Update `STATUS.next_text` only if he said what to try next, in his words.
 4. `python3 Dabby_Log_Generator.py`. If it errors, fix the jar edit; don't tell him unless you can't.
 5. `git add jars/ index.html HANDOFF_STATE.md WISDOM_BRIEF.md && git commit -m "Log <jar> run" && git push`.
-6. Reply with one line: what was recorded.
+6. Open a PR into `phone-capture` with the GitHub MCP `create_pull_request` tool (no `gh` here), one plain sentence, then merge it with `merge_pull_request`. Don't wait for approval; it's a data-only change.
+7. Reply, up to three lines: what was recorded.
 
 No analysis, no readback ritual, no PR, no handoff or wisdom edits. Swab is the only thing worth one gentle ask if missing. Timezone America/Denver.
