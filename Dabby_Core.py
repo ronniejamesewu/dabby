@@ -178,6 +178,43 @@ BASELINE_CURVE = [
     Waypoint(time_s=60, temp_f=420, note="Hold"),
 ]
 
+# ── PRESETS (Switch² profile slots, by color) ────────────────────────────────
+# Snapshot of the five slots as of September 22, 2026 (screenshots from Eric).
+# Slots get reassigned on the device; when one changes, update the entry here
+# and note the date. A run logged against a preset copies the waypoints into
+# the jar file, so history is unaffected by later reassignment.
+# Duration for a preset run = its last waypoint's time_s.
+PRESETS = {
+    'grey': [
+        Waypoint(time_s=0,  temp_f=450, note="Session open — hot open"),
+        Waypoint(time_s=10, temp_f=450, note="Hold at peak"),
+        Waypoint(time_s=30, temp_f=425, note="Descent midpoint"),
+        Waypoint(time_s=45, temp_f=410, note="Floor"),
+    ],
+    'orange': [
+        Waypoint(time_s=0,  temp_f=440, note="Session open — hot open"),
+        Waypoint(time_s=15, temp_f=440, note="Hold at peak — extended 15s hold"),
+        Waypoint(time_s=38, temp_f=420, note="Descent midpoint"),
+        Waypoint(time_s=60, temp_f=400, note="Floor"),
+    ],
+    'teal': [
+        Waypoint(time_s=0,  temp_f=375, note="Session open — cool open"),
+        Waypoint(time_s=10, temp_f=435, note="Fast climb to peak"),
+        Waypoint(time_s=30, temp_f=435, note="Hold at peak"),
+        Waypoint(time_s=60, temp_f=415, note="Floor"),
+    ],
+    'blue': [
+        Waypoint(time_s=0,  temp_f=440, note="Session open — hot open"),
+        Waypoint(time_s=50, temp_f=490, note="Straight ramp up to endpoint"),
+    ],
+    'purple': [
+        Waypoint(time_s=0,  temp_f=430, note="Session open — hot open"),
+        Waypoint(time_s=15, temp_f=430, note="Hold at peak — extended 15s hold"),
+        Waypoint(time_s=37, temp_f=415, note="Descent midpoint"),
+        Waypoint(time_s=60, temp_f=400, note="Floor"),
+    ],
+}
+
 # ── EQUIPMENT ────────────────────────────────────────────────────────────────
 
 RIG_1 = EquipmentConfig(
