@@ -203,9 +203,11 @@ PRESETS = {
         Waypoint(time_s=30, temp_f=435, note="Hold at peak"),
         Waypoint(time_s=60, temp_f=415, note="Floor"),
     ],
+    # Blue is the scratch slot: whatever new curve idea is being tried lives here,
+    # so its contents change most often. Currently the Switch's prebuilt "Ascend" shape.
     'blue': [
         Waypoint(time_s=0,  temp_f=440, note="Session open — hot open"),
-        Waypoint(time_s=50, temp_f=490, note="Straight ramp up to endpoint"),
+        Waypoint(time_s=50, temp_f=490, note="Straight ramp up to endpoint (Switch prebuilt 'Ascend' shape)"),
     ],
     'purple': [
         Waypoint(time_s=0,  temp_f=430, note="Session open — hot open"),
