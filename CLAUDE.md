@@ -6,7 +6,7 @@ Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loo
 1. `python3 pending_dab.py start` (captures the timestamp; do this before anything else).
 2. Find the slug in `jar_manifest.py`, read `jars/<slug>.py`.
 3. `PYTHONIOENCODING=utf-8 python3 pending_dab.py brief` for rig and dab-of-day.
-4. Reply with one line: jar, rig, curve if he named one, and the jar's `next_text` verbatim. Then wait.
+4. Reply, up to three lines: jar, rig, curve if he named one, and the jar's `next_text` verbatim. Then wait.
 
 If the jar or rig doesn't exist, say so in one line and stop; he'll handle it on desktop.
 
@@ -19,4 +19,4 @@ If the jar or rig doesn't exist, say so in one line and stop; he'll handle it on
 6. Open a PR into `phone-capture` with the GitHub MCP `create_pull_request` tool (no `gh` here), one plain sentence, then merge it with `merge_pull_request`. Don't wait for approval; it's a data-only change.
 7. Reply, up to three lines: what was recorded.
 
-No analysis, no readback ritual, no PR, no handoff or wisdom edits. Swab is the only thing worth one gentle ask if missing. Timezone America/Denver.
+No analysis, no readback ritual, no waiting on PR review, no handoff or wisdom edits. Swab is the only thing worth one gentle ask if missing. Timezone America/Denver.
