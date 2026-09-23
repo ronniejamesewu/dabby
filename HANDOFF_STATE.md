@@ -20,8 +20,6 @@
 
 **Next:** Try 430°F endpoint
 
-**AI Analysis:** One data point at 450°F with an amber-toward-brown swab — reliable floor signal. Pull the endpoint back to 430°F. Nothing subtle here, it was just too hot.
-
 **Proposed Curve:**
 - 0s → 375°F — Session open
 - 10s → 380°F — Short flat phase
@@ -36,8 +34,6 @@
 
 **Next:** Try faster ramp to 460°F on Run 5
 
-**AI Analysis:** Tail harshness at 430°F is consistent across runs. Run 5 moves in a different direction — faster ramp to 460°F — rather than continuing to work the lower end. That's an exploratory step; the session character at 460°F is unknown for MBD. The citrus rind note is worth watching on Run 5 to see whether it changes with the faster climb. The short duration observation from Run 4 is a single data point, unclear if it means anything. Swab has been clean throughout, so the harshness is coming from endpoint temperature, not material condition.
-
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 15s → 405°F — Steeper early ascent
@@ -50,8 +46,6 @@
 **3 sessions** &nbsp;·&nbsp; Next run: 4 &nbsp;·&nbsp; Last: May 11, 2026 &nbsp;·&nbsp; Equipment: Rig 1 — Dr. Dabber stock quartz · Cloud Vortex 21.0 · 6mm quartz pearl · Dr. Dabber stock bubbler
 
 **Next:** Walk endpoint up incrementally — try 423°F on Run 4
-
-**AI Analysis:** The 420°F endpoint is consistent with the hypothesis: dropping 10°F from the 430°F runs eliminated tail harshness without producing a floor signal. The trade-off is real — effects were milder and slower-building, suggesting the higher-temperature band contributes to intensity. Next step is to probe incrementally upward: try 423°F endpoint (same ramp shape, +3°F) to begin finding where harshness re-enters. Small steps keep the signal clean — each run is one data point on the harshness-intensity curve.
 
 **Proposed Curve:**
 - 0s → 375°F — Session open
@@ -67,8 +61,6 @@
 
 **Next:** Try 410°F endpoint on Run 4 — tail harshness consistent at 415°F across Runs 2 and 3
 
-**AI Analysis:** Tail harshness at 415°F is now consistent across two runs (Runs 2 and 3) — no longer a single-run signal. Swab has been very light golden across all three runs, consistent with the Gemlock efficiency pattern. Intensity landed big on Run 3 despite the lower endpoint, which is notable. 'Not a lot of distinct flavor' has been the read at both 430°F (Run 1) and 415°F (Runs 2–3) — this looks like the phenotype's character, not a temperature signal. Next: drop to 410°F endpoint, same ramp shape. Two consistent runs at 415°F with harshness — time to step down.
-
 **Proposed Curve:**
 - 0s → 375°F — Session open
 - 25s → 400°F — Mid climb
@@ -81,8 +73,6 @@
 **1 session** &nbsp;·&nbsp; Next run: 2 &nbsp;·&nbsp; Last: June 17, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 2: try 425°F — up 5°F from baseline, same 8s ramp and 60s hold
-
-**AI Analysis:** One clean run at baseline on Rig 6 — no harshness, clean swab, high vapor density. Repeat the exact same curve before adjusting anything. BB36 #2 had documented run-to-run variability; one clean result is not enough to call the ceiling or the rig's working range for this phenotype.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
@@ -97,8 +87,6 @@
 
 **Next:** Run 37: same orange 440°F curve (440→440@15s→420@38s→400@60s), back on the stock bubbler (Rig 6), first dab, normal load — the matched pair on the flavor read.
 
-**AI Analysis:** Both comparative flavor reads in the log say a recycler top costs flavor; neither has a matched pair behind it. Run 37 builds one — same curve, same first-dab slot, normal load, bubbler back on, top the only variable — which is the comparison the glass entries have owed since the RBR debut, on a session worth having anyway. Say the load class at logging. Expected: flavor louder than Run 36, key lime note back. Surprising: no better on the bubbler — that puts Run 36's read on the curve or on variance.
-
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open, orange curve
 - 15s → 440°F — Hold at peak — extended 15s hold
@@ -111,8 +99,6 @@
 **19 sessions** &nbsp;·&nbsp; Next run: 20 &nbsp;·&nbsp; Last: July 21, 2026 &nbsp;·&nbsp; Equipment: Rig 6 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Run 20 (likely the jar's last): the "purple" curve — 430°F open, 15s hold, gentle descent to a 400°F floor — a cooler, longer-hold swing at the flavor the 440°F bounded hold couldn't pull, first dab.
-
-**AI Analysis:** Likely the jar's last run. Run the "purple" curve — 430°F open, 15s hold, gentle descent to a 400°F floor (borrowed from LunarZ/OC, duplicated locally) — as a first dab. The extended holds that front-loaded a big terpene bolus without cooking were the cooler 430°F purple runs (LunarZ R4/R5, OC R15 "fireworks"), and since R19's 440°F bounded hold came back golden but flavorless, a cooler-but-longer hold is the other lever left for the flavor this jar never gave up — and Watermellos has never run a sub-440°F descent, so it's new ground. It won't test the ~37s harshness ceiling (different curve), but that's a fair trade on a send-off. Expected: a bigger front-loaded bolus than R19 on the held draws, golden swab, medium-plus intensity ending on satiety or depletion, flavor still muted. Surprising: genuinely rich flavor — the jar's first flavor unlock, which would make the cooler-longer hold the recipe — or a dark swab / heavy reclaim / toast, which would say even a sustained 430°F cooks this material.
 
 **Proposed Curve:**
 - 0s → 430°F — Session open — hot open
@@ -127,8 +113,6 @@
 
 **Next:** Run 2: repeat the bounded 440°F hold (440→440@10s→420@35s→400@60s) — replicate the jar opener before changing anything
 
-**AI Analysis:** Repeat the exact curve, same load class — one big clean delivery on a jar opener is a single data point, and this jar adds a two-strain load-position lottery to normal run-to-run noise. Track what draw 1 tastes like each run: the garlic/citrus split is the only strain-identification signal this format offers, and it only becomes informative across runs. Expected: golden swab, big intensity, mild-at-most late harshness. Surprising: a dark swab or hard early harshness — that would point at load or zone scooped, not the curve.
-
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
 - 10s → 440°F — Hold at peak — one draw at 440°F
@@ -141,8 +125,6 @@
 **11 sessions** &nbsp;·&nbsp; Next run: 12 &nbsp;·&nbsp; Last: July 28, 2026 &nbsp;·&nbsp; Equipment: Rig 8 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · Calibear Fab Recycler
 
 **Next:** Run 12: the matched glass pair, finally — same smoothed 440°F curve, same larger load, same 3rd-dab slot as Run 11, with the SAML RBR back on (Rig 7), so the top is the only thing that moves
-
-**AI Analysis:** Run 11 hands the glass comparison a cell worth matching: a curve, a load class and a dab slot that just produced a documented result. Rerun it exactly on the SAML RBR and it becomes the first pair in this log differing only by the top — reading on the live purchase question and on chest at the same time, since the RBR is the one non-bubbler top that already has a chest instance (papzp22 R10). Keep the water sip; a failure to fully reset is data either way. Expected: the heavier pull and better flavor don't reproduce on the RBR, and chest shows up anyway at the 3rd-dab slot. Surprising: chest absent on the RBR at matched load and slot — that would put the signal on the glass, which nothing in the log suggests, and would make Rig 8's flowback risk a real cost rather than a handling quirk.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
@@ -157,8 +139,6 @@
 
 **Next:** Run 13: rerun the 10s-440-hold curve (440→440@10s→420@35s→400@60s), first dab, normal load — does the front-load / early-depletion signature repeat, or is it jar variance?
 
-**AI Analysis:** Run 13: same hold curve, first dab, normal load, everything held — does R12's signature repeat? Amber/light reclaim, strong effect, and pre-60s depletion all fit the hold front-loading productively, but one run can't beat this jar's variance. Expected: same again. Surprising: dark swab/heavy reclaim (cooking, like R31), or a clean full 60s — which would say the early depletion was load, not the hold.
-
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
 - 10s → 440°F — Hold at peak — one draw at 440°F
@@ -171,8 +151,6 @@
 **10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: July 22, 2026 &nbsp;·&nbsp; Equipment: Rig 7 — Dr. Dabber Sapphire Plus (v2) · Wym Stick Piston (stock — .094" bore airflow) · SAML RBR (Refined Bell Recycler)
 
 **Next:** Run 11: rerun the grey 450°F on the RBR (Rig 7), first dab, deliberately upright and breath-conscious from the first draw, no water unless needed, best-achievable modest single cycle — isolate posture as the chest lever (the one variable the bubbler never let vary).
-
-**AI Analysis:** Run 11 isolates posture — the variable every prior chest run held constant by forcing a slouch over the bubbler. The RBR debut (Run 10) surfaced it: chest/heartburn came early and lingered even with the vapor cooled harder, cutting against a vapor-temperature driver, while an upright cycle 2 showed next to no added heartburn. Rerun the grey 450°F on the RBR, first dab, deliberately upright and breath-conscious from the first draw, no water unless needed, best-achievable modest single cycle. A modest load also gives a cleaner taste read on the new top — Run 10's large load confounded the swab and blocked any potency read. Expected: chest signal absent or much reduced upright, taste still muted (the RBR terp cost should repeat independent of posture). Surprising: chest heartburn shows up anyway upright — that pushes it back toward the 450°F open, the curve, or load, and away from posture. The nastier confirmation to follow: a deliberately slouched run at a lower, cooler endpoint bringing the chest signal back would nail posture over temperature.
 
 **Proposed Curve:**
 - 0s → 450°F — Session open — hot open
@@ -187,8 +165,6 @@
 
 **Next:** Run 16: deep-clean the insert, then rerun the grey 450°F curve at the best achievable modest load, single cycle, first dab — the direct residue test.
 
-**AI Analysis:** Two straight runs with chest now — Run 14 post-session-only, Run 15 both in-session and lingering, the jar's first clean chest-and-lingers instance. Between the two, load moved down while insert residue state stayed constant since the Run 9 clean — a small point toward residue over load, and Run 15 landing on a first dab of a new day cuts against same-day accumulation as sufficient (Run 13 stayed clean on a comparable load). Deep-clean the insert again before Run 16, then run the same curve at the best achievable modest load, single cycle, first dab — the direct repeat of the test the Run 9 clean already ran once. Load stays hard to pin exactly on this taffy, so it won't be fully clean, but a repeat clean-after-clean pattern would make residue the leading operational read. Expected: chest clears again like it did after Run 9. Surprising: chest persists even right after a fresh clean — that would move the leading candidate back toward load or the material itself.
-
 **Proposed Curve:**
 - 0s → 450°F — Session open — hot open
 - 10s → 450°F — Hold at peak — one draw at 450°F
@@ -201,8 +177,6 @@
 **10 sessions** &nbsp;·&nbsp; Next run: 11 &nbsp;·&nbsp; Last: September 22, 2026 &nbsp;·&nbsp; Equipment: Rig 10 — Dr. Dabber Sapphire Plus (v2) · Wym Designs Honeycomb (.140" bore airflow) · Dr. Dabber stock bubbler
 
 **Next:** Swap back to the original joystick: "I believe I see a trend where the 140 joystick is producing darker swabs. Swapping back to the original would be an easy test."
-
-**AI Analysis:** Run it again exactly as Run 9 and change one habit: say a word about flavor right after the first draw, before the effects arrive. The three-top set has its bubbler run now, but flavor, the whole point, wasn't asked about until well after the dab, and by then the only read was "pleasant enough"; so a repeat on the same cap is the cheapest way to get it. The Honeycomb's wider bore is a confound against every earlier run, so the useful comparison is Run 10 against Run 9, not against the recycler runs. Normal load, dab slot wherever it falls. Expected: flavor reads louder than Run 8's "nice but muted," with the up-front coughing back. Surprising: flavor no better on the bubbler — that would put Run 8's muted read on the material or the night rather than the glass.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
@@ -217,8 +191,6 @@
 
 **Next:** No runs yet — start from baseline curve
 
-**AI Analysis:** Start from the baseline curve on Rig 6 — this jar carries the water-temperature test. Run 1, normal room-temp fill: control leg, this jar's own baseline harshness read, and the potency read — modest load. Treat this material as distantly related to the original Blueberry 36 #4 jar: nothing from that jar's run carries as a prior beyond weak family character. Run 2 repeats curve, load class, and dab slot with a hot fill (~120–130°F, poured right before the run), water temperature the only deliberate mover. Watch for the family's delayed retronasal blueberry. Expected: Run 1 clean at 420°F — a weak prior from the seed pop's record, nothing more. Surprising: harshness at baseline on a modest load — that would mark this material as expressing differently from the whole family and reset the test design.
-
 **Proposed Curve:**
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
@@ -231,8 +203,6 @@
 **No runs yet** &nbsp;·&nbsp; Next run: 1
 
 **Next:** No runs yet — start from baseline curve
-
-**AI Analysis:** Start from the baseline curve. Open with a modest load until the first session reads potency — new harvest, and the BB36 family hits hard. Treat this material as distantly related to the original Blueberry 36 #4 jar: same cut, different medium, harvest, and wash tier, so nothing from that jar's run carries as a prior beyond weak family character. Watch for the family's delayed retronasal blueberry, seen across the seed pop. Expected: a clean baseline run and light golden swab, per the family record — a weak prior. Surprising: harshness at baseline on a modest load — that would mark this material as expressing differently from the whole family.
 
 **Proposed Curve:**
 - 0s → 380°F — Session open
