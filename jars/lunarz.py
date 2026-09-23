@@ -172,13 +172,28 @@ RUNS = [
         dab_notes="i'm on a dab of lunarz right now, so let's oberved. pretty big body high, but pretty creative energy and insight. chatty. so maybe like a light couch locked chatty. [After the plan on file was read back:] holy shit! that's EXACTLY what i ran, with exception of a new joystick, a wym designs honeycomb with a .140 bore. crazy. ok, so i've been dabbing plenty over the past 53 days, i just got bored with the labor of logging them. we just kind of stumbled into logging this one, and 30 minutes ago i did the exact run that past me left instructions to do. [Swab / cycles / harshness / flavor:] swabs were golden, fair amount, the .140 seems to spread reclaim further up the walls. 1.5 cycles, depleted. some terp coughing up front, eye watering. i dont recall the flavor, it's pleasant enough. definitely more coughing with the stock glass. everything else looks good",
         analysis='The run the three-top comparison was waiting on, and it came back without the read it was run for: flavor was not recalled beyond "pleasant enough," so the smoothness-costs-flavor question stays open from the bubbler end. What did land is the other half — more coughing on the stock bubbler than on either recycler, the second user statement in that direction after Run 8\'s unprompted "the two recycler tops are definitely smoother." Directional, and a user comparison from memory rather than a matched pair. The joystick is new: the Honeycomb\'s .140" bore against the .094" Piston every earlier run used, so nothing here compares cleanly against Runs 1–8 — the top went back to the bubbler as planned, but the cap moved with it. The user suggested the wider bore spreads reclaim further up the walls; one observation, first run on the cap. Golden swab with a fair amount of reclaim over a cycle and a half sits in the clean range, no floor signal. Up-front terpene coughing with eye-watering is the cough this jar showed on Runs 4 and 6, distinct from harshness; none was reported, and the run ended on depletion. Fifty-three days of unlogged dabs sit between Run 8 and this one — first dab of the day by the record, with the jar\'s state and recent tolerance off the books.',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 9, 22),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 9, 23, 1, 11, 52, tzinfo=timezone.utc),
+        waypoints=LUNARZ_HOLD15_DESCENT_440_SMOOTH,
+        equipment=RIG_10,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F',
+        swab='amber',
+        session_char='',
+        intensity=None,
+        dab_notes='[Pre-dab:] Let\'s do a dab! Lunarz on rig 10 [Flavor after first draw:] Flavor was still pretty muted. But this is from a staging jar I\'ve had on the counter for a bit, because I could definitely taste the Z on this setup when I first brought it out of the fridge. [Later:] I get a little bit of the Z now [Report:] I did one draw in a second cycle, then stopped. Oddly that last draw was the tastiest. Gassy and candy. Swabs are Amber, lots of terp coughing and stinging the nose on first draw, medium harshness in throat, big intensity. Big body high, I\'m alone so not sure how chatty. [Curve / joystick:] I believe I see a trend where the 140 joystick is producing darker swabs. Swapping back to the original would be an easy test. Yes orange curve',
+        analysis='',
+    ),
 ]
 
 # ── Status ──
 STATUS = StrainStatus(
     name='LunarZ',
     profile_anchor='#lunarz-profile',
-    next_text='Run 10: same orange 440°F curve on Rig 10 (Honeycomb joystick, stock bubbler), normal load — one-word flavor read taken right after the first draw.',
+    next_text='Swap back to the original joystick: "I believe I see a trend where the 140 joystick is producing darker swabs. Swapping back to the original would be an easy test."',
     accent=None,
     slug='lunarz',
     info=[
