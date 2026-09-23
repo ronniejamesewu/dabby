@@ -768,9 +768,8 @@ def generate_handoff_state():
         lines.append("")
         lines.append(f"**Next:** {ss.next_text}")
         lines.append("")
-        if ss.next_ai_analysis:
-            lines.append(f"**AI Analysis:** {ss.next_ai_analysis}")
-            lines.append("")
+        # next_ai_analysis deliberately left out: the startup read carries only
+        # what's next, not prior synthesis. It still renders in index.html.
         if ss.next_waypoints:
             lines.append("**Proposed Curve:**")
             for wp in ss.next_waypoints:
