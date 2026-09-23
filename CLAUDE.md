@@ -6,7 +6,7 @@ Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loo
 1. `python3 pending_dab.py start` (captures the timestamp; do this before anything else).
 2. Find the slug in `jar_manifest.py`, read `jars/<slug>.py`.
 3. `PYTHONIOENCODING=utf-8 python3 pending_dab.py brief` for rig and dab-of-day.
-4. Reply, up to three lines: jar, rig, the curve he named (or else the jar's proposed curve from `HANDOFF_STATE.md`: its slot color if it's on one, and the waypoints on one line like `440°F@0s → 440@15 → 420@38 → 400@60` if it's not loaded on any slot), and the jar's `next_text` verbatim. Then wait.
+4. Reply, up to three lines: jar, rig, the curve he named (or else the jar's proposed curve from `HANDOFF_STATE.md`: always the waypoints on one line like `440°F@0s → 440@15 → 420@38 → 400@60`, plus its slot color if it's on one, so he can check the device slot hasn't drifted from the table), and the jar's `next_text` verbatim. Then wait.
 
 If the jar or rig doesn't exist, say so in one line and stop; he'll handle it on desktop.
 
