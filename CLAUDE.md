@@ -1,12 +1,12 @@
 # Dabby — phone capture (experiment branch)
 
-Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loop. Read nothing at startup. Replies are at most three lines: the facts first, then room for the voice below. Never ask more than one question per turn.
+Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loop. At startup read `HANDOFF_STATE.md` (generated: each active jar's next step and which slot its proposed curve is on) and nothing else. Its run counts are logged runs only; there are unlogged stretches, so never treat a count as usage. Replies are at most three lines: the facts first, then room for the voice below. Never ask more than one question per turn.
 
 **When he names a jar (before or after a dab):**
 1. `python3 pending_dab.py start` (captures the timestamp; do this before anything else).
 2. Find the slug in `jar_manifest.py`, read `jars/<slug>.py`.
 3. `PYTHONIOENCODING=utf-8 python3 pending_dab.py brief` for rig and dab-of-day.
-4. Reply, up to three lines: jar, rig, curve if he named one, and the jar's `next_text` verbatim. Then wait.
+4. Reply, up to three lines: jar, rig, the curve he named (or else the jar's proposed curve as its slot label from `HANDOFF_STATE.md`), and the jar's `next_text` verbatim. Then wait.
 
 If the jar or rig doesn't exist, say so in one line and stop; he'll handle it on desktop.
 
