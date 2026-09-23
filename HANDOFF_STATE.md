@@ -202,7 +202,7 @@
 
 **Next:** Run 10: same orange 440°F curve on Rig 10 (Honeycomb joystick, stock bubbler), normal load — one-word flavor read taken right after the first draw.
 
-**AI Analysis:** Run it again exactly as Run 9 and change one habit: say a word about flavor right after the first draw, before the effects arrive. The three-top set has its bubbler run now, but the flavor read — the whole point — was lost to memory, and a repeat on the same cap is the cheapest way to get it. The Honeycomb's wider bore is a confound against every earlier run, so the useful comparison is Run 10 against Run 9, not against the recycler runs. Normal load, dab slot wherever it falls. Expected: flavor reads louder than Run 8's "nice but muted," with the up-front coughing back. Surprising: flavor no better on the bubbler — that would put Run 8's muted read on the material or the night rather than the glass.
+**AI Analysis:** Run it again exactly as Run 9 and change one habit: say a word about flavor right after the first draw, before the effects arrive. The three-top set has its bubbler run now, but flavor, the whole point, wasn't asked about until well after the dab, and by then the only read was "pleasant enough"; so a repeat on the same cap is the cheapest way to get it. The Honeycomb's wider bore is a confound against every earlier run, so the useful comparison is Run 10 against Run 9, not against the recycler runs. Normal load, dab slot wherever it falls. Expected: flavor reads louder than Run 8's "nice but muted," with the up-front coughing back. Surprising: flavor no better on the bubbler — that would put Run 8's muted read on the material or the night rather than the glass.
 
 **Proposed Curve:**
 - 0s → 440°F — Session open — hot open
