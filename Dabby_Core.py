@@ -178,6 +178,56 @@ BASELINE_CURVE = [
     Waypoint(time_s=60, temp_f=420, note="Hold"),
 ]
 
+# ── PRESETS (Switch² profile slots, by color) ────────────────────────────────
+# Each curve is a dated constant; PRESETS maps a slot color to the one
+# currently loaded there. Runs reference the dated constant by name
+# (waypoints=ORANGE_0922), so the same name means the same curve in every jar.
+# NEVER edit a dated constant. When a slot is reassigned on the device, add a
+# new constant with that day's date and repoint the color. Editing one in
+# place silently rewrites every run that used it.
+# Duration for a preset run = its last waypoint's time_s.
+
+# Snapshot of the five slots as of September 22, 2026 (screenshots from Eric).
+GREY_0922 = [
+    Waypoint(time_s=0,  temp_f=450, note="Session open — hot open"),
+    Waypoint(time_s=10, temp_f=450, note="Hold at peak"),
+    Waypoint(time_s=30, temp_f=425, note="Descent midpoint"),
+    Waypoint(time_s=45, temp_f=410, note="Floor"),
+]
+ORANGE_0922 = [
+    Waypoint(time_s=0,  temp_f=440, note="Session open — hot open"),
+    Waypoint(time_s=15, temp_f=440, note="Hold at peak — extended 15s hold"),
+    Waypoint(time_s=38, temp_f=420, note="Descent midpoint"),
+    Waypoint(time_s=60, temp_f=400, note="Floor"),
+]
+TEAL_0922 = [
+    Waypoint(time_s=0,  temp_f=375, note="Session open — cool open"),
+    Waypoint(time_s=10, temp_f=435, note="Fast climb to peak"),
+    Waypoint(time_s=30, temp_f=435, note="Hold at peak"),
+    Waypoint(time_s=60, temp_f=415, note="Floor"),
+]
+# Blue is the scratch slot: whatever new curve idea is being tried lives here,
+# so it gets new dated constants most often. This one is the Switch's prebuilt "Ascend" shape.
+BLUE_0922 = [
+    Waypoint(time_s=0,  temp_f=440, note="Session open — hot open"),
+    Waypoint(time_s=50, temp_f=490, note="Straight ramp up to endpoint (Switch prebuilt 'Ascend' shape)"),
+]
+PURPLE_0922 = [
+    Waypoint(time_s=0,  temp_f=430, note="Session open — hot open"),
+    Waypoint(time_s=15, temp_f=430, note="Hold at peak — extended 15s hold"),
+    Waypoint(time_s=37, temp_f=415, note="Descent midpoint"),
+    Waypoint(time_s=60, temp_f=400, note="Floor"),
+]
+
+# What's loaded in each slot right now.
+PRESETS = {
+    'grey':   GREY_0922,
+    'orange': ORANGE_0922,
+    'teal':   TEAL_0922,
+    'blue':   BLUE_0922,
+    'purple': PURPLE_0922,
+}
+
 # ── EQUIPMENT ────────────────────────────────────────────────────────────────
 
 RIG_1 = EquipmentConfig(
