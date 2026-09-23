@@ -20,7 +20,7 @@
 
 **Next:** Try 430°F endpoint
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 375°F — Session open
 - 10s → 380°F — Short flat phase
 - 30s → 395°F — Mid ascent
@@ -34,7 +34,7 @@
 
 **Next:** Try faster ramp to 460°F on Run 5
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 380°F — Session open
 - 15s → 405°F — Steeper early ascent
 - 35s → 440°F — Mid climb
@@ -47,7 +47,7 @@
 
 **Next:** Walk endpoint up incrementally — try 423°F on Run 4
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 375°F — Session open
 - 15s → 385°F — Early ascent
 - 40s → 412°F — Mid ascent — up 2°F
@@ -61,7 +61,7 @@
 
 **Next:** Try 410°F endpoint on Run 4 — tail harshness consistent at 415°F across Runs 2 and 3
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 375°F — Session open
 - 25s → 400°F — Mid climb
 - 45s → 410°F — Endpoint — down 5°F from Run 3
@@ -74,7 +74,7 @@
 
 **Next:** Run 2: try 425°F — up 5°F from baseline, same 8s ramp and 60s hold
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
 - 8s → 420°F — Endpoint
@@ -87,7 +87,7 @@
 
 **Next:** Run 37: same orange 440°F curve (440→440@15s→420@38s→400@60s), back on the stock bubbler (Rig 6), first dab, normal load — the matched pair on the flavor read.
 
-**Proposed Curve:**
+**Proposed Curve:** orange slot (ORANGE_0922)
 - 0s → 440°F — Session open — hot open, orange curve
 - 15s → 440°F — Hold at peak — extended 15s hold
 - 38s → 420°F — Descent midpoint — sits on the line, no slope change
@@ -100,7 +100,7 @@
 
 **Next:** Run 20 (likely the jar's last): the "purple" curve — 430°F open, 15s hold, gentle descent to a 400°F floor — a cooler, longer-hold swing at the flavor the 440°F bounded hold couldn't pull, first dab.
 
-**Proposed Curve:**
+**Proposed Curve:** purple slot (PURPLE_0922)
 - 0s → 430°F — Session open — hot open
 - 15s → 430°F — Hold at peak — extended 15s hold
 - 37s → 415°F — Gentle descent midpoint
@@ -113,7 +113,7 @@
 
 **Next:** Run 2: repeat the bounded 440°F hold (440→440@10s→420@35s→400@60s) — replicate the jar opener before changing anything
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 440°F — Session open — hot open
 - 10s → 440°F — Hold at peak — one draw at 440°F
 - 35s → 420°F — Gentle descent midpoint
@@ -126,7 +126,7 @@
 
 **Next:** Run 12: the matched glass pair, finally — same smoothed 440°F curve, same larger load, same 3rd-dab slot as Run 11, with the SAML RBR back on (Rig 7), so the top is the only thing that moves
 
-**Proposed Curve:**
+**Proposed Curve:** orange slot (ORANGE_0922)
 - 0s → 440°F — Session open — hot open
 - 15s → 440°F — Hold at peak — extended 15s hold
 - 38s → 420°F — Descent midpoint — sits on the line, no slope change
@@ -139,7 +139,7 @@
 
 **Next:** Run 13: rerun the 10s-440-hold curve (440→440@10s→420@35s→400@60s), first dab, normal load — does the front-load / early-depletion signature repeat, or is it jar variance?
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 440°F — Session open — hot open
 - 10s → 440°F — Hold at peak — one draw at 440°F
 - 35s → 420°F — Gentle descent midpoint
@@ -152,7 +152,7 @@
 
 **Next:** Run 11: rerun the grey 450°F on the RBR (Rig 7), first dab, deliberately upright and breath-conscious from the first draw, no water unless needed, best-achievable modest single cycle — isolate posture as the chest lever (the one variable the bubbler never let vary).
 
-**Proposed Curve:**
+**Proposed Curve:** grey slot (GREY_0922)
 - 0s → 450°F — Session open — hot open
 - 10s → 450°F — Hold at peak — one draw at 450°F
 - 30s → 425°F — Gentle descent midpoint
@@ -165,7 +165,7 @@
 
 **Next:** Run 16: deep-clean the insert, then rerun the grey 450°F curve at the best achievable modest load, single cycle, first dab — the direct residue test.
 
-**Proposed Curve:**
+**Proposed Curve:** grey slot (GREY_0922)
 - 0s → 450°F — Session open — hot open
 - 10s → 450°F — Hold at peak — one draw at 450°F
 - 30s → 425°F — Gentle descent midpoint
@@ -178,7 +178,7 @@
 
 **Next:** Swap back to the original joystick: "I believe I see a trend where the 140 joystick is producing darker swabs. Swapping back to the original would be an easy test."
 
-**Proposed Curve:**
+**Proposed Curve:** orange slot (ORANGE_0922)
 - 0s → 440°F — Session open — hot open
 - 15s → 440°F — Hold at peak — extended 15s hold
 - 38s → 420°F — Descent midpoint — sits on the line, no slope change
@@ -191,7 +191,7 @@
 
 **Next:** No runs yet — start from baseline curve
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
 - 8s → 420°F — Endpoint
@@ -204,7 +204,7 @@
 
 **Next:** No runs yet — start from baseline curve
 
-**Proposed Curve:**
+**Proposed Curve:** not loaded on any slot
 - 0s → 380°F — Session open
 - 4s → 400°F — Steep early climb
 - 8s → 420°F — Endpoint

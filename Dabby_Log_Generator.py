@@ -71,6 +71,17 @@ def _classify_curve_shape(waypoints):
     names = {1: "Ramp Up", -1: "Ramp Down", 0: "Hold"}
     return " + ".join(names[g] for g in groups)
 
+def _slot_label(waypoints):
+    """Which Switch slot holds this curve right now, matched on (time_s, temp_f).
+    Recomputed every generate, so reassigning a slot in PRESETS relabels jars."""
+    import Dabby_Core
+    key = [(wp.time_s, wp.temp_f) for wp in waypoints]
+    for color, curve in PRESETS.items():
+        if [(wp.time_s, wp.temp_f) for wp in curve] == key:
+            name = next((n for n, v in vars(Dabby_Core).items() if v is curve), None)
+            return f"{color} slot ({name})" if name else f"{color} slot"
+    return "not loaded on any slot"
+
 def info_table(rows):
     html = '<table class="info-table">'
     for label, value in rows:
@@ -771,7 +782,7 @@ def generate_handoff_state():
         # next_ai_analysis deliberately left out: the startup read carries only
         # what's next, not prior synthesis. It still renders in index.html.
         if ss.next_waypoints:
-            lines.append("**Proposed Curve:**")
+            lines.append(f"**Proposed Curve:** {_slot_label(ss.next_waypoints)}")
             for wp in ss.next_waypoints:
                 lines.append(f"- {wp.time_s}s → {wp.temp_f}°F — {wp.note}")
             lines.append("")
