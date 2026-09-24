@@ -187,6 +187,21 @@ RUNS = [
         dab_notes='[Pre-dab:] Let\'s do a dab! Lunarz on rig 10 [Flavor after first draw:] Flavor was still pretty muted. But this is from a staging jar I\'ve had on the counter for a bit, because I could definitely taste the Z on this setup when I first brought it out of the fridge. [Later:] I get a little bit of the Z now [Report:] I did one draw in a second cycle, then stopped. Oddly that last draw was the tastiest. Gassy and candy. Swabs are Amber, lots of terp coughing and stinging the nose on first draw, medium harshness in throat, big intensity. Big body high, I\'m alone so not sure how chatty. [Curve / joystick:] I believe I see a trend where the 140 joystick is producing darker swabs. Swapping back to the original would be an easy test. Yes orange curve',
         analysis='',
     ),
+    CompletedRun(
+        strain='LunarZ',
+        run_date=date(2026, 9, 23),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 9, 23, 22, 28, 0, tzinfo=timezone.utc),
+        waypoints=ORANGE_0922,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F',
+        swab='darker than beige — significantly less reclaim, too little to really tell color',
+        session_char='',
+        intensity=None,
+        dab_notes='[Pre-dab:] Let\'s do a dab! Lunarz on rig 10 right now [Joystick:] I swapped it [Rig:] yes, rig 6 [Curve:] dabbing the orange curve with rig 6 [Report:] Significantly less reclaim, so much so that I couldn\'t really tell color wise. It was darker than beige',
+        analysis='',
+    ),
 ]
 
 # ── Status ──
