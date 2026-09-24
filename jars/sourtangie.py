@@ -258,6 +258,21 @@ RUNS = [
         dab_notes='Great hit, perfect throughout. Lots of terps and taste, lots of coughing, slight heartburn about halfway through. And intensity was medium. [Heartburn timing:] In session and after. [Swab, load, cycle, curve:] Swab was golden, minimal. Load size was normal, 1 curve, yep 450. [Normal load vs. planned modest:] Hard to portion.',
         analysis='Run 15 — grey 450°F bounded-hold + shorter descent, first dab of the day, single cycle, full 45s. The plan called for a modest load to give a clean read against Run 14; it came in normal instead, the taffy\'s standing portioning problem recurring rather than a deliberate choice. Golden, minimal swab — consistent with the jar\'s established read that cycle count, not endpoint, drives swab color (single-cycle runs read lighter; bp4rw13 R5–R8, FW106 R27 the cross-strain instances). Medium intensity, perfect flavor throughout, lots of terps and taste, heavy terpene-load coughing (the R7-established mechanism, distinct from harshness). The chest came back for a second straight run, but this time both in-session (about halfway through) and persisting after the session ended — this jar\'s first clean instance of the chest-and-lingers conjunction the wisdom layer has been tracking since bp4rw13 R8 and LunarZ R1 (both user-verbatim; this makes a third). Against Run 14, load moved down while insert residue state didn\'t change (unclean since the Run 9 deep-clean) — a small point toward residue over load as the driver, though load wasn\'t at the plan\'s modest target so this isn\'t clean isolation. Also notable: this is a first dab of a new day and still threw chest, which cuts against same-day cumulative exposure as sufficient — Run 13\'s 3rd-dab normal load stayed chest-free. Tracked against the user\'s esophageal anatomy as candidate locus; mechanism otherwise unresolved. Rig 6.',
     ),
+    CompletedRun(
+        strain='Sour Tangie',
+        run_date=date(2026, 9, 24),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 9, 24, 23, 26, 0, tzinfo=timezone.utc),
+        waypoints=ORANGE_0922,
+        equipment=RIG_6,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F',
+        swab='The reclaim was all over the insert like I see on the .140',
+        session_char='',
+        intensity=None,
+        dab_notes='Sour tangie and a little lunarz in the insert. [Deep clean:] Nope on the deep clean, and honestly that 450 sounds harsh before I even try it. [Report:] Hmm, great run, lots of terps on the first draw. Mouth watering, almost gagging. I took two draws of second cycle and it stayed dense on the vapor. Interesting swab, the reclaim was all over the insert like I see on the .140. I also think I pulled extra hard on the first draw.',
+        analysis='',
+    ),
 ]
 
 # ── Status ──
