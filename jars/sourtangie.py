@@ -285,7 +285,7 @@ RUNS = [
         swab='Pretty messy up the walls of the insert',
         session_char='',
         intensity=None,
-        dab_notes='I want to do a dab of the sour tangie and lunarz mix again. Everything is deep cleaned. I have the rbr set up. [Pull:] Pull only hard enough to get the recycler spinning and no harder? I\'m going to do orange for a messy wall test. [Report:] Swabs are pretty messy up the walls of the insert. I was pulling just past the point of the recycler sputtering. I moved the joystick continuously. I can\'t see inside the insert so can\'t see where to aim it. I think my throat is getting irritated over time as well, throat harshness right now despite very smooth hits. Time for a break after this. [After:] I switched the rig back to piston config.',
+        dab_notes='I want to do a dab of the sour tangie and lunarz mix again. Everything is deep cleaned. I have the rbr set up. [Pull:] Pull only hard enough to get the recycler spinning and no harder? I\'m going to do orange for a messy wall test. [Report:] Swabs are pretty messy up the walls of the insert. I was pulling just past the point of the recycler sputtering. I moved the joystick continuously. I can\'t see inside the insert so can\'t see where to aim it. I think my throat is getting irritated over time as well, throat harshness right now despite very smooth hits. Time for a break after this. [After:] I switched the rig back to piston config. [Which rig:] 7',
         analysis='',
     ),
 ]
