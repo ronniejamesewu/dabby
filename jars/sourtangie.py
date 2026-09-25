@@ -273,6 +273,21 @@ RUNS = [
         dab_notes='Sour tangie and a little lunarz in the insert. [Deep clean:] Nope on the deep clean, and honestly that 450 sounds harsh before I even try it. [Report:] Hmm, great run, lots of terps on the first draw. Mouth watering, almost gagging. I took two draws of second cycle and it stayed dense on the vapor. Interesting swab, the reclaim was all over the insert like I see on the .140. I also think I pulled extra hard on the first draw.',
         analysis='',
     ),
+    CompletedRun(
+        strain='Sour Tangie',
+        run_date=date(2026, 9, 25),
+        sessions_prior_today=0,
+        utc_logged_at=datetime(2026, 9, 25, 18, 3, 35, tzinfo=timezone.utc),
+        waypoints=ORANGE_0922,
+        equipment=RIG_11,
+        duration_seconds=60,
+        endpoint_note='<strong>Open:</strong> 440°F &nbsp;|&nbsp; <strong>Floor:</strong> 400°F',
+        swab='Pretty messy up the walls of the insert',
+        session_char='',
+        intensity=None,
+        dab_notes='I want to do a dab of the sour tangie and lunarz mix again. Everything is deep cleaned. I have the rbr set up. [Pull:] Pull only hard enough to get the recycler spinning and no harder? I\'m going to do orange for a messy wall test. [Report:] Swabs are pretty messy up the walls of the insert. I was pulling just past the point of the recycler sputtering. I moved the joystick continuously. I can\'t see inside the insert so can\'t see where to aim it. I think my throat is getting irritated over time as well, throat harshness right now despite very smooth hits. Time for a break after this.',
+        analysis='',
+    ),
 ]
 
 # ── Status ──
