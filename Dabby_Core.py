@@ -15,26 +15,27 @@ equipment rig, or baseline curve is added.
 # 30 seconds. Don't leave a trap.
 #
 # Logging quick-reference (what a run-logging Claude needs):
-#   CompletedRun fields → line  83    (schema for new RUNS entries)
-#   StrainStatus fields  → line 116    (schema for STATUS blocks)
+#   CompletedRun fields → line  84    (schema for new RUNS entries)
+#   StrainStatus fields  → line 117    (schema for STATUS blocks)
 #
 # Full index:
-#   Line  44 — # ── DATACLASSES
-#   Line  47 — Waypoint
-#   Line  53 — Insert
-#   Line  59 — CarbCap
-#   Line  65 — Pearl
-#   Line  70 — EquipmentConfig
-#   Line  83 — CompletedRun
-#   Line 116 — StrainStatus
-#   Line 135 — TerpeneEntry
-#   Line 145 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
-#   Line 174 — # ── EQUIPMENT (RIG_1 – RIG_6)
-#   Line 233 — # ── TERPENE REFERENCE
-#   Line 277 — # ── COLOR RESOLUTION
-#   Line 329 — # ── LOCAL TIME (denver_local, denver_local_date, denver_abbrev — hand-rolled US DST)
-#   Line 356 — # ── DISPLAY (_RIG_LABELS, _fmt_equipment_display, fmt_curve_table — identifier → user-facing form)
-#   Line 409 — # ── VALIDATION (validate, validate_accent_colors)
+#   Line  45 — # ── DATACLASSES
+#   Line  48 — Waypoint
+#   Line  54 — Insert
+#   Line  60 — CarbCap
+#   Line  66 — Pearl
+#   Line  71 — EquipmentConfig
+#   Line  84 — CompletedRun
+#   Line 117 — StrainStatus
+#   Line 136 — TerpeneEntry
+#   Line 146 — # ── DATA (FIRST_RUN_DATE, GLOBAL_INFO, BASELINE_416, BASELINE_CURVE)
+#   Line 182 — # ── PRESETS (Switch² profile slots, by color — dated *_0922 constants, PRESETS dict)
+#   Line 232 — # ── EQUIPMENT (RIG_1 – RIG_11)
+#   Line 373 — # ── TERPENE REFERENCE
+#   Line 417 — # ── COLOR RESOLUTION
+#   Line 469 — # ── LOCAL TIME (denver_local, denver_local_date, denver_abbrev — hand-rolled US DST)
+#   Line 496 — # ── DISPLAY (_RIG_LABELS, _fmt_equipment_display, fmt_curve_table — identifier → user-facing form)
+#   Line 555 — # ── VALIDATION (validate, validate_accent_colors)
 # ─────────────────────────────────────────────────────────────────────────────
 
 from datetime import datetime, date, timezone, timedelta
@@ -351,6 +352,22 @@ RIG_10 = EquipmentConfig(
     carb_cap=CarbCap(brand="Wym Designs", model="Honeycomb", airflow='.140" bore'),
     pearls=[],
     glass_top="Dr. Dabber stock bubbler",
+)
+
+# Rig 11: Sapphire insert, no pearls, Wym Designs Honeycomb joystick, SAML RBR
+# wet top. Dr. Dabber Sapphire Plus (v2) insert; Wym Designs Honeycomb joystick
+# (.140" bore airflow); no pearls; SAML RBR (Refined Bell Recycler). Identical to
+# Rig 7 except the joystick, and to Rig 10 except the top. The first pairing of
+# the larger bore with a recycler: the recycler needs flow, and the wider bore
+# should deliver a given flow with a gentler jet than the .094" (jet force at
+# fixed flow scales inversely with bore area, ~2.2x between the two) — a
+# first-principles expectation from Sept 24, 2026, not yet observed.
+# In use as of September 25, 2026 (Sour Tangie Run 17).
+RIG_11 = EquipmentConfig(
+    insert=Insert(brand="Dr. Dabber", model="Sapphire Plus (v2)", material="sapphire"),
+    carb_cap=CarbCap(brand="Wym Designs", model="Honeycomb", airflow='.140" bore'),
+    pearls=[],
+    glass_top="SAML RBR (Refined Bell Recycler)",
 )
 
 # ── TERPENE REFERENCE ────────────────────────────────────────────────────────

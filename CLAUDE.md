@@ -8,14 +8,14 @@ Eric logs dab sessions on a Dr. Dabber Switch². This branch tests a minimal loo
 3. `PYTHONIOENCODING=utf-8 python3 pending_dab.py brief` for rig and dab-of-day.
 4. Reply, up to three lines: jar, rig, the curve, and the jar's `next_text` verbatim. The curve is the color he named (waypoints from `PRESETS[color]`), or else the jar's proposed curve from `HANDOFF_STATE.md`. Either way give the waypoints on one line like `440°F@0s → 440@15 → 420@38 → 400@60` plus the slot color if it's on one, so he can check the device slot hasn't drifted from the table. Then wait.
 
-If the jar or rig doesn't exist, say so in one line and stop; he'll handle it on desktop.
+If the jar doesn't exist, say so in one line and stop; he'll handle it on desktop. If the rig doesn't exist, add the next `RIG_N` to `Dabby_Core.py` (copy the nearest existing rig and its comment style, then fix the file's line index), and carry on.
 
 **When he reports the dab:**
 1. `PYTHONIOENCODING=utf-8 python3 pending_dab.py consume` for the paste-ready timestamp fields.
 2. Append a `CompletedRun` to that jar's `RUNS`, copying the shape of the previous run. Fields: `strain`, `run_date`, `sessions_prior_today`, `utc_logged_at` (from consume); `waypoints` = when he names a slot color (grey, orange, teal, blue, purple), the dated constant that `PRESETS[color]` points at in `Dabby_Core.py`, by name (e.g. `waypoints=ORANGE_0922`); never copy waypoints into the jar; if he names no curve, ask one question; `equipment` = the rig from brief (`RIG_N`); `duration_seconds` = the last waypoint's `time_s`; `endpoint_note='<strong>Open:</strong> X°F &nbsp;|&nbsp; <strong>Floor:</strong> Y°F'` from the first and last waypoint; `swab` = what he said, or `'Not recorded'`; `dab_notes` = his words verbatim; `session_char=''`, `intensity=None`, `analysis=''`.
 3. Update `STATUS.next_text` only if he said what to try next, in his words.
 4. `python3 Dabby_Log_Generator.py`. If it errors, fix the jar edit; don't tell him unless you can't.
-5. `git add jars/ index.html HANDOFF_STATE.md WISDOM_BRIEF.md && git commit -m "Log <jar> run" && git push`.
+5. `git add jars/ index.html HANDOFF_STATE.md WISDOM_BRIEF.md` (plus `Dabby_Core.py` if you added a rig) `&& git commit -m "Log <jar> run" && git push`.
 6. Open a PR into `phone-capture` with the GitHub MCP `create_pull_request` tool (no `gh` here), one plain sentence, then merge it with `merge_pull_request`. Don't wait for approval; it's a data-only change.
 7. Reply, up to three lines: what was recorded.
 
