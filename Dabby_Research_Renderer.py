@@ -231,6 +231,7 @@ NAME_ALIASES = {
     "peach rings": "Peach Ringz",
     "the white og": "White OG",
     "sour diesel ibl": "Sour Diesel",
+    "cookies & cream": "Cookies N Cream",
 }
 
 DEAD_KEYWORDS_RE = re.compile(r"dead-end|clone-only|clone only|\bmystery\b", re.I)
