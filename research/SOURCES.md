@@ -19,6 +19,8 @@ content while reporting the page as read (validated by A/B test, Aug 28 2026).
 | ONI seed catalog (seedfinder.eu/en/database/breeder/oni-seed-co) | 43-cultivar list — the anchor for what the seed line contains; the ONI rosin SKUs on Colorado menus are largely absent from it | Read Sept 2 2026 |
 | bloomseed.co/cultivars (single page) | The whole 356-cultivar list as name + cross text on one page — text-searchable in one read; also shows which names Bloom uses only as parents (Zangria) and Bloom's shorthand (GPWC = Grape Pie × Wedding Crasher) | Noted Sept 21 2026 |
 | Dialed In Gummies batch pages (dialedingummies.com/batch-info/…) | Per-batch page naming the rosin collaborator and strain, a printed "Lineage" line, and cannabinoid/terpene reports for that batch | Third-party (not the grower or processor); figures as printed, no COA. One page read (Soiku Bano Blockberry, Batch #1969). Site search does not find batch pages — reach them by URL or web search. Discovered Sept 21 2026 |
+| tikimadman.com/strains | Tiki Madman's own 46-cultivar catalog with a "Lineage:" field per product (often blank) | Read Oct 5 2026 |
+| Grower strain pages (dabsunshine.com/strains/…) | Sunshine Extracts prints a cross line per strain (e.g. Cosmic Zkittlez: "Cosmic Glue x Tropical Zkittles") | A second Colorado grower's anchor for shared cuts. Discovered Oct 5 2026 |
 | Dispensary product pages | Product existence + spelling; igadiltd.com carries NO lineage text (generic boilerplate; menus load via JS embeds) | Existence confirmation only |
 
 **Menu-post index (anchor reads, chronological):** Erva×InHouse collab
@@ -33,7 +35,10 @@ comment); In House 8.15.26 (instagram.com/p/Db8kFLyNntD/); Erva 8.25.26
 @inhousemelts as processor; no breeder-credit comment); In House 9.12.26
 (instagram.com/p/DdC30elNk6q/ — posted Sept 8 2026); Erva 9.19.26 drop
 (instagram.com/p/DdXCK0JTCMd/ — posted Sept 17 2026; @inhousemelts a
-collaborator on the post; no breeder-credit comment as of Sept 21).
+collaborator on the post; no breeder-credit comment as of Sept 21); In
+House 9.26.26 (instagram.com/p/DdrS7ATN5J2/ — posted Sept 24 2026); Erva
+10.3.26 drop (instagram.com/p/Dd7aCh6PXHk/ — single slide; carries a
+breeder-credit comment by @terpy.brazilian, read Oct 5 2026).
 Drop-post comment sections carry breeder credits and demand chatter —
 credits are anchor when posted by the producer's own account; demand
 chatter is a timing signal only, never a quality input.

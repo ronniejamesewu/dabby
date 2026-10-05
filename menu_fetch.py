@@ -1031,7 +1031,10 @@ def _apply_filters(rows, subs, brands):
         # substring match on the uppercased field, not exact equality.
         rows = [r for r in rows if any(s in (r.get("subcategory") or "").upper() for s in subs)]
     if brands:
-        rows = [r for r in rows if any(b in (r["brand"] or "").lower() for b in brands)]
+        # Spaces dropped on both sides: IgadI's POS writes "InHouse" where
+        # Dutchie stores write "In House Melts".
+        rows = [r for r in rows
+                if any(b.replace(" ", "") in (r["brand"] or "").lower().replace(" ", "") for b in brands)]
     return rows
 
 
