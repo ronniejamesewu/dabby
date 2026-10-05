@@ -23,6 +23,13 @@ from that comment but corroborated separately via Red Pebbles.
 Off-roster formulas on the 9.19.26 menu: Intergalactic matches an Exotic
 Genetix release, Gold Fronts' Sour Papaya is an Oni Seed Co line
 (leads — Erva credits neither; Sept 21 2026).
+**10.3.26 drop post credit comment** (by @terpy.brazilian; relation to
+Erva not stated): "Shout out to the breeders @tikimadmanseedz
+@threesgeneticreserve @jlsmonster @bloomseedcompany @elementalseeds and
+of course @inhousemelts" (read Oct 5 2026). Tiki Madman is new relative
+to the 8.7.26 roster; no cultivar-to-breeder mapping given. Per the
+breeders' own pages: Too Much Starburst = Bloom; Mousse Tracks and
+Orange Colonel = TGR.
 
 ### In House / In House Melts (@inhousemelts, theinhousellc.com)
 Processor + grower. CO licensed (403R-00250), family-owned. Historically
@@ -44,7 +51,9 @@ Tropicana Cookies was originally bred by Harry Palms *for* Bloom.
 ### Three's Genetic Reserve / TGR (threesgeneticreserve.com, @jlsmonster = Jeremy Staton, "Seed Maker @threesgeneticreserve")
 Breeder behind Erva's line (Uncle Lazer, Rainbow Colonel, Crashglow,
 Colonel Chem families; credited in Erva's IG comments). Small catalog
-(~30 SKUs); parentage of key studs (Crashglow, Colonel Chem) unpublished.
+(~30 SKUs); parentage of key studs (Crashglow, Colonel Chem, Modified
+Mousse) unpublished. Mousse line: Mousse Tracks, Orange Mousse, Darth
+Chocolate all use Modified Mousse (product pages, Oct 5 2026).
 IG private — follow = best open research lead.
 
 ### Terp Fountain Genetics (@terpfountaingenetics)
@@ -105,6 +114,7 @@ indistinguishable from a vertical producer's.
 | Brand | Roles / model | Channel | Notes |
 |---|---|---|---|
 | Fruitfull Seeds | Breeder (KY hashmaker, Mr. Autogrow); on Erva's stated roster | — | Own catalog at fruitfullseeds.com/genetics with dated, pheno-numbered formulas — anchor surface |
+| Tiki Madman (@tikimadmanseedz) | Breeder; credited on Erva's 10.3.26 drop post | — | Own catalog at tikimadman.com/strains (46 cultivars, "Lineage:" field often blank; Oct 5 2026). SeedFinder attributes Tropical Zkittlez to it |
 | Dying Breed Seeds | Breeder (Zkittlez family, "The Original Z"); not on Erva's stated roster but their releases (Peach Oz, Peach Ringz, OZ Kush) circulate in the In House/Bloom supply chain | — | Catalog reachable via SeedFinder's Dying Breed pages |
 | 710 Labs | Vertical at scale (assumed own-flower — quality-at-scale reasoning, undisclosed per-jar) | Licensed, multi-state | Publishes per-strain genetics pages; log's most common producer |
 | Three Blind Trichs | Grower + contract washer (same model as In House, smaller) | Traditional | Provenance user-direct (BB36 family) |

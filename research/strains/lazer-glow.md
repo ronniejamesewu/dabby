@@ -7,7 +7,7 @@
 ## Component chains (all resolve)
 - Cuties → G.M.O × Mimosa (stated, Erva menu) → Chem D / GSC / Clementine / Purple Punch — terminates
 - Lazer Jet → see [lazer-jet.md](lazer-jet.md)
-- Uncle Lazer → Rainbow Colonel × Lazer Jet (stated, Maikoh listing) → recurses through [rainbow-colonel.md](rainbow-colonel.md) and Lazer Jet
+- Uncle Lazer → Lazer Jet × Rainbow Colonel (stated, Erva 8.7.26 and 10.3.26 menus; the Maikoh listing printed the reverse order) → see [uncle-lazer.md](uncle-lazer.md)
 
 ## Open questions
 - `+` semantics on Erva menus (cross vs blend) — affects jar component count at new-jar time; ask or check an In House listing for this SKU before creating the jar.

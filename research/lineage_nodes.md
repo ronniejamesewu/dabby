@@ -151,10 +151,12 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   UNPUBLISHED. Ontario "Qwest Crash Glow" = likely unrelated name-alike.
 - **Colonel Chem** — real TGR line (named parent on TGR's Colonel Crasher
   page); own parentage UNPUBLISHED. "Chem" is a name observation only.
-- **Uncle Lazer** — PARENT-ORDER CONFLICT, recorded verbatim: Erva's own
-  8.7.26 drop menu prints "Lazer Jet x Rainbow Colonel"; the Maikoh
-  dispensary listing (July 2026) printed "Rainbow Colonel x Lazer Jet."
-  Producer menu outranks the dispensary listing; discrepancy recorded.
+- **Uncle Lazer** = Lazer Jet × Rainbow Colonel — stated (Erva 8.7.26 and
+  10.3.26 drop menus). PARENT-ORDER CONFLICT, recorded verbatim: the
+  Maikoh dispensary listing (July 2026) printed "Rainbow Colonel x Lazer
+  Jet." Producer menu outranks the dispensary listing; discrepancy
+  recorded. Sold as its own jar from 10.3.26 — see
+  [strains/uncle-lazer.md](strains/uncle-lazer.md).
 - **Red Piegasm** — Terp Fountain line ("Home of the Piegasm" bio).
   CONFLICTED directionality: AllBud says Red Piegasm = Red Smoothie ×
   Piegasm; SeedFinder's Red Smoothie genealogy says Red Smoothie =
@@ -233,9 +235,12 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Certified Jelly** — undisclosed (Garlic Hard-Scarf parent). Searched
   Sept 3 2026: general web, roster-breeder site searches, Colorado menu
   searches. Only unrelated "Jelly" cultivars surface. Re-run.
-- **Cosmic Z** — undisclosed (Cosmic Juice and Cosmic Chunkz component). Searched Sept 3
-  2026; only an unrelated California retail listing with no breeder
-  stated. Re-run.
+- **Cosmic Z** = Cosmic Glue × Tropical Zkittlez — stated (Erva 10.3.26
+  drop menu). Supersedes the Sept 3 2026 undisclosed verdict (searched
+  then: general web; only an unrelated California retail listing). Same
+  formula stated by Sunshine Extracts for "Cosmic Zkittlez" and listed for
+  SPCY Canna — see [strains/cosmic-z.md](strains/cosmic-z.md). Breeder of
+  the cross undisclosed (Oct 5 2026).
 - **Trophy Wife (Surfr Seeds)** = Triangle Mints × Triangle Mints F2 —
   corroborated (SeedFinder's Surfr entry, converging with Surfr's own
   Point Break page naming the parent; Sept 2 2026). Collisions, not
@@ -311,3 +316,51 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   2026). Erva's 8.7.26 menu prints "Grape Pie Wedding Crasher" with no
   × between the names — assumed a dropped symbol, since the formula
   otherwise matches Bloom's Strawberry Pie exactly. Both classics.
+
+## Erva 10.3.26 drop and In House 9.26.26 drop (Oct 5, 2026)
+
+- **Cosmic Glue** = GG4 × Space Queen — corroborated (TGA Subcool breeder
+  text relayed by SeedFinder: "crossing the famous clone-only Gorilla Glue
+  #4 cultivar with Subcool's favourite Space Queen male", bred with Heroes
+  of the Farm; Leafly gives the reversed order "Space Queen with Original
+  Glue #4"). GG4 classic. Variant: Puget Sound Seeds' Cosmic Glue F2
+  (SeedFinder). Not tied to Erva's roster.
+- **Space Queen** = Romulan × C-99 — lead (SeedFinder only; Oct 5 2026).
+  Not recursed.
+- **Tropical Zkittlez** = Tropicana Cookies × Forbidden Zkittlez — lead
+  (SeedFinder's Tiki Madman entry, marked "[probably]"; THCFarmer mirrors
+  it). Tiki Madman's own catalog (tikimadman.com/strains) has no page for
+  it, but its "Forbidden Runtz" page reads "Runtz x Tropical Zkittlez"
+  where SeedFinder gives "Runtz x Forbidden Zkittlez" — conflicted. Tiki
+  Madman is credited on Erva's 10.3.26 post; tie to Erva's cut not stated.
+- **Forbidden Zkittlez** — CONFLICTED, unattributed for this tree:
+  SeedFinder (linking Purple Caper Seeds' cultivar) gives Forbidden Fruit
+  × Zkittlez BX, marked "[probably]"; Leafly's "Forbidden Z" names
+  Forbidden Fruit, Mendo Royal and California Black Rozé. Tiki Madman's
+  own Forbidden Zkittlez page has an empty Lineage field (Oct 5 2026).
+- **Starburst OG** — CONFLICTED, no breeder anchor. Fire OG × Pre-98
+  Bubba Kush (AllBud; Leafly in reversed order, "Bubba x Fire aka
+  Starburst OG") vs Lemon Larry × Nebula (SeedFinder's "Starburst",
+  Unknown or Legendary — may be a different plant). Bloom uses Starburst
+  OG as a parent (Too Much Starburst, Guava Starburst) without stating its
+  parentage (Oct 5 2026).
+- **Gelato Cake** — CONFLICTED name; Erva's cut unattributed. Breeder
+  versions recorded separately (SeedFinder pages, Oct 5 2026): Elev8
+  Seeds and TH Seeds give Gelato #33 × Birthday Cake; Ganja Farmer,
+  Seed Junky (SeedFinder title), Leafly and Hytiva give Wedding Cake ×
+  Gelato 33 in either order; US SkunkX's text is internally
+  inconsistent. TGR uses a "Gelato Cake" in Mousse Tracks without stating
+  which.
+- **Mousse Tracks** = Gelato Cake × Modified Mousse — stated (TGR's own
+  product page, printed "Gelato Cake (5%) x Modified Mousse (5%)"; read
+  Oct 5 2026). Distinct from Exotic Genetix's Moose Tracks (Thin Mint
+  Cookies × Triple OG) — do not merge.
+- **Modified Mousse** — undisclosed by TGR (parent in Mousse Tracks,
+  Orange Mousse, Darth Chocolate; its own product pages 404, Oct 5 2026).
+  Lead: Diesel Hemp's product copy reads "Modified Mousse Lineage:
+  Chocolate Cream x GMO, (Mazar I Sharif x “Landrace Indica”) x (Chem x
+  Girl Scout Cookies)" — punctuation ambiguous; the same site also calls
+  it "A Diesel Hemp genetics cross". Unresolved.
+- **Irene** (Irene OG) — DEAD-END: clone-only; SeedFinder: "Its genetics
+  are a mystery to most, but rumor has it that Irene OG descended from
+  California's OG Kush" (Oct 5 2026). OG Kush link is a lead only.
