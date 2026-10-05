@@ -56,6 +56,20 @@ Mousse) unpublished. Mousse line: Mousse Tracks, Orange Mousse, Darth
 Chocolate all use Modified Mousse (product pages, Oct 5 2026).
 IG private — follow = best open research lead.
 
+### 710 Labs (710labs.com/genetics)
+Producer; grows and presses (vertical — assumed per jar). Genetics pages
+state "Genetics:", "Breeder:" and "Source Type:" (Seed Hunted / Clone
+Only) per cultivar — anchor surface; index lazy-loads, slugs are
+irregular (Rambutan lives at /genetics/710-chem-3prwe). No genetics page
+for several shelf cultivars (Mad Honey, Cereal Star, Sherb Fumez, Papaya
+Fumez, Strawberry Guava, Madison Zquared Garden, Sweet Berry Wine; Oct 5
+2026) — their wording reaches retailers as syndicated product copy.
+Genetics pages state no menu pheno numbers; pheno numbers appear only on
+product names, and the numbers 710 cites inside formulas are different
+selections (Rick Jamez #28, Guavaz #74). 710's "Z" is "Mystery / Clone
+Only". Retailer copy: "710 Labs products are currently excluded from all
+discounts and promotions per manufacturer agreement" (SoulFlora NJ).
+
 ### Terp Fountain Genetics (@terpfountaingenetics)
 Breeder. Bio: "Home of the Piegasm, Berry Fizz, FPOZ, Watermelon Pixie."
 Likely source of Erva's Red Pebbles cross. Michigan-associated with CO

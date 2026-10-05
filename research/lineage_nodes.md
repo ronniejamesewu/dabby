@@ -34,7 +34,9 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Guava'z** (phenos #74/#62) — distinct from Pure Guava; Bloom discloses
   no cross; SeedFinder's algorithmic guess treated as noise. Undisclosed.
 - **Rambutan** = Papaya × Guava'z — stated (Bloom). In House sells phenos
-  #250/#357 (numbering unconfirmed externally).
+  #250/#357 (numbering unconfirmed externally). 710 Labs states its
+  Rambutan as "Papaya x Guavaz #74", breeder Bloom (Oct 5 2026) — see
+  [strains/rambutan-11.md](strains/rambutan-11.md).
 - **Pomelo Punch** = Orange Mints × Papaya — stated (Bloom, Proven, Aug
   2023).
 - **World War Z** = Zkittlez × TMZ — stated (Bloom). Full chain closes at
@@ -364,3 +366,78 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Irene** (Irene OG) — DEAD-END: clone-only; SeedFinder: "Its genetics
   are a mystery to most, but rumor has it that Irene OG descended from
   California's OG Kush" (Oct 5 2026). OG Kush link is a lead only.
+
+## 710 Labs Live Rosin Badder shelf (Oct 5, 2026)
+
+All 710 quotes from 710labs.com/genetics pages read Oct 5 2026 unless a
+line says otherwise.
+
+- **Z** (710 Labs) — DEAD-END: 710 states "Genetics: Mystery · Source
+  Type: Clone Only" (710labs.com/genetics/z). Not stated to be Zkittlez;
+  710's own drop list prints TMZ as "(Z x C. Fumez)". Bloom states TMZ as
+  Zkittlez × Candy Fumez.
+- **Bootylicious** = (Orange Valley OG × The Cube) × Cookies & Cream —
+  stated (710: "Breeder: Exotic Genetix · Source Type: Seed Hunted").
+  Orange Valley OG × The Cube is the Constantine cross (node above). Same page also
+  reads "A 710 Labs original."
+- **Mad Honey** = Honey Banana × Sherbanger — stated (Bloom's own product
+  page, release Apr 2023); 710 product copy relayed by SoulFlora gives the
+  same formula. 710 publishes no genetics page. Collision: Leafy Lunker's
+  "Mad Honey" is a different cross (SeedFinder) — do not merge.
+- **Ghost Hulk** = Ghost OG × Bruce Banner #3 — stated (710: "Breeder:
+  Dark Horse Genetics · Source Type: Seed Hunted").
+- **Ghost OG** — clone-only OG Kush cut: "Genetics: OG Kush phenotype"
+  (Kind Green Buds; lead). Origin story unsettled.
+- **Bruce Banner #3** = OG Kush × Strawberry Diesel — lead (Leafly: "bred
+  by crossing OG Kush with Strawberry Diesel"; Dark Horse Genetics).
+- **Strawberry Diesel** = Strawberry Cough × Sour Diesel — lead
+  (SeedFinder, Reservoir Seeds). Strawberry Cough not recursed.
+- **SB36** = SB OG × '97 KC36 — stated (710: "Breeder: Higher Ground
+  Canna · Source Type: Seed Hunted"). Higher Ground's own history page
+  lists "Starburst 36 F1 aka SB36". No relation to Blueberry 36 stated by
+  any source.
+- **SB OG** — read as Starburst OG on Higher Ground's own expansion of
+  SB36 ("Starburst 36"); the OG's identity is not stated. See Starburst
+  OG (conflicted, above).
+- **'97 KC36** — DEAD-END: KC Brains Holland on its KC 36: "We keep the
+  parents of this success-product as a secret." Whether Higher Ground's
+  '97 cut is KC Brains' current KC 36 is stated by neither.
+- **Cereal Star** = Cereal Milk × SB36 — 710 product copy as relayed by a
+  retailer (The Social Cannabis: "Genetics: Cereal Milk x SB36 · Breeder:
+  Dying Breed Seeds · Source Type: Seed Hunted"); lead. No 710 genetics
+  page; Dying Breed's SeedFinder list has no Cereal Star.
+- **Cereal Milk** — CONFLICTED name; which cut 710/Dying Breed used is
+  undisclosed. Cookie Fam's version: Y Life × Snowman, "Y Life ... is a
+  unique cross of GSC and Cherry Pie" (SeedFinder relaying the breeder).
+- **Peanut Butter Breath** = Do-Si-Dos × Mendo Breath — lead (Leafly,
+  ThugPug Genetics).
+- **Mendo Breath** = OGKB × Mendo Montage — lead (Leafly). Not recursed.
+- **Shallot Sashimi** — undisclosed (Bodhi Seeds line; Date Night parent).
+  A search snippet gave GMO x Faux Fauna; no page opened (Oct 5 2026).
+  Re-run.
+- **Great White Shark** = Super Skunk × White Widow — stated per
+  [strains/pure-guava.md](strains/pure-guava.md) (Green House's own
+  page). Green House's description as relayed by SeedFinder: "Genetics:
+  Super Skunk, Brazilian and South Indian."
+- **Super Silver Haze** = ((Haze × Haze) × Skunk #1) × ((Haze × Haze) × NL
+  #5) — lead (SeedFinder, Green House Seeds). Haze and NL #5 not recursed.
+- **Rick Jamez** = Runtz × Jealousy — stated (710: "Breeder: Sexual
+  Chocolate Factory · Source Type: Seed Hunted"). 710 sells pheno #3 and
+  breeds from #28 — see [strains/rick-jamez-3.md](strains/rick-jamez-3.md).
+- **Jealousy** = Gelato #41 × Sherbet — lead (SeedFinder, Seed Junky
+  Genetics).
+- **ONYCD** = Chem 91 × Tres Dawg — lead (SeedFinder, Top Dawg Seeds).
+  Chemdog family.
+- **Z Cubed** = Z × OZ Kush — stated (710: "Breeder: Dying Breed Seeds ·
+  Source Type: Seed Hunted"). CONFLICT: Dying Breed's description as
+  relayed by SeedFinder: "A hybrid creation of infamous Zkittles which
+  been backcrossed to Zkittles again (hence, Z Cubed)"; SeedFinder's tree
+  "(Zkittles x OG Eddy) x Zkittles", marked probably. Recorded, not
+  resolved.
+- **Spritzer** (Cannarado Genetics) — parents named without grouping:
+  "As the offspring of Runtz, Grape Pie, and MAC" (Cannarado's
+  description relayed by SeedFinder). Grouping not stated.
+- **Monkey Berries** — which cultivar 710 used is undisclosed. Exotic
+  Genetix's: "Genetics: Strawberries & Cream x Grease Monkey" (SeedFinder
+  relaying the breeder). A Dank Breeds "Monkey Berry" also exists (snippet
+  only).
