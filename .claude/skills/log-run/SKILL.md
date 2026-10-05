@@ -252,8 +252,7 @@ the edit was unusual.
 **8. Ship.** Feature branch — never commit to main; name it with the jar's
 slug or full strain words (`log-fw106-run30`), never a shorthand that reads
 as something else (the documented "fb" problem). Commit the jar file +
-`index.html` + `HANDOFF_STATE.md`, push, open the PR via the GitHub MCP
-`create_pull_request` tool (the `gh` CLI is not installed) with a
+`index.html` + `HANDOFF_STATE.md`, push, open the PR with `gh pr create` with a
 plain-English description per `CLAUDE.md`'s example. If this session already
 has an open PR, push to that branch instead of opening another. Merging
 waits for the user unless they've said otherwise.

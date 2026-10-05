@@ -130,8 +130,7 @@ contains forward-looking run references -- fix the prose in step 3.
 
 **7. Ship.**
 Feature branch, commit the jar file + `jar_manifest.py` + regenerated
-`index.html` + `HANDOFF_STATE.md`. PR via GitHub MCP `create_pull_request`
-(the `gh` CLI is not installed). Plain-English description, e.g.: "Closed
+`index.html` + `HANDOFF_STATE.md`. PR via `gh pr create`. Plain-English description, e.g.: "Closed
 the [strain] jar after N runs. [one sentence on the recommendation carried
 forward]."
 
