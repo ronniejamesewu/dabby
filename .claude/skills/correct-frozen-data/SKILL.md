@@ -175,7 +175,7 @@ grep -rn "corrected.*202[0-9]" jars/*.py | head -10
 grep -n "correctable by exception" Dabby_Handoff_Notes.md
 
 # PR #206 as the worked example (confirm it exists):
-# Use GitHub MCP pull_request_read, owner: ronniejamesewu, repo: dabby, pr: 206
+gh pr view 206
 
 # The sweep targets (step 6) -- entry keys live in the manifest, claims
 # surface in the generated brief:

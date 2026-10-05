@@ -125,9 +125,8 @@ matches no jar, say so: a jar must exist before its first run can be logged,
 and creating one is the new-jar skill (invoke it when the user is ready — its
 own instructions cover composing from this context).
 
-**4. Open-PR check.** List open PRs via the GitHub MCP `list_pull_requests`
-tool (owner/repo from `git remote -v`; the `gh` CLI is not installed here —
-`gh --version` fails). Active work may live on an unmerged branch; a strain's
+**4. Open-PR check.** List open PRs with `gh pr list --state open` (the `gh`
+CLI is installed and authenticated as of Oct 5, 2026). Active work may live on an unmerged branch; a strain's
 true current state may be ahead of what main says (documented failure mode,
 Session 86). What to do with hits: a PR touching `jars/*.py` supersedes main
 for the affected strain — read its diff before your readback; infra-only PRs
@@ -219,8 +218,8 @@ grep -n "MANDATORY" -A 8 CLAUDE.md
 # The equipment soft-check wording step 5 defers to:
 grep -n "Session-open soft check" Dabby_Handoff_Notes.md
 
-# "gh is not installed" (step 4) still true:
-gh --version  # expected: command not found
+# gh is installed and authenticated (step 4):
+gh auth status  # expected: Logged in to github.com
 
 # The tripwire that gives capture its teeth is still in the generator:
 grep -n "_check_pending_dabs" Dabby_Log_Generator.py

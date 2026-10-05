@@ -204,8 +204,8 @@ One sentence per meaningful change. No technical details unless they affect
 interpretation of the results.
 
 If work continues on an open PR across multiple commits or sessions, update the PR 
-description to reflect what's actually in it. Use the GitHub MCP tool to read the 
-current description first, then rewrite it to cover all changes to date.
+description to reflect what's actually in it. Read the current description first 
+(`gh pr view <N>`), then rewrite it to cover all changes to date (`gh pr edit <N> --body`).
 
 When the user asks for the handoff to be updated, treat it as a session-close signal. Run the checklist in `WISDOM_BRIEF.md`'s footer — each "yes" edits the relevant `wisdom/entries/<key>.py` file (Read it first; append a Citation or dated Position, or update claim/guidance/grade — promotions above 'observation' require a counter_reading or the build fails) or `BACKLOG.md` for Q6. Mark gaps, never fill them: when the record is silent, write `none noted` / `undated in source` — never a plausible date, session, or explanation. Then update `Dabby_Handoff_Notes.md` (header date) and run the generator — it validates everything and regenerates `HANDOFF_STATE.md` and `WISDOM_BRIEF.md`. Before writing, scan for known issues and inconsistencies between what was done and what the docs say. Propose these alongside the update so they can be bundled into the same PR.
 
