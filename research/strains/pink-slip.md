@@ -6,7 +6,7 @@
 
 ## Chain to classics
 - Guava Push Pop → Rainbow Guava 5 × Orange Mints (stated, Bloom catalog)
-- Rainbow Guava → Rainbow Belts × Strawberry Guava (stated, Bloom) → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya-dead-end
+- Rainbow Guava → Rainbow Belts × Strawberry Guava (stated, Bloom) → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya (Bloom, undisclosed)
 - Orange Mints → Bloom's deliberate dead-end. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes

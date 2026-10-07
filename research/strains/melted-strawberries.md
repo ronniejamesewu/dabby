@@ -7,10 +7,10 @@
 
 ## Chain to classics — fully terminated at entry time
 - GMO → Chem D × GSC — classics, terminates
-- Strawberry Guava → Strawberry Banana × Papaya (stated, Bloom) → Strawberry Banana classic; Papaya "Mystery / Clone Only" (710 Labs, anchor) — documented dead-end. See [lineage_nodes.md](../lineage_nodes.md)
+- Strawberry Guava → Strawberry Banana × Papaya (Bloom) (stated, Bloom) → Strawberry Banana classic; Papaya (Bloom) cross undisclosed. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
-- Inference: GMO side leans garlic/chem; Strawberry Guava side leans fruit over a Papaya dead-end. Not measured.
+- Inference: GMO side leans garlic/chem; Strawberry Guava side leans fruit over an undisclosed Papaya. Not measured.
 
 ## Sources
 - https://www.instagram.com/p/DdXCK0JTCMd/ (Erva 9.19.26 drop menu, read Sept 21 2026; archive pending)

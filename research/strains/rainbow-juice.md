@@ -7,7 +7,7 @@
 
 ## Chain to classics
 - Grape Rainbow Pie #17 → Fruitfull's proprietary line, parentage undisclosed — evidence exhausted. See [lineage_nodes.md](../lineage_nodes.md)
-- Garlic Juice → GMO × Papaya (corroborated, Oni Seed Co) → GMO classics; Papaya (Oni) dead-end. Lead: originally bred by Harry Palms, later Bloom's founder
+- Garlic Juice → GMO × Papaya (Oni) (corroborated, Oni Seed Co) → GMO classics; Papaya (Oni) origin unpublished by Oni. Lead: originally bred by Harry Palms, later Bloom's founder
 
 ## Notes
 - Parent of Rainbow Rind (× Watermelon Z).

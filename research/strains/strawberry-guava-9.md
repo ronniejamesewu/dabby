@@ -6,7 +6,7 @@
 
 ## Chain to classics
 - Strawberry Banana — classic
-- Papaya → dead-end. See [lineage_nodes.md](../lineage_nodes.md)
+- Papaya → cut unattributed (breeder conflicted: Bloom vs Oni). See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
 - 710 uses Strawberry Guava as a named parent with Bloom as breeder (Dulce De Fresa = Dulce de Uva x Strawberry Guava, 710labs.com/genetics/dulce-de-fresa).

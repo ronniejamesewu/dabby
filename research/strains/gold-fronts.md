@@ -7,11 +7,11 @@
 
 ## Chain to classics
 - Zangria → unattributed for Erva's cut; several breeders use the name. See [lineage_nodes.md](../lineage_nodes.md)
-- Sour Papaya → Sour Diesel × Papaya — corroborated (Oni Seed Co line). Sour Diesel classic; Papaya documented dead-end. See [lineage_nodes.md](../lineage_nodes.md)
+- Sour Papaya → Sour Diesel × Papaya (Oni) — corroborated (Oni Seed Co line). Sour Diesel classic; Papaya (Oni) origin unpublished by Oni. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
 - Name-alikes from other producers — "Gold Fronts (Washers Only Cut)", "VARZ Gold Fronts" — not merged.
-- Inference: Sour Papaya side carries Sour Diesel over a Papaya dead-end; Zangria side unresolved, so no lean stated for it. Not measured.
+- Inference: Sour Papaya side carries Sour Diesel over an undisclosed Papaya; Zangria side unresolved, so no lean stated for it. Not measured.
 
 ## Open questions
 - Breeder of the cross; which Zangria.

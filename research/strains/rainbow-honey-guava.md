@@ -5,7 +5,7 @@
 - **Composition:** Rainbow Guava + Honey Banana — stated by Erva (9.5.26 drop menu)
 
 ## Component chains
-- Rainbow Guava → Rainbow Belts × Strawberry Guava (stated, Bloom) → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya dead-end — see [lineage_nodes.md](../lineage_nodes.md)
+- Rainbow Guava → Rainbow Belts × Strawberry Guava (stated, Bloom) → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya (Bloom, undisclosed) — see [lineage_nodes.md](../lineage_nodes.md)
 - Honey Banana → Strawberry Banana × Honey Boo Boo (stated, DNA Genetics) → Bubba Kush / Captain Krypt OG (thin) — terminates
 
 ## Notes

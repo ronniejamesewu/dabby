@@ -47,6 +47,12 @@ here renders into `index.html`.
   a clean web not-found was overturned by one IG menu).
 - **No name inference, ever.** A lineage guessed from a strain name is
   worse than no answer.
+- **One name, several cuts.** When producers carry different cuts under
+  one name, one producer's description never attaches to another's cut.
+  Each cut gets its own node with a one-word qualifier — `Papaya (Bloom)`,
+  `Papaya (710)` — and a formula writes the qualifier only when its
+  claimant's cut is known; a bare name stays on the shared node, which
+  says the cut is unattributed (Papaya split, Oct 7 2026).
 - **Database register.** Entries read like a genetics database, not a
   blog: facts, source, date. No editorializing, no narrating the
   catalog's own process or cleverness, no scene-flavor commentary, no

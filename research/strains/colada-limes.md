@@ -6,7 +6,7 @@
 - **Breeder:** Bloom Seed Co (stated — Bloom lists "Colada Lime" = Pomelo Punch x Too Much Lime, Bloom Selections tier; bloomseed.co/product/colada-lime-clone/, release Jul 2025)
 
 ## Chain to classics
-- Pomelo Punch → Orange Mints × Papaya (stated, Bloom) → both documented dead-ends. See [lineage_nodes.md](../lineage_nodes.md)
+- Pomelo Punch → Orange Mints × Papaya (Bloom) (stated, Bloom) → Orange Mints dead-end; Papaya (Bloom) cross undisclosed. See [lineage_nodes.md](../lineage_nodes.md)
 - Too Much Lime → Lime Heads × TMZ (stated, Bloom) → Lime 1 / 707 Headband clone stock; Zkittlez / Sherbanger — terminates. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes

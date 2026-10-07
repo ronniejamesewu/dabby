@@ -6,7 +6,7 @@
 
 ## Component chains
 - Death Coast → Death Star × East Coast Sour Diesel (stated, IG menu 7/31/26) → Sensi Star / Sour Diesel — terminates
-- Key Lime Guava → Rainbow Guava #5 × TMZ (stated, IG menu 7/31/26) → Rainbow Belts / Strawberry Guava chains → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya-dead-end — see [lineage_nodes.md](../lineage_nodes.md)
+- Key Lime Guava → Rainbow Guava #5 × TMZ (stated, IG menu 7/31/26) → Rainbow Belts / Strawberry Guava chains → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya (Bloom, undisclosed) — see [lineage_nodes.md](../lineage_nodes.md)
 - Honey Limez → see [honey-limez.md](honey-limez.md)
 
 ## Sources

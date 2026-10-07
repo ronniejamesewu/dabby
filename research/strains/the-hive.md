@@ -2,11 +2,11 @@
 
 - **Grower:** undisclosed — Soiku Bano states it is not vertically integrated and sources flower from multiple cultivators, none named for this jar (soikubano.com About Us, Sept 21 2026) · **Processor:** Soiku Bano (stated — as sold: "Soiku Bano Black Label Cold Cure Live Rosin", Lightshade Federal Heights menu, Sept 21 2026)
 - **Type:** single cultivar (cross)
-- **Cross:** Honey Banana × Papaya — stated (Bloom Seed Co catalog, bloomseed.co/cultivars). Soiku Bano publishes no formula for its jar; assumed the Bloom cultivar: the only published cultivar of this name found in this catalog's searches.
+- **Cross:** Honey Banana × Papaya (Bloom) — stated (Bloom Seed Co catalog, bloomseed.co/cultivars). Soiku Bano publishes no formula for its jar; assumed the Bloom cultivar: the only published cultivar of this name found in this catalog's searches.
 
 ## Chain to classics
 - Honey Banana → Strawberry Banana × Honey Boo Boo (stated, DNA Genetics) → Bubba Kush / Captain Krypt OG (thin) — see [lineage_nodes.md](../lineage_nodes.md)
-- Papaya → "Mystery / Clone Only" (710 Labs, anchor) — documented dead-end
+- Papaya (Bloom) → cross undisclosed by Bloom
 
 ## Notes
 - Same cultivar name as the owned jar The Hive #1 (washed by Myxed Up; see `jars/hive1.py`) — a different grower/processor pipeline.

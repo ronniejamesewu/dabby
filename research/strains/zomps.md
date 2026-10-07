@@ -6,7 +6,7 @@
 
 ## Chain to classics
 - Zoids → undisclosed. See [lineage_nodes.md](../lineage_nodes.md)
-- Pomelo Punch → Orange Mints × Papaya (stated, Bloom) → both documented dead-ends. See [lineage_nodes.md](../lineage_nodes.md)
+- Pomelo Punch → Orange Mints × Papaya (Bloom) (stated, Bloom) → Orange Mints dead-end; Papaya (Bloom) cross undisclosed. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
 - Component of the Tropic Gusher and Zupernova blends.

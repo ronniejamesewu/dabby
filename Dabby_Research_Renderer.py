@@ -157,10 +157,25 @@ def evidence_word(val):
     return m.group(1) if m else ""
 
 
+CUT_QUALIFIER_RE = re.compile(r"^(.*\S)\s*\(([A-Za-z0-9]+)\)\s*$")
+
+
+def cut_qualifier(name):
+    """'Papaya (Bloom)' -> ('Papaya', 'Bloom'): a trailing one-word
+    parenthetical names whose cut of a shared name this is. None otherwise --
+    multi-word asides ('(phenos #74/#62)', '(Too Much Zkittlez)') are not."""
+    m = CUT_QUALIFIER_RE.match(name.strip())
+    return (m.group(1).strip(), m.group(2)) if m else None
+
+
 def kebab(name):
     """'TMZ (Too Much Zkittlez)' -> 'tmz'; 'Guava'z' -> 'guava-z'. Drops any
     parenthetical before kebabbing so pheno-count asides ('(phenos #74/#62)')
-    and mid-name parentheticals normalize the same way."""
+    and mid-name parentheticals normalize the same way -- except a cut
+    qualifier, which stays in the id: 'Papaya (Bloom)' -> 'papaya-bloom'."""
+    cq = cut_qualifier(name)
+    if cq:
+        return f"{kebab(cq[0])}-{kebab(cq[1])}"
     name = re.sub(r"\([^)]*\)", "", name)
     name = re.sub(r"[^a-z0-9]+", "-", name.lower())
     return name.strip("-")
@@ -512,15 +527,23 @@ _CLASSICS_CACHE = None
 def _build_node_indexes():
     path = RESEARCH / "lineage_nodes.md"
     text = path.read_text(encoding="utf-8") if path.exists() else ""
-    heads, embedded = {}, {}
+    heads, embedded, cut_fallback = {}, {}, {}
     for bullet in _join_bullets(text):
         name_raw, rest = _parse_node_bullet_head(bullet)
         if name_raw is None:
             continue
         formula, evidence_src, window = _parse_formula_window(rest)
         record = {"formula": formula, "evidence": lineage_evidence_caption(evidence_src), "raw": bullet}
-        for variant in _node_name_variants(name_raw):
-            heads.setdefault(normalize_basic(variant), record)
+        cq = cut_qualifier(name_raw)
+        if cq:
+            # 'Papaya (Bloom)' answers to its full name; the bare 'Papaya'
+            # only falls back to it when no unqualified node of that name
+            # exists, so a cut never shadows the shared node.
+            heads.setdefault(normalize_basic(name_raw), record)
+            cut_fallback.setdefault(normalize_basic(cq[0]), record)
+        else:
+            for variant in _node_name_variants(name_raw):
+                heads.setdefault(normalize_basic(variant), record)
         for em in EMBED_NAME_RE.finditer(rest):
             prefix = rest[:em.start()]
             if not (em.start() == 0 or prefix.endswith(". ") or prefix.endswith("; ")
@@ -545,6 +568,8 @@ def _build_node_indexes():
             for ekey in ekeys:
                 if ekey not in heads:  # a head formula always outranks an embedded one
                     embedded.setdefault(ekey, record)
+    for key, record in cut_fallback.items():
+        heads.setdefault(key, record)
     return heads, embedded
 
 
