@@ -1,23 +1,23 @@
 # Effects Priors — Lineage Reputation Tags
 
-Which way a cultivar's *reputation* leans: `daytime` (uplifting / energetic),
+A cultivar's *reputation*, tagged `daytime` (uplifting / energetic),
 `heavy` (sedating / body), or `none` (a known cultivar with a mixed or
 balanced reputation — counted as untagged, never as unknown). Read by
-`Dabby_Research_Renderer.py` to compute each jar's **lineage lean**: the
+`Dabby_Research_Renderer.py` to compute each jar's **effects suggested by lineage**: the
 share of its pedigree that traces to daytime-tagged and heavy-tagged names.
 
 ## What this is not
 
 - Not a measurement and not a forecast. Every tag is an attributed
   reputation claim; the lineage under it is an attributed claim too — the
-  lean is two hedges deep.
+  share is two hedges deep.
 - Not a dose. Traits segregate rather than average: a jar with a quarter
   of its pedigree in Sour Diesel has odds of expressing it, not 25% of it.
 - Not brand reputation (that never enters the repo). These are
   cultivar-level reputations in general circulation.
 - The owner's jar log outranks this table. A `log` source line beats any
-  number of `training` lines, and a jar actually run overrides its own
-  lineage read.
+  number of `training` lines, and a jar actually run overrides whatever
+  its lineage suggests.
 
 ## Rules
 
@@ -29,12 +29,12 @@ share of its pedigree that traces to daytime-tagged and heavy-tagged names.
   take the same tag. No substring or fuzzy matching.
 - Source classes: `log` (the owner's jar log — cite the jar) · `training`
   (scene consensus per model training — the weakest class; verify before
-  leaning on it).
-- One line per name. Changing a tag regenerates every lean on the page.
+  relying on it).
+- One line per name. Changing a tag regenerates every lineage-effects line on the page.
 
 ## Tags
 
-| Name | Lean | Also matches | Source |
+| Name | Tag | Also matches | Source |
 |---|---|---|---|
 | Sour Diesel | daytime | AJ's Cut Sour Diesel; Sour Diesel IBL | training |
 | East Coast Sour Diesel | daytime | | training |
@@ -77,7 +77,7 @@ share of its pedigree that traces to daytime-tagged and heavy-tagged names.
 | GG4 | heavy | | training |
 | GMO | heavy | | training — tagged as a whole (its parents Chem D × GSC are both `none`) |
 | Mazar | heavy | | training — tagged as a whole |
-| Papaya | none | | Reputation says relaxing; the one log hint (Fembot #3, an inferred Rambutan cross: "upbeat, creative") points the other way. Owner unsure, Sept 21 2026 — left untagged. In more trees than any other name; revisit when the log has a lean read on a Papaya jar |
+| Papaya | none | | Reputation says relaxing; the one log hint (Fembot #3, an inferred Rambutan cross: "upbeat, creative") points the other way. Owner unsure, Sept 21 2026 — left untagged. In more trees than any other name; revisit when the log records how a Papaya jar felt |
 
 Names on the classics stop-list with no row here (Zkittlez, Gelato, GSC,
 Sunset Sherbert, Runtz, OG Kush, Chem D, Skunk #1, Strawberry Banana,
@@ -88,6 +88,7 @@ reputations.
 ## Provenance
 
 Drafted Sept 21, 2026 in conversation with the owner, after a hand-run
-"which jars lean daytime" pass over the Lightshade Federal Heights and
-IgadI Northglenn menus. The owner's log records how hard a run hit, not
-which way it leaned — until it does, almost every line here is `training`.
+pass over the Lightshade Federal Heights and IgadI Northglenn menus for
+jars whose lineage suggests uplifting, energetic, "daytime" highs. The
+owner's log records how hard a run hit, not what kind of high it was —
+until it does, almost every line here is `training`.
