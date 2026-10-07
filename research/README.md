@@ -91,6 +91,9 @@ the formula bullets here and the `= A × B` lines in `lineage_nodes.md`
 (`lineage_tree(slug)` in the renderer). Resolution order for a parent
 name: alias → classics stop-list → lineage node → strain entry — so a
 node outranks a same-named strain entry (the Black Cherry Pie homonym).
+A cut-qualified parent (`Papaya (Bloom)`) resolves to its own node and
+links to `#node-papaya-bloom`; the bare name falls back to a cut node only
+when no shared node exists.
 A node bullet with no head formula draws as a leaf (dead-end if its first
 sentence says so, otherwise open); nothing is guessed. The build prints
 a **Lineage gaps** list — parent names that match no classic, node, or
