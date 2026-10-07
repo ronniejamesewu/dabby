@@ -983,8 +983,8 @@ def _potency_label(row):
     return s
 
 
-def _lean_label(lean):
-    return f"day {round(lean['daytime'] * 100)}% · heavy {round(lean['heavy'] * 100)}% · unk {round(lean['unknown'] * 100)}%"
+def _lineage_effects_label(shares):
+    return f"day {round(shares['daytime'] * 100)}% · heavy {round(shares['heavy'] * 100)}% · unk {round(shares['unknown'] * 100)}%"
 
 
 def rundown_table(rows):
@@ -993,33 +993,33 @@ def rundown_table(rows):
     # cost (it requires the 'markdown' package and can sys.exit(1) without
     # it) -- an import failure degrades the new column to blank rather than
     # crashing the rundown.
-    lineage_lean_fn = None
+    lineage_effects_fn = None
     try:
-        from Dabby_Research_Renderer import lineage_lean as lineage_lean_fn
+        from Dabby_Research_Renderer import lineage_effects as lineage_effects_fn
     except Exception as e:
-        print(f"! lineage_lean unavailable, Lean column left blank: {e}", file=sys.stderr)
+        print(f"! lineage_effects unavailable, Lineage effects column left blank: {e}", file=sys.stderr)
     except SystemExit as e:
-        print(f"! lineage_lean unavailable, Lean column left blank: {e}", file=sys.stderr)
+        print(f"! lineage_effects unavailable, Lineage effects column left blank: {e}", file=sys.stderr)
 
-    lean_cache = {}
-    head = ("| Store | Brand | Strain | Form | Size | Price | Special | Qty | Potency | Match | Lean |\n"
+    effects_cache = {}
+    head = ("| Store | Brand | Strain | Form | Size | Price | Special | Qty | Potency | Match | Lineage effects |\n"
             "|---|---|---|---|---|---|---|---|---|---|---|")
     lines = [head]
     for r in rows:
-        lean = None
-        if lineage_lean_fn is not None and r.get("match_tier") == "entry" and r.get("match_slug"):
+        shares = None
+        if lineage_effects_fn is not None and r.get("match_tier") == "entry" and r.get("match_slug"):
             slug = r["match_slug"]
-            if slug not in lean_cache:
+            if slug not in effects_cache:
                 try:
-                    lean_cache[slug] = lineage_lean_fn(slug)
+                    effects_cache[slug] = lineage_effects_fn(slug)
                 except Exception:
-                    lean_cache[slug] = None
-            lean = lean_cache[slug]
-        r["lean"] = lean
+                    effects_cache[slug] = None
+            shares = effects_cache[slug]
+        r["lineage_effects"] = shares
         lines.append(
             f"| {r['store_name']} | {r['brand']} | {r['strain']} | {r['form']} | {r['size_label']} | "
             f"{money(r['price'])} | {money(r['special_price'])} | {r['qty'] if r['qty'] is not None else ''} | "
-            f"{_potency_label(r)} | {_match_label(r)} | {_lean_label(lean) if lean is not None else ''} |"
+            f"{_potency_label(r)} | {_match_label(r)} | {_lineage_effects_label(shares) if shares is not None else ''} |"
         )
     return "\n".join(lines)
 
