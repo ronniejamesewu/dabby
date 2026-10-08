@@ -26,6 +26,10 @@ ACTIVE = [
     'lunarz',      # LunarZ
     'bb364nt34',   # Blueberry 36 #4 (No Till, 3rd+4th Wash)
     'bb364nt12',   # Blueberry 36 #4 (No Till, 1st+2nd Wash)
+    'ddp90',       # Dulce De Papaya (90u)
+    'ddpfs',       # Dulce De Papaya (Full Spectrum)
+    'sourene',     # Sourene
+    'blacklemon',  # Black Lemon
 ]
 
 CLOSED = [
