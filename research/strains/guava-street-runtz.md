@@ -5,7 +5,7 @@
 - **Composition:** Rainbow Guava + Canal Street Runtz — stated by Erva (9.19.26 drop menu)
 
 ## Component chains
-- Rainbow Guava → Rainbow Belts × Strawberry Guava (stated, Bloom) → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya dead-end. See [lineage_nodes.md](../lineage_nodes.md)
+- Rainbow Guava → Rainbow Belts × Strawberry Guava (stated, Bloom) → Zkittlez / Do-Si-Dos / Strawberry Banana / Papaya (Bloom, undisclosed). See [lineage_nodes.md](../lineage_nodes.md)
 - Canal Street Runtz → Pre-64 Runtz × THC Bomb — stated by Erva (8.7.26 drop menu, verbatim "(Pre-64 Runtz x THC Bomb)"). See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes

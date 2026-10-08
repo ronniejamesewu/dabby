@@ -7,7 +7,7 @@
 
 ## Chain to classics
 - Pinesoul → Green Bodhi's pheno of Goji OG (Nepali OG × Snow Lotus, Bodhi Seeds) — corroborated; pre-2018 terminus. See [lineage_nodes.md](../lineage_nodes.md)
-- Pomelo Punch → Orange Mints × Papaya (stated, Bloom) → both documented dead-ends (Orange Mints undisclosed; Papaya "Mystery/Clone Only" per 710 Labs)
+- Pomelo Punch → Orange Mints × Papaya (Bloom) (stated, Bloom) → Orange Mints dead-end; Papaya (Bloom) cross undisclosed
 
 ## Notes
 - Measured terp datum: 16.88% terps (In House caption, 8/15/26 drop). Component of the Happy Hour blend.

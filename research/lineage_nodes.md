@@ -28,25 +28,38 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
 - **Dulce de Uva** = Ice Cream Cake × (Grape Pie × Wedding Crasher) —
   stated (Bloom). All classics.
 - **Rainbow Guava** = Rainbow Belts × Strawberry Guava — stated (Bloom).
-- **Strawberry Guava** = Strawberry Banana × Papaya — stated (Bloom).
+- **Strawberry Guava** = Strawberry Banana × Papaya (Bloom) — stated (Bloom).
 - **Guava Push Pop** = Rainbow Guava 5 × Orange Mints — stated (Bloom,
   Active tier).
 - **Guava'z** (phenos #74/#62) — distinct from Pure Guava; Bloom discloses
   no cross; SeedFinder's algorithmic guess treated as noise. Undisclosed.
-- **Rambutan** = Papaya × Guava'z — stated (Bloom). In House sells phenos
+- **Rambutan** = Papaya (Bloom) × Guava'z — stated (Bloom). In House sells phenos
   #250/#357 (numbering unconfirmed externally). 710 Labs states its
   Rambutan as "Papaya x Guavaz #74", breeder Bloom (Oct 5 2026) — see
   [strains/rambutan-11.md](strains/rambutan-11.md).
-- **Pomelo Punch** = Orange Mints × Papaya — stated (Bloom, Proven, Aug
+- **Pomelo Punch** = Orange Mints × Papaya (Bloom) — stated (Bloom, Proven, Aug
   2023).
 - **World War Z** = Zkittlez × TMZ — stated (Bloom). Full chain closes at
   classics; Zkittlez appears at three consecutive generations. NO
   documented link to Quasi Farms' "WW Z" (checked; different state/producer).
-- **Papaya** — 710 Labs states "Mystery / Clone Only" (dead-end, anchor).
-  Clone-history claim Citral #13 × Ice #2 (Nirvana Seeds) — corroborated,
-  never producer-confirmed; one outlier says Mango × Citral #13
-  (conflicted). Bloom also lists Papaya with no cross.
-- **The Hive** = Honey Banana × Papaya — stated (Bloom). NOT established
+- **Papaya** — shared name for several producers' cuts; which cut a cross
+  uses is unattributed unless its claimant names one (Oct 7 2026: split
+  into the per-producer nodes below; before that this node carried 710
+  Labs' description for every Papaya). Origin claims for the name:
+  Citral #13 × Ice #2 (Nirvana Seeds) — corroborated, never
+  producer-confirmed; Mango × Citral #13 — one outlier (conflicted).
+- **Papaya (710)** — 710 Labs states "Mystery / Clone Only" for its own
+  Papaya (dead-end, anchor). Applies to 710's clone only; 710's Bloom-bred
+  seed hunts (Rambutan #11, breeder Bloom per 710's page) carry Bloom's
+  Papaya.
+- **Papaya (Bloom)** — Bloom Seed Co lists Papaya in its catalog with no
+  cross (undisclosed; read date undated in source). Parent in Bloom's
+  Pomelo Punch, Strawberry Guava, Rambutan, The Hive and Papaya Fumez.
+  Whether it is the same clone as 710's: stated by neither.
+- **Papaya (Oni)** — Oni Seed Co lists Papaya in its seed catalog
+  (SeedFinder breeder page); Oni publishes no cross for it. SeedFinder
+  traces it to Nirvana's Citral × Ice — lead, single source.
+- **The Hive** = Honey Banana × Papaya (Bloom) — stated (Bloom). NOT established
   as related to In House's "Gorilla Hive" (shared word only).
 
 ## In House orbit (non-Bloom parents)
@@ -132,9 +145,9 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   it to "Rainbow Pie" (Fruitfull's own catalog states Rainbow Juice =
   Garlic Juice #2 × Grape Rainbow Pie #17, anchor). Unrelated
   "Rainbow Pie" cultivars exist (GreenFire, Zephyr) — not merged.
-- **Garlic Juice** = GMO × Papaya — corroborated (Oni Seed Co; multiple
+- **Garlic Juice** = GMO × Papaya (Oni) — corroborated (Oni Seed Co; multiple
   convergent sources; Fruitfull's catalog uses "Garlic Juice #2") →
-  GMO classics; Papaya (Oni) undocumented origin — dead-end. Lead, not
+  GMO classics; Papaya (Oni) origin unpublished by Oni — open. Lead, not
   chased to primary: three sources say originally bred by Harry Palms —
   the later Bloom Seed Co founder, already on Erva's roster.
 - **OZ Kush** = OG Eddy Lepp × The Original Z (Zkittlez) — corroborated
@@ -299,11 +312,9 @@ they are terminal by definition. Campaign date for all nodes: Aug 29–30,
   name to Wizard Trees, Greenpoint Seeds, Frosteez Farmz. Bloom's catalog
   uses Zangria as a parent (Zangria × TMZ; Rainbow Zangria × TMZ) without
   stating its parentage (Sept 21 2026). None tied to Erva.
-- **Sour Papaya** = Sour Diesel × Papaya — corroborated (SeedFinder,
+- **Sour Papaya** = Sour Diesel × Papaya (Oni) — corroborated (SeedFinder,
   Speakeasy Seedbank, The Highest Critic; Oni Seed Co). Sour Diesel
-  classic; Papaya dead-end. SeedFinder traces Oni's Papaya to Nirvana's
-  Citral × Ice — differs from 710 Labs' "Mystery / Clone Only"; recorded,
-  terminal either way.
+  classic; Papaya (Oni) open — see that node.
 - **Zoids** — undisclosed (Zomps parent; In House IG menu 9.12.26). Not
   in Bloom's catalog or In House's Weedmaps storefront; nothing published
   under this name (searched Sept 21 2026). Re-run.

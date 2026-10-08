@@ -6,7 +6,7 @@
 
 ## Chain to classics
 - Peach OZ → see [peach-oz.md](peach-oz.md)
-- Pomelo Punch #5 → Pomelo Punch = Orange Mints × Papaya (stated, Bloom) → both documented dead-ends (Orange Mints undisclosed by Bloom; Papaya "Mystery/Clone Only" per 710 Labs). See [lineage_nodes.md](../lineage_nodes.md)
+- Pomelo Punch #5 → Pomelo Punch = Orange Mints × Papaya (Bloom) (stated, Bloom) → Orange Mints dead-end (undisclosed by Bloom); Papaya (Bloom) cross undisclosed. See [lineage_nodes.md](../lineage_nodes.md)
 
 ## Notes
 - Component of the Fuzzy Navel and Bellini blends.

@@ -47,6 +47,12 @@ here renders into `index.html`.
   a clean web not-found was overturned by one IG menu).
 - **No name inference, ever.** A lineage guessed from a strain name is
   worse than no answer.
+- **One name, several cuts.** When producers carry different cuts under
+  one name, one producer's description never attaches to another's cut.
+  Each cut gets its own node with a one-word qualifier — `Papaya (Bloom)`,
+  `Papaya (710)` — and a formula writes the qualifier only when its
+  claimant's cut is known; a bare name stays on the shared node, which
+  says the cut is unattributed (Papaya split, Oct 7 2026).
 - **Database register.** Entries read like a genetics database, not a
   blog: facts, source, date. No editorializing, no narrating the
   catalog's own process or cleverness, no scene-flavor commentary, no
@@ -85,6 +91,9 @@ the formula bullets here and the `= A × B` lines in `lineage_nodes.md`
 (`lineage_tree(slug)` in the renderer). Resolution order for a parent
 name: alias → classics stop-list → lineage node → strain entry — so a
 node outranks a same-named strain entry (the Black Cherry Pie homonym).
+A cut-qualified parent (`Papaya (Bloom)`) resolves to its own node and
+links to `#node-papaya-bloom`; the bare name falls back to a cut node only
+when no shared node exists.
 A node bullet with no head formula draws as a leaf (dead-end if its first
 sentence says so, otherwise open); nothing is guessed. The build prints
 a **Lineage gaps** list — parent names that match no classic, node, or
