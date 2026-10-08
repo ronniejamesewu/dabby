@@ -212,6 +212,58 @@
 
 ---
 
+### Dulce De Papaya (90u)
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**Proposed Curve:** not loaded on any slot
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
+### Dulce De Papaya (Full Spectrum)
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**Proposed Curve:** not loaded on any slot
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
+### Sourene
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**Proposed Curve:** not loaded on any slot
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
+### Black Lemon
+**No runs yet** &nbsp;·&nbsp; Next run: 1
+
+**Next:** No runs yet — start from baseline curve
+
+**Proposed Curve:** not loaded on any slot
+- 0s → 380°F — Session open
+- 4s → 400°F — Steep early climb
+- 8s → 420°F — Endpoint
+- 60s → 420°F — Hold
+
+---
+
 ## Closed Jars
 *One line each — non-actionable; full run history and analysis live in `jars/<slug>.py`.*
 

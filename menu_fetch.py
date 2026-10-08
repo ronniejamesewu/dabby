@@ -87,9 +87,10 @@ _IGADI_TAX_BY_LOCATION = {
                   "+ 4% Northglenn city sales + 0.75% Adams County + 1% RTD + 0.1% SCFD. County/RTD/SCFD list no "
                   "retail-marijuana exemption (Q) in DR 1002, Jan 2026; FYI Sales 93 says local taxes may apply. "
                   "Equals the 24.85% 'Cannabis + Sales Tax' line in Dutchie's taxConfig for the retired "
-                  "'DNU - IgadI (Northglenn)' listing. Unverified piece: the city's regular 4% applying to "
-                  "marijuana (home-rule, not in DR 1002's exemption table) -- no receipt yet",
-        "date": "2026-09-21",
+                  "'DNU - IgadI (Northglenn)' listing. Receipt Oct 8 2026 matches to the cent: on $95.98, "
+                  "Rec MJ 15% $14.40 + City-REC 8% $7.68 + RTD 1.1% $1.06 + County 0.75% $.72 = $23.85. "
+                  "The 8% city line confirms the regular 4% city sales tax applies on top of the 4% marijuana tax",
+        "date": "2026-10-08",
     },
 }
 
@@ -115,7 +116,11 @@ STORES["lightshade_fh"] = {
     "platform": "dutchie-embed",
     "ids": {"dispensary_id": "6112d9ef745e1500b0fd0238", "slug": "lightshade-federal-heights-rec-dispensary"},
     "grammar": "lightshade",
-    "tax": {"basis": "pre-tax", "rate": 0.2585, "source": "Dutchie taxConfig / r/LightshadeDispensary", "date": "2026-09-02"},
+    "tax": {"basis": "pre-tax", "rate": 0.2585,
+            "source": "Dutchie taxConfig / r/LightshadeDispensary. Receipt (undated in source, read Oct 8 2026) "
+                      "matches to the cent: on $72.10 after discount, CO Rec MJ 15% $10.82 + FH city 9% $6.49 + "
+                      "RTD/SCFD 1.1% $.79 + Adams County 0.75% $.54 = $18.64. Tax is charged on the post-discount price",
+            "date": "2026-10-08"},
     "stacking": {"rule": "best-single", "source": "Dutchie specialsSettings (favorCustomer)", "date": "2026-09-02"},
     "retrieval": "browser",
 }
